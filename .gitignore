@@ -18,7 +18,7 @@ usernamecache.json
 TLauncherAdditional.json
 
 # Ignore large executable jar files
-*.jar
+/*.jar
 taobitk.jar
 
 # Ignore screenshots and media
