@@ -190,7 +190,7 @@
 	#Range: 0.0 ~ 1.0
 	"Phantom Chance" = 1.0
 	#Set this to true to allow tnt thrown by mobs to destroy blocks
-	"TNT Block Destruction" = true
+	"TNT Block Destruction" = false
 	#Chance for a mob to ignore line of sight
 	#This config ONLY affects villager target, neutral aggressive and auto targeting feature
 	#Range: 0.0 ~ 1.0

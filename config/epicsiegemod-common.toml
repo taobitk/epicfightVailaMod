@@ -50,7 +50,7 @@
 	#Range: 0.0 ~ 1.0
 	demolitionChance = 0.1
 	#List of mobs that can drop live TNT [default: [minecraft:zombie]
-	demolitionMobs = ["minecraft:zombie", "minecraft:husk", "minecraft:drowned", "minecraft:zombie_villager", "minecraft:zombified_piglin", "minecraft:zombie_horse", "minecraft:skeleton", "minecraft:stray", "minecraft:wither_skeleton", "minecraft:skeleton_horse"]
+	demolitionMobs = []
 	#List of mobs that can pillar up and build stairs [default: [minecraft:zombie]
 	buildingMobs = ["minecraft:zombie", "minecraft:husk", "minecraft:drowned", "minecraft:zombie_villager", "minecraft:zombified_piglin", "minecraft:zombie_horse", "minecraft:skeleton", "minecraft:stray", "minecraft:wither_skeleton", "minecraft:skeleton_horse"]
 	#If mobs should be allowed to grief blocks [default: false]
