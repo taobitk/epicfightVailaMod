@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "lib": ["es2020"],
+    "target": "es2020",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "checkJs": true,
+    "maxNodeModuleJsDepth": 0
+  },
+  "include": [
+    "**/*.js",
+    "../.probe/startup/probe-types/**/*.d.ts",
+    "../.probe/server/probe-types/**/*.d.ts",
+    "../.probe/client/probe-types/**/*.d.ts"
+  ]
+}

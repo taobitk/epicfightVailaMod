@@ -1,0 +1,880 @@
+{
+  "__comment": [
+    "Mobs will be able to equip items declared here",
+    "The first number is the weight while the second number is the quality",
+    "Weight is the weight of an item. Higher weight means that the item is more likely to get choosen",
+    "Quality is a modifier applied to the weight. The final weight used is weight + quality * current difficulty"
+  ],
+  "MAINHAND": {
+    "cdmoveset:a_yamato": [
+      8021,
+      6.3678803
+    ],
+    "cdmoveset:a_yamato_in_sheath": [
+      8021,
+      6.3678803
+    ],
+    "cdmoveset:a_yamato_sheath": [
+      8021,
+      6.3678803
+    ],
+    "cdmoveset:great_tachi": [
+      7861,
+      6.701589
+    ],
+    "cdmoveset:katana": [
+      8613,
+      5.1228175
+    ],
+    "cdmoveset:phantom_katana": [
+      7975,
+      6.463877
+    ],
+    "cdmoveset:phantom_katana_sheath": [
+      7975,
+      6.463877
+    ],
+    "cdmoveset:s_diamond_dagger": [
+      8768,
+      4.790248
+    ],
+    "cdmoveset:s_diamond_greatsword": [
+      8538,
+      5.2822285
+    ],
+    "cdmoveset:s_diamond_longsword": [
+      8693,
+      4.951788
+    ],
+    "cdmoveset:s_diamond_spear": [
+      8693,
+      4.951788
+    ],
+    "cdmoveset:s_diamond_sword": [
+      7861,
+      6.701589
+    ],
+    "cdmoveset:s_diamond_tachi": [
+      8693,
+      4.951788
+    ],
+    "cdmoveset:s_golden_greatsword": [
+      11175,
+      0.028999997
+    ],
+    "cdmoveset:s_golden_longsword": [
+      11367,
+      0.009799999
+    ],
+    "cdmoveset:s_golden_spear": [
+      11367,
+      0.009799999
+    ],
+    "cdmoveset:s_golden_sword": [
+      11367,
+      0.009799999
+    ],
+    "cdmoveset:s_golden_tachi": [
+      11367,
+      0.009799999
+    ],
+    "cdmoveset:s_iron_dagger": [
+      11013,
+      0.045199998
+    ],
+    "cdmoveset:s_iron_greatsword": [
+      8538,
+      5.2822285
+    ],
+    "cdmoveset:s_iron_longsword": [
+      8693,
+      4.951788
+    ],
+    "cdmoveset:s_iron_spear": [
+      8693,
+      4.951788
+    ],
+    "cdmoveset:s_iron_sword": [
+      8693,
+      4.951788
+    ],
+    "cdmoveset:s_iron_tachi": [
+      8693,
+      4.951788
+    ],
+    "cdmoveset:s_netherite_dagger": [
+      7948,
+      6.5202
+    ],
+    "cdmoveset:s_netherite_greatsword": [
+      7721,
+      6.9932466
+    ],
+    "cdmoveset:s_netherite_longsword": [
+      7861,
+      6.701589
+    ],
+    "cdmoveset:s_netherite_spear": [
+      7861,
+      6.701589
+    ],
+    "cdmoveset:s_netherite_sword": [
+      7861,
+      6.701589
+    ],
+    "cdmoveset:s_netherite_tachi": [
+      7861,
+      6.701589
+    ],
+    "cdmoveset:s_stone_greatsword": [
+      10782,
+      0.670341
+    ],
+    "cdmoveset:s_stone_longsword": [
+      10950,
+      0.37663084
+    ],
+    "cdmoveset:s_stone_spear": [
+      10950,
+      0.37663084
+    ],
+    "cdmoveset:s_stone_sword": [
+      10950,
+      0.37663084
+    ],
+    "cdmoveset:s_stone_tachi": [
+      10950,
+      0.37663084
+    ],
+    "cdmoveset:s_wooden_greatsword": [
+      10997,
+      0.0468
+    ],
+    "cdmoveset:s_wooden_longsword": [
+      11178,
+      0.028699998
+    ],
+    "cdmoveset:s_wooden_spear": [
+      11178,
+      0.028699998
+    ],
+    "cdmoveset:s_wooden_sword": [
+      11178,
+      0.028699998
+    ],
+    "cdmoveset:s_wooden_tachi": [
+      11178,
+      0.028699998
+    ],
+    "cdmoveset:yamato": [
+      8021,
+      6.3678803
+    ],
+    "efn:air_tachi": [
+      7824,
+      6.778693
+    ],
+    "efn:air_tachi_e": [
+      7824,
+      6.778693
+    ],
+    "efn:arc_tachi": [
+      7824,
+      6.778693
+    ],
+    "efn:broadblade": [
+      7824,
+      6.778693
+    ],
+    "efn:co_tachi": [
+      7824,
+      6.778693
+    ],
+    "efn:crescent_moon": [
+      7777,
+      6.876611
+    ],
+    "efn:crescent_moon_e": [
+      7777,
+      6.876611
+    ],
+    "efn:crimson_moon": [
+      7894,
+      6.632802
+    ],
+    "efn:crimson_moon_e": [
+      7894,
+      6.632802
+    ],
+    "efn:excalibur": [
+      7783,
+      6.8641124
+    ],
+    "efn:exsiliumgladius": [
+      7861,
+      6.701589
+    ],
+    "efn:exsiliumgladius_e": [
+      7861,
+      6.701589
+    ],
+    "efn:fire_exsiliumgladius": [
+      7861,
+      6.701589
+    ],
+    "efn:fire_exsiliumgladius_e": [
+      7861,
+      6.701589
+    ],
+    "efn:flag_bearer": [
+      7777,
+      6.876611
+    ],
+    "efn:flag_bearer_e": [
+      7777,
+      6.876611
+    ],
+    "efn:hf_blade": [
+      7755,
+      6.9224353
+    ],
+    "efn:hf_murasama": [
+      7783,
+      6.8641124
+    ],
+    "efn:kusabimaru": [
+      7824,
+      6.778693
+    ],
+    "efn:meen_spear": [
+      7783,
+      6.8641124
+    ],
+    "efn:meen_spear_e": [
+      7783,
+      6.8641124
+    ],
+    "efn:nf_claw": [
+      7861,
+      6.701589
+    ],
+    "efn:nf_dual_sword": [
+      7923,
+      6.5723376
+    ],
+    "efn:nf_shortsword": [
+      7923,
+      6.5723376
+    ],
+    "efn:nf_shortsword_2": [
+      7923,
+      6.5723376
+    ],
+    "efn:nf_shortsword_2_e": [
+      7923,
+      6.5723376
+    ],
+    "efn:nf_shortsword_e": [
+      7923,
+      6.5723376
+    ],
+    "efn:ruinsgreatsword": [
+      7721,
+      6.9932466
+    ],
+    "efn:sword_of_pioneer": [
+      7923,
+      6.5723376
+    ],
+    "efn:thornwheel": [
+      7755,
+      6.9224353
+    ],
+    "efn:yamato_dmc": [
+      7969,
+      6.476395
+    ],
+    "efn:yamato_dmc4": [
+      7969,
+      6.476395
+    ],
+    "efn:yamato_dmc4_in_sheath": [
+      7969,
+      6.476395
+    ],
+    "efn:yamato_dmc_in_sheath": [
+      7969,
+      6.476395
+    ],
+    "epicfight:bokken": [
+      11338,
+      0.0127
+    ],
+    "epicfight:diamond_dagger": [
+      8768,
+      4.790248
+    ],
+    "epicfight:diamond_greatsword": [
+      8538,
+      5.2822285
+    ],
+    "epicfight:diamond_longsword": [
+      8693,
+      4.951788
+    ],
+    "epicfight:diamond_spear": [
+      8722,
+      4.889481
+    ],
+    "epicfight:diamond_tachi": [
+      8693,
+      4.951788
+    ],
+    "epicfight:glove": [
+      11018,
+      0.044699997
+    ],
+    "epicfight:golden_dagger": [
+      11406,
+      0.0058999998
+    ],
+    "epicfight:golden_greatsword": [
+      11175,
+      0.028999997
+    ],
+    "epicfight:golden_longsword": [
+      11367,
+      0.009799999
+    ],
+    "epicfight:golden_spear": [
+      11384,
+      0.0081
+    ],
+    "epicfight:golden_tachi": [
+      11367,
+      0.009799999
+    ],
+    "epicfight:iron_dagger": [
+      11013,
+      0.045199998
+    ],
+    "epicfight:iron_greatsword": [
+      10782,
+      0.670341
+    ],
+    "epicfight:iron_longsword": [
+      10950,
+      0.37663084
+    ],
+    "epicfight:iron_spear": [
+      10975,
+      0.049
+    ],
+    "epicfight:iron_tachi": [
+      10950,
+      0.37663084
+    ],
+    "epicfight:netherite_dagger": [
+      7948,
+      6.5202
+    ],
+    "epicfight:netherite_greatsword": [
+      7721,
+      6.9932466
+    ],
+    "epicfight:netherite_longsword": [
+      7861,
+      6.701589
+    ],
+    "epicfight:netherite_spear": [
+      7894,
+      6.632802
+    ],
+    "epicfight:netherite_tachi": [
+      7861,
+      6.701589
+    ],
+    "epicfight:stone_dagger": [
+      11229,
+      0.023599999
+    ],
+    "epicfight:stone_greatsword": [
+      10997,
+      0.0468
+    ],
+    "epicfight:stone_longsword": [
+      11178,
+      0.028699998
+    ],
+    "epicfight:stone_spear": [
+      11199,
+      0.026599998
+    ],
+    "epicfight:stone_tachi": [
+      11178,
+      0.028699998
+    ],
+    "epicfight:uchigatana": [
+      8613,
+      5.1228175
+    ],
+    "epicfight:wooden_dagger": [
+      11360,
+      0.010499999
+    ],
+    "epicfight:wooden_greatsword": [
+      11129,
+      0.0336
+    ],
+    "epicfight:wooden_longsword": [
+      11321,
+      0.014399999
+    ],
+    "epicfight:wooden_spear": [
+      11338,
+      0.0127
+    ],
+    "epicfight:wooden_tachi": [
+      11321,
+      0.014399999
+    ],
+    "minecraft:bow": [
+      8897,
+      4.508568
+    ],
+    "minecraft:crossbow": [
+      9191,
+      3.826627
+    ],
+    "minecraft:diamond_axe": [
+      8660,
+      5.022479
+    ],
+    "minecraft:diamond_sword": [
+      8722,
+      4.889481
+    ],
+    "minecraft:enchanted_book": [
+      9865,
+      1.8573177
+    ],
+    "minecraft:golden_axe": [
+      11321,
+      0.014399999
+    ],
+    "minecraft:golden_sword": [
+      11384,
+      0.0081
+    ],
+    "minecraft:iron_axe": [
+      10888,
+      0.51635593
+    ],
+    "minecraft:iron_sword": [
+      10975,
+      0.049
+    ],
+    "minecraft:lingering_potion{Potion:\"minecraft:harming\"}": [
+      9965,
+      1.7269388
+    ],
+    "minecraft:netherite_axe": [
+      7824,
+      6.778693
+    ],
+    "minecraft:netherite_sword": [
+      7894,
+      6.632802
+    ],
+    "minecraft:snowball": [
+      10915,
+      0.46844563
+    ],
+    "minecraft:splash_potion{Potion:\"minecraft:harming\"}": [
+      9965,
+      1.7269388
+    ],
+    "minecraft:stone_axe": [
+      11091,
+      0.0374
+    ],
+    "minecraft:stone_sword": [
+      11199,
+      0.026599998
+    ],
+    "minecraft:tnt": [
+      9765,
+      1.9881918
+    ],
+    "minecraft:trident": [
+      8965,
+      4.357304
+    ],
+    "minecraft:wooden_axe": [
+      11275,
+      0.019
+    ],
+    "minecraft:wooden_sword": [
+      11338,
+      0.0127
+    ],
+    "super_golem:golem_heart": [
+      10794,
+      0.65401256
+    ],
+    "wom:agony": [
+      8638,
+      5.069493
+    ],
+    "wom:blackstar": [
+      4758,
+      13.193617
+    ],
+    "wom:diamond_greataxe": [
+      8582,
+      5.1888037
+    ],
+    "wom:diamond_staff": [
+      4788,
+      13.130334
+    ],
+    "wom:ender_blaster": [
+      5850,
+      10.897285
+    ],
+    "wom:evil_tachi": [
+      7894,
+      6.632802
+    ],
+    "wom:golden_greataxe": [
+      11292,
+      0.0173
+    ],
+    "wom:golden_staff": [
+      11324,
+      0.014099999
+    ],
+    "wom:herrscher": [
+      8711,
+      4.9131355
+    ],
+    "wom:hollow_longsword": [
+      10950,
+      0.37663084
+    ],
+    "wom:iron_greataxe": [
+      10851,
+      0.57356006
+    ],
+    "wom:iron_staff": [
+      10376,
+      1.1961136
+    ],
+    "wom:jabberwocky": [
+      8711,
+      4.9131355
+    ],
+    "wom:moonless": [
+      8613,
+      5.1228175
+    ],
+    "wom:napoleon": [
+      8613,
+      5.1228175
+    ],
+    "wom:netherite_greataxe": [
+      7777,
+      6.876611
+    ],
+    "wom:netherite_staff": [
+      2770,
+      17.410627
+    ],
+    "wom:nova": [
+      4866,
+      12.965847
+    ],
+    "wom:orbit": [
+      8584,
+      5.1845512
+    ],
+    "wom:ruine": [
+      8613,
+      5.1228175
+    ],
+    "wom:satsujin": [
+      8543,
+      5.271625
+    ],
+    "wom:solar": [
+      8551,
+      5.254652
+    ],
+    "wom:stone_staff": [
+      10896,
+      0.50295484
+    ],
+    "wom:tormented_mind": [
+      8551,
+      5.254652
+    ],
+    "wom:wooden_staff": [
+      11211,
+      0.0254
+    ]
+  },
+  "OFFHAND": {
+    "minecraft:ender_pearl": [
+      8239,
+      1.2102311
+    ],
+    "minecraft:flint_and_steel": [
+      8211,
+      1.2461817
+    ],
+    "minecraft:lava_bucket": [
+      7839,
+      1.7269388
+    ],
+    "minecraft:shield": [
+      7917,
+      1.6255897
+    ],
+    "wom:gesetz": [
+      275,
+      18.198132
+    ]
+  },
+  "FEET": {
+    "efn:duskfire_boots": [
+      61,
+      13.626347
+    ],
+    "efn:ruinfighter_boots": [
+      2425,
+      8.66743
+    ],
+    "minecraft:chainmail_boots": [
+      6381,
+      0.540316
+    ],
+    "minecraft:diamond_boots": [
+      5465,
+      1.7373508
+    ],
+    "minecraft:golden_boots": [
+      6447,
+      0.4136078
+    ],
+    "minecraft:iron_boots": [
+      6133,
+      0.8764657
+    ],
+    "minecraft:leather_boots": [
+      6729,
+      0.0244
+    ],
+    "minecraft:netherite_boots": [
+      5338,
+      1.9030677
+    ],
+    "wom:diamond_legbottomseal": [
+      6197,
+      0.7935043
+    ],
+    "wom:emerald_anklebracelet": [
+      6129,
+      0.88162655
+    ],
+    "wom:golden_mokassin": [
+      6533,
+      0.044
+    ],
+    "wom:netherite_chains": [
+      6060,
+      0.9703929
+    ]
+  },
+  "LEGS": {
+    "efn:duskfire_leggings": [
+      61,
+      13.626347
+    ],
+    "efn:ruinfighter_leggings": [
+      2425,
+      8.66743
+    ],
+    "epicfight:stray_pants": [
+      6674,
+      0.0299
+    ],
+    "minecraft:chainmail_leggings": [
+      6381,
+      0.540316
+    ],
+    "minecraft:diamond_leggings": [
+      5465,
+      1.7373508
+    ],
+    "minecraft:golden_leggings": [
+      6447,
+      0.4136078
+    ],
+    "minecraft:iron_leggings": [
+      6133,
+      0.8764657
+    ],
+    "minecraft:leather_leggings": [
+      6729,
+      0.0244
+    ],
+    "minecraft:netherite_leggings": [
+      5338,
+      1.9030677
+    ],
+    "wom:diamond_legtopseal": [
+      6237,
+      0.74107856
+    ],
+    "wom:emerald_tasset": [
+      6175,
+      0.8221206
+    ],
+    "wom:golden_chrono": [
+      6562,
+      0.0411
+    ],
+    "wom:netherite_belt": [
+      6111,
+      0.9048254
+    ]
+  },
+  "CHEST": {
+    "efn:duskfire_chestplate": [
+      61,
+      13.626347
+    ],
+    "efn:ruinfighter_chestplate": [
+      2425,
+      8.66743
+    ],
+    "epicfight:stray_robe": [
+      6674,
+      0.0299
+    ],
+    "minecraft:chainmail_chestplate": [
+      6381,
+      0.540316
+    ],
+    "minecraft:diamond_chestplate": [
+      5465,
+      1.7373508
+    ],
+    "minecraft:golden_chestplate": [
+      6447,
+      0.4136078
+    ],
+    "minecraft:iron_chestplate": [
+      6133,
+      0.8764657
+    ],
+    "minecraft:leather_chestplate": [
+      6729,
+      0.0244
+    ],
+    "minecraft:netherite_chestplate": [
+      5338,
+      1.9030677
+    ],
+    "wom:diamond_armbracelet": [
+      6253,
+      0.7199134
+    ],
+    "wom:emerald_chakra": [
+      6193,
+      0.7987168
+    ],
+    "wom:golden_kit": [
+      6573,
+      0.04
+    ],
+    "wom:netherite_manicle": [
+      6132,
+      0.8777561
+    ]
+  },
+  "HEAD": {
+    "efn:duskfire_helmet": [
+      20,
+      13.626347
+    ],
+    "efn:ruinfighter_helmet": [
+      2384,
+      8.66743
+    ],
+    "epic_stats_mod_remastered:witch_hat_helmet": [
+      6050,
+      0.9305621
+    ],
+    "epicfight:stray_hat": [
+      6633,
+      0.0299
+    ],
+    "minecraft:chainmail_helmet": [
+      6340,
+      0.540316
+    ],
+    "minecraft:diamond_helmet": [
+      5424,
+      1.7373508
+    ],
+    "minecraft:golden_helmet": [
+      6406,
+      0.4136078
+    ],
+    "minecraft:iron_helmet": [
+      6092,
+      0.8764657
+    ],
+    "minecraft:leather_helmet": [
+      6688,
+      0.0244
+    ],
+    "minecraft:netherite_helmet": [
+      5297,
+      1.9030677
+    ],
+    "minecraft:shulker_shell": [
+      6851,
+      0.0081
+    ],
+    "minecraft:turtle_helmet": [
+      6036,
+      0.948558
+    ],
+    "wom:cursed_mask": [
+      6501,
+      0.0431
+    ],
+    "wom:diamond_crown": [
+      6101,
+      0.86484563
+    ],
+    "wom:emerald_earrings": [
+      6025,
+      0.9626882
+    ],
+    "wom:golden_monocle": [
+      6453,
+      0.0479
+    ],
+    "wom:netherite_mask": [
+      5948,
+      1.061466
+    ],
+    "wom:unholy_cursed_mask": [
+      6476,
+      0.045599997
+    ]
+  }
+}

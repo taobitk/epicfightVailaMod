@@ -1,0 +1,36 @@
+# Ignore world saves
+saves/
+
+# Ignore logs and crash reports
+logs/
+crash-reports/
+*.log
+
+# Ignore IDE and tool caches
+.vscode/
+local/
+rhino.local.properties
+.antigravityignore
+
+# Ignore user and launcher cache files
+usercache.json
+usernamecache.json
+TLauncherAdditional.json
+
+# Ignore large executable jar files
+*.jar
+taobitk.jar
+
+# Ignore screenshots and media
+screenshots/
+
+# Ignore Journeymap caches and data
+journeymap/
+
+# Ignore large asset packs and resources
+resourcepacks/
+shaderpacks/
+natives/
+
+# Ignore mods directory (binary jar files)
+mods/

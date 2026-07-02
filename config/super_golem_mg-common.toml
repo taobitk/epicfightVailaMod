@@ -1,0 +1,12 @@
+
+["Golem Item Properties 傀儡武器类型设置"]
+	#Golem Axe Item.
+	#被傀儡视作斧头的物品
+	"Golem Axe Items" = ["modulargolems:netherite_golem_axe", "modulargolems:iron_golem_axe", "modulargolems:diamond_golem_axe", "modulargolems:golem_slicing_axe"]
+	#Golem Sword Item.
+	#被傀儡视作剑的物品
+	"Golem Sword Items" = ["modulargolems:netherite_golem_sword", "modulargolems:iron_golem_sword", "modulargolems:diamond_golem_sword"]
+	#Golem Spear Item.
+	#被傀儡视作矛的物品
+	"Golem Spear Items" = ["modulargolems:netherite_golem_spear", "modulargolems:iron_golem_spear", "modulargolems:diamond_golem_spear"]
+

@@ -1,0 +1,7 @@
+
+["Epic Fight - More Animations"]
+	#Replaces Epic Fight animations, skills, and features with EpicFight Animations (Give Me More Animations)
+	replaceEpicFight = false
+	#Replaces Epic Fight animations, skills, and features with EpicFight Animations (Give Me More Animations)
+	allowFireParticlesOnSkills = false
+

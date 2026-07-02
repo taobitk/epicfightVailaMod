@@ -1,0 +1,31 @@
+
+["Stat 4"]
+	#Defines if the stat is on or off
+	"Stat 4" = true
+	#Defines which name do you want to use for this stat in the menu
+	"Stat 4 Name " = "Stamina"
+	#Defines the ID of the attribute, example: minecraft:generic.attack_speed
+	"Stat 4 ID" = "modid:attribute"
+	#The value added to the attribute per level
+	"Stat 4 Value" = 0.1
+	"Stat 4 Max" = 100.0
+	"Max Stat 4" = 0.0
+
+["Extra 1"]
+	"Stat 4 Extra 1 ID " = "epicfight:staminar"
+	"Stat 4 Extra 1 Value" = 3.0
+	"Stat 4 Extra 1 LVL Req" = 1.0
+	"Stat 4 Extra 1 Max" = 9999.0
+
+["Extra 2"]
+	"Stat 4 Extra 2 ID" = "aaaa:aaaa"
+	"Stat 4 Extra 2 Value" = 5.0
+	"Stat 4 Extra 2 LVL Req" = 1.0
+	"Stat 4 Extra 2 Max" = 4000.0
+
+["Extra 3"]
+	"Stat 4 Extra 3 ID" = "modid:attribute"
+	"Stat 4 Extra 3 Value" = 0.1
+	"Stat 4 Extra 3 LVL Req" = 1.0
+	"Stat 4 Extra 3 Max" = 3.0
+
