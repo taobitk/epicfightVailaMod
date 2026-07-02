@@ -1,0 +1,15 @@
+{
+  "conditions": {
+    "location": {
+      "dimension": "minecraft:the_nether"
+    }
+  },
+  "hidden": false,
+  "locked": true,
+  "menu_color": [
+    81,
+    0,
+    1
+  ],
+  "unlock_tip": "skill_tree.epicskills.infernal_might.unlock_tip"
+}

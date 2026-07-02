@@ -32,5 +32,5 @@ resourcepacks/
 shaderpacks/
 natives/
 
-# Ignore mods directory (binary jar files)
-mods/
+# Ignore drafts/temporary files
+nhaps/
