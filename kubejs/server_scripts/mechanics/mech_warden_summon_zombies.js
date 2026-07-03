@@ -16,15 +16,20 @@ EntityEvents.hurt(event => {
         let damage = event.amount;
         let healthAfter = currentHp - damage;
         
+        console.log(`[WardenDebug] Warden nhận ${damage.toFixed(2)} sát thương. Máu trước: ${currentHp.toFixed(2)} -> Máu sau: ${healthAfter.toFixed(2)}. Mốc HP kích hoạt tiếp theo: ${nextThreshold}`);
+        
         // Kiểm tra nếu lượng máu sau sát thương vượt qua mốc tiếp theo
         if (healthAfter <= nextThreshold && nextThreshold > 0) {
             let crossedCount = 0;
+            let oldThreshold = nextThreshold;
             
             // Xử lý trường hợp nhận sát thương cực lớn vượt nhiều mốc cùng lúc
             while (healthAfter <= nextThreshold && nextThreshold > 0) {
                 crossedCount++;
                 nextThreshold -= 100;
             }
+            
+            console.log(`[WardenDebug] Warden ĐÃ VƯỢT MỐC HP! Vượt qua ${crossedCount} mốc từ mốc ${oldThreshold}. Mốc HP kích hoạt tiếp theo đặt thành: ${nextThreshold}`);
             
             // Cập nhật lại mốc kích hoạt tiếp theo
             pData.putInt('nextHpThreshold', nextThreshold);
@@ -37,6 +42,7 @@ EntityEvents.hurt(event => {
             // Triệu hồi 1-3 zombie cho mỗi mốc bị vượt qua
             for (let t = 0; t < crossedCount; t++) {
                 let numZombies = Math.floor(Math.random() * 3) + 1; // 1 đến 3 con
+                console.log(`[WardenDebug] Triệu hồi đệ cho mốc HP thứ ${t+1}: Số lượng ${numZombies} Zombie`);
                 
                 for (let i = 0; i < numZombies; i++) {
                     let zombie = level.createEntity('minecraft:zombie');
@@ -64,6 +70,7 @@ EntityEvents.hurt(event => {
                         
                         // Triệu hồi vào thế giới
                         zombie.spawn();
+                        console.log(`[WardenDebug] -> Đã triệu hồi thành công Zombie đệ #${i+1} tại tọa độ (${(spawnX+ox).toFixed(1)}, ${spawnY.toFixed(1)}, ${(spawnZ+oz).toFixed(1)})`);
                     }
                 }
             }
