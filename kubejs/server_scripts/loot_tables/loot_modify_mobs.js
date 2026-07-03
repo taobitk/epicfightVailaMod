@@ -20,7 +20,14 @@ LootJS.modifiers(event => {
             LootEntry.of('minecraft:iron_ingot').limitCount(1, 2)
         );
 
-    // 3. ZOMBIE: Thêm 10% tỉ lệ rơi ra 1 Phôi đồng (minecraft:copper_ingot)
+    // 3. ZOMBIE: Xóa bỏ các vật phẩm hiếm mặc định (Sắt, Cà rốt, Khoai tây), chỉ cho phép rơi Thịt thối và Phôi đồng (tỉ lệ 10%)
+    event.addEntityLootModifier('minecraft:zombie')
+        .removeLoot([
+            'minecraft:iron_ingot',
+            'minecraft:carrot',
+            'minecraft:potato'
+        ]);
+
     event.addEntityLootModifier('minecraft:zombie')
         .randomChance(0.10)
         .addLoot('minecraft:copper_ingot');

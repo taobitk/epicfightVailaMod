@@ -47,10 +47,12 @@ EntityEvents.spawned(event => {
             // Tạo item ID kiếm và trang bị vào tay chính
             let itemId = `minecraft:${tier}_${toolType}`;
             entity.setItemInHand('main_hand', itemId);
+            entity.setDropChance('mainhand', 0.0);
 
             // 3. 20% tỉ lệ cầm khối TNT ở tay phụ (off_hand)
             if (Math.random() < 0.20) {
                 entity.setItemInHand('off_hand', 'minecraft:tnt');
+                entity.setDropChance('offhand', 0.0);
             }
 
             // 4. Chọn cấp bậc mũ ngẫu nhiên: da (30%), xích (25%), sắt (20%), vàng (15%), kim cương (7%), netherite (3%)
@@ -73,6 +75,7 @@ EntityEvents.spawned(event => {
             // Tạo item ID mũ và trang bị vào ô đầu (Head slot)
             let helmetId = `minecraft:${helmetTier}_helmet`;
             entity.setItemSlot(EquipmentSlot.HEAD, helmetId);
+            entity.setDropChance('head', 0.0);
 
             // Đánh dấu đã trang bị thành công
             pData.putBoolean('equipped_toys', true);

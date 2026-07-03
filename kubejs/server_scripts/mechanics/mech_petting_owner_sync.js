@@ -23,6 +23,11 @@ const syncOwnerTag = (entity) => {
                     console.error("[PetSync] Lỗi chuyển đổi ownerUUID sang UUID: " + e);
                 }
             }
+            
+            // Đảm bảo pet đã được thuần hóa rời khỏi team monsters để quái hoang dã có thể tấn công nó
+            if (entity.server) {
+                entity.server.runCommandSilent('team leave ' + entity.uuid.toString());
+            }
         }
     }
 };
