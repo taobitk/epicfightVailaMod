@@ -13,9 +13,12 @@ EntityEvents.spawned(event => {
         'minecraft:husk',
         'minecraft:drowned',
         'minecraft:zombie_villager',
+        'minecraft:zombified_piglin',
+        'minecraft:zombie_horse',
         'minecraft:skeleton',
         'minecraft:stray',
-        'minecraft:wither_skeleton'
+        'minecraft:wither_skeleton',
+        'minecraft:skeleton_horse'
     ];
 
     if (targetMobs.includes(entity.type)) {
