@@ -52,7 +52,10 @@ EntityEvents.hurt(event => {
                         let oz = (Math.random() - 0.5) * 4;
                         zombie.setPosition(spawnX + ox, spawnY, spawnZ + oz);
                         
-                        // Trang bị full giáp kim cương
+                        // Triệu hồi vào thế giới trước để hoàn tất khởi tạo mặc định
+                        zombie.spawn();
+                        
+                        // Trang bị full giáp kim cương đè lên giáp mặc định sau khi spawn
                         zombie.setItemSlot('head', 'minecraft:diamond_helmet');
                         zombie.setItemSlot('chest', 'minecraft:diamond_chestplate');
                         zombie.setItemSlot('legs', 'minecraft:diamond_leggings');
@@ -68,8 +71,6 @@ EntityEvents.hurt(event => {
                         zombie.setDropChance('feet', 0.0);
                         zombie.setDropChance('mainhand', 0.0);
                         
-                        // Triệu hồi vào thế giới
-                        zombie.spawn();
                         console.log(`[WardenDebug] -> Đã triệu hồi thành công Zombie đệ #${i+1} tại tọa độ (${(spawnX+ox).toFixed(1)}, ${spawnY.toFixed(1)}, ${(spawnZ+oz).toFixed(1)})`);
                     }
                 }

@@ -18,7 +18,7 @@ EntityJSEvents.attributes(event => {
 
     // Sửa Ender Dragon
     event.modify('minecraft:ender_dragon', builder => {
-        builder.add('minecraft:generic.max_health', 1000.0);
+        builder.add('minecraft:generic.max_health', 1500.0);
         builder.add('minecraft:generic.armor', 30.0);
         builder.add('minecraft:generic.attack_damage', 100.0);
     });
