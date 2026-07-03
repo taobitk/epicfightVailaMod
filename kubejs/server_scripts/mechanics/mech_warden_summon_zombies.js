@@ -13,7 +13,7 @@ EntityEvents.hurt(event => {
         
         let nextThreshold = pData.getInt('nextHpThreshold');
         let currentHp = entity.health;
-        let damage = event.amount;
+        let damage = event.damage;
         let healthAfter = currentHp - damage;
         
         console.log(`[WardenDebug] Warden nhận ${damage.toFixed(2)} sát thương. Máu trước: ${currentHp.toFixed(2)} -> Máu sau: ${healthAfter.toFixed(2)}. Mốc HP kích hoạt tiếp theo: ${nextThreshold}`);
