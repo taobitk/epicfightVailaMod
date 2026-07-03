@@ -13,7 +13,7 @@ EntityEvents.spawned(event => {
     if (entity && entity.isMonster()) {
         let forgeData = entity.nbt.getCompound('ForgeData');
         let hasOwner = (forgeData && forgeData.contains('ownerUUID')) || entity.nbt.contains('Owner');
-        
+
         // Chỉ thêm vào team monsters nếu là quái hoang dã (chưa có chủ sở hữu)
         if (!hasOwner) {
             event.server.runCommandSilent('team join monsters ' + entity.uuid.toString());
