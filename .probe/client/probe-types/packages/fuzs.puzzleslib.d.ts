@@ -1,3 +1,127 @@
+declare module "packages/fuzs/puzzleslib/mixin/accessor/$ForgeRegistryForgeAccessor" {
+import {$IForgeRegistry$AddCallback, $IForgeRegistry$AddCallback$Type} from "packages/net/minecraftforge/registries/$IForgeRegistry$AddCallback"
+
+export interface $ForgeRegistryForgeAccessor<V> {
+
+ "puzzleslib$getAdd"(): $IForgeRegistry$AddCallback<(V)>
+ "puzzleslib$setAdd"(arg0: $IForgeRegistry$AddCallback$Type<(V)>): void
+}
+
+export namespace $ForgeRegistryForgeAccessor {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $ForgeRegistryForgeAccessor$Type<V> = ($ForgeRegistryForgeAccessor<(V)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $ForgeRegistryForgeAccessor_<V> = $ForgeRegistryForgeAccessor$Type<(V)>;
+}}
+declare module "packages/fuzs/puzzleslib/mixin/accessor/$BlockAccessor" {
+import {$Item, $Item$Type} from "packages/net/minecraft/world/item/$Item"
+
+export interface $BlockAccessor {
+
+ "puzzleslib$setItem"(arg0: $Item$Type): void
+
+(arg0: $Item$Type): void
+}
+
+export namespace $BlockAccessor {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $BlockAccessor$Type = ($BlockAccessor);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $BlockAccessor_ = $BlockAccessor$Type;
+}}
+declare module "packages/fuzs/puzzleslib/mixin/accessor/$AbstractContainerMenuAccessor" {
+import {$Slot, $Slot$Type} from "packages/net/minecraft/world/inventory/$Slot"
+
+export interface $AbstractContainerMenuAccessor {
+
+ "puzzleslib$callAddSlot"(arg0: $Slot$Type): $Slot
+
+(arg0: $Slot$Type): $Slot
+}
+
+export namespace $AbstractContainerMenuAccessor {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $AbstractContainerMenuAccessor$Type = ($AbstractContainerMenuAccessor);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $AbstractContainerMenuAccessor_ = $AbstractContainerMenuAccessor$Type;
+}}
+declare module "packages/fuzs/puzzleslib/mixin/accessor/$BlockItemAccessor" {
+import {$Block, $Block$Type} from "packages/net/minecraft/world/level/block/$Block"
+
+export interface $BlockItemAccessor {
+
+ "puzzleslib$setBlock"(arg0: $Block$Type): void
+
+(arg0: $Block$Type): void
+}
+
+export namespace $BlockItemAccessor {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $BlockItemAccessor$Type = ($BlockItemAccessor);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $BlockItemAccessor_ = $BlockItemAccessor$Type;
+}}
+declare module "packages/fuzs/puzzleslib/mixin/accessor/$FireBlockForgeAccessor" {
+import {$Block, $Block$Type} from "packages/net/minecraft/world/level/block/$Block"
+
+export interface $FireBlockForgeAccessor {
+
+ "puzzleslib$setFlammable"(arg0: $Block$Type, arg1: integer, arg2: integer): void
+
+(arg0: $Block$Type, arg1: integer, arg2: integer): void
+}
+
+export namespace $FireBlockForgeAccessor {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $FireBlockForgeAccessor$Type = ($FireBlockForgeAccessor);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $FireBlockForgeAccessor_ = $FireBlockForgeAccessor$Type;
+}}
 declare module "packages/fuzs/puzzleslib/mixin/accessor/$LootTableForgeAccessor" {
 import {$List, $List$Type} from "packages/java/util/$List"
 import {$LootPool, $LootPool$Type} from "packages/net/minecraft/world/level/storage/loot/$LootPool"
@@ -23,30 +147,6 @@ export type $LootTableForgeAccessor$Type = ($LootTableForgeAccessor);
  */
 declare global {
 export type $LootTableForgeAccessor_ = $LootTableForgeAccessor$Type;
-}}
-declare module "packages/fuzs/puzzleslib/mixin/accessor/$ForgeRegistryForgeAccessor" {
-import {$IForgeRegistry$AddCallback, $IForgeRegistry$AddCallback$Type} from "packages/net/minecraftforge/registries/$IForgeRegistry$AddCallback"
-
-export interface $ForgeRegistryForgeAccessor<V> {
-
- "puzzleslib$getAdd"(): $IForgeRegistry$AddCallback<(V)>
- "puzzleslib$setAdd"(arg0: $IForgeRegistry$AddCallback$Type<(V)>): void
-}
-
-export namespace $ForgeRegistryForgeAccessor {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $ForgeRegistryForgeAccessor$Type<V> = ($ForgeRegistryForgeAccessor<(V)>);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $ForgeRegistryForgeAccessor_<V> = $ForgeRegistryForgeAccessor$Type<(V)>;
 }}
 declare module "packages/fuzs/puzzleslib/mixin/accessor/$BiomeSpecialEffectsBuilderForgeAccessor" {
 import {$SoundEvent, $SoundEvent$Type} from "packages/net/minecraft/sounds/$SoundEvent"
@@ -130,56 +230,6 @@ export type $TooltipAccessor$Type = ($TooltipAccessor);
 declare global {
 export type $TooltipAccessor_ = $TooltipAccessor$Type;
 }}
-declare module "packages/fuzs/puzzleslib/mixin/accessor/$BlockAccessor" {
-import {$Item, $Item$Type} from "packages/net/minecraft/world/item/$Item"
-
-export interface $BlockAccessor {
-
- "puzzleslib$setItem"(arg0: $Item$Type): void
-
-(arg0: $Item$Type): void
-}
-
-export namespace $BlockAccessor {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $BlockAccessor$Type = ($BlockAccessor);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $BlockAccessor_ = $BlockAccessor$Type;
-}}
-declare module "packages/fuzs/puzzleslib/mixin/accessor/$AbstractContainerMenuAccessor" {
-import {$Slot, $Slot$Type} from "packages/net/minecraft/world/inventory/$Slot"
-
-export interface $AbstractContainerMenuAccessor {
-
- "puzzleslib$callAddSlot"(arg0: $Slot$Type): $Slot
-
-(arg0: $Slot$Type): $Slot
-}
-
-export namespace $AbstractContainerMenuAccessor {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $AbstractContainerMenuAccessor$Type = ($AbstractContainerMenuAccessor);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $AbstractContainerMenuAccessor_ = $AbstractContainerMenuAccessor$Type;
-}}
 declare module "packages/fuzs/puzzleslib/mixin/accessor/$MobSpawnSettingsBuilderForgeAccessor" {
 import {$EntityType, $EntityType$Type} from "packages/net/minecraft/world/entity/$EntityType"
 import {$MobSpawnSettings$MobSpawnCost, $MobSpawnSettings$MobSpawnCost$Type} from "packages/net/minecraft/world/level/biome/$MobSpawnSettings$MobSpawnCost"
@@ -259,56 +309,6 @@ export type $BlockColorsForgeAccessor$Type = ($BlockColorsForgeAccessor);
  */
 declare global {
 export type $BlockColorsForgeAccessor_ = $BlockColorsForgeAccessor$Type;
-}}
-declare module "packages/fuzs/puzzleslib/mixin/accessor/$BlockItemAccessor" {
-import {$Block, $Block$Type} from "packages/net/minecraft/world/level/block/$Block"
-
-export interface $BlockItemAccessor {
-
- "puzzleslib$setBlock"(arg0: $Block$Type): void
-
-(arg0: $Block$Type): void
-}
-
-export namespace $BlockItemAccessor {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $BlockItemAccessor$Type = ($BlockItemAccessor);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $BlockItemAccessor_ = $BlockItemAccessor$Type;
-}}
-declare module "packages/fuzs/puzzleslib/mixin/accessor/$FireBlockForgeAccessor" {
-import {$Block, $Block$Type} from "packages/net/minecraft/world/level/block/$Block"
-
-export interface $FireBlockForgeAccessor {
-
- "puzzleslib$setFlammable"(arg0: $Block$Type, arg1: integer, arg2: integer): void
-
-(arg0: $Block$Type, arg1: integer, arg2: integer): void
-}
-
-export namespace $FireBlockForgeAccessor {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $FireBlockForgeAccessor$Type = ($FireBlockForgeAccessor);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $FireBlockForgeAccessor_ = $FireBlockForgeAccessor$Type;
 }}
 declare module "packages/fuzs/puzzleslib/mixin/client/accessor/$ItemForgeAccessor" {
 export {} // Mark the file as a module, do not remove unless there are other import/exports!

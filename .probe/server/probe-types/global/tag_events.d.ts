@@ -91,9 +91,11 @@ function tags(extra: "worldgen/multi_noise_biome_source_parameter_list", handler
 function tags(extra: "forge:entity_data_serializers", handler: (event: TagEventProbe<(Special.EntityDataSerializersTag), (Special.EntityDataSerializers)>) => void): void
 function tags(extra: "forge:fluid_type", handler: (event: TagEventProbe<(Special.FluidTypeTag), (Special.FluidType)>) => void): void
 function tags(extra: "forge:global_loot_modifier_serializers", handler: (event: TagEventProbe<(Special.GlobalLootModifierSerializersTag), (Special.GlobalLootModifierSerializers)>) => void): void
-function tags(extra: "epicskills:entry", handler: (event: TagEventProbe<(Special.EntryTag), (Special.Entry)>) => void): void
-function tags(extra: "epicskills:tree", handler: (event: TagEventProbe<(Special.TreeTag), (Special.Tree)>) => void): void
 function tags(extra: "forge:structure_modifier", handler: (event: TagEventProbe<(Special.StructureModifierTag), (Special.StructureModifier)>) => void): void
+function tags(extra: "epicskills:entry", handler: (event: TagEventProbe<(Special.EntryTag), (Special.Entry)>) => void): void
+function tags(extra: "moonlight:soft_fluids", handler: (event: TagEventProbe<(Special.SoftFluidsTag), (Special.SoftFluids)>) => void): void
+function tags(extra: "moonlight:map_markers", handler: (event: TagEventProbe<(Special.MapMarkersTag), (Special.MapMarkers)>) => void): void
 function tags(extra: "forge:biome_modifier", handler: (event: TagEventProbe<(Special.BiomeModifierTag), (Special.BiomeModifier)>) => void): void
+function tags(extra: "epicskills:tree", handler: (event: TagEventProbe<(Special.TreeTag), (Special.Tree)>) => void): void
 }
 }

@@ -33,6 +33,9 @@ shaderpacks/
 natives/
 
 # Ignore drafts/temporary files
+nhap/
 nhaps/
 Pasted Text.txt
+*.bak
+modernfix/
 

@@ -33,6 +33,7 @@ import {PaintingVariant, PaintingVariant$Type} from "packages/moe/wolfgirl/probe
 import {WorldgenMultiNoiseBiomeSourceParameterList, WorldgenMultiNoiseBiomeSourceParameterList$Type} from "packages/moe/wolfgirl/probejs/generated/registry/minecraft/WorldgenMultiNoiseBiomeSourceParameterList"
 import {WorldgenMaterialRule, WorldgenMaterialRule$Type} from "packages/moe/wolfgirl/probejs/generated/registry/minecraft/WorldgenMaterialRule"
 import {RuleBlockEntityModifier, RuleBlockEntityModifier$Type} from "packages/moe/wolfgirl/probejs/generated/registry/minecraft/RuleBlockEntityModifier"
+import {ItemSource, ItemSource$Type} from "packages/moe/wolfgirl/probejs/generated/registry/l2screentracker/ItemSource"
 import {VillagerType, VillagerType$Type} from "packages/moe/wolfgirl/probejs/generated/registry/minecraft/VillagerType"
 import {LootConditionType, LootConditionType$Type} from "packages/moe/wolfgirl/probejs/generated/registry/minecraft/LootConditionType"
 import {LootNbtProviderType, LootNbtProviderType$Type} from "packages/moe/wolfgirl/probejs/generated/registry/minecraft/LootNbtProviderType"
@@ -59,6 +60,7 @@ import {SensorType, SensorType$Type} from "packages/moe/wolfgirl/probejs/generat
 import {EntityType, EntityType$Type} from "packages/moe/wolfgirl/probejs/generated/registry/minecraft/EntityType"
 import {PointOfInterestType, PointOfInterestType$Type} from "packages/moe/wolfgirl/probejs/generated/registry/minecraft/PointOfInterestType"
 import {BiomeModifierSerializers, BiomeModifierSerializers$Type} from "packages/moe/wolfgirl/probejs/generated/registry/forge/BiomeModifierSerializers"
+import {MapMarkers, MapMarkers$Type} from "packages/moe/wolfgirl/probejs/generated/registry/moonlight/MapMarkers"
 import {WorldgenWorldPreset, WorldgenWorldPreset$Type} from "packages/moe/wolfgirl/probejs/generated/registry/minecraft/WorldgenWorldPreset"
 import {DecoratedPotPatterns, DecoratedPotPatterns$Type} from "packages/moe/wolfgirl/probejs/generated/registry/minecraft/DecoratedPotPatterns"
 import {LootNumberProviderType, LootNumberProviderType$Type} from "packages/moe/wolfgirl/probejs/generated/registry/minecraft/LootNumberProviderType"
@@ -76,6 +78,7 @@ import {CatVariant, CatVariant$Type} from "packages/moe/wolfgirl/probejs/generat
 import {PosRuleTest, PosRuleTest$Type} from "packages/moe/wolfgirl/probejs/generated/registry/minecraft/PosRuleTest"
 import {DamageType, DamageType$Type} from "packages/moe/wolfgirl/probejs/generated/registry/minecraft/DamageType"
 import {WorldgenStructure, WorldgenStructure$Type} from "packages/moe/wolfgirl/probejs/generated/registry/minecraft/WorldgenStructure"
+import {SoftFluids, SoftFluids$Type} from "packages/moe/wolfgirl/probejs/generated/registry/moonlight/SoftFluids"
 import {ParticleType, ParticleType$Type} from "packages/moe/wolfgirl/probejs/generated/registry/minecraft/ParticleType"
 import {WorldgenStructurePlacement, WorldgenStructurePlacement$Type} from "packages/moe/wolfgirl/probejs/generated/registry/minecraft/WorldgenStructurePlacement"
 import {BiomeModifier, BiomeModifier$Type} from "packages/moe/wolfgirl/probejs/generated/registry/forge/BiomeModifier"
@@ -83,6 +86,7 @@ import {WorldgenPlacedFeature, WorldgenPlacedFeature$Type} from "packages/moe/wo
 import {Skill, Skill$Type} from "packages/moe/wolfgirl/probejs/generated/registry/epicfight/Skill"
 import {PositionSourceType, PositionSourceType$Type} from "packages/moe/wolfgirl/probejs/generated/registry/minecraft/PositionSourceType"
 import {FluidType, FluidType$Type} from "packages/moe/wolfgirl/probejs/generated/registry/forge/FluidType"
+import {TrackedEntryType, TrackedEntryType$Type} from "packages/moe/wolfgirl/probejs/generated/registry/l2screentracker/TrackedEntryType"
 import {LootScoreProviderType, LootScoreProviderType$Type} from "packages/moe/wolfgirl/probejs/generated/registry/minecraft/LootScoreProviderType"
 import {CommandArgumentType, CommandArgumentType$Type} from "packages/moe/wolfgirl/probejs/generated/registry/minecraft/CommandArgumentType"
 import {WorldgenBiomeSource, WorldgenBiomeSource$Type} from "packages/moe/wolfgirl/probejs/generated/registry/minecraft/WorldgenBiomeSource"
@@ -199,9 +203,13 @@ function registry(extra: "forge:fluid_type", handler: (event: FluidType) => void
 function registry(extra: "forge:global_loot_modifier_serializers", handler: (event: GlobalLootModifierSerializers) => void): void
 function registry(extra: "forge:holder_set_type", handler: (event: HolderSetType) => void): void
 function registry(extra: "forge:structure_modifier_serializers", handler: (event: StructureModifierSerializers) => void): void
-function registry(extra: "epicskills:entry", handler: (event: Entry) => void): void
-function registry(extra: "epicskills:tree", handler: (event: Tree) => void): void
+function registry(extra: "l2screentracker:item_source", handler: (event: ItemSource) => void): void
+function registry(extra: "l2screentracker:tracked_entry_type", handler: (event: TrackedEntryType) => void): void
 function registry(extra: "forge:structure_modifier", handler: (event: StructureModifier) => void): void
+function registry(extra: "epicskills:entry", handler: (event: Entry) => void): void
+function registry(extra: "moonlight:soft_fluids", handler: (event: SoftFluids) => void): void
+function registry(extra: "moonlight:map_markers", handler: (event: MapMarkers) => void): void
 function registry(extra: "forge:biome_modifier", handler: (event: BiomeModifier) => void): void
+function registry(extra: "epicskills:tree", handler: (event: Tree) => void): void
 }
 }

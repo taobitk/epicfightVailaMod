@@ -8,6 +8,7 @@ import {$DamageSource, $DamageSource$Type} from "packages/net/minecraft/world/da
 import {$NBTUtils, $NBTUtils$Type} from "packages/dev/latvian/mods/rhino/mod/util/$NBTUtils"
 import {$LootEntryWrapper, $LootEntryWrapper$Type} from "packages/com/almostreliable/lootjs/kube/$LootEntryWrapper"
 import {$ResourceLocation, $ResourceLocation$Type} from "packages/net/minecraft/resources/$ResourceLocation"
+import {$FTBQuestsKubeJSWrapper, $FTBQuestsKubeJSWrapper$Type} from "packages/dev/ftb/mods/ftbxmodcompat/ftbquests/kubejs/$FTBQuestsKubeJSWrapper"
 import {$LootContextType, $LootContextType$Type} from "packages/com/almostreliable/lootjs/core/$LootContextType"
 import {$ServerPlayerPatch, $ServerPlayerPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/player/$ServerPlayerPatch"
 import {$NotificationBuilder, $NotificationBuilder$Type} from "packages/dev/latvian/mods/kubejs/util/$NotificationBuilder"
@@ -106,6 +107,7 @@ const JsonIO: typeof $JsonIO
 const Vec3i: typeof $Vec3i
 const Blocks: typeof $Blocks
 const DamageSource: typeof $DamageSource
+const FTBQuests: $FTBQuestsKubeJSWrapper
 const Quaternionf: typeof $Quaternionf
 const Text: typeof $TextWrapper
 const Vec3f: typeof $Vector3f

@@ -1,73 +1,3 @@
-declare module "packages/java/io/$FileFilter" {
-import {$File, $File$Type} from "packages/java/io/$File"
-
-/**
- * This class is not allowed By KubeJS!
- * You should not load the class, or KubeJS will throw an error.
- * Loading the class using require() will not throw an error, but the class will be undefined.
- */
-export interface $FileFilter {
-
- "accept"(arg0: $File$Type): boolean
-
-(arg0: $File$Type): boolean
-}
-
-export namespace $FileFilter {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $FileFilter$Type = ($FileFilter);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $FileFilter_ = $FileFilter$Type;
-}}
-declare module "packages/java/io/$DataOutput" {
-export {} // Mark the file as a module, do not remove unless there are other import/exports!
-/**
- * This class is not allowed By KubeJS!
- * You should not load the class, or KubeJS will throw an error.
- * Loading the class using require() will not throw an error, but the class will be undefined.
- */
-export interface $DataOutput {
-
- "writeFloat"(arg0: float): void
- "writeChar"(arg0: integer): void
- "writeLong"(arg0: long): void
- "writeBoolean"(arg0: boolean): void
- "writeByte"(arg0: integer): void
- "writeShort"(arg0: integer): void
- "writeDouble"(arg0: double): void
- "writeChars"(arg0: string): void
- "write"(arg0: (byte)[]): void
- "write"(arg0: integer): void
- "write"(arg0: (byte)[], arg1: integer, arg2: integer): void
- "writeInt"(arg0: integer): void
- "writeUTF"(arg0: string): void
- "writeBytes"(arg0: string): void
-}
-
-export namespace $DataOutput {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $DataOutput$Type = ($DataOutput);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $DataOutput_ = $DataOutput$Type;
-}}
 declare module "packages/java/io/$OutputStream" {
 import {$Closeable, $Closeable$Type} from "packages/java/io/$Closeable"
 import {$Flushable, $Flushable$Type} from "packages/java/io/$Flushable"
@@ -81,12 +11,12 @@ export class $OutputStream implements $Closeable, $Flushable {
 
 constructor()
 
+public static "nullOutputStream"(): $OutputStream
 public "flush"(): void
-public "write"(arg0: (byte)[]): void
 public "write"(arg0: (byte)[], arg1: integer, arg2: integer): void
+public "write"(arg0: (byte)[]): void
 public "write"(arg0: integer): void
 public "close"(): void
-public static "nullOutputStream"(): $OutputStream
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -109,9 +39,6 @@ export {} // Mark the file as a module, do not remove unless there are other imp
  */
 export interface $DataInput {
 
- "readFloat"(): float
- "readFully"(arg0: (byte)[]): void
- "readFully"(arg0: (byte)[], arg1: integer, arg2: integer): void
  "readChar"(): character
  "skipBytes"(arg0: integer): integer
  "readBoolean"(): boolean
@@ -121,6 +48,9 @@ export interface $DataInput {
  "readLong"(): long
  "readByte"(): byte
  "readShort"(): short
+ "readFully"(arg0: (byte)[], arg1: integer, arg2: integer): void
+ "readFully"(arg0: (byte)[]): void
+ "readFloat"(): float
  "readLine"(): string
  "readInt"(): integer
  "readUTF"(): string
@@ -186,47 +116,47 @@ import {$Locale, $Locale$Type} from "packages/java/util/$Locale"
  */
 export class $PrintStream extends $FilterOutputStream implements $Appendable, $Closeable {
 
-constructor(arg0: string, arg1: string)
-constructor(arg0: string)
-constructor(arg0: $OutputStream$Type, arg1: boolean, arg2: $Charset$Type)
-constructor(arg0: $OutputStream$Type, arg1: boolean, arg2: string)
-constructor(arg0: string, arg1: $Charset$Type)
-constructor(arg0: $File$Type, arg1: string)
-constructor(arg0: $File$Type, arg1: $Charset$Type)
-constructor(arg0: $File$Type)
 constructor(arg0: $OutputStream$Type)
 constructor(arg0: $OutputStream$Type, arg1: boolean)
+constructor(arg0: $OutputStream$Type, arg1: boolean, arg2: string)
+constructor(arg0: $File$Type, arg1: $Charset$Type)
+constructor(arg0: string, arg1: $Charset$Type)
+constructor(arg0: $OutputStream$Type, arg1: boolean, arg2: $Charset$Type)
+constructor(arg0: string, arg1: string)
+constructor(arg0: string)
+constructor(arg0: $File$Type, arg1: string)
+constructor(arg0: $File$Type)
 
-public "println"(arg0: string): void
-public "println"(arg0: any): void
-public "println"(arg0: float): void
-public "println"(arg0: double): void
+public "writeBytes"(arg0: (byte)[]): void
+public "checkError"(): boolean
 public "println"(arg0: (character)[]): void
 public "println"(arg0: boolean): void
-public "println"(): void
-public "println"(arg0: character): void
-public "println"(arg0: integer): void
 public "println"(arg0: long): void
+public "println"(arg0: integer): void
+public "println"(arg0: character): void
+public "println"(arg0: float): void
+public "println"(arg0: double): void
+public "println"(): void
+public "println"(arg0: any): void
+public "println"(arg0: string): void
 public "flush"(): void
 public "format"(arg0: string, ...arg1: (any)[]): $PrintStream
 public "format"(arg0: $Locale$Type, arg1: string, ...arg2: (any)[]): $PrintStream
 public "printf"(arg0: $Locale$Type, arg1: string, ...arg2: (any)[]): $PrintStream
 public "printf"(arg0: string, ...arg1: (any)[]): $PrintStream
-public "write"(arg0: (byte)[], arg1: integer, arg2: integer): void
 public "write"(arg0: integer): void
+public "write"(arg0: (byte)[], arg1: integer, arg2: integer): void
 public "write"(arg0: (byte)[]): void
 public "print"(arg0: boolean): void
-public "print"(arg0: string): void
-public "print"(arg0: (character)[]): void
 public "print"(arg0: long): void
-public "print"(arg0: double): void
 public "print"(arg0: float): void
+public "print"(arg0: double): void
+public "print"(arg0: (character)[]): void
+public "print"(arg0: any): void
+public "print"(arg0: string): void
 public "print"(arg0: character): void
 public "print"(arg0: integer): void
-public "print"(arg0: any): void
 public "close"(): void
-public "writeBytes"(arg0: (byte)[]): void
-public "checkError"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -254,52 +184,49 @@ import {$Locale, $Locale$Type} from "packages/java/util/$Locale"
  */
 export class $PrintWriter extends $Writer {
 
+constructor(arg0: $File$Type, arg1: $Charset$Type)
+constructor(arg0: $File$Type, arg1: string)
+constructor(arg0: $File$Type)
+constructor(arg0: $OutputStream$Type)
+constructor(arg0: $Writer$Type, arg1: boolean)
+constructor(arg0: $Writer$Type)
+constructor(arg0: $OutputStream$Type, arg1: boolean)
+constructor(arg0: $OutputStream$Type, arg1: boolean, arg2: $Charset$Type)
 constructor(arg0: string)
 constructor(arg0: string, arg1: string)
 constructor(arg0: string, arg1: $Charset$Type)
-constructor(arg0: $File$Type)
-constructor(arg0: $File$Type, arg1: string)
-constructor(arg0: $File$Type, arg1: $Charset$Type)
-constructor(arg0: $Writer$Type)
-constructor(arg0: $Writer$Type, arg1: boolean)
-constructor(arg0: $OutputStream$Type, arg1: boolean, arg2: $Charset$Type)
-constructor(arg0: $OutputStream$Type, arg1: boolean)
-constructor(arg0: $OutputStream$Type)
 
+public "checkError"(): boolean
 public "println"(arg0: (character)[]): void
-public "println"(): void
-public "println"(arg0: boolean): void
-public "println"(arg0: string): void
-public "println"(arg0: any): void
 public "println"(arg0: double): void
 public "println"(arg0: float): void
-public "println"(arg0: long): void
-public "println"(arg0: integer): void
+public "println"(arg0: any): void
+public "println"(arg0: string): void
+public "println"(arg0: boolean): void
 public "println"(arg0: character): void
-public "append"(arg0: charseq, arg1: integer, arg2: integer): $PrintWriter
-public "append"(arg0: character): $PrintWriter
-public "append"(arg0: charseq): $PrintWriter
+public "println"(arg0: integer): void
+public "println"(arg0: long): void
+public "println"(): void
 public "flush"(): void
-public "format"(arg0: string, ...arg1: (any)[]): $PrintWriter
 public "format"(arg0: $Locale$Type, arg1: string, ...arg2: (any)[]): $PrintWriter
+public "format"(arg0: string, ...arg1: (any)[]): $PrintWriter
 public "printf"(arg0: string, ...arg1: (any)[]): $PrintWriter
 public "printf"(arg0: $Locale$Type, arg1: string, ...arg2: (any)[]): $PrintWriter
-public "write"(arg0: (character)[], arg1: integer, arg2: integer): void
 public "write"(arg0: string): void
-public "write"(arg0: string, arg1: integer, arg2: integer): void
 public "write"(arg0: (character)[]): void
 public "write"(arg0: integer): void
-public "print"(arg0: float): void
+public "write"(arg0: (character)[], arg1: integer, arg2: integer): void
+public "write"(arg0: string, arg1: integer, arg2: integer): void
 public "print"(arg0: long): void
 public "print"(arg0: integer): void
-public "print"(arg0: character): void
-public "print"(arg0: boolean): void
-public "print"(arg0: any): void
-public "print"(arg0: string): void
-public "print"(arg0: (character)[]): void
+public "print"(arg0: float): void
 public "print"(arg0: double): void
+public "print"(arg0: (character)[]): void
+public "print"(arg0: string): void
+public "print"(arg0: any): void
+public "print"(arg0: boolean): void
+public "print"(arg0: character): void
 public "close"(): void
-public "checkError"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -330,7 +257,6 @@ export interface $ObjectOutput extends $DataOutput, $AutoCloseable {
  "write"(arg0: integer): void
  "writeObject"(arg0: any): void
  "close"(): void
- "writeFloat"(arg0: float): void
  "writeChar"(arg0: integer): void
  "writeLong"(arg0: long): void
  "writeBoolean"(arg0: boolean): void
@@ -338,9 +264,10 @@ export interface $ObjectOutput extends $DataOutput, $AutoCloseable {
  "writeShort"(arg0: integer): void
  "writeDouble"(arg0: double): void
  "writeChars"(arg0: string): void
+ "writeBytes"(arg0: string): void
+ "writeFloat"(arg0: float): void
  "writeInt"(arg0: integer): void
  "writeUTF"(arg0: string): void
- "writeBytes"(arg0: string): void
 }
 
 export namespace $ObjectOutput {
@@ -399,9 +326,9 @@ static readonly "separator": string
 static readonly "pathSeparatorChar": character
 static readonly "pathSeparator": string
 
-constructor(arg0: $URI$Type)
 constructor(arg0: string)
 constructor(arg0: string, arg1: string)
+constructor(arg0: $URI$Type)
 constructor(arg0: $File$Type, arg1: string)
 
 public "getAbsolutePath"(): string
@@ -412,22 +339,22 @@ public "mkdir"(): boolean
 public "getCanonicalFile"(): $File
 public "getParentFile"(): $File
 public "mkdirs"(): boolean
-public "setWritable"(arg0: boolean): boolean
 public "setWritable"(arg0: boolean, arg1: boolean): boolean
-public "setReadable"(arg0: boolean): boolean
+public "setWritable"(arg0: boolean): boolean
 public "setReadable"(arg0: boolean, arg1: boolean): boolean
-public "setExecutable"(arg0: boolean): boolean
+public "setReadable"(arg0: boolean): boolean
 public "setExecutable"(arg0: boolean, arg1: boolean): boolean
+public "setExecutable"(arg0: boolean): boolean
 public static "listRoots"(): ($File)[]
-public static "createTempFile"(arg0: string, arg1: string, arg2: $File$Type): $File
 public static "createTempFile"(arg0: string, arg1: string): $File
+public static "createTempFile"(arg0: string, arg1: string, arg2: $File$Type): $File
 public "canWrite"(): boolean
 public "isFile"(): boolean
 public "lastModified"(): long
 public "deleteOnExit"(): void
+public "listFiles"(arg0: $FileFilter$Type): ($File)[]
 public "listFiles"(arg0: $FilenameFilter$Type): ($File)[]
 public "listFiles"(): ($File)[]
-public "listFiles"(arg0: $FileFilter$Type): ($File)[]
 public "setLastModified"(arg0: long): boolean
 public "canExecute"(): boolean
 public "getTotalSpace"(): long
@@ -530,45 +457,6 @@ export type $InputStream$Type = ($InputStream);
 declare global {
 export type $InputStream_ = $InputStream$Type;
 }}
-declare module "packages/java/io/$Reader" {
-import {$Closeable, $Closeable$Type} from "packages/java/io/$Closeable"
-import {$CharBuffer, $CharBuffer$Type} from "packages/java/nio/$CharBuffer"
-import {$Writer, $Writer$Type} from "packages/java/io/$Writer"
-import {$Readable, $Readable$Type} from "packages/java/lang/$Readable"
-
-/**
- * This class is not allowed By KubeJS!
- * You should not load the class, or KubeJS will throw an error.
- * Loading the class using require() will not throw an error, but the class will be undefined.
- */
-export class $Reader implements $Readable, $Closeable {
-
-
-public "ready"(): boolean
-public static "nullReader"(): $Reader
-public "read"(arg0: (character)[]): integer
-public "read"(arg0: (character)[], arg1: integer, arg2: integer): integer
-public "read"(arg0: $CharBuffer$Type): integer
-public "read"(): integer
-public "close"(): void
-public "mark"(arg0: integer): void
-public "transferTo"(arg0: $Writer$Type): long
-public "skip"(arg0: long): long
-public "markSupported"(): boolean
-public "reset"(): void
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $Reader$Type = ($Reader);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $Reader_ = $Reader$Type;
-}}
 declare module "packages/java/io/$DataOutputStream" {
 import {$OutputStream, $OutputStream$Type} from "packages/java/io/$OutputStream"
 import {$FilterOutputStream, $FilterOutputStream$Type} from "packages/java/io/$FilterOutputStream"
@@ -583,7 +471,6 @@ export class $DataOutputStream extends $FilterOutputStream implements $DataOutpu
 
 constructor(arg0: $OutputStream$Type)
 
-public "writeFloat"(arg0: float): void
 public "writeChar"(arg0: integer): void
 public "writeLong"(arg0: long): void
 public "writeBoolean"(arg0: boolean): void
@@ -591,13 +478,14 @@ public "writeByte"(arg0: integer): void
 public "writeShort"(arg0: integer): void
 public "writeDouble"(arg0: double): void
 public "writeChars"(arg0: string): void
+public "writeBytes"(arg0: string): void
+public "writeFloat"(arg0: float): void
 public "flush"(): void
 public "size"(): integer
-public "write"(arg0: (byte)[], arg1: integer, arg2: integer): void
 public "write"(arg0: integer): void
+public "write"(arg0: (byte)[], arg1: integer, arg2: integer): void
 public "writeInt"(arg0: integer): void
 public "writeUTF"(arg0: string): void
-public "writeBytes"(arg0: string): void
 public "write"(arg0: (byte)[]): void
 }
 /**
@@ -611,36 +499,6 @@ export type $DataOutputStream$Type = ($DataOutputStream);
  */
 declare global {
 export type $DataOutputStream_ = $DataOutputStream$Type;
-}}
-declare module "packages/java/io/$FilenameFilter" {
-import {$File, $File$Type} from "packages/java/io/$File"
-
-/**
- * This class is not allowed By KubeJS!
- * You should not load the class, or KubeJS will throw an error.
- * Loading the class using require() will not throw an error, but the class will be undefined.
- */
-export interface $FilenameFilter {
-
- "accept"(arg0: $File$Type, arg1: string): boolean
-
-(arg0: $File$Type, arg1: string): boolean
-}
-
-export namespace $FilenameFilter {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $FilenameFilter$Type = ($FilenameFilter);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $FilenameFilter_ = $FilenameFilter$Type;
 }}
 declare module "packages/java/io/$BufferedWriter" {
 import {$Writer, $Writer$Type} from "packages/java/io/$Writer"
@@ -673,93 +531,6 @@ export type $BufferedWriter$Type = ($BufferedWriter);
  */
 declare global {
 export type $BufferedWriter_ = $BufferedWriter$Type;
-}}
-declare module "packages/java/io/$ObjectInput" {
-import {$DataInput, $DataInput$Type} from "packages/java/io/$DataInput"
-import {$AutoCloseable, $AutoCloseable$Type} from "packages/java/lang/$AutoCloseable"
-
-/**
- * This class is not allowed By KubeJS!
- * You should not load the class, or KubeJS will throw an error.
- * Loading the class using require() will not throw an error, but the class will be undefined.
- */
-export interface $ObjectInput extends $DataInput, $AutoCloseable {
-
- "readObject"(): any
- "read"(arg0: (byte)[], arg1: integer, arg2: integer): integer
- "read"(arg0: (byte)[]): integer
- "read"(): integer
- "close"(): void
- "skip"(arg0: long): long
- "available"(): integer
- "readFloat"(): float
- "readFully"(arg0: (byte)[]): void
- "readFully"(arg0: (byte)[], arg1: integer, arg2: integer): void
- "readChar"(): character
- "skipBytes"(arg0: integer): integer
- "readBoolean"(): boolean
- "readUnsignedByte"(): integer
- "readDouble"(): double
- "readUnsignedShort"(): integer
- "readLong"(): long
- "readByte"(): byte
- "readShort"(): short
- "readLine"(): string
- "readInt"(): integer
- "readUTF"(): string
-}
-
-export namespace $ObjectInput {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $ObjectInput$Type = ($ObjectInput);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $ObjectInput_ = $ObjectInput$Type;
-}}
-declare module "packages/java/io/$BufferedReader" {
-import {$Stream, $Stream$Type} from "packages/java/util/stream/$Stream"
-import {$Reader, $Reader$Type} from "packages/java/io/$Reader"
-
-/**
- * This class is not allowed By KubeJS!
- * You should not load the class, or KubeJS will throw an error.
- * Loading the class using require() will not throw an error, but the class will be undefined.
- */
-export class $BufferedReader extends $Reader {
-
-constructor(arg0: $Reader$Type, arg1: integer)
-constructor(arg0: $Reader$Type)
-
-public "ready"(): boolean
-public "lines"(): $Stream<(string)>
-public "read"(): integer
-public "read"(arg0: (character)[], arg1: integer, arg2: integer): integer
-public "readLine"(): string
-public "close"(): void
-public "mark"(arg0: integer): void
-public "skip"(arg0: long): long
-public "markSupported"(): boolean
-public "reset"(): void
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $BufferedReader$Type = ($BufferedReader);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $BufferedReader_ = $BufferedReader$Type;
 }}
 declare module "packages/java/io/$Closeable" {
 import {$AutoCloseable, $AutoCloseable$Type} from "packages/java/lang/$AutoCloseable"
@@ -829,16 +600,17 @@ import {$Flushable, $Flushable$Type} from "packages/java/io/$Flushable"
 export class $Writer implements $Appendable, $Closeable, $Flushable {
 
 
-public "append"(arg0: charseq, arg1: integer, arg2: integer): $Writer
-public "append"(arg0: character): $Writer
-public "flush"(): void
-public "write"(arg0: string, arg1: integer, arg2: integer): void
-public "write"(arg0: integer): void
-public "write"(arg0: string): void
-public "write"(arg0: (character)[], arg1: integer, arg2: integer): void
-public "write"(arg0: (character)[]): void
-public "close"(): void
 public static "nullWriter"(): $Writer
+public "append"(arg0: character): $Writer
+public "append"(arg0: charseq, arg1: integer, arg2: integer): $Writer
+public "append"(arg0: charseq): $Writer
+public "flush"(): void
+public "write"(arg0: integer): void
+public "write"(arg0: (character)[]): void
+public "write"(arg0: (character)[], arg1: integer, arg2: integer): void
+public "write"(arg0: string): void
+public "write"(arg0: string, arg1: integer, arg2: integer): void
+public "close"(): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -882,4 +654,230 @@ export type $Externalizable$Type = ($Externalizable);
  */
 declare global {
 export type $Externalizable_ = $Externalizable$Type;
+}}
+declare module "packages/java/io/$FileFilter" {
+import {$File, $File$Type} from "packages/java/io/$File"
+
+/**
+ * This class is not allowed By KubeJS!
+ * You should not load the class, or KubeJS will throw an error.
+ * Loading the class using require() will not throw an error, but the class will be undefined.
+ */
+export interface $FileFilter {
+
+ "accept"(arg0: $File$Type): boolean
+
+(arg0: $File$Type): boolean
+}
+
+export namespace $FileFilter {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $FileFilter$Type = ($FileFilter);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $FileFilter_ = $FileFilter$Type;
+}}
+declare module "packages/java/io/$DataOutput" {
+export {} // Mark the file as a module, do not remove unless there are other import/exports!
+/**
+ * This class is not allowed By KubeJS!
+ * You should not load the class, or KubeJS will throw an error.
+ * Loading the class using require() will not throw an error, but the class will be undefined.
+ */
+export interface $DataOutput {
+
+ "writeChar"(arg0: integer): void
+ "writeLong"(arg0: long): void
+ "writeBoolean"(arg0: boolean): void
+ "writeByte"(arg0: integer): void
+ "writeShort"(arg0: integer): void
+ "writeDouble"(arg0: double): void
+ "writeChars"(arg0: string): void
+ "writeBytes"(arg0: string): void
+ "writeFloat"(arg0: float): void
+ "write"(arg0: (byte)[], arg1: integer, arg2: integer): void
+ "write"(arg0: (byte)[]): void
+ "write"(arg0: integer): void
+ "writeInt"(arg0: integer): void
+ "writeUTF"(arg0: string): void
+}
+
+export namespace $DataOutput {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $DataOutput$Type = ($DataOutput);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $DataOutput_ = $DataOutput$Type;
+}}
+declare module "packages/java/io/$Reader" {
+import {$Closeable, $Closeable$Type} from "packages/java/io/$Closeable"
+import {$CharBuffer, $CharBuffer$Type} from "packages/java/nio/$CharBuffer"
+import {$Writer, $Writer$Type} from "packages/java/io/$Writer"
+import {$Readable, $Readable$Type} from "packages/java/lang/$Readable"
+
+/**
+ * This class is not allowed By KubeJS!
+ * You should not load the class, or KubeJS will throw an error.
+ * Loading the class using require() will not throw an error, but the class will be undefined.
+ */
+export class $Reader implements $Readable, $Closeable {
+
+
+public "ready"(): boolean
+public static "nullReader"(): $Reader
+public "read"(arg0: (character)[]): integer
+public "read"(arg0: (character)[], arg1: integer, arg2: integer): integer
+public "read"(arg0: $CharBuffer$Type): integer
+public "read"(): integer
+public "close"(): void
+public "mark"(arg0: integer): void
+public "transferTo"(arg0: $Writer$Type): long
+public "skip"(arg0: long): long
+public "markSupported"(): boolean
+public "reset"(): void
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Reader$Type = ($Reader);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Reader_ = $Reader$Type;
+}}
+declare module "packages/java/io/$FilenameFilter" {
+import {$File, $File$Type} from "packages/java/io/$File"
+
+/**
+ * This class is not allowed By KubeJS!
+ * You should not load the class, or KubeJS will throw an error.
+ * Loading the class using require() will not throw an error, but the class will be undefined.
+ */
+export interface $FilenameFilter {
+
+ "accept"(arg0: $File$Type, arg1: string): boolean
+
+(arg0: $File$Type, arg1: string): boolean
+}
+
+export namespace $FilenameFilter {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $FilenameFilter$Type = ($FilenameFilter);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $FilenameFilter_ = $FilenameFilter$Type;
+}}
+declare module "packages/java/io/$ObjectInput" {
+import {$DataInput, $DataInput$Type} from "packages/java/io/$DataInput"
+import {$AutoCloseable, $AutoCloseable$Type} from "packages/java/lang/$AutoCloseable"
+
+/**
+ * This class is not allowed By KubeJS!
+ * You should not load the class, or KubeJS will throw an error.
+ * Loading the class using require() will not throw an error, but the class will be undefined.
+ */
+export interface $ObjectInput extends $DataInput, $AutoCloseable {
+
+ "readObject"(): any
+ "read"(arg0: (byte)[], arg1: integer, arg2: integer): integer
+ "read"(arg0: (byte)[]): integer
+ "read"(): integer
+ "close"(): void
+ "skip"(arg0: long): long
+ "available"(): integer
+ "readChar"(): character
+ "skipBytes"(arg0: integer): integer
+ "readBoolean"(): boolean
+ "readUnsignedByte"(): integer
+ "readDouble"(): double
+ "readUnsignedShort"(): integer
+ "readLong"(): long
+ "readByte"(): byte
+ "readShort"(): short
+ "readFully"(arg0: (byte)[], arg1: integer, arg2: integer): void
+ "readFully"(arg0: (byte)[]): void
+ "readFloat"(): float
+ "readLine"(): string
+ "readInt"(): integer
+ "readUTF"(): string
+}
+
+export namespace $ObjectInput {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $ObjectInput$Type = ($ObjectInput);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $ObjectInput_ = $ObjectInput$Type;
+}}
+declare module "packages/java/io/$BufferedReader" {
+import {$Stream, $Stream$Type} from "packages/java/util/stream/$Stream"
+import {$Reader, $Reader$Type} from "packages/java/io/$Reader"
+
+/**
+ * This class is not allowed By KubeJS!
+ * You should not load the class, or KubeJS will throw an error.
+ * Loading the class using require() will not throw an error, but the class will be undefined.
+ */
+export class $BufferedReader extends $Reader {
+
+constructor(arg0: $Reader$Type, arg1: integer)
+constructor(arg0: $Reader$Type)
+
+public "ready"(): boolean
+public "lines"(): $Stream<(string)>
+public "read"(arg0: (character)[], arg1: integer, arg2: integer): integer
+public "read"(): integer
+public "readLine"(): string
+public "close"(): void
+public "mark"(arg0: integer): void
+public "skip"(arg0: long): long
+public "markSupported"(): boolean
+public "reset"(): void
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $BufferedReader$Type = ($BufferedReader);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $BufferedReader_ = $BufferedReader$Type;
 }}

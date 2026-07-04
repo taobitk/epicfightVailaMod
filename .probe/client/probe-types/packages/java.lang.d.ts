@@ -1,79 +1,3 @@
-declare module "packages/java/lang/invoke/$VarHandle$VarHandleDesc" {
-import {$VarHandle, $VarHandle$Type} from "packages/java/lang/invoke/$VarHandle"
-import {$DynamicConstantDesc, $DynamicConstantDesc$Type} from "packages/java/lang/constant/$DynamicConstantDesc"
-import {$MethodHandles$Lookup, $MethodHandles$Lookup$Type} from "packages/java/lang/invoke/$MethodHandles$Lookup"
-import {$ClassDesc, $ClassDesc$Type} from "packages/java/lang/constant/$ClassDesc"
-
-/**
- * This class is not allowed By KubeJS!
- * You should not load the class, or KubeJS will throw an error.
- * Loading the class using require() will not throw an error, but the class will be undefined.
- */
-export class $VarHandle$VarHandleDesc extends $DynamicConstantDesc<($VarHandle)> {
-
-
-public static "ofStaticField"(arg0: $ClassDesc$Type, arg1: string, arg2: $ClassDesc$Type): $VarHandle$VarHandleDesc
-public static "ofArray"(arg0: $ClassDesc$Type): $VarHandle$VarHandleDesc
-public "toString"(): string
-public "resolveConstantDesc"(arg0: $MethodHandles$Lookup$Type): $VarHandle
-public static "ofField"(arg0: $ClassDesc$Type, arg1: string, arg2: $ClassDesc$Type): $VarHandle$VarHandleDesc
-public "varType"(): $ClassDesc
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $VarHandle$VarHandleDesc$Type = ($VarHandle$VarHandleDesc);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $VarHandle$VarHandleDesc_ = $VarHandle$VarHandleDesc$Type;
-}}
-declare module "packages/java/lang/constant/$ClassDesc" {
-import {$MethodHandles$Lookup, $MethodHandles$Lookup$Type} from "packages/java/lang/invoke/$MethodHandles$Lookup"
-import {$ConstantDesc, $ConstantDesc$Type} from "packages/java/lang/constant/$ConstantDesc"
-import {$TypeDescriptor$OfField, $TypeDescriptor$OfField$Type} from "packages/java/lang/invoke/$TypeDescriptor$OfField"
-
-/**
- * This class is not allowed By KubeJS!
- * You should not load the class, or KubeJS will throw an error.
- * Loading the class using require() will not throw an error, but the class will be undefined.
- */
-export interface $ClassDesc extends $ConstantDesc, $TypeDescriptor$OfField<($ClassDesc)> {
-
- "nested"(arg0: string): $ClassDesc
- "nested"(arg0: string, ...arg1: (string)[]): $ClassDesc
- "isClassOrInterface"(): boolean
- "equals"(arg0: any): boolean
- "isArray"(): boolean
- "isPrimitive"(): boolean
- "componentType"(): $ClassDesc
- "packageName"(): string
- "descriptorString"(): string
- "arrayType"(arg0: integer): $ClassDesc
- "displayName"(): string
- "resolveConstantDesc"(arg0: $MethodHandles$Lookup$Type): any
-}
-
-export namespace $ClassDesc {
-function of(arg0: string): $ClassDesc
-function of(arg0: string, arg1: string): $ClassDesc
-function ofDescriptor(arg0: string): $ClassDesc
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $ClassDesc$Type = ($ClassDesc);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $ClassDesc_ = $ClassDesc$Type;
-}}
 declare module "packages/java/lang/$ClassLoader" {
 import {$Package, $Package$Type} from "packages/java/lang/$Package"
 import {$Module, $Module$Type} from "packages/java/lang/$Module"
@@ -192,6 +116,1531 @@ export type $Parameter$Type = ($Parameter);
  */
 declare global {
 export type $Parameter_ = $Parameter$Type;
+}}
+declare module "packages/java/lang/module/$ResolvedModule" {
+import {$Set, $Set$Type} from "packages/java/util/$Set"
+import {$Configuration, $Configuration$Type} from "packages/java/lang/module/$Configuration"
+import {$ModuleReference, $ModuleReference$Type} from "packages/java/lang/module/$ModuleReference"
+
+/**
+ * This class is not allowed By KubeJS!
+ * You should not load the class, or KubeJS will throw an error.
+ * Loading the class using require() will not throw an error, but the class will be undefined.
+ */
+export class $ResolvedModule {
+
+
+public "name"(): string
+public "equals"(arg0: any): boolean
+public "toString"(): string
+public "hashCode"(): integer
+public "reads"(): $Set<($ResolvedModule)>
+public "reference"(): $ModuleReference
+public "configuration"(): $Configuration
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $ResolvedModule$Type = ($ResolvedModule);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $ResolvedModule_ = $ResolvedModule$Type;
+}}
+declare module "packages/java/lang/invoke/$TypeDescriptor$OfField" {
+import {$TypeDescriptor, $TypeDescriptor$Type} from "packages/java/lang/invoke/$TypeDescriptor"
+
+/**
+ * This class is not allowed By KubeJS!
+ * You should not load the class, or KubeJS will throw an error.
+ * Loading the class using require() will not throw an error, but the class will be undefined.
+ */
+export interface $TypeDescriptor$OfField<F extends $TypeDescriptor$OfField<(F)>> extends $TypeDescriptor {
+
+ "isArray"(): boolean
+ "isPrimitive"(): boolean
+ "componentType"(): F
+ "arrayType"(): F
+ "descriptorString"(): string
+}
+
+export namespace $TypeDescriptor$OfField {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $TypeDescriptor$OfField$Type<F> = ($TypeDescriptor$OfField<(F)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $TypeDescriptor$OfField_<F> = $TypeDescriptor$OfField$Type<(F)>;
+}}
+declare module "packages/java/lang/reflect/$AnnotatedType" {
+import {$Annotation, $Annotation$Type} from "packages/java/lang/annotation/$Annotation"
+import {$Class, $Class$Type} from "packages/java/lang/$Class"
+import {$Type, $Type$Type} from "packages/java/lang/reflect/$Type"
+import {$AnnotatedElement, $AnnotatedElement$Type} from "packages/java/lang/reflect/$AnnotatedElement"
+
+/**
+ * This class is not allowed By KubeJS!
+ * You should not load the class, or KubeJS will throw an error.
+ * Loading the class using require() will not throw an error, but the class will be undefined.
+ */
+export interface $AnnotatedType extends $AnnotatedElement {
+
+ "getAnnotatedOwnerType"(): $AnnotatedType
+ "getAnnotation"<T extends $Annotation>(arg0: $Class$Type<(T)>): T
+ "getAnnotations"(): ($Annotation)[]
+ "getDeclaredAnnotations"(): ($Annotation)[]
+ "getType"(): $Type
+ "isAnnotationPresent"(arg0: $Class$Type<(any)>): boolean
+ "getAnnotationsByType"<T extends $Annotation>(arg0: $Class$Type<(T)>): (T)[]
+ "getDeclaredAnnotation"<T extends $Annotation>(arg0: $Class$Type<(T)>): T
+ "getDeclaredAnnotationsByType"<T extends $Annotation>(arg0: $Class$Type<(T)>): (T)[]
+}
+
+export namespace $AnnotatedType {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $AnnotatedType$Type = ($AnnotatedType);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $AnnotatedType_ = $AnnotatedType$Type;
+}}
+declare module "packages/java/lang/$Exception" {
+import {$Throwable, $Throwable$Type} from "packages/java/lang/$Throwable"
+
+/**
+ * This class is not allowed By KubeJS!
+ * You should not load the class, or KubeJS will throw an error.
+ * Loading the class using require() will not throw an error, but the class will be undefined.
+ */
+export class $Exception extends $Throwable {
+
+constructor(arg0: $Throwable$Type)
+constructor(arg0: string, arg1: $Throwable$Type)
+constructor(arg0: string)
+constructor()
+
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Exception$Type = ($Exception);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Exception_ = $Exception$Type;
+}}
+declare module "packages/java/lang/ref/$WeakReference" {
+import {$Reference, $Reference$Type} from "packages/java/lang/ref/$Reference"
+import {$ReferenceQueue, $ReferenceQueue$Type} from "packages/java/lang/ref/$ReferenceQueue"
+
+/**
+ * This class is not allowed By KubeJS!
+ * You should not load the class, or KubeJS will throw an error.
+ * Loading the class using require() will not throw an error, but the class will be undefined.
+ */
+export class $WeakReference<T> extends $Reference<(T)> {
+
+constructor(arg0: T)
+constructor(arg0: T, arg1: $ReferenceQueue$Type<(any)>)
+
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $WeakReference$Type<T> = ($WeakReference<(T)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $WeakReference_<T> = $WeakReference$Type<(T)>;
+}}
+declare module "packages/java/lang/$Thread$UncaughtExceptionHandler" {
+import {$Throwable, $Throwable$Type} from "packages/java/lang/$Throwable"
+import {$Thread, $Thread$Type} from "packages/java/lang/$Thread"
+
+/**
+ * This class is not allowed By KubeJS!
+ * You should not load the class, or KubeJS will throw an error.
+ * Loading the class using require() will not throw an error, but the class will be undefined.
+ */
+export interface $Thread$UncaughtExceptionHandler {
+
+ "uncaughtException"(arg0: $Thread$Type, arg1: $Throwable$Type): void
+
+(arg0: $Thread$Type, arg1: $Throwable$Type): void
+}
+
+export namespace $Thread$UncaughtExceptionHandler {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Thread$UncaughtExceptionHandler$Type = ($Thread$UncaughtExceptionHandler);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Thread$UncaughtExceptionHandler_ = $Thread$UncaughtExceptionHandler$Type;
+}}
+declare module "packages/java/lang/$ThreadGroup" {
+import {$Throwable, $Throwable$Type} from "packages/java/lang/$Throwable"
+import {$Thread, $Thread$Type} from "packages/java/lang/$Thread"
+import {$Thread$UncaughtExceptionHandler, $Thread$UncaughtExceptionHandler$Type} from "packages/java/lang/$Thread$UncaughtExceptionHandler"
+
+/**
+ * This class is not allowed By KubeJS!
+ * You should not load the class, or KubeJS will throw an error.
+ * Loading the class using require() will not throw an error, but the class will be undefined.
+ */
+export class $ThreadGroup implements $Thread$UncaughtExceptionHandler {
+
+constructor(arg0: string)
+constructor(arg0: $ThreadGroup$Type, arg1: string)
+
+public "getName"(): string
+public "toString"(): string
+public "list"(): void
+public "getParent"(): $ThreadGroup
+/**
+ * 
+ * @deprecated
+ */
+public "checkAccess"(): void
+/**
+ * 
+ * @deprecated
+ */
+public "setDaemon"(arg0: boolean): void
+/**
+ * 
+ * @deprecated
+ */
+public "isDaemon"(): boolean
+/**
+ * 
+ * @deprecated
+ */
+public "resume"(): void
+public "interrupt"(): void
+public "getMaxPriority"(): integer
+public "activeCount"(): integer
+public "enumerate"(arg0: ($ThreadGroup$Type)[], arg1: boolean): integer
+public "enumerate"(arg0: ($ThreadGroup$Type)[]): integer
+public "enumerate"(arg0: ($Thread$Type)[]): integer
+public "enumerate"(arg0: ($Thread$Type)[], arg1: boolean): integer
+public "uncaughtException"(arg0: $Thread$Type, arg1: $Throwable$Type): void
+/**
+ * 
+ * @deprecated
+ */
+public "stop"(): void
+/**
+ * 
+ * @deprecated
+ */
+public "suspend"(): void
+public "setMaxPriority"(arg0: integer): void
+public "activeGroupCount"(): integer
+/**
+ * 
+ * @deprecated
+ */
+public "destroy"(): void
+/**
+ * 
+ * @deprecated
+ */
+public "isDestroyed"(): boolean
+public "parentOf"(arg0: $ThreadGroup$Type): boolean
+/**
+ * 
+ * @deprecated
+ */
+public "allowThreadSuspension"(arg0: boolean): boolean
+get "name"(): string
+get "parent"(): $ThreadGroup
+set "daemon"(value: boolean)
+get "daemon"(): boolean
+get "maxPriority"(): integer
+set "maxPriority"(value: integer)
+get "destroyed"(): boolean
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $ThreadGroup$Type = ($ThreadGroup);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $ThreadGroup_ = $ThreadGroup$Type;
+}}
+declare module "packages/java/lang/$Module" {
+import {$ModuleDescriptor, $ModuleDescriptor$Type} from "packages/java/lang/module/$ModuleDescriptor"
+import {$Annotation, $Annotation$Type} from "packages/java/lang/annotation/$Annotation"
+import {$Set, $Set$Type} from "packages/java/util/$Set"
+import {$Class, $Class$Type} from "packages/java/lang/$Class"
+import {$ClassLoader, $ClassLoader$Type} from "packages/java/lang/$ClassLoader"
+import {$InputStream, $InputStream$Type} from "packages/java/io/$InputStream"
+import {$AnnotatedElement, $AnnotatedElement$Type} from "packages/java/lang/reflect/$AnnotatedElement"
+import {$ModuleLayer, $ModuleLayer$Type} from "packages/java/lang/$ModuleLayer"
+
+/**
+ * This class is not allowed By KubeJS!
+ * You should not load the class, or KubeJS will throw an error.
+ * Loading the class using require() will not throw an error, but the class will be undefined.
+ */
+export class $Module implements $AnnotatedElement {
+
+
+public "getName"(): string
+public "toString"(): string
+public "addReads"(arg0: $Module$Type): $Module
+public "addExports"(arg0: string, arg1: $Module$Type): $Module
+public "addOpens"(arg0: string, arg1: $Module$Type): $Module
+public "addUses"(arg0: $Class$Type<(any)>): $Module
+public "getClassLoader"(): $ClassLoader
+public "getDescriptor"(): $ModuleDescriptor
+public "isNamed"(): boolean
+public "getResourceAsStream"(arg0: string): $InputStream
+public "isOpen"(arg0: string): boolean
+public "isOpen"(arg0: string, arg1: $Module$Type): boolean
+public "getAnnotation"<T extends $Annotation>(arg0: $Class$Type<(T)>): T
+public "getAnnotations"(): ($Annotation)[]
+public "getDeclaredAnnotations"(): ($Annotation)[]
+public "getPackages"(): $Set<(string)>
+public "canRead"(arg0: $Module$Type): boolean
+public "canUse"(arg0: $Class$Type<(any)>): boolean
+public "getLayer"(): $ModuleLayer
+public "isExported"(arg0: string, arg1: $Module$Type): boolean
+public "isExported"(arg0: string): boolean
+public "isAnnotationPresent"(arg0: $Class$Type<(any)>): boolean
+public "getAnnotationsByType"<T extends $Annotation>(arg0: $Class$Type<(T)>): (T)[]
+public "getDeclaredAnnotation"<T extends $Annotation>(arg0: $Class$Type<(T)>): T
+public "getDeclaredAnnotationsByType"<T extends $Annotation>(arg0: $Class$Type<(T)>): (T)[]
+get "name"(): string
+get "classLoader"(): $ClassLoader
+get "descriptor"(): $ModuleDescriptor
+get "named"(): boolean
+get "annotations"(): ($Annotation)[]
+get "declaredAnnotations"(): ($Annotation)[]
+get "packages"(): $Set<(string)>
+get "layer"(): $ModuleLayer
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Module$Type = ($Module);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Module_ = $Module$Type;
+}}
+declare module "packages/java/lang/reflect/$RecordComponent" {
+import {$Annotation, $Annotation$Type} from "packages/java/lang/annotation/$Annotation"
+import {$Class, $Class$Type} from "packages/java/lang/$Class"
+import {$Type, $Type$Type} from "packages/java/lang/reflect/$Type"
+import {$Method, $Method$Type} from "packages/java/lang/reflect/$Method"
+import {$AnnotatedType, $AnnotatedType$Type} from "packages/java/lang/reflect/$AnnotatedType"
+import {$AnnotatedElement, $AnnotatedElement$Type} from "packages/java/lang/reflect/$AnnotatedElement"
+
+/**
+ * This class is not allowed By KubeJS!
+ * You should not load the class, or KubeJS will throw an error.
+ * Loading the class using require() will not throw an error, but the class will be undefined.
+ */
+export class $RecordComponent implements $AnnotatedElement {
+
+
+public "getName"(): string
+public "toString"(): string
+public "getAnnotation"<T extends $Annotation>(arg0: $Class$Type<(T)>): T
+public "getAnnotations"(): ($Annotation)[]
+public "getDeclaredAnnotations"(): ($Annotation)[]
+public "getGenericSignature"(): string
+public "getGenericType"(): $Type
+public "getType"(): $Class<(any)>
+public "getAnnotatedType"(): $AnnotatedType
+public "getDeclaringRecord"(): $Class<(any)>
+public "getAccessor"(): $Method
+public "isAnnotationPresent"(arg0: $Class$Type<(any)>): boolean
+public "getAnnotationsByType"<T extends $Annotation>(arg0: $Class$Type<(T)>): (T)[]
+public "getDeclaredAnnotation"<T extends $Annotation>(arg0: $Class$Type<(T)>): T
+public "getDeclaredAnnotationsByType"<T extends $Annotation>(arg0: $Class$Type<(T)>): (T)[]
+get "name"(): string
+get "annotations"(): ($Annotation)[]
+get "declaredAnnotations"(): ($Annotation)[]
+get "genericSignature"(): string
+get "genericType"(): $Type
+get "type"(): $Class<(any)>
+get "annotatedType"(): $AnnotatedType
+get "declaringRecord"(): $Class<(any)>
+get "accessor"(): $Method
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $RecordComponent$Type = ($RecordComponent);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $RecordComponent_ = $RecordComponent$Type;
+}}
+declare module "packages/java/lang/$NamedPackage" {
+export {} // Mark the file as a module, do not remove unless there are other import/exports!
+/**
+ * This class is not allowed By KubeJS!
+ * You should not load the class, or KubeJS will throw an error.
+ * Loading the class using require() will not throw an error, but the class will be undefined.
+ */
+export class $NamedPackage {
+
+
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $NamedPackage$Type = ($NamedPackage);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $NamedPackage_ = $NamedPackage$Type;
+}}
+declare module "packages/java/lang/ref/$ReferenceQueue" {
+import {$Reference, $Reference$Type} from "packages/java/lang/ref/$Reference"
+
+/**
+ * This class is not allowed By KubeJS!
+ * You should not load the class, or KubeJS will throw an error.
+ * Loading the class using require() will not throw an error, but the class will be undefined.
+ */
+export class $ReferenceQueue<T> {
+
+constructor()
+
+public "remove"(arg0: long): $Reference<(any)>
+public "remove"(): $Reference<(any)>
+public "poll"(): $Reference<(any)>
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $ReferenceQueue$Type<T> = ($ReferenceQueue<(T)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $ReferenceQueue_<T> = $ReferenceQueue$Type<(T)>;
+}}
+declare module "packages/java/lang/$StackTraceElement" {
+import {$Serializable, $Serializable$Type} from "packages/java/io/$Serializable"
+
+/**
+ * This class is not allowed By KubeJS!
+ * You should not load the class, or KubeJS will throw an error.
+ * Loading the class using require() will not throw an error, but the class will be undefined.
+ */
+export class $StackTraceElement implements $Serializable {
+
+constructor(arg0: string, arg1: string, arg2: string, arg3: string, arg4: string, arg5: string, arg6: integer)
+constructor(arg0: string, arg1: string, arg2: string, arg3: integer)
+
+public "equals"(arg0: any): boolean
+public "toString"(): string
+public "hashCode"(): integer
+public "isNativeMethod"(): boolean
+public "getFileName"(): string
+public "getLineNumber"(): integer
+public "getModuleName"(): string
+public "getModuleVersion"(): string
+public "getClassLoaderName"(): string
+public "getClassName"(): string
+public "getMethodName"(): string
+get "nativeMethod"(): boolean
+get "fileName"(): string
+get "lineNumber"(): integer
+get "moduleName"(): string
+get "moduleVersion"(): string
+get "classLoaderName"(): string
+get "className"(): string
+get "methodName"(): string
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $StackTraceElement$Type = ($StackTraceElement);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $StackTraceElement_ = $StackTraceElement$Type;
+}}
+declare module "packages/java/lang/invoke/$TypeDescriptor" {
+export {} // Mark the file as a module, do not remove unless there are other import/exports!
+/**
+ * This class is not allowed By KubeJS!
+ * You should not load the class, or KubeJS will throw an error.
+ * Loading the class using require() will not throw an error, but the class will be undefined.
+ */
+export interface $TypeDescriptor {
+
+ "descriptorString"(): string
+
+(): string
+}
+
+export namespace $TypeDescriptor {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $TypeDescriptor$Type = ($TypeDescriptor);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $TypeDescriptor_ = $TypeDescriptor$Type;
+}}
+declare module "packages/java/lang/$Math" {
+export {} // Mark the file as a module, do not remove unless there are other import/exports!
+/**
+ * This class is not allowed By KubeJS!
+ * You should not load the class, or KubeJS will throw an error.
+ * Loading the class using require() will not throw an error, but the class will be undefined.
+ */
+export class $Math {
+static readonly "E": double
+static readonly "PI": double
+
+
+public static "asin"(arg0: double): double
+public static "acos"(arg0: double): double
+public static "atan"(arg0: double): double
+public static "cbrt"(arg0: double): double
+public static "IEEEremainder"(arg0: double, arg1: double): double
+public static "floorDiv"(arg0: long, arg1: integer): long
+public static "floorDiv"(arg0: long, arg1: long): long
+public static "floorDiv"(arg0: integer, arg1: integer): integer
+public static "sinh"(arg0: double): double
+public static "cosh"(arg0: double): double
+public static "tanh"(arg0: double): double
+public static "hypot"(arg0: double, arg1: double): double
+public static "expm1"(arg0: double): double
+public static "log1p"(arg0: double): double
+public static "toRadians"(arg0: double): double
+public static "toDegrees"(arg0: double): double
+public static "round"(arg0: float): integer
+public static "round"(arg0: double): long
+public static "random"(): double
+public static "toIntExact"(arg0: long): integer
+public static "multiplyFull"(arg0: integer, arg1: integer): long
+public static "absExact"(arg0: long): long
+public static "absExact"(arg0: integer): integer
+public static "ulp"(arg0: float): float
+public static "ulp"(arg0: double): double
+public static "nextAfter"(arg0: float, arg1: double): float
+public static "nextAfter"(arg0: double, arg1: double): double
+public static "nextUp"(arg0: float): float
+public static "nextUp"(arg0: double): double
+public static "nextDown"(arg0: double): double
+public static "nextDown"(arg0: float): float
+public static "abs"(arg0: integer): integer
+public static "abs"(arg0: long): long
+public static "abs"(arg0: double): double
+public static "abs"(arg0: float): float
+public static "sin"(arg0: double): double
+public static "cos"(arg0: double): double
+public static "tan"(arg0: double): double
+public static "atan2"(arg0: double, arg1: double): double
+public static "sqrt"(arg0: double): double
+public static "log"(arg0: double): double
+public static "log10"(arg0: double): double
+public static "pow"(arg0: double, arg1: double): double
+public static "exp"(arg0: double): double
+public static "min"(arg0: integer, arg1: integer): integer
+public static "min"(arg0: float, arg1: float): float
+public static "min"(arg0: long, arg1: long): long
+public static "min"(arg0: double, arg1: double): double
+public static "max"(arg0: double, arg1: double): double
+public static "max"(arg0: float, arg1: float): float
+public static "max"(arg0: long, arg1: long): long
+public static "max"(arg0: integer, arg1: integer): integer
+public static "floor"(arg0: double): double
+public static "ceil"(arg0: double): double
+public static "rint"(arg0: double): double
+public static "addExact"(arg0: long, arg1: long): long
+public static "addExact"(arg0: integer, arg1: integer): integer
+public static "decrementExact"(arg0: integer): integer
+public static "decrementExact"(arg0: long): long
+public static "incrementExact"(arg0: long): long
+public static "incrementExact"(arg0: integer): integer
+public static "multiplyExact"(arg0: integer, arg1: integer): integer
+public static "multiplyExact"(arg0: long, arg1: integer): long
+public static "multiplyExact"(arg0: long, arg1: long): long
+public static "multiplyHigh"(arg0: long, arg1: long): long
+public static "negateExact"(arg0: integer): integer
+public static "negateExact"(arg0: long): long
+public static "subtractExact"(arg0: integer, arg1: integer): integer
+public static "subtractExact"(arg0: long, arg1: long): long
+public static "fma"(arg0: double, arg1: double, arg2: double): double
+public static "fma"(arg0: float, arg1: float, arg2: float): float
+public static "copySign"(arg0: double, arg1: double): double
+public static "copySign"(arg0: float, arg1: float): float
+public static "signum"(arg0: double): double
+public static "signum"(arg0: float): float
+public static "scalb"(arg0: double, arg1: integer): double
+public static "scalb"(arg0: float, arg1: integer): float
+public static "getExponent"(arg0: float): integer
+public static "getExponent"(arg0: double): integer
+public static "floorMod"(arg0: integer, arg1: integer): integer
+public static "floorMod"(arg0: long, arg1: integer): integer
+public static "floorMod"(arg0: long, arg1: long): long
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Math$Type = ($Math);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Math_ = $Math$Type;
+}}
+declare module "packages/java/lang/module/$ModuleDescriptor$Version" {
+import {$Comparable, $Comparable$Type} from "packages/java/lang/$Comparable"
+
+/**
+ * This class is not allowed By KubeJS!
+ * You should not load the class, or KubeJS will throw an error.
+ * Loading the class using require() will not throw an error, but the class will be undefined.
+ */
+export class $ModuleDescriptor$Version implements $Comparable<($ModuleDescriptor$Version)> {
+
+
+public static "parse"(arg0: string): $ModuleDescriptor$Version
+public "equals"(arg0: any): boolean
+public "toString"(): string
+public "hashCode"(): integer
+public "compareTo"(arg0: $ModuleDescriptor$Version$Type): integer
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $ModuleDescriptor$Version$Type = ($ModuleDescriptor$Version);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $ModuleDescriptor$Version_ = $ModuleDescriptor$Version$Type;
+}}
+declare module "packages/java/lang/$Runnable" {
+export {} // Mark the file as a module, do not remove unless there are other import/exports!
+export interface $Runnable {
+
+ "run"(): void
+
+(): void
+}
+
+export namespace $Runnable {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Runnable$Type = ($Runnable);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Runnable_ = $Runnable$Type;
+}}
+declare module "packages/java/lang/module/$ModuleDescriptor$Builder" {
+import {$ModuleDescriptor, $ModuleDescriptor$Type} from "packages/java/lang/module/$ModuleDescriptor"
+import {$ModuleDescriptor$Version, $ModuleDescriptor$Version$Type} from "packages/java/lang/module/$ModuleDescriptor$Version"
+import {$ModuleDescriptor$Provides, $ModuleDescriptor$Provides$Type} from "packages/java/lang/module/$ModuleDescriptor$Provides"
+import {$ModuleDescriptor$Requires, $ModuleDescriptor$Requires$Type} from "packages/java/lang/module/$ModuleDescriptor$Requires"
+import {$ModuleDescriptor$Exports$Modifier, $ModuleDescriptor$Exports$Modifier$Type} from "packages/java/lang/module/$ModuleDescriptor$Exports$Modifier"
+import {$ModuleDescriptor$Exports, $ModuleDescriptor$Exports$Type} from "packages/java/lang/module/$ModuleDescriptor$Exports"
+import {$Set, $Set$Type} from "packages/java/util/$Set"
+import {$ModuleDescriptor$Opens$Modifier, $ModuleDescriptor$Opens$Modifier$Type} from "packages/java/lang/module/$ModuleDescriptor$Opens$Modifier"
+import {$List, $List$Type} from "packages/java/util/$List"
+import {$ModuleDescriptor$Requires$Modifier, $ModuleDescriptor$Requires$Modifier$Type} from "packages/java/lang/module/$ModuleDescriptor$Requires$Modifier"
+import {$ModuleDescriptor$Opens, $ModuleDescriptor$Opens$Type} from "packages/java/lang/module/$ModuleDescriptor$Opens"
+
+/**
+ * This class is not allowed By KubeJS!
+ * You should not load the class, or KubeJS will throw an error.
+ * Loading the class using require() will not throw an error, but the class will be undefined.
+ */
+export class $ModuleDescriptor$Builder {
+
+
+public "build"(): $ModuleDescriptor
+public "requires"(arg0: string): $ModuleDescriptor$Builder
+public "requires"(arg0: $Set$Type<($ModuleDescriptor$Requires$Modifier$Type)>, arg1: string): $ModuleDescriptor$Builder
+public "requires"(arg0: $Set$Type<($ModuleDescriptor$Requires$Modifier$Type)>, arg1: string, arg2: $ModuleDescriptor$Version$Type): $ModuleDescriptor$Builder
+public "requires"(arg0: $ModuleDescriptor$Requires$Type): $ModuleDescriptor$Builder
+public "mainClass"(arg0: string): $ModuleDescriptor$Builder
+public "version"(arg0: $ModuleDescriptor$Version$Type): $ModuleDescriptor$Builder
+public "version"(arg0: string): $ModuleDescriptor$Builder
+public "packages"(arg0: $Set$Type<(string)>): $ModuleDescriptor$Builder
+public "exports"(arg0: string, arg1: $Set$Type<(string)>): $ModuleDescriptor$Builder
+public "exports"(arg0: $Set$Type<($ModuleDescriptor$Exports$Modifier$Type)>, arg1: string, arg2: $Set$Type<(string)>): $ModuleDescriptor$Builder
+public "exports"(arg0: $ModuleDescriptor$Exports$Type): $ModuleDescriptor$Builder
+public "exports"(arg0: $Set$Type<($ModuleDescriptor$Exports$Modifier$Type)>, arg1: string): $ModuleDescriptor$Builder
+public "exports"(arg0: string): $ModuleDescriptor$Builder
+public "opens"(arg0: $ModuleDescriptor$Opens$Type): $ModuleDescriptor$Builder
+public "opens"(arg0: $Set$Type<($ModuleDescriptor$Opens$Modifier$Type)>, arg1: string): $ModuleDescriptor$Builder
+public "opens"(arg0: string): $ModuleDescriptor$Builder
+public "opens"(arg0: string, arg1: $Set$Type<(string)>): $ModuleDescriptor$Builder
+public "opens"(arg0: $Set$Type<($ModuleDescriptor$Opens$Modifier$Type)>, arg1: string, arg2: $Set$Type<(string)>): $ModuleDescriptor$Builder
+public "uses"(arg0: string): $ModuleDescriptor$Builder
+public "provides"(arg0: $ModuleDescriptor$Provides$Type): $ModuleDescriptor$Builder
+public "provides"(arg0: string, arg1: $List$Type<(string)>): $ModuleDescriptor$Builder
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $ModuleDescriptor$Builder$Type = ($ModuleDescriptor$Builder);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $ModuleDescriptor$Builder_ = $ModuleDescriptor$Builder$Type;
+}}
+declare module "packages/java/lang/$Readable" {
+import {$CharBuffer, $CharBuffer$Type} from "packages/java/nio/$CharBuffer"
+
+/**
+ * This class is not allowed By KubeJS!
+ * You should not load the class, or KubeJS will throw an error.
+ * Loading the class using require() will not throw an error, but the class will be undefined.
+ */
+export interface $Readable {
+
+ "read"(arg0: $CharBuffer$Type): integer
+
+(arg0: $CharBuffer$Type): integer
+}
+
+export namespace $Readable {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Readable$Type = ($Readable);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Readable_ = $Readable$Type;
+}}
+declare module "packages/java/lang/reflect/$AnnotatedElement" {
+import {$Annotation, $Annotation$Type} from "packages/java/lang/annotation/$Annotation"
+import {$Class, $Class$Type} from "packages/java/lang/$Class"
+
+/**
+ * This class is not allowed By KubeJS!
+ * You should not load the class, or KubeJS will throw an error.
+ * Loading the class using require() will not throw an error, but the class will be undefined.
+ */
+export interface $AnnotatedElement {
+
+ "isAnnotationPresent"(arg0: $Class$Type<(any)>): boolean
+ "getAnnotation"<T extends $Annotation>(arg0: $Class$Type<(T)>): T
+ "getAnnotationsByType"<T extends $Annotation>(arg0: $Class$Type<(T)>): (T)[]
+ "getAnnotations"(): ($Annotation)[]
+ "getDeclaredAnnotation"<T extends $Annotation>(arg0: $Class$Type<(T)>): T
+ "getDeclaredAnnotationsByType"<T extends $Annotation>(arg0: $Class$Type<(T)>): (T)[]
+ "getDeclaredAnnotations"(): ($Annotation)[]
+}
+
+export namespace $AnnotatedElement {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $AnnotatedElement$Type = ($AnnotatedElement);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $AnnotatedElement_ = $AnnotatedElement$Type;
+}}
+declare module "packages/java/lang/constant/$MethodHandleDesc" {
+import {$MethodHandles$Lookup, $MethodHandles$Lookup$Type} from "packages/java/lang/invoke/$MethodHandles$Lookup"
+import {$DirectMethodHandleDesc$Kind, $DirectMethodHandleDesc$Kind$Type} from "packages/java/lang/constant/$DirectMethodHandleDesc$Kind"
+import {$ClassDesc, $ClassDesc$Type} from "packages/java/lang/constant/$ClassDesc"
+import {$MethodTypeDesc, $MethodTypeDesc$Type} from "packages/java/lang/constant/$MethodTypeDesc"
+import {$ConstantDesc, $ConstantDesc$Type} from "packages/java/lang/constant/$ConstantDesc"
+import {$DirectMethodHandleDesc, $DirectMethodHandleDesc$Type} from "packages/java/lang/constant/$DirectMethodHandleDesc"
+
+/**
+ * This class is not allowed By KubeJS!
+ * You should not load the class, or KubeJS will throw an error.
+ * Loading the class using require() will not throw an error, but the class will be undefined.
+ */
+export interface $MethodHandleDesc extends $ConstantDesc {
+
+ "equals"(arg0: any): boolean
+ "asType"(arg0: $MethodTypeDesc$Type): $MethodHandleDesc
+ "invocationType"(): $MethodTypeDesc
+ "resolveConstantDesc"(arg0: $MethodHandles$Lookup$Type): any
+}
+
+export namespace $MethodHandleDesc {
+function ofConstructor(arg0: $ClassDesc$Type, ...arg1: ($ClassDesc$Type)[]): $DirectMethodHandleDesc
+function of(arg0: $DirectMethodHandleDesc$Kind$Type, arg1: $ClassDesc$Type, arg2: string, arg3: string): $DirectMethodHandleDesc
+function ofField(arg0: $DirectMethodHandleDesc$Kind$Type, arg1: $ClassDesc$Type, arg2: string, arg3: $ClassDesc$Type): $DirectMethodHandleDesc
+function ofMethod(arg0: $DirectMethodHandleDesc$Kind$Type, arg1: $ClassDesc$Type, arg2: string, arg3: $MethodTypeDesc$Type): $DirectMethodHandleDesc
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $MethodHandleDesc$Type = ($MethodHandleDesc);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $MethodHandleDesc_ = $MethodHandleDesc$Type;
+}}
+declare module "packages/java/lang/module/$ModuleDescriptor$Modifier" {
+import {$Enum, $Enum$Type} from "packages/java/lang/$Enum"
+
+/**
+ * This class is not allowed By KubeJS!
+ * You should not load the class, or KubeJS will throw an error.
+ * Loading the class using require() will not throw an error, but the class will be undefined.
+ */
+export class $ModuleDescriptor$Modifier extends $Enum<($ModuleDescriptor$Modifier)> {
+static readonly "OPEN": $ModuleDescriptor$Modifier
+static readonly "AUTOMATIC": $ModuleDescriptor$Modifier
+static readonly "SYNTHETIC": $ModuleDescriptor$Modifier
+static readonly "MANDATED": $ModuleDescriptor$Modifier
+
+
+public static "values"(): ($ModuleDescriptor$Modifier)[]
+public static "valueOf"(arg0: string): $ModuleDescriptor$Modifier
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $ModuleDescriptor$Modifier$Type = (("synthetic") | ("automatic") | ("mandated") | ("open")) | ($ModuleDescriptor$Modifier);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $ModuleDescriptor$Modifier_ = $ModuleDescriptor$Modifier$Type;
+}}
+declare module "packages/java/lang/reflect/$GenericDeclaration" {
+import {$Annotation, $Annotation$Type} from "packages/java/lang/annotation/$Annotation"
+import {$Class, $Class$Type} from "packages/java/lang/$Class"
+import {$AnnotatedElement, $AnnotatedElement$Type} from "packages/java/lang/reflect/$AnnotatedElement"
+import {$TypeVariable, $TypeVariable$Type} from "packages/java/lang/reflect/$TypeVariable"
+
+/**
+ * This class is not allowed By KubeJS!
+ * You should not load the class, or KubeJS will throw an error.
+ * Loading the class using require() will not throw an error, but the class will be undefined.
+ */
+export interface $GenericDeclaration extends $AnnotatedElement {
+
+ "getTypeParameters"(): ($TypeVariable<(any)>)[]
+ "isAnnotationPresent"(arg0: $Class$Type<(any)>): boolean
+ "getAnnotation"<T extends $Annotation>(arg0: $Class$Type<(T)>): T
+ "getAnnotationsByType"<T extends $Annotation>(arg0: $Class$Type<(T)>): (T)[]
+ "getAnnotations"(): ($Annotation)[]
+ "getDeclaredAnnotation"<T extends $Annotation>(arg0: $Class$Type<(T)>): T
+ "getDeclaredAnnotationsByType"<T extends $Annotation>(arg0: $Class$Type<(T)>): (T)[]
+ "getDeclaredAnnotations"(): ($Annotation)[]
+}
+
+export namespace $GenericDeclaration {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $GenericDeclaration$Type = ($GenericDeclaration);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $GenericDeclaration_ = $GenericDeclaration$Type;
+}}
+declare module "packages/java/lang/$Character$Subset" {
+export {} // Mark the file as a module, do not remove unless there are other import/exports!
+/**
+ * This class is not allowed By KubeJS!
+ * You should not load the class, or KubeJS will throw an error.
+ * Loading the class using require() will not throw an error, but the class will be undefined.
+ */
+export class $Character$Subset {
+
+
+public "equals"(arg0: any): boolean
+public "toString"(): string
+public "hashCode"(): integer
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Character$Subset$Type = ($Character$Subset);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Character$Subset_ = $Character$Subset$Type;
+}}
+declare module "packages/java/lang/module/$Configuration" {
+import {$ResolvedModule, $ResolvedModule$Type} from "packages/java/lang/module/$ResolvedModule"
+import {$Set, $Set$Type} from "packages/java/util/$Set"
+import {$ModuleFinder, $ModuleFinder$Type} from "packages/java/lang/module/$ModuleFinder"
+import {$Collection, $Collection$Type} from "packages/java/util/$Collection"
+import {$List, $List$Type} from "packages/java/util/$List"
+import {$Optional, $Optional$Type} from "packages/java/util/$Optional"
+
+/**
+ * This class is not allowed By KubeJS!
+ * You should not load the class, or KubeJS will throw an error.
+ * Loading the class using require() will not throw an error, but the class will be undefined.
+ */
+export class $Configuration {
+
+
+public "toString"(): string
+public static "empty"(): $Configuration
+public static "resolve"(arg0: $ModuleFinder$Type, arg1: $List$Type<($Configuration$Type)>, arg2: $ModuleFinder$Type, arg3: $Collection$Type<(string)>): $Configuration
+public "resolve"(arg0: $ModuleFinder$Type, arg1: $ModuleFinder$Type, arg2: $Collection$Type<(string)>): $Configuration
+public "modules"(): $Set<($ResolvedModule)>
+public "parents"(): $List<($Configuration)>
+public "findModule"(arg0: string): $Optional<($ResolvedModule)>
+public static "resolveAndBind"(arg0: $ModuleFinder$Type, arg1: $List$Type<($Configuration$Type)>, arg2: $ModuleFinder$Type, arg3: $Collection$Type<(string)>): $Configuration
+public "resolveAndBind"(arg0: $ModuleFinder$Type, arg1: $ModuleFinder$Type, arg2: $Collection$Type<(string)>): $Configuration
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Configuration$Type = ($Configuration);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Configuration_ = $Configuration$Type;
+}}
+declare module "packages/java/lang/$AutoCloseable" {
+export {} // Mark the file as a module, do not remove unless there are other import/exports!
+export interface $AutoCloseable {
+
+ "close"(): void
+
+(): void
+}
+
+export namespace $AutoCloseable {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $AutoCloseable$Type = ($AutoCloseable);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $AutoCloseable_ = $AutoCloseable$Type;
+}}
+declare module "packages/java/lang/module/$ModuleDescriptor" {
+import {$ModuleDescriptor$Provides, $ModuleDescriptor$Provides$Type} from "packages/java/lang/module/$ModuleDescriptor$Provides"
+import {$Comparable, $Comparable$Type} from "packages/java/lang/$Comparable"
+import {$ModuleDescriptor$Builder, $ModuleDescriptor$Builder$Type} from "packages/java/lang/module/$ModuleDescriptor$Builder"
+import {$ModuleDescriptor$Opens, $ModuleDescriptor$Opens$Type} from "packages/java/lang/module/$ModuleDescriptor$Opens"
+import {$ByteBuffer, $ByteBuffer$Type} from "packages/java/nio/$ByteBuffer"
+import {$ModuleDescriptor$Version, $ModuleDescriptor$Version$Type} from "packages/java/lang/module/$ModuleDescriptor$Version"
+import {$ModuleDescriptor$Requires, $ModuleDescriptor$Requires$Type} from "packages/java/lang/module/$ModuleDescriptor$Requires"
+import {$ModuleDescriptor$Exports, $ModuleDescriptor$Exports$Type} from "packages/java/lang/module/$ModuleDescriptor$Exports"
+import {$Set, $Set$Type} from "packages/java/util/$Set"
+import {$Optional, $Optional$Type} from "packages/java/util/$Optional"
+import {$InputStream, $InputStream$Type} from "packages/java/io/$InputStream"
+import {$ModuleDescriptor$Modifier, $ModuleDescriptor$Modifier$Type} from "packages/java/lang/module/$ModuleDescriptor$Modifier"
+import {$Supplier, $Supplier$Type} from "packages/java/util/function/$Supplier"
+
+/**
+ * This class is not allowed By KubeJS!
+ * You should not load the class, or KubeJS will throw an error.
+ * Loading the class using require() will not throw an error, but the class will be undefined.
+ */
+export class $ModuleDescriptor implements $Comparable<($ModuleDescriptor)> {
+
+
+public "rawVersion"(): $Optional<(string)>
+public static "newModule"(arg0: string): $ModuleDescriptor$Builder
+public static "newModule"(arg0: string, arg1: $Set$Type<($ModuleDescriptor$Modifier$Type)>): $ModuleDescriptor$Builder
+public static "newOpenModule"(arg0: string): $ModuleDescriptor$Builder
+public static "newAutomaticModule"(arg0: string): $ModuleDescriptor$Builder
+public "requires"(): $Set<($ModuleDescriptor$Requires)>
+public "mainClass"(): $Optional<(string)>
+public "toNameAndVersion"(): string
+public "modifiers"(): $Set<($ModuleDescriptor$Modifier)>
+public "name"(): string
+public "equals"(arg0: any): boolean
+public "toString"(): string
+public "version"(): $Optional<($ModuleDescriptor$Version)>
+public "hashCode"(): integer
+public "compareTo"(arg0: $ModuleDescriptor$Type): integer
+public "packages"(): $Set<(string)>
+public "isOpen"(): boolean
+public static "read"(arg0: $ByteBuffer$Type, arg1: $Supplier$Type<($Set$Type<(string)>)>): $ModuleDescriptor
+public static "read"(arg0: $InputStream$Type, arg1: $Supplier$Type<($Set$Type<(string)>)>): $ModuleDescriptor
+public static "read"(arg0: $InputStream$Type): $ModuleDescriptor
+public static "read"(arg0: $ByteBuffer$Type): $ModuleDescriptor
+public "exports"(): $Set<($ModuleDescriptor$Exports)>
+public "opens"(): $Set<($ModuleDescriptor$Opens)>
+public "isAutomatic"(): boolean
+public "uses"(): $Set<(string)>
+public "provides"(): $Set<($ModuleDescriptor$Provides)>
+get "open"(): boolean
+get "automatic"(): boolean
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $ModuleDescriptor$Type = ($ModuleDescriptor);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $ModuleDescriptor_ = $ModuleDescriptor$Type;
+}}
+declare module "packages/java/lang/constant/$MethodTypeDesc" {
+import {$MethodHandles$Lookup, $MethodHandles$Lookup$Type} from "packages/java/lang/invoke/$MethodHandles$Lookup"
+import {$ClassDesc, $ClassDesc$Type} from "packages/java/lang/constant/$ClassDesc"
+import {$List, $List$Type} from "packages/java/util/$List"
+import {$TypeDescriptor$OfMethod, $TypeDescriptor$OfMethod$Type} from "packages/java/lang/invoke/$TypeDescriptor$OfMethod"
+import {$ConstantDesc, $ConstantDesc$Type} from "packages/java/lang/constant/$ConstantDesc"
+
+/**
+ * This class is not allowed By KubeJS!
+ * You should not load the class, or KubeJS will throw an error.
+ * Loading the class using require() will not throw an error, but the class will be undefined.
+ */
+export interface $MethodTypeDesc extends $ConstantDesc, $TypeDescriptor$OfMethod<($ClassDesc), ($MethodTypeDesc)> {
+
+ "displayDescriptor"(): string
+ "equals"(arg0: any): boolean
+ "descriptorString"(): string
+ "insertParameterTypes"(arg0: integer, ...arg1: ($ClassDesc$Type)[]): $MethodTypeDesc
+ "changeReturnType"(arg0: $ClassDesc$Type): $MethodTypeDesc
+ "parameterCount"(): integer
+ "parameterList"(): $List<($ClassDesc)>
+ "changeParameterType"(arg0: integer, arg1: $ClassDesc$Type): $MethodTypeDesc
+ "resolveConstantDesc"(arg0: $MethodHandles$Lookup$Type): any
+}
+
+export namespace $MethodTypeDesc {
+function of(arg0: $ClassDesc$Type, ...arg1: ($ClassDesc$Type)[]): $MethodTypeDesc
+function ofDescriptor(arg0: string): $MethodTypeDesc
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $MethodTypeDesc$Type = ($MethodTypeDesc);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $MethodTypeDesc_ = $MethodTypeDesc$Type;
+}}
+declare module "packages/java/lang/invoke/$MethodHandles$Lookup$ClassOption" {
+import {$Enum, $Enum$Type} from "packages/java/lang/$Enum"
+
+/**
+ * This class is not allowed By KubeJS!
+ * You should not load the class, or KubeJS will throw an error.
+ * Loading the class using require() will not throw an error, but the class will be undefined.
+ */
+export class $MethodHandles$Lookup$ClassOption extends $Enum<($MethodHandles$Lookup$ClassOption)> {
+static readonly "NESTMATE": $MethodHandles$Lookup$ClassOption
+static readonly "STRONG": $MethodHandles$Lookup$ClassOption
+
+
+public static "values"(): ($MethodHandles$Lookup$ClassOption)[]
+public static "valueOf"(arg0: string): $MethodHandles$Lookup$ClassOption
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $MethodHandles$Lookup$ClassOption$Type = (("strong") | ("nestmate")) | ($MethodHandles$Lookup$ClassOption);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $MethodHandles$Lookup$ClassOption_ = $MethodHandles$Lookup$ClassOption$Type;
+}}
+declare module "packages/java/lang/reflect/$Executable" {
+import {$Annotation, $Annotation$Type} from "packages/java/lang/annotation/$Annotation"
+import {$Member, $Member$Type} from "packages/java/lang/reflect/$Member"
+import {$Class, $Class$Type} from "packages/java/lang/$Class"
+import {$Type, $Type$Type} from "packages/java/lang/reflect/$Type"
+import {$AnnotatedType, $AnnotatedType$Type} from "packages/java/lang/reflect/$AnnotatedType"
+import {$Parameter, $Parameter$Type} from "packages/java/lang/reflect/$Parameter"
+import {$TypeVariable, $TypeVariable$Type} from "packages/java/lang/reflect/$TypeVariable"
+import {$GenericDeclaration, $GenericDeclaration$Type} from "packages/java/lang/reflect/$GenericDeclaration"
+import {$AccessibleObject, $AccessibleObject$Type} from "packages/java/lang/reflect/$AccessibleObject"
+
+/**
+ * This class is not allowed By KubeJS!
+ * You should not load the class, or KubeJS will throw an error.
+ * Loading the class using require() will not throw an error, but the class will be undefined.
+ */
+export class $Executable extends $AccessibleObject implements $Member, $GenericDeclaration {
+
+
+public "getName"(): string
+public "getModifiers"(): integer
+public "getTypeParameters"(): ($TypeVariable<(any)>)[]
+public "getParameterTypes"(): ($Class<(any)>)[]
+public "toGenericString"(): string
+public "isSynthetic"(): boolean
+public "getDeclaringClass"(): $Class<(any)>
+public "getAnnotation"<T extends $Annotation>(arg0: $Class$Type<(T)>): T
+public "getAnnotationsByType"<T extends $Annotation>(arg0: $Class$Type<(T)>): (T)[]
+public "getDeclaredAnnotations"(): ($Annotation)[]
+public "isVarArgs"(): boolean
+public "getAnnotatedParameterTypes"(): ($AnnotatedType)[]
+public "getParameterCount"(): integer
+public "getParameterAnnotations"(): (($Annotation)[])[]
+public "getGenericParameterTypes"(): ($Type)[]
+public "getGenericExceptionTypes"(): ($Type)[]
+public "getExceptionTypes"(): ($Class<(any)>)[]
+public "getAnnotatedReturnType"(): $AnnotatedType
+public "getParameters"(): ($Parameter)[]
+public "getAnnotatedReceiverType"(): $AnnotatedType
+public "getAnnotatedExceptionTypes"(): ($AnnotatedType)[]
+get "name"(): string
+get "modifiers"(): integer
+get "typeParameters"(): ($TypeVariable<(any)>)[]
+get "parameterTypes"(): ($Class<(any)>)[]
+get "synthetic"(): boolean
+get "declaringClass"(): $Class<(any)>
+get "declaredAnnotations"(): ($Annotation)[]
+get "varArgs"(): boolean
+get "annotatedParameterTypes"(): ($AnnotatedType)[]
+get "parameterCount"(): integer
+get "parameterAnnotations"(): (($Annotation)[])[]
+get "genericParameterTypes"(): ($Type)[]
+get "genericExceptionTypes"(): ($Type)[]
+get "exceptionTypes"(): ($Class<(any)>)[]
+get "annotatedReturnType"(): $AnnotatedType
+get "parameters"(): ($Parameter)[]
+get "annotatedReceiverType"(): $AnnotatedType
+get "annotatedExceptionTypes"(): ($AnnotatedType)[]
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Executable$Type = ($Executable);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Executable_ = $Executable$Type;
+}}
+declare module "packages/java/lang/constant/$Constable" {
+import {$Optional, $Optional$Type} from "packages/java/util/$Optional"
+
+/**
+ * This class is not allowed By KubeJS!
+ * You should not load the class, or KubeJS will throw an error.
+ * Loading the class using require() will not throw an error, but the class will be undefined.
+ */
+export interface $Constable {
+
+ "describeConstable"(): $Optional<(any)>
+
+(): $Optional<(any)>
+}
+
+export namespace $Constable {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Constable$Type = ($Constable);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Constable_ = $Constable$Type;
+}}
+declare module "packages/java/lang/reflect/$Member" {
+import {$Class, $Class$Type} from "packages/java/lang/$Class"
+
+/**
+ * This class is not allowed By KubeJS!
+ * You should not load the class, or KubeJS will throw an error.
+ * Loading the class using require() will not throw an error, but the class will be undefined.
+ */
+export interface $Member {
+
+ "getName"(): string
+ "getModifiers"(): integer
+ "isSynthetic"(): boolean
+ "getDeclaringClass"(): $Class<(any)>
+}
+
+export namespace $Member {
+const PUBLIC: integer
+const DECLARED: integer
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Member$Type = ($Member);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Member_ = $Member$Type;
+}}
+declare module "packages/java/lang/$Thread" {
+import {$StackTraceElement, $StackTraceElement$Type} from "packages/java/lang/$StackTraceElement"
+import {$Thread$State, $Thread$State$Type} from "packages/java/lang/$Thread$State"
+import {$ClassLoader, $ClassLoader$Type} from "packages/java/lang/$ClassLoader"
+import {$Thread$UncaughtExceptionHandler, $Thread$UncaughtExceptionHandler$Type} from "packages/java/lang/$Thread$UncaughtExceptionHandler"
+import {$Runnable, $Runnable$Type} from "packages/java/lang/$Runnable"
+import {$ThreadGroup, $ThreadGroup$Type} from "packages/java/lang/$ThreadGroup"
+import {$Map, $Map$Type} from "packages/java/util/$Map"
+
+/**
+ * This class is not allowed By KubeJS!
+ * You should not load the class, or KubeJS will throw an error.
+ * Loading the class using require() will not throw an error, but the class will be undefined.
+ */
+export class $Thread implements $Runnable {
+static readonly "MIN_PRIORITY": integer
+static readonly "NORM_PRIORITY": integer
+static readonly "MAX_PRIORITY": integer
+
+constructor(arg0: $ThreadGroup$Type, arg1: $Runnable$Type)
+constructor(arg0: string)
+constructor(arg0: $Runnable$Type)
+constructor()
+constructor(arg0: $ThreadGroup$Type, arg1: $Runnable$Type, arg2: string, arg3: long, arg4: boolean)
+constructor(arg0: $ThreadGroup$Type, arg1: $Runnable$Type, arg2: string, arg3: long)
+constructor(arg0: $ThreadGroup$Type, arg1: $Runnable$Type, arg2: string)
+constructor(arg0: $Runnable$Type, arg1: string)
+constructor(arg0: $ThreadGroup$Type, arg1: string)
+
+public "getName"(): string
+public "getStackTrace"(): ($StackTraceElement)[]
+public "run"(): void
+public "toString"(): string
+public static "currentThread"(): $Thread
+public static "onSpinWait"(): void
+public "join"(arg0: long): void
+public "join"(): void
+public "join"(arg0: long, arg1: integer): void
+public "start"(): void
+public "getThreadGroup"(): $ThreadGroup
+public "setContextClassLoader"(arg0: $ClassLoader$Type): void
+public static "holdsLock"(arg0: any): boolean
+/**
+ * 
+ * @deprecated
+ */
+public "checkAccess"(): void
+public static "dumpStack"(): void
+public "setPriority"(arg0: integer): void
+public "setDaemon"(arg0: boolean): void
+public static "sleep"(arg0: long, arg1: integer): void
+public static "sleep"(arg0: long): void
+public "isDaemon"(): boolean
+public "getPriority"(): integer
+public "getContextClassLoader"(): $ClassLoader
+/**
+ * 
+ * @deprecated
+ */
+public "resume"(): void
+public static "interrupted"(): boolean
+public "interrupt"(): void
+public static "activeCount"(): integer
+public static "enumerate"(arg0: ($Thread$Type)[]): integer
+public "isAlive"(): boolean
+public static "setDefaultUncaughtExceptionHandler"(arg0: $Thread$UncaughtExceptionHandler$Type): void
+public "getUncaughtExceptionHandler"(): $Thread$UncaughtExceptionHandler
+public static "yield"(): void
+/**
+ * 
+ * @deprecated
+ */
+public "stop"(): void
+public "isInterrupted"(): boolean
+/**
+ * 
+ * @deprecated
+ */
+public "suspend"(): void
+public "setName"(arg0: string): void
+/**
+ * 
+ * @deprecated
+ */
+public "countStackFrames"(): integer
+public static "getAllStackTraces"(): $Map<($Thread), (($StackTraceElement)[])>
+public "getId"(): long
+public "getState"(): $Thread$State
+public static "getDefaultUncaughtExceptionHandler"(): $Thread$UncaughtExceptionHandler
+public "setUncaughtExceptionHandler"(arg0: $Thread$UncaughtExceptionHandler$Type): void
+get "name"(): string
+get "stackTrace"(): ($StackTraceElement)[]
+get "threadGroup"(): $ThreadGroup
+set "contextClassLoader"(value: $ClassLoader$Type)
+set "priority"(value: integer)
+set "daemon"(value: boolean)
+get "daemon"(): boolean
+get "priority"(): integer
+get "contextClassLoader"(): $ClassLoader
+get "alive"(): boolean
+set "defaultUncaughtExceptionHandler"(value: $Thread$UncaughtExceptionHandler$Type)
+get "uncaughtExceptionHandler"(): $Thread$UncaughtExceptionHandler
+set "name"(value: string)
+get "allStackTraces"(): $Map<($Thread), (($StackTraceElement)[])>
+get "id"(): long
+get "state"(): $Thread$State
+get "defaultUncaughtExceptionHandler"(): $Thread$UncaughtExceptionHandler
+set "uncaughtExceptionHandler"(value: $Thread$UncaughtExceptionHandler$Type)
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Thread$Type = ($Thread);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Thread_ = $Thread$Type;
+}}
+declare module "packages/java/lang/module/$ModuleReference" {
+import {$ModuleDescriptor, $ModuleDescriptor$Type} from "packages/java/lang/module/$ModuleDescriptor"
+import {$Optional, $Optional$Type} from "packages/java/util/$Optional"
+import {$URI, $URI$Type} from "packages/java/net/$URI"
+import {$ModuleReader, $ModuleReader$Type} from "packages/java/lang/module/$ModuleReader"
+
+/**
+ * This class is not allowed By KubeJS!
+ * You should not load the class, or KubeJS will throw an error.
+ * Loading the class using require() will not throw an error, but the class will be undefined.
+ */
+export class $ModuleReference {
+
+
+public "descriptor"(): $ModuleDescriptor
+public "location"(): $Optional<($URI)>
+public "open"(): $ModuleReader
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $ModuleReference$Type = ($ModuleReference);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $ModuleReference_ = $ModuleReference$Type;
+}}
+declare module "packages/java/lang/invoke/$VarHandle$VarHandleDesc" {
+import {$VarHandle, $VarHandle$Type} from "packages/java/lang/invoke/$VarHandle"
+import {$DynamicConstantDesc, $DynamicConstantDesc$Type} from "packages/java/lang/constant/$DynamicConstantDesc"
+import {$MethodHandles$Lookup, $MethodHandles$Lookup$Type} from "packages/java/lang/invoke/$MethodHandles$Lookup"
+import {$ClassDesc, $ClassDesc$Type} from "packages/java/lang/constant/$ClassDesc"
+
+/**
+ * This class is not allowed By KubeJS!
+ * You should not load the class, or KubeJS will throw an error.
+ * Loading the class using require() will not throw an error, but the class will be undefined.
+ */
+export class $VarHandle$VarHandleDesc extends $DynamicConstantDesc<($VarHandle)> {
+
+
+public static "ofStaticField"(arg0: $ClassDesc$Type, arg1: string, arg2: $ClassDesc$Type): $VarHandle$VarHandleDesc
+public static "ofArray"(arg0: $ClassDesc$Type): $VarHandle$VarHandleDesc
+public "toString"(): string
+public "resolveConstantDesc"(arg0: $MethodHandles$Lookup$Type): $VarHandle
+public static "ofField"(arg0: $ClassDesc$Type, arg1: string, arg2: $ClassDesc$Type): $VarHandle$VarHandleDesc
+public "varType"(): $ClassDesc
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $VarHandle$VarHandleDesc$Type = ($VarHandle$VarHandleDesc);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $VarHandle$VarHandleDesc_ = $VarHandle$VarHandleDesc$Type;
+}}
+declare module "packages/java/lang/$ThreadLocal" {
+import {$Supplier, $Supplier$Type} from "packages/java/util/function/$Supplier"
+
+/**
+ * This class is not allowed By KubeJS!
+ * You should not load the class, or KubeJS will throw an error.
+ * Loading the class using require() will not throw an error, but the class will be undefined.
+ */
+export class $ThreadLocal<T> {
+
+constructor()
+
+public static "withInitial"<S>(arg0: $Supplier$Type<(any)>): $ThreadLocal<(S)>
+public "remove"(): void
+public "get"(): T
+public "set"(arg0: T): void
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $ThreadLocal$Type<T> = ($ThreadLocal<(T)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $ThreadLocal_<T> = $ThreadLocal$Type<(T)>;
+}}
+declare module "packages/java/lang/constant/$ClassDesc" {
+import {$MethodHandles$Lookup, $MethodHandles$Lookup$Type} from "packages/java/lang/invoke/$MethodHandles$Lookup"
+import {$ConstantDesc, $ConstantDesc$Type} from "packages/java/lang/constant/$ConstantDesc"
+import {$TypeDescriptor$OfField, $TypeDescriptor$OfField$Type} from "packages/java/lang/invoke/$TypeDescriptor$OfField"
+
+/**
+ * This class is not allowed By KubeJS!
+ * You should not load the class, or KubeJS will throw an error.
+ * Loading the class using require() will not throw an error, but the class will be undefined.
+ */
+export interface $ClassDesc extends $ConstantDesc, $TypeDescriptor$OfField<($ClassDesc)> {
+
+ "nested"(arg0: string): $ClassDesc
+ "nested"(arg0: string, ...arg1: (string)[]): $ClassDesc
+ "isClassOrInterface"(): boolean
+ "displayName"(): string
+ "equals"(arg0: any): boolean
+ "isArray"(): boolean
+ "isPrimitive"(): boolean
+ "componentType"(): $ClassDesc
+ "packageName"(): string
+ "descriptorString"(): string
+ "arrayType"(arg0: integer): $ClassDesc
+ "resolveConstantDesc"(arg0: $MethodHandles$Lookup$Type): any
+}
+
+export namespace $ClassDesc {
+function of(arg0: string): $ClassDesc
+function of(arg0: string, arg1: string): $ClassDesc
+function ofDescriptor(arg0: string): $ClassDesc
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $ClassDesc$Type = ($ClassDesc);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $ClassDesc_ = $ClassDesc$Type;
 }}
 declare module "packages/java/lang/$Enum$EnumDesc" {
 import {$DynamicConstantDesc, $DynamicConstantDesc$Type} from "packages/java/lang/constant/$DynamicConstantDesc"
@@ -320,39 +1769,6 @@ export type $Cloneable$Type = ($Cloneable);
  */
 declare global {
 export type $Cloneable_ = $Cloneable$Type;
-}}
-declare module "packages/java/lang/module/$ResolvedModule" {
-import {$Set, $Set$Type} from "packages/java/util/$Set"
-import {$Configuration, $Configuration$Type} from "packages/java/lang/module/$Configuration"
-import {$ModuleReference, $ModuleReference$Type} from "packages/java/lang/module/$ModuleReference"
-
-/**
- * This class is not allowed By KubeJS!
- * You should not load the class, or KubeJS will throw an error.
- * Loading the class using require() will not throw an error, but the class will be undefined.
- */
-export class $ResolvedModule {
-
-
-public "name"(): string
-public "equals"(arg0: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
-public "reads"(): $Set<($ResolvedModule)>
-public "reference"(): $ModuleReference
-public "configuration"(): $Configuration
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $ResolvedModule$Type = ($ResolvedModule);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $ResolvedModule_ = $ResolvedModule$Type;
 }}
 declare module "packages/java/lang/reflect/$Method" {
 import {$Annotation, $Annotation$Type} from "packages/java/lang/annotation/$Annotation"
@@ -518,17 +1934,6 @@ static readonly "UNCONDITIONAL": integer
 static readonly "ORIGINAL": integer
 
 
-public "toString"(): string
-public "findClass"(arg0: string): $Class<(any)>
-public "defineClass"(arg0: (byte)[]): $Class<(any)>
-public "in"(arg0: $Class$Type<(any)>): $MethodHandles$Lookup
-public "ensureInitialized"(arg0: $Class$Type<(any)>): $Class<(any)>
-public "revealDirect"(arg0: $MethodHandle$Type): $MethodHandleInfo
-public "lookupClass"(): $Class<(any)>
-public "previousLookupClass"(): $Class<(any)>
-public "findVirtual"(arg0: $Class$Type<(any)>, arg1: string, arg2: $MethodType$Type): $MethodHandle
-public "findStatic"(arg0: $Class$Type<(any)>, arg1: string, arg2: $MethodType$Type): $MethodHandle
-public "lookupModes"(): integer
 public "hasFullPrivilegeAccess"(): boolean
 public "accessClass"(arg0: $Class$Type<(any)>): $Class<(any)>
 public "dropLookupMode"(arg0: integer): $MethodHandles$Lookup
@@ -554,6 +1959,17 @@ public "unreflectVarHandle"(arg0: $Field$Type): $VarHandle
  * @deprecated
  */
 public "hasPrivateAccess"(): boolean
+public "toString"(): string
+public "findClass"(arg0: string): $Class<(any)>
+public "defineClass"(arg0: (byte)[]): $Class<(any)>
+public "in"(arg0: $Class$Type<(any)>): $MethodHandles$Lookup
+public "ensureInitialized"(arg0: $Class$Type<(any)>): $Class<(any)>
+public "revealDirect"(arg0: $MethodHandle$Type): $MethodHandleInfo
+public "lookupClass"(): $Class<(any)>
+public "previousLookupClass"(): $Class<(any)>
+public "findVirtual"(arg0: $Class$Type<(any)>, arg1: string, arg2: $MethodType$Type): $MethodHandle
+public "findStatic"(arg0: $Class$Type<(any)>, arg1: string, arg2: $MethodType$Type): $MethodHandle
+public "lookupModes"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -566,38 +1982,6 @@ export type $MethodHandles$Lookup$Type = ($MethodHandles$Lookup);
  */
 declare global {
 export type $MethodHandles$Lookup_ = $MethodHandles$Lookup$Type;
-}}
-declare module "packages/java/lang/invoke/$TypeDescriptor$OfField" {
-import {$TypeDescriptor, $TypeDescriptor$Type} from "packages/java/lang/invoke/$TypeDescriptor"
-
-/**
- * This class is not allowed By KubeJS!
- * You should not load the class, or KubeJS will throw an error.
- * Loading the class using require() will not throw an error, but the class will be undefined.
- */
-export interface $TypeDescriptor$OfField<F extends $TypeDescriptor$OfField<(F)>> extends $TypeDescriptor {
-
- "isArray"(): boolean
- "isPrimitive"(): boolean
- "componentType"(): F
- "arrayType"(): F
- "descriptorString"(): string
-}
-
-export namespace $TypeDescriptor$OfField {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $TypeDescriptor$OfField$Type<F> = ($TypeDescriptor$OfField<(F)>);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $TypeDescriptor$OfField_<F> = $TypeDescriptor$OfField$Type<(F)>;
 }}
 declare module "packages/java/lang/$ModuleLayer" {
 import {$Function, $Function$Type} from "packages/java/util/function/$Function"
@@ -750,104 +2134,6 @@ export type $MethodHandleInfo$Type = ($MethodHandleInfo);
 declare global {
 export type $MethodHandleInfo_ = $MethodHandleInfo$Type;
 }}
-declare module "packages/java/lang/reflect/$AnnotatedType" {
-import {$Annotation, $Annotation$Type} from "packages/java/lang/annotation/$Annotation"
-import {$Class, $Class$Type} from "packages/java/lang/$Class"
-import {$Type, $Type$Type} from "packages/java/lang/reflect/$Type"
-import {$AnnotatedElement, $AnnotatedElement$Type} from "packages/java/lang/reflect/$AnnotatedElement"
-
-/**
- * This class is not allowed By KubeJS!
- * You should not load the class, or KubeJS will throw an error.
- * Loading the class using require() will not throw an error, but the class will be undefined.
- */
-export interface $AnnotatedType extends $AnnotatedElement {
-
- "getAnnotatedOwnerType"(): $AnnotatedType
- "getAnnotation"<T extends $Annotation>(arg0: $Class$Type<(T)>): T
- "getAnnotations"(): ($Annotation)[]
- "getDeclaredAnnotations"(): ($Annotation)[]
- "getType"(): $Type
- "isAnnotationPresent"(arg0: $Class$Type<(any)>): boolean
- "getAnnotationsByType"<T extends $Annotation>(arg0: $Class$Type<(T)>): (T)[]
- "getDeclaredAnnotation"<T extends $Annotation>(arg0: $Class$Type<(T)>): T
- "getDeclaredAnnotationsByType"<T extends $Annotation>(arg0: $Class$Type<(T)>): (T)[]
-}
-
-export namespace $AnnotatedType {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $AnnotatedType$Type = ($AnnotatedType);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $AnnotatedType_ = $AnnotatedType$Type;
-}}
-declare module "packages/java/lang/$Exception" {
-import {$Throwable, $Throwable$Type} from "packages/java/lang/$Throwable"
-
-/**
- * This class is not allowed By KubeJS!
- * You should not load the class, or KubeJS will throw an error.
- * Loading the class using require() will not throw an error, but the class will be undefined.
- */
-export class $Exception extends $Throwable {
-
-constructor(arg0: $Throwable$Type)
-constructor(arg0: string, arg1: $Throwable$Type)
-constructor(arg0: string)
-constructor()
-
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $Exception$Type = ($Exception);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $Exception_ = $Exception$Type;
-}}
-declare module "packages/java/lang/$Thread$UncaughtExceptionHandler" {
-import {$Throwable, $Throwable$Type} from "packages/java/lang/$Throwable"
-import {$Thread, $Thread$Type} from "packages/java/lang/$Thread"
-
-/**
- * This class is not allowed By KubeJS!
- * You should not load the class, or KubeJS will throw an error.
- * Loading the class using require() will not throw an error, but the class will be undefined.
- */
-export interface $Thread$UncaughtExceptionHandler {
-
- "uncaughtException"(arg0: $Thread$Type, arg1: $Throwable$Type): void
-
-(arg0: $Thread$Type, arg1: $Throwable$Type): void
-}
-
-export namespace $Thread$UncaughtExceptionHandler {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $Thread$UncaughtExceptionHandler$Type = ($Thread$UncaughtExceptionHandler);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $Thread$UncaughtExceptionHandler_ = $Thread$UncaughtExceptionHandler$Type;
-}}
 declare module "packages/java/lang/$Package" {
 import {$Annotation, $Annotation$Type} from "packages/java/lang/annotation/$Annotation"
 import {$Class, $Class$Type} from "packages/java/lang/$Class"
@@ -962,165 +2248,6 @@ export type $Type$Type = ($Type);
  */
 declare global {
 export type $Type_ = $Type$Type;
-}}
-declare module "packages/java/lang/$ThreadGroup" {
-import {$Throwable, $Throwable$Type} from "packages/java/lang/$Throwable"
-import {$Thread, $Thread$Type} from "packages/java/lang/$Thread"
-import {$Thread$UncaughtExceptionHandler, $Thread$UncaughtExceptionHandler$Type} from "packages/java/lang/$Thread$UncaughtExceptionHandler"
-
-/**
- * This class is not allowed By KubeJS!
- * You should not load the class, or KubeJS will throw an error.
- * Loading the class using require() will not throw an error, but the class will be undefined.
- */
-export class $ThreadGroup implements $Thread$UncaughtExceptionHandler {
-
-constructor(arg0: string)
-constructor(arg0: $ThreadGroup$Type, arg1: string)
-
-public "getName"(): string
-public "toString"(): string
-public "list"(): void
-public "getParent"(): $ThreadGroup
-/**
- * 
- * @deprecated
- */
-public "checkAccess"(): void
-/**
- * 
- * @deprecated
- */
-public "setDaemon"(arg0: boolean): void
-/**
- * 
- * @deprecated
- */
-public "isDaemon"(): boolean
-/**
- * 
- * @deprecated
- */
-public "resume"(): void
-public "interrupt"(): void
-public "getMaxPriority"(): integer
-public "activeCount"(): integer
-public "enumerate"(arg0: ($ThreadGroup$Type)[], arg1: boolean): integer
-public "enumerate"(arg0: ($ThreadGroup$Type)[]): integer
-public "enumerate"(arg0: ($Thread$Type)[]): integer
-public "enumerate"(arg0: ($Thread$Type)[], arg1: boolean): integer
-public "uncaughtException"(arg0: $Thread$Type, arg1: $Throwable$Type): void
-/**
- * 
- * @deprecated
- */
-public "stop"(): void
-/**
- * 
- * @deprecated
- */
-public "suspend"(): void
-public "setMaxPriority"(arg0: integer): void
-public "activeGroupCount"(): integer
-/**
- * 
- * @deprecated
- */
-public "destroy"(): void
-/**
- * 
- * @deprecated
- */
-public "isDestroyed"(): boolean
-public "parentOf"(arg0: $ThreadGroup$Type): boolean
-/**
- * 
- * @deprecated
- */
-public "allowThreadSuspension"(arg0: boolean): boolean
-get "name"(): string
-get "parent"(): $ThreadGroup
-set "daemon"(value: boolean)
-get "daemon"(): boolean
-get "maxPriority"(): integer
-set "maxPriority"(value: integer)
-get "destroyed"(): boolean
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $ThreadGroup$Type = ($ThreadGroup);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $ThreadGroup_ = $ThreadGroup$Type;
-}}
-declare module "packages/java/lang/$Module" {
-import {$ModuleDescriptor, $ModuleDescriptor$Type} from "packages/java/lang/module/$ModuleDescriptor"
-import {$Annotation, $Annotation$Type} from "packages/java/lang/annotation/$Annotation"
-import {$Set, $Set$Type} from "packages/java/util/$Set"
-import {$Class, $Class$Type} from "packages/java/lang/$Class"
-import {$ClassLoader, $ClassLoader$Type} from "packages/java/lang/$ClassLoader"
-import {$InputStream, $InputStream$Type} from "packages/java/io/$InputStream"
-import {$AnnotatedElement, $AnnotatedElement$Type} from "packages/java/lang/reflect/$AnnotatedElement"
-import {$ModuleLayer, $ModuleLayer$Type} from "packages/java/lang/$ModuleLayer"
-
-/**
- * This class is not allowed By KubeJS!
- * You should not load the class, or KubeJS will throw an error.
- * Loading the class using require() will not throw an error, but the class will be undefined.
- */
-export class $Module implements $AnnotatedElement {
-
-
-public "getName"(): string
-public "toString"(): string
-public "addReads"(arg0: $Module$Type): $Module
-public "addExports"(arg0: string, arg1: $Module$Type): $Module
-public "addOpens"(arg0: string, arg1: $Module$Type): $Module
-public "addUses"(arg0: $Class$Type<(any)>): $Module
-public "getClassLoader"(): $ClassLoader
-public "getDescriptor"(): $ModuleDescriptor
-public "isNamed"(): boolean
-public "getResourceAsStream"(arg0: string): $InputStream
-public "isOpen"(arg0: string): boolean
-public "isOpen"(arg0: string, arg1: $Module$Type): boolean
-public "getAnnotation"<T extends $Annotation>(arg0: $Class$Type<(T)>): T
-public "getAnnotations"(): ($Annotation)[]
-public "getDeclaredAnnotations"(): ($Annotation)[]
-public "getPackages"(): $Set<(string)>
-public "canRead"(arg0: $Module$Type): boolean
-public "canUse"(arg0: $Class$Type<(any)>): boolean
-public "getLayer"(): $ModuleLayer
-public "isExported"(arg0: string, arg1: $Module$Type): boolean
-public "isExported"(arg0: string): boolean
-public "isAnnotationPresent"(arg0: $Class$Type<(any)>): boolean
-public "getAnnotationsByType"<T extends $Annotation>(arg0: $Class$Type<(T)>): (T)[]
-public "getDeclaredAnnotation"<T extends $Annotation>(arg0: $Class$Type<(T)>): T
-public "getDeclaredAnnotationsByType"<T extends $Annotation>(arg0: $Class$Type<(T)>): (T)[]
-get "name"(): string
-get "classLoader"(): $ClassLoader
-get "descriptor"(): $ModuleDescriptor
-get "named"(): boolean
-get "annotations"(): ($Annotation)[]
-get "declaredAnnotations"(): ($Annotation)[]
-get "packages"(): $Set<(string)>
-get "layer"(): $ModuleLayer
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $Module$Type = ($Module);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $Module_ = $Module$Type;
 }}
 declare module "packages/java/lang/$StringBuffer" {
 import {$Comparable, $Comparable$Type} from "packages/java/lang/$Comparable"
@@ -1333,82 +2460,6 @@ export type $ModuleDescriptor$Opens$Modifier$Type = (("synthetic") | ("mandated"
 declare global {
 export type $ModuleDescriptor$Opens$Modifier_ = $ModuleDescriptor$Opens$Modifier$Type;
 }}
-declare module "packages/java/lang/reflect/$RecordComponent" {
-import {$Annotation, $Annotation$Type} from "packages/java/lang/annotation/$Annotation"
-import {$Class, $Class$Type} from "packages/java/lang/$Class"
-import {$Type, $Type$Type} from "packages/java/lang/reflect/$Type"
-import {$Method, $Method$Type} from "packages/java/lang/reflect/$Method"
-import {$AnnotatedType, $AnnotatedType$Type} from "packages/java/lang/reflect/$AnnotatedType"
-import {$AnnotatedElement, $AnnotatedElement$Type} from "packages/java/lang/reflect/$AnnotatedElement"
-
-/**
- * This class is not allowed By KubeJS!
- * You should not load the class, or KubeJS will throw an error.
- * Loading the class using require() will not throw an error, but the class will be undefined.
- */
-export class $RecordComponent implements $AnnotatedElement {
-
-
-public "getName"(): string
-public "toString"(): string
-public "getAnnotation"<T extends $Annotation>(arg0: $Class$Type<(T)>): T
-public "getAnnotations"(): ($Annotation)[]
-public "getDeclaredAnnotations"(): ($Annotation)[]
-public "getGenericSignature"(): string
-public "getGenericType"(): $Type
-public "getType"(): $Class<(any)>
-public "getAnnotatedType"(): $AnnotatedType
-public "getDeclaringRecord"(): $Class<(any)>
-public "getAccessor"(): $Method
-public "isAnnotationPresent"(arg0: $Class$Type<(any)>): boolean
-public "getAnnotationsByType"<T extends $Annotation>(arg0: $Class$Type<(T)>): (T)[]
-public "getDeclaredAnnotation"<T extends $Annotation>(arg0: $Class$Type<(T)>): T
-public "getDeclaredAnnotationsByType"<T extends $Annotation>(arg0: $Class$Type<(T)>): (T)[]
-get "name"(): string
-get "annotations"(): ($Annotation)[]
-get "declaredAnnotations"(): ($Annotation)[]
-get "genericSignature"(): string
-get "genericType"(): $Type
-get "type"(): $Class<(any)>
-get "annotatedType"(): $AnnotatedType
-get "declaringRecord"(): $Class<(any)>
-get "accessor"(): $Method
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $RecordComponent$Type = ($RecordComponent);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $RecordComponent_ = $RecordComponent$Type;
-}}
-declare module "packages/java/lang/$NamedPackage" {
-export {} // Mark the file as a module, do not remove unless there are other import/exports!
-/**
- * This class is not allowed By KubeJS!
- * You should not load the class, or KubeJS will throw an error.
- * Loading the class using require() will not throw an error, but the class will be undefined.
- */
-export class $NamedPackage {
-
-
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $NamedPackage$Type = ($NamedPackage);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $NamedPackage_ = $NamedPackage$Type;
-}}
 declare module "packages/java/lang/module/$ModuleDescriptor$Requires" {
 import {$ModuleDescriptor$Version, $ModuleDescriptor$Version$Type} from "packages/java/lang/module/$ModuleDescriptor$Version"
 import {$Comparable, $Comparable$Type} from "packages/java/lang/$Comparable"
@@ -1424,8 +2475,8 @@ import {$ModuleDescriptor$Requires$Modifier, $ModuleDescriptor$Requires$Modifier
 export class $ModuleDescriptor$Requires implements $Comparable<($ModuleDescriptor$Requires)> {
 
 
-public "compiledVersion"(): $Optional<($ModuleDescriptor$Version)>
 public "rawCompiledVersion"(): $Optional<(string)>
+public "compiledVersion"(): $Optional<($ModuleDescriptor$Version)>
 public "modifiers"(): $Set<($ModuleDescriptor$Requires$Modifier)>
 public "name"(): string
 public "equals"(arg0: any): boolean
@@ -1579,51 +2630,6 @@ export type $Field$Type = ($Field);
 declare global {
 export type $Field_ = $Field$Type;
 }}
-declare module "packages/java/lang/$StackTraceElement" {
-import {$Serializable, $Serializable$Type} from "packages/java/io/$Serializable"
-
-/**
- * This class is not allowed By KubeJS!
- * You should not load the class, or KubeJS will throw an error.
- * Loading the class using require() will not throw an error, but the class will be undefined.
- */
-export class $StackTraceElement implements $Serializable {
-
-constructor(arg0: string, arg1: string, arg2: string, arg3: string, arg4: string, arg5: string, arg6: integer)
-constructor(arg0: string, arg1: string, arg2: string, arg3: integer)
-
-public "equals"(arg0: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
-public "isNativeMethod"(): boolean
-public "getFileName"(): string
-public "getLineNumber"(): integer
-public "getModuleName"(): string
-public "getModuleVersion"(): string
-public "getClassLoaderName"(): string
-public "getClassName"(): string
-public "getMethodName"(): string
-get "nativeMethod"(): boolean
-get "fileName"(): string
-get "lineNumber"(): integer
-get "moduleName"(): string
-get "moduleVersion"(): string
-get "classLoaderName"(): string
-get "className"(): string
-get "methodName"(): string
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $StackTraceElement$Type = ($StackTraceElement);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $StackTraceElement_ = $StackTraceElement$Type;
-}}
 declare module "packages/java/lang/$StringBuilder" {
 import {$Comparable, $Comparable$Type} from "packages/java/lang/$Comparable"
 import {$Serializable, $Serializable$Type} from "packages/java/io/$Serializable"
@@ -1744,195 +2750,6 @@ export type $VarHandle$Type = ($VarHandle);
  */
 declare global {
 export type $VarHandle_ = $VarHandle$Type;
-}}
-declare module "packages/java/lang/invoke/$TypeDescriptor" {
-export {} // Mark the file as a module, do not remove unless there are other import/exports!
-/**
- * This class is not allowed By KubeJS!
- * You should not load the class, or KubeJS will throw an error.
- * Loading the class using require() will not throw an error, but the class will be undefined.
- */
-export interface $TypeDescriptor {
-
- "descriptorString"(): string
-
-(): string
-}
-
-export namespace $TypeDescriptor {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $TypeDescriptor$Type = ($TypeDescriptor);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $TypeDescriptor_ = $TypeDescriptor$Type;
-}}
-declare module "packages/java/lang/$Math" {
-export {} // Mark the file as a module, do not remove unless there are other import/exports!
-/**
- * This class is not allowed By KubeJS!
- * You should not load the class, or KubeJS will throw an error.
- * Loading the class using require() will not throw an error, but the class will be undefined.
- */
-export class $Math {
-static readonly "E": double
-static readonly "PI": double
-
-
-public static "abs"(arg0: integer): integer
-public static "abs"(arg0: long): long
-public static "abs"(arg0: float): float
-public static "abs"(arg0: double): double
-public static "sin"(arg0: double): double
-public static "cos"(arg0: double): double
-public static "tan"(arg0: double): double
-public static "atan2"(arg0: double, arg1: double): double
-public static "sqrt"(arg0: double): double
-public static "log"(arg0: double): double
-public static "log10"(arg0: double): double
-public static "pow"(arg0: double, arg1: double): double
-public static "exp"(arg0: double): double
-public static "min"(arg0: integer, arg1: integer): integer
-public static "min"(arg0: float, arg1: float): float
-public static "min"(arg0: long, arg1: long): long
-public static "min"(arg0: double, arg1: double): double
-public static "max"(arg0: integer, arg1: integer): integer
-public static "max"(arg0: float, arg1: float): float
-public static "max"(arg0: long, arg1: long): long
-public static "max"(arg0: double, arg1: double): double
-public static "floor"(arg0: double): double
-public static "ceil"(arg0: double): double
-public static "rint"(arg0: double): double
-public static "addExact"(arg0: integer, arg1: integer): integer
-public static "addExact"(arg0: long, arg1: long): long
-public static "decrementExact"(arg0: long): long
-public static "decrementExact"(arg0: integer): integer
-public static "incrementExact"(arg0: integer): integer
-public static "incrementExact"(arg0: long): long
-public static "multiplyExact"(arg0: integer, arg1: integer): integer
-public static "multiplyExact"(arg0: long, arg1: long): long
-public static "multiplyExact"(arg0: long, arg1: integer): long
-public static "multiplyHigh"(arg0: long, arg1: long): long
-public static "negateExact"(arg0: long): long
-public static "negateExact"(arg0: integer): integer
-public static "subtractExact"(arg0: integer, arg1: integer): integer
-public static "subtractExact"(arg0: long, arg1: long): long
-public static "fma"(arg0: double, arg1: double, arg2: double): double
-public static "fma"(arg0: float, arg1: float, arg2: float): float
-public static "copySign"(arg0: float, arg1: float): float
-public static "copySign"(arg0: double, arg1: double): double
-public static "signum"(arg0: float): float
-public static "signum"(arg0: double): double
-public static "scalb"(arg0: double, arg1: integer): double
-public static "scalb"(arg0: float, arg1: integer): float
-public static "getExponent"(arg0: float): integer
-public static "getExponent"(arg0: double): integer
-public static "floorMod"(arg0: long, arg1: integer): integer
-public static "floorMod"(arg0: integer, arg1: integer): integer
-public static "floorMod"(arg0: long, arg1: long): long
-public static "asin"(arg0: double): double
-public static "acos"(arg0: double): double
-public static "atan"(arg0: double): double
-public static "cbrt"(arg0: double): double
-public static "IEEEremainder"(arg0: double, arg1: double): double
-public static "floorDiv"(arg0: long, arg1: long): long
-public static "floorDiv"(arg0: integer, arg1: integer): integer
-public static "floorDiv"(arg0: long, arg1: integer): long
-public static "sinh"(arg0: double): double
-public static "cosh"(arg0: double): double
-public static "tanh"(arg0: double): double
-public static "hypot"(arg0: double, arg1: double): double
-public static "expm1"(arg0: double): double
-public static "log1p"(arg0: double): double
-public static "toRadians"(arg0: double): double
-public static "toDegrees"(arg0: double): double
-public static "round"(arg0: double): long
-public static "round"(arg0: float): integer
-public static "random"(): double
-public static "toIntExact"(arg0: long): integer
-public static "multiplyFull"(arg0: integer, arg1: integer): long
-public static "absExact"(arg0: integer): integer
-public static "absExact"(arg0: long): long
-public static "ulp"(arg0: double): double
-public static "ulp"(arg0: float): float
-public static "nextAfter"(arg0: double, arg1: double): double
-public static "nextAfter"(arg0: float, arg1: double): float
-public static "nextUp"(arg0: double): double
-public static "nextUp"(arg0: float): float
-public static "nextDown"(arg0: double): double
-public static "nextDown"(arg0: float): float
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $Math$Type = ($Math);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $Math_ = $Math$Type;
-}}
-declare module "packages/java/lang/module/$ModuleDescriptor$Version" {
-import {$Comparable, $Comparable$Type} from "packages/java/lang/$Comparable"
-
-/**
- * This class is not allowed By KubeJS!
- * You should not load the class, or KubeJS will throw an error.
- * Loading the class using require() will not throw an error, but the class will be undefined.
- */
-export class $ModuleDescriptor$Version implements $Comparable<($ModuleDescriptor$Version)> {
-
-
-public "equals"(arg0: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
-public "compareTo"(arg0: $ModuleDescriptor$Version$Type): integer
-public static "parse"(arg0: string): $ModuleDescriptor$Version
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $ModuleDescriptor$Version$Type = ($ModuleDescriptor$Version);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $ModuleDescriptor$Version_ = $ModuleDescriptor$Version$Type;
-}}
-declare module "packages/java/lang/$Runnable" {
-export {} // Mark the file as a module, do not remove unless there are other import/exports!
-export interface $Runnable {
-
- "run"(): void
-
-(): void
-}
-
-export namespace $Runnable {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $Runnable$Type = ($Runnable);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $Runnable_ = $Runnable$Type;
 }}
 declare module "packages/java/lang/reflect/$Constructor" {
 import {$Annotation, $Annotation$Type} from "packages/java/lang/annotation/$Annotation"
@@ -2065,166 +2882,6 @@ export type $MethodType$Type = ($MethodType);
 declare global {
 export type $MethodType_ = $MethodType$Type;
 }}
-declare module "packages/java/lang/module/$ModuleDescriptor$Builder" {
-import {$ModuleDescriptor$Version, $ModuleDescriptor$Version$Type} from "packages/java/lang/module/$ModuleDescriptor$Version"
-import {$ModuleDescriptor$Provides, $ModuleDescriptor$Provides$Type} from "packages/java/lang/module/$ModuleDescriptor$Provides"
-import {$ModuleDescriptor, $ModuleDescriptor$Type} from "packages/java/lang/module/$ModuleDescriptor"
-import {$ModuleDescriptor$Exports$Modifier, $ModuleDescriptor$Exports$Modifier$Type} from "packages/java/lang/module/$ModuleDescriptor$Exports$Modifier"
-import {$ModuleDescriptor$Requires, $ModuleDescriptor$Requires$Type} from "packages/java/lang/module/$ModuleDescriptor$Requires"
-import {$ModuleDescriptor$Exports, $ModuleDescriptor$Exports$Type} from "packages/java/lang/module/$ModuleDescriptor$Exports"
-import {$Set, $Set$Type} from "packages/java/util/$Set"
-import {$ModuleDescriptor$Opens$Modifier, $ModuleDescriptor$Opens$Modifier$Type} from "packages/java/lang/module/$ModuleDescriptor$Opens$Modifier"
-import {$List, $List$Type} from "packages/java/util/$List"
-import {$ModuleDescriptor$Requires$Modifier, $ModuleDescriptor$Requires$Modifier$Type} from "packages/java/lang/module/$ModuleDescriptor$Requires$Modifier"
-import {$ModuleDescriptor$Opens, $ModuleDescriptor$Opens$Type} from "packages/java/lang/module/$ModuleDescriptor$Opens"
-
-/**
- * This class is not allowed By KubeJS!
- * You should not load the class, or KubeJS will throw an error.
- * Loading the class using require() will not throw an error, but the class will be undefined.
- */
-export class $ModuleDescriptor$Builder {
-
-
-public "version"(arg0: string): $ModuleDescriptor$Builder
-public "version"(arg0: $ModuleDescriptor$Version$Type): $ModuleDescriptor$Builder
-public "packages"(arg0: $Set$Type<(string)>): $ModuleDescriptor$Builder
-public "exports"(arg0: $Set$Type<($ModuleDescriptor$Exports$Modifier$Type)>, arg1: string): $ModuleDescriptor$Builder
-public "exports"(arg0: string, arg1: $Set$Type<(string)>): $ModuleDescriptor$Builder
-public "exports"(arg0: string): $ModuleDescriptor$Builder
-public "exports"(arg0: $Set$Type<($ModuleDescriptor$Exports$Modifier$Type)>, arg1: string, arg2: $Set$Type<(string)>): $ModuleDescriptor$Builder
-public "exports"(arg0: $ModuleDescriptor$Exports$Type): $ModuleDescriptor$Builder
-public "opens"(arg0: $Set$Type<($ModuleDescriptor$Opens$Modifier$Type)>, arg1: string, arg2: $Set$Type<(string)>): $ModuleDescriptor$Builder
-public "opens"(arg0: $Set$Type<($ModuleDescriptor$Opens$Modifier$Type)>, arg1: string): $ModuleDescriptor$Builder
-public "opens"(arg0: string): $ModuleDescriptor$Builder
-public "opens"(arg0: string, arg1: $Set$Type<(string)>): $ModuleDescriptor$Builder
-public "opens"(arg0: $ModuleDescriptor$Opens$Type): $ModuleDescriptor$Builder
-public "uses"(arg0: string): $ModuleDescriptor$Builder
-public "provides"(arg0: $ModuleDescriptor$Provides$Type): $ModuleDescriptor$Builder
-public "provides"(arg0: string, arg1: $List$Type<(string)>): $ModuleDescriptor$Builder
-public "build"(): $ModuleDescriptor
-public "requires"(arg0: $Set$Type<($ModuleDescriptor$Requires$Modifier$Type)>, arg1: string, arg2: $ModuleDescriptor$Version$Type): $ModuleDescriptor$Builder
-public "requires"(arg0: $ModuleDescriptor$Requires$Type): $ModuleDescriptor$Builder
-public "requires"(arg0: $Set$Type<($ModuleDescriptor$Requires$Modifier$Type)>, arg1: string): $ModuleDescriptor$Builder
-public "requires"(arg0: string): $ModuleDescriptor$Builder
-public "mainClass"(arg0: string): $ModuleDescriptor$Builder
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $ModuleDescriptor$Builder$Type = ($ModuleDescriptor$Builder);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $ModuleDescriptor$Builder_ = $ModuleDescriptor$Builder$Type;
-}}
-declare module "packages/java/lang/$Readable" {
-import {$CharBuffer, $CharBuffer$Type} from "packages/java/nio/$CharBuffer"
-
-/**
- * This class is not allowed By KubeJS!
- * You should not load the class, or KubeJS will throw an error.
- * Loading the class using require() will not throw an error, but the class will be undefined.
- */
-export interface $Readable {
-
- "read"(arg0: $CharBuffer$Type): integer
-
-(arg0: $CharBuffer$Type): integer
-}
-
-export namespace $Readable {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $Readable$Type = ($Readable);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $Readable_ = $Readable$Type;
-}}
-declare module "packages/java/lang/reflect/$AnnotatedElement" {
-import {$Annotation, $Annotation$Type} from "packages/java/lang/annotation/$Annotation"
-import {$Class, $Class$Type} from "packages/java/lang/$Class"
-
-/**
- * This class is not allowed By KubeJS!
- * You should not load the class, or KubeJS will throw an error.
- * Loading the class using require() will not throw an error, but the class will be undefined.
- */
-export interface $AnnotatedElement {
-
- "isAnnotationPresent"(arg0: $Class$Type<(any)>): boolean
- "getAnnotation"<T extends $Annotation>(arg0: $Class$Type<(T)>): T
- "getAnnotationsByType"<T extends $Annotation>(arg0: $Class$Type<(T)>): (T)[]
- "getAnnotations"(): ($Annotation)[]
- "getDeclaredAnnotation"<T extends $Annotation>(arg0: $Class$Type<(T)>): T
- "getDeclaredAnnotationsByType"<T extends $Annotation>(arg0: $Class$Type<(T)>): (T)[]
- "getDeclaredAnnotations"(): ($Annotation)[]
-}
-
-export namespace $AnnotatedElement {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $AnnotatedElement$Type = ($AnnotatedElement);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $AnnotatedElement_ = $AnnotatedElement$Type;
-}}
-declare module "packages/java/lang/constant/$MethodHandleDesc" {
-import {$MethodHandles$Lookup, $MethodHandles$Lookup$Type} from "packages/java/lang/invoke/$MethodHandles$Lookup"
-import {$DirectMethodHandleDesc$Kind, $DirectMethodHandleDesc$Kind$Type} from "packages/java/lang/constant/$DirectMethodHandleDesc$Kind"
-import {$ClassDesc, $ClassDesc$Type} from "packages/java/lang/constant/$ClassDesc"
-import {$MethodTypeDesc, $MethodTypeDesc$Type} from "packages/java/lang/constant/$MethodTypeDesc"
-import {$ConstantDesc, $ConstantDesc$Type} from "packages/java/lang/constant/$ConstantDesc"
-import {$DirectMethodHandleDesc, $DirectMethodHandleDesc$Type} from "packages/java/lang/constant/$DirectMethodHandleDesc"
-
-/**
- * This class is not allowed By KubeJS!
- * You should not load the class, or KubeJS will throw an error.
- * Loading the class using require() will not throw an error, but the class will be undefined.
- */
-export interface $MethodHandleDesc extends $ConstantDesc {
-
- "equals"(arg0: any): boolean
- "asType"(arg0: $MethodTypeDesc$Type): $MethodHandleDesc
- "invocationType"(): $MethodTypeDesc
- "resolveConstantDesc"(arg0: $MethodHandles$Lookup$Type): any
-}
-
-export namespace $MethodHandleDesc {
-function ofConstructor(arg0: $ClassDesc$Type, ...arg1: ($ClassDesc$Type)[]): $DirectMethodHandleDesc
-function of(arg0: $DirectMethodHandleDesc$Kind$Type, arg1: $ClassDesc$Type, arg2: string, arg3: string): $DirectMethodHandleDesc
-function ofField(arg0: $DirectMethodHandleDesc$Kind$Type, arg1: $ClassDesc$Type, arg2: string, arg3: $ClassDesc$Type): $DirectMethodHandleDesc
-function ofMethod(arg0: $DirectMethodHandleDesc$Kind$Type, arg1: $ClassDesc$Type, arg2: string, arg3: $MethodTypeDesc$Type): $DirectMethodHandleDesc
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $MethodHandleDesc$Type = ($MethodHandleDesc);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $MethodHandleDesc_ = $MethodHandleDesc$Type;
-}}
 declare module "packages/java/lang/$CharSequence" {
 import {$IntStream, $IntStream$Type} from "packages/java/util/stream/$IntStream"
 
@@ -2253,74 +2910,6 @@ export type $CharSequence$Type = ($CharSequence);
  */
 declare global {
 export type $CharSequence_ = $CharSequence$Type;
-}}
-declare module "packages/java/lang/module/$ModuleDescriptor$Modifier" {
-import {$Enum, $Enum$Type} from "packages/java/lang/$Enum"
-
-/**
- * This class is not allowed By KubeJS!
- * You should not load the class, or KubeJS will throw an error.
- * Loading the class using require() will not throw an error, but the class will be undefined.
- */
-export class $ModuleDescriptor$Modifier extends $Enum<($ModuleDescriptor$Modifier)> {
-static readonly "OPEN": $ModuleDescriptor$Modifier
-static readonly "AUTOMATIC": $ModuleDescriptor$Modifier
-static readonly "SYNTHETIC": $ModuleDescriptor$Modifier
-static readonly "MANDATED": $ModuleDescriptor$Modifier
-
-
-public static "values"(): ($ModuleDescriptor$Modifier)[]
-public static "valueOf"(arg0: string): $ModuleDescriptor$Modifier
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $ModuleDescriptor$Modifier$Type = (("synthetic") | ("automatic") | ("mandated") | ("open")) | ($ModuleDescriptor$Modifier);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $ModuleDescriptor$Modifier_ = $ModuleDescriptor$Modifier$Type;
-}}
-declare module "packages/java/lang/reflect/$GenericDeclaration" {
-import {$Annotation, $Annotation$Type} from "packages/java/lang/annotation/$Annotation"
-import {$Class, $Class$Type} from "packages/java/lang/$Class"
-import {$AnnotatedElement, $AnnotatedElement$Type} from "packages/java/lang/reflect/$AnnotatedElement"
-import {$TypeVariable, $TypeVariable$Type} from "packages/java/lang/reflect/$TypeVariable"
-
-/**
- * This class is not allowed By KubeJS!
- * You should not load the class, or KubeJS will throw an error.
- * Loading the class using require() will not throw an error, but the class will be undefined.
- */
-export interface $GenericDeclaration extends $AnnotatedElement {
-
- "getTypeParameters"(): ($TypeVariable<(any)>)[]
- "isAnnotationPresent"(arg0: $Class$Type<(any)>): boolean
- "getAnnotation"<T extends $Annotation>(arg0: $Class$Type<(T)>): T
- "getAnnotationsByType"<T extends $Annotation>(arg0: $Class$Type<(T)>): (T)[]
- "getAnnotations"(): ($Annotation)[]
- "getDeclaredAnnotation"<T extends $Annotation>(arg0: $Class$Type<(T)>): T
- "getDeclaredAnnotationsByType"<T extends $Annotation>(arg0: $Class$Type<(T)>): (T)[]
- "getDeclaredAnnotations"(): ($Annotation)[]
-}
-
-export namespace $GenericDeclaration {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $GenericDeclaration$Type = ($GenericDeclaration);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $GenericDeclaration_ = $GenericDeclaration$Type;
 }}
 declare module "packages/java/lang/module/$ModuleDescriptor$Provides" {
 import {$Comparable, $Comparable$Type} from "packages/java/lang/$Comparable"
@@ -2378,44 +2967,6 @@ export type $Record$Type = ($Record);
  */
 declare global {
 export type $Record_ = $Record$Type;
-}}
-declare module "packages/java/lang/module/$Configuration" {
-import {$ResolvedModule, $ResolvedModule$Type} from "packages/java/lang/module/$ResolvedModule"
-import {$Set, $Set$Type} from "packages/java/util/$Set"
-import {$ModuleFinder, $ModuleFinder$Type} from "packages/java/lang/module/$ModuleFinder"
-import {$Collection, $Collection$Type} from "packages/java/util/$Collection"
-import {$List, $List$Type} from "packages/java/util/$List"
-import {$Optional, $Optional$Type} from "packages/java/util/$Optional"
-
-/**
- * This class is not allowed By KubeJS!
- * You should not load the class, or KubeJS will throw an error.
- * Loading the class using require() will not throw an error, but the class will be undefined.
- */
-export class $Configuration {
-
-
-public "toString"(): string
-public static "empty"(): $Configuration
-public static "resolve"(arg0: $ModuleFinder$Type, arg1: $List$Type<($Configuration$Type)>, arg2: $ModuleFinder$Type, arg3: $Collection$Type<(string)>): $Configuration
-public "resolve"(arg0: $ModuleFinder$Type, arg1: $ModuleFinder$Type, arg2: $Collection$Type<(string)>): $Configuration
-public "modules"(): $Set<($ResolvedModule)>
-public "parents"(): $List<($Configuration)>
-public "findModule"(arg0: string): $Optional<($ResolvedModule)>
-public static "resolveAndBind"(arg0: $ModuleFinder$Type, arg1: $List$Type<($Configuration$Type)>, arg2: $ModuleFinder$Type, arg3: $Collection$Type<(string)>): $Configuration
-public "resolveAndBind"(arg0: $ModuleFinder$Type, arg1: $ModuleFinder$Type, arg2: $Collection$Type<(string)>): $Configuration
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $Configuration$Type = ($Configuration);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $Configuration_ = $Configuration$Type;
 }}
 declare module "packages/java/lang/invoke/$TypeDescriptor$OfMethod" {
 import {$List, $List$Type} from "packages/java/util/$List"
@@ -2502,94 +3053,6 @@ export type $MethodHandle$Type = ($MethodHandle);
  */
 declare global {
 export type $MethodHandle_ = $MethodHandle$Type;
-}}
-declare module "packages/java/lang/$AutoCloseable" {
-export {} // Mark the file as a module, do not remove unless there are other import/exports!
-export interface $AutoCloseable {
-
- "close"(): void
-
-(): void
-}
-
-export namespace $AutoCloseable {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $AutoCloseable$Type = ($AutoCloseable);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $AutoCloseable_ = $AutoCloseable$Type;
-}}
-declare module "packages/java/lang/module/$ModuleDescriptor" {
-import {$ModuleDescriptor$Provides, $ModuleDescriptor$Provides$Type} from "packages/java/lang/module/$ModuleDescriptor$Provides"
-import {$Comparable, $Comparable$Type} from "packages/java/lang/$Comparable"
-import {$ModuleDescriptor$Builder, $ModuleDescriptor$Builder$Type} from "packages/java/lang/module/$ModuleDescriptor$Builder"
-import {$ModuleDescriptor$Opens, $ModuleDescriptor$Opens$Type} from "packages/java/lang/module/$ModuleDescriptor$Opens"
-import {$ByteBuffer, $ByteBuffer$Type} from "packages/java/nio/$ByteBuffer"
-import {$ModuleDescriptor$Version, $ModuleDescriptor$Version$Type} from "packages/java/lang/module/$ModuleDescriptor$Version"
-import {$ModuleDescriptor$Requires, $ModuleDescriptor$Requires$Type} from "packages/java/lang/module/$ModuleDescriptor$Requires"
-import {$ModuleDescriptor$Exports, $ModuleDescriptor$Exports$Type} from "packages/java/lang/module/$ModuleDescriptor$Exports"
-import {$Set, $Set$Type} from "packages/java/util/$Set"
-import {$Optional, $Optional$Type} from "packages/java/util/$Optional"
-import {$InputStream, $InputStream$Type} from "packages/java/io/$InputStream"
-import {$ModuleDescriptor$Modifier, $ModuleDescriptor$Modifier$Type} from "packages/java/lang/module/$ModuleDescriptor$Modifier"
-import {$Supplier, $Supplier$Type} from "packages/java/util/function/$Supplier"
-
-/**
- * This class is not allowed By KubeJS!
- * You should not load the class, or KubeJS will throw an error.
- * Loading the class using require() will not throw an error, but the class will be undefined.
- */
-export class $ModuleDescriptor implements $Comparable<($ModuleDescriptor)> {
-
-
-public "rawVersion"(): $Optional<(string)>
-public static "newModule"(arg0: string): $ModuleDescriptor$Builder
-public static "newModule"(arg0: string, arg1: $Set$Type<($ModuleDescriptor$Modifier$Type)>): $ModuleDescriptor$Builder
-public static "newOpenModule"(arg0: string): $ModuleDescriptor$Builder
-public static "newAutomaticModule"(arg0: string): $ModuleDescriptor$Builder
-public "modifiers"(): $Set<($ModuleDescriptor$Modifier)>
-public "name"(): string
-public "equals"(arg0: any): boolean
-public "toString"(): string
-public "version"(): $Optional<($ModuleDescriptor$Version)>
-public "hashCode"(): integer
-public "compareTo"(arg0: $ModuleDescriptor$Type): integer
-public "packages"(): $Set<(string)>
-public "isOpen"(): boolean
-public static "read"(arg0: $ByteBuffer$Type, arg1: $Supplier$Type<($Set$Type<(string)>)>): $ModuleDescriptor
-public static "read"(arg0: $InputStream$Type): $ModuleDescriptor
-public static "read"(arg0: $InputStream$Type, arg1: $Supplier$Type<($Set$Type<(string)>)>): $ModuleDescriptor
-public static "read"(arg0: $ByteBuffer$Type): $ModuleDescriptor
-public "exports"(): $Set<($ModuleDescriptor$Exports)>
-public "opens"(): $Set<($ModuleDescriptor$Opens)>
-public "isAutomatic"(): boolean
-public "uses"(): $Set<(string)>
-public "provides"(): $Set<($ModuleDescriptor$Provides)>
-public "requires"(): $Set<($ModuleDescriptor$Requires)>
-public "mainClass"(): $Optional<(string)>
-public "toNameAndVersion"(): string
-get "open"(): boolean
-get "automatic"(): boolean
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $ModuleDescriptor$Type = ($ModuleDescriptor);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $ModuleDescriptor_ = $ModuleDescriptor$Type;
 }}
 declare module "packages/java/lang/annotation/$Annotation" {
 import {$Class, $Class$Type} from "packages/java/lang/$Class"
@@ -2835,47 +3298,6 @@ export type $Class$Type<T> = ($Class<(T)>);
 declare global {
 export type $Class_<T> = $Class$Type<(T)>;
 }}
-declare module "packages/java/lang/constant/$MethodTypeDesc" {
-import {$MethodHandles$Lookup, $MethodHandles$Lookup$Type} from "packages/java/lang/invoke/$MethodHandles$Lookup"
-import {$ClassDesc, $ClassDesc$Type} from "packages/java/lang/constant/$ClassDesc"
-import {$List, $List$Type} from "packages/java/util/$List"
-import {$TypeDescriptor$OfMethod, $TypeDescriptor$OfMethod$Type} from "packages/java/lang/invoke/$TypeDescriptor$OfMethod"
-import {$ConstantDesc, $ConstantDesc$Type} from "packages/java/lang/constant/$ConstantDesc"
-
-/**
- * This class is not allowed By KubeJS!
- * You should not load the class, or KubeJS will throw an error.
- * Loading the class using require() will not throw an error, but the class will be undefined.
- */
-export interface $MethodTypeDesc extends $ConstantDesc, $TypeDescriptor$OfMethod<($ClassDesc), ($MethodTypeDesc)> {
-
- "displayDescriptor"(): string
- "equals"(arg0: any): boolean
- "descriptorString"(): string
- "insertParameterTypes"(arg0: integer, ...arg1: ($ClassDesc$Type)[]): $MethodTypeDesc
- "changeReturnType"(arg0: $ClassDesc$Type): $MethodTypeDesc
- "parameterCount"(): integer
- "parameterList"(): $List<($ClassDesc)>
- "changeParameterType"(arg0: integer, arg1: $ClassDesc$Type): $MethodTypeDesc
- "resolveConstantDesc"(arg0: $MethodHandles$Lookup$Type): any
-}
-
-export namespace $MethodTypeDesc {
-function of(arg0: $ClassDesc$Type, ...arg1: ($ClassDesc$Type)[]): $MethodTypeDesc
-function ofDescriptor(arg0: string): $MethodTypeDesc
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $MethodTypeDesc$Type = ($MethodTypeDesc);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $MethodTypeDesc_ = $MethodTypeDesc$Type;
-}}
 declare module "packages/java/lang/$Appendable" {
 export {} // Mark the file as a module, do not remove unless there are other import/exports!
 export interface $Appendable {
@@ -2899,105 +3321,6 @@ export type $Appendable$Type = ($Appendable);
  */
 declare global {
 export type $Appendable_ = $Appendable$Type;
-}}
-declare module "packages/java/lang/invoke/$MethodHandles$Lookup$ClassOption" {
-import {$Enum, $Enum$Type} from "packages/java/lang/$Enum"
-
-/**
- * This class is not allowed By KubeJS!
- * You should not load the class, or KubeJS will throw an error.
- * Loading the class using require() will not throw an error, but the class will be undefined.
- */
-export class $MethodHandles$Lookup$ClassOption extends $Enum<($MethodHandles$Lookup$ClassOption)> {
-static readonly "NESTMATE": $MethodHandles$Lookup$ClassOption
-static readonly "STRONG": $MethodHandles$Lookup$ClassOption
-
-
-public static "values"(): ($MethodHandles$Lookup$ClassOption)[]
-public static "valueOf"(arg0: string): $MethodHandles$Lookup$ClassOption
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $MethodHandles$Lookup$ClassOption$Type = (("strong") | ("nestmate")) | ($MethodHandles$Lookup$ClassOption);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $MethodHandles$Lookup$ClassOption_ = $MethodHandles$Lookup$ClassOption$Type;
-}}
-declare module "packages/java/lang/reflect/$Executable" {
-import {$Annotation, $Annotation$Type} from "packages/java/lang/annotation/$Annotation"
-import {$Member, $Member$Type} from "packages/java/lang/reflect/$Member"
-import {$Class, $Class$Type} from "packages/java/lang/$Class"
-import {$Type, $Type$Type} from "packages/java/lang/reflect/$Type"
-import {$AnnotatedType, $AnnotatedType$Type} from "packages/java/lang/reflect/$AnnotatedType"
-import {$Parameter, $Parameter$Type} from "packages/java/lang/reflect/$Parameter"
-import {$TypeVariable, $TypeVariable$Type} from "packages/java/lang/reflect/$TypeVariable"
-import {$GenericDeclaration, $GenericDeclaration$Type} from "packages/java/lang/reflect/$GenericDeclaration"
-import {$AccessibleObject, $AccessibleObject$Type} from "packages/java/lang/reflect/$AccessibleObject"
-
-/**
- * This class is not allowed By KubeJS!
- * You should not load the class, or KubeJS will throw an error.
- * Loading the class using require() will not throw an error, but the class will be undefined.
- */
-export class $Executable extends $AccessibleObject implements $Member, $GenericDeclaration {
-
-
-public "getName"(): string
-public "getModifiers"(): integer
-public "getTypeParameters"(): ($TypeVariable<(any)>)[]
-public "getParameterTypes"(): ($Class<(any)>)[]
-public "toGenericString"(): string
-public "isSynthetic"(): boolean
-public "getDeclaringClass"(): $Class<(any)>
-public "getAnnotation"<T extends $Annotation>(arg0: $Class$Type<(T)>): T
-public "getAnnotationsByType"<T extends $Annotation>(arg0: $Class$Type<(T)>): (T)[]
-public "getDeclaredAnnotations"(): ($Annotation)[]
-public "isVarArgs"(): boolean
-public "getAnnotatedParameterTypes"(): ($AnnotatedType)[]
-public "getParameterCount"(): integer
-public "getParameterAnnotations"(): (($Annotation)[])[]
-public "getGenericParameterTypes"(): ($Type)[]
-public "getGenericExceptionTypes"(): ($Type)[]
-public "getExceptionTypes"(): ($Class<(any)>)[]
-public "getAnnotatedReturnType"(): $AnnotatedType
-public "getParameters"(): ($Parameter)[]
-public "getAnnotatedReceiverType"(): $AnnotatedType
-public "getAnnotatedExceptionTypes"(): ($AnnotatedType)[]
-get "name"(): string
-get "modifiers"(): integer
-get "typeParameters"(): ($TypeVariable<(any)>)[]
-get "parameterTypes"(): ($Class<(any)>)[]
-get "synthetic"(): boolean
-get "declaringClass"(): $Class<(any)>
-get "declaredAnnotations"(): ($Annotation)[]
-get "varArgs"(): boolean
-get "annotatedParameterTypes"(): ($AnnotatedType)[]
-get "parameterCount"(): integer
-get "parameterAnnotations"(): (($Annotation)[])[]
-get "genericParameterTypes"(): ($Type)[]
-get "genericExceptionTypes"(): ($Type)[]
-get "exceptionTypes"(): ($Class<(any)>)[]
-get "annotatedReturnType"(): $AnnotatedType
-get "parameters"(): ($Parameter)[]
-get "annotatedReceiverType"(): $AnnotatedType
-get "annotatedExceptionTypes"(): ($AnnotatedType)[]
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $Executable$Type = ($Executable);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $Executable_ = $Executable$Type;
 }}
 declare module "packages/java/lang/reflect/$AccessibleObject" {
 import {$Annotation, $Annotation$Type} from "packages/java/lang/annotation/$Annotation"
@@ -3208,36 +3531,6 @@ export type $DirectMethodHandleDesc$Kind$Type = (("special") | ("interface_stati
 declare global {
 export type $DirectMethodHandleDesc$Kind_ = $DirectMethodHandleDesc$Kind$Type;
 }}
-declare module "packages/java/lang/constant/$Constable" {
-import {$Optional, $Optional$Type} from "packages/java/util/$Optional"
-
-/**
- * This class is not allowed By KubeJS!
- * You should not load the class, or KubeJS will throw an error.
- * Loading the class using require() will not throw an error, but the class will be undefined.
- */
-export interface $Constable {
-
- "describeConstable"(): $Optional<(any)>
-
-(): $Optional<(any)>
-}
-
-export namespace $Constable {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $Constable$Type = ($Constable);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $Constable_ = $Constable$Type;
-}}
 declare module "packages/java/lang/module/$ModuleFinder" {
 import {$Path, $Path$Type} from "packages/java/nio/file/$Path"
 import {$Set, $Set$Type} from "packages/java/util/$Set"
@@ -3251,14 +3544,14 @@ import {$ModuleReference, $ModuleReference$Type} from "packages/java/lang/module
  */
 export interface $ModuleFinder {
 
- "find"(arg0: string): $Optional<($ModuleReference)>
  "findAll"(): $Set<($ModuleReference)>
+ "find"(arg0: string): $Optional<($ModuleReference)>
 }
 
 export namespace $ModuleFinder {
-function of(...arg0: ($Path$Type)[]): $ModuleFinder
 function ofSystem(): $ModuleFinder
 function compose(...arg0: ($ModuleFinder$Type)[]): $ModuleFinder
+function of(...arg0: ($Path$Type)[]): $ModuleFinder
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3313,38 +3606,6 @@ export type $DynamicConstantDesc$Type<T> = ($DynamicConstantDesc<(T)>);
 declare global {
 export type $DynamicConstantDesc_<T> = $DynamicConstantDesc$Type<(T)>;
 }}
-declare module "packages/java/lang/reflect/$Member" {
-import {$Class, $Class$Type} from "packages/java/lang/$Class"
-
-/**
- * This class is not allowed By KubeJS!
- * You should not load the class, or KubeJS will throw an error.
- * Loading the class using require() will not throw an error, but the class will be undefined.
- */
-export interface $Member {
-
- "getName"(): string
- "getModifiers"(): integer
- "isSynthetic"(): boolean
- "getDeclaringClass"(): $Class<(any)>
-}
-
-export namespace $Member {
-const PUBLIC: integer
-const DECLARED: integer
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $Member$Type = ($Member);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $Member_ = $Member$Type;
-}}
 declare module "packages/java/lang/module/$ModuleDescriptor$Exports" {
 import {$Comparable, $Comparable$Type} from "packages/java/lang/$Comparable"
 import {$ModuleDescriptor$Exports$Modifier, $ModuleDescriptor$Exports$Modifier$Type} from "packages/java/lang/module/$ModuleDescriptor$Exports$Modifier"
@@ -3380,6 +3641,40 @@ export type $ModuleDescriptor$Exports$Type = ($ModuleDescriptor$Exports);
 declare global {
 export type $ModuleDescriptor$Exports_ = $ModuleDescriptor$Exports$Type;
 }}
+declare module "packages/java/lang/ref/$Reference" {
+export {} // Mark the file as a module, do not remove unless there are other import/exports!
+/**
+ * This class is not allowed By KubeJS!
+ * You should not load the class, or KubeJS will throw an error.
+ * Loading the class using require() will not throw an error, but the class will be undefined.
+ */
+export class $Reference<T> {
+
+
+public "get"(): T
+public "clear"(): void
+public static "reachabilityFence"(arg0: any): void
+public "enqueue"(): boolean
+public "refersTo"(arg0: T): boolean
+/**
+ * 
+ * @deprecated
+ */
+public "isEnqueued"(): boolean
+get "enqueued"(): boolean
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Reference$Type<T> = ($Reference<(T)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Reference_<T> = $Reference$Type<(T)>;
+}}
 declare module "packages/java/lang/reflect/$AnnotatedTypeVariable" {
 import {$Annotation, $Annotation$Type} from "packages/java/lang/annotation/$Annotation"
 import {$Class, $Class$Type} from "packages/java/lang/$Class"
@@ -3393,8 +3688,8 @@ import {$AnnotatedType, $AnnotatedType$Type} from "packages/java/lang/reflect/$A
  */
 export interface $AnnotatedTypeVariable extends $AnnotatedType {
 
- "getAnnotatedOwnerType"(): $AnnotatedType
  "getAnnotatedBounds"(): ($AnnotatedType)[]
+ "getAnnotatedOwnerType"(): $AnnotatedType
  "getAnnotation"<T extends $Annotation>(arg0: $Class$Type<(T)>): T
  "getAnnotations"(): ($Annotation)[]
  "getDeclaredAnnotations"(): ($Annotation)[]
@@ -3419,157 +3714,6 @@ export type $AnnotatedTypeVariable$Type = ($AnnotatedTypeVariable);
  */
 declare global {
 export type $AnnotatedTypeVariable_ = $AnnotatedTypeVariable$Type;
-}}
-declare module "packages/java/lang/$Thread" {
-import {$StackTraceElement, $StackTraceElement$Type} from "packages/java/lang/$StackTraceElement"
-import {$Thread$State, $Thread$State$Type} from "packages/java/lang/$Thread$State"
-import {$ClassLoader, $ClassLoader$Type} from "packages/java/lang/$ClassLoader"
-import {$Thread$UncaughtExceptionHandler, $Thread$UncaughtExceptionHandler$Type} from "packages/java/lang/$Thread$UncaughtExceptionHandler"
-import {$Runnable, $Runnable$Type} from "packages/java/lang/$Runnable"
-import {$ThreadGroup, $ThreadGroup$Type} from "packages/java/lang/$ThreadGroup"
-import {$Map, $Map$Type} from "packages/java/util/$Map"
-
-/**
- * This class is not allowed By KubeJS!
- * You should not load the class, or KubeJS will throw an error.
- * Loading the class using require() will not throw an error, but the class will be undefined.
- */
-export class $Thread implements $Runnable {
-static readonly "MIN_PRIORITY": integer
-static readonly "NORM_PRIORITY": integer
-static readonly "MAX_PRIORITY": integer
-
-constructor(arg0: $ThreadGroup$Type, arg1: $Runnable$Type)
-constructor(arg0: string)
-constructor(arg0: $Runnable$Type)
-constructor()
-constructor(arg0: $ThreadGroup$Type, arg1: $Runnable$Type, arg2: string, arg3: long, arg4: boolean)
-constructor(arg0: $ThreadGroup$Type, arg1: $Runnable$Type, arg2: string, arg3: long)
-constructor(arg0: $ThreadGroup$Type, arg1: $Runnable$Type, arg2: string)
-constructor(arg0: $Runnable$Type, arg1: string)
-constructor(arg0: $ThreadGroup$Type, arg1: string)
-
-public "getName"(): string
-public "getStackTrace"(): ($StackTraceElement)[]
-public "run"(): void
-public "toString"(): string
-public static "currentThread"(): $Thread
-public static "onSpinWait"(): void
-public "join"(arg0: long): void
-public "join"(): void
-public "join"(arg0: long, arg1: integer): void
-public "start"(): void
-public "getThreadGroup"(): $ThreadGroup
-public "setContextClassLoader"(arg0: $ClassLoader$Type): void
-public static "holdsLock"(arg0: any): boolean
-/**
- * 
- * @deprecated
- */
-public "checkAccess"(): void
-public static "dumpStack"(): void
-public "setPriority"(arg0: integer): void
-public "setDaemon"(arg0: boolean): void
-public static "sleep"(arg0: long, arg1: integer): void
-public static "sleep"(arg0: long): void
-public "isDaemon"(): boolean
-public "getPriority"(): integer
-public "getContextClassLoader"(): $ClassLoader
-/**
- * 
- * @deprecated
- */
-public "resume"(): void
-public static "interrupted"(): boolean
-public "interrupt"(): void
-public static "activeCount"(): integer
-public static "enumerate"(arg0: ($Thread$Type)[]): integer
-public "isAlive"(): boolean
-public static "setDefaultUncaughtExceptionHandler"(arg0: $Thread$UncaughtExceptionHandler$Type): void
-public "getUncaughtExceptionHandler"(): $Thread$UncaughtExceptionHandler
-public static "yield"(): void
-/**
- * 
- * @deprecated
- */
-public "stop"(): void
-public "isInterrupted"(): boolean
-/**
- * 
- * @deprecated
- */
-public "suspend"(): void
-public "setName"(arg0: string): void
-/**
- * 
- * @deprecated
- */
-public "countStackFrames"(): integer
-public static "getAllStackTraces"(): $Map<($Thread), (($StackTraceElement)[])>
-public "getId"(): long
-public "getState"(): $Thread$State
-public static "getDefaultUncaughtExceptionHandler"(): $Thread$UncaughtExceptionHandler
-public "setUncaughtExceptionHandler"(arg0: $Thread$UncaughtExceptionHandler$Type): void
-get "name"(): string
-get "stackTrace"(): ($StackTraceElement)[]
-get "threadGroup"(): $ThreadGroup
-set "contextClassLoader"(value: $ClassLoader$Type)
-set "priority"(value: integer)
-set "daemon"(value: boolean)
-get "daemon"(): boolean
-get "priority"(): integer
-get "contextClassLoader"(): $ClassLoader
-get "alive"(): boolean
-set "defaultUncaughtExceptionHandler"(value: $Thread$UncaughtExceptionHandler$Type)
-get "uncaughtExceptionHandler"(): $Thread$UncaughtExceptionHandler
-set "name"(value: string)
-get "allStackTraces"(): $Map<($Thread), (($StackTraceElement)[])>
-get "id"(): long
-get "state"(): $Thread$State
-get "defaultUncaughtExceptionHandler"(): $Thread$UncaughtExceptionHandler
-set "uncaughtExceptionHandler"(value: $Thread$UncaughtExceptionHandler$Type)
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $Thread$Type = ($Thread);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $Thread_ = $Thread$Type;
-}}
-declare module "packages/java/lang/module/$ModuleReference" {
-import {$ModuleDescriptor, $ModuleDescriptor$Type} from "packages/java/lang/module/$ModuleDescriptor"
-import {$Optional, $Optional$Type} from "packages/java/util/$Optional"
-import {$URI, $URI$Type} from "packages/java/net/$URI"
-import {$ModuleReader, $ModuleReader$Type} from "packages/java/lang/module/$ModuleReader"
-
-/**
- * This class is not allowed By KubeJS!
- * You should not load the class, or KubeJS will throw an error.
- * Loading the class using require() will not throw an error, but the class will be undefined.
- */
-export class $ModuleReference {
-
-
-public "descriptor"(): $ModuleDescriptor
-public "location"(): $Optional<($URI)>
-public "open"(): $ModuleReader
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $ModuleReference$Type = ($ModuleReference);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $ModuleReference_ = $ModuleReference$Type;
 }}
 declare module "packages/java/lang/$AbstractStringBuilder" {
 import {$IntStream, $IntStream$Type} from "packages/java/util/stream/$IntStream"

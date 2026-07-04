@@ -34,6 +34,7 @@ static readonly "UPDATE_ALL_IMMEDIATE": integer
 static readonly "INDESTRUCTIBLE": float
 static readonly "INSTANT": float
 static readonly "UPDATE_LIMIT": integer
+ "hasCollision": boolean
 readonly "properties": $BlockBehaviour$Properties
 
 constructor()

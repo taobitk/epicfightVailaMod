@@ -1,3 +1,132 @@
+declare module "packages/com/merlin204/avalon/block/testdoor/$TestDoor" {
+import {$BooleanProperty, $BooleanProperty$Type} from "packages/net/minecraft/world/level/block/state/properties/$BooleanProperty"
+import {$AssetAccessor, $AssetAccessor$Type} from "packages/yesman/epicfight/api/asset/$AssetAccessor"
+import {$MeshBlock$MeshBlockEntityPatch, $MeshBlock$MeshBlockEntityPatch$Type} from "packages/com/merlin204/avalon/block/$MeshBlock$MeshBlockEntityPatch"
+import {$VoxelShape, $VoxelShape$Type} from "packages/net/minecraft/world/phys/shapes/$VoxelShape"
+import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$Type} from "packages/net/minecraft/world/level/block/state/$BlockBehaviour$Properties"
+import {$CollisionContext, $CollisionContext$Type} from "packages/net/minecraft/world/phys/shapes/$CollisionContext"
+import {$InteractionResult, $InteractionResult$Type} from "packages/net/minecraft/world/$InteractionResult"
+import {$MeshBlock, $MeshBlock$Type} from "packages/com/merlin204/avalon/block/$MeshBlock"
+import {$BlockState, $BlockState$Type} from "packages/net/minecraft/world/level/block/state/$BlockState"
+import {$Level, $Level$Type} from "packages/net/minecraft/world/level/$Level"
+import {$IdMapper, $IdMapper$Type} from "packages/net/minecraft/core/$IdMapper"
+import {$BlockGetter, $BlockGetter$Type} from "packages/net/minecraft/world/level/$BlockGetter"
+import {$MeshBlock$MeshBlockEntityAnimator, $MeshBlock$MeshBlockEntityAnimator$Type} from "packages/com/merlin204/avalon/block/$MeshBlock$MeshBlockEntityAnimator"
+import {$Player, $Player$Type} from "packages/net/minecraft/world/entity/player/$Player"
+import {$InteractionHand, $InteractionHand$Type} from "packages/net/minecraft/world/$InteractionHand"
+import {$PoseStack, $PoseStack$Type} from "packages/com/mojang/blaze3d/vertex/$PoseStack"
+import {$BlockHitResult, $BlockHitResult$Type} from "packages/net/minecraft/world/phys/$BlockHitResult"
+import {$MultiBufferSource, $MultiBufferSource$Type} from "packages/net/minecraft/client/renderer/$MultiBufferSource"
+import {$BlockPos, $BlockPos$Type} from "packages/net/minecraft/core/$BlockPos"
+import {$BlockPlaceContext, $BlockPlaceContext$Type} from "packages/net/minecraft/world/item/context/$BlockPlaceContext"
+import {$DirectionProperty, $DirectionProperty$Type} from "packages/net/minecraft/world/level/block/state/properties/$DirectionProperty"
+
+export class $TestDoor extends $MeshBlock {
+static readonly "FACING": $DirectionProperty
+static readonly "OPEN": $BooleanProperty
+readonly "animation": $AssetAccessor<(any)>
+ "entitypatch": $MeshBlock$MeshBlockEntityPatch
+ "animator": $MeshBlock$MeshBlockEntityAnimator
+/**
+ * 
+ * @deprecated
+ */
+static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
+static readonly "UPDATE_NEIGHBORS": integer
+static readonly "UPDATE_CLIENTS": integer
+static readonly "UPDATE_INVISIBLE": integer
+static readonly "UPDATE_IMMEDIATE": integer
+static readonly "UPDATE_KNOWN_SHAPE": integer
+static readonly "UPDATE_SUPPRESS_DROPS": integer
+static readonly "UPDATE_MOVE_BY_PISTON": integer
+static readonly "UPDATE_NONE": integer
+static readonly "UPDATE_ALL": integer
+static readonly "UPDATE_ALL_IMMEDIATE": integer
+static readonly "INDESTRUCTIBLE": float
+static readonly "INSTANT": float
+static readonly "UPDATE_LIMIT": integer
+ "hasCollision": boolean
+readonly "properties": $BlockBehaviour$Properties
+
+constructor(arg0: $BlockBehaviour$Properties$Type)
+
+public "getMesh"(): $AssetAccessor<(any)>
+public "drawMesh"(arg0: $PoseStack$Type, arg1: $MultiBufferSource$Type, arg2: float): void
+public "use"(arg0: $BlockState$Type, arg1: $Level$Type, arg2: $BlockPos$Type, arg3: $Player$Type, arg4: $InteractionHand$Type, arg5: $BlockHitResult$Type): $InteractionResult
+public "getArmature"(): $AssetAccessor<(any)>
+public "getStateForPlacement"(arg0: $BlockPlaceContext$Type): $BlockState
+public "getCollisionShape"(arg0: $BlockState$Type, arg1: $BlockGetter$Type, arg2: $BlockPos$Type, arg3: $CollisionContext$Type): $VoxelShape
+get "mesh"(): $AssetAccessor<(any)>
+get "armature"(): $AssetAccessor<(any)>
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $TestDoor$Type = ($TestDoor);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $TestDoor_ = $TestDoor$Type;
+}}
+declare module "packages/com/merlin204/avalon/item/animationitem/$IAvalonAnimationItem" {
+import {$Vec2, $Vec2$Type} from "packages/net/minecraft/world/phys/$Vec2"
+import {$Armatures$ArmatureAccessor, $Armatures$ArmatureAccessor$Type} from "packages/yesman/epicfight/gameasset/$Armatures$ArmatureAccessor"
+import {$Map, $Map$Type} from "packages/java/util/$Map"
+
+export interface $IAvalonAnimationItem {
+
+ "setUseAnimationArmature"(arg0: integer, arg1: boolean): void
+ "getArmature"(): $Armatures$ArmatureAccessor<(any)>
+ "getHitBox"(): $Vec2
+ "useAnimationArmature"(arg0: integer): boolean
+}
+
+export namespace $IAvalonAnimationItem {
+const ARMATURE_MANAGER: $Map<(integer), (boolean)>
+const BIPED: $Armatures$ArmatureAccessor<(any)>
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $IAvalonAnimationItem$Type = ($IAvalonAnimationItem);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $IAvalonAnimationItem_ = $IAvalonAnimationItem$Type;
+}}
+declare module "packages/com/merlin204/avalon/block/$MeshBlock$MeshBlockEntityAnimator" {
+import {$ClientAnimator, $ClientAnimator$Type} from "packages/yesman/epicfight/api/client/animation/$ClientAnimator"
+import {$Layer$BaseLayer, $Layer$BaseLayer$Type} from "packages/yesman/epicfight/api/client/animation/$Layer$BaseLayer"
+import {$MeshBlock, $MeshBlock$Type} from "packages/com/merlin204/avalon/block/$MeshBlock"
+import {$LivingEntityPatch, $LivingEntityPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/$LivingEntityPatch"
+
+export class $MeshBlock$MeshBlockEntityAnimator extends $ClientAnimator {
+readonly "baseLayer": $Layer$BaseLayer
+
+constructor(arg0: $MeshBlock$Type, arg1: $LivingEntityPatch$Type<(any)>)
+
+public "getEntityPatch"(): $LivingEntityPatch<(any)>
+public "tick"(): void
+get "entityPatch"(): $LivingEntityPatch<(any)>
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $MeshBlock$MeshBlockEntityAnimator$Type = ($MeshBlock$MeshBlockEntityAnimator);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $MeshBlock$MeshBlockEntityAnimator_ = $MeshBlock$MeshBlockEntityAnimator$Type;
+}}
 declare module "packages/com/merlin204/avalon/item/$MerlinSuperGG" {
 import {$Item$Properties, $Item$Properties$Type} from "packages/net/minecraft/world/item/$Item$Properties"
 import {$Vec2, $Vec2$Type} from "packages/net/minecraft/world/phys/$Vec2"
@@ -82,6 +211,7 @@ static readonly "UPDATE_ALL_IMMEDIATE": integer
 static readonly "INDESTRUCTIBLE": float
 static readonly "INSTANT": float
 static readonly "UPDATE_LIMIT": integer
+ "hasCollision": boolean
 readonly "properties": $BlockBehaviour$Properties
 
 constructor(arg0: $BlockBehaviour$Properties$Type)
@@ -90,9 +220,9 @@ public "getMesh"(): $AssetAccessor<(any)>
 public "_tick"(): void
 public "drawMesh"(arg0: $PoseStack$Type, arg1: $MultiBufferSource$Type, arg2: float): void
 public "getRenderShape"(arg0: $BlockState$Type): $RenderShape
+public "getArmature"(): $AssetAccessor<(any)>
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$Type, arg1: $BlockState$Type, arg2: $BlockEntityType$Type<(T)>): $BlockEntityTicker<(T)>
 public "newBlockEntity"(arg0: $BlockPos$Type, arg1: $BlockState$Type): $BlockEntity
-public "getArmature"(): $AssetAccessor<(any)>
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$Type, arg1: T): $GameEventListener
 get "mesh"(): $AssetAccessor<(any)>
 get "armature"(): $AssetAccessor<(any)>
@@ -109,77 +239,49 @@ export type $MeshBlock$Type = ($MeshBlock);
 declare global {
 export type $MeshBlock_ = $MeshBlock$Type;
 }}
-declare module "packages/com/merlin204/avalon/block/testdoor/$TestDoor" {
-import {$BooleanProperty, $BooleanProperty$Type} from "packages/net/minecraft/world/level/block/state/properties/$BooleanProperty"
-import {$AssetAccessor, $AssetAccessor$Type} from "packages/yesman/epicfight/api/asset/$AssetAccessor"
-import {$MeshBlock$MeshBlockEntityPatch, $MeshBlock$MeshBlockEntityPatch$Type} from "packages/com/merlin204/avalon/block/$MeshBlock$MeshBlockEntityPatch"
-import {$VoxelShape, $VoxelShape$Type} from "packages/net/minecraft/world/phys/shapes/$VoxelShape"
-import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$Type} from "packages/net/minecraft/world/level/block/state/$BlockBehaviour$Properties"
-import {$CollisionContext, $CollisionContext$Type} from "packages/net/minecraft/world/phys/shapes/$CollisionContext"
-import {$InteractionResult, $InteractionResult$Type} from "packages/net/minecraft/world/$InteractionResult"
-import {$MeshBlock, $MeshBlock$Type} from "packages/com/merlin204/avalon/block/$MeshBlock"
-import {$BlockState, $BlockState$Type} from "packages/net/minecraft/world/level/block/state/$BlockState"
-import {$Level, $Level$Type} from "packages/net/minecraft/world/level/$Level"
-import {$IdMapper, $IdMapper$Type} from "packages/net/minecraft/core/$IdMapper"
-import {$BlockGetter, $BlockGetter$Type} from "packages/net/minecraft/world/level/$BlockGetter"
-import {$MeshBlock$MeshBlockEntityAnimator, $MeshBlock$MeshBlockEntityAnimator$Type} from "packages/com/merlin204/avalon/block/$MeshBlock$MeshBlockEntityAnimator"
-import {$Player, $Player$Type} from "packages/net/minecraft/world/entity/player/$Player"
-import {$InteractionHand, $InteractionHand$Type} from "packages/net/minecraft/world/$InteractionHand"
-import {$PoseStack, $PoseStack$Type} from "packages/com/mojang/blaze3d/vertex/$PoseStack"
-import {$BlockHitResult, $BlockHitResult$Type} from "packages/net/minecraft/world/phys/$BlockHitResult"
-import {$MultiBufferSource, $MultiBufferSource$Type} from "packages/net/minecraft/client/renderer/$MultiBufferSource"
-import {$BlockPos, $BlockPos$Type} from "packages/net/minecraft/core/$BlockPos"
-import {$BlockPlaceContext, $BlockPlaceContext$Type} from "packages/net/minecraft/world/item/context/$BlockPlaceContext"
-import {$DirectionProperty, $DirectionProperty$Type} from "packages/net/minecraft/world/level/block/state/properties/$DirectionProperty"
+declare module "packages/com/merlin204/sg/item/$GolemHeartItem" {
+import {$Multimap, $Multimap$Type} from "packages/com/google/common/collect/$Multimap"
+import {$Item$Properties, $Item$Properties$Type} from "packages/net/minecraft/world/item/$Item$Properties"
+import {$Vec2, $Vec2$Type} from "packages/net/minecraft/world/phys/$Vec2"
+import {$Tier, $Tier$Type} from "packages/net/minecraft/world/item/$Tier"
+import {$Block, $Block$Type} from "packages/net/minecraft/world/level/block/$Block"
+import {$Item, $Item$Type} from "packages/net/minecraft/world/item/$Item"
+import {$WeaponItem, $WeaponItem$Type} from "packages/yesman/epicfight/world/item/$WeaponItem"
+import {$Attribute, $Attribute$Type} from "packages/net/minecraft/world/entity/ai/attributes/$Attribute"
+import {$AttributeModifier, $AttributeModifier$Type} from "packages/net/minecraft/world/entity/ai/attributes/$AttributeModifier"
+import {$IAvalonAnimationItem, $IAvalonAnimationItem$Type} from "packages/com/merlin204/avalon/item/animationitem/$IAvalonAnimationItem"
+import {$Armatures$ArmatureAccessor, $Armatures$ArmatureAccessor$Type} from "packages/yesman/epicfight/gameasset/$Armatures$ArmatureAccessor"
+import {$Map, $Map$Type} from "packages/java/util/$Map"
 
-export class $TestDoor extends $MeshBlock {
-static readonly "FACING": $DirectionProperty
-static readonly "OPEN": $BooleanProperty
-readonly "animation": $AssetAccessor<(any)>
- "entitypatch": $MeshBlock$MeshBlockEntityPatch
- "animator": $MeshBlock$MeshBlockEntityAnimator
-/**
- * 
- * @deprecated
- */
-static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
-static readonly "UPDATE_NEIGHBORS": integer
-static readonly "UPDATE_CLIENTS": integer
-static readonly "UPDATE_INVISIBLE": integer
-static readonly "UPDATE_IMMEDIATE": integer
-static readonly "UPDATE_KNOWN_SHAPE": integer
-static readonly "UPDATE_SUPPRESS_DROPS": integer
-static readonly "UPDATE_MOVE_BY_PISTON": integer
-static readonly "UPDATE_NONE": integer
-static readonly "UPDATE_ALL": integer
-static readonly "UPDATE_ALL_IMMEDIATE": integer
-static readonly "INDESTRUCTIBLE": float
-static readonly "INSTANT": float
-static readonly "UPDATE_LIMIT": integer
-readonly "properties": $BlockBehaviour$Properties
+export class $GolemHeartItem extends $WeaponItem implements $IAvalonAnimationItem {
+readonly "ARMATUREACCESSOR": $Armatures$ArmatureAccessor<(any)>
+ "defaultModifiers": $Multimap<($Attribute), ($AttributeModifier)>
+ "tier": $Tier
+static readonly "BY_BLOCK": $Map<($Block), ($Item)>
+static readonly "MAX_STACK_SIZE": integer
+static readonly "EAT_DURATION": integer
+static readonly "MAX_BAR_WIDTH": integer
 
-constructor(arg0: $BlockBehaviour$Properties$Type)
+constructor(arg0: $Tier$Type, arg1: integer, arg2: float, arg3: $Item$Properties$Type)
 
-public "getMesh"(): $AssetAccessor<(any)>
-public "drawMesh"(arg0: $PoseStack$Type, arg1: $MultiBufferSource$Type, arg2: float): void
-public "getStateForPlacement"(arg0: $BlockPlaceContext$Type): $BlockState
-public "use"(arg0: $BlockState$Type, arg1: $Level$Type, arg2: $BlockPos$Type, arg3: $Player$Type, arg4: $InteractionHand$Type, arg5: $BlockHitResult$Type): $InteractionResult
-public "getCollisionShape"(arg0: $BlockState$Type, arg1: $BlockGetter$Type, arg2: $BlockPos$Type, arg3: $CollisionContext$Type): $VoxelShape
-public "getArmature"(): $AssetAccessor<(any)>
-get "mesh"(): $AssetAccessor<(any)>
-get "armature"(): $AssetAccessor<(any)>
+public "getArmature"(): $Armatures$ArmatureAccessor<(any)>
+public "getHitBox"(): $Vec2
+public "setUseAnimationArmature"(arg0: integer, arg1: boolean): void
+public "useAnimationArmature"(arg0: integer): boolean
+get "armature"(): $Armatures$ArmatureAccessor<(any)>
+get "hitBox"(): $Vec2
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $TestDoor$Type = ($TestDoor);
+export type $GolemHeartItem$Type = ($GolemHeartItem);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
  */
 declare global {
-export type $TestDoor_ = $TestDoor$Type;
+export type $GolemHeartItem_ = $GolemHeartItem$Type;
 }}
 declare module "packages/com/merlin204/avalon/block/$MeshBlock$MeshBlockEntityPatch" {
 import {$StunType, $StunType$Type} from "packages/yesman/epicfight/world/damagesource/$StunType"
@@ -218,13 +320,13 @@ public "getAccurateYRot"(arg0: float): float
 public "getYRotDelta"(arg0: float): float
 public "getSimulatableAnimator"(): $Animator
 public "getGravity"(): float
-public "isLogicalClient"(): boolean
+public "getModelMatrix"(arg0: float): $OpenMatrix4f
 public "initAnimator"(arg0: $Animator$Type): void
 public "updateMotion"(arg0: boolean): void
 public "poseTick"(arg0: $DynamicAnimation$Type, arg1: $Pose$Type, arg2: float, arg3: float): void
-public "getModelMatrix"(arg0: float): $OpenMatrix4f
 public "getHitAnimation"(arg0: $StunType$Type): $AssetAccessor<(any)>
 public "updateEntityState"(): void
+public "isLogicalClient"(): boolean
 public "getYRot"(): float
 public "getYRotO"(): float
 public "getFaction"(): $Faction
@@ -254,60 +356,4 @@ export type $MeshBlock$MeshBlockEntityPatch$Type = ($MeshBlock$MeshBlockEntityPa
  */
 declare global {
 export type $MeshBlock$MeshBlockEntityPatch_ = $MeshBlock$MeshBlockEntityPatch$Type;
-}}
-declare module "packages/com/merlin204/avalon/item/animationitem/$IAvalonAnimationItem" {
-import {$Vec2, $Vec2$Type} from "packages/net/minecraft/world/phys/$Vec2"
-import {$Armatures$ArmatureAccessor, $Armatures$ArmatureAccessor$Type} from "packages/yesman/epicfight/gameasset/$Armatures$ArmatureAccessor"
-import {$Map, $Map$Type} from "packages/java/util/$Map"
-
-export interface $IAvalonAnimationItem {
-
- "setUseAnimationArmature"(arg0: integer, arg1: boolean): void
- "getArmature"(): $Armatures$ArmatureAccessor<(any)>
- "getHitBox"(): $Vec2
- "useAnimationArmature"(arg0: integer): boolean
-}
-
-export namespace $IAvalonAnimationItem {
-const ARMATURE_MANAGER: $Map<(integer), (boolean)>
-const BIPED: $Armatures$ArmatureAccessor<(any)>
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $IAvalonAnimationItem$Type = ($IAvalonAnimationItem);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $IAvalonAnimationItem_ = $IAvalonAnimationItem$Type;
-}}
-declare module "packages/com/merlin204/avalon/block/$MeshBlock$MeshBlockEntityAnimator" {
-import {$ClientAnimator, $ClientAnimator$Type} from "packages/yesman/epicfight/api/client/animation/$ClientAnimator"
-import {$Layer$BaseLayer, $Layer$BaseLayer$Type} from "packages/yesman/epicfight/api/client/animation/$Layer$BaseLayer"
-import {$MeshBlock, $MeshBlock$Type} from "packages/com/merlin204/avalon/block/$MeshBlock"
-import {$LivingEntityPatch, $LivingEntityPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/$LivingEntityPatch"
-
-export class $MeshBlock$MeshBlockEntityAnimator extends $ClientAnimator {
-readonly "baseLayer": $Layer$BaseLayer
-
-constructor(arg0: $MeshBlock$Type, arg1: $LivingEntityPatch$Type<(any)>)
-
-public "getEntityPatch"(): $LivingEntityPatch<(any)>
-public "tick"(): void
-get "entityPatch"(): $LivingEntityPatch<(any)>
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $MeshBlock$MeshBlockEntityAnimator$Type = ($MeshBlock$MeshBlockEntityAnimator);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $MeshBlock$MeshBlockEntityAnimator_ = $MeshBlock$MeshBlockEntityAnimator$Type;
 }}

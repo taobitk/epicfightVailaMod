@@ -1,3 +1,4 @@
+import {$CustomTaskEventJS, $CustomTaskEventJS$Type} from "packages/dev/ftb/mods/ftbxmodcompat/ftbquests/kubejs/$CustomTaskEventJS"
 import {$FoodEatenEventJS, $FoodEatenEventJS$Type} from "packages/dev/latvian/mods/kubejs/item/$FoodEatenEventJS"
 import {$BlockPlacedEventJS, $BlockPlacedEventJS$Type} from "packages/dev/latvian/mods/kubejs/block/$BlockPlacedEventJS"
 import {$BiomeSpawnsEventJS, $BiomeSpawnsEventJS$Type} from "packages/net/liopyu/entityjs/events/$BiomeSpawnsEventJS"
@@ -8,11 +9,13 @@ import {$MenuType, $MenuType$Type} from "packages/net/minecraft/world/inventory/
 import {$EntityType, $EntityType$Type} from "packages/net/minecraft/world/entity/$EntityType"
 import {$ItemDestroyedEventJS, $ItemDestroyedEventJS$Type} from "packages/dev/latvian/mods/kubejs/item/forge/$ItemDestroyedEventJS"
 import {$InventoryEventJS, $InventoryEventJS$Type} from "packages/dev/latvian/mods/kubejs/player/$InventoryEventJS"
+import {$CustomRewardEventJS, $CustomRewardEventJS$Type} from "packages/dev/ftb/mods/ftbxmodcompat/ftbquests/kubejs/$CustomRewardEventJS"
 import {$PlayerChatDecorateEventJS, $PlayerChatDecorateEventJS$Type} from "packages/dev/latvian/mods/kubejs/player/$PlayerChatDecorateEventJS"
 import {$DataPackEventJS, $DataPackEventJS$Type} from "packages/dev/latvian/mods/kubejs/script/data/$DataPackEventJS"
 import {$GenericLootEventJS, $GenericLootEventJS$Type} from "packages/dev/latvian/mods/kubejs/loot/$GenericLootEventJS"
 import {$LivingEntityDeathEventJS, $LivingEntityDeathEventJS$Type} from "packages/dev/latvian/mods/kubejs/entity/$LivingEntityDeathEventJS"
 import {$ChestLootEventJS, $ChestLootEventJS$Type} from "packages/dev/latvian/mods/kubejs/loot/$ChestLootEventJS"
+import {$QuestObjectStartedEventJS, $QuestObjectStartedEventJS$Type} from "packages/dev/ftb/mods/ftbxmodcompat/ftbquests/kubejs/$QuestObjectStartedEventJS"
 import {$SpecialRecipeSerializerManager, $SpecialRecipeSerializerManager$Type} from "packages/dev/latvian/mods/kubejs/recipe/special/$SpecialRecipeSerializerManager"
 import {$EntityLootEventJS, $EntityLootEventJS$Type} from "packages/dev/latvian/mods/kubejs/loot/$EntityLootEventJS"
 import {$BlockRightClickedEventJS, $BlockRightClickedEventJS$Type} from "packages/dev/latvian/mods/kubejs/block/$BlockRightClickedEventJS"
@@ -26,10 +29,12 @@ import {$PlayerRespawnedEventJS, $PlayerRespawnedEventJS$Type} from "packages/de
 import {$BlockBrokenEventJS, $BlockBrokenEventJS$Type} from "packages/dev/latvian/mods/kubejs/block/$BlockBrokenEventJS"
 import {$CustomCommandEventJS, $CustomCommandEventJS$Type} from "packages/dev/latvian/mods/kubejs/server/$CustomCommandEventJS"
 import {$BuildBrainProviderEventJS, $BuildBrainProviderEventJS$Type} from "packages/net/liopyu/entityjs/events/$BuildBrainProviderEventJS"
+import {$QuestObjectCompletedEventJS, $QuestObjectCompletedEventJS$Type} from "packages/dev/ftb/mods/ftbxmodcompat/ftbquests/kubejs/$QuestObjectCompletedEventJS"
 import {$GiftLootEventJS, $GiftLootEventJS$Type} from "packages/dev/latvian/mods/kubejs/loot/$GiftLootEventJS"
 import {$BuildBrainEventJS, $BuildBrainEventJS$Type} from "packages/net/liopyu/entityjs/events/$BuildBrainEventJS"
 import {$SimpleLevelEventJS, $SimpleLevelEventJS$Type} from "packages/dev/latvian/mods/kubejs/level/$SimpleLevelEventJS"
 import {$ExplosionEventJS$Before, $ExplosionEventJS$Before$Type} from "packages/dev/latvian/mods/kubejs/level/$ExplosionEventJS$Before"
+import {$PlayerTeamEventJS, $PlayerTeamEventJS$Type} from "packages/dev/ftb/mods/ftbxmodcompat/ftbteams/kubejs/$PlayerTeamEventJS"
 import {$CompostableRecipesEventJS, $CompostableRecipesEventJS$Type} from "packages/dev/latvian/mods/kubejs/recipe/$CompostableRecipesEventJS"
 import {$ItemDroppedEventJS, $ItemDroppedEventJS$Type} from "packages/dev/latvian/mods/kubejs/item/$ItemDroppedEventJS"
 import {$CommandRegistryEventJS, $CommandRegistryEventJS$Type} from "packages/dev/latvian/mods/kubejs/command/$CommandRegistryEventJS"
@@ -78,6 +83,10 @@ function lowPriorityData(handler: (event: $DataPackEventJS) => void): void
 function fishingLootTables(handler: (event: $FishingLootEventJS) => void): void
 function genericLootTables(handler: (event: $GenericLootEventJS) => void): void
 function highPriorityData(handler: (event: $DataPackEventJS) => void): void
+}
+export namespace FTBTeamsEvents {
+function playerJoinedParty(handler: (event: $PlayerTeamEventJS) => void): void
+function playerLeftParty(handler: (event: $PlayerTeamEventJS) => void): void
 }
 export namespace NetworkEvents {
 function dataReceived(extra: string, handler: (event: $NetworkEventJS) => void): void
@@ -175,5 +184,15 @@ function rightClicked(extra: $Block$Type, handler: (event: $BlockRightClickedEve
 function rightClicked(handler: (event: $BlockRightClickedEventJS) => void): void
 function detectorChanged(extra: string, handler: (event: $DetectorBlockEventJS) => void): void
 function detectorChanged(handler: (event: $DetectorBlockEventJS) => void): void
+}
+export namespace FTBQuestsEvents {
+function customReward(extra: string, handler: (event: $CustomRewardEventJS) => void): void
+function customReward(handler: (event: $CustomRewardEventJS) => void): void
+function started(extra: string, handler: (event: $QuestObjectStartedEventJS) => void): void
+function started(handler: (event: $QuestObjectStartedEventJS) => void): void
+function completed(extra: string, handler: (event: $QuestObjectCompletedEventJS) => void): void
+function completed(handler: (event: $QuestObjectCompletedEventJS) => void): void
+function customTask(extra: string, handler: (event: $CustomTaskEventJS) => void): void
+function customTask(handler: (event: $CustomTaskEventJS) => void): void
 }
 }

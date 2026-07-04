@@ -1,3 +1,324 @@
+declare module "packages/java/net/$Proxy" {
+import {$SocketAddress, $SocketAddress$Type} from "packages/java/net/$SocketAddress"
+import {$Proxy$Type, $Proxy$Type$Type} from "packages/java/net/$Proxy$Type"
+
+/**
+ * This class is not allowed By KubeJS!
+ * You should not load the class, or KubeJS will throw an error.
+ * Loading the class using require() will not throw an error, but the class will be undefined.
+ */
+export class $Proxy {
+static readonly "NO_PROXY": $Proxy
+
+constructor(arg0: $Proxy$Type$Type, arg1: $SocketAddress$Type)
+
+public "type"(): $Proxy$Type
+public "equals"(arg0: any): boolean
+public "toString"(): string
+public "hashCode"(): integer
+public "address"(): $SocketAddress
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Proxy$Type = ($Proxy);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Proxy_ = $Proxy$Type;
+}}
+declare module "packages/java/net/$DatagramSocketImpl" {
+import {$SocketOptions, $SocketOptions$Type} from "packages/java/net/$SocketOptions"
+
+/**
+ * This class is not allowed By KubeJS!
+ * You should not load the class, or KubeJS will throw an error.
+ * Loading the class using require() will not throw an error, but the class will be undefined.
+ */
+export class $DatagramSocketImpl implements $SocketOptions {
+
+constructor()
+
+public "setOption"(arg0: integer, arg1: any): void
+public "getOption"(arg0: integer): any
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $DatagramSocketImpl$Type = ($DatagramSocketImpl);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $DatagramSocketImpl_ = $DatagramSocketImpl$Type;
+}}
+declare module "packages/java/net/$SocketImpl" {
+import {$SocketOptions, $SocketOptions$Type} from "packages/java/net/$SocketOptions"
+
+/**
+ * This class is not allowed By KubeJS!
+ * You should not load the class, or KubeJS will throw an error.
+ * Loading the class using require() will not throw an error, but the class will be undefined.
+ */
+export class $SocketImpl implements $SocketOptions {
+
+constructor()
+
+public "toString"(): string
+public "setOption"(arg0: integer, arg1: any): void
+public "getOption"(arg0: integer): any
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $SocketImpl$Type = ($SocketImpl);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $SocketImpl_ = $SocketImpl$Type;
+}}
+declare module "packages/java/net/$SocketAddress" {
+import {$Serializable, $Serializable$Type} from "packages/java/io/$Serializable"
+
+/**
+ * This class is not allowed By KubeJS!
+ * You should not load the class, or KubeJS will throw an error.
+ * Loading the class using require() will not throw an error, but the class will be undefined.
+ */
+export class $SocketAddress implements $Serializable {
+
+constructor()
+
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $SocketAddress$Type = ($SocketAddress);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $SocketAddress_ = $SocketAddress$Type;
+}}
+declare module "packages/java/net/$InetSocketAddress" {
+import {$SocketAddress, $SocketAddress$Type} from "packages/java/net/$SocketAddress"
+import {$InetAddress, $InetAddress$Type} from "packages/java/net/$InetAddress"
+
+/**
+ * This class is not allowed By KubeJS!
+ * You should not load the class, or KubeJS will throw an error.
+ * Loading the class using require() will not throw an error, but the class will be undefined.
+ */
+export class $InetSocketAddress extends $SocketAddress {
+
+constructor(arg0: $InetAddress$Type, arg1: integer)
+constructor(arg0: integer)
+constructor(arg0: string, arg1: integer)
+
+public "getHostString"(): string
+public static "createUnresolved"(arg0: string, arg1: integer): $InetSocketAddress
+public "equals"(arg0: any): boolean
+public "toString"(): string
+public "hashCode"(): integer
+public "getAddress"(): $InetAddress
+public "getPort"(): integer
+public "isUnresolved"(): boolean
+public "getHostName"(): string
+get "hostString"(): string
+get "address"(): $InetAddress
+get "port"(): integer
+get "unresolved"(): boolean
+get "hostName"(): string
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $InetSocketAddress$Type = ($InetSocketAddress);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $InetSocketAddress_ = $InetSocketAddress$Type;
+}}
+declare module "packages/java/net/$DatagramPacket" {
+import {$SocketAddress, $SocketAddress$Type} from "packages/java/net/$SocketAddress"
+import {$InetAddress, $InetAddress$Type} from "packages/java/net/$InetAddress"
+
+/**
+ * This class is not allowed By KubeJS!
+ * You should not load the class, or KubeJS will throw an error.
+ * Loading the class using require() will not throw an error, but the class will be undefined.
+ */
+export class $DatagramPacket {
+
+constructor(arg0: (byte)[], arg1: integer, arg2: integer, arg3: $InetAddress$Type, arg4: integer)
+constructor(arg0: (byte)[], arg1: integer, arg2: integer)
+constructor(arg0: (byte)[], arg1: integer)
+constructor(arg0: (byte)[], arg1: integer, arg2: integer, arg3: $SocketAddress$Type)
+constructor(arg0: (byte)[], arg1: integer, arg2: $InetAddress$Type, arg3: integer)
+constructor(arg0: (byte)[], arg1: integer, arg2: $SocketAddress$Type)
+
+public "setAddress"(arg0: $InetAddress$Type): void
+public "setSocketAddress"(arg0: $SocketAddress$Type): void
+public "getData"(): (byte)[]
+public "setData"(arg0: (byte)[], arg1: integer, arg2: integer): void
+public "setData"(arg0: (byte)[]): void
+public "setPort"(arg0: integer): void
+public "getSocketAddress"(): $SocketAddress
+public "getLength"(): integer
+public "setLength"(arg0: integer): void
+public "getAddress"(): $InetAddress
+public "getPort"(): integer
+public "getOffset"(): integer
+set "address"(value: $InetAddress$Type)
+set "socketAddress"(value: $SocketAddress$Type)
+get "data"(): (byte)[]
+set "data"(value: (byte)[])
+set "port"(value: integer)
+get "socketAddress"(): $SocketAddress
+get "length"(): integer
+set "length"(value: integer)
+get "address"(): $InetAddress
+get "port"(): integer
+get "offset"(): integer
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $DatagramPacket$Type = ($DatagramPacket);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $DatagramPacket_ = $DatagramPacket$Type;
+}}
+declare module "packages/java/net/$URLStreamHandler" {
+export {} // Mark the file as a module, do not remove unless there are other import/exports!
+/**
+ * This class is not allowed By KubeJS!
+ * You should not load the class, or KubeJS will throw an error.
+ * Loading the class using require() will not throw an error, but the class will be undefined.
+ */
+export class $URLStreamHandler {
+
+constructor()
+
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $URLStreamHandler$Type = ($URLStreamHandler);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $URLStreamHandler_ = $URLStreamHandler$Type;
+}}
+declare module "packages/java/net/$URLStreamHandlerFactory" {
+import {$URLStreamHandler, $URLStreamHandler$Type} from "packages/java/net/$URLStreamHandler"
+
+/**
+ * This class is not allowed By KubeJS!
+ * You should not load the class, or KubeJS will throw an error.
+ * Loading the class using require() will not throw an error, but the class will be undefined.
+ */
+export interface $URLStreamHandlerFactory {
+
+ "createURLStreamHandler"(arg0: string): $URLStreamHandler
+
+(arg0: string): $URLStreamHandler
+}
+
+export namespace $URLStreamHandlerFactory {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $URLStreamHandlerFactory$Type = ($URLStreamHandlerFactory);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $URLStreamHandlerFactory_ = $URLStreamHandlerFactory$Type;
+}}
+declare module "packages/java/net/$DatagramSocketImplFactory" {
+import {$DatagramSocketImpl, $DatagramSocketImpl$Type} from "packages/java/net/$DatagramSocketImpl"
+
+/**
+ * This class is not allowed By KubeJS!
+ * You should not load the class, or KubeJS will throw an error.
+ * Loading the class using require() will not throw an error, but the class will be undefined.
+ */
+export interface $DatagramSocketImplFactory {
+
+ "createDatagramSocketImpl"(): $DatagramSocketImpl
+
+(): $DatagramSocketImpl
+}
+
+export namespace $DatagramSocketImplFactory {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $DatagramSocketImplFactory$Type = ($DatagramSocketImplFactory);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $DatagramSocketImplFactory_ = $DatagramSocketImplFactory$Type;
+}}
+declare module "packages/java/net/$SocketOption" {
+import {$Class, $Class$Type} from "packages/java/lang/$Class"
+
+/**
+ * This class is not allowed By KubeJS!
+ * You should not load the class, or KubeJS will throw an error.
+ * Loading the class using require() will not throw an error, but the class will be undefined.
+ */
+export interface $SocketOption<T> {
+
+ "name"(): string
+ "type"(): $Class<(T)>
+}
+
+export namespace $SocketOption {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $SocketOption$Type<T> = ($SocketOption<(T)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $SocketOption_<T> = $SocketOption$Type<(T)>;
+}}
 declare module "packages/java/net/$ContentHandlerFactory" {
 import {$ContentHandler, $ContentHandler$Type} from "packages/java/net/$ContentHandler"
 
@@ -43,6 +364,16 @@ import {$InetAddress, $InetAddress$Type} from "packages/java/net/$InetAddress"
 export class $NetworkInterface {
 
 
+public "isVirtual"(): boolean
+public "getDisplayName"(): string
+public static "networkInterfaces"(): $Stream<($NetworkInterface)>
+public "inetAddresses"(): $Stream<($InetAddress)>
+public static "getByInetAddress"(arg0: $InetAddress$Type): $NetworkInterface
+public static "getNetworkInterfaces"(): $Enumeration<($NetworkInterface)>
+public "getInetAddresses"(): $Enumeration<($InetAddress)>
+public "getHardwareAddress"(): (byte)[]
+public "isLoopback"(): boolean
+public "isUp"(): boolean
 public "getInterfaceAddresses"(): $List<($InterfaceAddress)>
 public "getSubInterfaces"(): $Enumeration<($NetworkInterface)>
 public "subInterfaces"(): $Stream<($NetworkInterface)>
@@ -50,10 +381,6 @@ public static "getByIndex"(arg0: integer): $NetworkInterface
 public "isPointToPoint"(): boolean
 public "supportsMulticast"(): boolean
 public "getMTU"(): integer
-public static "networkInterfaces"(): $Stream<($NetworkInterface)>
-public "inetAddresses"(): $Stream<($InetAddress)>
-public "getDisplayName"(): string
-public "isVirtual"(): boolean
 public "getName"(): string
 public "equals"(arg0: any): boolean
 public "toString"(): string
@@ -61,23 +388,17 @@ public "hashCode"(): integer
 public "getParent"(): $NetworkInterface
 public static "getByName"(arg0: string): $NetworkInterface
 public "getIndex"(): integer
-public static "getByInetAddress"(arg0: $InetAddress$Type): $NetworkInterface
-public static "getNetworkInterfaces"(): $Enumeration<($NetworkInterface)>
-public "getInetAddresses"(): $Enumeration<($InetAddress)>
-public "getHardwareAddress"(): (byte)[]
-public "isLoopback"(): boolean
-public "isUp"(): boolean
-get "interfaceAddresses"(): $List<($InterfaceAddress)>
-get "pointToPoint"(): boolean
-get "mTU"(): integer
-get "displayName"(): string
 get "virtual"(): boolean
-get "name"(): string
-get "parent"(): $NetworkInterface
-get "index"(): integer
+get "displayName"(): string
 get "hardwareAddress"(): (byte)[]
 get "loopback"(): boolean
 get "up"(): boolean
+get "interfaceAddresses"(): $List<($InterfaceAddress)>
+get "pointToPoint"(): boolean
+get "mTU"(): integer
+get "name"(): string
+get "parent"(): $NetworkInterface
+get "index"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -109,10 +430,11 @@ import {$SocketOption, $SocketOption$Type} from "packages/java/net/$SocketOption
 export class $ServerSocket implements $Closeable {
 
 constructor(arg0: integer, arg1: integer, arg2: $InetAddress$Type)
+constructor(arg0: integer)
 constructor()
 constructor(arg0: integer, arg1: integer)
-constructor(arg0: integer)
 
+public "setOption"<T>(arg0: $SocketOption$Type<(T)>, arg1: T): $ServerSocket
 /**
  * 
  * @deprecated
@@ -124,14 +446,10 @@ public "getLocalSocketAddress"(): $SocketAddress
 public "getLocalPort"(): integer
 public "getReuseAddress"(): boolean
 public "getOption"<T>(arg0: $SocketOption$Type<(T)>): T
-public "toString"(): string
-public "accept"(): $Socket
-public "close"(): void
-public "bind"(arg0: $SocketAddress$Type, arg1: integer): void
 public "bind"(arg0: $SocketAddress$Type): void
+public "bind"(arg0: $SocketAddress$Type, arg1: integer): void
 public "getChannel"(): $ServerSocketChannel
 public "isClosed"(): boolean
-public "setOption"<T>(arg0: $SocketOption$Type<(T)>, arg1: T): $ServerSocket
 public "getReceiveBufferSize"(): integer
 public "getSoTimeout"(): integer
 public "setPerformancePreferences"(arg0: integer, arg1: integer, arg2: integer): void
@@ -139,6 +457,9 @@ public "setReceiveBufferSize"(arg0: integer): void
 public "setReuseAddress"(arg0: boolean): void
 public "setSoTimeout"(arg0: integer): void
 public "isBound"(): boolean
+public "toString"(): string
+public "accept"(): $Socket
+public "close"(): void
 set "socketFactory"(value: $SocketImplFactory$Type)
 get "inetAddress"(): $InetAddress
 get "localSocketAddress"(): $SocketAddress
@@ -165,118 +486,6 @@ export type $ServerSocket$Type = ($ServerSocket);
 declare global {
 export type $ServerSocket_ = $ServerSocket$Type;
 }}
-declare module "packages/java/net/$Proxy" {
-import {$SocketAddress, $SocketAddress$Type} from "packages/java/net/$SocketAddress"
-import {$Proxy$Type, $Proxy$Type$Type} from "packages/java/net/$Proxy$Type"
-
-/**
- * This class is not allowed By KubeJS!
- * You should not load the class, or KubeJS will throw an error.
- * Loading the class using require() will not throw an error, but the class will be undefined.
- */
-export class $Proxy {
-static readonly "NO_PROXY": $Proxy
-
-constructor(arg0: $Proxy$Type$Type, arg1: $SocketAddress$Type)
-
-public "type"(): $Proxy$Type
-public "equals"(arg0: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
-public "address"(): $SocketAddress
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $Proxy$Type = ($Proxy);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $Proxy_ = $Proxy$Type;
-}}
-declare module "packages/java/net/$DatagramSocketImpl" {
-import {$SocketOptions, $SocketOptions$Type} from "packages/java/net/$SocketOptions"
-
-/**
- * This class is not allowed By KubeJS!
- * You should not load the class, or KubeJS will throw an error.
- * Loading the class using require() will not throw an error, but the class will be undefined.
- */
-export class $DatagramSocketImpl implements $SocketOptions {
-
-constructor()
-
-public "getOption"(arg0: integer): any
-public "setOption"(arg0: integer, arg1: any): void
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $DatagramSocketImpl$Type = ($DatagramSocketImpl);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $DatagramSocketImpl_ = $DatagramSocketImpl$Type;
-}}
-declare module "packages/java/net/$SocketImpl" {
-import {$SocketOptions, $SocketOptions$Type} from "packages/java/net/$SocketOptions"
-
-/**
- * This class is not allowed By KubeJS!
- * You should not load the class, or KubeJS will throw an error.
- * Loading the class using require() will not throw an error, but the class will be undefined.
- */
-export class $SocketImpl implements $SocketOptions {
-
-constructor()
-
-public "toString"(): string
-public "getOption"(arg0: integer): any
-public "setOption"(arg0: integer, arg1: any): void
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $SocketImpl$Type = ($SocketImpl);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $SocketImpl_ = $SocketImpl$Type;
-}}
-declare module "packages/java/net/$SocketAddress" {
-import {$Serializable, $Serializable$Type} from "packages/java/io/$Serializable"
-
-/**
- * This class is not allowed By KubeJS!
- * You should not load the class, or KubeJS will throw an error.
- * Loading the class using require() will not throw an error, but the class will be undefined.
- */
-export class $SocketAddress implements $Serializable {
-
-constructor()
-
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $SocketAddress$Type = ($SocketAddress);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $SocketAddress_ = $SocketAddress$Type;
-}}
 declare module "packages/java/net/$DatagramSocket" {
 import {$SocketAddress, $SocketAddress$Type} from "packages/java/net/$SocketAddress"
 import {$DatagramChannel, $DatagramChannel$Type} from "packages/java/nio/channels/$DatagramChannel"
@@ -295,12 +504,14 @@ import {$DatagramPacket, $DatagramPacket$Type} from "packages/java/net/$Datagram
  */
 export class $DatagramSocket implements $Closeable {
 
-constructor()
 constructor(arg0: $SocketAddress$Type)
-constructor(arg0: integer, arg1: $InetAddress$Type)
 constructor(arg0: integer)
+constructor(arg0: integer, arg1: $InetAddress$Type)
+constructor()
 
-public "getBroadcast"(): boolean
+public "disconnect"(): void
+public "setOption"<T>(arg0: $SocketOption$Type<(T)>, arg1: T): $DatagramSocket
+public "getLocalAddress"(): $InetAddress
 public "joinGroup"(arg0: $SocketAddress$Type, arg1: $NetworkInterface$Type): void
 public "leaveGroup"(arg0: $SocketAddress$Type, arg1: $NetworkInterface$Type): void
 public "setBroadcast"(arg0: boolean): void
@@ -317,16 +528,10 @@ public "getLocalPort"(): integer
 public "getReuseAddress"(): boolean
 public "receive"(arg0: $DatagramPacket$Type): void
 public "getOption"<T>(arg0: $SocketOption$Type<(T)>): T
-public "getLocalAddress"(): $InetAddress
-public "disconnect"(): void
-public "connect"(arg0: $InetAddress$Type, arg1: integer): void
-public "connect"(arg0: $SocketAddress$Type): void
-public "close"(): void
-public "getPort"(): integer
+public "getBroadcast"(): boolean
 public "bind"(arg0: $SocketAddress$Type): void
 public "getChannel"(): $DatagramChannel
 public "isClosed"(): boolean
-public "setOption"<T>(arg0: $SocketOption$Type<(T)>, arg1: T): $DatagramSocket
 public "send"(arg0: $DatagramPacket$Type): void
 public "getReceiveBufferSize"(): integer
 public "getSendBufferSize"(): integer
@@ -339,7 +544,11 @@ public "setSoTimeout"(arg0: integer): void
 public "setTrafficClass"(arg0: integer): void
 public "isConnected"(): boolean
 public "isBound"(): boolean
-get "broadcast"(): boolean
+public "connect"(arg0: $InetAddress$Type, arg1: integer): void
+public "connect"(arg0: $SocketAddress$Type): void
+public "close"(): void
+public "getPort"(): integer
+get "localAddress"(): $InetAddress
 set "broadcast"(value: boolean)
 set "datagramSocketImplFactory"(value: $DatagramSocketImplFactory$Type)
 get "inetAddress"(): $InetAddress
@@ -347,8 +556,7 @@ get "remoteSocketAddress"(): $SocketAddress
 get "localSocketAddress"(): $SocketAddress
 get "localPort"(): integer
 get "reuseAddress"(): boolean
-get "localAddress"(): $InetAddress
-get "port"(): integer
+get "broadcast"(): boolean
 get "channel"(): $DatagramChannel
 get "closed"(): boolean
 get "receiveBufferSize"(): integer
@@ -362,6 +570,7 @@ set "soTimeout"(value: integer)
 set "trafficClass"(value: integer)
 get "connected"(): boolean
 get "bound"(): boolean
+get "port"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -404,48 +613,6 @@ export type $Proxy$Type$Type = (("socks") | ("direct") | ("http")) | ($Proxy$Typ
 declare global {
 export type $Proxy$Type_ = $Proxy$Type$Type;
 }}
-declare module "packages/java/net/$InetSocketAddress" {
-import {$SocketAddress, $SocketAddress$Type} from "packages/java/net/$SocketAddress"
-import {$InetAddress, $InetAddress$Type} from "packages/java/net/$InetAddress"
-
-/**
- * This class is not allowed By KubeJS!
- * You should not load the class, or KubeJS will throw an error.
- * Loading the class using require() will not throw an error, but the class will be undefined.
- */
-export class $InetSocketAddress extends $SocketAddress {
-
-constructor(arg0: integer)
-constructor(arg0: $InetAddress$Type, arg1: integer)
-constructor(arg0: string, arg1: integer)
-
-public "getHostString"(): string
-public static "createUnresolved"(arg0: string, arg1: integer): $InetSocketAddress
-public "equals"(arg0: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
-public "getAddress"(): $InetAddress
-public "getPort"(): integer
-public "isUnresolved"(): boolean
-public "getHostName"(): string
-get "hostString"(): string
-get "address"(): $InetAddress
-get "port"(): integer
-get "unresolved"(): boolean
-get "hostName"(): string
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $InetSocketAddress$Type = ($InetSocketAddress);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $InetSocketAddress_ = $InetSocketAddress$Type;
-}}
 declare module "packages/java/net/$URLConnection" {
 import {$FileNameMap, $FileNameMap$Type} from "packages/java/net/$FileNameMap"
 import {$ContentHandlerFactory, $ContentHandlerFactory$Type} from "packages/java/net/$ContentHandlerFactory"
@@ -465,6 +632,8 @@ import {$Map, $Map$Type} from "packages/java/util/$Map"
 export class $URLConnection {
 
 
+public "getURL"(): $URL
+public "getPermission"(): $Permission
 public "setUseCaches"(arg0: boolean): void
 public "getContentLength"(): integer
 public "getContentLengthLong"(): long
@@ -518,14 +687,14 @@ public static "setDefaultRequestProperty"(arg0: string, arg1: string): void
  */
 public static "getDefaultRequestProperty"(arg0: string): string
 public static "setContentHandlerFactory"(arg0: $ContentHandlerFactory$Type): void
-public "getURL"(): $URL
-public "getPermission"(): $Permission
+public "getOutputStream"(): $OutputStream
 public "toString"(): string
 public "connect"(): void
 public "getInputStream"(): $InputStream
 public "getContent"(): any
 public "getContent"(arg0: ($Class$Type<(any)>)[]): any
-public "getOutputStream"(): $OutputStream
+get "uRL"(): $URL
+get "permission"(): $Permission
 set "useCaches"(value: boolean)
 get "contentLength"(): integer
 get "contentLengthLong"(): long
@@ -556,11 +725,9 @@ set "ifModifiedSince"(value: long)
 get "ifModifiedSince"(): long
 set "defaultUseCaches"(value: boolean)
 set "contentHandlerFactory"(value: $ContentHandlerFactory$Type)
-get "uRL"(): $URL
-get "permission"(): $Permission
+get "outputStream"(): $OutputStream
 get "inputStream"(): $InputStream
 get "content"(): any
-get "outputStream"(): $OutputStream
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -573,84 +740,6 @@ export type $URLConnection$Type = ($URLConnection);
  */
 declare global {
 export type $URLConnection_ = $URLConnection$Type;
-}}
-declare module "packages/java/net/$DatagramPacket" {
-import {$SocketAddress, $SocketAddress$Type} from "packages/java/net/$SocketAddress"
-import {$InetAddress, $InetAddress$Type} from "packages/java/net/$InetAddress"
-
-/**
- * This class is not allowed By KubeJS!
- * You should not load the class, or KubeJS will throw an error.
- * Loading the class using require() will not throw an error, but the class will be undefined.
- */
-export class $DatagramPacket {
-
-constructor(arg0: (byte)[], arg1: integer, arg2: $SocketAddress$Type)
-constructor(arg0: (byte)[], arg1: integer, arg2: $InetAddress$Type, arg3: integer)
-constructor(arg0: (byte)[], arg1: integer, arg2: integer)
-constructor(arg0: (byte)[], arg1: integer)
-constructor(arg0: (byte)[], arg1: integer, arg2: integer, arg3: $InetAddress$Type, arg4: integer)
-constructor(arg0: (byte)[], arg1: integer, arg2: integer, arg3: $SocketAddress$Type)
-
-public "setAddress"(arg0: $InetAddress$Type): void
-public "setSocketAddress"(arg0: $SocketAddress$Type): void
-public "getData"(): (byte)[]
-public "getLength"(): integer
-public "setLength"(arg0: integer): void
-public "getAddress"(): $InetAddress
-public "getPort"(): integer
-public "getOffset"(): integer
-public "setData"(arg0: (byte)[], arg1: integer, arg2: integer): void
-public "setData"(arg0: (byte)[]): void
-public "setPort"(arg0: integer): void
-public "getSocketAddress"(): $SocketAddress
-set "address"(value: $InetAddress$Type)
-set "socketAddress"(value: $SocketAddress$Type)
-get "data"(): (byte)[]
-get "length"(): integer
-set "length"(value: integer)
-get "address"(): $InetAddress
-get "port"(): integer
-get "offset"(): integer
-set "data"(value: (byte)[])
-set "port"(value: integer)
-get "socketAddress"(): $SocketAddress
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $DatagramPacket$Type = ($DatagramPacket);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $DatagramPacket_ = $DatagramPacket$Type;
-}}
-declare module "packages/java/net/$URLStreamHandler" {
-export {} // Mark the file as a module, do not remove unless there are other import/exports!
-/**
- * This class is not allowed By KubeJS!
- * You should not load the class, or KubeJS will throw an error.
- * Loading the class using require() will not throw an error, but the class will be undefined.
- */
-export class $URLStreamHandler {
-
-constructor()
-
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $URLStreamHandler$Type = ($URLStreamHandler);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $URLStreamHandler_ = $URLStreamHandler$Type;
 }}
 declare module "packages/java/net/$URI" {
 import {$Comparable, $Comparable$Type} from "packages/java/lang/$Comparable"
@@ -670,14 +759,14 @@ constructor(arg0: string, arg1: string, arg2: string, arg3: string)
 constructor(arg0: string, arg1: string, arg2: string, arg3: string, arg4: string)
 constructor(arg0: string, arg1: string, arg2: string, arg3: integer, arg4: string, arg5: string, arg6: string)
 
-public "getRawAuthority"(): string
-public "relativize"(arg0: $URI$Type): $URI
 public "getRawSchemeSpecificPart"(): string
 public "parseServerAuthority"(): $URI
 public "getSchemeSpecificPart"(): string
 public "getRawUserInfo"(): string
 public "getFragment"(): string
 public "toASCIIString"(): string
+public "getRawAuthority"(): string
+public "relativize"(arg0: $URI$Type): $URI
 public "equals"(arg0: any): boolean
 public "toString"(): string
 public "hashCode"(): integer
@@ -699,11 +788,11 @@ public "getQuery"(): string
 public "getPath"(): string
 public "getUserInfo"(): string
 public "toURL"(): $URL
-get "rawAuthority"(): string
 get "rawSchemeSpecificPart"(): string
 get "schemeSpecificPart"(): string
 get "rawUserInfo"(): string
 get "fragment"(): string
+get "rawAuthority"(): string
 get "absolute"(): boolean
 get "scheme"(): string
 get "opaque"(): boolean
@@ -877,23 +966,29 @@ import {$SocketOption, $SocketOption$Type} from "packages/java/net/$SocketOption
  */
 export class $Socket implements $Closeable {
 
-constructor(arg0: $Proxy$Type)
-constructor(arg0: $InetAddress$Type, arg1: integer)
-constructor(arg0: string, arg1: integer)
-constructor()
-/**
- * 
- * @deprecated
- */
-constructor(arg0: $InetAddress$Type, arg1: integer, arg2: boolean)
+constructor(arg0: string, arg1: integer, arg2: $InetAddress$Type, arg3: integer)
+constructor(arg0: $InetAddress$Type, arg1: integer, arg2: $InetAddress$Type, arg3: integer)
 /**
  * 
  * @deprecated
  */
 constructor(arg0: string, arg1: integer, arg2: boolean)
-constructor(arg0: $InetAddress$Type, arg1: integer, arg2: $InetAddress$Type, arg3: integer)
-constructor(arg0: string, arg1: integer, arg2: $InetAddress$Type, arg3: integer)
+/**
+ * 
+ * @deprecated
+ */
+constructor(arg0: $InetAddress$Type, arg1: integer, arg2: boolean)
+constructor(arg0: $Proxy$Type)
+constructor(arg0: string, arg1: integer)
+constructor(arg0: $InetAddress$Type, arg1: integer)
+constructor()
 
+public "setOption"<T>(arg0: $SocketOption$Type<(T)>, arg1: T): $Socket
+public "getLocalAddress"(): $InetAddress
+public "isOutputShutdown"(): boolean
+public "isInputShutdown"(): boolean
+public "shutdownOutput"(): void
+public "shutdownInput"(): void
 public "getInetAddress"(): $InetAddress
 public "supportedOptions"(): $Set<($SocketOption<(any)>)>
 public "getRemoteSocketAddress"(): $SocketAddress
@@ -910,22 +1005,10 @@ public "getOOBInline"(): boolean
  */
 public static "setSocketImplFactory"(arg0: $SocketImplFactory$Type): void
 public "getOption"<T>(arg0: $SocketOption$Type<(T)>): T
-public "getLocalAddress"(): $InetAddress
-public "isOutputShutdown"(): boolean
-public "isInputShutdown"(): boolean
-public "shutdownOutput"(): void
-public "shutdownInput"(): void
-public "toString"(): string
-public "connect"(arg0: $SocketAddress$Type, arg1: integer): void
-public "connect"(arg0: $SocketAddress$Type): void
-public "close"(): void
-public "getPort"(): integer
-public "getInputStream"(): $InputStream
 public "bind"(arg0: $SocketAddress$Type): void
 public "getChannel"(): $SocketChannel
 public "getOutputStream"(): $OutputStream
 public "isClosed"(): boolean
-public "setOption"<T>(arg0: $SocketOption$Type<(T)>, arg1: T): $Socket
 public "getReceiveBufferSize"(): integer
 public "getSendBufferSize"(): integer
 public "getSoLinger"(): integer
@@ -943,6 +1026,15 @@ public "setTrafficClass"(arg0: integer): void
 public "setOOBInline"(arg0: boolean): void
 public "isConnected"(): boolean
 public "isBound"(): boolean
+public "toString"(): string
+public "connect"(arg0: $SocketAddress$Type): void
+public "connect"(arg0: $SocketAddress$Type, arg1: integer): void
+public "close"(): void
+public "getPort"(): integer
+public "getInputStream"(): $InputStream
+get "localAddress"(): $InetAddress
+get "outputShutdown"(): boolean
+get "inputShutdown"(): boolean
 get "inetAddress"(): $InetAddress
 get "remoteSocketAddress"(): $SocketAddress
 get "localSocketAddress"(): $SocketAddress
@@ -952,11 +1044,6 @@ get "keepAlive"(): boolean
 get "reuseAddress"(): boolean
 get "oOBInline"(): boolean
 set "socketImplFactory"(value: $SocketImplFactory$Type)
-get "localAddress"(): $InetAddress
-get "outputShutdown"(): boolean
-get "inputShutdown"(): boolean
-get "port"(): integer
-get "inputStream"(): $InputStream
 get "channel"(): $SocketChannel
 get "outputStream"(): $OutputStream
 get "closed"(): boolean
@@ -975,6 +1062,8 @@ set "trafficClass"(value: integer)
 set "oOBInline"(value: boolean)
 get "connected"(): boolean
 get "bound"(): boolean
+get "port"(): integer
+get "inputStream"(): $InputStream
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -987,36 +1076,6 @@ export type $Socket$Type = ($Socket);
  */
 declare global {
 export type $Socket_ = $Socket$Type;
-}}
-declare module "packages/java/net/$URLStreamHandlerFactory" {
-import {$URLStreamHandler, $URLStreamHandler$Type} from "packages/java/net/$URLStreamHandler"
-
-/**
- * This class is not allowed By KubeJS!
- * You should not load the class, or KubeJS will throw an error.
- * Loading the class using require() will not throw an error, but the class will be undefined.
- */
-export interface $URLStreamHandlerFactory {
-
- "createURLStreamHandler"(arg0: string): $URLStreamHandler
-
-(arg0: string): $URLStreamHandler
-}
-
-export namespace $URLStreamHandlerFactory {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $URLStreamHandlerFactory$Type = ($URLStreamHandlerFactory);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $URLStreamHandlerFactory_ = $URLStreamHandlerFactory$Type;
 }}
 declare module "packages/java/net/$FileNameMap" {
 export {} // Mark the file as a module, do not remove unless there are other import/exports!
@@ -1056,8 +1115,8 @@ export {} // Mark the file as a module, do not remove unless there are other imp
  */
 export interface $SocketOptions {
 
- "getOption"(arg0: integer): any
  "setOption"(arg0: integer, arg1: any): void
+ "getOption"(arg0: integer): any
 }
 
 export namespace $SocketOptions {
@@ -1118,36 +1177,6 @@ export type $ProtocolFamily$Type = ($ProtocolFamily);
 declare global {
 export type $ProtocolFamily_ = $ProtocolFamily$Type;
 }}
-declare module "packages/java/net/$DatagramSocketImplFactory" {
-import {$DatagramSocketImpl, $DatagramSocketImpl$Type} from "packages/java/net/$DatagramSocketImpl"
-
-/**
- * This class is not allowed By KubeJS!
- * You should not load the class, or KubeJS will throw an error.
- * Loading the class using require() will not throw an error, but the class will be undefined.
- */
-export interface $DatagramSocketImplFactory {
-
- "createDatagramSocketImpl"(): $DatagramSocketImpl
-
-(): $DatagramSocketImpl
-}
-
-export namespace $DatagramSocketImplFactory {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $DatagramSocketImplFactory$Type = ($DatagramSocketImplFactory);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $DatagramSocketImplFactory_ = $DatagramSocketImplFactory$Type;
-}}
 declare module "packages/java/net/$InterfaceAddress" {
 import {$InetAddress, $InetAddress$Type} from "packages/java/net/$InetAddress"
 
@@ -1181,35 +1210,6 @@ export type $InterfaceAddress$Type = ($InterfaceAddress);
 declare global {
 export type $InterfaceAddress_ = $InterfaceAddress$Type;
 }}
-declare module "packages/java/net/$SocketOption" {
-import {$Class, $Class$Type} from "packages/java/lang/$Class"
-
-/**
- * This class is not allowed By KubeJS!
- * You should not load the class, or KubeJS will throw an error.
- * Loading the class using require() will not throw an error, but the class will be undefined.
- */
-export interface $SocketOption<T> {
-
- "name"(): string
- "type"(): $Class<(T)>
-}
-
-export namespace $SocketOption {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $SocketOption$Type<T> = ($SocketOption<(T)>);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $SocketOption_<T> = $SocketOption$Type<(T)>;
-}}
 declare module "packages/java/net/$InetAddress" {
 import {$Serializable, $Serializable$Type} from "packages/java/io/$Serializable"
 import {$NetworkInterface, $NetworkInterface$Type} from "packages/java/net/$NetworkInterface"
@@ -1222,8 +1222,8 @@ import {$NetworkInterface, $NetworkInterface$Type} from "packages/java/net/$Netw
 export class $InetAddress implements $Serializable {
 
 
-public "isReachable"(arg0: $NetworkInterface$Type, arg1: integer, arg2: integer): boolean
 public "isReachable"(arg0: integer): boolean
+public "isReachable"(arg0: $NetworkInterface$Type, arg1: integer, arg2: integer): boolean
 public static "getAllByName"(arg0: string): ($InetAddress)[]
 public "isMulticastAddress"(): boolean
 public "isAnyLocalAddress"(): boolean
@@ -1234,10 +1234,12 @@ public "isMCLinkLocal"(): boolean
 public "isMCSiteLocal"(): boolean
 public "isMCOrgLocal"(): boolean
 public "getCanonicalHostName"(): string
+public "isLinkLocalAddress"(): boolean
 public static "getByAddress"(arg0: string, arg1: (byte)[]): $InetAddress
 public static "getByAddress"(arg0: (byte)[]): $InetAddress
-public "isLinkLocalAddress"(): boolean
 public static "getLocalHost"(): $InetAddress
+public static "getLoopbackAddress"(): $InetAddress
+public "isLoopbackAddress"(): boolean
 public "equals"(arg0: any): boolean
 public "toString"(): string
 public "hashCode"(): integer
@@ -1245,8 +1247,6 @@ public "getHostAddress"(): string
 public "getAddress"(): (byte)[]
 public static "getByName"(arg0: string): $InetAddress
 public "getHostName"(): string
-public static "getLoopbackAddress"(): $InetAddress
-public "isLoopbackAddress"(): boolean
 get "multicastAddress"(): boolean
 get "anyLocalAddress"(): boolean
 get "siteLocalAddress"(): boolean
@@ -1258,11 +1258,11 @@ get "mCOrgLocal"(): boolean
 get "canonicalHostName"(): string
 get "linkLocalAddress"(): boolean
 get "localHost"(): $InetAddress
+get "loopbackAddress"(): $InetAddress
+get "loopbackAddress"(): boolean
 get "hostAddress"(): string
 get "address"(): (byte)[]
 get "hostName"(): string
-get "loopbackAddress"(): $InetAddress
-get "loopbackAddress"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_

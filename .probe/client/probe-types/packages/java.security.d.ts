@@ -24,6 +24,339 @@ export type $KeyPair$Type = ($KeyPair);
 declare global {
 export type $KeyPair_ = $KeyPair$Type;
 }}
+declare module "packages/java/security/$Key" {
+import {$Serializable, $Serializable$Type} from "packages/java/io/$Serializable"
+
+export interface $Key extends $Serializable {
+
+ "getFormat"(): string
+ "getAlgorithm"(): string
+ "getEncoded"(): (byte)[]
+}
+
+export namespace $Key {
+const serialVersionUID: long
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Key$Type = ($Key);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Key_ = $Key$Type;
+}}
+declare module "packages/java/security/$Provider$Service" {
+import {$List, $List$Type} from "packages/java/util/$List"
+import {$Provider, $Provider$Type} from "packages/java/security/$Provider"
+import {$Map, $Map$Type} from "packages/java/util/$Map"
+
+export class $Provider$Service {
+
+constructor(arg0: $Provider$Type, arg1: string, arg2: string, arg3: string, arg4: $List$Type<(string)>, arg5: $Map$Type<(string), (string)>)
+
+public "getProvider"(): $Provider
+public "getAlgorithm"(): string
+public "getAttribute"(arg0: string): string
+public "supportsParameter"(arg0: any): boolean
+public "toString"(): string
+public "newInstance"(arg0: any): any
+public "getType"(): string
+public "getClassName"(): string
+get "provider"(): $Provider
+get "algorithm"(): string
+get "type"(): string
+get "className"(): string
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Provider$Service$Type = ($Provider$Service);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Provider$Service_ = $Provider$Service$Type;
+}}
+declare module "packages/java/security/$Signature" {
+import {$Certificate, $Certificate$Type} from "packages/java/security/cert/$Certificate"
+import {$SecureRandom, $SecureRandom$Type} from "packages/java/security/$SecureRandom"
+import {$PublicKey, $PublicKey$Type} from "packages/java/security/$PublicKey"
+import {$AlgorithmParameters, $AlgorithmParameters$Type} from "packages/java/security/$AlgorithmParameters"
+import {$PrivateKey, $PrivateKey$Type} from "packages/java/security/$PrivateKey"
+import {$ByteBuffer, $ByteBuffer$Type} from "packages/java/nio/$ByteBuffer"
+import {$Provider, $Provider$Type} from "packages/java/security/$Provider"
+import {$SignatureSpi, $SignatureSpi$Type} from "packages/java/security/$SignatureSpi"
+import {$AlgorithmParameterSpec, $AlgorithmParameterSpec$Type} from "packages/java/security/spec/$AlgorithmParameterSpec"
+
+export class $Signature extends $SignatureSpi {
+
+
+/**
+ * 
+ * @deprecated
+ */
+public "setParameter"(arg0: string, arg1: any): void
+public "setParameter"(arg0: $AlgorithmParameterSpec$Type): void
+/**
+ * 
+ * @deprecated
+ */
+public "getParameter"(arg0: string): any
+public "initVerify"(arg0: $PublicKey$Type): void
+public "initVerify"(arg0: $Certificate$Type): void
+public "initSign"(arg0: $PrivateKey$Type, arg1: $SecureRandom$Type): void
+public "initSign"(arg0: $PrivateKey$Type): void
+public "getProvider"(): $Provider
+public "getAlgorithm"(): string
+public "sign"(): (byte)[]
+public "sign"(arg0: (byte)[], arg1: integer, arg2: integer): integer
+public "verify"(arg0: (byte)[]): boolean
+public "verify"(arg0: (byte)[], arg1: integer, arg2: integer): boolean
+public "toString"(): string
+public "clone"(): any
+public "update"(arg0: byte): void
+public "update"(arg0: (byte)[]): void
+public "update"(arg0: (byte)[], arg1: integer, arg2: integer): void
+public "update"(arg0: $ByteBuffer$Type): void
+public static "getInstance"(arg0: string, arg1: string): $Signature
+public static "getInstance"(arg0: string): $Signature
+public static "getInstance"(arg0: string, arg1: $Provider$Type): $Signature
+public "getParameters"(): $AlgorithmParameters
+set "parameter"(value: $AlgorithmParameterSpec$Type)
+get "provider"(): $Provider
+get "algorithm"(): string
+get "parameters"(): $AlgorithmParameters
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Signature$Type = ($Signature);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Signature_ = $Signature$Type;
+}}
+declare module "packages/java/security/cert/$Certificate" {
+import {$Serializable, $Serializable$Type} from "packages/java/io/$Serializable"
+import {$PublicKey, $PublicKey$Type} from "packages/java/security/$PublicKey"
+import {$Provider, $Provider$Type} from "packages/java/security/$Provider"
+
+export class $Certificate implements $Serializable {
+
+
+public "verify"(arg0: $PublicKey$Type, arg1: string): void
+public "verify"(arg0: $PublicKey$Type, arg1: $Provider$Type): void
+public "verify"(arg0: $PublicKey$Type): void
+public "getPublicKey"(): $PublicKey
+public "equals"(arg0: any): boolean
+public "toString"(): string
+public "hashCode"(): integer
+public "getType"(): string
+public "getEncoded"(): (byte)[]
+get "publicKey"(): $PublicKey
+get "type"(): string
+get "encoded"(): (byte)[]
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Certificate$Type = ($Certificate);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Certificate_ = $Certificate$Type;
+}}
+declare module "packages/java/security/$SecureRandom" {
+import {$RandomGenerator, $RandomGenerator$Type} from "packages/java/util/random/$RandomGenerator"
+import {$Random, $Random$Type} from "packages/java/util/$Random"
+import {$SecureRandomParameters, $SecureRandomParameters$Type} from "packages/java/security/$SecureRandomParameters"
+import {$Provider, $Provider$Type} from "packages/java/security/$Provider"
+
+export class $SecureRandom extends $Random {
+
+constructor()
+constructor(arg0: (byte)[])
+
+public "setSeed"(arg0: long): void
+public "setSeed"(arg0: (byte)[]): void
+public static "getSeed"(arg0: integer): (byte)[]
+public "nextBytes"(arg0: (byte)[], arg1: $SecureRandomParameters$Type): void
+public "nextBytes"(arg0: (byte)[]): void
+public "getProvider"(): $Provider
+public "getAlgorithm"(): string
+public "generateSeed"(arg0: integer): (byte)[]
+public static "getInstanceStrong"(): $SecureRandom
+public "reseed"(arg0: $SecureRandomParameters$Type): void
+public "reseed"(): void
+public "toString"(): string
+public static "getInstance"(arg0: string, arg1: $SecureRandomParameters$Type, arg2: string): $SecureRandom
+public static "getInstance"(arg0: string, arg1: $SecureRandomParameters$Type, arg2: $Provider$Type): $SecureRandom
+public static "getInstance"(arg0: string, arg1: $Provider$Type): $SecureRandom
+public static "getInstance"(arg0: string, arg1: $SecureRandomParameters$Type): $SecureRandom
+public static "getInstance"(arg0: string, arg1: string): $SecureRandom
+public static "getInstance"(arg0: string): $SecureRandom
+public "getParameters"(): $SecureRandomParameters
+public static "getDefault"(): $RandomGenerator
+public static "of"(arg0: string): $RandomGenerator
+set "seed"(value: long)
+set "seed"(value: (byte)[])
+get "provider"(): $Provider
+get "algorithm"(): string
+get "instanceStrong"(): $SecureRandom
+get "parameters"(): $SecureRandomParameters
+get "default"(): $RandomGenerator
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $SecureRandom$Type = ($SecureRandom);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $SecureRandom_ = $SecureRandom$Type;
+}}
+declare module "packages/java/security/$SignatureSpi" {
+export {} // Mark the file as a module, do not remove unless there are other import/exports!
+export class $SignatureSpi {
+
+constructor()
+
+public "clone"(): any
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $SignatureSpi$Type = ($SignatureSpi);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $SignatureSpi_ = $SignatureSpi$Type;
+}}
+declare module "packages/java/security/$Permission" {
+import {$Serializable, $Serializable$Type} from "packages/java/io/$Serializable"
+import {$Guard, $Guard$Type} from "packages/java/security/$Guard"
+import {$PermissionCollection, $PermissionCollection$Type} from "packages/java/security/$PermissionCollection"
+
+export class $Permission implements $Guard, $Serializable {
+
+constructor(arg0: string)
+
+public "newPermissionCollection"(): $PermissionCollection
+public "checkGuard"(arg0: any): void
+public "getName"(): string
+public "equals"(arg0: any): boolean
+public "toString"(): string
+public "hashCode"(): integer
+public "implies"(arg0: $Permission$Type): boolean
+public "getActions"(): string
+get "name"(): string
+get "actions"(): string
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Permission$Type = ($Permission);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Permission_ = $Permission$Type;
+}}
+declare module "packages/java/security/spec/$AlgorithmParameterSpec" {
+export {} // Mark the file as a module, do not remove unless there are other import/exports!
+export interface $AlgorithmParameterSpec {
+
+}
+
+export namespace $AlgorithmParameterSpec {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $AlgorithmParameterSpec$Type = ($AlgorithmParameterSpec);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $AlgorithmParameterSpec_ = $AlgorithmParameterSpec$Type;
+}}
+declare module "packages/java/security/cert/$CertPath" {
+import {$Serializable, $Serializable$Type} from "packages/java/io/$Serializable"
+import {$List, $List$Type} from "packages/java/util/$List"
+import {$Iterator, $Iterator$Type} from "packages/java/util/$Iterator"
+
+export class $CertPath implements $Serializable {
+
+
+public "getEncodings"(): $Iterator<(string)>
+public "equals"(arg0: any): boolean
+public "toString"(): string
+public "hashCode"(): integer
+public "getCertificates"(): $List<(any)>
+public "getType"(): string
+public "getEncoded"(arg0: string): (byte)[]
+public "getEncoded"(): (byte)[]
+get "encodings"(): $Iterator<(string)>
+get "certificates"(): $List<(any)>
+get "type"(): string
+get "encoded"(): (byte)[]
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $CertPath$Type = ($CertPath);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $CertPath_ = $CertPath$Type;
+}}
+declare module "packages/java/security/$SecureRandomParameters" {
+export {} // Mark the file as a module, do not remove unless there are other import/exports!
+export interface $SecureRandomParameters {
+
+}
+
+export namespace $SecureRandomParameters {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $SecureRandomParameters$Type = ($SecureRandomParameters);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $SecureRandomParameters_ = $SecureRandomParameters$Type;
+}}
 declare module "packages/java/security/$Provider" {
 import {$BiConsumer, $BiConsumer$Type} from "packages/java/util/function/$BiConsumer"
 import {$Provider$Service, $Provider$Service$Type} from "packages/java/security/$Provider$Service"
@@ -40,17 +373,17 @@ import {$Map, $Map$Type} from "packages/java/util/$Map"
 export class $Provider extends $Properties {
 
 
+/**
+ * 
+ * @deprecated
+ */
+public "getVersion"(): double
 public "getService"(arg0: string, arg1: string): $Provider$Service
 public "getServices"(): $Set<($Provider$Service)>
 public "configure"(arg0: string): $Provider
 public "isConfigured"(): boolean
 public "getVersionStr"(): string
 public "getInfo"(): string
-/**
- * 
- * @deprecated
- */
-public "getVersion"(): double
 public "getName"(): string
 public "remove"(arg0: any, arg1: any): boolean
 public "remove"(arg0: any): any
@@ -90,11 +423,11 @@ public static "of"<K, V>(arg0: K, arg1: V, arg2: K, arg3: V, arg4: K, arg5: V, a
 public static "of"<K, V>(arg0: K, arg1: V, arg2: K, arg3: V, arg4: K, arg5: V, arg6: K, arg7: V, arg8: K, arg9: V, arg10: K, arg11: V): $Map<(K), (V)>
 public static "entry"<K, V>(arg0: K, arg1: V): $Map$Entry<(K), (V)>
 public static "ofEntries"<K, V>(...arg0: ($Map$Entry$Type<(any), (any)>)[]): $Map<(K), (V)>
+get "version"(): double
 get "services"(): $Set<($Provider$Service)>
 get "configured"(): boolean
 get "versionStr"(): string
 get "info"(): string
-get "version"(): double
 get "name"(): string
 }
 /**
@@ -156,65 +489,6 @@ export type $Guard$Type = ($Guard);
  */
 declare global {
 export type $Guard_ = $Guard$Type;
-}}
-declare module "packages/java/security/$Key" {
-import {$Serializable, $Serializable$Type} from "packages/java/io/$Serializable"
-
-export interface $Key extends $Serializable {
-
- "getFormat"(): string
- "getAlgorithm"(): string
- "getEncoded"(): (byte)[]
-}
-
-export namespace $Key {
-const serialVersionUID: long
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $Key$Type = ($Key);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $Key_ = $Key$Type;
-}}
-declare module "packages/java/security/$Provider$Service" {
-import {$List, $List$Type} from "packages/java/util/$List"
-import {$Provider, $Provider$Type} from "packages/java/security/$Provider"
-import {$Map, $Map$Type} from "packages/java/util/$Map"
-
-export class $Provider$Service {
-
-constructor(arg0: $Provider$Type, arg1: string, arg2: string, arg3: string, arg4: $List$Type<(string)>, arg5: $Map$Type<(string), (string)>)
-
-public "getAttribute"(arg0: string): string
-public "getProvider"(): $Provider
-public "supportsParameter"(arg0: any): boolean
-public "getAlgorithm"(): string
-public "toString"(): string
-public "newInstance"(arg0: any): any
-public "getType"(): string
-public "getClassName"(): string
-get "provider"(): $Provider
-get "algorithm"(): string
-get "type"(): string
-get "className"(): string
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $Provider$Service$Type = ($Provider$Service);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $Provider$Service_ = $Provider$Service$Type;
 }}
 declare module "packages/java/security/$Timestamp" {
 import {$Serializable, $Serializable$Type} from "packages/java/io/$Serializable"
@@ -279,68 +553,6 @@ export type $CodeSource$Type = ($CodeSource);
 declare global {
 export type $CodeSource_ = $CodeSource$Type;
 }}
-declare module "packages/java/security/$Signature" {
-import {$Certificate, $Certificate$Type} from "packages/java/security/cert/$Certificate"
-import {$SecureRandom, $SecureRandom$Type} from "packages/java/security/$SecureRandom"
-import {$PublicKey, $PublicKey$Type} from "packages/java/security/$PublicKey"
-import {$AlgorithmParameters, $AlgorithmParameters$Type} from "packages/java/security/$AlgorithmParameters"
-import {$PrivateKey, $PrivateKey$Type} from "packages/java/security/$PrivateKey"
-import {$ByteBuffer, $ByteBuffer$Type} from "packages/java/nio/$ByteBuffer"
-import {$Provider, $Provider$Type} from "packages/java/security/$Provider"
-import {$SignatureSpi, $SignatureSpi$Type} from "packages/java/security/$SignatureSpi"
-import {$AlgorithmParameterSpec, $AlgorithmParameterSpec$Type} from "packages/java/security/spec/$AlgorithmParameterSpec"
-
-export class $Signature extends $SignatureSpi {
-
-
-public "verify"(arg0: (byte)[], arg1: integer, arg2: integer): boolean
-public "verify"(arg0: (byte)[]): boolean
-public "getProvider"(): $Provider
-public "getAlgorithm"(): string
-public "initVerify"(arg0: $PublicKey$Type): void
-public "initVerify"(arg0: $Certificate$Type): void
-public "initSign"(arg0: $PrivateKey$Type): void
-public "initSign"(arg0: $PrivateKey$Type, arg1: $SecureRandom$Type): void
-public "toString"(): string
-public "clone"(): any
-public "update"(arg0: byte): void
-public "update"(arg0: (byte)[]): void
-public "update"(arg0: (byte)[], arg1: integer, arg2: integer): void
-public "update"(arg0: $ByteBuffer$Type): void
-public static "getInstance"(arg0: string, arg1: $Provider$Type): $Signature
-public static "getInstance"(arg0: string): $Signature
-public static "getInstance"(arg0: string, arg1: string): $Signature
-public "getParameters"(): $AlgorithmParameters
-public "sign"(): (byte)[]
-public "sign"(arg0: (byte)[], arg1: integer, arg2: integer): integer
-/**
- * 
- * @deprecated
- */
-public "setParameter"(arg0: string, arg1: any): void
-public "setParameter"(arg0: $AlgorithmParameterSpec$Type): void
-/**
- * 
- * @deprecated
- */
-public "getParameter"(arg0: string): any
-get "provider"(): $Provider
-get "algorithm"(): string
-get "parameters"(): $AlgorithmParameters
-set "parameter"(value: $AlgorithmParameterSpec$Type)
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $Signature$Type = ($Signature);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $Signature_ = $Signature$Type;
-}}
 declare module "packages/java/security/$AccessControlContext" {
 import {$DomainCombiner, $DomainCombiner$Type} from "packages/java/security/$DomainCombiner"
 import {$Permission, $Permission$Type} from "packages/java/security/$Permission"
@@ -373,39 +585,6 @@ export type $AccessControlContext$Type = ($AccessControlContext);
 declare global {
 export type $AccessControlContext_ = $AccessControlContext$Type;
 }}
-declare module "packages/java/security/cert/$Certificate" {
-import {$Serializable, $Serializable$Type} from "packages/java/io/$Serializable"
-import {$PublicKey, $PublicKey$Type} from "packages/java/security/$PublicKey"
-import {$Provider, $Provider$Type} from "packages/java/security/$Provider"
-
-export class $Certificate implements $Serializable {
-
-
-public "verify"(arg0: $PublicKey$Type, arg1: string): void
-public "verify"(arg0: $PublicKey$Type, arg1: $Provider$Type): void
-public "verify"(arg0: $PublicKey$Type): void
-public "getPublicKey"(): $PublicKey
-public "equals"(arg0: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
-public "getType"(): string
-public "getEncoded"(): (byte)[]
-get "publicKey"(): $PublicKey
-get "type"(): string
-get "encoded"(): (byte)[]
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $Certificate$Type = ($Certificate);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $Certificate_ = $Certificate$Type;
-}}
 declare module "packages/java/security/$AlgorithmParameters" {
 import {$Class, $Class$Type} from "packages/java/lang/$Class"
 import {$Provider, $Provider$Type} from "packages/java/security/$Provider"
@@ -414,6 +593,7 @@ import {$AlgorithmParameterSpec, $AlgorithmParameterSpec$Type} from "packages/ja
 export class $AlgorithmParameters {
 
 
+public "getParameterSpec"<T extends $AlgorithmParameterSpec>(arg0: $Class$Type<(T)>): T
 public "getProvider"(): $Provider
 public "getAlgorithm"(): string
 public "toString"(): string
@@ -423,9 +603,8 @@ public static "getInstance"(arg0: string, arg1: $Provider$Type): $AlgorithmParam
 public "init"(arg0: $AlgorithmParameterSpec$Type): void
 public "init"(arg0: (byte)[], arg1: string): void
 public "init"(arg0: (byte)[]): void
-public "getEncoded"(arg0: string): (byte)[]
 public "getEncoded"(): (byte)[]
-public "getParameterSpec"<T extends $AlgorithmParameterSpec>(arg0: $Class$Type<(T)>): T
+public "getEncoded"(arg0: string): (byte)[]
 get "provider"(): $Provider
 get "algorithm"(): string
 get "encoded"(): (byte)[]
@@ -441,78 +620,6 @@ export type $AlgorithmParameters$Type = ($AlgorithmParameters);
  */
 declare global {
 export type $AlgorithmParameters_ = $AlgorithmParameters$Type;
-}}
-declare module "packages/java/security/$SecureRandom" {
-import {$RandomGenerator, $RandomGenerator$Type} from "packages/java/util/random/$RandomGenerator"
-import {$Random, $Random$Type} from "packages/java/util/$Random"
-import {$SecureRandomParameters, $SecureRandomParameters$Type} from "packages/java/security/$SecureRandomParameters"
-import {$Provider, $Provider$Type} from "packages/java/security/$Provider"
-
-export class $SecureRandom extends $Random {
-
-constructor()
-constructor(arg0: (byte)[])
-
-public "setSeed"(arg0: long): void
-public "setSeed"(arg0: (byte)[]): void
-public "generateSeed"(arg0: integer): (byte)[]
-public static "getInstanceStrong"(): $SecureRandom
-public "reseed"(arg0: $SecureRandomParameters$Type): void
-public "reseed"(): void
-public static "getSeed"(arg0: integer): (byte)[]
-public "getProvider"(): $Provider
-public "nextBytes"(arg0: (byte)[]): void
-public "nextBytes"(arg0: (byte)[], arg1: $SecureRandomParameters$Type): void
-public "getAlgorithm"(): string
-public "toString"(): string
-public static "getInstance"(arg0: string, arg1: $SecureRandomParameters$Type, arg2: string): $SecureRandom
-public static "getInstance"(arg0: string, arg1: $SecureRandomParameters$Type, arg2: $Provider$Type): $SecureRandom
-public static "getInstance"(arg0: string, arg1: $Provider$Type): $SecureRandom
-public static "getInstance"(arg0: string, arg1: $SecureRandomParameters$Type): $SecureRandom
-public static "getInstance"(arg0: string, arg1: string): $SecureRandom
-public static "getInstance"(arg0: string): $SecureRandom
-public "getParameters"(): $SecureRandomParameters
-public static "getDefault"(): $RandomGenerator
-public static "of"(arg0: string): $RandomGenerator
-set "seed"(value: long)
-set "seed"(value: (byte)[])
-get "instanceStrong"(): $SecureRandom
-get "provider"(): $Provider
-get "algorithm"(): string
-get "parameters"(): $SecureRandomParameters
-get "default"(): $RandomGenerator
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $SecureRandom$Type = ($SecureRandom);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $SecureRandom_ = $SecureRandom$Type;
-}}
-declare module "packages/java/security/$SignatureSpi" {
-export {} // Mark the file as a module, do not remove unless there are other import/exports!
-export class $SignatureSpi {
-
-constructor()
-
-public "clone"(): any
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $SignatureSpi$Type = ($SignatureSpi);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $SignatureSpi_ = $SignatureSpi$Type;
 }}
 declare module "packages/java/security/$ProtectionDomain" {
 import {$CodeSource, $CodeSource$Type} from "packages/java/security/$CodeSource"
@@ -580,38 +687,6 @@ export type $PermissionCollection$Type = ($PermissionCollection);
  */
 declare global {
 export type $PermissionCollection_ = $PermissionCollection$Type;
-}}
-declare module "packages/java/security/$Permission" {
-import {$Serializable, $Serializable$Type} from "packages/java/io/$Serializable"
-import {$Guard, $Guard$Type} from "packages/java/security/$Guard"
-import {$PermissionCollection, $PermissionCollection$Type} from "packages/java/security/$PermissionCollection"
-
-export class $Permission implements $Guard, $Serializable {
-
-constructor(arg0: string)
-
-public "getName"(): string
-public "equals"(arg0: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
-public "implies"(arg0: $Permission$Type): boolean
-public "getActions"(): string
-public "newPermissionCollection"(): $PermissionCollection
-public "checkGuard"(arg0: any): void
-get "name"(): string
-get "actions"(): string
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $Permission$Type = ($Permission);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $Permission_ = $Permission$Type;
 }}
 declare module "packages/java/security/$PrivateKey" {
 import {$Key, $Key$Type} from "packages/java/security/$Key"
@@ -699,27 +774,6 @@ export type $DomainCombiner$Type = ($DomainCombiner);
 declare global {
 export type $DomainCombiner_ = $DomainCombiner$Type;
 }}
-declare module "packages/java/security/spec/$AlgorithmParameterSpec" {
-export {} // Mark the file as a module, do not remove unless there are other import/exports!
-export interface $AlgorithmParameterSpec {
-
-}
-
-export namespace $AlgorithmParameterSpec {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $AlgorithmParameterSpec$Type = ($AlgorithmParameterSpec);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $AlgorithmParameterSpec_ = $AlgorithmParameterSpec$Type;
-}}
 declare module "packages/java/security/$PrivilegedAction" {
 export {} // Mark the file as a module, do not remove unless there are other import/exports!
 export interface $PrivilegedAction<T> {
@@ -768,60 +822,6 @@ export type $PublicKey$Type = ($PublicKey);
  */
 declare global {
 export type $PublicKey_ = $PublicKey$Type;
-}}
-declare module "packages/java/security/cert/$CertPath" {
-import {$Serializable, $Serializable$Type} from "packages/java/io/$Serializable"
-import {$List, $List$Type} from "packages/java/util/$List"
-import {$Iterator, $Iterator$Type} from "packages/java/util/$Iterator"
-
-export class $CertPath implements $Serializable {
-
-
-public "equals"(arg0: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
-public "getCertificates"(): $List<(any)>
-public "getType"(): string
-public "getEncoded"(arg0: string): (byte)[]
-public "getEncoded"(): (byte)[]
-public "getEncodings"(): $Iterator<(string)>
-get "certificates"(): $List<(any)>
-get "type"(): string
-get "encoded"(): (byte)[]
-get "encodings"(): $Iterator<(string)>
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $CertPath$Type = ($CertPath);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $CertPath_ = $CertPath$Type;
-}}
-declare module "packages/java/security/$SecureRandomParameters" {
-export {} // Mark the file as a module, do not remove unless there are other import/exports!
-export interface $SecureRandomParameters {
-
-}
-
-export namespace $SecureRandomParameters {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $SecureRandomParameters$Type = ($SecureRandomParameters);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $SecureRandomParameters_ = $SecureRandomParameters$Type;
 }}
 declare module "packages/java/security/$Principal" {
 import {$Subject, $Subject$Type} from "packages/javax/security/auth/$Subject"

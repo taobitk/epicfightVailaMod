@@ -1,3 +1,392 @@
+declare module "packages/com/almostreliable/lootjs/loot/condition/builder/$DistancePredicateBuilder" {
+import {$DistancePredicate, $DistancePredicate$Type} from "packages/net/minecraft/advancements/critereon/$DistancePredicate"
+import {$MinMaxBounds$Doubles, $MinMaxBounds$Doubles$Type} from "packages/net/minecraft/advancements/critereon/$MinMaxBounds$Doubles"
+
+export class $DistancePredicateBuilder {
+
+constructor()
+
+public "horizontal"(bounds: $MinMaxBounds$Doubles$Type): $DistancePredicateBuilder
+public "build"(): $DistancePredicate
+public "absolute"(bounds: $MinMaxBounds$Doubles$Type): $DistancePredicateBuilder
+public "x"(bounds: $MinMaxBounds$Doubles$Type): $DistancePredicateBuilder
+public "z"(bounds: $MinMaxBounds$Doubles$Type): $DistancePredicateBuilder
+public "y"(bounds: $MinMaxBounds$Doubles$Type): $DistancePredicateBuilder
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $DistancePredicateBuilder$Type = ($DistancePredicateBuilder);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $DistancePredicateBuilder_ = $DistancePredicateBuilder$Type;
+}}
+declare module "packages/com/almostreliable/lootjs/core/$ILootCondition" {
+import {$ILootHandler, $ILootHandler$Type} from "packages/com/almostreliable/lootjs/core/$ILootHandler"
+import {$LootContext, $LootContext$Type} from "packages/net/minecraft/world/level/storage/loot/$LootContext"
+import {$Predicate, $Predicate$Type} from "packages/java/util/function/$Predicate"
+import {$List, $List$Type} from "packages/java/util/$List"
+import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
+
+export interface $ILootCondition extends $ILootHandler, $Predicate<($LootContext)> {
+
+ "applyLootHandler"(context: $LootContext$Type, loot: $List$Type<($ItemStack$Type)>): boolean
+ "negate"(): $Predicate<($LootContext)>
+ "and"(arg0: $Predicate$Type<(any)>): $Predicate<($LootContext)>
+ "or"(arg0: $Predicate$Type<(any)>): $Predicate<($LootContext)>
+ "test"(arg0: $LootContext$Type): boolean
+
+(context: $LootContext$Type, loot: $List$Type<($ItemStack$Type)>): boolean
+}
+
+export namespace $ILootCondition {
+function isEqual<T>(arg0: any): $Predicate<($LootContext)>
+function not<T>(arg0: $Predicate$Type<(any)>): $Predicate<($LootContext)>
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $ILootCondition$Type = ($ILootCondition);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $ILootCondition_ = $ILootCondition$Type;
+}}
+declare module "packages/com/almostreliable/lootjs/loot/action/$CompositeLootAction" {
+import {$ILootHandler, $ILootHandler$Type} from "packages/com/almostreliable/lootjs/core/$ILootHandler"
+import {$LootContext, $LootContext$Type} from "packages/net/minecraft/world/level/storage/loot/$LootContext"
+import {$Collection, $Collection$Type} from "packages/java/util/$Collection"
+import {$List, $List$Type} from "packages/java/util/$List"
+import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
+import {$ILootAction, $ILootAction$Type} from "packages/com/almostreliable/lootjs/core/$ILootAction"
+
+export class $CompositeLootAction implements $ILootAction {
+
+constructor(handlers: $Collection$Type<($ILootHandler$Type)>)
+
+public "applyLootHandler"(context: $LootContext$Type, loot: $List$Type<($ItemStack$Type)>): boolean
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $CompositeLootAction$Type = ($CompositeLootAction);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $CompositeLootAction_ = $CompositeLootAction$Type;
+}}
+declare module "packages/com/almostreliable/lootjs/forge/filters/$ForgeItemFilter" {
+import {$ItemFilter, $ItemFilter$Type} from "packages/com/almostreliable/lootjs/filters/$ItemFilter"
+import {$Predicate, $Predicate$Type} from "packages/java/util/function/$Predicate"
+import {$ResourceLocationFilter, $ResourceLocationFilter$Type} from "packages/com/almostreliable/lootjs/filters/$ResourceLocationFilter"
+import {$EquipmentSlot, $EquipmentSlot$Type} from "packages/net/minecraft/world/entity/$EquipmentSlot"
+import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
+
+export interface $ForgeItemFilter extends $ItemFilter {
+
+ "and"(other: $ItemFilter$Type): $ItemFilter
+ "or"(other: $ItemFilter$Type): $ItemFilter
+ "test"(arg0: $ItemStack$Type): boolean
+ "and"(arg0: $Predicate$Type<(any)>): $Predicate<($ItemStack)>
+ "or"(arg0: $Predicate$Type<(any)>): $Predicate<($ItemStack)>
+
+(...actions: (string)[]): $ItemFilter
+}
+
+export namespace $ForgeItemFilter {
+function canPerformAnyAction(...actions: (string)[]): $ItemFilter
+function canPerformAction(...actions: (string)[]): $ItemFilter
+function hasEnchantment(filter: $ResourceLocationFilter$Type): $ItemFilter
+function hasEnchantment(filter: $ResourceLocationFilter$Type, min: integer, max: integer): $ItemFilter
+function equipmentSlot(slot: $EquipmentSlot$Type): $ItemFilter
+function and(...itemFilters: ($ItemFilter$Type)[]): $ItemFilter
+function not(itemFilter: $ItemFilter$Type): $ItemFilter
+function or(...itemFilters: ($ItemFilter$Type)[]): $ItemFilter
+function custom(predicate: $Predicate$Type<($ItemStack$Type)>): $ItemFilter
+function isEqual<T>(arg0: any): $Predicate<($ItemStack)>
+function not<T>(arg0: $Predicate$Type<(any)>): $Predicate<($ItemStack)>
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $ForgeItemFilter$Type = ($ForgeItemFilter);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $ForgeItemFilter_ = $ForgeItemFilter$Type;
+}}
+declare module "packages/com/almostreliable/lootjs/loot/action/$GroupedLootAction" {
+import {$ILootHandler, $ILootHandler$Type} from "packages/com/almostreliable/lootjs/core/$ILootHandler"
+import {$LootContext, $LootContext$Type} from "packages/net/minecraft/world/level/storage/loot/$LootContext"
+import {$Collection, $Collection$Type} from "packages/java/util/$Collection"
+import {$CompositeLootAction, $CompositeLootAction$Type} from "packages/com/almostreliable/lootjs/loot/action/$CompositeLootAction"
+import {$List, $List$Type} from "packages/java/util/$List"
+import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
+import {$NumberProvider, $NumberProvider$Type} from "packages/net/minecraft/world/level/storage/loot/providers/number/$NumberProvider"
+
+export class $GroupedLootAction extends $CompositeLootAction {
+
+constructor(numberProvider: $NumberProvider$Type, handlers: $Collection$Type<($ILootHandler$Type)>)
+
+public "applyLootHandler"(context: $LootContext$Type, loot: $List$Type<($ItemStack$Type)>): boolean
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $GroupedLootAction$Type = ($GroupedLootAction);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $GroupedLootAction_ = $GroupedLootAction$Type;
+}}
+declare module "packages/com/almostreliable/lootjs/core/$LootEntry$Generator" {
+import {$LootContext, $LootContext$Type} from "packages/net/minecraft/world/level/storage/loot/$LootContext"
+import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
+
+export interface $LootEntry$Generator {
+
+ "create"(arg0: $LootContext$Type): $ItemStack
+
+(arg0: $LootContext$Type): $ItemStack
+}
+
+export namespace $LootEntry$Generator {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $LootEntry$Generator$Type = ($LootEntry$Generator);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $LootEntry$Generator_ = $LootEntry$Generator$Type;
+}}
+declare module "packages/com/almostreliable/lootjs/loot/$AddAttributesFunction$Modifier" {
+import {$Function, $Function$Type} from "packages/java/util/function/$Function"
+import {$LootContext, $LootContext$Type} from "packages/net/minecraft/world/level/storage/loot/$LootContext"
+import {$UUID, $UUID$Type} from "packages/java/util/$UUID"
+import {$Attribute, $Attribute$Type} from "packages/net/minecraft/world/entity/ai/attributes/$Attribute"
+import {$AttributeModifier$Operation, $AttributeModifier$Operation$Type} from "packages/net/minecraft/world/entity/ai/attributes/$AttributeModifier$Operation"
+import {$AttributeModifier, $AttributeModifier$Type} from "packages/net/minecraft/world/entity/ai/attributes/$AttributeModifier"
+import {$EquipmentSlot, $EquipmentSlot$Type} from "packages/net/minecraft/world/entity/$EquipmentSlot"
+import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
+import {$NumberProvider, $NumberProvider$Type} from "packages/net/minecraft/world/level/storage/loot/providers/number/$NumberProvider"
+
+export class $AddAttributesFunction$Modifier {
+
+constructor(probability: float, attribute: $Attribute$Type, operation: $AttributeModifier$Operation$Type, amount: $NumberProvider$Type, name: string, slots: $Function$Type<($ItemStack$Type), (($EquipmentSlot$Type)[])>, uuid: $UUID$Type)
+
+public "createAttributeModifier"(context: $LootContext$Type): $AttributeModifier
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $AddAttributesFunction$Modifier$Type = ($AddAttributesFunction$Modifier);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $AddAttributesFunction$Modifier_ = $AddAttributesFunction$Modifier$Type;
+}}
+declare module "packages/com/almostreliable/lootjs/loot/$AddAttributesFunction$Builder" {
+import {$LootItemFunction$Builder, $LootItemFunction$Builder$Type} from "packages/net/minecraft/world/level/storage/loot/functions/$LootItemFunction$Builder"
+import {$Consumer, $Consumer$Type} from "packages/java/util/function/$Consumer"
+import {$AddAttributesFunction$Modifier$Builder, $AddAttributesFunction$Modifier$Builder$Type} from "packages/com/almostreliable/lootjs/loot/$AddAttributesFunction$Modifier$Builder"
+import {$AddAttributesFunction, $AddAttributesFunction$Type} from "packages/com/almostreliable/lootjs/loot/$AddAttributesFunction"
+import {$Attribute, $Attribute$Type} from "packages/net/minecraft/world/entity/ai/attributes/$Attribute"
+import {$EquipmentSlot, $EquipmentSlot$Type} from "packages/net/minecraft/world/entity/$EquipmentSlot"
+import {$AddAttributesFunction$Modifier, $AddAttributesFunction$Modifier$Type} from "packages/com/almostreliable/lootjs/loot/$AddAttributesFunction$Modifier"
+import {$NumberProvider, $NumberProvider$Type} from "packages/net/minecraft/world/level/storage/loot/providers/number/$NumberProvider"
+
+export class $AddAttributesFunction$Builder implements $LootItemFunction$Builder {
+
+constructor()
+
+public "preserveDefaults"(flag: boolean): $AddAttributesFunction$Builder
+public "forSlots"(attribute: $Attribute$Type, amount: $NumberProvider$Type, slots: ($EquipmentSlot$Type)[]): $AddAttributesFunction$Builder
+public "forSlots"(probability: float, attribute: $Attribute$Type, amount: $NumberProvider$Type, slots: ($EquipmentSlot$Type)[]): $AddAttributesFunction$Builder
+public "simple"(probability: float, attribute: $Attribute$Type, amount: $NumberProvider$Type): $AddAttributesFunction$Builder
+public "simple"(attribute: $Attribute$Type, amount: $NumberProvider$Type): $AddAttributesFunction$Builder
+public "build"(): $AddAttributesFunction
+public "add"(modifier: $AddAttributesFunction$Modifier$Type): $AddAttributesFunction$Builder
+public "add"(attribute: $Attribute$Type, amount: $NumberProvider$Type, action: $Consumer$Type<($AddAttributesFunction$Modifier$Builder$Type)>): $AddAttributesFunction$Builder
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $AddAttributesFunction$Builder$Type = ($AddAttributesFunction$Builder);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $AddAttributesFunction$Builder_ = $AddAttributesFunction$Builder$Type;
+}}
+declare module "packages/com/almostreliable/lootjs/kube/$LootEntryWrapper" {
+import {$JsonObject, $JsonObject$Type} from "packages/com/google/gson/$JsonObject"
+import {$CompoundTag, $CompoundTag$Type} from "packages/net/minecraft/nbt/$CompoundTag"
+import {$LootEntry, $LootEntry$Type} from "packages/com/almostreliable/lootjs/core/$LootEntry"
+import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
+
+export class $LootEntryWrapper {
+
+constructor()
+
+public static "ofJson"(json: $JsonObject$Type): $LootEntry
+public static "withChance"(o: any, chance: integer): $LootEntry
+public static "of"(arg0: $ItemStack$Type, nbt: $CompoundTag$Type): $LootEntry
+public static "of"(o: any): $LootEntry
+public static "of"(arg0: $ItemStack$Type, count: integer, nbt: $CompoundTag$Type): $LootEntry
+public static "of"(arg0: $ItemStack$Type, count: integer): $LootEntry
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $LootEntryWrapper$Type = ($LootEntryWrapper);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $LootEntryWrapper_ = $LootEntryWrapper$Type;
+}}
+declare module "packages/com/almostreliable/lootjs/kube/builder/$DamageSourcePredicateBuilderJS" {
+import {$EntityPredicateBuilderJS, $EntityPredicateBuilderJS$Type} from "packages/com/almostreliable/lootjs/kube/builder/$EntityPredicateBuilderJS"
+import {$AllOfCondition$Builder, $AllOfCondition$Builder$Type} from "packages/net/minecraft/world/level/storage/loot/predicates/$AllOfCondition$Builder"
+import {$Consumer, $Consumer$Type} from "packages/java/util/function/$Consumer"
+import {$AnyOfCondition$Builder, $AnyOfCondition$Builder$Type} from "packages/net/minecraft/world/level/storage/loot/predicates/$AnyOfCondition$Builder"
+import {$ResourceLocation, $ResourceLocation$Type} from "packages/net/minecraft/resources/$ResourceLocation"
+import {$LootItemCondition$Builder, $LootItemCondition$Builder$Type} from "packages/net/minecraft/world/level/storage/loot/predicates/$LootItemCondition$Builder"
+
+export class $DamageSourcePredicateBuilderJS implements $LootItemCondition$Builder {
+
+constructor()
+
+public "anyType"(...names: (string)[]): $DamageSourcePredicateBuilderJS
+public "matchDirectEntity"(action: $Consumer$Type<($EntityPredicateBuilderJS$Type)>): $DamageSourcePredicateBuilderJS
+public "matchSourceEntity"(action: $Consumer$Type<($EntityPredicateBuilderJS$Type)>): $DamageSourcePredicateBuilderJS
+public "isNot"(tag: $ResourceLocation$Type): $DamageSourcePredicateBuilderJS
+public "is"(tag: $ResourceLocation$Type): $DamageSourcePredicateBuilderJS
+public "or"(arg0: $LootItemCondition$Builder$Type): $AnyOfCondition$Builder
+public "and"(arg0: $LootItemCondition$Builder$Type): $AllOfCondition$Builder
+public "invert"(): $LootItemCondition$Builder
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $DamageSourcePredicateBuilderJS$Type = ($DamageSourcePredicateBuilderJS);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $DamageSourcePredicateBuilderJS_ = $DamageSourcePredicateBuilderJS$Type;
+}}
+declare module "packages/com/almostreliable/lootjs/loot/$AddAttributesFunction$Modifier$Builder" {
+import {$UUID, $UUID$Type} from "packages/java/util/$UUID"
+import {$Attribute, $Attribute$Type} from "packages/net/minecraft/world/entity/ai/attributes/$Attribute"
+import {$AttributeModifier$Operation, $AttributeModifier$Operation$Type} from "packages/net/minecraft/world/entity/ai/attributes/$AttributeModifier$Operation"
+import {$EquipmentSlot, $EquipmentSlot$Type} from "packages/net/minecraft/world/entity/$EquipmentSlot"
+import {$AddAttributesFunction$Modifier, $AddAttributesFunction$Modifier$Type} from "packages/com/almostreliable/lootjs/loot/$AddAttributesFunction$Modifier"
+import {$NumberProvider, $NumberProvider$Type} from "packages/net/minecraft/world/level/storage/loot/providers/number/$NumberProvider"
+
+export class $AddAttributesFunction$Modifier$Builder {
+
+constructor(attribute: $Attribute$Type, amount: $NumberProvider$Type)
+
+public "setProbability"(probability: float): void
+public "setOperation"(operation: $AttributeModifier$Operation$Type): void
+public "setUuid"(uuid: $UUID$Type): void
+public "build"(): $AddAttributesFunction$Modifier
+public "setSlots"(slots: ($EquipmentSlot$Type)[]): void
+public "setName"(name: string): void
+set "probability"(value: float)
+set "operation"(value: $AttributeModifier$Operation$Type)
+set "uuid"(value: $UUID$Type)
+set "slots"(value: ($EquipmentSlot$Type)[])
+set "name"(value: string)
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $AddAttributesFunction$Modifier$Builder$Type = ($AddAttributesFunction$Modifier$Builder);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $AddAttributesFunction$Modifier$Builder_ = $AddAttributesFunction$Modifier$Builder$Type;
+}}
+declare module "packages/com/almostreliable/lootjs/loot/$LootActionsContainer" {
+import {$ModifyLootAction$Callback, $ModifyLootAction$Callback$Type} from "packages/com/almostreliable/lootjs/loot/action/$ModifyLootAction$Callback"
+import {$ItemFilter, $ItemFilter$Type} from "packages/com/almostreliable/lootjs/filters/$ItemFilter"
+import {$Explosion$BlockInteraction, $Explosion$BlockInteraction$Type} from "packages/net/minecraft/world/level/$Explosion$BlockInteraction"
+import {$LootEntry, $LootEntry$Type} from "packages/com/almostreliable/lootjs/core/$LootEntry"
+import {$ILootAction, $ILootAction$Type} from "packages/com/almostreliable/lootjs/core/$ILootAction"
+import {$NumberProvider, $NumberProvider$Type} from "packages/net/minecraft/world/level/storage/loot/providers/number/$NumberProvider"
+
+export interface $LootActionsContainer<A extends $LootActionsContainer<(any)>> {
+
+ "addAction"(arg0: $ILootAction$Type): A
+ "addLoot"(...entries: ($LootEntry$Type)[]): A
+ "addAlternativesLoot"(...entries: ($LootEntry$Type)[]): A
+ "addSequenceLoot"(...entries: ($LootEntry$Type)[]): A
+ "addWeightedLoot"(poolEntries: ($LootEntry$Type)[]): A
+ "addWeightedLoot"(numberProvider: $NumberProvider$Type, allowDuplicateLoot: boolean, poolEntries: ($LootEntry$Type)[]): A
+ "addWeightedLoot"(numberProvider: $NumberProvider$Type, poolEntries: ($LootEntry$Type)[]): A
+ "removeLoot"(filter: $ItemFilter$Type): A
+ "replaceLoot"(filter: $ItemFilter$Type, lootEntry: $LootEntry$Type): A
+ "replaceLoot"(filter: $ItemFilter$Type, lootEntry: $LootEntry$Type, preserveCount: boolean): A
+ "triggerExplosion"(radius: float, mode: $Explosion$BlockInteraction$Type, fire: boolean): A
+ "triggerExplosion"(radius: float, destroy: boolean, fire: boolean): A
+ "triggerLightningStrike"(shouldDamage: boolean): A
+ "dropExperience"(amount: integer): A
+ "modifyLoot"(filter: $ItemFilter$Type, callback: $ModifyLootAction$Callback$Type): A
+
+(arg0: $ILootAction$Type): A
+}
+
+export namespace $LootActionsContainer {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $LootActionsContainer$Type<A> = ($LootActionsContainer<(A)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $LootActionsContainer_<A> = $LootActionsContainer$Type<(A)>;
+}}
 declare module "packages/com/almostreliable/lootjs/core/$ILootHandler" {
 import {$LootContext, $LootContext$Type} from "packages/net/minecraft/world/level/storage/loot/$LootContext"
 import {$List, $List$Type} from "packages/java/util/$List"
@@ -69,11 +458,12 @@ constructor()
 
 public "addAction"(action: $ILootAction$Type): $LootActionsBuilderJS
 public "playerAction"(action: $Consumer$Type<($ServerPlayer$Type)>): $LootActionsBuilderJS
+public "addCondition"(condition: $ILootCondition$Type): $LootActionsBuilderJS
 public "getLogName"(alternative: string): string
 public "pool"(callback: $Consumer$Type<($GroupedLootBuilder$Type)>): $LootActionsBuilderJS
+public "logName"(logName: string): $LootActionsBuilderJS
 public "group"(callback: $Consumer$Type<($GroupedLootBuilder$Type)>): $LootActionsBuilderJS
 public "apply"(action: $Consumer$Type<($LootContextJS$Type)>): $LootActionsBuilderJS
-public "logName"(logName: string): $LootActionsBuilderJS
 public "matchLoot"(filter: $ItemFilter$Type): $LootActionsBuilderJS
 public "matchLoot"(filter: $ItemFilter$Type, exact: boolean): $LootActionsBuilderJS
 public "matchMainHand"(filter: $ItemFilter$Type): $LootActionsBuilderJS
@@ -95,6 +485,7 @@ public "matchEntity"(action: $Consumer$Type<($EntityPredicateBuilderJS$Type)>): 
 public "matchKiller"(action: $Consumer$Type<($EntityPredicateBuilderJS$Type)>): $LootActionsBuilderJS
 public "matchDirectKiller"(action: $Consumer$Type<($EntityPredicateBuilderJS$Type)>): $LootActionsBuilderJS
 public "matchPlayer"(action: $Consumer$Type<($EntityPredicateBuilderJS$Type)>): $LootActionsBuilderJS
+public "matchDamageSource"(action: $Consumer$Type<($DamageSourcePredicateBuilderJS$Type)>): $LootActionsBuilderJS
 public "distanceToKiller"(bounds: $MinMaxBounds$Doubles$Type): $LootActionsBuilderJS
 public "customDistanceToPlayer"(action: $Consumer$Type<($DistancePredicateBuilder$Type)>): $LootActionsBuilderJS
 public "playerPredicate"(predicate: $Predicate$Type<($ServerPlayer$Type)>): $LootActionsBuilderJS
@@ -113,7 +504,6 @@ public "not"(action: $Consumer$Type<($LootConditionsContainer$Type<($LootActions
 public "or"(action: $Consumer$Type<($LootConditionsContainer$Type<($LootActionsBuilderJS$Type)>)>): $LootActionsBuilderJS
 public "biome"(...resolvers: ($Resolver$Type)[]): $LootActionsBuilderJS
 public "lightLevel"(min: integer, max: integer): $LootActionsBuilderJS
-public "matchDamageSource"(action: $Consumer$Type<($DamageSourcePredicateBuilderJS$Type)>): $LootActionsBuilderJS
 public "addFunction"(builder: $LootItemFunction$Builder$Type): $LootActionsBuilderJS
 public "enchantRandomly"(): $LootActionsBuilderJS
 public "enchantRandomly"(enchantments: ($Enchantment$Type)[]): $LootActionsBuilderJS
@@ -128,11 +518,11 @@ public "smeltLoot"(): $LootActionsBuilderJS
 public "addPotion"(potion: $Potion$Type): $LootActionsBuilderJS
 public "limitCount"(numberProvider: $NumberProvider$Type): $LootActionsBuilderJS
 public "limitCount"(numberProviderMin: $NumberProvider$Type, numberProviderMax: $NumberProvider$Type): $LootActionsBuilderJS
-public "addLore"(...components: ($Component$Type)[]): $LootActionsBuilderJS
 public "replaceLore"(...components: ($Component$Type)[]): $LootActionsBuilderJS
 public "addNBT"(tag: $CompoundTag$Type): $LootActionsBuilderJS
 public "addNbt"(tag: $CompoundTag$Type): $LootActionsBuilderJS
 public "customFunction"(json: $JsonObject$Type): $LootActionsBuilderJS
+public "addLore"(...components: ($Component$Type)[]): $LootActionsBuilderJS
 public "damage"(numberProvider: $NumberProvider$Type): $LootActionsBuilderJS
 public "functions"(filter: $ItemFilter$Type, action: $Consumer$Type<($LootFunctionsContainer$Type<($LootActionsBuilderJS$Type)>)>): $LootActionsBuilderJS
 public "addAttributes"(action: $Consumer$Type<($AddAttributesFunction$Builder$Type)>): $LootActionsBuilderJS
@@ -165,33 +555,6 @@ export type $LootActionsBuilderJS$Type = ($LootActionsBuilderJS);
 declare global {
 export type $LootActionsBuilderJS_ = $LootActionsBuilderJS$Type;
 }}
-declare module "packages/com/almostreliable/lootjs/loot/condition/builder/$DistancePredicateBuilder" {
-import {$DistancePredicate, $DistancePredicate$Type} from "packages/net/minecraft/advancements/critereon/$DistancePredicate"
-import {$MinMaxBounds$Doubles, $MinMaxBounds$Doubles$Type} from "packages/net/minecraft/advancements/critereon/$MinMaxBounds$Doubles"
-
-export class $DistancePredicateBuilder {
-
-constructor()
-
-public "horizontal"(bounds: $MinMaxBounds$Doubles$Type): $DistancePredicateBuilder
-public "absolute"(bounds: $MinMaxBounds$Doubles$Type): $DistancePredicateBuilder
-public "x"(bounds: $MinMaxBounds$Doubles$Type): $DistancePredicateBuilder
-public "z"(bounds: $MinMaxBounds$Doubles$Type): $DistancePredicateBuilder
-public "y"(bounds: $MinMaxBounds$Doubles$Type): $DistancePredicateBuilder
-public "build"(): $DistancePredicate
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $DistancePredicateBuilder$Type = ($DistancePredicateBuilder);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $DistancePredicateBuilder_ = $DistancePredicateBuilder$Type;
-}}
 declare module "packages/com/almostreliable/lootjs/loot/$LootFunctionsContainer" {
 import {$CompoundTag, $CompoundTag$Type} from "packages/net/minecraft/nbt/$CompoundTag"
 import {$JsonObject, $JsonObject$Type} from "packages/com/google/gson/$JsonObject"
@@ -222,11 +585,11 @@ export interface $LootFunctionsContainer<F extends $LootFunctionsContainer<(any)
  "addPotion"(potion: $Potion$Type): F
  "limitCount"(numberProvider: $NumberProvider$Type): F
  "limitCount"(numberProviderMin: $NumberProvider$Type, numberProviderMax: $NumberProvider$Type): F
- "addLore"(...components: ($Component$Type)[]): F
  "replaceLore"(...components: ($Component$Type)[]): F
  "addNBT"(tag: $CompoundTag$Type): F
  "addNbt"(tag: $CompoundTag$Type): F
  "customFunction"(json: $JsonObject$Type): F
+ "addLore"(...components: ($Component$Type)[]): F
  "damage"(numberProvider: $NumberProvider$Type): F
  "functions"(filter: $ItemFilter$Type, action: $Consumer$Type<($LootFunctionsContainer$Type<(F)>)>): F
  "addAttributes"(action: $Consumer$Type<($AddAttributesFunction$Builder$Type)>): F
@@ -249,40 +612,6 @@ export type $LootFunctionsContainer$Type<F> = ($LootFunctionsContainer<(F)>);
  */
 declare global {
 export type $LootFunctionsContainer_<F> = $LootFunctionsContainer$Type<(F)>;
-}}
-declare module "packages/com/almostreliable/lootjs/core/$ILootCondition" {
-import {$ILootHandler, $ILootHandler$Type} from "packages/com/almostreliable/lootjs/core/$ILootHandler"
-import {$LootContext, $LootContext$Type} from "packages/net/minecraft/world/level/storage/loot/$LootContext"
-import {$Predicate, $Predicate$Type} from "packages/java/util/function/$Predicate"
-import {$List, $List$Type} from "packages/java/util/$List"
-import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
-
-export interface $ILootCondition extends $ILootHandler, $Predicate<($LootContext)> {
-
- "applyLootHandler"(context: $LootContext$Type, loot: $List$Type<($ItemStack$Type)>): boolean
- "negate"(): $Predicate<($LootContext)>
- "and"(arg0: $Predicate$Type<(any)>): $Predicate<($LootContext)>
- "or"(arg0: $Predicate$Type<(any)>): $Predicate<($LootContext)>
- "test"(arg0: $LootContext$Type): boolean
-
-(context: $LootContext$Type, loot: $List$Type<($ItemStack$Type)>): boolean
-}
-
-export namespace $ILootCondition {
-function isEqual<T>(arg0: any): $Predicate<($LootContext)>
-function not<T>(arg0: $Predicate$Type<(any)>): $Predicate<($LootContext)>
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $ILootCondition$Type = ($ILootCondition);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $ILootCondition_ = $ILootCondition$Type;
 }}
 declare module "packages/com/almostreliable/lootjs/filters/$ResourceLocationFilter" {
 import {$Predicate, $Predicate$Type} from "packages/java/util/function/$Predicate"
@@ -385,8 +714,8 @@ export class $IntervalJS {
 
 constructor()
 
-public static "ofDoubles"(o: any): $MinMaxBounds$Doubles
 public static "ofInt"(o: any): $MinMaxBounds$Ints
+public static "ofDoubles"(o: any): $MinMaxBounds$Doubles
 public "getVanillaDoubles"(): $MinMaxBounds$Doubles
 public "matchesSqr"(value: double): boolean
 public "getVanillaInt"(): $MinMaxBounds$Ints
@@ -413,8 +742,8 @@ export type $IntervalJS_ = $IntervalJS$Type;
 declare module "packages/com/almostreliable/lootjs/kube/$LootConditionsContainer" {
 import {$EntityPredicateBuilderJS, $EntityPredicateBuilderJS$Type} from "packages/com/almostreliable/lootjs/kube/builder/$EntityPredicateBuilderJS"
 import {$JsonObject, $JsonObject$Type} from "packages/com/google/gson/$JsonObject"
-import {$ServerPlayer, $ServerPlayer$Type} from "packages/net/minecraft/server/level/$ServerPlayer"
 import {$DamageSourcePredicateBuilderJS, $DamageSourcePredicateBuilderJS$Type} from "packages/com/almostreliable/lootjs/kube/builder/$DamageSourcePredicateBuilderJS"
+import {$ServerPlayer, $ServerPlayer$Type} from "packages/net/minecraft/server/level/$ServerPlayer"
 import {$ILootCondition, $ILootCondition$Type} from "packages/com/almostreliable/lootjs/core/$ILootCondition"
 import {$Predicate, $Predicate$Type} from "packages/java/util/function/$Predicate"
 import {$DistancePredicateBuilder, $DistancePredicateBuilder$Type} from "packages/com/almostreliable/lootjs/loot/condition/builder/$DistancePredicateBuilder"
@@ -455,6 +784,7 @@ export interface $LootConditionsContainer<B extends $LootConditionsContainer<(an
  "matchKiller"(action: $Consumer$Type<($EntityPredicateBuilderJS$Type)>): B
  "matchDirectKiller"(action: $Consumer$Type<($EntityPredicateBuilderJS$Type)>): B
  "matchPlayer"(action: $Consumer$Type<($EntityPredicateBuilderJS$Type)>): B
+ "matchDamageSource"(action: $Consumer$Type<($DamageSourcePredicateBuilderJS$Type)>): B
  "distanceToKiller"(bounds: $MinMaxBounds$Doubles$Type): B
  "customDistanceToPlayer"(action: $Consumer$Type<($DistancePredicateBuilder$Type)>): B
  "playerPredicate"(predicate: $Predicate$Type<($ServerPlayer$Type)>): B
@@ -467,14 +797,13 @@ export interface $LootConditionsContainer<B extends $LootConditionsContainer<(an
  "customCondition"(json: $JsonObject$Type): B
  "survivesExplosion"(): B
  "randomChance"(value: float): B
- "addCondition"(arg0: $ILootCondition$Type): B
  "addCondition"(builder: $LootItemCondition$Builder$Type): B
+ "addCondition"(arg0: $ILootCondition$Type): B
  "and"(action: $Consumer$Type<($LootConditionsContainer$Type<(B)>)>): B
  "not"(action: $Consumer$Type<($LootConditionsContainer$Type<(B)>)>): B
  "or"(action: $Consumer$Type<($LootConditionsContainer$Type<(B)>)>): B
  "biome"(...resolvers: ($Resolver$Type)[]): B
  "lightLevel"(min: integer, max: integer): B
- "matchDamageSource"(action: $Consumer$Type<($DamageSourcePredicateBuilderJS$Type)>): B
 
 (filter: $ItemFilter$Type): B
 }
@@ -521,32 +850,6 @@ export type $ILootAction$Type = ($ILootAction);
  */
 declare global {
 export type $ILootAction_ = $ILootAction$Type;
-}}
-declare module "packages/com/almostreliable/lootjs/loot/action/$CompositeLootAction" {
-import {$ILootHandler, $ILootHandler$Type} from "packages/com/almostreliable/lootjs/core/$ILootHandler"
-import {$LootContext, $LootContext$Type} from "packages/net/minecraft/world/level/storage/loot/$LootContext"
-import {$Collection, $Collection$Type} from "packages/java/util/$Collection"
-import {$List, $List$Type} from "packages/java/util/$List"
-import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
-import {$ILootAction, $ILootAction$Type} from "packages/com/almostreliable/lootjs/core/$ILootAction"
-
-export class $CompositeLootAction implements $ILootAction {
-
-constructor(handlers: $Collection$Type<($ILootHandler$Type)>)
-
-public "applyLootHandler"(context: $LootContext$Type, loot: $List$Type<($ItemStack$Type)>): boolean
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $CompositeLootAction$Type = ($CompositeLootAction);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $CompositeLootAction_ = $CompositeLootAction$Type;
 }}
 declare module "packages/com/almostreliable/lootjs/core/$LootContextType" {
 import {$Enum, $Enum$Type} from "packages/java/lang/$Enum"
@@ -609,27 +912,27 @@ public "getExplosionRadius"(): float
 public "getLuck"(): float
 public "getLooting"(): integer
 public "getVanillaContext"(): $LootContext
-public "lootSize"(): integer
 public "findLoot"(itemFilter: $ItemFilter$Type): $List<($ItemStack)>
 public "getLoot"(): $List<($ItemStack)>
 public "hasLoot"(ingredient: $ItemFilter$Type): boolean
 public "forEachLoot"(action: $Consumer$Type<($ItemStack$Type)>): void
 public "addLoot"(lootEntry: $LootEntry$Type): void
 public "removeLoot"(itemFilter: $ItemFilter$Type): void
-public "getCustomData"(): $Map<(string), (any)>
-public "getLootTableId"(): $ResourceLocation
 public "getBlockPos"(): $BlockPos
+public "getLootTableId"(): $ResourceLocation
 public "getRandom"(): $RandomSource
-public "getEntity"(): $Entity
+public "getDamageSource"(): $DamageSource
+public "getCustomData"(): $Map<(string), (any)>
 public "getServer"(): $MinecraftServer
 public "getPlayer"(): $ServerPlayer
-public "getDamageSource"(): $DamageSource
+public "getEntity"(): $Entity
 public "getPosition"(): $Vec3
-public "getType"(): $LootContextType
 public "getLevel"(): $ServerLevel
 public "cancel"(): void
 public "isCanceled"(): boolean
 public "getTool"(): $ItemStack
+public "lootSize"(): integer
+public "getType"(): $LootContextType
 get "killerEntity"(): $Entity
 get "destroyedBlock"(): $BlockContainerJS
 get "exploded"(): boolean
@@ -638,19 +941,19 @@ get "luck"(): float
 get "looting"(): integer
 get "vanillaContext"(): $LootContext
 get "loot"(): $List<($ItemStack)>
-get "customData"(): $Map<(string), (any)>
-get "lootTableId"(): $ResourceLocation
 get "blockPos"(): $BlockPos
+get "lootTableId"(): $ResourceLocation
 get "random"(): $RandomSource
-get "entity"(): $Entity
+get "damageSource"(): $DamageSource
+get "customData"(): $Map<(string), (any)>
 get "server"(): $MinecraftServer
 get "player"(): $ServerPlayer
-get "damageSource"(): $DamageSource
+get "entity"(): $Entity
 get "position"(): $Vec3
-get "type"(): $LootContextType
 get "level"(): $ServerLevel
 get "canceled"(): boolean
 get "tool"(): $ItemStack
+get "type"(): $LootContextType
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -726,8 +1029,8 @@ import {$LootEntry$Generator, $LootEntry$Generator$Type} from "packages/com/almo
 
 export class $LootEntry implements $LootFunctionsContainer<($LootEntry)> {
 
-constructor(itemStack: $ItemStack$Type)
 constructor(item: $Item$Type)
+constructor(itemStack: $ItemStack$Type)
 constructor(generator: $LootEntry$Generator$Type)
 
 public "addFunction"(lootItemFunction: $LootItemFunction$Type): $LootEntry
@@ -752,11 +1055,11 @@ public "smeltLoot"(): $LootEntry
 public "addPotion"(potion: $Potion$Type): $LootEntry
 public "limitCount"(numberProvider: $NumberProvider$Type): $LootEntry
 public "limitCount"(numberProviderMin: $NumberProvider$Type, numberProviderMax: $NumberProvider$Type): $LootEntry
-public "addLore"(...components: ($Component$Type)[]): $LootEntry
 public "replaceLore"(...components: ($Component$Type)[]): $LootEntry
 public "addNBT"(tag: $CompoundTag$Type): $LootEntry
 public "addNbt"(tag: $CompoundTag$Type): $LootEntry
 public "customFunction"(json: $JsonObject$Type): $LootEntry
+public "addLore"(...components: ($Component$Type)[]): $LootEntry
 public "damage"(numberProvider: $NumberProvider$Type): $LootEntry
 public "functions"(filter: $ItemFilter$Type, action: $Consumer$Type<($LootFunctionsContainer$Type<($LootEntry$Type)>)>): $LootEntry
 public "addAttributes"(action: $Consumer$Type<($AddAttributesFunction$Builder$Type)>): $LootEntry
@@ -775,76 +1078,6 @@ export type $LootEntry$Type = ($LootEntry);
  */
 declare global {
 export type $LootEntry_ = $LootEntry$Type;
-}}
-declare module "packages/com/almostreliable/lootjs/forge/filters/$ForgeItemFilter" {
-import {$ItemFilter, $ItemFilter$Type} from "packages/com/almostreliable/lootjs/filters/$ItemFilter"
-import {$Predicate, $Predicate$Type} from "packages/java/util/function/$Predicate"
-import {$ResourceLocationFilter, $ResourceLocationFilter$Type} from "packages/com/almostreliable/lootjs/filters/$ResourceLocationFilter"
-import {$EquipmentSlot, $EquipmentSlot$Type} from "packages/net/minecraft/world/entity/$EquipmentSlot"
-import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
-
-export interface $ForgeItemFilter extends $ItemFilter {
-
- "and"(other: $ItemFilter$Type): $ItemFilter
- "or"(other: $ItemFilter$Type): $ItemFilter
- "test"(arg0: $ItemStack$Type): boolean
- "and"(arg0: $Predicate$Type<(any)>): $Predicate<($ItemStack)>
- "or"(arg0: $Predicate$Type<(any)>): $Predicate<($ItemStack)>
-
-(...actions: (string)[]): $ItemFilter
-}
-
-export namespace $ForgeItemFilter {
-function canPerformAnyAction(...actions: (string)[]): $ItemFilter
-function canPerformAction(...actions: (string)[]): $ItemFilter
-function hasEnchantment(filter: $ResourceLocationFilter$Type): $ItemFilter
-function hasEnchantment(filter: $ResourceLocationFilter$Type, min: integer, max: integer): $ItemFilter
-function equipmentSlot(slot: $EquipmentSlot$Type): $ItemFilter
-function and(...itemFilters: ($ItemFilter$Type)[]): $ItemFilter
-function not(itemFilter: $ItemFilter$Type): $ItemFilter
-function or(...itemFilters: ($ItemFilter$Type)[]): $ItemFilter
-function custom(predicate: $Predicate$Type<($ItemStack$Type)>): $ItemFilter
-function isEqual<T>(arg0: any): $Predicate<($ItemStack)>
-function not<T>(arg0: $Predicate$Type<(any)>): $Predicate<($ItemStack)>
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $ForgeItemFilter$Type = ($ForgeItemFilter);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $ForgeItemFilter_ = $ForgeItemFilter$Type;
-}}
-declare module "packages/com/almostreliable/lootjs/loot/action/$GroupedLootAction" {
-import {$ILootHandler, $ILootHandler$Type} from "packages/com/almostreliable/lootjs/core/$ILootHandler"
-import {$LootContext, $LootContext$Type} from "packages/net/minecraft/world/level/storage/loot/$LootContext"
-import {$Collection, $Collection$Type} from "packages/java/util/$Collection"
-import {$CompositeLootAction, $CompositeLootAction$Type} from "packages/com/almostreliable/lootjs/loot/action/$CompositeLootAction"
-import {$List, $List$Type} from "packages/java/util/$List"
-import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
-import {$NumberProvider, $NumberProvider$Type} from "packages/net/minecraft/world/level/storage/loot/providers/number/$NumberProvider"
-
-export class $GroupedLootAction extends $CompositeLootAction {
-
-constructor(numberProvider: $NumberProvider$Type, handlers: $Collection$Type<($ILootHandler$Type)>)
-
-public "applyLootHandler"(context: $LootContext$Type, loot: $List$Type<($ItemStack$Type)>): boolean
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $GroupedLootAction$Type = ($GroupedLootAction);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $GroupedLootAction_ = $GroupedLootAction$Type;
 }}
 declare module "packages/com/almostreliable/lootjs/loot/action/$ModifyLootAction$Callback" {
 import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
@@ -871,96 +1104,6 @@ export type $ModifyLootAction$Callback$Type = ($ModifyLootAction$Callback);
 declare global {
 export type $ModifyLootAction$Callback_ = $ModifyLootAction$Callback$Type;
 }}
-declare module "packages/com/almostreliable/lootjs/core/$LootEntry$Generator" {
-import {$LootContext, $LootContext$Type} from "packages/net/minecraft/world/level/storage/loot/$LootContext"
-import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
-
-export interface $LootEntry$Generator {
-
- "create"(arg0: $LootContext$Type): $ItemStack
-
-(arg0: $LootContext$Type): $ItemStack
-}
-
-export namespace $LootEntry$Generator {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $LootEntry$Generator$Type = ($LootEntry$Generator);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $LootEntry$Generator_ = $LootEntry$Generator$Type;
-}}
-declare module "packages/com/almostreliable/lootjs/loot/$AddAttributesFunction$Modifier" {
-import {$Function, $Function$Type} from "packages/java/util/function/$Function"
-import {$LootContext, $LootContext$Type} from "packages/net/minecraft/world/level/storage/loot/$LootContext"
-import {$UUID, $UUID$Type} from "packages/java/util/$UUID"
-import {$Attribute, $Attribute$Type} from "packages/net/minecraft/world/entity/ai/attributes/$Attribute"
-import {$AttributeModifier$Operation, $AttributeModifier$Operation$Type} from "packages/net/minecraft/world/entity/ai/attributes/$AttributeModifier$Operation"
-import {$AttributeModifier, $AttributeModifier$Type} from "packages/net/minecraft/world/entity/ai/attributes/$AttributeModifier"
-import {$EquipmentSlot, $EquipmentSlot$Type} from "packages/net/minecraft/world/entity/$EquipmentSlot"
-import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
-import {$NumberProvider, $NumberProvider$Type} from "packages/net/minecraft/world/level/storage/loot/providers/number/$NumberProvider"
-
-export class $AddAttributesFunction$Modifier {
-
-constructor(probability: float, attribute: $Attribute$Type, operation: $AttributeModifier$Operation$Type, amount: $NumberProvider$Type, name: string, slots: $Function$Type<($ItemStack$Type), (($EquipmentSlot$Type)[])>, uuid: $UUID$Type)
-
-public "createAttributeModifier"(context: $LootContext$Type): $AttributeModifier
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $AddAttributesFunction$Modifier$Type = ($AddAttributesFunction$Modifier);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $AddAttributesFunction$Modifier_ = $AddAttributesFunction$Modifier$Type;
-}}
-declare module "packages/com/almostreliable/lootjs/loot/$AddAttributesFunction$Builder" {
-import {$LootItemFunction$Builder, $LootItemFunction$Builder$Type} from "packages/net/minecraft/world/level/storage/loot/functions/$LootItemFunction$Builder"
-import {$Consumer, $Consumer$Type} from "packages/java/util/function/$Consumer"
-import {$AddAttributesFunction$Modifier$Builder, $AddAttributesFunction$Modifier$Builder$Type} from "packages/com/almostreliable/lootjs/loot/$AddAttributesFunction$Modifier$Builder"
-import {$AddAttributesFunction, $AddAttributesFunction$Type} from "packages/com/almostreliable/lootjs/loot/$AddAttributesFunction"
-import {$Attribute, $Attribute$Type} from "packages/net/minecraft/world/entity/ai/attributes/$Attribute"
-import {$EquipmentSlot, $EquipmentSlot$Type} from "packages/net/minecraft/world/entity/$EquipmentSlot"
-import {$AddAttributesFunction$Modifier, $AddAttributesFunction$Modifier$Type} from "packages/com/almostreliable/lootjs/loot/$AddAttributesFunction$Modifier"
-import {$NumberProvider, $NumberProvider$Type} from "packages/net/minecraft/world/level/storage/loot/providers/number/$NumberProvider"
-
-export class $AddAttributesFunction$Builder implements $LootItemFunction$Builder {
-
-constructor()
-
-public "preserveDefaults"(flag: boolean): $AddAttributesFunction$Builder
-public "forSlots"(attribute: $Attribute$Type, amount: $NumberProvider$Type, slots: ($EquipmentSlot$Type)[]): $AddAttributesFunction$Builder
-public "forSlots"(probability: float, attribute: $Attribute$Type, amount: $NumberProvider$Type, slots: ($EquipmentSlot$Type)[]): $AddAttributesFunction$Builder
-public "simple"(attribute: $Attribute$Type, amount: $NumberProvider$Type): $AddAttributesFunction$Builder
-public "simple"(probability: float, attribute: $Attribute$Type, amount: $NumberProvider$Type): $AddAttributesFunction$Builder
-public "add"(attribute: $Attribute$Type, amount: $NumberProvider$Type, action: $Consumer$Type<($AddAttributesFunction$Modifier$Builder$Type)>): $AddAttributesFunction$Builder
-public "add"(modifier: $AddAttributesFunction$Modifier$Type): $AddAttributesFunction$Builder
-public "build"(): $AddAttributesFunction
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $AddAttributesFunction$Builder$Type = ($AddAttributesFunction$Builder);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $AddAttributesFunction$Builder_ = $AddAttributesFunction$Builder$Type;
-}}
 declare module "packages/com/almostreliable/lootjs/filters/$Resolver" {
 export {} // Mark the file as a module, do not remove unless there are other import/exports!
 export class $Resolver {
@@ -979,35 +1122,6 @@ export type $Resolver$Type = ($Resolver);
  */
 declare global {
 export type $Resolver_ = $Resolver$Type;
-}}
-declare module "packages/com/almostreliable/lootjs/kube/$LootEntryWrapper" {
-import {$JsonObject, $JsonObject$Type} from "packages/com/google/gson/$JsonObject"
-import {$CompoundTag, $CompoundTag$Type} from "packages/net/minecraft/nbt/$CompoundTag"
-import {$LootEntry, $LootEntry$Type} from "packages/com/almostreliable/lootjs/core/$LootEntry"
-import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
-
-export class $LootEntryWrapper {
-
-constructor()
-
-public static "ofJson"(json: $JsonObject$Type): $LootEntry
-public static "withChance"(o: any, chance: integer): $LootEntry
-public static "of"(arg0: $ItemStack$Type, nbt: $CompoundTag$Type): $LootEntry
-public static "of"(o: any): $LootEntry
-public static "of"(arg0: $ItemStack$Type, count: integer, nbt: $CompoundTag$Type): $LootEntry
-public static "of"(arg0: $ItemStack$Type, count: integer): $LootEntry
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $LootEntryWrapper$Type = ($LootEntryWrapper);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $LootEntryWrapper_ = $LootEntryWrapper$Type;
 }}
 declare module "packages/com/almostreliable/lootjs/mixin/$LootItemConditionMixin" {
 import {$LootContext, $LootContext$Type} from "packages/net/minecraft/world/level/storage/loot/$LootContext"
@@ -1058,9 +1172,7 @@ export class $EntityPredicateBuilderJS implements $ExtendedEntityFlagsPredicate$
 
 constructor()
 
-public "isInWater"(flag: boolean): $EntityPredicateBuilderJS
-public "isMonster"(flag: boolean): $EntityPredicateBuilderJS
-public "isUndeadMob"(flag: boolean): $EntityPredicateBuilderJS
+public "isCrouching"(flag: boolean): $EntityPredicateBuilderJS
 public "matchBlock"(resolver: $Resolver$Type, propertyMap: $Map$Type<(string), (string)>): $EntityPredicateBuilderJS
 public "matchBlock"(resolver: $Resolver$Type): $EntityPredicateBuilderJS
 public "hasEffect"(effect: $MobEffect$Type): $EntityPredicateBuilderJS
@@ -1070,6 +1182,7 @@ public "matchTargetedEntity"(action: $Consumer$Type<($EntityPredicateBuilderJS$T
 public "matchSlot"(slot: $EquipmentSlot$Type, itemFilter: $ItemFilter$Type): $EntityPredicateBuilderJS
 public "anyType"(...resolvers: ($Resolver$Type)[]): $EntityPredicateBuilderJS
 public "matchFluid"(resolver: $Resolver$Type): $EntityPredicateBuilderJS
+public "isBaby"(flag: boolean): $EntityPredicateBuilderJS
 public "nbt"(nbt: $CompoundTag$Type): $EntityPredicateBuilderJS
 public "isOnGround"(flag: boolean): $EntityPredicateBuilderJS
 public "isSprinting"(flag: boolean): $EntityPredicateBuilderJS
@@ -1108,8 +1221,8 @@ import {$LootActionsContainer, $LootActionsContainer$Type} from "packages/com/al
 import {$Entity, $Entity$Type} from "packages/net/minecraft/world/entity/$Entity"
 import {$ModifyLootAction$Callback, $ModifyLootAction$Callback$Type} from "packages/com/almostreliable/lootjs/loot/action/$ModifyLootAction$Callback"
 import {$LootItemFunction$Builder, $LootItemFunction$Builder$Type} from "packages/net/minecraft/world/level/storage/loot/functions/$LootItemFunction$Builder"
-import {$ServerPlayer, $ServerPlayer$Type} from "packages/net/minecraft/server/level/$ServerPlayer"
 import {$DamageSourcePredicateBuilderJS, $DamageSourcePredicateBuilderJS$Type} from "packages/com/almostreliable/lootjs/kube/builder/$DamageSourcePredicateBuilderJS"
+import {$ServerPlayer, $ServerPlayer$Type} from "packages/net/minecraft/server/level/$ServerPlayer"
 import {$LootFunctionsContainer, $LootFunctionsContainer$Type} from "packages/com/almostreliable/lootjs/loot/$LootFunctionsContainer"
 import {$ILootCondition, $ILootCondition$Type} from "packages/com/almostreliable/lootjs/core/$ILootCondition"
 import {$Predicate, $Predicate$Type} from "packages/java/util/function/$Predicate"
@@ -1153,6 +1266,7 @@ public "matchEntity"(action: $Consumer$Type<($EntityPredicateBuilderJS$Type)>): 
 public "matchKiller"(action: $Consumer$Type<($EntityPredicateBuilderJS$Type)>): $GroupedLootBuilder
 public "matchDirectKiller"(action: $Consumer$Type<($EntityPredicateBuilderJS$Type)>): $GroupedLootBuilder
 public "matchPlayer"(action: $Consumer$Type<($EntityPredicateBuilderJS$Type)>): $GroupedLootBuilder
+public "matchDamageSource"(action: $Consumer$Type<($DamageSourcePredicateBuilderJS$Type)>): $GroupedLootBuilder
 public "distanceToKiller"(bounds: $MinMaxBounds$Doubles$Type): $GroupedLootBuilder
 public "customDistanceToPlayer"(action: $Consumer$Type<($DistancePredicateBuilder$Type)>): $GroupedLootBuilder
 public "playerPredicate"(predicate: $Predicate$Type<($ServerPlayer$Type)>): $GroupedLootBuilder
@@ -1171,7 +1285,6 @@ public "not"(action: $Consumer$Type<($LootConditionsContainer$Type<($GroupedLoot
 public "or"(action: $Consumer$Type<($LootConditionsContainer$Type<($GroupedLootBuilder$Type)>)>): $GroupedLootBuilder
 public "biome"(...resolvers: ($Resolver$Type)[]): $GroupedLootBuilder
 public "lightLevel"(min: integer, max: integer): $GroupedLootBuilder
-public "matchDamageSource"(action: $Consumer$Type<($DamageSourcePredicateBuilderJS$Type)>): $GroupedLootBuilder
 public "addFunction"(builder: $LootItemFunction$Builder$Type): $GroupedLootBuilder
 public "enchantRandomly"(): $GroupedLootBuilder
 public "enchantRandomly"(enchantments: ($Enchantment$Type)[]): $GroupedLootBuilder
@@ -1186,11 +1299,11 @@ public "smeltLoot"(): $GroupedLootBuilder
 public "addPotion"(potion: $Potion$Type): $GroupedLootBuilder
 public "limitCount"(numberProvider: $NumberProvider$Type): $GroupedLootBuilder
 public "limitCount"(numberProviderMin: $NumberProvider$Type, numberProviderMax: $NumberProvider$Type): $GroupedLootBuilder
-public "addLore"(...components: ($Component$Type)[]): $GroupedLootBuilder
 public "replaceLore"(...components: ($Component$Type)[]): $GroupedLootBuilder
 public "addNBT"(tag: $CompoundTag$Type): $GroupedLootBuilder
 public "addNbt"(tag: $CompoundTag$Type): $GroupedLootBuilder
 public "customFunction"(json: $JsonObject$Type): $GroupedLootBuilder
+public "addLore"(...components: ($Component$Type)[]): $GroupedLootBuilder
 public "damage"(numberProvider: $NumberProvider$Type): $GroupedLootBuilder
 public "functions"(filter: $ItemFilter$Type, action: $Consumer$Type<($LootFunctionsContainer$Type<($GroupedLootBuilder$Type)>)>): $GroupedLootBuilder
 public "addAttributes"(action: $Consumer$Type<($AddAttributesFunction$Builder$Type)>): $GroupedLootBuilder
@@ -1223,39 +1336,6 @@ export type $GroupedLootBuilder$Type = ($GroupedLootBuilder);
 declare global {
 export type $GroupedLootBuilder_ = $GroupedLootBuilder$Type;
 }}
-declare module "packages/com/almostreliable/lootjs/kube/builder/$DamageSourcePredicateBuilderJS" {
-import {$EntityPredicateBuilderJS, $EntityPredicateBuilderJS$Type} from "packages/com/almostreliable/lootjs/kube/builder/$EntityPredicateBuilderJS"
-import {$AllOfCondition$Builder, $AllOfCondition$Builder$Type} from "packages/net/minecraft/world/level/storage/loot/predicates/$AllOfCondition$Builder"
-import {$Consumer, $Consumer$Type} from "packages/java/util/function/$Consumer"
-import {$AnyOfCondition$Builder, $AnyOfCondition$Builder$Type} from "packages/net/minecraft/world/level/storage/loot/predicates/$AnyOfCondition$Builder"
-import {$ResourceLocation, $ResourceLocation$Type} from "packages/net/minecraft/resources/$ResourceLocation"
-import {$LootItemCondition$Builder, $LootItemCondition$Builder$Type} from "packages/net/minecraft/world/level/storage/loot/predicates/$LootItemCondition$Builder"
-
-export class $DamageSourcePredicateBuilderJS implements $LootItemCondition$Builder {
-
-constructor()
-
-public "anyType"(...names: (string)[]): $DamageSourcePredicateBuilderJS
-public "matchDirectEntity"(action: $Consumer$Type<($EntityPredicateBuilderJS$Type)>): $DamageSourcePredicateBuilderJS
-public "matchSourceEntity"(action: $Consumer$Type<($EntityPredicateBuilderJS$Type)>): $DamageSourcePredicateBuilderJS
-public "isNot"(tag: $ResourceLocation$Type): $DamageSourcePredicateBuilderJS
-public "is"(tag: $ResourceLocation$Type): $DamageSourcePredicateBuilderJS
-public "invert"(): $LootItemCondition$Builder
-public "or"(arg0: $LootItemCondition$Builder$Type): $AnyOfCondition$Builder
-public "and"(arg0: $LootItemCondition$Builder$Type): $AllOfCondition$Builder
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $DamageSourcePredicateBuilderJS$Type = ($DamageSourcePredicateBuilderJS);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $DamageSourcePredicateBuilderJS_ = $DamageSourcePredicateBuilderJS$Type;
-}}
 declare module "packages/com/almostreliable/lootjs/kube/$LootModificationEventJS" {
 import {$EventJS, $EventJS$Type} from "packages/dev/latvian/mods/kubejs/event/$EventJS"
 import {$EntityType, $EntityType$Type} from "packages/net/minecraft/world/entity/$EntityType"
@@ -1267,6 +1347,9 @@ export class $LootModificationEventJS extends $EventJS {
 
 constructor()
 
+public "enableLogging"(): void
+public "disableLootModification"(...filters: ($ResourceLocationFilter$Type)[]): void
+public "addLootTableModifier"(...filters: ($ResourceLocationFilter$Type)[]): $LootActionsBuilderJS
 public "addLootTypeModifier"(...types: ($LootContextType$Type)[]): $LootActionsBuilderJS
 public "addBlockLootModifier"(o: any): $LootActionsBuilderJS
 public "addEntityLootModifier"(...entities: ($EntityType$Type<(any)>)[]): $LootActionsBuilderJS
@@ -1274,9 +1357,6 @@ public "disableWitherStarDrop"(): void
 public "disableCreeperHeadDrop"(): void
 public "disableSkeletonHeadDrop"(): void
 public "disableZombieHeadDrop"(): void
-public "enableLogging"(): void
-public "disableLootModification"(...filters: ($ResourceLocationFilter$Type)[]): void
-public "addLootTableModifier"(...filters: ($ResourceLocationFilter$Type)[]): $LootActionsBuilderJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1296,8 +1376,6 @@ export interface $ExtendedEntityFlagsPredicate$IBuilder<T> {
 
  "isOnFire"(arg0: boolean): $ExtendedEntityFlagsPredicate$IBuilder<(T)>
  "isCrouching"(arg0: boolean): $ExtendedEntityFlagsPredicate$IBuilder<(T)>
- "isSwimming"(arg0: boolean): $ExtendedEntityFlagsPredicate$IBuilder<(T)>
- "isBaby"(arg0: boolean): $ExtendedEntityFlagsPredicate$IBuilder<(T)>
  "isInWater"(arg0: boolean): $ExtendedEntityFlagsPredicate$IBuilder<(T)>
  "isUnderWater"(arg0: boolean): $ExtendedEntityFlagsPredicate$IBuilder<(T)>
  "isMonster"(arg0: boolean): $ExtendedEntityFlagsPredicate$IBuilder<(T)>
@@ -1306,6 +1384,8 @@ export interface $ExtendedEntityFlagsPredicate$IBuilder<T> {
  "isArthropodMob"(arg0: boolean): $ExtendedEntityFlagsPredicate$IBuilder<(T)>
  "isIllegarMob"(arg0: boolean): $ExtendedEntityFlagsPredicate$IBuilder<(T)>
  "isWaterMob"(arg0: boolean): $ExtendedEntityFlagsPredicate$IBuilder<(T)>
+ "isSwimming"(arg0: boolean): $ExtendedEntityFlagsPredicate$IBuilder<(T)>
+ "isBaby"(arg0: boolean): $ExtendedEntityFlagsPredicate$IBuilder<(T)>
  "build"(): T
  "isOnGround"(arg0: boolean): $ExtendedEntityFlagsPredicate$IBuilder<(T)>
  "isSprinting"(arg0: boolean): $ExtendedEntityFlagsPredicate$IBuilder<(T)>
@@ -1325,84 +1405,4 @@ export type $ExtendedEntityFlagsPredicate$IBuilder$Type<T> = ($ExtendedEntityFla
  */
 declare global {
 export type $ExtendedEntityFlagsPredicate$IBuilder_<T> = $ExtendedEntityFlagsPredicate$IBuilder$Type<(T)>;
-}}
-declare module "packages/com/almostreliable/lootjs/loot/$AddAttributesFunction$Modifier$Builder" {
-import {$UUID, $UUID$Type} from "packages/java/util/$UUID"
-import {$Attribute, $Attribute$Type} from "packages/net/minecraft/world/entity/ai/attributes/$Attribute"
-import {$AttributeModifier$Operation, $AttributeModifier$Operation$Type} from "packages/net/minecraft/world/entity/ai/attributes/$AttributeModifier$Operation"
-import {$EquipmentSlot, $EquipmentSlot$Type} from "packages/net/minecraft/world/entity/$EquipmentSlot"
-import {$AddAttributesFunction$Modifier, $AddAttributesFunction$Modifier$Type} from "packages/com/almostreliable/lootjs/loot/$AddAttributesFunction$Modifier"
-import {$NumberProvider, $NumberProvider$Type} from "packages/net/minecraft/world/level/storage/loot/providers/number/$NumberProvider"
-
-export class $AddAttributesFunction$Modifier$Builder {
-
-constructor(attribute: $Attribute$Type, amount: $NumberProvider$Type)
-
-public "setProbability"(probability: float): void
-public "setUuid"(uuid: $UUID$Type): void
-public "setOperation"(operation: $AttributeModifier$Operation$Type): void
-public "setName"(name: string): void
-public "build"(): $AddAttributesFunction$Modifier
-public "setSlots"(slots: ($EquipmentSlot$Type)[]): void
-set "probability"(value: float)
-set "uuid"(value: $UUID$Type)
-set "operation"(value: $AttributeModifier$Operation$Type)
-set "name"(value: string)
-set "slots"(value: ($EquipmentSlot$Type)[])
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $AddAttributesFunction$Modifier$Builder$Type = ($AddAttributesFunction$Modifier$Builder);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $AddAttributesFunction$Modifier$Builder_ = $AddAttributesFunction$Modifier$Builder$Type;
-}}
-declare module "packages/com/almostreliable/lootjs/loot/$LootActionsContainer" {
-import {$ModifyLootAction$Callback, $ModifyLootAction$Callback$Type} from "packages/com/almostreliable/lootjs/loot/action/$ModifyLootAction$Callback"
-import {$ItemFilter, $ItemFilter$Type} from "packages/com/almostreliable/lootjs/filters/$ItemFilter"
-import {$Explosion$BlockInteraction, $Explosion$BlockInteraction$Type} from "packages/net/minecraft/world/level/$Explosion$BlockInteraction"
-import {$LootEntry, $LootEntry$Type} from "packages/com/almostreliable/lootjs/core/$LootEntry"
-import {$ILootAction, $ILootAction$Type} from "packages/com/almostreliable/lootjs/core/$ILootAction"
-import {$NumberProvider, $NumberProvider$Type} from "packages/net/minecraft/world/level/storage/loot/providers/number/$NumberProvider"
-
-export interface $LootActionsContainer<A extends $LootActionsContainer<(any)>> {
-
- "addAction"(arg0: $ILootAction$Type): A
- "addLoot"(...entries: ($LootEntry$Type)[]): A
- "addAlternativesLoot"(...entries: ($LootEntry$Type)[]): A
- "addSequenceLoot"(...entries: ($LootEntry$Type)[]): A
- "addWeightedLoot"(poolEntries: ($LootEntry$Type)[]): A
- "addWeightedLoot"(numberProvider: $NumberProvider$Type, allowDuplicateLoot: boolean, poolEntries: ($LootEntry$Type)[]): A
- "addWeightedLoot"(numberProvider: $NumberProvider$Type, poolEntries: ($LootEntry$Type)[]): A
- "removeLoot"(filter: $ItemFilter$Type): A
- "replaceLoot"(filter: $ItemFilter$Type, lootEntry: $LootEntry$Type): A
- "replaceLoot"(filter: $ItemFilter$Type, lootEntry: $LootEntry$Type, preserveCount: boolean): A
- "triggerExplosion"(radius: float, mode: $Explosion$BlockInteraction$Type, fire: boolean): A
- "triggerExplosion"(radius: float, destroy: boolean, fire: boolean): A
- "triggerLightningStrike"(shouldDamage: boolean): A
- "dropExperience"(amount: integer): A
- "modifyLoot"(filter: $ItemFilter$Type, callback: $ModifyLootAction$Callback$Type): A
-
-(arg0: $ILootAction$Type): A
-}
-
-export namespace $LootActionsContainer {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $LootActionsContainer$Type<A> = ($LootActionsContainer<(A)>);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $LootActionsContainer_<A> = $LootActionsContainer$Type<(A)>;
 }}

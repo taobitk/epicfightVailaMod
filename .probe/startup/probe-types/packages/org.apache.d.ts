@@ -3,16 +3,16 @@ import {$Serializable, $Serializable$Type} from "packages/java/io/$Serializable"
 
 export interface $Marker extends $Serializable {
 
- "getName"(): string
- "remove"(marker: $Marker$Type): boolean
- "equals"(obj: any): boolean
- "hashCode"(): integer
  "addParents"(...markers: ($Marker$Type)[]): $Marker
  "getParents"(): ($Marker)[]
  "hasParents"(): boolean
  "isInstanceOf"(m: $Marker$Type): boolean
  "isInstanceOf"(name: string): boolean
  "setParents"(...markers: ($Marker$Type)[]): $Marker
+ "getName"(): string
+ "remove"(marker: $Marker$Type): boolean
+ "equals"(obj: any): boolean
+ "hashCode"(): integer
 }
 
 export namespace $Marker {
@@ -42,6 +42,8 @@ static readonly "EMPTY_ARRAY": ($Pair<(any), (any)>)[]
 constructor()
 
 public static "emptyArray"<L, R>(): ($Pair<(L), (R)>)[]
+public "getLeft"(): L
+public "getRight"(): R
 public "equals"(arg0: any): boolean
 public "toString"(arg0: string): string
 public "toString"(): string
@@ -51,18 +53,16 @@ public "getValue"(): R
 public static "of"<L, R>(arg0: L, arg1: R): $Pair<(L), (R)>
 public static "of"<L, R>(arg0: $Map$Entry$Type<(L), (R)>): $Pair<(L), (R)>
 public "getKey"(): L
-public "getLeft"(): L
-public "getRight"(): R
-public static "copyOf"<K, V>(arg0: $Map$Entry$Type<(any), (any)>): $Map$Entry<(L), (R)>
-public "setValue"(arg0: R): R
-public static "comparingByKey"<K, V>(arg0: $Comparator$Type<(any)>): $Comparator<($Map$Entry<(L), (R)>)>
 public static "comparingByKey"<K extends $Comparable<(any)>, V>(): $Comparator<($Map$Entry<(L), (R)>)>
+public static "comparingByKey"<K, V>(arg0: $Comparator$Type<(any)>): $Comparator<($Map$Entry<(L), (R)>)>
 public static "comparingByValue"<K, V extends $Comparable<(any)>>(): $Comparator<($Map$Entry<(L), (R)>)>
 public static "comparingByValue"<K, V>(arg0: $Comparator$Type<(any)>): $Comparator<($Map$Entry<(L), (R)>)>
-get "value"(): R
-get "key"(): L
+public static "copyOf"<K, V>(arg0: $Map$Entry$Type<(any), (any)>): $Map$Entry<(L), (R)>
+public "setValue"(arg0: R): R
 get "left"(): L
 get "right"(): R
+get "value"(): R
+get "key"(): L
 set "value"(value: R)
 }
 /**

@@ -1,31 +1,3 @@
-declare module "packages/com/chaosthedude/explorerscompass/util/$CompassState" {
-import {$Enum, $Enum$Type} from "packages/java/lang/$Enum"
-
-export class $CompassState extends $Enum<($CompassState)> {
-static readonly "INACTIVE": $CompassState
-static readonly "SEARCHING": $CompassState
-static readonly "FOUND": $CompassState
-static readonly "NOT_FOUND": $CompassState
-
-
-public static "fromID"(arg0: integer): $CompassState
-public "getID"(): integer
-public static "values"(): ($CompassState)[]
-public static "valueOf"(arg0: string): $CompassState
-get "iD"(): integer
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $CompassState$Type = (("inactive") | ("found") | ("searching") | ("not_found")) | ($CompassState);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $CompassState_ = $CompassState$Type;
-}}
 declare module "packages/com/chaosthedude/explorerscompass/items/$ExplorersCompassItem" {
 import {$CompassState, $CompassState$Type} from "packages/com/chaosthedude/explorerscompass/util/$CompassState"
 import {$Level, $Level$Type} from "packages/net/minecraft/world/level/$Level"
@@ -72,14 +44,14 @@ public "getSearchRadius"(arg0: $ItemStack$Type): integer
 public "getSamples"(arg0: $ItemStack$Type): integer
 public "getDistanceToBiome"(arg0: $Player$Type, arg1: $ItemStack$Type): integer
 public "shouldDisplayCoordinates"(arg0: $ItemStack$Type): boolean
-public "shouldCauseReequipAnimation"(arg0: $ItemStack$Type, arg1: $ItemStack$Type, arg2: boolean): boolean
 public "use"(arg0: $Level$Type, arg1: $Player$Type, arg2: $InteractionHand$Type): $InteractionResultHolder<($ItemStack)>
 public "isBarVisible"(arg0: $ItemStack$Type): boolean
 public "getBarWidth"(arg0: $ItemStack$Type): integer
 public "getBarColor"(arg0: $ItemStack$Type): integer
+public "shouldCauseReequipAnimation"(arg0: $ItemStack$Type, arg1: $ItemStack$Type, arg2: boolean): boolean
 public "getDamage"(arg0: $ItemStack$Type): integer
-public "isBroken"(arg0: $ItemStack$Type): boolean
 public "setState"(arg0: $ItemStack$Type, arg1: $BlockPos$Type, arg2: $CompassState$Type, arg3: $Player$Type): void
+public "isBroken"(arg0: $ItemStack$Type): boolean
 public "getState"(arg0: $ItemStack$Type): $CompassState
 public "fail"(arg0: $ItemStack$Type, arg1: $ResourceLocation$Type, arg2: integer, arg3: integer): void
 public "isActive"(arg0: $ItemStack$Type): boolean
@@ -95,4 +67,32 @@ export type $ExplorersCompassItem$Type = ($ExplorersCompassItem);
  */
 declare global {
 export type $ExplorersCompassItem_ = $ExplorersCompassItem$Type;
+}}
+declare module "packages/com/chaosthedude/explorerscompass/util/$CompassState" {
+import {$Enum, $Enum$Type} from "packages/java/lang/$Enum"
+
+export class $CompassState extends $Enum<($CompassState)> {
+static readonly "INACTIVE": $CompassState
+static readonly "SEARCHING": $CompassState
+static readonly "FOUND": $CompassState
+static readonly "NOT_FOUND": $CompassState
+
+
+public static "fromID"(arg0: integer): $CompassState
+public "getID"(): integer
+public static "values"(): ($CompassState)[]
+public static "valueOf"(arg0: string): $CompassState
+get "iD"(): integer
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $CompassState$Type = (("inactive") | ("found") | ("searching") | ("not_found")) | ($CompassState);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $CompassState_ = $CompassState$Type;
 }}

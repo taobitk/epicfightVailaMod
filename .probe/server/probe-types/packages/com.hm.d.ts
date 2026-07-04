@@ -1,91 +1,9 @@
-declare module "packages/com/hm/efn/enchantment/$YamatoGuard" {
-import {$Enchantment, $Enchantment$Type} from "packages/net/minecraft/world/item/enchantment/$Enchantment"
-import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
-import {$EnchantmentCategory, $EnchantmentCategory$Type} from "packages/net/minecraft/world/item/enchantment/$EnchantmentCategory"
-
-export class $YamatoGuard extends $Enchantment {
-readonly "category": $EnchantmentCategory
-
-constructor()
-
-public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type): boolean
-public "getMaxLevel"(): integer
-public "canEnchant"(arg0: $ItemStack$Type): boolean
-public "isTreasureOnly"(): boolean
-public "isTradeable"(): boolean
-public "isDiscoverable"(): boolean
-public "isAllowedOnBooks"(): boolean
-get "maxLevel"(): integer
-get "treasureOnly"(): boolean
-get "tradeable"(): boolean
-get "discoverable"(): boolean
-get "allowedOnBooks"(): boolean
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $YamatoGuard$Type = ($YamatoGuard);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $YamatoGuard_ = $YamatoGuard$Type;
-}}
-declare module "packages/com/hm/efn/item/custom/$DuskFireArmorItem$Helmet" {
-import {$Multimap, $Multimap$Type} from "packages/com/google/common/collect/$Multimap"
-import {$Component, $Component$Type} from "packages/net/minecraft/network/chat/$Component"
-import {$EquipmentSlot, $EquipmentSlot$Type} from "packages/net/minecraft/world/entity/$EquipmentSlot"
-import {$Level, $Level$Type} from "packages/net/minecraft/world/level/$Level"
-import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
-import {$Equipable, $Equipable$Type} from "packages/net/minecraft/world/item/$Equipable"
-import {$Block, $Block$Type} from "packages/net/minecraft/world/level/block/$Block"
-import {$Item, $Item$Type} from "packages/net/minecraft/world/item/$Item"
-import {$TooltipFlag, $TooltipFlag$Type} from "packages/net/minecraft/world/item/$TooltipFlag"
-import {$Enchantment, $Enchantment$Type} from "packages/net/minecraft/world/item/enchantment/$Enchantment"
-import {$DuskFireArmorItem, $DuskFireArmorItem$Type} from "packages/com/hm/efn/item/custom/$DuskFireArmorItem"
-import {$Attribute, $Attribute$Type} from "packages/net/minecraft/world/entity/ai/attributes/$Attribute"
-import {$List, $List$Type} from "packages/java/util/$List"
-import {$AttributeModifier, $AttributeModifier$Type} from "packages/net/minecraft/world/entity/ai/attributes/$AttributeModifier"
-import {$DispenseItemBehavior, $DispenseItemBehavior$Type} from "packages/net/minecraft/core/dispenser/$DispenseItemBehavior"
-import {$Map, $Map$Type} from "packages/java/util/$Map"
-import {$Entity, $Entity$Type} from "packages/net/minecraft/world/entity/$Entity"
-
-export class $DuskFireArmorItem$Helmet extends $DuskFireArmorItem {
-static readonly "DISPENSE_ITEM_BEHAVIOR": $DispenseItemBehavior
- "defaultModifiers": $Multimap<($Attribute), ($AttributeModifier)>
-static readonly "BY_BLOCK": $Map<($Block), ($Item)>
-static readonly "MAX_STACK_SIZE": integer
-static readonly "EAT_DURATION": integer
-static readonly "MAX_BAR_WIDTH": integer
-
-constructor()
-
-public "getArmorTexture"(arg0: $ItemStack$Type, arg1: $Entity$Type, arg2: $EquipmentSlot$Type, arg3: string): string
-public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type, arg1: $Enchantment$Type): boolean
-public "appendHoverText"(arg0: $ItemStack$Type, arg1: $Level$Type, arg2: $List$Type<($Component$Type)>, arg3: $TooltipFlag$Type): void
-public "isEnchantable"(arg0: $ItemStack$Type): boolean
-public static "get"(arg0: $ItemStack$Type): $Equipable
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $DuskFireArmorItem$Helmet$Type = ($DuskFireArmorItem$Helmet);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $DuskFireArmorItem$Helmet_ = $DuskFireArmorItem$Helmet$Type;
-}}
 declare module "packages/com/hm/efn/item/custom/$ExsiliumgladiusItem" {
 import {$Multimap, $Multimap$Type} from "packages/com/google/common/collect/$Multimap"
 import {$Component, $Component$Type} from "packages/net/minecraft/network/chat/$Component"
 import {$Item$Properties, $Item$Properties$Type} from "packages/net/minecraft/world/item/$Item$Properties"
-import {$EquipmentSlot, $EquipmentSlot$Type} from "packages/net/minecraft/world/entity/$EquipmentSlot"
 import {$Level, $Level$Type} from "packages/net/minecraft/world/level/$Level"
+import {$EquipmentSlot, $EquipmentSlot$Type} from "packages/net/minecraft/world/entity/$EquipmentSlot"
 import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
 import {$Tier, $Tier$Type} from "packages/net/minecraft/world/item/$Tier"
 import {$Block, $Block$Type} from "packages/net/minecraft/world/level/block/$Block"
@@ -109,12 +27,12 @@ static readonly "MAX_BAR_WIDTH": integer
 
 constructor(arg0: $Tier$Type, arg1: integer, arg2: float, arg3: $Item$Properties$Type)
 
-public "canEquip"(arg0: $ItemStack$Type, arg1: $EquipmentSlot$Type, arg2: $Entity$Type): boolean
-public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type, arg1: $Enchantment$Type): boolean
 public "appendHoverText"(arg0: $ItemStack$Type, arg1: $Level$Type, arg2: $List$Type<($Component$Type)>, arg3: $TooltipFlag$Type): void
 public "isEnchantable"(arg0: $ItemStack$Type): boolean
 public "isDamageable"(arg0: $ItemStack$Type): boolean
 public "getEnchantmentValue"(): integer
+public "canEquip"(arg0: $ItemStack$Type, arg1: $EquipmentSlot$Type, arg2: $Entity$Type): boolean
+public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type, arg1: $Enchantment$Type): boolean
 get "enchantmentValue"(): integer
 }
 /**
@@ -128,29 +46,6 @@ export type $ExsiliumgladiusItem$Type = ($ExsiliumgladiusItem);
  */
 declare global {
 export type $ExsiliumgladiusItem_ = $ExsiliumgladiusItem$Type;
-}}
-declare module "packages/com/hm/efn/mobeffects/$DieMarkEffect" {
-import {$LivingEntity, $LivingEntity$Type} from "packages/net/minecraft/world/entity/$LivingEntity"
-import {$MobEffect, $MobEffect$Type} from "packages/net/minecraft/world/effect/$MobEffect"
-
-export class $DieMarkEffect extends $MobEffect {
-
-constructor()
-
-public "applyEffectTick"(arg0: $LivingEntity$Type, arg1: integer): void
-public "isDurationEffectTick"(arg0: integer, arg1: integer): boolean
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $DieMarkEffect$Type = ($DieMarkEffect);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $DieMarkEffect_ = $DieMarkEffect$Type;
 }}
 declare module "packages/com/hm/efn/item/custom/$RuinfighterItem$Boots" {
 import {$Multimap, $Multimap$Type} from "packages/com/google/common/collect/$Multimap"
@@ -179,10 +74,10 @@ static readonly "MAX_BAR_WIDTH": integer
 
 constructor()
 
+public "isEnchantable"(arg0: $ItemStack$Type): boolean
 public "initializeClient"(arg0: $Consumer$Type<($IClientItemExtensions$Type)>): void
 public "getArmorTexture"(arg0: $ItemStack$Type, arg1: $Entity$Type, arg2: $EquipmentSlot$Type, arg3: string): string
 public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type, arg1: $Enchantment$Type): boolean
-public "isEnchantable"(arg0: $ItemStack$Type): boolean
 public static "get"(arg0: $ItemStack$Type): $Equipable
 }
 /**
@@ -196,63 +91,6 @@ export type $RuinfighterItem$Boots$Type = ($RuinfighterItem$Boots);
  */
 declare global {
 export type $RuinfighterItem$Boots_ = $RuinfighterItem$Boots$Type;
-}}
-declare module "packages/com/hm/efn/item/custom/$HfMurasamaItem" {
-import {$Multimap, $Multimap$Type} from "packages/com/google/common/collect/$Multimap"
-import {$Component, $Component$Type} from "packages/net/minecraft/network/chat/$Component"
-import {$LivingKnockBackEvent, $LivingKnockBackEvent$Type} from "packages/net/minecraftforge/event/entity/living/$LivingKnockBackEvent"
-import {$Item$Properties, $Item$Properties$Type} from "packages/net/minecraft/world/item/$Item$Properties"
-import {$LivingEvent$LivingJumpEvent, $LivingEvent$LivingJumpEvent$Type} from "packages/net/minecraftforge/event/entity/living/$LivingEvent$LivingJumpEvent"
-import {$LivingFallEvent, $LivingFallEvent$Type} from "packages/net/minecraftforge/event/entity/living/$LivingFallEvent"
-import {$EquipmentSlot, $EquipmentSlot$Type} from "packages/net/minecraft/world/entity/$EquipmentSlot"
-import {$Level, $Level$Type} from "packages/net/minecraft/world/level/$Level"
-import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
-import {$Tier, $Tier$Type} from "packages/net/minecraft/world/item/$Tier"
-import {$Block, $Block$Type} from "packages/net/minecraft/world/level/block/$Block"
-import {$Item, $Item$Type} from "packages/net/minecraft/world/item/$Item"
-import {$TooltipFlag, $TooltipFlag$Type} from "packages/net/minecraft/world/item/$TooltipFlag"
-import {$WeaponItem, $WeaponItem$Type} from "packages/yesman/epicfight/world/item/$WeaponItem"
-import {$Enchantment, $Enchantment$Type} from "packages/net/minecraft/world/item/enchantment/$Enchantment"
-import {$Attribute, $Attribute$Type} from "packages/net/minecraft/world/entity/ai/attributes/$Attribute"
-import {$List, $List$Type} from "packages/java/util/$List"
-import {$AttributeModifier, $AttributeModifier$Type} from "packages/net/minecraft/world/entity/ai/attributes/$AttributeModifier"
-import {$Map, $Map$Type} from "packages/java/util/$Map"
-import {$LivingEvent$LivingTickEvent, $LivingEvent$LivingTickEvent$Type} from "packages/net/minecraftforge/event/entity/living/$LivingEvent$LivingTickEvent"
-import {$Entity, $Entity$Type} from "packages/net/minecraft/world/entity/$Entity"
-
-export class $HfMurasamaItem extends $WeaponItem {
- "defaultModifiers": $Multimap<($Attribute), ($AttributeModifier)>
- "tier": $Tier
-static readonly "BY_BLOCK": $Map<($Block), ($Item)>
-static readonly "MAX_STACK_SIZE": integer
-static readonly "EAT_DURATION": integer
-static readonly "MAX_BAR_WIDTH": integer
-
-constructor(arg0: $Tier$Type, arg1: integer, arg2: float, arg3: $Item$Properties$Type)
-
-public static "onPlayerJump"(arg0: $LivingEvent$LivingJumpEvent$Type): void
-public static "onLivingUpdate"(arg0: $LivingEvent$LivingTickEvent$Type): void
-public "canEquip"(arg0: $ItemStack$Type, arg1: $EquipmentSlot$Type, arg2: $Entity$Type): boolean
-public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type, arg1: $Enchantment$Type): boolean
-public static "onLivingKnockBack"(arg0: $LivingKnockBackEvent$Type): void
-public static "onLivingFall"(arg0: $LivingFallEvent$Type): void
-public "appendHoverText"(arg0: $ItemStack$Type, arg1: $Level$Type, arg2: $List$Type<($Component$Type)>, arg3: $TooltipFlag$Type): void
-public "isEnchantable"(arg0: $ItemStack$Type): boolean
-public "isDamageable"(arg0: $ItemStack$Type): boolean
-public "getEnchantmentValue"(): integer
-get "enchantmentValue"(): integer
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $HfMurasamaItem$Type = ($HfMurasamaItem);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $HfMurasamaItem_ = $HfMurasamaItem$Type;
 }}
 declare module "packages/com/hm/efn/mobeffects/$AttackSpeedIncreaseEffect" {
 import {$MobEffect, $MobEffect$Type} from "packages/net/minecraft/world/effect/$MobEffect"
@@ -304,12 +142,12 @@ static readonly "MAX_BAR_WIDTH": integer
 
 constructor(arg0: $Tier$Type, arg1: integer, arg2: float, arg3: $Item$Properties$Type)
 
-public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type, arg1: $Enchantment$Type): boolean
 public "appendHoverText"(arg0: $ItemStack$Type, arg1: $Level$Type, arg2: $List$Type<($Component$Type)>, arg3: $TooltipFlag$Type): void
 public "isEnchantable"(arg0: $ItemStack$Type): boolean
 public "isDamageable"(arg0: $ItemStack$Type): boolean
 public "getEnchantmentValue"(): integer
 public "getArmature"(): $Armatures$ArmatureAccessor<(any)>
+public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type, arg1: $Enchantment$Type): boolean
 public "setUseAnimationArmature"(arg0: integer, arg1: boolean): void
 public "getHitBox"(): $Vec2
 public "useAnimationArmature"(arg0: integer): boolean
@@ -339,8 +177,8 @@ readonly "category": $EnchantmentCategory
 
 constructor()
 
-public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type): boolean
 public "getMaxLevel"(): integer
+public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type): boolean
 public "canEnchant"(arg0: $ItemStack$Type): boolean
 public "isTreasureOnly"(): boolean
 public "isTradeable"(): boolean
@@ -364,26 +202,6 @@ export type $YamatoSummonedSword$Type = ($YamatoSummonedSword);
 declare global {
 export type $YamatoSummonedSword_ = $YamatoSummonedSword$Type;
 }}
-declare module "packages/com/hm/efn/mobeffects/$ComboExecuteWindow" {
-import {$MobEffect, $MobEffect$Type} from "packages/net/minecraft/world/effect/$MobEffect"
-
-export class $ComboExecuteWindow extends $MobEffect {
-
-constructor()
-
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $ComboExecuteWindow$Type = ($ComboExecuteWindow);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $ComboExecuteWindow_ = $ComboExecuteWindow$Type;
-}}
 declare module "packages/com/hm/efn/enchantment/$YamatoSummonedSwordEnd" {
 import {$Enchantment, $Enchantment$Type} from "packages/net/minecraft/world/item/enchantment/$Enchantment"
 import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
@@ -394,8 +212,8 @@ readonly "category": $EnchantmentCategory
 
 constructor()
 
-public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type): boolean
 public "getMaxLevel"(): integer
+public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type): boolean
 public "canEnchant"(arg0: $ItemStack$Type): boolean
 public "isTreasureOnly"(): boolean
 public "isTradeable"(): boolean
@@ -419,48 +237,6 @@ export type $YamatoSummonedSwordEnd$Type = ($YamatoSummonedSwordEnd);
 declare global {
 export type $YamatoSummonedSwordEnd_ = $YamatoSummonedSwordEnd$Type;
 }}
-declare module "packages/com/hm/efn/item/custom/$DuskFireArmorItem" {
-import {$Multimap, $Multimap$Type} from "packages/com/google/common/collect/$Multimap"
-import {$Item$Properties, $Item$Properties$Type} from "packages/net/minecraft/world/item/$Item$Properties"
-import {$Level, $Level$Type} from "packages/net/minecraft/world/level/$Level"
-import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
-import {$Equipable, $Equipable$Type} from "packages/net/minecraft/world/item/$Equipable"
-import {$Block, $Block$Type} from "packages/net/minecraft/world/level/block/$Block"
-import {$Item, $Item$Type} from "packages/net/minecraft/world/item/$Item"
-import {$Player, $Player$Type} from "packages/net/minecraft/world/entity/player/$Player"
-import {$Attribute, $Attribute$Type} from "packages/net/minecraft/world/entity/ai/attributes/$Attribute"
-import {$ArmorItem, $ArmorItem$Type} from "packages/net/minecraft/world/item/$ArmorItem"
-import {$AttributeModifier, $AttributeModifier$Type} from "packages/net/minecraft/world/entity/ai/attributes/$AttributeModifier"
-import {$DispenseItemBehavior, $DispenseItemBehavior$Type} from "packages/net/minecraft/core/dispenser/$DispenseItemBehavior"
-import {$Map, $Map$Type} from "packages/java/util/$Map"
-import {$ArmorItem$Type, $ArmorItem$Type$Type} from "packages/net/minecraft/world/item/$ArmorItem$Type"
-
-export class $DuskFireArmorItem extends $ArmorItem {
-static readonly "DISPENSE_ITEM_BEHAVIOR": $DispenseItemBehavior
- "defaultModifiers": $Multimap<($Attribute), ($AttributeModifier)>
-static readonly "BY_BLOCK": $Map<($Block), ($Item)>
-static readonly "MAX_STACK_SIZE": integer
-static readonly "EAT_DURATION": integer
-static readonly "MAX_BAR_WIDTH": integer
-
-constructor(arg0: $ArmorItem$Type$Type, arg1: $Item$Properties$Type)
-
-public "onArmorTick"(arg0: $ItemStack$Type, arg1: $Level$Type, arg2: $Player$Type): void
-public "isDamageable"(arg0: $ItemStack$Type): boolean
-public static "get"(arg0: $ItemStack$Type): $Equipable
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $DuskFireArmorItem$Type = ($DuskFireArmorItem);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $DuskFireArmorItem_ = $DuskFireArmorItem$Type;
-}}
 declare module "packages/com/hm/efn/mobeffects/$HorizontalStop" {
 import {$LivingEntity, $LivingEntity$Type} from "packages/net/minecraft/world/entity/$LivingEntity"
 import {$MobEffect, $MobEffect$Type} from "packages/net/minecraft/world/effect/$MobEffect"
@@ -483,75 +259,6 @@ export type $HorizontalStop$Type = ($HorizontalStop);
  */
 declare global {
 export type $HorizontalStop_ = $HorizontalStop$Type;
-}}
-declare module "packages/com/hm/efn/item/custom/$CoTachiItem" {
-import {$Multimap, $Multimap$Type} from "packages/com/google/common/collect/$Multimap"
-import {$Component, $Component$Type} from "packages/net/minecraft/network/chat/$Component"
-import {$Item$Properties, $Item$Properties$Type} from "packages/net/minecraft/world/item/$Item$Properties"
-import {$Level, $Level$Type} from "packages/net/minecraft/world/level/$Level"
-import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
-import {$Tier, $Tier$Type} from "packages/net/minecraft/world/item/$Tier"
-import {$Block, $Block$Type} from "packages/net/minecraft/world/level/block/$Block"
-import {$Item, $Item$Type} from "packages/net/minecraft/world/item/$Item"
-import {$TooltipFlag, $TooltipFlag$Type} from "packages/net/minecraft/world/item/$TooltipFlag"
-import {$WeaponItem, $WeaponItem$Type} from "packages/yesman/epicfight/world/item/$WeaponItem"
-import {$Enchantment, $Enchantment$Type} from "packages/net/minecraft/world/item/enchantment/$Enchantment"
-import {$Attribute, $Attribute$Type} from "packages/net/minecraft/world/entity/ai/attributes/$Attribute"
-import {$List, $List$Type} from "packages/java/util/$List"
-import {$AttributeModifier, $AttributeModifier$Type} from "packages/net/minecraft/world/entity/ai/attributes/$AttributeModifier"
-import {$Map, $Map$Type} from "packages/java/util/$Map"
-
-export class $CoTachiItem extends $WeaponItem {
- "defaultModifiers": $Multimap<($Attribute), ($AttributeModifier)>
- "tier": $Tier
-static readonly "BY_BLOCK": $Map<($Block), ($Item)>
-static readonly "MAX_STACK_SIZE": integer
-static readonly "EAT_DURATION": integer
-static readonly "MAX_BAR_WIDTH": integer
-
-constructor(arg0: $Tier$Type, arg1: integer, arg2: float, arg3: $Item$Properties$Type)
-
-public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type, arg1: $Enchantment$Type): boolean
-public "appendHoverText"(arg0: $ItemStack$Type, arg1: $Level$Type, arg2: $List$Type<($Component$Type)>, arg3: $TooltipFlag$Type): void
-public "isEnchantable"(arg0: $ItemStack$Type): boolean
-public "isDamageable"(arg0: $ItemStack$Type): boolean
-public "getEnchantmentValue"(): integer
-get "enchantmentValue"(): integer
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $CoTachiItem$Type = ($CoTachiItem);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $CoTachiItem_ = $CoTachiItem$Type;
-}}
-declare module "packages/com/hm/efn/mobeffects/$StopEffect" {
-import {$LivingEntity, $LivingEntity$Type} from "packages/net/minecraft/world/entity/$LivingEntity"
-import {$MobEffect, $MobEffect$Type} from "packages/net/minecraft/world/effect/$MobEffect"
-
-export class $StopEffect extends $MobEffect {
-
-constructor()
-
-public "applyEffectTick"(arg0: $LivingEntity$Type, arg1: integer): void
-public "isDurationEffectTick"(arg0: integer, arg1: integer): boolean
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $StopEffect$Type = ($StopEffect);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $StopEffect_ = $StopEffect$Type;
 }}
 declare module "packages/com/hm/efn/mobeffects/$BattleContinuationEffect" {
 import {$DamageType, $DamageType$Type} from "packages/net/minecraft/world/damagesource/$DamageType"
@@ -584,110 +291,6 @@ export type $BattleContinuationEffect$Type = ($BattleContinuationEffect);
  */
 declare global {
 export type $BattleContinuationEffect_ = $BattleContinuationEffect$Type;
-}}
-declare module "packages/com/hm/efn/item/custom/$HfBladeItem" {
-import {$Multimap, $Multimap$Type} from "packages/com/google/common/collect/$Multimap"
-import {$Component, $Component$Type} from "packages/net/minecraft/network/chat/$Component"
-import {$LivingKnockBackEvent, $LivingKnockBackEvent$Type} from "packages/net/minecraftforge/event/entity/living/$LivingKnockBackEvent"
-import {$Item$Properties, $Item$Properties$Type} from "packages/net/minecraft/world/item/$Item$Properties"
-import {$LivingEvent$LivingJumpEvent, $LivingEvent$LivingJumpEvent$Type} from "packages/net/minecraftforge/event/entity/living/$LivingEvent$LivingJumpEvent"
-import {$LivingFallEvent, $LivingFallEvent$Type} from "packages/net/minecraftforge/event/entity/living/$LivingFallEvent"
-import {$EquipmentSlot, $EquipmentSlot$Type} from "packages/net/minecraft/world/entity/$EquipmentSlot"
-import {$Level, $Level$Type} from "packages/net/minecraft/world/level/$Level"
-import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
-import {$Tier, $Tier$Type} from "packages/net/minecraft/world/item/$Tier"
-import {$Block, $Block$Type} from "packages/net/minecraft/world/level/block/$Block"
-import {$Item, $Item$Type} from "packages/net/minecraft/world/item/$Item"
-import {$TooltipFlag, $TooltipFlag$Type} from "packages/net/minecraft/world/item/$TooltipFlag"
-import {$WeaponItem, $WeaponItem$Type} from "packages/yesman/epicfight/world/item/$WeaponItem"
-import {$Enchantment, $Enchantment$Type} from "packages/net/minecraft/world/item/enchantment/$Enchantment"
-import {$Attribute, $Attribute$Type} from "packages/net/minecraft/world/entity/ai/attributes/$Attribute"
-import {$List, $List$Type} from "packages/java/util/$List"
-import {$AttributeModifier, $AttributeModifier$Type} from "packages/net/minecraft/world/entity/ai/attributes/$AttributeModifier"
-import {$Map, $Map$Type} from "packages/java/util/$Map"
-import {$LivingEvent$LivingTickEvent, $LivingEvent$LivingTickEvent$Type} from "packages/net/minecraftforge/event/entity/living/$LivingEvent$LivingTickEvent"
-import {$Entity, $Entity$Type} from "packages/net/minecraft/world/entity/$Entity"
-
-export class $HfBladeItem extends $WeaponItem {
- "defaultModifiers": $Multimap<($Attribute), ($AttributeModifier)>
- "tier": $Tier
-static readonly "BY_BLOCK": $Map<($Block), ($Item)>
-static readonly "MAX_STACK_SIZE": integer
-static readonly "EAT_DURATION": integer
-static readonly "MAX_BAR_WIDTH": integer
-
-constructor(arg0: $Tier$Type, arg1: integer, arg2: float, arg3: $Item$Properties$Type)
-
-public static "onPlayerJump"(arg0: $LivingEvent$LivingJumpEvent$Type): void
-public static "onLivingUpdate"(arg0: $LivingEvent$LivingTickEvent$Type): void
-public "canEquip"(arg0: $ItemStack$Type, arg1: $EquipmentSlot$Type, arg2: $Entity$Type): boolean
-public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type, arg1: $Enchantment$Type): boolean
-public static "onLivingKnockBack"(arg0: $LivingKnockBackEvent$Type): void
-public static "onLivingFall"(arg0: $LivingFallEvent$Type): void
-public "appendHoverText"(arg0: $ItemStack$Type, arg1: $Level$Type, arg2: $List$Type<($Component$Type)>, arg3: $TooltipFlag$Type): void
-public "isEnchantable"(arg0: $ItemStack$Type): boolean
-public "isDamageable"(arg0: $ItemStack$Type): boolean
-public "getEnchantmentValue"(): integer
-get "enchantmentValue"(): integer
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $HfBladeItem$Type = ($HfBladeItem);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $HfBladeItem_ = $HfBladeItem$Type;
-}}
-declare module "packages/com/hm/efn/mobeffects/$Yamato$YamatoEffect" {
-import {$LivingEntity, $LivingEntity$Type} from "packages/net/minecraft/world/entity/$LivingEntity"
-import {$MobEffect, $MobEffect$Type} from "packages/net/minecraft/world/effect/$MobEffect"
-
-export class $Yamato$YamatoEffect extends $MobEffect {
-
-constructor()
-
-public static "hasYamatoSkill"(arg0: $LivingEntity$Type): boolean
-public "applyEffectTick"(arg0: $LivingEntity$Type, arg1: integer): void
-public "isDurationEffectTick"(arg0: integer, arg1: integer): boolean
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $Yamato$YamatoEffect$Type = ($Yamato$YamatoEffect);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $Yamato$YamatoEffect_ = $Yamato$YamatoEffect$Type;
-}}
-declare module "packages/com/hm/efn/mobeffects/$MurasamaSheathEffect" {
-import {$LivingEntity, $LivingEntity$Type} from "packages/net/minecraft/world/entity/$LivingEntity"
-import {$MobEffect, $MobEffect$Type} from "packages/net/minecraft/world/effect/$MobEffect"
-
-export class $MurasamaSheathEffect extends $MobEffect {
-
-constructor()
-
-public "applyEffectTick"(arg0: $LivingEntity$Type, arg1: integer): void
-public "isDurationEffectTick"(arg0: integer, arg1: integer): boolean
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $MurasamaSheathEffect$Type = ($MurasamaSheathEffect);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $MurasamaSheathEffect_ = $MurasamaSheathEffect$Type;
 }}
 declare module "packages/com/hm/efn/item/custom/$RuinfighterItem" {
 import {$Multimap, $Multimap$Type} from "packages/com/google/common/collect/$Multimap"
@@ -738,8 +341,8 @@ readonly "category": $EnchantmentCategory
 
 constructor()
 
-public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type): boolean
 public "getMaxLevel"(): integer
+public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type): boolean
 public "canEnchant"(arg0: $ItemStack$Type): boolean
 public "isTreasureOnly"(): boolean
 public "isTradeable"(): boolean
@@ -762,27 +365,6 @@ export type $ScytheEnhance$Type = ($ScytheEnhance);
  */
 declare global {
 export type $ScytheEnhance_ = $ScytheEnhance$Type;
-}}
-declare module "packages/com/hm/efn/mobeffects/$InvincibilityEffect$InvincibilityMobEffect" {
-import {$MobEffect, $MobEffect$Type} from "packages/net/minecraft/world/effect/$MobEffect"
-
-export class $InvincibilityEffect$InvincibilityMobEffect extends $MobEffect {
-
-constructor()
-
-public "isDurationEffectTick"(arg0: integer, arg1: integer): boolean
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $InvincibilityEffect$InvincibilityMobEffect$Type = ($InvincibilityEffect$InvincibilityMobEffect);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $InvincibilityEffect$InvincibilityMobEffect_ = $InvincibilityEffect$InvincibilityMobEffect$Type;
 }}
 declare module "packages/com/hm/efn/mobeffects/$BreathingRing" {
 import {$MobEffect, $MobEffect$Type} from "packages/net/minecraft/world/effect/$MobEffect"
@@ -808,8 +390,8 @@ declare module "packages/com/hm/efn/item/custom/$FireExsiliumgladiusItem" {
 import {$Multimap, $Multimap$Type} from "packages/com/google/common/collect/$Multimap"
 import {$Component, $Component$Type} from "packages/net/minecraft/network/chat/$Component"
 import {$Item$Properties, $Item$Properties$Type} from "packages/net/minecraft/world/item/$Item$Properties"
-import {$EquipmentSlot, $EquipmentSlot$Type} from "packages/net/minecraft/world/entity/$EquipmentSlot"
 import {$Level, $Level$Type} from "packages/net/minecraft/world/level/$Level"
+import {$EquipmentSlot, $EquipmentSlot$Type} from "packages/net/minecraft/world/entity/$EquipmentSlot"
 import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
 import {$Tier, $Tier$Type} from "packages/net/minecraft/world/item/$Tier"
 import {$Block, $Block$Type} from "packages/net/minecraft/world/level/block/$Block"
@@ -833,12 +415,12 @@ static readonly "MAX_BAR_WIDTH": integer
 
 constructor(arg0: $Tier$Type, arg1: integer, arg2: float, arg3: $Item$Properties$Type)
 
-public "canEquip"(arg0: $ItemStack$Type, arg1: $EquipmentSlot$Type, arg2: $Entity$Type): boolean
-public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type, arg1: $Enchantment$Type): boolean
 public "appendHoverText"(arg0: $ItemStack$Type, arg1: $Level$Type, arg2: $List$Type<($Component$Type)>, arg3: $TooltipFlag$Type): void
 public "isEnchantable"(arg0: $ItemStack$Type): boolean
 public "isDamageable"(arg0: $ItemStack$Type): boolean
 public "getEnchantmentValue"(): integer
+public "canEquip"(arg0: $ItemStack$Type, arg1: $EquipmentSlot$Type, arg2: $Entity$Type): boolean
+public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type, arg1: $Enchantment$Type): boolean
 get "enchantmentValue"(): integer
 }
 /**
@@ -862,9 +444,9 @@ export class $StunEffect extends $MobEffect {
 
 constructor()
 
-public "removeAttributeModifiers"(arg0: $LivingEntity$Type, arg1: $AttributeMap$Type, arg2: integer): void
 public "applyEffectTick"(arg0: $LivingEntity$Type, arg1: integer): void
 public "isDurationEffectTick"(arg0: integer, arg1: integer): boolean
+public "removeAttributeModifiers"(arg0: $LivingEntity$Type, arg1: $AttributeMap$Type, arg2: integer): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -878,69 +460,11 @@ export type $StunEffect$Type = ($StunEffect);
 declare global {
 export type $StunEffect_ = $StunEffect$Type;
 }}
-declare module "packages/com/hm/efn/enchantment/$YamatoHeavyRain" {
-import {$Enchantment, $Enchantment$Type} from "packages/net/minecraft/world/item/enchantment/$Enchantment"
-import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
-import {$EnchantmentCategory, $EnchantmentCategory$Type} from "packages/net/minecraft/world/item/enchantment/$EnchantmentCategory"
-
-export class $YamatoHeavyRain extends $Enchantment {
-readonly "category": $EnchantmentCategory
-
-constructor()
-
-public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type): boolean
-public "getMaxLevel"(): integer
-public "canEnchant"(arg0: $ItemStack$Type): boolean
-public "isTreasureOnly"(): boolean
-public "isTradeable"(): boolean
-public "isDiscoverable"(): boolean
-public "isAllowedOnBooks"(): boolean
-get "maxLevel"(): integer
-get "treasureOnly"(): boolean
-get "tradeable"(): boolean
-get "discoverable"(): boolean
-get "allowedOnBooks"(): boolean
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $YamatoHeavyRain$Type = ($YamatoHeavyRain);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $YamatoHeavyRain_ = $YamatoHeavyRain$Type;
-}}
-declare module "packages/com/hm/efn/mobeffects/$MeenLance$MeenLanceEffect" {
-import {$LivingEntity, $LivingEntity$Type} from "packages/net/minecraft/world/entity/$LivingEntity"
-import {$MobEffect, $MobEffect$Type} from "packages/net/minecraft/world/effect/$MobEffect"
-
-export class $MeenLance$MeenLanceEffect extends $MobEffect {
-
-constructor()
-
-public "applyEffectTick"(arg0: $LivingEntity$Type, arg1: integer): void
-public "isDurationEffectTick"(arg0: integer, arg1: integer): boolean
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $MeenLance$MeenLanceEffect$Type = ($MeenLance$MeenLanceEffect);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $MeenLance$MeenLanceEffect_ = $MeenLance$MeenLanceEffect$Type;
-}}
 declare module "packages/com/hm/efn/item/custom/$DuskFireArmorItem$Leggings" {
 import {$Multimap, $Multimap$Type} from "packages/com/google/common/collect/$Multimap"
 import {$Component, $Component$Type} from "packages/net/minecraft/network/chat/$Component"
-import {$EquipmentSlot, $EquipmentSlot$Type} from "packages/net/minecraft/world/entity/$EquipmentSlot"
 import {$Level, $Level$Type} from "packages/net/minecraft/world/level/$Level"
+import {$EquipmentSlot, $EquipmentSlot$Type} from "packages/net/minecraft/world/entity/$EquipmentSlot"
 import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
 import {$Equipable, $Equipable$Type} from "packages/net/minecraft/world/item/$Equipable"
 import {$Block, $Block$Type} from "packages/net/minecraft/world/level/block/$Block"
@@ -965,10 +489,10 @@ static readonly "MAX_BAR_WIDTH": integer
 
 constructor()
 
-public "getArmorTexture"(arg0: $ItemStack$Type, arg1: $Entity$Type, arg2: $EquipmentSlot$Type, arg3: string): string
-public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type, arg1: $Enchantment$Type): boolean
 public "appendHoverText"(arg0: $ItemStack$Type, arg1: $Level$Type, arg2: $List$Type<($Component$Type)>, arg3: $TooltipFlag$Type): void
 public "isEnchantable"(arg0: $ItemStack$Type): boolean
+public "getArmorTexture"(arg0: $ItemStack$Type, arg1: $Entity$Type, arg2: $EquipmentSlot$Type, arg3: string): string
+public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type, arg1: $Enchantment$Type): boolean
 public static "get"(arg0: $ItemStack$Type): $Equipable
 }
 /**
@@ -1010,11 +534,11 @@ static readonly "MAX_BAR_WIDTH": integer
 
 constructor(arg0: $Tier$Type, arg1: integer, arg2: float, arg3: $Item$Properties$Type)
 
-public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type, arg1: $Enchantment$Type): boolean
 public "appendHoverText"(arg0: $ItemStack$Type, arg1: $Level$Type, arg2: $List$Type<($Component$Type)>, arg3: $TooltipFlag$Type): void
 public "isEnchantable"(arg0: $ItemStack$Type): boolean
 public "isDamageable"(arg0: $ItemStack$Type): boolean
 public "getEnchantmentValue"(): integer
+public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type, arg1: $Enchantment$Type): boolean
 get "enchantmentValue"(): integer
 }
 /**
@@ -1052,52 +576,6 @@ export type $BloodlustEnhance$BloodlustEffect$Type = ($BloodlustEnhance$Bloodlus
 declare global {
 export type $BloodlustEnhance$BloodlustEffect_ = $BloodlustEnhance$BloodlustEffect$Type;
 }}
-declare module "packages/com/hm/efn/item/custom/$CrescentMoonItem" {
-import {$Multimap, $Multimap$Type} from "packages/com/google/common/collect/$Multimap"
-import {$Component, $Component$Type} from "packages/net/minecraft/network/chat/$Component"
-import {$Item$Properties, $Item$Properties$Type} from "packages/net/minecraft/world/item/$Item$Properties"
-import {$Level, $Level$Type} from "packages/net/minecraft/world/level/$Level"
-import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
-import {$Tier, $Tier$Type} from "packages/net/minecraft/world/item/$Tier"
-import {$Block, $Block$Type} from "packages/net/minecraft/world/level/block/$Block"
-import {$Item, $Item$Type} from "packages/net/minecraft/world/item/$Item"
-import {$TooltipFlag, $TooltipFlag$Type} from "packages/net/minecraft/world/item/$TooltipFlag"
-import {$WeaponItem, $WeaponItem$Type} from "packages/yesman/epicfight/world/item/$WeaponItem"
-import {$Enchantment, $Enchantment$Type} from "packages/net/minecraft/world/item/enchantment/$Enchantment"
-import {$Attribute, $Attribute$Type} from "packages/net/minecraft/world/entity/ai/attributes/$Attribute"
-import {$List, $List$Type} from "packages/java/util/$List"
-import {$AttributeModifier, $AttributeModifier$Type} from "packages/net/minecraft/world/entity/ai/attributes/$AttributeModifier"
-import {$Map, $Map$Type} from "packages/java/util/$Map"
-
-export class $CrescentMoonItem extends $WeaponItem {
- "defaultModifiers": $Multimap<($Attribute), ($AttributeModifier)>
- "tier": $Tier
-static readonly "BY_BLOCK": $Map<($Block), ($Item)>
-static readonly "MAX_STACK_SIZE": integer
-static readonly "EAT_DURATION": integer
-static readonly "MAX_BAR_WIDTH": integer
-
-constructor(arg0: $Tier$Type, arg1: integer, arg2: float, arg3: $Item$Properties$Type)
-
-public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type, arg1: $Enchantment$Type): boolean
-public "appendHoverText"(arg0: $ItemStack$Type, arg1: $Level$Type, arg2: $List$Type<($Component$Type)>, arg3: $TooltipFlag$Type): void
-public "isEnchantable"(arg0: $ItemStack$Type): boolean
-public "isDamageable"(arg0: $ItemStack$Type): boolean
-public "getEnchantmentValue"(): integer
-get "enchantmentValue"(): integer
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $CrescentMoonItem$Type = ($CrescentMoonItem);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $CrescentMoonItem_ = $CrescentMoonItem$Type;
-}}
 declare module "packages/com/hm/efn/item/custom/$RuinfighterItem$Chestplate" {
 import {$Multimap, $Multimap$Type} from "packages/com/google/common/collect/$Multimap"
 import {$RuinfighterItem, $RuinfighterItem$Type} from "packages/com/hm/efn/item/custom/$RuinfighterItem"
@@ -1123,9 +601,9 @@ static readonly "MAX_BAR_WIDTH": integer
 
 constructor()
 
+public "isEnchantable"(arg0: $ItemStack$Type): boolean
 public "getArmorTexture"(arg0: $ItemStack$Type, arg1: $Entity$Type, arg2: $EquipmentSlot$Type, arg3: string): string
 public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type, arg1: $Enchantment$Type): boolean
-public "isEnchantable"(arg0: $ItemStack$Type): boolean
 public static "get"(arg0: $ItemStack$Type): $Equipable
 }
 /**
@@ -1150,8 +628,8 @@ readonly "category": $EnchantmentCategory
 
 constructor()
 
-public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type): boolean
 public "getMaxLevel"(): integer
+public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type): boolean
 public "canEnchant"(arg0: $ItemStack$Type): boolean
 public "isTreasureOnly"(): boolean
 public "isTradeable"(): boolean
@@ -1178,8 +656,8 @@ export type $BroadBladeEnhance_ = $BroadBladeEnhance$Type;
 declare module "packages/com/hm/efn/item/custom/$DuskFireArmorItem$Boots" {
 import {$Multimap, $Multimap$Type} from "packages/com/google/common/collect/$Multimap"
 import {$Component, $Component$Type} from "packages/net/minecraft/network/chat/$Component"
-import {$EquipmentSlot, $EquipmentSlot$Type} from "packages/net/minecraft/world/entity/$EquipmentSlot"
 import {$Level, $Level$Type} from "packages/net/minecraft/world/level/$Level"
+import {$EquipmentSlot, $EquipmentSlot$Type} from "packages/net/minecraft/world/entity/$EquipmentSlot"
 import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
 import {$Equipable, $Equipable$Type} from "packages/net/minecraft/world/item/$Equipable"
 import {$Block, $Block$Type} from "packages/net/minecraft/world/level/block/$Block"
@@ -1204,10 +682,10 @@ static readonly "MAX_BAR_WIDTH": integer
 
 constructor()
 
-public "getArmorTexture"(arg0: $ItemStack$Type, arg1: $Entity$Type, arg2: $EquipmentSlot$Type, arg3: string): string
-public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type, arg1: $Enchantment$Type): boolean
 public "appendHoverText"(arg0: $ItemStack$Type, arg1: $Level$Type, arg2: $List$Type<($Component$Type)>, arg3: $TooltipFlag$Type): void
 public "isEnchantable"(arg0: $ItemStack$Type): boolean
+public "getArmorTexture"(arg0: $ItemStack$Type, arg1: $Entity$Type, arg2: $EquipmentSlot$Type, arg3: string): string
+public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type, arg1: $Enchantment$Type): boolean
 public static "get"(arg0: $ItemStack$Type): $Equipable
 }
 /**
@@ -1265,31 +743,6 @@ export type $ClawEnhance$ClawEffect$Type = ($ClawEnhance$ClawEffect);
 declare global {
 export type $ClawEnhance$ClawEffect_ = $ClawEnhance$ClawEffect$Type;
 }}
-declare module "packages/com/hm/efn/mobeffects/$GuardPunctureEffect" {
-import {$AttributeMap, $AttributeMap$Type} from "packages/net/minecraft/world/entity/ai/attributes/$AttributeMap"
-import {$LivingEntity, $LivingEntity$Type} from "packages/net/minecraft/world/entity/$LivingEntity"
-import {$MobEffect, $MobEffect$Type} from "packages/net/minecraft/world/effect/$MobEffect"
-
-export class $GuardPunctureEffect extends $MobEffect {
-
-constructor()
-
-public "addAttributeModifiers"(arg0: $LivingEntity$Type, arg1: $AttributeMap$Type, arg2: integer): void
-public "removeAttributeModifiers"(arg0: $LivingEntity$Type, arg1: $AttributeMap$Type, arg2: integer): void
-public "isDurationEffectTick"(arg0: integer, arg1: integer): boolean
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $GuardPunctureEffect$Type = ($GuardPunctureEffect);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $GuardPunctureEffect_ = $GuardPunctureEffect$Type;
-}}
 declare module "packages/com/hm/efn/mobeffects/$HeavyRainStunEffect" {
 import {$AttributeMap, $AttributeMap$Type} from "packages/net/minecraft/world/entity/ai/attributes/$AttributeMap"
 import {$LivingKnockBackEvent, $LivingKnockBackEvent$Type} from "packages/net/minecraftforge/event/entity/living/$LivingKnockBackEvent"
@@ -1304,10 +757,10 @@ constructor()
 
 public static "onEntityStun"(arg0: $EntityStunEvent$Type): void
 public static "onLivingKnockBack"(arg0: $LivingKnockBackEvent$Type): void
-public "removeAttributeModifiers"(arg0: $LivingEntity$Type, arg1: $AttributeMap$Type, arg2: integer): void
-public static "onLivingAttack"(arg0: $LivingAttackEvent$Type): void
 public "applyEffectTick"(arg0: $LivingEntity$Type, arg1: integer): void
 public "isDurationEffectTick"(arg0: integer, arg1: integer): boolean
+public "removeAttributeModifiers"(arg0: $LivingEntity$Type, arg1: $AttributeMap$Type, arg2: integer): void
+public static "onLivingAttack"(arg0: $LivingAttackEvent$Type): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1347,11 +800,11 @@ static readonly "MAX_BAR_WIDTH": integer
 
 constructor(arg0: $Tier$Type, arg1: integer, arg2: float, arg3: $Item$Properties$Type)
 
-public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type, arg1: $Enchantment$Type): boolean
 public "isEnchantable"(arg0: $ItemStack$Type): boolean
 public "isDamageable"(arg0: $ItemStack$Type): boolean
 public "getEnchantmentValue"(): integer
 public "getArmature"(): $Armatures$ArmatureAccessor<(any)>
+public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type, arg1: $Enchantment$Type): boolean
 public "setUseAnimationArmature"(arg0: integer, arg1: boolean): void
 public "getHitBox"(): $Vec2
 public "useAnimationArmature"(arg0: integer): boolean
@@ -1401,12 +854,12 @@ static readonly "MAX_BAR_WIDTH": integer
 
 constructor(arg0: $Tier$Type, arg1: integer, arg2: float, arg3: $Item$Properties$Type)
 
-public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type, arg1: $Enchantment$Type): boolean
 public "appendHoverText"(arg0: $ItemStack$Type, arg1: $Level$Type, arg2: $List$Type<($Component$Type)>, arg3: $TooltipFlag$Type): void
 public "isEnchantable"(arg0: $ItemStack$Type): boolean
 public "isDamageable"(arg0: $ItemStack$Type): boolean
 public "getEnchantmentValue"(): integer
 public "getArmature"(): $Armatures$ArmatureAccessor<(any)>
+public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type, arg1: $Enchantment$Type): boolean
 public "setUseAnimationArmature"(arg0: integer, arg1: boolean): void
 public "getHitBox"(): $Vec2
 public "useAnimationArmature"(arg0: integer): boolean
@@ -1470,52 +923,6 @@ export type $SinStunImmunity$SinStunImmunityEffect$Type = ($SinStunImmunity$SinS
 declare global {
 export type $SinStunImmunity$SinStunImmunityEffect_ = $SinStunImmunity$SinStunImmunityEffect$Type;
 }}
-declare module "packages/com/hm/efn/item/custom/$ScytheItem" {
-import {$Multimap, $Multimap$Type} from "packages/com/google/common/collect/$Multimap"
-import {$Component, $Component$Type} from "packages/net/minecraft/network/chat/$Component"
-import {$Item$Properties, $Item$Properties$Type} from "packages/net/minecraft/world/item/$Item$Properties"
-import {$Level, $Level$Type} from "packages/net/minecraft/world/level/$Level"
-import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
-import {$Tier, $Tier$Type} from "packages/net/minecraft/world/item/$Tier"
-import {$Block, $Block$Type} from "packages/net/minecraft/world/level/block/$Block"
-import {$Item, $Item$Type} from "packages/net/minecraft/world/item/$Item"
-import {$TooltipFlag, $TooltipFlag$Type} from "packages/net/minecraft/world/item/$TooltipFlag"
-import {$WeaponItem, $WeaponItem$Type} from "packages/yesman/epicfight/world/item/$WeaponItem"
-import {$Enchantment, $Enchantment$Type} from "packages/net/minecraft/world/item/enchantment/$Enchantment"
-import {$Attribute, $Attribute$Type} from "packages/net/minecraft/world/entity/ai/attributes/$Attribute"
-import {$List, $List$Type} from "packages/java/util/$List"
-import {$AttributeModifier, $AttributeModifier$Type} from "packages/net/minecraft/world/entity/ai/attributes/$AttributeModifier"
-import {$Map, $Map$Type} from "packages/java/util/$Map"
-
-export class $ScytheItem extends $WeaponItem {
- "defaultModifiers": $Multimap<($Attribute), ($AttributeModifier)>
- "tier": $Tier
-static readonly "BY_BLOCK": $Map<($Block), ($Item)>
-static readonly "MAX_STACK_SIZE": integer
-static readonly "EAT_DURATION": integer
-static readonly "MAX_BAR_WIDTH": integer
-
-constructor(arg0: $Tier$Type, arg1: integer, arg2: float, arg3: $Item$Properties$Type)
-
-public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type, arg1: $Enchantment$Type): boolean
-public "appendHoverText"(arg0: $ItemStack$Type, arg1: $Level$Type, arg2: $List$Type<($Component$Type)>, arg3: $TooltipFlag$Type): void
-public "isEnchantable"(arg0: $ItemStack$Type): boolean
-public "isDamageable"(arg0: $ItemStack$Type): boolean
-public "getEnchantmentValue"(): integer
-get "enchantmentValue"(): integer
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $ScytheItem$Type = ($ScytheItem);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $ScytheItem_ = $ScytheItem$Type;
-}}
 declare module "packages/com/hm/efn/item/custom/$YamatoItem" {
 import {$LivingDamageEvent, $LivingDamageEvent$Type} from "packages/net/minecraftforge/event/entity/living/$LivingDamageEvent"
 import {$Multimap, $Multimap$Type} from "packages/com/google/common/collect/$Multimap"
@@ -1549,19 +956,19 @@ static readonly "MAX_BAR_WIDTH": integer
 
 constructor(arg0: $Tier$Type, arg1: integer, arg2: float, arg3: $Item$Properties$Type)
 
-public static "onPlayerJump"(arg0: $LivingEvent$LivingJumpEvent$Type): void
 public static "onLivingUpdate"(arg0: $LivingEvent$LivingTickEvent$Type): void
+public static "onPlayerJump"(arg0: $LivingEvent$LivingJumpEvent$Type): void
 public static "getKillCount"(arg0: $ItemStack$Type): integer
 public static "getTotalDamage"(arg0: $ItemStack$Type): float
-public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type, arg1: $Enchantment$Type): boolean
-public static "onLivingDeath"(arg0: $LivingDeathEvent$Type): void
-public static "onLivingKnockBack"(arg0: $LivingKnockBackEvent$Type): void
-public static "onLivingFall"(arg0: $LivingFallEvent$Type): void
-public static "onLivingDamage"(arg0: $LivingDamageEvent$Type): void
 public "appendHoverText"(arg0: $ItemStack$Type, arg1: $Level$Type, arg2: $List$Type<($Component$Type)>, arg3: $TooltipFlag$Type): void
 public "isEnchantable"(arg0: $ItemStack$Type): boolean
 public "isDamageable"(arg0: $ItemStack$Type): boolean
 public "getEnchantmentValue"(): integer
+public static "onLivingDeath"(arg0: $LivingDeathEvent$Type): void
+public static "onLivingKnockBack"(arg0: $LivingKnockBackEvent$Type): void
+public static "onLivingFall"(arg0: $LivingFallEvent$Type): void
+public static "onLivingDamage"(arg0: $LivingDamageEvent$Type): void
+public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type, arg1: $Enchantment$Type): boolean
 get "enchantmentValue"(): integer
 }
 /**
@@ -1575,117 +982,6 @@ export type $YamatoItem$Type = ($YamatoItem);
  */
 declare global {
 export type $YamatoItem_ = $YamatoItem$Type;
-}}
-declare module "packages/com/hm/efn/mobeffects/$FalchionVulnerability" {
-import {$MobEffect, $MobEffect$Type} from "packages/net/minecraft/world/effect/$MobEffect"
-
-export class $FalchionVulnerability extends $MobEffect {
-
-constructor()
-
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $FalchionVulnerability$Type = ($FalchionVulnerability);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $FalchionVulnerability_ = $FalchionVulnerability$Type;
-}}
-declare module "packages/com/hm/efn/item/custom/$AetherialDuskDualSword_MainHandItem" {
-import {$Multimap, $Multimap$Type} from "packages/com/google/common/collect/$Multimap"
-import {$Component, $Component$Type} from "packages/net/minecraft/network/chat/$Component"
-import {$Item$Properties, $Item$Properties$Type} from "packages/net/minecraft/world/item/$Item$Properties"
-import {$Level, $Level$Type} from "packages/net/minecraft/world/level/$Level"
-import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
-import {$Tier, $Tier$Type} from "packages/net/minecraft/world/item/$Tier"
-import {$Block, $Block$Type} from "packages/net/minecraft/world/level/block/$Block"
-import {$Item, $Item$Type} from "packages/net/minecraft/world/item/$Item"
-import {$TooltipFlag, $TooltipFlag$Type} from "packages/net/minecraft/world/item/$TooltipFlag"
-import {$WeaponItem, $WeaponItem$Type} from "packages/yesman/epicfight/world/item/$WeaponItem"
-import {$Enchantment, $Enchantment$Type} from "packages/net/minecraft/world/item/enchantment/$Enchantment"
-import {$Attribute, $Attribute$Type} from "packages/net/minecraft/world/entity/ai/attributes/$Attribute"
-import {$List, $List$Type} from "packages/java/util/$List"
-import {$AttributeModifier, $AttributeModifier$Type} from "packages/net/minecraft/world/entity/ai/attributes/$AttributeModifier"
-import {$Map, $Map$Type} from "packages/java/util/$Map"
-
-export class $AetherialDuskDualSword_MainHandItem extends $WeaponItem {
- "defaultModifiers": $Multimap<($Attribute), ($AttributeModifier)>
- "tier": $Tier
-static readonly "BY_BLOCK": $Map<($Block), ($Item)>
-static readonly "MAX_STACK_SIZE": integer
-static readonly "EAT_DURATION": integer
-static readonly "MAX_BAR_WIDTH": integer
-
-constructor(arg0: $Tier$Type, arg1: integer, arg2: float, arg3: $Item$Properties$Type)
-
-public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type, arg1: $Enchantment$Type): boolean
-public "appendHoverText"(arg0: $ItemStack$Type, arg1: $Level$Type, arg2: $List$Type<($Component$Type)>, arg3: $TooltipFlag$Type): void
-public "isEnchantable"(arg0: $ItemStack$Type): boolean
-public "isDamageable"(arg0: $ItemStack$Type): boolean
-public "getEnchantmentValue"(): integer
-get "enchantmentValue"(): integer
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $AetherialDuskDualSword_MainHandItem$Type = ($AetherialDuskDualSword_MainHandItem);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $AetherialDuskDualSword_MainHandItem_ = $AetherialDuskDualSword_MainHandItem$Type;
-}}
-declare module "packages/com/hm/efn/item/custom/$RuinfighterItem$Helmet" {
-import {$Multimap, $Multimap$Type} from "packages/com/google/common/collect/$Multimap"
-import {$RuinfighterItem, $RuinfighterItem$Type} from "packages/com/hm/efn/item/custom/$RuinfighterItem"
-import {$IClientItemExtensions, $IClientItemExtensions$Type} from "packages/net/minecraftforge/client/extensions/common/$IClientItemExtensions"
-import {$EquipmentSlot, $EquipmentSlot$Type} from "packages/net/minecraft/world/entity/$EquipmentSlot"
-import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
-import {$Equipable, $Equipable$Type} from "packages/net/minecraft/world/item/$Equipable"
-import {$Block, $Block$Type} from "packages/net/minecraft/world/level/block/$Block"
-import {$Item, $Item$Type} from "packages/net/minecraft/world/item/$Item"
-import {$Consumer, $Consumer$Type} from "packages/java/util/function/$Consumer"
-import {$Enchantment, $Enchantment$Type} from "packages/net/minecraft/world/item/enchantment/$Enchantment"
-import {$Attribute, $Attribute$Type} from "packages/net/minecraft/world/entity/ai/attributes/$Attribute"
-import {$AttributeModifier, $AttributeModifier$Type} from "packages/net/minecraft/world/entity/ai/attributes/$AttributeModifier"
-import {$DispenseItemBehavior, $DispenseItemBehavior$Type} from "packages/net/minecraft/core/dispenser/$DispenseItemBehavior"
-import {$Map, $Map$Type} from "packages/java/util/$Map"
-import {$Entity, $Entity$Type} from "packages/net/minecraft/world/entity/$Entity"
-
-export class $RuinfighterItem$Helmet extends $RuinfighterItem {
-static readonly "DISPENSE_ITEM_BEHAVIOR": $DispenseItemBehavior
- "defaultModifiers": $Multimap<($Attribute), ($AttributeModifier)>
-static readonly "BY_BLOCK": $Map<($Block), ($Item)>
-static readonly "MAX_STACK_SIZE": integer
-static readonly "EAT_DURATION": integer
-static readonly "MAX_BAR_WIDTH": integer
-
-constructor()
-
-public "initializeClient"(arg0: $Consumer$Type<($IClientItemExtensions$Type)>): void
-public "getArmorTexture"(arg0: $ItemStack$Type, arg1: $Entity$Type, arg2: $EquipmentSlot$Type, arg3: string): string
-public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type, arg1: $Enchantment$Type): boolean
-public "isEnchantable"(arg0: $ItemStack$Type): boolean
-public static "get"(arg0: $ItemStack$Type): $Equipable
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $RuinfighterItem$Helmet$Type = ($RuinfighterItem$Helmet);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $RuinfighterItem$Helmet_ = $RuinfighterItem$Helmet$Type;
 }}
 declare module "packages/com/hm/efn/item/geo/$ExcaliburItem" {
 import {$Multimap, $Multimap$Type} from "packages/com/google/common/collect/$Multimap"
@@ -1720,26 +1016,26 @@ static readonly "MAX_BAR_WIDTH": integer
 
 constructor(arg0: $Tier$Type, arg1: integer, arg2: float, arg3: $Item$Properties$Type)
 
-public "initializeClient"(arg0: $Consumer$Type<($IClientItemExtensions$Type)>): void
-public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type, arg1: $Enchantment$Type): boolean
 public "isEnchantable"(arg0: $ItemStack$Type): boolean
 public "isDamageable"(arg0: $ItemStack$Type): boolean
 public "getEnchantmentValue"(): integer
+public "initializeClient"(arg0: $Consumer$Type<($IClientItemExtensions$Type)>): void
+public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type, arg1: $Enchantment$Type): boolean
 public "registerControllers"(arg0: $AnimatableManager$ControllerRegistrar$Type): void
 public "getAnimatableInstanceCache"(): $AnimatableInstanceCache
-public static "registerSyncedAnimatable"(arg0: $GeoAnimatable$Type): void
 public static "getOrAssignId"(arg0: $ItemStack$Type, arg1: $ServerLevel$Type): long
 public "isPerspectiveAware"(): boolean
+public static "registerSyncedAnimatable"(arg0: $GeoAnimatable$Type): void
 public "getTick"(arg0: any): double
 public "animatableCacheOverride"(): $AnimatableInstanceCache
 public static "getId"(arg0: $ItemStack$Type): long
 public "syncAnimData"<D>(arg0: long, arg1: $SerializableDataTicket$Type<(D)>, arg2: D, arg3: $PacketDistributor$PacketTarget$Type): void
-public "stopTriggeredAnim"(arg0: $Entity$Type, arg1: long, arg2: string, arg3: string, arg4: $PacketDistributor$PacketTarget$Type): void
 public "stopTriggeredAnim"(arg0: $Entity$Type, arg1: long, arg2: string, arg3: string): void
+public "stopTriggeredAnim"(arg0: $Entity$Type, arg1: long, arg2: string, arg3: string, arg4: $PacketDistributor$PacketTarget$Type): void
 public "triggerArmorAnim"(arg0: $Entity$Type, arg1: long, arg2: string, arg3: string): void
 public "stopTriggeredArmorAnim"(arg0: $Entity$Type, arg1: long, arg2: string, arg3: string): void
-public "triggerAnim"<D>(arg0: $Entity$Type, arg1: long, arg2: string, arg3: string): void
 public "triggerAnim"<D>(arg0: long, arg1: string, arg2: string, arg3: $PacketDistributor$PacketTarget$Type): void
+public "triggerAnim"<D>(arg0: $Entity$Type, arg1: long, arg2: string, arg3: string): void
 public "getAnimData"<D>(arg0: long, arg1: $SerializableDataTicket$Type<(D)>): D
 public "setAnimData"<D>(arg0: $Entity$Type, arg1: long, arg2: $SerializableDataTicket$Type<(D)>, arg3: D): void
 public "getBoneResetTime"(): double
@@ -1788,11 +1084,11 @@ static readonly "MAX_BAR_WIDTH": integer
 
 constructor(arg0: $Tier$Type, arg1: integer, arg2: float, arg3: $Item$Properties$Type)
 
-public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type, arg1: $Enchantment$Type): boolean
 public "appendHoverText"(arg0: $ItemStack$Type, arg1: $Level$Type, arg2: $List$Type<($Component$Type)>, arg3: $TooltipFlag$Type): void
 public "isEnchantable"(arg0: $ItemStack$Type): boolean
 public "isDamageable"(arg0: $ItemStack$Type): boolean
 public "getEnchantmentValue"(): integer
+public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type, arg1: $Enchantment$Type): boolean
 get "enchantmentValue"(): integer
 }
 /**
@@ -1806,52 +1102,6 @@ export type $PioneerItem$Type = ($PioneerItem);
  */
 declare global {
 export type $PioneerItem_ = $PioneerItem$Type;
-}}
-declare module "packages/com/hm/efn/item/custom/$AirTachiItem" {
-import {$Multimap, $Multimap$Type} from "packages/com/google/common/collect/$Multimap"
-import {$Component, $Component$Type} from "packages/net/minecraft/network/chat/$Component"
-import {$Item$Properties, $Item$Properties$Type} from "packages/net/minecraft/world/item/$Item$Properties"
-import {$Level, $Level$Type} from "packages/net/minecraft/world/level/$Level"
-import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
-import {$Tier, $Tier$Type} from "packages/net/minecraft/world/item/$Tier"
-import {$Block, $Block$Type} from "packages/net/minecraft/world/level/block/$Block"
-import {$Item, $Item$Type} from "packages/net/minecraft/world/item/$Item"
-import {$TooltipFlag, $TooltipFlag$Type} from "packages/net/minecraft/world/item/$TooltipFlag"
-import {$WeaponItem, $WeaponItem$Type} from "packages/yesman/epicfight/world/item/$WeaponItem"
-import {$Enchantment, $Enchantment$Type} from "packages/net/minecraft/world/item/enchantment/$Enchantment"
-import {$Attribute, $Attribute$Type} from "packages/net/minecraft/world/entity/ai/attributes/$Attribute"
-import {$List, $List$Type} from "packages/java/util/$List"
-import {$AttributeModifier, $AttributeModifier$Type} from "packages/net/minecraft/world/entity/ai/attributes/$AttributeModifier"
-import {$Map, $Map$Type} from "packages/java/util/$Map"
-
-export class $AirTachiItem extends $WeaponItem {
- "defaultModifiers": $Multimap<($Attribute), ($AttributeModifier)>
- "tier": $Tier
-static readonly "BY_BLOCK": $Map<($Block), ($Item)>
-static readonly "MAX_STACK_SIZE": integer
-static readonly "EAT_DURATION": integer
-static readonly "MAX_BAR_WIDTH": integer
-
-constructor(arg0: $Tier$Type, arg1: integer, arg2: float, arg3: $Item$Properties$Type)
-
-public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type, arg1: $Enchantment$Type): boolean
-public "appendHoverText"(arg0: $ItemStack$Type, arg1: $Level$Type, arg2: $List$Type<($Component$Type)>, arg3: $TooltipFlag$Type): void
-public "isEnchantable"(arg0: $ItemStack$Type): boolean
-public "isDamageable"(arg0: $ItemStack$Type): boolean
-public "getEnchantmentValue"(): integer
-get "enchantmentValue"(): integer
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $AirTachiItem$Type = ($AirTachiItem);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $AirTachiItem_ = $AirTachiItem$Type;
 }}
 declare module "packages/com/hm/efn/item/custom/$NFShortSwordTwoItem" {
 import {$Multimap, $Multimap$Type} from "packages/com/google/common/collect/$Multimap"
@@ -1880,11 +1130,11 @@ static readonly "MAX_BAR_WIDTH": integer
 
 constructor(arg0: $Tier$Type, arg1: integer, arg2: float, arg3: $Item$Properties$Type)
 
-public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type, arg1: $Enchantment$Type): boolean
 public "appendHoverText"(arg0: $ItemStack$Type, arg1: $Level$Type, arg2: $List$Type<($Component$Type)>, arg3: $TooltipFlag$Type): void
 public "isEnchantable"(arg0: $ItemStack$Type): boolean
 public "isDamageable"(arg0: $ItemStack$Type): boolean
 public "getEnchantmentValue"(): integer
+public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type, arg1: $Enchantment$Type): boolean
 get "enchantmentValue"(): integer
 }
 /**
@@ -1919,70 +1169,6 @@ export type $BloodBlessingsEffect$Type = ($BloodBlessingsEffect);
 declare global {
 export type $BloodBlessingsEffect_ = $BloodBlessingsEffect$Type;
 }}
-declare module "packages/com/hm/efn/item/custom/$BroadBladeItem" {
-import {$MobEffectEvent$Applicable, $MobEffectEvent$Applicable$Type} from "packages/net/minecraftforge/event/entity/living/$MobEffectEvent$Applicable"
-import {$Multimap, $Multimap$Type} from "packages/com/google/common/collect/$Multimap"
-import {$Component, $Component$Type} from "packages/net/minecraft/network/chat/$Component"
-import {$LivingDeathEvent, $LivingDeathEvent$Type} from "packages/net/minecraftforge/event/entity/living/$LivingDeathEvent"
-import {$LivingKnockBackEvent, $LivingKnockBackEvent$Type} from "packages/net/minecraftforge/event/entity/living/$LivingKnockBackEvent"
-import {$Item$Properties, $Item$Properties$Type} from "packages/net/minecraft/world/item/$Item$Properties"
-import {$Vec2, $Vec2$Type} from "packages/net/minecraft/world/phys/$Vec2"
-import {$Level, $Level$Type} from "packages/net/minecraft/world/level/$Level"
-import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
-import {$Tier, $Tier$Type} from "packages/net/minecraft/world/item/$Tier"
-import {$Block, $Block$Type} from "packages/net/minecraft/world/level/block/$Block"
-import {$Item, $Item$Type} from "packages/net/minecraft/world/item/$Item"
-import {$TooltipFlag, $TooltipFlag$Type} from "packages/net/minecraft/world/item/$TooltipFlag"
-import {$WeaponItem, $WeaponItem$Type} from "packages/yesman/epicfight/world/item/$WeaponItem"
-import {$Enchantment, $Enchantment$Type} from "packages/net/minecraft/world/item/enchantment/$Enchantment"
-import {$Attribute, $Attribute$Type} from "packages/net/minecraft/world/entity/ai/attributes/$Attribute"
-import {$List, $List$Type} from "packages/java/util/$List"
-import {$AttributeModifier, $AttributeModifier$Type} from "packages/net/minecraft/world/entity/ai/attributes/$AttributeModifier"
-import {$IAvalonAnimationItem, $IAvalonAnimationItem$Type} from "packages/com/merlin204/avalon/item/animationitem/$IAvalonAnimationItem"
-import {$Armatures$ArmatureAccessor, $Armatures$ArmatureAccessor$Type} from "packages/yesman/epicfight/gameasset/$Armatures$ArmatureAccessor"
-import {$Map, $Map$Type} from "packages/java/util/$Map"
-import {$Entity, $Entity$Type} from "packages/net/minecraft/world/entity/$Entity"
-
-export class $BroadBladeItem extends $WeaponItem implements $IAvalonAnimationItem {
- "defaultModifiers": $Multimap<($Attribute), ($AttributeModifier)>
- "tier": $Tier
-static readonly "BY_BLOCK": $Map<($Block), ($Item)>
-static readonly "MAX_STACK_SIZE": integer
-static readonly "EAT_DURATION": integer
-static readonly "MAX_BAR_WIDTH": integer
-
-constructor(arg0: $Tier$Type, arg1: integer, arg2: float, arg3: $Item$Properties$Type)
-
-public static "onEffectApplied"(arg0: $MobEffectEvent$Applicable$Type): void
-public static "getKillCount"(arg0: $ItemStack$Type): integer
-public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type, arg1: $Enchantment$Type): boolean
-public static "onLivingDeath"(arg0: $LivingDeathEvent$Type): void
-public static "onLivingKnockBack"(arg0: $LivingKnockBackEvent$Type): void
-public "appendHoverText"(arg0: $ItemStack$Type, arg1: $Level$Type, arg2: $List$Type<($Component$Type)>, arg3: $TooltipFlag$Type): void
-public "isEnchantable"(arg0: $ItemStack$Type): boolean
-public "isDamageable"(arg0: $ItemStack$Type): boolean
-public "getEnchantmentValue"(): integer
-public "inventoryTick"(arg0: $ItemStack$Type, arg1: $Level$Type, arg2: $Entity$Type, arg3: integer, arg4: boolean): void
-public "getArmature"(): $Armatures$ArmatureAccessor<(any)>
-public "setUseAnimationArmature"(arg0: integer, arg1: boolean): void
-public "getHitBox"(): $Vec2
-public "useAnimationArmature"(arg0: integer): boolean
-get "enchantmentValue"(): integer
-get "armature"(): $Armatures$ArmatureAccessor<(any)>
-get "hitBox"(): $Vec2
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $BroadBladeItem$Type = ($BroadBladeItem);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $BroadBladeItem_ = $BroadBladeItem$Type;
-}}
 declare module "packages/com/hm/efn/mobeffects/$VulnerabilityEffect" {
 import {$LivingDamageEvent, $LivingDamageEvent$Type} from "packages/net/minecraftforge/event/entity/living/$LivingDamageEvent"
 import {$MobEffectEvent$Remove, $MobEffectEvent$Remove$Type} from "packages/net/minecraftforge/event/entity/living/$MobEffectEvent$Remove"
@@ -2000,12 +1186,12 @@ public static "hasMurasamakill"(arg0: $LivingEntity$Type): boolean
 public static "onLivingDamage"(arg0: $LivingDamageEvent$Type): void
 public static "onEffectAdded"(arg0: $MobEffectEvent$Added$Type): void
 public static "onEffectRemoved"(arg0: $MobEffectEvent$Remove$Type): void
+public "isBeneficial"(): boolean
 public "applyEffectTick"(arg0: $LivingEntity$Type, arg1: integer): void
 public "isDurationEffectTick"(arg0: integer, arg1: integer): boolean
 public "isInstantenous"(): boolean
-public "isBeneficial"(): boolean
-get "instantenous"(): boolean
 get "beneficial"(): boolean
+get "instantenous"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2046,11 +1232,11 @@ static readonly "MAX_BAR_WIDTH": integer
 
 constructor(arg0: $Tier$Type, arg1: integer, arg2: float, arg3: $Item$Properties$Type)
 
-public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type, arg1: $Enchantment$Type): boolean
 public "appendHoverText"(arg0: $ItemStack$Type, arg1: $Level$Type, arg2: $List$Type<($Component$Type)>, arg3: $TooltipFlag$Type): void
 public "isEnchantable"(arg0: $ItemStack$Type): boolean
 public "isDamageable"(arg0: $ItemStack$Type): boolean
 public "getEnchantmentValue"(): integer
+public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type, arg1: $Enchantment$Type): boolean
 get "enchantmentValue"(): integer
 }
 /**
@@ -2108,33 +1294,6 @@ export type $GradualHeal$Type = ($GradualHeal);
 declare global {
 export type $GradualHeal_ = $GradualHeal$Type;
 }}
-declare module "packages/com/hm/efn/mobeffects/$BloodExplosionEffect" {
-import {$AttributeMap, $AttributeMap$Type} from "packages/net/minecraft/world/entity/ai/attributes/$AttributeMap"
-import {$Player, $Player$Type} from "packages/net/minecraft/world/entity/player/$Player"
-import {$AttributeModifier, $AttributeModifier$Type} from "packages/net/minecraft/world/entity/ai/attributes/$AttributeModifier"
-import {$LivingEntity, $LivingEntity$Type} from "packages/net/minecraft/world/entity/$LivingEntity"
-import {$MobEffect, $MobEffect$Type} from "packages/net/minecraft/world/effect/$MobEffect"
-
-export class $BloodExplosionEffect extends $MobEffect {
-
-constructor()
-
-public static "setAttacker"(arg0: $LivingEntity$Type, arg1: $Player$Type): void
-public "addAttributeModifiers"(arg0: $LivingEntity$Type, arg1: $AttributeMap$Type, arg2: integer): void
-public "getAttributeModifierValue"(arg0: integer, arg1: $AttributeModifier$Type): double
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $BloodExplosionEffect$Type = ($BloodExplosionEffect);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $BloodExplosionEffect_ = $BloodExplosionEffect$Type;
-}}
 declare module "packages/com/hm/efn/item/custom/$RuinfighterItem$Leggings" {
 import {$Multimap, $Multimap$Type} from "packages/com/google/common/collect/$Multimap"
 import {$RuinfighterItem, $RuinfighterItem$Type} from "packages/com/hm/efn/item/custom/$RuinfighterItem"
@@ -2160,9 +1319,9 @@ static readonly "MAX_BAR_WIDTH": integer
 
 constructor()
 
+public "isEnchantable"(arg0: $ItemStack$Type): boolean
 public "getArmorTexture"(arg0: $ItemStack$Type, arg1: $Entity$Type, arg2: $EquipmentSlot$Type, arg3: string): string
 public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type, arg1: $Enchantment$Type): boolean
-public "isEnchantable"(arg0: $ItemStack$Type): boolean
 public static "get"(arg0: $ItemStack$Type): $Equipable
 }
 /**
@@ -2176,6 +1335,914 @@ export type $RuinfighterItem$Leggings$Type = ($RuinfighterItem$Leggings);
  */
 declare global {
 export type $RuinfighterItem$Leggings_ = $RuinfighterItem$Leggings$Type;
+}}
+declare module "packages/com/hm/efn/mixin/$CameraAccessor" {
+export {} // Mark the file as a module, do not remove unless there are other import/exports!
+export interface $CameraAccessor {
+
+ "invokeSetPosition"(arg0: double, arg1: double, arg2: double): void
+
+(arg0: double, arg1: double, arg2: double): void
+}
+
+export namespace $CameraAccessor {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $CameraAccessor$Type = ($CameraAccessor);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $CameraAccessor_ = $CameraAccessor$Type;
+}}
+declare module "packages/com/hm/efn/mobeffects/$KnockBackResistanceEffect$ResistanceEffect" {
+import {$LivingEntity, $LivingEntity$Type} from "packages/net/minecraft/world/entity/$LivingEntity"
+import {$MobEffect, $MobEffect$Type} from "packages/net/minecraft/world/effect/$MobEffect"
+
+export class $KnockBackResistanceEffect$ResistanceEffect extends $MobEffect {
+
+constructor()
+
+public "applyEffectTick"(arg0: $LivingEntity$Type, arg1: integer): void
+public "isDurationEffectTick"(arg0: integer, arg1: integer): boolean
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $KnockBackResistanceEffect$ResistanceEffect$Type = ($KnockBackResistanceEffect$ResistanceEffect);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $KnockBackResistanceEffect$ResistanceEffect_ = $KnockBackResistanceEffect$ResistanceEffect$Type;
+}}
+declare module "packages/com/hm/efn/mobeffects/$AttackDamageIncreaseEffect" {
+import {$MobEffect, $MobEffect$Type} from "packages/net/minecraft/world/effect/$MobEffect"
+
+export class $AttackDamageIncreaseEffect extends $MobEffect {
+
+constructor()
+
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $AttackDamageIncreaseEffect$Type = ($AttackDamageIncreaseEffect);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $AttackDamageIncreaseEffect_ = $AttackDamageIncreaseEffect$Type;
+}}
+declare module "packages/com/hm/efn/enchantment/$YamatoGuard" {
+import {$Enchantment, $Enchantment$Type} from "packages/net/minecraft/world/item/enchantment/$Enchantment"
+import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
+import {$EnchantmentCategory, $EnchantmentCategory$Type} from "packages/net/minecraft/world/item/enchantment/$EnchantmentCategory"
+
+export class $YamatoGuard extends $Enchantment {
+readonly "category": $EnchantmentCategory
+
+constructor()
+
+public "getMaxLevel"(): integer
+public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type): boolean
+public "canEnchant"(arg0: $ItemStack$Type): boolean
+public "isTreasureOnly"(): boolean
+public "isTradeable"(): boolean
+public "isDiscoverable"(): boolean
+public "isAllowedOnBooks"(): boolean
+get "maxLevel"(): integer
+get "treasureOnly"(): boolean
+get "tradeable"(): boolean
+get "discoverable"(): boolean
+get "allowedOnBooks"(): boolean
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $YamatoGuard$Type = ($YamatoGuard);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $YamatoGuard_ = $YamatoGuard$Type;
+}}
+declare module "packages/com/hm/efn/item/custom/$DuskFireArmorItem$Helmet" {
+import {$Multimap, $Multimap$Type} from "packages/com/google/common/collect/$Multimap"
+import {$Component, $Component$Type} from "packages/net/minecraft/network/chat/$Component"
+import {$Level, $Level$Type} from "packages/net/minecraft/world/level/$Level"
+import {$EquipmentSlot, $EquipmentSlot$Type} from "packages/net/minecraft/world/entity/$EquipmentSlot"
+import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
+import {$Equipable, $Equipable$Type} from "packages/net/minecraft/world/item/$Equipable"
+import {$Block, $Block$Type} from "packages/net/minecraft/world/level/block/$Block"
+import {$Item, $Item$Type} from "packages/net/minecraft/world/item/$Item"
+import {$TooltipFlag, $TooltipFlag$Type} from "packages/net/minecraft/world/item/$TooltipFlag"
+import {$Enchantment, $Enchantment$Type} from "packages/net/minecraft/world/item/enchantment/$Enchantment"
+import {$DuskFireArmorItem, $DuskFireArmorItem$Type} from "packages/com/hm/efn/item/custom/$DuskFireArmorItem"
+import {$Attribute, $Attribute$Type} from "packages/net/minecraft/world/entity/ai/attributes/$Attribute"
+import {$List, $List$Type} from "packages/java/util/$List"
+import {$AttributeModifier, $AttributeModifier$Type} from "packages/net/minecraft/world/entity/ai/attributes/$AttributeModifier"
+import {$DispenseItemBehavior, $DispenseItemBehavior$Type} from "packages/net/minecraft/core/dispenser/$DispenseItemBehavior"
+import {$Map, $Map$Type} from "packages/java/util/$Map"
+import {$Entity, $Entity$Type} from "packages/net/minecraft/world/entity/$Entity"
+
+export class $DuskFireArmorItem$Helmet extends $DuskFireArmorItem {
+static readonly "DISPENSE_ITEM_BEHAVIOR": $DispenseItemBehavior
+ "defaultModifiers": $Multimap<($Attribute), ($AttributeModifier)>
+static readonly "BY_BLOCK": $Map<($Block), ($Item)>
+static readonly "MAX_STACK_SIZE": integer
+static readonly "EAT_DURATION": integer
+static readonly "MAX_BAR_WIDTH": integer
+
+constructor()
+
+public "appendHoverText"(arg0: $ItemStack$Type, arg1: $Level$Type, arg2: $List$Type<($Component$Type)>, arg3: $TooltipFlag$Type): void
+public "isEnchantable"(arg0: $ItemStack$Type): boolean
+public "getArmorTexture"(arg0: $ItemStack$Type, arg1: $Entity$Type, arg2: $EquipmentSlot$Type, arg3: string): string
+public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type, arg1: $Enchantment$Type): boolean
+public static "get"(arg0: $ItemStack$Type): $Equipable
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $DuskFireArmorItem$Helmet$Type = ($DuskFireArmorItem$Helmet);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $DuskFireArmorItem$Helmet_ = $DuskFireArmorItem$Helmet$Type;
+}}
+declare module "packages/com/hm/efn/mobeffects/$DieMarkEffect" {
+import {$LivingEntity, $LivingEntity$Type} from "packages/net/minecraft/world/entity/$LivingEntity"
+import {$MobEffect, $MobEffect$Type} from "packages/net/minecraft/world/effect/$MobEffect"
+
+export class $DieMarkEffect extends $MobEffect {
+
+constructor()
+
+public "applyEffectTick"(arg0: $LivingEntity$Type, arg1: integer): void
+public "isDurationEffectTick"(arg0: integer, arg1: integer): boolean
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $DieMarkEffect$Type = ($DieMarkEffect);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $DieMarkEffect_ = $DieMarkEffect$Type;
+}}
+declare module "packages/com/hm/efn/item/custom/$HfMurasamaItem" {
+import {$Multimap, $Multimap$Type} from "packages/com/google/common/collect/$Multimap"
+import {$Component, $Component$Type} from "packages/net/minecraft/network/chat/$Component"
+import {$LivingKnockBackEvent, $LivingKnockBackEvent$Type} from "packages/net/minecraftforge/event/entity/living/$LivingKnockBackEvent"
+import {$Item$Properties, $Item$Properties$Type} from "packages/net/minecraft/world/item/$Item$Properties"
+import {$LivingEvent$LivingJumpEvent, $LivingEvent$LivingJumpEvent$Type} from "packages/net/minecraftforge/event/entity/living/$LivingEvent$LivingJumpEvent"
+import {$LivingFallEvent, $LivingFallEvent$Type} from "packages/net/minecraftforge/event/entity/living/$LivingFallEvent"
+import {$Level, $Level$Type} from "packages/net/minecraft/world/level/$Level"
+import {$EquipmentSlot, $EquipmentSlot$Type} from "packages/net/minecraft/world/entity/$EquipmentSlot"
+import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
+import {$Tier, $Tier$Type} from "packages/net/minecraft/world/item/$Tier"
+import {$Block, $Block$Type} from "packages/net/minecraft/world/level/block/$Block"
+import {$Item, $Item$Type} from "packages/net/minecraft/world/item/$Item"
+import {$TooltipFlag, $TooltipFlag$Type} from "packages/net/minecraft/world/item/$TooltipFlag"
+import {$WeaponItem, $WeaponItem$Type} from "packages/yesman/epicfight/world/item/$WeaponItem"
+import {$Enchantment, $Enchantment$Type} from "packages/net/minecraft/world/item/enchantment/$Enchantment"
+import {$Attribute, $Attribute$Type} from "packages/net/minecraft/world/entity/ai/attributes/$Attribute"
+import {$List, $List$Type} from "packages/java/util/$List"
+import {$AttributeModifier, $AttributeModifier$Type} from "packages/net/minecraft/world/entity/ai/attributes/$AttributeModifier"
+import {$Map, $Map$Type} from "packages/java/util/$Map"
+import {$LivingEvent$LivingTickEvent, $LivingEvent$LivingTickEvent$Type} from "packages/net/minecraftforge/event/entity/living/$LivingEvent$LivingTickEvent"
+import {$Entity, $Entity$Type} from "packages/net/minecraft/world/entity/$Entity"
+
+export class $HfMurasamaItem extends $WeaponItem {
+ "defaultModifiers": $Multimap<($Attribute), ($AttributeModifier)>
+ "tier": $Tier
+static readonly "BY_BLOCK": $Map<($Block), ($Item)>
+static readonly "MAX_STACK_SIZE": integer
+static readonly "EAT_DURATION": integer
+static readonly "MAX_BAR_WIDTH": integer
+
+constructor(arg0: $Tier$Type, arg1: integer, arg2: float, arg3: $Item$Properties$Type)
+
+public static "onLivingUpdate"(arg0: $LivingEvent$LivingTickEvent$Type): void
+public static "onPlayerJump"(arg0: $LivingEvent$LivingJumpEvent$Type): void
+public "appendHoverText"(arg0: $ItemStack$Type, arg1: $Level$Type, arg2: $List$Type<($Component$Type)>, arg3: $TooltipFlag$Type): void
+public "isEnchantable"(arg0: $ItemStack$Type): boolean
+public "isDamageable"(arg0: $ItemStack$Type): boolean
+public "getEnchantmentValue"(): integer
+public static "onLivingKnockBack"(arg0: $LivingKnockBackEvent$Type): void
+public static "onLivingFall"(arg0: $LivingFallEvent$Type): void
+public "canEquip"(arg0: $ItemStack$Type, arg1: $EquipmentSlot$Type, arg2: $Entity$Type): boolean
+public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type, arg1: $Enchantment$Type): boolean
+get "enchantmentValue"(): integer
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $HfMurasamaItem$Type = ($HfMurasamaItem);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $HfMurasamaItem_ = $HfMurasamaItem$Type;
+}}
+declare module "packages/com/hm/efn/mobeffects/$ComboExecuteWindow" {
+import {$MobEffect, $MobEffect$Type} from "packages/net/minecraft/world/effect/$MobEffect"
+
+export class $ComboExecuteWindow extends $MobEffect {
+
+constructor()
+
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $ComboExecuteWindow$Type = ($ComboExecuteWindow);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $ComboExecuteWindow_ = $ComboExecuteWindow$Type;
+}}
+declare module "packages/com/hm/efn/item/custom/$DuskFireArmorItem" {
+import {$Multimap, $Multimap$Type} from "packages/com/google/common/collect/$Multimap"
+import {$Item$Properties, $Item$Properties$Type} from "packages/net/minecraft/world/item/$Item$Properties"
+import {$Level, $Level$Type} from "packages/net/minecraft/world/level/$Level"
+import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
+import {$Equipable, $Equipable$Type} from "packages/net/minecraft/world/item/$Equipable"
+import {$Block, $Block$Type} from "packages/net/minecraft/world/level/block/$Block"
+import {$Item, $Item$Type} from "packages/net/minecraft/world/item/$Item"
+import {$Player, $Player$Type} from "packages/net/minecraft/world/entity/player/$Player"
+import {$Attribute, $Attribute$Type} from "packages/net/minecraft/world/entity/ai/attributes/$Attribute"
+import {$ArmorItem, $ArmorItem$Type} from "packages/net/minecraft/world/item/$ArmorItem"
+import {$AttributeModifier, $AttributeModifier$Type} from "packages/net/minecraft/world/entity/ai/attributes/$AttributeModifier"
+import {$DispenseItemBehavior, $DispenseItemBehavior$Type} from "packages/net/minecraft/core/dispenser/$DispenseItemBehavior"
+import {$Map, $Map$Type} from "packages/java/util/$Map"
+import {$ArmorItem$Type, $ArmorItem$Type$Type} from "packages/net/minecraft/world/item/$ArmorItem$Type"
+
+export class $DuskFireArmorItem extends $ArmorItem {
+static readonly "DISPENSE_ITEM_BEHAVIOR": $DispenseItemBehavior
+ "defaultModifiers": $Multimap<($Attribute), ($AttributeModifier)>
+static readonly "BY_BLOCK": $Map<($Block), ($Item)>
+static readonly "MAX_STACK_SIZE": integer
+static readonly "EAT_DURATION": integer
+static readonly "MAX_BAR_WIDTH": integer
+
+constructor(arg0: $ArmorItem$Type$Type, arg1: $Item$Properties$Type)
+
+public "isDamageable"(arg0: $ItemStack$Type): boolean
+public "onArmorTick"(arg0: $ItemStack$Type, arg1: $Level$Type, arg2: $Player$Type): void
+public static "get"(arg0: $ItemStack$Type): $Equipable
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $DuskFireArmorItem$Type = ($DuskFireArmorItem);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $DuskFireArmorItem_ = $DuskFireArmorItem$Type;
+}}
+declare module "packages/com/hm/efn/item/custom/$CoTachiItem" {
+import {$Multimap, $Multimap$Type} from "packages/com/google/common/collect/$Multimap"
+import {$Component, $Component$Type} from "packages/net/minecraft/network/chat/$Component"
+import {$Item$Properties, $Item$Properties$Type} from "packages/net/minecraft/world/item/$Item$Properties"
+import {$Level, $Level$Type} from "packages/net/minecraft/world/level/$Level"
+import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
+import {$Tier, $Tier$Type} from "packages/net/minecraft/world/item/$Tier"
+import {$Block, $Block$Type} from "packages/net/minecraft/world/level/block/$Block"
+import {$Item, $Item$Type} from "packages/net/minecraft/world/item/$Item"
+import {$TooltipFlag, $TooltipFlag$Type} from "packages/net/minecraft/world/item/$TooltipFlag"
+import {$WeaponItem, $WeaponItem$Type} from "packages/yesman/epicfight/world/item/$WeaponItem"
+import {$Enchantment, $Enchantment$Type} from "packages/net/minecraft/world/item/enchantment/$Enchantment"
+import {$Attribute, $Attribute$Type} from "packages/net/minecraft/world/entity/ai/attributes/$Attribute"
+import {$List, $List$Type} from "packages/java/util/$List"
+import {$AttributeModifier, $AttributeModifier$Type} from "packages/net/minecraft/world/entity/ai/attributes/$AttributeModifier"
+import {$Map, $Map$Type} from "packages/java/util/$Map"
+
+export class $CoTachiItem extends $WeaponItem {
+ "defaultModifiers": $Multimap<($Attribute), ($AttributeModifier)>
+ "tier": $Tier
+static readonly "BY_BLOCK": $Map<($Block), ($Item)>
+static readonly "MAX_STACK_SIZE": integer
+static readonly "EAT_DURATION": integer
+static readonly "MAX_BAR_WIDTH": integer
+
+constructor(arg0: $Tier$Type, arg1: integer, arg2: float, arg3: $Item$Properties$Type)
+
+public "appendHoverText"(arg0: $ItemStack$Type, arg1: $Level$Type, arg2: $List$Type<($Component$Type)>, arg3: $TooltipFlag$Type): void
+public "isEnchantable"(arg0: $ItemStack$Type): boolean
+public "isDamageable"(arg0: $ItemStack$Type): boolean
+public "getEnchantmentValue"(): integer
+public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type, arg1: $Enchantment$Type): boolean
+get "enchantmentValue"(): integer
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $CoTachiItem$Type = ($CoTachiItem);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $CoTachiItem_ = $CoTachiItem$Type;
+}}
+declare module "packages/com/hm/efn/mobeffects/$StopEffect" {
+import {$LivingEntity, $LivingEntity$Type} from "packages/net/minecraft/world/entity/$LivingEntity"
+import {$MobEffect, $MobEffect$Type} from "packages/net/minecraft/world/effect/$MobEffect"
+
+export class $StopEffect extends $MobEffect {
+
+constructor()
+
+public "applyEffectTick"(arg0: $LivingEntity$Type, arg1: integer): void
+public "isDurationEffectTick"(arg0: integer, arg1: integer): boolean
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $StopEffect$Type = ($StopEffect);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $StopEffect_ = $StopEffect$Type;
+}}
+declare module "packages/com/hm/efn/item/custom/$HfBladeItem" {
+import {$Multimap, $Multimap$Type} from "packages/com/google/common/collect/$Multimap"
+import {$Component, $Component$Type} from "packages/net/minecraft/network/chat/$Component"
+import {$LivingKnockBackEvent, $LivingKnockBackEvent$Type} from "packages/net/minecraftforge/event/entity/living/$LivingKnockBackEvent"
+import {$Item$Properties, $Item$Properties$Type} from "packages/net/minecraft/world/item/$Item$Properties"
+import {$LivingEvent$LivingJumpEvent, $LivingEvent$LivingJumpEvent$Type} from "packages/net/minecraftforge/event/entity/living/$LivingEvent$LivingJumpEvent"
+import {$LivingFallEvent, $LivingFallEvent$Type} from "packages/net/minecraftforge/event/entity/living/$LivingFallEvent"
+import {$Level, $Level$Type} from "packages/net/minecraft/world/level/$Level"
+import {$EquipmentSlot, $EquipmentSlot$Type} from "packages/net/minecraft/world/entity/$EquipmentSlot"
+import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
+import {$Tier, $Tier$Type} from "packages/net/minecraft/world/item/$Tier"
+import {$Block, $Block$Type} from "packages/net/minecraft/world/level/block/$Block"
+import {$Item, $Item$Type} from "packages/net/minecraft/world/item/$Item"
+import {$TooltipFlag, $TooltipFlag$Type} from "packages/net/minecraft/world/item/$TooltipFlag"
+import {$WeaponItem, $WeaponItem$Type} from "packages/yesman/epicfight/world/item/$WeaponItem"
+import {$Enchantment, $Enchantment$Type} from "packages/net/minecraft/world/item/enchantment/$Enchantment"
+import {$Attribute, $Attribute$Type} from "packages/net/minecraft/world/entity/ai/attributes/$Attribute"
+import {$List, $List$Type} from "packages/java/util/$List"
+import {$AttributeModifier, $AttributeModifier$Type} from "packages/net/minecraft/world/entity/ai/attributes/$AttributeModifier"
+import {$Map, $Map$Type} from "packages/java/util/$Map"
+import {$LivingEvent$LivingTickEvent, $LivingEvent$LivingTickEvent$Type} from "packages/net/minecraftforge/event/entity/living/$LivingEvent$LivingTickEvent"
+import {$Entity, $Entity$Type} from "packages/net/minecraft/world/entity/$Entity"
+
+export class $HfBladeItem extends $WeaponItem {
+ "defaultModifiers": $Multimap<($Attribute), ($AttributeModifier)>
+ "tier": $Tier
+static readonly "BY_BLOCK": $Map<($Block), ($Item)>
+static readonly "MAX_STACK_SIZE": integer
+static readonly "EAT_DURATION": integer
+static readonly "MAX_BAR_WIDTH": integer
+
+constructor(arg0: $Tier$Type, arg1: integer, arg2: float, arg3: $Item$Properties$Type)
+
+public static "onLivingUpdate"(arg0: $LivingEvent$LivingTickEvent$Type): void
+public static "onPlayerJump"(arg0: $LivingEvent$LivingJumpEvent$Type): void
+public "appendHoverText"(arg0: $ItemStack$Type, arg1: $Level$Type, arg2: $List$Type<($Component$Type)>, arg3: $TooltipFlag$Type): void
+public "isEnchantable"(arg0: $ItemStack$Type): boolean
+public "isDamageable"(arg0: $ItemStack$Type): boolean
+public "getEnchantmentValue"(): integer
+public static "onLivingKnockBack"(arg0: $LivingKnockBackEvent$Type): void
+public static "onLivingFall"(arg0: $LivingFallEvent$Type): void
+public "canEquip"(arg0: $ItemStack$Type, arg1: $EquipmentSlot$Type, arg2: $Entity$Type): boolean
+public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type, arg1: $Enchantment$Type): boolean
+get "enchantmentValue"(): integer
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $HfBladeItem$Type = ($HfBladeItem);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $HfBladeItem_ = $HfBladeItem$Type;
+}}
+declare module "packages/com/hm/efn/mobeffects/$Yamato$YamatoEffect" {
+import {$LivingEntity, $LivingEntity$Type} from "packages/net/minecraft/world/entity/$LivingEntity"
+import {$MobEffect, $MobEffect$Type} from "packages/net/minecraft/world/effect/$MobEffect"
+
+export class $Yamato$YamatoEffect extends $MobEffect {
+
+constructor()
+
+public static "hasYamatoSkill"(arg0: $LivingEntity$Type): boolean
+public "applyEffectTick"(arg0: $LivingEntity$Type, arg1: integer): void
+public "isDurationEffectTick"(arg0: integer, arg1: integer): boolean
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Yamato$YamatoEffect$Type = ($Yamato$YamatoEffect);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Yamato$YamatoEffect_ = $Yamato$YamatoEffect$Type;
+}}
+declare module "packages/com/hm/efn/mobeffects/$MurasamaSheathEffect" {
+import {$LivingEntity, $LivingEntity$Type} from "packages/net/minecraft/world/entity/$LivingEntity"
+import {$MobEffect, $MobEffect$Type} from "packages/net/minecraft/world/effect/$MobEffect"
+
+export class $MurasamaSheathEffect extends $MobEffect {
+
+constructor()
+
+public "applyEffectTick"(arg0: $LivingEntity$Type, arg1: integer): void
+public "isDurationEffectTick"(arg0: integer, arg1: integer): boolean
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $MurasamaSheathEffect$Type = ($MurasamaSheathEffect);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $MurasamaSheathEffect_ = $MurasamaSheathEffect$Type;
+}}
+declare module "packages/com/hm/efn/mobeffects/$InvincibilityEffect$InvincibilityMobEffect" {
+import {$MobEffect, $MobEffect$Type} from "packages/net/minecraft/world/effect/$MobEffect"
+
+export class $InvincibilityEffect$InvincibilityMobEffect extends $MobEffect {
+
+constructor()
+
+public "isDurationEffectTick"(arg0: integer, arg1: integer): boolean
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $InvincibilityEffect$InvincibilityMobEffect$Type = ($InvincibilityEffect$InvincibilityMobEffect);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $InvincibilityEffect$InvincibilityMobEffect_ = $InvincibilityEffect$InvincibilityMobEffect$Type;
+}}
+declare module "packages/com/hm/efn/enchantment/$YamatoHeavyRain" {
+import {$Enchantment, $Enchantment$Type} from "packages/net/minecraft/world/item/enchantment/$Enchantment"
+import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
+import {$EnchantmentCategory, $EnchantmentCategory$Type} from "packages/net/minecraft/world/item/enchantment/$EnchantmentCategory"
+
+export class $YamatoHeavyRain extends $Enchantment {
+readonly "category": $EnchantmentCategory
+
+constructor()
+
+public "getMaxLevel"(): integer
+public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type): boolean
+public "canEnchant"(arg0: $ItemStack$Type): boolean
+public "isTreasureOnly"(): boolean
+public "isTradeable"(): boolean
+public "isDiscoverable"(): boolean
+public "isAllowedOnBooks"(): boolean
+get "maxLevel"(): integer
+get "treasureOnly"(): boolean
+get "tradeable"(): boolean
+get "discoverable"(): boolean
+get "allowedOnBooks"(): boolean
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $YamatoHeavyRain$Type = ($YamatoHeavyRain);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $YamatoHeavyRain_ = $YamatoHeavyRain$Type;
+}}
+declare module "packages/com/hm/efn/mobeffects/$MeenLance$MeenLanceEffect" {
+import {$LivingEntity, $LivingEntity$Type} from "packages/net/minecraft/world/entity/$LivingEntity"
+import {$MobEffect, $MobEffect$Type} from "packages/net/minecraft/world/effect/$MobEffect"
+
+export class $MeenLance$MeenLanceEffect extends $MobEffect {
+
+constructor()
+
+public "applyEffectTick"(arg0: $LivingEntity$Type, arg1: integer): void
+public "isDurationEffectTick"(arg0: integer, arg1: integer): boolean
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $MeenLance$MeenLanceEffect$Type = ($MeenLance$MeenLanceEffect);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $MeenLance$MeenLanceEffect_ = $MeenLance$MeenLanceEffect$Type;
+}}
+declare module "packages/com/hm/efn/item/custom/$CrescentMoonItem" {
+import {$Multimap, $Multimap$Type} from "packages/com/google/common/collect/$Multimap"
+import {$Component, $Component$Type} from "packages/net/minecraft/network/chat/$Component"
+import {$Item$Properties, $Item$Properties$Type} from "packages/net/minecraft/world/item/$Item$Properties"
+import {$Level, $Level$Type} from "packages/net/minecraft/world/level/$Level"
+import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
+import {$Tier, $Tier$Type} from "packages/net/minecraft/world/item/$Tier"
+import {$Block, $Block$Type} from "packages/net/minecraft/world/level/block/$Block"
+import {$Item, $Item$Type} from "packages/net/minecraft/world/item/$Item"
+import {$TooltipFlag, $TooltipFlag$Type} from "packages/net/minecraft/world/item/$TooltipFlag"
+import {$WeaponItem, $WeaponItem$Type} from "packages/yesman/epicfight/world/item/$WeaponItem"
+import {$Enchantment, $Enchantment$Type} from "packages/net/minecraft/world/item/enchantment/$Enchantment"
+import {$Attribute, $Attribute$Type} from "packages/net/minecraft/world/entity/ai/attributes/$Attribute"
+import {$List, $List$Type} from "packages/java/util/$List"
+import {$AttributeModifier, $AttributeModifier$Type} from "packages/net/minecraft/world/entity/ai/attributes/$AttributeModifier"
+import {$Map, $Map$Type} from "packages/java/util/$Map"
+
+export class $CrescentMoonItem extends $WeaponItem {
+ "defaultModifiers": $Multimap<($Attribute), ($AttributeModifier)>
+ "tier": $Tier
+static readonly "BY_BLOCK": $Map<($Block), ($Item)>
+static readonly "MAX_STACK_SIZE": integer
+static readonly "EAT_DURATION": integer
+static readonly "MAX_BAR_WIDTH": integer
+
+constructor(arg0: $Tier$Type, arg1: integer, arg2: float, arg3: $Item$Properties$Type)
+
+public "appendHoverText"(arg0: $ItemStack$Type, arg1: $Level$Type, arg2: $List$Type<($Component$Type)>, arg3: $TooltipFlag$Type): void
+public "isEnchantable"(arg0: $ItemStack$Type): boolean
+public "isDamageable"(arg0: $ItemStack$Type): boolean
+public "getEnchantmentValue"(): integer
+public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type, arg1: $Enchantment$Type): boolean
+get "enchantmentValue"(): integer
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $CrescentMoonItem$Type = ($CrescentMoonItem);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $CrescentMoonItem_ = $CrescentMoonItem$Type;
+}}
+declare module "packages/com/hm/efn/mobeffects/$GuardPunctureEffect" {
+import {$AttributeMap, $AttributeMap$Type} from "packages/net/minecraft/world/entity/ai/attributes/$AttributeMap"
+import {$LivingEntity, $LivingEntity$Type} from "packages/net/minecraft/world/entity/$LivingEntity"
+import {$MobEffect, $MobEffect$Type} from "packages/net/minecraft/world/effect/$MobEffect"
+
+export class $GuardPunctureEffect extends $MobEffect {
+
+constructor()
+
+public "isDurationEffectTick"(arg0: integer, arg1: integer): boolean
+public "addAttributeModifiers"(arg0: $LivingEntity$Type, arg1: $AttributeMap$Type, arg2: integer): void
+public "removeAttributeModifiers"(arg0: $LivingEntity$Type, arg1: $AttributeMap$Type, arg2: integer): void
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $GuardPunctureEffect$Type = ($GuardPunctureEffect);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $GuardPunctureEffect_ = $GuardPunctureEffect$Type;
+}}
+declare module "packages/com/hm/efn/item/custom/$ScytheItem" {
+import {$Multimap, $Multimap$Type} from "packages/com/google/common/collect/$Multimap"
+import {$Component, $Component$Type} from "packages/net/minecraft/network/chat/$Component"
+import {$Item$Properties, $Item$Properties$Type} from "packages/net/minecraft/world/item/$Item$Properties"
+import {$Level, $Level$Type} from "packages/net/minecraft/world/level/$Level"
+import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
+import {$Tier, $Tier$Type} from "packages/net/minecraft/world/item/$Tier"
+import {$Block, $Block$Type} from "packages/net/minecraft/world/level/block/$Block"
+import {$Item, $Item$Type} from "packages/net/minecraft/world/item/$Item"
+import {$TooltipFlag, $TooltipFlag$Type} from "packages/net/minecraft/world/item/$TooltipFlag"
+import {$WeaponItem, $WeaponItem$Type} from "packages/yesman/epicfight/world/item/$WeaponItem"
+import {$Enchantment, $Enchantment$Type} from "packages/net/minecraft/world/item/enchantment/$Enchantment"
+import {$Attribute, $Attribute$Type} from "packages/net/minecraft/world/entity/ai/attributes/$Attribute"
+import {$List, $List$Type} from "packages/java/util/$List"
+import {$AttributeModifier, $AttributeModifier$Type} from "packages/net/minecraft/world/entity/ai/attributes/$AttributeModifier"
+import {$Map, $Map$Type} from "packages/java/util/$Map"
+
+export class $ScytheItem extends $WeaponItem {
+ "defaultModifiers": $Multimap<($Attribute), ($AttributeModifier)>
+ "tier": $Tier
+static readonly "BY_BLOCK": $Map<($Block), ($Item)>
+static readonly "MAX_STACK_SIZE": integer
+static readonly "EAT_DURATION": integer
+static readonly "MAX_BAR_WIDTH": integer
+
+constructor(arg0: $Tier$Type, arg1: integer, arg2: float, arg3: $Item$Properties$Type)
+
+public "appendHoverText"(arg0: $ItemStack$Type, arg1: $Level$Type, arg2: $List$Type<($Component$Type)>, arg3: $TooltipFlag$Type): void
+public "isEnchantable"(arg0: $ItemStack$Type): boolean
+public "isDamageable"(arg0: $ItemStack$Type): boolean
+public "getEnchantmentValue"(): integer
+public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type, arg1: $Enchantment$Type): boolean
+get "enchantmentValue"(): integer
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $ScytheItem$Type = ($ScytheItem);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $ScytheItem_ = $ScytheItem$Type;
+}}
+declare module "packages/com/hm/efn/mobeffects/$FalchionVulnerability" {
+import {$MobEffect, $MobEffect$Type} from "packages/net/minecraft/world/effect/$MobEffect"
+
+export class $FalchionVulnerability extends $MobEffect {
+
+constructor()
+
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $FalchionVulnerability$Type = ($FalchionVulnerability);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $FalchionVulnerability_ = $FalchionVulnerability$Type;
+}}
+declare module "packages/com/hm/efn/item/custom/$AetherialDuskDualSword_MainHandItem" {
+import {$Multimap, $Multimap$Type} from "packages/com/google/common/collect/$Multimap"
+import {$Component, $Component$Type} from "packages/net/minecraft/network/chat/$Component"
+import {$Item$Properties, $Item$Properties$Type} from "packages/net/minecraft/world/item/$Item$Properties"
+import {$Level, $Level$Type} from "packages/net/minecraft/world/level/$Level"
+import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
+import {$Tier, $Tier$Type} from "packages/net/minecraft/world/item/$Tier"
+import {$Block, $Block$Type} from "packages/net/minecraft/world/level/block/$Block"
+import {$Item, $Item$Type} from "packages/net/minecraft/world/item/$Item"
+import {$TooltipFlag, $TooltipFlag$Type} from "packages/net/minecraft/world/item/$TooltipFlag"
+import {$WeaponItem, $WeaponItem$Type} from "packages/yesman/epicfight/world/item/$WeaponItem"
+import {$Enchantment, $Enchantment$Type} from "packages/net/minecraft/world/item/enchantment/$Enchantment"
+import {$Attribute, $Attribute$Type} from "packages/net/minecraft/world/entity/ai/attributes/$Attribute"
+import {$List, $List$Type} from "packages/java/util/$List"
+import {$AttributeModifier, $AttributeModifier$Type} from "packages/net/minecraft/world/entity/ai/attributes/$AttributeModifier"
+import {$Map, $Map$Type} from "packages/java/util/$Map"
+
+export class $AetherialDuskDualSword_MainHandItem extends $WeaponItem {
+ "defaultModifiers": $Multimap<($Attribute), ($AttributeModifier)>
+ "tier": $Tier
+static readonly "BY_BLOCK": $Map<($Block), ($Item)>
+static readonly "MAX_STACK_SIZE": integer
+static readonly "EAT_DURATION": integer
+static readonly "MAX_BAR_WIDTH": integer
+
+constructor(arg0: $Tier$Type, arg1: integer, arg2: float, arg3: $Item$Properties$Type)
+
+public "appendHoverText"(arg0: $ItemStack$Type, arg1: $Level$Type, arg2: $List$Type<($Component$Type)>, arg3: $TooltipFlag$Type): void
+public "isEnchantable"(arg0: $ItemStack$Type): boolean
+public "isDamageable"(arg0: $ItemStack$Type): boolean
+public "getEnchantmentValue"(): integer
+public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type, arg1: $Enchantment$Type): boolean
+get "enchantmentValue"(): integer
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $AetherialDuskDualSword_MainHandItem$Type = ($AetherialDuskDualSword_MainHandItem);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $AetherialDuskDualSword_MainHandItem_ = $AetherialDuskDualSword_MainHandItem$Type;
+}}
+declare module "packages/com/hm/efn/item/custom/$RuinfighterItem$Helmet" {
+import {$Multimap, $Multimap$Type} from "packages/com/google/common/collect/$Multimap"
+import {$RuinfighterItem, $RuinfighterItem$Type} from "packages/com/hm/efn/item/custom/$RuinfighterItem"
+import {$IClientItemExtensions, $IClientItemExtensions$Type} from "packages/net/minecraftforge/client/extensions/common/$IClientItemExtensions"
+import {$EquipmentSlot, $EquipmentSlot$Type} from "packages/net/minecraft/world/entity/$EquipmentSlot"
+import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
+import {$Equipable, $Equipable$Type} from "packages/net/minecraft/world/item/$Equipable"
+import {$Block, $Block$Type} from "packages/net/minecraft/world/level/block/$Block"
+import {$Item, $Item$Type} from "packages/net/minecraft/world/item/$Item"
+import {$Consumer, $Consumer$Type} from "packages/java/util/function/$Consumer"
+import {$Enchantment, $Enchantment$Type} from "packages/net/minecraft/world/item/enchantment/$Enchantment"
+import {$Attribute, $Attribute$Type} from "packages/net/minecraft/world/entity/ai/attributes/$Attribute"
+import {$AttributeModifier, $AttributeModifier$Type} from "packages/net/minecraft/world/entity/ai/attributes/$AttributeModifier"
+import {$DispenseItemBehavior, $DispenseItemBehavior$Type} from "packages/net/minecraft/core/dispenser/$DispenseItemBehavior"
+import {$Map, $Map$Type} from "packages/java/util/$Map"
+import {$Entity, $Entity$Type} from "packages/net/minecraft/world/entity/$Entity"
+
+export class $RuinfighterItem$Helmet extends $RuinfighterItem {
+static readonly "DISPENSE_ITEM_BEHAVIOR": $DispenseItemBehavior
+ "defaultModifiers": $Multimap<($Attribute), ($AttributeModifier)>
+static readonly "BY_BLOCK": $Map<($Block), ($Item)>
+static readonly "MAX_STACK_SIZE": integer
+static readonly "EAT_DURATION": integer
+static readonly "MAX_BAR_WIDTH": integer
+
+constructor()
+
+public "isEnchantable"(arg0: $ItemStack$Type): boolean
+public "initializeClient"(arg0: $Consumer$Type<($IClientItemExtensions$Type)>): void
+public "getArmorTexture"(arg0: $ItemStack$Type, arg1: $Entity$Type, arg2: $EquipmentSlot$Type, arg3: string): string
+public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type, arg1: $Enchantment$Type): boolean
+public static "get"(arg0: $ItemStack$Type): $Equipable
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $RuinfighterItem$Helmet$Type = ($RuinfighterItem$Helmet);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $RuinfighterItem$Helmet_ = $RuinfighterItem$Helmet$Type;
+}}
+declare module "packages/com/hm/efn/item/custom/$AirTachiItem" {
+import {$Multimap, $Multimap$Type} from "packages/com/google/common/collect/$Multimap"
+import {$Component, $Component$Type} from "packages/net/minecraft/network/chat/$Component"
+import {$Item$Properties, $Item$Properties$Type} from "packages/net/minecraft/world/item/$Item$Properties"
+import {$Level, $Level$Type} from "packages/net/minecraft/world/level/$Level"
+import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
+import {$Tier, $Tier$Type} from "packages/net/minecraft/world/item/$Tier"
+import {$Block, $Block$Type} from "packages/net/minecraft/world/level/block/$Block"
+import {$Item, $Item$Type} from "packages/net/minecraft/world/item/$Item"
+import {$TooltipFlag, $TooltipFlag$Type} from "packages/net/minecraft/world/item/$TooltipFlag"
+import {$WeaponItem, $WeaponItem$Type} from "packages/yesman/epicfight/world/item/$WeaponItem"
+import {$Enchantment, $Enchantment$Type} from "packages/net/minecraft/world/item/enchantment/$Enchantment"
+import {$Attribute, $Attribute$Type} from "packages/net/minecraft/world/entity/ai/attributes/$Attribute"
+import {$List, $List$Type} from "packages/java/util/$List"
+import {$AttributeModifier, $AttributeModifier$Type} from "packages/net/minecraft/world/entity/ai/attributes/$AttributeModifier"
+import {$Map, $Map$Type} from "packages/java/util/$Map"
+
+export class $AirTachiItem extends $WeaponItem {
+ "defaultModifiers": $Multimap<($Attribute), ($AttributeModifier)>
+ "tier": $Tier
+static readonly "BY_BLOCK": $Map<($Block), ($Item)>
+static readonly "MAX_STACK_SIZE": integer
+static readonly "EAT_DURATION": integer
+static readonly "MAX_BAR_WIDTH": integer
+
+constructor(arg0: $Tier$Type, arg1: integer, arg2: float, arg3: $Item$Properties$Type)
+
+public "appendHoverText"(arg0: $ItemStack$Type, arg1: $Level$Type, arg2: $List$Type<($Component$Type)>, arg3: $TooltipFlag$Type): void
+public "isEnchantable"(arg0: $ItemStack$Type): boolean
+public "isDamageable"(arg0: $ItemStack$Type): boolean
+public "getEnchantmentValue"(): integer
+public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type, arg1: $Enchantment$Type): boolean
+get "enchantmentValue"(): integer
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $AirTachiItem$Type = ($AirTachiItem);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $AirTachiItem_ = $AirTachiItem$Type;
+}}
+declare module "packages/com/hm/efn/item/custom/$BroadBladeItem" {
+import {$MobEffectEvent$Applicable, $MobEffectEvent$Applicable$Type} from "packages/net/minecraftforge/event/entity/living/$MobEffectEvent$Applicable"
+import {$Multimap, $Multimap$Type} from "packages/com/google/common/collect/$Multimap"
+import {$Component, $Component$Type} from "packages/net/minecraft/network/chat/$Component"
+import {$LivingDeathEvent, $LivingDeathEvent$Type} from "packages/net/minecraftforge/event/entity/living/$LivingDeathEvent"
+import {$LivingKnockBackEvent, $LivingKnockBackEvent$Type} from "packages/net/minecraftforge/event/entity/living/$LivingKnockBackEvent"
+import {$Item$Properties, $Item$Properties$Type} from "packages/net/minecraft/world/item/$Item$Properties"
+import {$Vec2, $Vec2$Type} from "packages/net/minecraft/world/phys/$Vec2"
+import {$Level, $Level$Type} from "packages/net/minecraft/world/level/$Level"
+import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
+import {$Tier, $Tier$Type} from "packages/net/minecraft/world/item/$Tier"
+import {$Block, $Block$Type} from "packages/net/minecraft/world/level/block/$Block"
+import {$Item, $Item$Type} from "packages/net/minecraft/world/item/$Item"
+import {$TooltipFlag, $TooltipFlag$Type} from "packages/net/minecraft/world/item/$TooltipFlag"
+import {$WeaponItem, $WeaponItem$Type} from "packages/yesman/epicfight/world/item/$WeaponItem"
+import {$Enchantment, $Enchantment$Type} from "packages/net/minecraft/world/item/enchantment/$Enchantment"
+import {$Attribute, $Attribute$Type} from "packages/net/minecraft/world/entity/ai/attributes/$Attribute"
+import {$List, $List$Type} from "packages/java/util/$List"
+import {$AttributeModifier, $AttributeModifier$Type} from "packages/net/minecraft/world/entity/ai/attributes/$AttributeModifier"
+import {$IAvalonAnimationItem, $IAvalonAnimationItem$Type} from "packages/com/merlin204/avalon/item/animationitem/$IAvalonAnimationItem"
+import {$Armatures$ArmatureAccessor, $Armatures$ArmatureAccessor$Type} from "packages/yesman/epicfight/gameasset/$Armatures$ArmatureAccessor"
+import {$Map, $Map$Type} from "packages/java/util/$Map"
+import {$Entity, $Entity$Type} from "packages/net/minecraft/world/entity/$Entity"
+
+export class $BroadBladeItem extends $WeaponItem implements $IAvalonAnimationItem {
+ "defaultModifiers": $Multimap<($Attribute), ($AttributeModifier)>
+ "tier": $Tier
+static readonly "BY_BLOCK": $Map<($Block), ($Item)>
+static readonly "MAX_STACK_SIZE": integer
+static readonly "EAT_DURATION": integer
+static readonly "MAX_BAR_WIDTH": integer
+
+constructor(arg0: $Tier$Type, arg1: integer, arg2: float, arg3: $Item$Properties$Type)
+
+public static "getKillCount"(arg0: $ItemStack$Type): integer
+public static "onEffectApplied"(arg0: $MobEffectEvent$Applicable$Type): void
+public "inventoryTick"(arg0: $ItemStack$Type, arg1: $Level$Type, arg2: $Entity$Type, arg3: integer, arg4: boolean): void
+public "appendHoverText"(arg0: $ItemStack$Type, arg1: $Level$Type, arg2: $List$Type<($Component$Type)>, arg3: $TooltipFlag$Type): void
+public "isEnchantable"(arg0: $ItemStack$Type): boolean
+public "isDamageable"(arg0: $ItemStack$Type): boolean
+public "getEnchantmentValue"(): integer
+public "getArmature"(): $Armatures$ArmatureAccessor<(any)>
+public static "onLivingDeath"(arg0: $LivingDeathEvent$Type): void
+public static "onLivingKnockBack"(arg0: $LivingKnockBackEvent$Type): void
+public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type, arg1: $Enchantment$Type): boolean
+public "setUseAnimationArmature"(arg0: integer, arg1: boolean): void
+public "getHitBox"(): $Vec2
+public "useAnimationArmature"(arg0: integer): boolean
+get "enchantmentValue"(): integer
+get "armature"(): $Armatures$ArmatureAccessor<(any)>
+get "hitBox"(): $Vec2
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $BroadBladeItem$Type = ($BroadBladeItem);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $BroadBladeItem_ = $BroadBladeItem$Type;
+}}
+declare module "packages/com/hm/efn/mobeffects/$BloodExplosionEffect" {
+import {$AttributeMap, $AttributeMap$Type} from "packages/net/minecraft/world/entity/ai/attributes/$AttributeMap"
+import {$Player, $Player$Type} from "packages/net/minecraft/world/entity/player/$Player"
+import {$AttributeModifier, $AttributeModifier$Type} from "packages/net/minecraft/world/entity/ai/attributes/$AttributeModifier"
+import {$LivingEntity, $LivingEntity$Type} from "packages/net/minecraft/world/entity/$LivingEntity"
+import {$MobEffect, $MobEffect$Type} from "packages/net/minecraft/world/effect/$MobEffect"
+
+export class $BloodExplosionEffect extends $MobEffect {
+
+constructor()
+
+public static "setAttacker"(arg0: $LivingEntity$Type, arg1: $Player$Type): void
+public "getAttributeModifierValue"(arg0: integer, arg1: $AttributeModifier$Type): double
+public "addAttributeModifiers"(arg0: $LivingEntity$Type, arg1: $AttributeMap$Type, arg2: integer): void
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $BloodExplosionEffect$Type = ($BloodExplosionEffect);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $BloodExplosionEffect_ = $BloodExplosionEffect$Type;
 }}
 declare module "packages/com/hm/efn/mobeffects/$CurseOfBloodEffect" {
 import {$LivingEntity, $LivingEntity$Type} from "packages/net/minecraft/world/entity/$LivingEntity"
@@ -2220,30 +2287,6 @@ export type $Replay$Type = ($Replay);
 declare global {
 export type $Replay_ = $Replay$Type;
 }}
-declare module "packages/com/hm/efn/mixin/$CameraAccessor" {
-export {} // Mark the file as a module, do not remove unless there are other import/exports!
-export interface $CameraAccessor {
-
- "invokeSetPosition"(arg0: double, arg1: double, arg2: double): void
-
-(arg0: double, arg1: double, arg2: double): void
-}
-
-export namespace $CameraAccessor {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $CameraAccessor$Type = ($CameraAccessor);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $CameraAccessor_ = $CameraAccessor$Type;
-}}
 declare module "packages/com/hm/efn/mobeffects/$BypassDodgeEffect" {
 import {$AttributeMap, $AttributeMap$Type} from "packages/net/minecraft/world/entity/ai/attributes/$AttributeMap"
 import {$LivingEntity, $LivingEntity$Type} from "packages/net/minecraft/world/entity/$LivingEntity"
@@ -2253,9 +2296,9 @@ export class $BypassDodgeEffect extends $MobEffect {
 
 constructor()
 
+public "isDurationEffectTick"(arg0: integer, arg1: integer): boolean
 public "addAttributeModifiers"(arg0: $LivingEntity$Type, arg1: $AttributeMap$Type, arg2: integer): void
 public "removeAttributeModifiers"(arg0: $LivingEntity$Type, arg1: $AttributeMap$Type, arg2: integer): void
-public "isDurationEffectTick"(arg0: integer, arg1: integer): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2272,8 +2315,8 @@ export type $BypassDodgeEffect_ = $BypassDodgeEffect$Type;
 declare module "packages/com/hm/efn/item/custom/$DuskFireArmorItem$Chestplate" {
 import {$Multimap, $Multimap$Type} from "packages/com/google/common/collect/$Multimap"
 import {$Component, $Component$Type} from "packages/net/minecraft/network/chat/$Component"
-import {$EquipmentSlot, $EquipmentSlot$Type} from "packages/net/minecraft/world/entity/$EquipmentSlot"
 import {$Level, $Level$Type} from "packages/net/minecraft/world/level/$Level"
+import {$EquipmentSlot, $EquipmentSlot$Type} from "packages/net/minecraft/world/entity/$EquipmentSlot"
 import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
 import {$Equipable, $Equipable$Type} from "packages/net/minecraft/world/item/$Equipable"
 import {$Block, $Block$Type} from "packages/net/minecraft/world/level/block/$Block"
@@ -2298,10 +2341,10 @@ static readonly "MAX_BAR_WIDTH": integer
 
 constructor()
 
-public "getArmorTexture"(arg0: $ItemStack$Type, arg1: $Entity$Type, arg2: $EquipmentSlot$Type, arg3: string): string
-public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type, arg1: $Enchantment$Type): boolean
 public "appendHoverText"(arg0: $ItemStack$Type, arg1: $Level$Type, arg2: $List$Type<($Component$Type)>, arg3: $TooltipFlag$Type): void
 public "isEnchantable"(arg0: $ItemStack$Type): boolean
+public "getArmorTexture"(arg0: $ItemStack$Type, arg1: $Entity$Type, arg2: $EquipmentSlot$Type, arg3: string): string
+public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type, arg1: $Enchantment$Type): boolean
 public static "get"(arg0: $ItemStack$Type): $Equipable
 }
 /**
@@ -2326,8 +2369,8 @@ readonly "category": $EnchantmentCategory
 
 constructor()
 
-public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type): boolean
 public "getMaxLevel"(): integer
+public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type): boolean
 public "canEnchant"(arg0: $ItemStack$Type): boolean
 public "isTreasureOnly"(): boolean
 public "isTradeable"(): boolean
@@ -2350,29 +2393,6 @@ export type $YamatoJudgementCutEnd$Type = ($YamatoJudgementCutEnd);
  */
 declare global {
 export type $YamatoJudgementCutEnd_ = $YamatoJudgementCutEnd$Type;
-}}
-declare module "packages/com/hm/efn/mobeffects/$KnockBackResistanceEffect$ResistanceEffect" {
-import {$LivingEntity, $LivingEntity$Type} from "packages/net/minecraft/world/entity/$LivingEntity"
-import {$MobEffect, $MobEffect$Type} from "packages/net/minecraft/world/effect/$MobEffect"
-
-export class $KnockBackResistanceEffect$ResistanceEffect extends $MobEffect {
-
-constructor()
-
-public "applyEffectTick"(arg0: $LivingEntity$Type, arg1: integer): void
-public "isDurationEffectTick"(arg0: integer, arg1: integer): boolean
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $KnockBackResistanceEffect$ResistanceEffect$Type = ($KnockBackResistanceEffect$ResistanceEffect);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $KnockBackResistanceEffect$ResistanceEffect_ = $KnockBackResistanceEffect$ResistanceEffect$Type;
 }}
 declare module "packages/com/hm/efn/mobeffects/$VerticalStop" {
 import {$LivingEntity, $LivingEntity$Type} from "packages/net/minecraft/world/entity/$LivingEntity"
@@ -2407,8 +2427,8 @@ readonly "category": $EnchantmentCategory
 
 constructor()
 
-public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type): boolean
 public "getMaxLevel"(): integer
+public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type): boolean
 public "canEnchant"(arg0: $ItemStack$Type): boolean
 public "isTreasureOnly"(): boolean
 public "isTradeable"(): boolean
@@ -2462,14 +2482,14 @@ static readonly "MAX_BAR_WIDTH": integer
 
 constructor(arg0: $Tier$Type, arg1: integer, arg2: float, arg3: $Item$Properties$Type)
 
-public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type, arg1: $Enchantment$Type): boolean
-public static "onLivingDamage"(arg0: $LivingDamageEvent$Type): void
-public static "onLivingAttack"(arg0: $LivingAttackEvent$Type): void
+public "hurtEnemy"(arg0: $ItemStack$Type, arg1: $LivingEntity$Type, arg2: $LivingEntity$Type): boolean
 public "appendHoverText"(arg0: $ItemStack$Type, arg1: $Level$Type, arg2: $List$Type<($Component$Type)>, arg3: $TooltipFlag$Type): void
 public "isEnchantable"(arg0: $ItemStack$Type): boolean
 public "isDamageable"(arg0: $ItemStack$Type): boolean
 public "getEnchantmentValue"(): integer
-public "hurtEnemy"(arg0: $ItemStack$Type, arg1: $LivingEntity$Type, arg2: $LivingEntity$Type): boolean
+public static "onLivingDamage"(arg0: $LivingDamageEvent$Type): void
+public "canApplyAtEnchantingTable"(arg0: $ItemStack$Type, arg1: $Enchantment$Type): boolean
+public static "onLivingAttack"(arg0: $LivingAttackEvent$Type): void
 public "getDefaultInstance"(): $ItemStack
 get "enchantmentValue"(): integer
 get "defaultInstance"(): $ItemStack
@@ -2485,24 +2505,4 @@ export type $Meen_SpearItem$Type = ($Meen_SpearItem);
  */
 declare global {
 export type $Meen_SpearItem_ = $Meen_SpearItem$Type;
-}}
-declare module "packages/com/hm/efn/mobeffects/$AttackDamageIncreaseEffect" {
-import {$MobEffect, $MobEffect$Type} from "packages/net/minecraft/world/effect/$MobEffect"
-
-export class $AttackDamageIncreaseEffect extends $MobEffect {
-
-constructor()
-
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $AttackDamageIncreaseEffect$Type = ($AttackDamageIncreaseEffect);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $AttackDamageIncreaseEffect_ = $AttackDamageIncreaseEffect$Type;
 }}

@@ -1,8 +1,8 @@
 declare module "packages/yesman/epicfight/api/physics/ik/$InverseKinematicsSimulator$InverseKinematicsObject" {
 import {$InverseKinematicsSimulator$InverseKinematicsBuilder, $InverseKinematicsSimulator$InverseKinematicsBuilder$Type} from "packages/yesman/epicfight/api/physics/ik/$InverseKinematicsSimulator$InverseKinematicsBuilder"
 import {$Vec3f, $Vec3f$Type} from "packages/yesman/epicfight/api/utils/math/$Vec3f"
-import {$JointTransform, $JointTransform$Type} from "packages/yesman/epicfight/api/animation/$JointTransform"
 import {$InverseKinematicsSimulator$BakedInverseKinematicsDefinition, $InverseKinematicsSimulator$BakedInverseKinematicsDefinition$Type} from "packages/yesman/epicfight/api/physics/ik/$InverseKinematicsSimulator$BakedInverseKinematicsDefinition"
+import {$JointTransform, $JointTransform$Type} from "packages/yesman/epicfight/api/animation/$JointTransform"
 import {$InverseKinematicsProvider, $InverseKinematicsProvider$Type} from "packages/yesman/epicfight/api/physics/ik/$InverseKinematicsProvider"
 import {$SimulationObject, $SimulationObject$Type} from "packages/yesman/epicfight/api/physics/$SimulationObject"
 import {$TransformSheet, $TransformSheet$Type} from "packages/yesman/epicfight/api/animation/$TransformSheet"
@@ -12,22 +12,22 @@ export class $InverseKinematicsSimulator$InverseKinematicsObject implements $Sim
 
 constructor(arg0: $InverseKinematicsSimulator$InverseKinematicsBuilder$Type)
 
-public "getTipPosition"(arg0: float): $Vec3f
+public "getIKDefinition"(): $InverseKinematicsSimulator$BakedInverseKinematicsDefinition
 public "isOnWorking"(): boolean
 public "isTouchingGround"(): boolean
 public "getTipTransform"(arg0: float): $JointTransform
-public "tick"(): void
+public "getTipPosition"(arg0: float): $Vec3f
 public "getAnimation"(): $TransformSheet
+public "tick"(): void
 public "getTime"(arg0: float): float
 public "getDestination"(): $Vec3f
-public "start"(arg0: $Vec3f$Type, arg1: $TransformSheet$Type, arg2: float): void
 public "newTargetPosition"(arg0: $Vec3f$Type): void
-public "getIKDefinition"(): $InverseKinematicsSimulator$BakedInverseKinematicsDefinition
+public "start"(arg0: $Vec3f$Type, arg1: $TransformSheet$Type, arg2: float): void
+get "iKDefinition"(): $InverseKinematicsSimulator$BakedInverseKinematicsDefinition
 get "onWorking"(): boolean
 get "touchingGround"(): boolean
 get "animation"(): $TransformSheet
 get "destination"(): $Vec3f
-get "iKDefinition"(): $InverseKinematicsSimulator$BakedInverseKinematicsDefinition
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -53,17 +53,8 @@ export class $ControlEngine {
 
 constructor()
 
-public "setPlayerPatch"(arg0: $LocalPlayerPatch$Type): void
-public "canPlayerMove"(arg0: $EntityState$Type): boolean
-public "canPlayerRotate"(arg0: $EntityState$Type): boolean
-public static "shouldDisableSwapHandItems"(): boolean
 public "lockHotkeys"(): void
 public "setHoldingKey"(arg0: $SkillSlot$Type, arg1: $KeyMapping$Type): void
-/**
- * 
- * @deprecated
- */
-public static "isKeyDown"(arg0: $KeyMapping$Type): boolean
 /**
  * 
  * @deprecated
@@ -79,9 +70,18 @@ public "moverToggling"(): boolean
 public "sneakToggling"(): boolean
 public "attackToggling"(): boolean
 public "weaponInnateToggling"(): boolean
+public "setPlayerPatch"(arg0: $LocalPlayerPatch$Type): void
+public "canPlayerMove"(arg0: $EntityState$Type): boolean
+public "canPlayerRotate"(arg0: $EntityState$Type): boolean
+public static "shouldDisableSwapHandItems"(): boolean
+/**
+ * 
+ * @deprecated
+ */
+public static "isKeyDown"(arg0: $KeyMapping$Type): boolean
+public "addPacketToSend"(arg0: any): void
 public "releaseAllServedKeys"(): void
 public "unlockHotkeys"(): void
-public "addPacketToSend"(arg0: any): void
 public "getPlayerPatch"(): $LocalPlayerPatch
 public static "isHotbarCyclingDisabled"(): boolean
 public "isSwitchOrDropBlocked"(): boolean
@@ -112,15 +112,15 @@ export class $CustomSkill$OnScreenContext extends $Record {
 
 constructor(getLocalPlayerPatch: $LocalPlayerPatch$Type, getResolutionX: float, getResolutionY: float)
 
+public "getResolutionX"(): float
+public "getResolutionY"(): float
 public "getLocalPlayerPatch"(): $LocalPlayerPatch
 public "equals"(arg0: any): boolean
 public "toString"(): string
 public "hashCode"(): integer
-public "getResolutionX"(): float
-public "getResolutionY"(): float
-get "localPlayerPatch"(): $LocalPlayerPatch
 get "resolutionX"(): float
 get "resolutionY"(): float
+get "localPlayerPatch"(): $LocalPlayerPatch
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -143,13 +143,13 @@ export interface $ValueModifier {
 
  "attach"(arg0: $ValueModifier$ResultCalculator$Type): void
 
-(arg0: float): $ValueModifier
+(): $ValueModifier$ResultCalculator
 }
 
 export namespace $ValueModifier {
 const CODEC: $Codec<($ValueModifier$Unified)>
-function adder(arg0: float): $ValueModifier
 function calculator(): $ValueModifier$ResultCalculator
+function adder(arg0: float): $ValueModifier
 function setter(arg0: float): $ValueModifier
 function multiplier(arg0: float): $ValueModifier
 }
@@ -188,36 +188,6 @@ export type $SimulationObject$Type<B, PV, O> = ($SimulationObject<(B), (PV), (O)
 declare global {
 export type $SimulationObject_<B, PV, O> = $SimulationObject$Type<(B), (PV), (O)>;
 }}
-declare module "packages/yesman/epicfight/world/damagesource/$StunType" {
-import {$Enum, $Enum$Type} from "packages/java/lang/$Enum"
-
-export class $StunType extends $Enum<($StunType)> {
-static readonly "NONE": $StunType
-static readonly "SHORT": $StunType
-static readonly "LONG": $StunType
-static readonly "HOLD": $StunType
-static readonly "KNOCKDOWN": $StunType
-static readonly "NEUTRALIZE": $StunType
-static readonly "FALL": $StunType
-
-
-public "hasFixedStunTime"(): boolean
-public "toString"(): string
-public static "values"(): ($StunType)[]
-public static "valueOf"(arg0: string): $StunType
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $StunType$Type = (("neutralize") | ("knockdown") | ("fall") | ("short") | ("none") | ("long") | ("hold")) | ($StunType);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $StunType_ = $StunType$Type;
-}}
 declare module "packages/yesman/epicfight/api/client/forgeevent/$UpdatePlayerMotionEvent$CompositeLayer" {
 import {$LivingMotion, $LivingMotion$Type} from "packages/yesman/epicfight/api/animation/$LivingMotion"
 import {$ListenerList, $ListenerList$Type} from "packages/net/minecraftforge/eventbus/$ListenerList"
@@ -226,8 +196,8 @@ import {$AbstractClientPlayerPatch, $AbstractClientPlayerPatch$Type} from "packa
 
 export class $UpdatePlayerMotionEvent$CompositeLayer extends $UpdatePlayerMotionEvent {
 
-constructor()
 constructor(arg0: $AbstractClientPlayerPatch$Type<(any)>, arg1: $LivingMotion$Type)
+constructor()
 
 public "getListenerList"(): $ListenerList
 public "setCanceled"(arg0: boolean): void
@@ -251,9 +221,9 @@ export type $UpdatePlayerMotionEvent$CompositeLayer_ = $UpdatePlayerMotionEvent$
 declare module "packages/yesman/epicfight/skill/$SkillContainer" {
 import {$SkillSlot, $SkillSlot$Type} from "packages/yesman/epicfight/skill/$SkillSlot"
 import {$SkillCastEvent, $SkillCastEvent$Type} from "packages/yesman/epicfight/world/entity/eventlistener/$SkillCastEvent"
+import {$ControlEngine, $ControlEngine$Type} from "packages/yesman/epicfight/client/events/engine/$ControlEngine"
 import {$ServerPlayerPatch, $ServerPlayerPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/player/$ServerPlayerPatch"
 import {$FriendlyByteBuf, $FriendlyByteBuf$Type} from "packages/net/minecraft/network/$FriendlyByteBuf"
-import {$ControlEngine, $ControlEngine$Type} from "packages/yesman/epicfight/client/events/engine/$ControlEngine"
 import {$PlayerPatch, $PlayerPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/player/$PlayerPatch"
 import {$SPChangeSkill, $SPChangeSkill$Type} from "packages/yesman/epicfight/network/server/$SPChangeSkill"
 import {$SkillDataManager, $SkillDataManager$Type} from "packages/yesman/epicfight/skill/$SkillDataManager"
@@ -268,14 +238,15 @@ constructor(arg0: $PlayerPatch$Type<(any)>, arg1: $SkillSlot$Type)
 public "setSkill"(arg0: $Skill$Type): boolean
 public "setSkill"(arg0: $Skill$Type, arg1: boolean): boolean
 public "isDisabled"(): boolean
-public "setResource"(arg0: float): void
-public "getMaxResource"(): float
-public "isActivated"(): boolean
-public "setMaxDuration"(arg0: integer): void
-public "setMaxResource"(arg0: float): void
-public "transferDataTo"(arg0: $SkillContainer$Type): void
-public "requestCancel"(arg0: $ServerPlayerPatch$Type, arg1: $FriendlyByteBuf$Type): boolean
-public "requestHold"(arg0: $ServerPlayerPatch$Type, arg1: $FriendlyByteBuf$Type): boolean
+public "getRemainDuration"(): integer
+public "resetValues"(): void
+public "setDisabled"(arg0: boolean): void
+public "setSkillRemote"(arg0: $Skill$Type): void
+public "hasSkill"(): boolean
+public "hasSkill"(arg0: $Skill$Type): boolean
+public "setReplaceCooldown"(arg0: integer): void
+public "sendCastRequest"(arg0: $LocalPlayerPatch$Type, arg1: $ControlEngine$Type): $SkillCastEvent
+public "sendCancelRequest"(arg0: $LocalPlayerPatch$Type, arg1: $ControlEngine$Type): void
 public "getNeededResource"(): float
 public "getDurationRatio"(arg0: float): float
 public "onReplaceCooldown"(): boolean
@@ -285,19 +256,23 @@ public "createSyncPacketToRemotePlayer"(): $SPSetRemotePlayerSkill
 public "getSlotId"(): integer
 public "getServerExecutor"(): $ServerPlayerPatch
 public "getClientExecutor"(): $LocalPlayerPatch
-public "getRemainDuration"(): integer
-public "setDisabled"(arg0: boolean): void
-public "setSkillRemote"(arg0: $Skill$Type): void
-public "hasSkill"(arg0: $Skill$Type): boolean
-public "hasSkill"(): boolean
-public "setReplaceCooldown"(arg0: integer): void
-public "sendCastRequest"(arg0: $LocalPlayerPatch$Type, arg1: $ControlEngine$Type): $SkillCastEvent
-public "sendCancelRequest"(arg0: $LocalPlayerPatch$Type, arg1: $ControlEngine$Type): void
+public "getMaxResource"(): float
+public "isActivated"(): boolean
+public "setMaxDuration"(arg0: integer): void
+public "setMaxResource"(arg0: float): void
+public "transferDataTo"(arg0: $SkillContainer$Type): void
+public "setResource"(arg0: float): void
 public "requestCasting"(arg0: $ServerPlayerPatch$Type, arg1: $FriendlyByteBuf$Type): boolean
-public "resetValues"(): void
+public "requestCancel"(arg0: $ServerPlayerPatch$Type, arg1: $FriendlyByteBuf$Type): boolean
+public "requestHold"(arg0: $ServerPlayerPatch$Type, arg1: $FriendlyByteBuf$Type): boolean
 public "isFull"(): boolean
 public "getExecutor"(): $PlayerPatch<(any)>
 public "setDuration"(arg0: integer): void
+public "setStack"(arg0: integer): void
+public "activate"(): void
+public "deactivate"(): void
+public "getSkill"(): $Skill
+public "getDataManager"(): $SkillDataManager
 public "equals"(arg0: any): boolean
 public "update"(): void
 public "isEmpty"(): boolean
@@ -306,37 +281,32 @@ public "getResource"(arg0: float): float
 public "canUse"(arg0: $PlayerPatch$Type<(any)>, arg1: $SkillCastEvent$Type): boolean
 public "getSlot"(): $SkillSlot
 public "getStack"(): integer
-public "setStack"(arg0: integer): void
-public "activate"(): void
-public "deactivate"(): void
-public "getSkill"(): $Skill
-public "getDataManager"(): $SkillDataManager
 set "skill"(value: $Skill$Type)
 get "disabled"(): boolean
-set "resource"(value: float)
-get "maxResource"(): float
-get "activated"(): boolean
-set "maxDuration"(value: integer)
-set "maxResource"(value: float)
+get "remainDuration"(): integer
+set "disabled"(value: boolean)
+set "skillRemote"(value: $Skill$Type)
+set "replaceCooldown"(value: integer)
 get "neededResource"(): float
 get "replaceCooldown"(): integer
 get "slotId"(): integer
 get "serverExecutor"(): $ServerPlayerPatch
 get "clientExecutor"(): $LocalPlayerPatch
-get "remainDuration"(): integer
-set "disabled"(value: boolean)
-set "skillRemote"(value: $Skill$Type)
-set "replaceCooldown"(value: integer)
+get "maxResource"(): float
+get "activated"(): boolean
+set "maxDuration"(value: integer)
+set "maxResource"(value: float)
+set "resource"(value: float)
 get "full"(): boolean
 get "executor"(): $PlayerPatch<(any)>
 set "duration"(value: integer)
+set "stack"(value: integer)
+get "skill"(): $Skill
+get "dataManager"(): $SkillDataManager
 get "empty"(): boolean
 get "resource"(): float
 get "slot"(): $SkillSlot
 get "stack"(): integer
-set "stack"(value: integer)
-get "skill"(): $Skill
-get "dataManager"(): $SkillDataManager
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -357,30 +327,30 @@ export class $AnimationParameters<A, B, C, D, E, F, G, H, I, J> extends $Record 
 
 constructor(first: A, second: B, third: C, fourth: D, fifth: E, sixth: F, seventh: G, eighth: H, ninth: I, tenth: J)
 
-public "fourth"(): D
-public static "addParameter"<A, B, C, D, E, F, G, H, I, J, N>(arg0: $AnimationParameters$Type<(A), (B), (C), (D), (E), (F), (G), (H), (I), (J)>, arg1: N): $AnimationParameters<(any), (any), (any), (any), (any), (any), (any), (any), (any), (any)>
 public "fifth"(): E
 public "sixth"(): F
 public "seventh"(): G
 public "eighth"(): H
 public "ninth"(): I
 public "tenth"(): J
+public "fourth"(): D
+public static "addParameter"<A, B, C, D, E, F, G, H, I, J, N>(arg0: $AnimationParameters$Type<(A), (B), (C), (D), (E), (F), (G), (H), (I), (J)>, arg1: N): $AnimationParameters<(any), (any), (any), (any), (any), (any), (any), (any), (any), (any)>
+public "third"(): C
 public "equals"(arg0: any): boolean
 public "toString"(): string
 public "hashCode"(): integer
-public static "of"<A, B, C, D, E, F>(arg0: A, arg1: B, arg2: C, arg3: D, arg4: E, arg5: F): $AnimationParameters<(A), (B), (C), (D), (E), (F), (void), (void), (void), (void)>
-public static "of"<A, B, C, D, E>(arg0: A, arg1: B, arg2: C, arg3: D, arg4: E): $AnimationParameters<(A), (B), (C), (D), (E), (void), (void), (void), (void), (void)>
-public static "of"<A, B, C, D>(arg0: A, arg1: B, arg2: C, arg3: D): $AnimationParameters<(A), (B), (C), (D), (void), (void), (void), (void), (void), (void)>
-public static "of"<A>(arg0: A): $AnimationParameters<(A), (void), (void), (void), (void), (void), (void), (void), (void), (void)>
-public static "of"<A, B>(arg0: A, arg1: B): $AnimationParameters<(A), (B), (void), (void), (void), (void), (void), (void), (void), (void)>
 public static "of"<A, B, C>(arg0: A, arg1: B, arg2: C): $AnimationParameters<(A), (B), (C), (void), (void), (void), (void), (void), (void), (void)>
+public static "of"<A, B, C, D>(arg0: A, arg1: B, arg2: C, arg3: D): $AnimationParameters<(A), (B), (C), (D), (void), (void), (void), (void), (void), (void)>
+public static "of"<A, B, C, D, E>(arg0: A, arg1: B, arg2: C, arg3: D, arg4: E): $AnimationParameters<(A), (B), (C), (D), (E), (void), (void), (void), (void), (void)>
+public static "of"<A, B>(arg0: A, arg1: B): $AnimationParameters<(A), (B), (void), (void), (void), (void), (void), (void), (void), (void)>
 public static "of"<A, B, C, D, E, F, G, H, I, J>(arg0: A, arg1: B, arg2: C, arg3: D, arg4: E, arg5: F, arg6: G, arg7: H, arg8: I, arg9: J): $AnimationParameters<(A), (B), (C), (D), (E), (F), (G), (H), (I), (J)>
+public static "of"<A>(arg0: A): $AnimationParameters<(A), (void), (void), (void), (void), (void), (void), (void), (void), (void)>
 public static "of"<A, B, C, D, E, F, G, H>(arg0: A, arg1: B, arg2: C, arg3: D, arg4: E, arg5: F, arg6: G, arg7: H): $AnimationParameters<(A), (B), (C), (D), (E), (F), (G), (H), (void), (void)>
-public static "of"<A, B, C, D, E, F, G>(arg0: A, arg1: B, arg2: C, arg3: D, arg4: E, arg5: F, arg6: G): $AnimationParameters<(A), (B), (C), (D), (E), (F), (G), (void), (void), (void)>
 public static "of"<A, B, C, D, E, F, G, H, I>(arg0: A, arg1: B, arg2: C, arg3: D, arg4: E, arg5: F, arg6: G, arg7: H, arg8: I): $AnimationParameters<(A), (B), (C), (D), (E), (F), (G), (H), (I), (void)>
+public static "of"<A, B, C, D, E, F>(arg0: A, arg1: B, arg2: C, arg3: D, arg4: E, arg5: F): $AnimationParameters<(A), (B), (C), (D), (E), (F), (void), (void), (void), (void)>
+public static "of"<A, B, C, D, E, F, G>(arg0: A, arg1: B, arg2: C, arg3: D, arg4: E, arg5: F, arg6: G): $AnimationParameters<(A), (B), (C), (D), (E), (F), (G), (void), (void), (void)>
 public "first"(): A
 public "second"(): B
-public "third"(): C
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -427,13 +397,12 @@ static "EMPTY": $CapabilityItem
 
 
 public "getLivingMotion"(arg0: $LivingEntityPatch$Type<(any)>, arg1: $InteractionHand$Type): $LivingMotion
-public "handleComboCounter"(arg0: $ComboCounterHandleEvent$Causal$Type, arg1: $PlayerPatch$Type<(any)>, arg2: $AnimationManager$AnimationAccessor$Type<(any)>, arg3: integer): integer
-public "getAutoAttackMotion"(arg0: $PlayerPatch$Type<(any)>): $List<($AnimationManager$AnimationAccessor<(any)>)>
 public "getZoomInType"(): $CapabilityItem$ZoomInType
 public "getUseAnimation"(arg0: $LivingEntityPatch$Type<(any)>): $UseAnim
 public "changeWeaponInnateSkill"(arg0: $PlayerPatch$Type<(any)>, arg1: $ItemStack$Type): void
 public "getAllAttributeModifiers"(arg0: $EquipmentSlot$Type): $Multimap<($Attribute), ($AttributeModifier)>
 public "getLivingMotionModifier"(arg0: $LivingEntityPatch$Type<(any)>, arg1: $InteractionHand$Type): $Map<($LivingMotion), ($AnimationManager$AnimationAccessor<(any)>)>
+public static "getBasicAutoAttackMotion"(): $List<($AnimationManager$AnimationAccessor<(any)>)>
 public "modifyItemTooltip"(arg0: $ItemStack$Type, arg1: $List$Type<($Component$Type)>, arg2: $LivingEntityPatch$Type<(any)>): void
 public "getDamageAttributesInCondition"(arg0: $Style$Type): $Map<($Attribute), ($AttributeModifier)>
 /**
@@ -458,7 +427,7 @@ public "shouldCancelCombo"(arg0: $LivingEntityPatch$Type<(any)>): boolean
  */
 public "availableOnHorse"(): boolean
 public "canHoldInOffhandAlone"(): boolean
-public static "getBasicAutoAttackMotion"(): $List<($AnimationManager$AnimationAccessor<(any)>)>
+public "getStyle"(arg0: $LivingEntityPatch$Type<(any)>): $Style
 public "getInnateSkill"(arg0: $PlayerPatch$Type<(any)>, arg1: $ItemStack$Type): $Skill
 public "getAttributeModifiers"(arg0: $EquipmentSlot$Type, arg1: $LivingEntityPatch$Type<(any)>): $Multimap<($Attribute), ($AttributeModifier)>
 public static "getAttributeModifiers"(arg0: $Attribute$Type, arg1: $EquipmentSlot$Type, arg2: $ItemStack$Type, arg3: $LivingEntityPatch$Type<(any)>): $List<($AttributeModifier)>
@@ -469,23 +438,24 @@ public "getHitParticle"(): $HitParticleType
 public "getWeaponCollider"(): $Collider
 public "getReach"(): float
 public "checkOffhandValid"(arg0: $LivingEntityPatch$Type<(any)>): boolean
-public "getStyle"(arg0: $LivingEntityPatch$Type<(any)>): $Style
+public "handleComboCounter"(arg0: $ComboCounterHandleEvent$Causal$Type, arg1: $PlayerPatch$Type<(any)>, arg2: $AnimationManager$AnimationAccessor$Type<(any)>, arg3: integer): integer
+public "getAutoAttackMotion"(arg0: $PlayerPatch$Type<(any)>): $List<($AnimationManager$AnimationAccessor<(any)>)>
 public "getResult"(arg0: $ItemStack$Type): $CapabilityItem
-public "isEmpty"(): boolean
-public static "builder"(): $CapabilityItem$Builder
 public "canBePlacedOffhand"(): boolean
 public "getWeaponCategory"(): $WeaponCategory
+public "isEmpty"(): boolean
+public static "builder"(): $CapabilityItem$Builder
 get "zoomInType"(): $CapabilityItem$ZoomInType
+get "basicAutoAttackMotion"(): $List<($AnimationManager$AnimationAccessor<(any)>)>
 get "mountAttackMotion"(): $List<($AnimationManager$AnimationAccessor<(any)>)>
 get "passiveSkill"(): $Skill
-get "basicAutoAttackMotion"(): $List<($AnimationManager$AnimationAccessor<(any)>)>
 get "hitSound"(): $SoundEvent
 get "smashingSound"(): $SoundEvent
 get "hitParticle"(): $HitParticleType
 get "weaponCollider"(): $Collider
 get "reach"(): float
-get "empty"(): boolean
 get "weaponCategory"(): $WeaponCategory
+get "empty"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -499,92 +469,6 @@ export type $CapabilityItem$Type = ($CapabilityItem);
 declare global {
 export type $CapabilityItem_ = $CapabilityItem$Type;
 }}
-declare module "packages/yesman/epicfight/api/physics/ik/$InverseKinematicsSimulator$InverseKinematicsDefinition" {
-import {$Record, $Record$Type} from "packages/java/lang/$Record"
-import {$AssetAccessor, $AssetAccessor$Type} from "packages/yesman/epicfight/api/asset/$AssetAccessor"
-import {$InverseKinematicsSimulator$BakedInverseKinematicsDefinition, $InverseKinematicsSimulator$BakedInverseKinematicsDefinition$Type} from "packages/yesman/epicfight/api/physics/ik/$InverseKinematicsSimulator$BakedInverseKinematicsDefinition"
-import {$Joint, $Joint$Type} from "packages/yesman/epicfight/api/animation/$Joint"
-import {$TransformSheet, $TransformSheet$Type} from "packages/yesman/epicfight/api/animation/$TransformSheet"
-import {$IntIntPair, $IntIntPair$Type} from "packages/it/unimi/dsi/fastutil/ints/$IntIntPair"
-import {$Map, $Map$Type} from "packages/java/util/$Map"
-
-export class $InverseKinematicsSimulator$InverseKinematicsDefinition extends $Record {
-
-constructor(startJoint: $Joint$Type, endJoint: $Joint$Type, opponentJoint: $Joint$Type, clipAnimation: boolean, startFrame: integer, endFrame: integer, initialPoseFrame: integer, rayLeastHeight: float, touchingGround: (boolean)[])
-
-public "clipAnimation"(): boolean
-public "endJoint"(): $Joint
-public "startJoint"(): $Joint
-public "initialPoseFrame"(): integer
-public "startFrame"(): integer
-public "endFrame"(): integer
-public "bake"(arg0: $AssetAccessor$Type<(any)>, arg1: $Map$Type<(string), ($TransformSheet$Type)>, arg2: boolean, arg3: boolean): $InverseKinematicsSimulator$BakedInverseKinematicsDefinition
-public "equals"(arg0: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
-public static "create"(arg0: $Joint$Type, arg1: $Joint$Type, arg2: $Joint$Type, arg3: $IntIntPair$Type, arg4: float, arg5: integer, arg6: (boolean)[]): $InverseKinematicsSimulator$InverseKinematicsDefinition
-public "rayLeastHeight"(): float
-public "opponentJoint"(): $Joint
-public "touchingGround"(): (boolean)[]
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $InverseKinematicsSimulator$InverseKinematicsDefinition$Type = ($InverseKinematicsSimulator$InverseKinematicsDefinition);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $InverseKinematicsSimulator$InverseKinematicsDefinition_ = $InverseKinematicsSimulator$InverseKinematicsDefinition$Type;
-}}
-declare module "packages/yesman/epicfight/api/animation/$Joint" {
-import {$Consumer, $Consumer$Type} from "packages/java/util/function/$Consumer"
-import {$Joint$HierarchicalJointAccessor$Builder, $Joint$HierarchicalJointAccessor$Builder$Type} from "packages/yesman/epicfight/api/animation/$Joint$HierarchicalJointAccessor$Builder"
-import {$List, $List$Type} from "packages/java/util/$List"
-import {$OpenMatrix4f, $OpenMatrix4f$Type} from "packages/yesman/epicfight/api/utils/math/$OpenMatrix4f"
-
-export class $Joint {
-static readonly "EMPTY": $Joint
-
-constructor(arg0: string, arg1: integer, arg2: $OpenMatrix4f$Type)
-
-public "getSubJoints"(): $List<($Joint)>
-public "getLocalTransform"(): $OpenMatrix4f
-public "addSubJoints"(...arg0: ($Joint$Type)[]): void
-public "removeSubJoints"(...arg0: ($Joint$Type)[]): void
-public "getAllJoints"(): $List<($Joint)>
-public "iterSubJoints"(arg0: $Consumer$Type<($Joint$Type)>): void
-public "initOriginTransform"(arg0: $OpenMatrix4f$Type): void
-public "getToOrigin"(): $OpenMatrix4f
-public "getSubJoint"(arg0: integer): $Joint
-public "printIncludingChildren"(): string
-public "getName"(): string
-public "equals"(arg0: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
-public "getId"(): integer
-public "searchPath"(arg0: $Joint$HierarchicalJointAccessor$Builder$Type, arg1: string): $Joint$HierarchicalJointAccessor$Builder
-get "subJoints"(): $List<($Joint)>
-get "localTransform"(): $OpenMatrix4f
-get "allJoints"(): $List<($Joint)>
-get "toOrigin"(): $OpenMatrix4f
-get "name"(): string
-get "id"(): integer
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $Joint$Type = ($Joint);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $Joint_ = $Joint$Type;
-}}
 declare module "packages/yesman/epicfight/compat/kubejs/skill/$CustomSkill$DrawOnGuiContext" {
 import {$Record, $Record$Type} from "packages/java/lang/$Record"
 import {$BattleModeGui, $BattleModeGui$Type} from "packages/yesman/epicfight/client/gui/$BattleModeGui"
@@ -597,12 +481,12 @@ constructor(getGui: $BattleModeGui$Type, getContainer: $SkillContainer$Type, get
 
 public "getGui"(): $BattleModeGui
 public "getGuiGraphics"(): $GuiGraphics
-public "equals"(arg0: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
 public "getY"(): float
 public "getContainer"(): $SkillContainer
 public "getX"(): float
+public "equals"(arg0: any): boolean
+public "toString"(): string
+public "hashCode"(): integer
 get "gui"(): $BattleModeGui
 get "guiGraphics"(): $GuiGraphics
 get "y"(): float
@@ -642,31 +526,6 @@ export type $EntityState$StateFactor$Type<T> = ($EntityState$StateFactor<(T)>);
  */
 declare global {
 export type $EntityState$StateFactor_<T> = $EntityState$StateFactor$Type<(T)>;
-}}
-declare module "packages/yesman/epicfight/api/animation/property/$AnimationEvent$Side" {
-import {$Enum, $Enum$Type} from "packages/java/lang/$Enum"
-
-export class $AnimationEvent$Side extends $Enum<($AnimationEvent$Side)> {
-static readonly "CLIENT": $AnimationEvent$Side
-static readonly "SERVER": $AnimationEvent$Side
-static readonly "BOTH": $AnimationEvent$Side
-static readonly "LOCAL_CLIENT": $AnimationEvent$Side
-
-
-public static "values"(): ($AnimationEvent$Side)[]
-public static "valueOf"(arg0: string): $AnimationEvent$Side
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $AnimationEvent$Side$Type = (("server") | ("client") | ("local_client") | ("both")) | ($AnimationEvent$Side);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $AnimationEvent$Side_ = $AnimationEvent$Side$Type;
 }}
 declare module "packages/yesman/epicfight/api/client/model/$Mesh$DrawingFunction" {
 import {$VertexConsumer, $VertexConsumer$Type} from "packages/com/mojang/blaze3d/vertex/$VertexConsumer"
@@ -708,91 +567,6 @@ export type $Mesh$DrawingFunction$Type = ($Mesh$DrawingFunction);
 declare global {
 export type $Mesh$DrawingFunction_ = $Mesh$DrawingFunction$Type;
 }}
-declare module "packages/yesman/epicfight/api/client/model/$Mesh$RenderProperties" {
-import {$Record, $Record$Type} from "packages/java/lang/$Record"
-import {$Vec3f, $Vec3f$Type} from "packages/yesman/epicfight/api/utils/math/$Vec3f"
-import {$ResourceLocation, $ResourceLocation$Type} from "packages/net/minecraft/resources/$ResourceLocation"
-
-export class $Mesh$RenderProperties extends $Record {
-
-constructor(customTexturePath: $ResourceLocation$Type, customColor: $Vec3f$Type, isTransparent: boolean)
-
-public "isTransparent"(): boolean
-public "customTexturePath"(): $ResourceLocation
-public "customColor"(): $Vec3f
-public "equals"(arg0: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
-get "transparent"(): boolean
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $Mesh$RenderProperties$Type = ($Mesh$RenderProperties);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $Mesh$RenderProperties_ = $Mesh$RenderProperties$Type;
-}}
-declare module "packages/yesman/epicfight/api/animation/types/$AttackAnimation$Phase" {
-import {$AttackAnimation$JointColliderPair, $AttackAnimation$JointColliderPair$Type} from "packages/yesman/epicfight/api/animation/types/$AttackAnimation$JointColliderPair"
-import {$AttackAnimation, $AttackAnimation$Type} from "packages/yesman/epicfight/api/animation/types/$AttackAnimation"
-import {$InteractionHand, $InteractionHand$Type} from "packages/net/minecraft/world/$InteractionHand"
-import {$Set, $Set$Type} from "packages/java/util/$Set"
-import {$AnimationProperty$AttackPhaseProperty, $AnimationProperty$AttackPhaseProperty$Type} from "packages/yesman/epicfight/api/animation/property/$AnimationProperty$AttackPhaseProperty"
-import {$List, $List$Type} from "packages/java/util/$List"
-import {$Optional, $Optional$Type} from "packages/java/util/$Optional"
-import {$Joint, $Joint$Type} from "packages/yesman/epicfight/api/animation/$Joint"
-import {$Collider, $Collider$Type} from "packages/yesman/epicfight/api/collider/$Collider"
-import {$LivingEntityPatch, $LivingEntityPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/$LivingEntityPatch"
-import {$Map$Entry, $Map$Entry$Type} from "packages/java/util/$Map$Entry"
-import {$Entity, $Entity$Type} from "packages/net/minecraft/world/entity/$Entity"
-
-export class $AttackAnimation$Phase {
-readonly "start": float
-readonly "antic": float
-readonly "preDelay": float
-readonly "contact": float
-readonly "recovery": float
-readonly "end": float
-readonly "hand": $InteractionHand
- "colliders": ($AttackAnimation$JointColliderPair)[]
-readonly "noStateBind": boolean
-
-constructor(arg0: float, arg1: float, arg2: float, arg3: float, arg4: float, arg5: float, arg6: boolean, arg7: $InteractionHand$Type, arg8: $Joint$Type, arg9: $Collider$Type)
-constructor(arg0: float, arg1: float, arg2: float, arg3: float, arg4: float, arg5: float, arg6: $InteractionHand$Type, ...arg7: ($AttackAnimation$JointColliderPair$Type)[])
-constructor(arg0: float, arg1: float, arg2: float, arg3: float, arg4: float, arg5: float, arg6: boolean, arg7: $InteractionHand$Type, ...arg8: ($AttackAnimation$JointColliderPair$Type)[])
-constructor(arg0: float, arg1: float, arg2: float, arg3: float, arg4: float, arg5: $Joint$Type, arg6: $Collider$Type)
-constructor(arg0: float, arg1: float, arg2: float, arg3: float, arg4: float, arg5: $InteractionHand$Type, arg6: $Joint$Type, arg7: $Collider$Type)
-constructor(arg0: float, arg1: float, arg2: float, arg3: float, arg4: float, arg5: float, arg6: $Joint$Type, arg7: $Collider$Type)
-constructor(arg0: float, arg1: float, arg2: float, arg3: float, arg4: float, arg5: float, arg6: $InteractionHand$Type, arg7: $Joint$Type, arg8: $Collider$Type)
-constructor(arg0: $InteractionHand$Type, arg1: $Joint$Type, arg2: $Collider$Type)
-
-public "addProperties"(arg0: $Set$Type<($Map$Entry$Type<($AnimationProperty$AttackPhaseProperty$Type<(any)>), (any)>)>): void
-public "getCollidingEntities"(arg0: $LivingEntityPatch$Type<(any)>, arg1: $AttackAnimation$Type, arg2: float, arg3: float, arg4: float): $List<($Entity)>
-public "getColliders"(): ($AttackAnimation$JointColliderPair)[]
-public "getProperty"<V>(arg0: $AnimationProperty$AttackPhaseProperty$Type<(V)>): $Optional<(V)>
-public "getHand"(): $InteractionHand
-public "addProperty"<V>(arg0: $AnimationProperty$AttackPhaseProperty$Type<(V)>, arg1: V): $AttackAnimation$Phase
-public "removeProperty"(arg0: $AnimationProperty$AttackPhaseProperty$Type<(any)>): $AttackAnimation$Phase
-get "colliders"(): ($AttackAnimation$JointColliderPair)[]
-get "hand"(): $InteractionHand
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $AttackAnimation$Phase$Type = ($AttackAnimation$Phase);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $AttackAnimation$Phase_ = $AttackAnimation$Phase$Type;
-}}
 declare module "packages/yesman/epicfight/main/$AuthenticationHelper" {
 import {$ForgeConfigSpec$EnumValue, $ForgeConfigSpec$EnumValue$Type} from "packages/net/minecraftforge/common/$ForgeConfigSpec$EnumValue"
 import {$AuthenticationHelper$Status, $AuthenticationHelper$Status$Type} from "packages/yesman/epicfight/main/$AuthenticationHelper$Status"
@@ -803,9 +577,9 @@ import {$ForgeConfigSpec$ConfigValue, $ForgeConfigSpec$ConfigValue$Type} from "p
 export interface $AuthenticationHelper {
 
  "getAvatarEditorScreen"(arg0: $Screen$Type): $Screen
+ "valid"(): boolean
  "initialize"(arg0: $ForgeConfigSpec$ConfigValue$Type<(string)>, arg1: $ForgeConfigSpec$ConfigValue$Type<(string)>, arg2: $ForgeConfigSpec$EnumValue$Type<($AuthenticationHelper$AuthenticationProvider$Type)>): void
  "status"(): $AuthenticationHelper$Status
- "valid"(): boolean
 }
 
 export namespace $AuthenticationHelper {
@@ -832,10 +606,10 @@ export class $AnimationEndEvent extends $AbstractPlayerEvent<($PlayerPatch<(any)
 
 constructor(arg0: $PlayerPatch$Type<(any)>, arg1: $StaticAnimation$Type, arg2: boolean)
 
-public "getAnimation"(): $StaticAnimation
 public "isEnd"(): boolean
-get "animation"(): $StaticAnimation
+public "getAnimation"(): $StaticAnimation
 get "end"(): boolean
+get "animation"(): $StaticAnimation
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -862,9 +636,9 @@ constructor(arg0: integer, arg1: $EntityPairingPacketType$Type)
 
 public "getPairingPacketType"(): $EntityPairingPacketType
 public "getBuffer"(): $FriendlyByteBuf
+public static "fromBytes"(arg0: $FriendlyByteBuf$Type): $SPEntityPairingPacket
 public static "toBytes"(arg0: $SPEntityPairingPacket$Type, arg1: $FriendlyByteBuf$Type): void
 public static "handle"(arg0: $SPEntityPairingPacket$Type, arg1: $Supplier$Type<($NetworkEvent$Context$Type)>): void
-public static "fromBytes"(arg0: $FriendlyByteBuf$Type): $SPEntityPairingPacket
 get "pairingPacketType"(): $EntityPairingPacketType
 get "buffer"(): $FriendlyByteBuf
 }
@@ -880,38 +654,14 @@ export type $SPEntityPairingPacket$Type = ($SPEntityPairingPacket);
 declare global {
 export type $SPEntityPairingPacket_ = $SPEntityPairingPacket$Type;
 }}
-declare module "packages/yesman/epicfight/main/$AuthenticationHelper$Status" {
-import {$Enum, $Enum$Type} from "packages/java/lang/$Enum"
-
-export class $AuthenticationHelper$Status extends $Enum<($AuthenticationHelper$Status)> {
-static readonly "UNAUTHENTICATED": $AuthenticationHelper$Status
-static readonly "AUTHENTICATED": $AuthenticationHelper$Status
-static readonly "OFFLINE_MODE": $AuthenticationHelper$Status
-
-
-public static "values"(): ($AuthenticationHelper$Status)[]
-public static "valueOf"(arg0: string): $AuthenticationHelper$Status
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $AuthenticationHelper$Status$Type = (("authenticated") | ("unauthenticated") | ("offline_mode")) | ($AuthenticationHelper$Status);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $AuthenticationHelper$Status_ = $AuthenticationHelper$Status$Type;
-}}
 declare module "packages/yesman/epicfight/api/animation/$Joint$HierarchicalJointAccessor$Builder" {
 import {$Joint$HierarchicalJointAccessor, $Joint$HierarchicalJointAccessor$Type} from "packages/yesman/epicfight/api/animation/$Joint$HierarchicalJointAccessor"
 
 export class $Joint$HierarchicalJointAccessor$Builder {
 
 
-public "append"(arg0: integer): $Joint$HierarchicalJointAccessor$Builder
 public "build"(): $Joint$HierarchicalJointAccessor
+public "append"(arg0: integer): $Joint$HierarchicalJointAccessor$Builder
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -933,14 +683,14 @@ export class $ValueModifier$ResultCalculator implements $ValueModifier {
 constructor()
 
 public "toValueModifier"(): $ValueModifier
+public "multiply"(arg0: float): void
+public "attach"(arg0: $ValueModifier$ResultCalculator$Type): void
+public "attach"(arg0: $ValueModifier$Type): $ValueModifier$ResultCalculator
 public "getResult"(arg0: float): float
 public "add"(arg0: float): void
 public "set"(arg0: float): void
-public "multiply"(arg0: float): void
-public "attach"(arg0: $ValueModifier$Type): $ValueModifier$ResultCalculator
-public "attach"(arg0: $ValueModifier$ResultCalculator$Type): void
-public static "adder"(arg0: float): $ValueModifier
 public static "calculator"(): $ValueModifier$ResultCalculator
+public static "adder"(arg0: float): $ValueModifier
 public static "setter"(arg0: float): $ValueModifier
 public static "multiplier"(arg0: float): $ValueModifier
 set "ter"(value: float)
@@ -981,71 +731,6 @@ export type $Pose$LoadOperation$Type = (("set") | ("overwrite") | ("append_absen
 declare global {
 export type $Pose$LoadOperation_ = $Pose$LoadOperation$Type;
 }}
-declare module "packages/yesman/epicfight/api/animation/$AnimationVariables$AnimationVariableKey" {
-import {$TypeFlexibleHashMap$TypeKey, $TypeFlexibleHashMap$TypeKey$Type} from "packages/yesman/epicfight/api/utils/datastruct/$TypeFlexibleHashMap$TypeKey"
-import {$Animator, $Animator$Type} from "packages/yesman/epicfight/api/animation/$Animator"
-
-export class $AnimationVariables$AnimationVariableKey<T> implements $TypeFlexibleHashMap$TypeKey<(T)> {
-
-
-public "isSharedKey"(): boolean
-public "isSynched"(): boolean
-public "defaultValue"(arg0: $Animator$Type): T
-public "defaultValue"(): T
-public "mutable"(): boolean
-get "sharedKey"(): boolean
-get "synched"(): boolean
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $AnimationVariables$AnimationVariableKey$Type<T> = ($AnimationVariables$AnimationVariableKey<(T)>);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $AnimationVariables$AnimationVariableKey_<T> = $AnimationVariables$AnimationVariableKey$Type<(T)>;
-}}
-declare module "packages/yesman/epicfight/api/physics/$SimulationTypes" {
-import {$InverseKinematicsSimulator$InverseKinematicsBuilder, $InverseKinematicsSimulator$InverseKinematicsBuilder$Type} from "packages/yesman/epicfight/api/physics/ik/$InverseKinematicsSimulator$InverseKinematicsBuilder"
-import {$InverseKinematicsProvider, $InverseKinematicsProvider$Type} from "packages/yesman/epicfight/api/physics/ik/$InverseKinematicsProvider"
-import {$ResourceLocation, $ResourceLocation$Type} from "packages/net/minecraft/resources/$ResourceLocation"
-import {$ClothSimulator$ClothObject, $ClothSimulator$ClothObject$Type} from "packages/yesman/epicfight/api/client/physics/cloth/$ClothSimulator$ClothObject"
-import {$ClothSimulatable, $ClothSimulatable$Type} from "packages/yesman/epicfight/api/client/physics/cloth/$ClothSimulatable"
-import {$InverseKinematicsSimulatable, $InverseKinematicsSimulatable$Type} from "packages/yesman/epicfight/api/physics/ik/$InverseKinematicsSimulatable"
-import {$ClothSimulator$ClothObjectBuilder, $ClothSimulator$ClothObjectBuilder$Type} from "packages/yesman/epicfight/api/client/physics/cloth/$ClothSimulator$ClothObjectBuilder"
-import {$InverseKinematicsSimulator, $InverseKinematicsSimulator$Type} from "packages/yesman/epicfight/api/physics/ik/$InverseKinematicsSimulator"
-import {$SoftBodyTranslatable, $SoftBodyTranslatable$Type} from "packages/yesman/epicfight/api/client/model/$SoftBodyTranslatable"
-import {$SimulationObject$SimulationObjectBuilder, $SimulationObject$SimulationObjectBuilder$Type} from "packages/yesman/epicfight/api/physics/$SimulationObject$SimulationObjectBuilder"
-import {$PhysicsSimulator, $PhysicsSimulator$Type} from "packages/yesman/epicfight/api/physics/$PhysicsSimulator"
-import {$InverseKinematicsSimulator$InverseKinematicsObject, $InverseKinematicsSimulator$InverseKinematicsObject$Type} from "packages/yesman/epicfight/api/physics/ik/$InverseKinematicsSimulator$InverseKinematicsObject"
-import {$SimulationObject, $SimulationObject$Type} from "packages/yesman/epicfight/api/physics/$SimulationObject"
-import {$Joint, $Joint$Type} from "packages/yesman/epicfight/api/animation/$Joint"
-import {$ClothSimulator, $ClothSimulator$Type} from "packages/yesman/epicfight/api/client/physics/cloth/$ClothSimulator"
-import {$SimulationProvider, $SimulationProvider$Type} from "packages/yesman/epicfight/api/physics/$SimulationProvider"
-
-export interface $SimulationTypes<KEY, O, PV extends $SimulationProvider<(O), (DATA), (B), (PV)>, B extends $SimulationObject$SimulationObjectBuilder, DATA extends $SimulationObject<(B), (PV), (O)>, SIM extends $PhysicsSimulator<(KEY), (B), (PV), (O), (DATA)>> {
-
-}
-
-export namespace $SimulationTypes {
-const CLOTH: $SimulationTypes<($ResourceLocation), ($ClothSimulatable), ($SoftBodyTranslatable), ($ClothSimulator$ClothObjectBuilder), ($ClothSimulator$ClothObject), ($ClothSimulator)>
-const INVERSE_KINEMATICS: $SimulationTypes<($Joint), ($InverseKinematicsSimulatable), ($InverseKinematicsProvider), ($InverseKinematicsSimulator$InverseKinematicsBuilder), ($InverseKinematicsSimulator$InverseKinematicsObject), ($InverseKinematicsSimulator)>
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $SimulationTypes$Type<KEY, O, PV, B, DATA, SIM> = ($SimulationTypes<(KEY), (O), (PV), (B), (DATA), (SIM)>);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $SimulationTypes_<KEY, O, PV, B, DATA, SIM> = $SimulationTypes$Type<(KEY), (O), (PV), (B), (DATA), (SIM)>;
-}}
 declare module "packages/yesman/epicfight/api/animation/$AnimationVariables$IndependentAnimationVariableKey" {
 import {$AnimationVariables$AnimationVariableKey, $AnimationVariables$AnimationVariableKey$Type} from "packages/yesman/epicfight/api/animation/$AnimationVariables$AnimationVariableKey"
 
@@ -1074,8 +759,8 @@ import {$CompoundTag, $CompoundTag$Type} from "packages/net/minecraft/nbt/$Compo
 import {$CapabilityItem, $CapabilityItem$Type} from "packages/yesman/epicfight/world/capabilities/item/$CapabilityItem"
 import {$ControlEngine, $ControlEngine$Type} from "packages/yesman/epicfight/client/events/engine/$ControlEngine"
 import {$SkillContainer, $SkillContainer$Type} from "packages/yesman/epicfight/skill/$SkillContainer"
-import {$BattleModeGui, $BattleModeGui$Type} from "packages/yesman/epicfight/client/gui/$BattleModeGui"
 import {$PlayerPatch, $PlayerPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/player/$PlayerPatch"
+import {$BattleModeGui, $BattleModeGui$Type} from "packages/yesman/epicfight/client/gui/$BattleModeGui"
 import {$SPSkillExecutionFeedback, $SPSkillExecutionFeedback$Type} from "packages/yesman/epicfight/network/server/$SPSkillExecutionFeedback"
 import {$DamageSource, $DamageSource$Type} from "packages/net/minecraft/world/damagesource/$DamageSource"
 import {$Skill, $Skill$Type} from "packages/yesman/epicfight/skill/$Skill"
@@ -1084,9 +769,9 @@ import {$GuardSkill$Builder, $GuardSkill$Builder$Type} from "packages/yesman/epi
 import {$SkillBookScreen$AttributeIconList, $SkillBookScreen$AttributeIconList$Type} from "packages/yesman/epicfight/client/gui/screen/$SkillBookScreen$AttributeIconList"
 import {$HoldableSkill, $HoldableSkill$Type} from "packages/yesman/epicfight/skill/modules/$HoldableSkill"
 import {$KeyMapping, $KeyMapping$Type} from "packages/net/minecraft/client/$KeyMapping"
+import {$FriendlyByteBuf, $FriendlyByteBuf$Type} from "packages/net/minecraft/network/$FriendlyByteBuf"
 import {$Set, $Set$Type} from "packages/java/util/$Set"
 import {$WeaponCategory, $WeaponCategory$Type} from "packages/yesman/epicfight/world/capabilities/item/$WeaponCategory"
-import {$FriendlyByteBuf, $FriendlyByteBuf$Type} from "packages/net/minecraft/network/$FriendlyByteBuf"
 import {$GuardSkill$BlockType, $GuardSkill$BlockType$Type} from "packages/yesman/epicfight/skill/guard/$GuardSkill$BlockType"
 import {$TakeDamageEvent$Attack, $TakeDamageEvent$Attack$Type} from "packages/yesman/epicfight/world/entity/eventlistener/$TakeDamageEvent$Attack"
 import {$Entity, $Entity$Type} from "packages/net/minecraft/world/entity/$Entity"
@@ -1095,8 +780,13 @@ export class $GuardSkill extends $Skill implements $HoldableSkill {
 
 constructor(arg0: $GuardSkill$Builder$Type)
 
-public "getKeyMapping"(): $KeyMapping
 public static "createGuardBuilder"(): $GuardSkill$Builder
+public "getKeyMapping"(): $KeyMapping
+public "gatherHoldArguments"(arg0: $SkillContainer$Type, arg1: $ControlEngine$Type, arg2: $FriendlyByteBuf$Type): void
+public "isExecutableState"(arg0: $PlayerPatch$Type<(any)>): boolean
+public "onStopHolding"(arg0: $SkillContainer$Type, arg1: $SPSkillExecutionFeedback$Type): void
+public "cancelOnServer"(arg0: $SkillContainer$Type, arg1: $FriendlyByteBuf$Type): void
+public "cancelOnClient"(arg0: $SkillContainer$Type, arg1: $FriendlyByteBuf$Type): void
 public "onInitiate"(arg0: $SkillContainer$Type): void
 public "onInitiateClient"(arg0: $SkillContainer$Type): void
 public "onRemoveClient"(arg0: $SkillContainer$Type): void
@@ -1109,17 +799,12 @@ public "getAvailableWeaponCategories"(): $Set<($WeaponCategory)>
 public "getCustomConsumptionTooltips"(arg0: $SkillBookScreen$AttributeIconList$Type): boolean
 public "startHolding"(arg0: $SkillContainer$Type): void
 public "resetHolding"(arg0: $SkillContainer$Type): void
-public "isExecutableState"(arg0: $PlayerPatch$Type<(any)>): boolean
-public "onStopHolding"(arg0: $SkillContainer$Type, arg1: $SPSkillExecutionFeedback$Type): void
-public "cancelOnServer"(arg0: $SkillContainer$Type, arg1: $FriendlyByteBuf$Type): void
-public "cancelOnClient"(arg0: $SkillContainer$Type, arg1: $FriendlyByteBuf$Type): void
-public "gatherHoldArguments"(arg0: $SkillContainer$Type, arg1: $ControlEngine$Type, arg2: $FriendlyByteBuf$Type): void
 public "setParams"(arg0: $CompoundTag$Type): void
 public "canExecute"(arg0: $SkillContainer$Type): boolean
-public "guard"(arg0: $SkillContainer$Type, arg1: $CapabilityItem$Type, arg2: $TakeDamageEvent$Attack$Type, arg3: float, arg4: float, arg5: boolean): void
 public static "getOffender"(arg0: $DamageSource$Type): $Entity
 public "dealEvent"(arg0: $PlayerPatch$Type<(any)>, arg1: $TakeDamageEvent$Attack$Type, arg2: boolean): void
 public "isHoldingWeaponAvailable"(arg0: $PlayerPatch$Type<(any)>, arg1: $CapabilityItem$Type, arg2: $GuardSkill$BlockType$Type): boolean
+public "guard"(arg0: $SkillContainer$Type, arg1: $CapabilityItem$Type, arg2: $TakeDamageEvent$Attack$Type, arg3: float, arg4: float, arg5: boolean): void
 public "asSkill"(): $Skill
 get "keyMapping"(): $KeyMapping
 get "availableWeaponCategories"(): $Set<($WeaponCategory)>
@@ -1166,25 +851,25 @@ static readonly "WEIGHT_CORRECTION": double
 constructor()
 
 public "setAttackTarget"(arg0: $LivingEntity$Type): void
-public "handler$blh000$tick"(arg0: $LivingEvent$LivingTickEvent$Type, arg1: $CallbackInfo$Type): void
+public "handler$chc000$tick"(arg0: $LivingEvent$LivingTickEvent$Type, arg1: $CallbackInfo$Type): void
 public "startSkillHolding"(arg0: $HoldableSkill$Type): boolean
 public "setModelYRot"(arg0: float, arg1: boolean): void
 public "disableModelYRot"(arg0: boolean): void
 public "toVanillaMode"(arg0: boolean): void
 public "toEpicFightMode"(arg0: boolean): void
-public "tick"(arg0: $LivingEvent$LivingTickEvent$Type): void
+public "onJoinWorld"(arg0: $ServerPlayer$Type, arg1: $EntityJoinLevelEvent$Type): void
 public "updateMotion"(arg0: boolean): void
 public "onStartTracking"(arg0: $ServerPlayer$Type): void
-public "onJoinWorld"(arg0: $ServerPlayer$Type, arg1: $EntityJoinLevelEvent$Type): void
 public "tryHurt"(arg0: $DamageSource$Type, arg1: float): $AttackResult
+public "modifyLivingMotionByCurrentItem"(arg0: boolean): void
+public "modifyLivingMotionByCurrentItem"(): void
 public "setLastAttackSuccess"(arg0: boolean): void
 public "sendToAllPlayersTrackingMe"(arg0: any): void
 public "updateHeldItem"(arg0: $CapabilityItem$Type, arg1: $CapabilityItem$Type, arg2: $ItemStack$Type, arg3: $ItemStack$Type, arg4: $InteractionHand$Type): void
 public "onDodgeSuccess"(arg0: $DamageSource$Type, arg1: $Vec3$Type): void
 public "isTargetInvulnerable"(arg0: $Entity$Type): boolean
 public "setGrapplingTarget"(arg0: $LivingEntity$Type): void
-public "modifyLivingMotionByCurrentItem"(): void
-public "modifyLivingMotionByCurrentItem"(arg0: boolean): void
+public "tick"(arg0: $LivingEvent$LivingTickEvent$Type): void
 public "getTarget"(): $LivingEntity
 set "attackTarget"(value: $LivingEntity$Type)
 set "lastAttackSuccess"(value: boolean)
@@ -1236,14 +921,14 @@ static readonly "EMPTY_CLIP": $AnimationClip
 
 constructor()
 
-public "hasJointTransform"(arg0: string): boolean
-public "getJointTransform"(arg0: string): $TransformSheet
-public "bakeKeyframes"(): void
 public "addJointTransform"(arg0: string, arg1: $TransformSheet$Type): void
+public "bakeKeyframes"(): void
 public "getPoseInTime"(arg0: float): $Pose
 public "getJointTransforms"(): $Map<(string), ($TransformSheet)>
 public "setClipTime"(arg0: float): void
 public "getClipTime"(): float
+public "hasJointTransform"(arg0: string): boolean
+public "getJointTransform"(arg0: string): $TransformSheet
 public "setBaked"(): void
 public "reset"(): void
 get "jointTransforms"(): $Map<(string), ($TransformSheet)>
@@ -1270,10 +955,10 @@ import {$AbstractPlayerEvent, $AbstractPlayerEvent$Type} from "packages/yesman/e
 export class $TakeDamageEvent extends $AbstractPlayerEvent<($ServerPlayerPatch)> {
 
 
-public "getDamage"(): float
 public "getDamageSource"(): $DamageSource
-get "damage"(): float
+public "getDamage"(): float
 get "damageSource"(): $DamageSource
+get "damage"(): float
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1286,94 +971,6 @@ export type $TakeDamageEvent$Type = ($TakeDamageEvent);
  */
 declare global {
 export type $TakeDamageEvent_ = $TakeDamageEvent$Type;
-}}
-declare module "packages/yesman/epicfight/particle/$HitParticleType" {
-import {$SimpleParticleType, $SimpleParticleType$Type} from "packages/net/minecraft/core/particles/$SimpleParticleType"
-import {$ServerLevel, $ServerLevel$Type} from "packages/net/minecraft/server/level/$ServerLevel"
-import {$Vector3d, $Vector3d$Type} from "packages/org/joml/$Vector3d"
-import {$BiFunction, $BiFunction$Type} from "packages/java/util/function/$BiFunction"
-import {$Entity, $Entity$Type} from "packages/net/minecraft/world/entity/$Entity"
-
-export class $HitParticleType extends $SimpleParticleType {
-static readonly "CENTER_OF_TARGET": $BiFunction<($Entity), ($Entity), ($Vector3d)>
-static readonly "RANDOM_WITHIN_BOUNDING_BOX": $BiFunction<($Entity), ($Entity), ($Vector3d)>
-static readonly "FRONT_OF_EYES": $BiFunction<($Entity), ($Entity), ($Vector3d)>
-static readonly "MIDDLE_OF_ENTITIES": $BiFunction<($Entity), ($Entity), ($Vector3d)>
-static readonly "ZERO": $BiFunction<($Entity), ($Entity), ($Vector3d)>
-static readonly "ATTACKER_XY_ROTATION": $BiFunction<($Entity), ($Entity), ($Vector3d)>
-static readonly "ATTACKER_Y_ROTATION": $BiFunction<($Entity), ($Entity), ($Vector3d)>
- "positionProvider": $BiFunction<($Entity), ($Entity), ($Vector3d)>
- "argumentProvider": $BiFunction<($Entity), ($Entity), ($Vector3d)>
-
-constructor(arg0: boolean)
-constructor(arg0: boolean, arg1: $BiFunction$Type<($Entity$Type), ($Entity$Type), ($Vector3d$Type)>, arg2: $BiFunction$Type<($Entity$Type), ($Entity$Type), ($Vector3d$Type)>)
-
-public "spawnParticleWithArgument"(arg0: $ServerLevel$Type, arg1: $Entity$Type, arg2: $Entity$Type): void
-public "spawnParticleWithArgument"(arg0: $ServerLevel$Type, arg1: double, arg2: double, arg3: double, arg4: double, arg5: double, arg6: double): void
-public "spawnParticleWithArgument"(arg0: $ServerLevel$Type, arg1: $BiFunction$Type<($Entity$Type), ($Entity$Type), ($Vector3d$Type)>, arg2: $BiFunction$Type<($Entity$Type), ($Entity$Type), ($Vector3d$Type)>, arg3: $Entity$Type, arg4: $Entity$Type): void
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $HitParticleType$Type = ($HitParticleType);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $HitParticleType_ = $HitParticleType$Type;
-}}
-declare module "packages/yesman/epicfight/world/capabilities/entitypatch/$EntityDecorations$ParticleGenerator" {
-export {} // Mark the file as a module, do not remove unless there are other import/exports!
-export interface $EntityDecorations$ParticleGenerator {
-
- "shouldRemove"(): boolean
- "generateParticles"(): void
-
-(): boolean
-}
-
-export namespace $EntityDecorations$ParticleGenerator {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $EntityDecorations$ParticleGenerator$Type = ($EntityDecorations$ParticleGenerator);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $EntityDecorations$ParticleGenerator_ = $EntityDecorations$ParticleGenerator$Type;
-}}
-declare module "packages/yesman/epicfight/skill/$SkillSlot" {
-import {$ExtendableEnumManager, $ExtendableEnumManager$Type} from "packages/yesman/epicfight/api/utils/$ExtendableEnumManager"
-import {$ExtendableEnum, $ExtendableEnum$Type} from "packages/yesman/epicfight/api/utils/$ExtendableEnum"
-import {$SkillCategory, $SkillCategory$Type} from "packages/yesman/epicfight/skill/$SkillCategory"
-
-export interface $SkillSlot extends $ExtendableEnum {
-
- "category"(): $SkillCategory
- "universalOrdinal"(): integer
-}
-
-export namespace $SkillSlot {
-const ENUM_MANAGER: $ExtendableEnumManager<($SkillSlot)>
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $SkillSlot$Type = ($SkillSlot);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $SkillSlot_ = $SkillSlot$Type;
 }}
 declare module "packages/yesman/epicfight/api/client/animation/property/$JointMask" {
 import {$JointMask$BindModifier, $JointMask$BindModifier$Type} from "packages/yesman/epicfight/api/client/animation/property/$JointMask$BindModifier"
@@ -1397,66 +994,6 @@ export type $JointMask$Type = ($JointMask);
 declare global {
 export type $JointMask_ = $JointMask$Type;
 }}
-declare module "packages/yesman/epicfight/api/client/physics/$AbstractSimulator" {
-import {$Pair, $Pair$Type} from "packages/org/apache/commons/lang3/tuple/$Pair"
-import {$SimulationObject$SimulationObjectBuilder, $SimulationObject$SimulationObjectBuilder$Type} from "packages/yesman/epicfight/api/physics/$SimulationObject$SimulationObjectBuilder"
-import {$BooleanSupplier, $BooleanSupplier$Type} from "packages/java/util/function/$BooleanSupplier"
-import {$PhysicsSimulator, $PhysicsSimulator$Type} from "packages/yesman/epicfight/api/physics/$PhysicsSimulator"
-import {$List, $List$Type} from "packages/java/util/$List"
-import {$Optional, $Optional$Type} from "packages/java/util/$Optional"
-import {$SimulationObject, $SimulationObject$Type} from "packages/yesman/epicfight/api/physics/$SimulationObject"
-import {$SimulationProvider, $SimulationProvider$Type} from "packages/yesman/epicfight/api/physics/$SimulationProvider"
-
-export class $AbstractSimulator<KEY, B extends $SimulationObject$SimulationObjectBuilder, PV extends $SimulationProvider<(O), (SO), (B), (PV)>, O, SO extends $SimulationObject<(B), (PV), (O)>> implements $PhysicsSimulator<(KEY), (B), (PV), (O), (SO)> {
-
-constructor()
-
-public "restart"(arg0: KEY): void
-public "runWhen"(arg0: KEY, arg1: PV, arg2: B, arg3: $BooleanSupplier$Type): void
-public "runUntil"(arg0: KEY, arg1: PV, arg2: B, arg3: $BooleanSupplier$Type): void
-public "getRunningObject"(arg0: KEY): $Optional<(SO)>
-public "getAllRunningObjects"(): $List<($Pair<(KEY), (SO)>)>
-public "tick"(arg0: O): void
-public "stop"(arg0: KEY): void
-public "isRunning"(arg0: KEY): boolean
-get "allRunningObjects"(): $List<($Pair<(KEY), (SO)>)>
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $AbstractSimulator$Type<KEY, B, PV, O, SO> = ($AbstractSimulator<(KEY), (B), (PV), (O), (SO)>);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $AbstractSimulator_<KEY, B, PV, O, SO> = $AbstractSimulator$Type<(KEY), (B), (PV), (O), (SO)>;
-}}
-declare module "packages/yesman/epicfight/api/utils/$ExtendableEnum" {
-export {} // Mark the file as a module, do not remove unless there are other import/exports!
-export interface $ExtendableEnum {
-
- "universalOrdinal"(): integer
-
-(): integer
-}
-
-export namespace $ExtendableEnum {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $ExtendableEnum$Type = ($ExtendableEnum);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $ExtendableEnum_ = $ExtendableEnum$Type;
-}}
 declare module "packages/yesman/epicfight/api/physics/ik/$InverseKinematicsSimulator$InverseKinematicsBuilder" {
 import {$SimulationObject$SimulationObjectBuilder, $SimulationObject$SimulationObjectBuilder$Type} from "packages/yesman/epicfight/api/physics/$SimulationObject$SimulationObjectBuilder"
 import {$Vec3f, $Vec3f$Type} from "packages/yesman/epicfight/api/utils/math/$Vec3f"
@@ -1479,77 +1016,6 @@ export type $InverseKinematicsSimulator$InverseKinematicsBuilder$Type = ($Invers
  */
 declare global {
 export type $InverseKinematicsSimulator$InverseKinematicsBuilder_ = $InverseKinematicsSimulator$InverseKinematicsBuilder$Type;
-}}
-declare module "packages/yesman/epicfight/api/collider/$OBBCollider" {
-import {$VertexConsumer, $VertexConsumer$Type} from "packages/com/mojang/blaze3d/vertex/$VertexConsumer"
-import {$CompoundTag, $CompoundTag$Type} from "packages/net/minecraft/nbt/$CompoundTag"
-import {$Armature, $Armature$Type} from "packages/yesman/epicfight/api/model/$Armature"
-import {$OpenMatrix4f, $OpenMatrix4f$Type} from "packages/yesman/epicfight/api/utils/math/$OpenMatrix4f"
-import {$RenderType, $RenderType$Type} from "packages/net/minecraft/client/renderer/$RenderType"
-import {$PoseStack, $PoseStack$Type} from "packages/com/mojang/blaze3d/vertex/$PoseStack"
-import {$Pose, $Pose$Type} from "packages/yesman/epicfight/api/animation/$Pose"
-import {$Joint, $Joint$Type} from "packages/yesman/epicfight/api/animation/$Joint"
-import {$MultiBufferSource, $MultiBufferSource$Type} from "packages/net/minecraft/client/renderer/$MultiBufferSource"
-import {$AABB, $AABB$Type} from "packages/net/minecraft/world/phys/$AABB"
-import {$Collider, $Collider$Type} from "packages/yesman/epicfight/api/collider/$Collider"
-import {$Entity, $Entity$Type} from "packages/net/minecraft/world/entity/$Entity"
-
-export class $OBBCollider extends $Collider {
-
-constructor(arg0: double, arg1: double, arg2: double, arg3: double, arg4: double, arg5: double)
-constructor(arg0: $AABB$Type)
-constructor(arg0: $AABB$Type, arg1: double, arg2: double, arg3: double, arg4: double, arg5: double, arg6: double, arg7: double, arg8: double, arg9: double, arg10: double, arg11: double, arg12: double, arg13: double, arg14: double, arg15: double)
-
-public "drawInternal"(arg0: $PoseStack$Type, arg1: $VertexConsumer$Type, arg2: $Armature$Type, arg3: $Joint$Type, arg4: $Pose$Type, arg5: $Pose$Type, arg6: float, arg7: integer): void
-public "isCollide"(arg0: $OBBCollider$Type): boolean
-public "isCollide"(arg0: $Entity$Type): boolean
-public "getRenderType"(): $RenderType
-public "toString"(): string
-public "transform"(arg0: $OpenMatrix4f$Type): void
-public "serialize"(arg0: $CompoundTag$Type): $CompoundTag
-public "draw"(arg0: $PoseStack$Type, arg1: $MultiBufferSource$Type, arg2: integer): void
-public "deepCopy"(): $OBBCollider
-get "renderType"(): $RenderType
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $OBBCollider$Type = ($OBBCollider);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $OBBCollider_ = $OBBCollider$Type;
-}}
-declare module "packages/yesman/epicfight/api/animation/property/$AnimationEvent$E2" {
-import {$AnimationEvent$Event, $AnimationEvent$Event$Type} from "packages/yesman/epicfight/api/animation/property/$AnimationEvent$Event"
-import {$AssetAccessor, $AssetAccessor$Type} from "packages/yesman/epicfight/api/asset/$AssetAccessor"
-import {$AnimationParameters, $AnimationParameters$Type} from "packages/yesman/epicfight/api/animation/property/$AnimationParameters"
-import {$LivingEntityPatch, $LivingEntityPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/$LivingEntityPatch"
-
-export interface $AnimationEvent$E2<A, B> extends $AnimationEvent$Event<(A), (B), (void), (void), (void), (void), (void), (void), (void), (void)> {
-
- "fire"(arg0: $LivingEntityPatch$Type<(any)>, arg1: $AssetAccessor$Type<(any)>, arg2: $AnimationParameters$Type<(A), (B), (void), (void), (void), (void), (void), (void), (void), (void)>): void
-
-(arg0: $LivingEntityPatch$Type<(any)>, arg1: $AssetAccessor$Type<(any)>, arg2: $AnimationParameters$Type<(A), (B), (void), (void), (void), (void), (void), (void), (void), (void)>): void
-}
-
-export namespace $AnimationEvent$E2 {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $AnimationEvent$E2$Type<A, B> = ($AnimationEvent$E2<(A), (B)>);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $AnimationEvent$E2_<A, B> = $AnimationEvent$E2$Type<(A), (B)>;
 }}
 declare module "packages/yesman/epicfight/skill/$Skill$Resource$ResourceConsumer" {
 import {$ServerPlayerPatch, $ServerPlayerPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/player/$ServerPlayerPatch"
@@ -1577,29 +1043,6 @@ export type $Skill$Resource$ResourceConsumer$Type = ($Skill$Resource$ResourceCon
 declare global {
 export type $Skill$Resource$ResourceConsumer_ = $Skill$Resource$ResourceConsumer$Type;
 }}
-declare module "packages/yesman/epicfight/world/damagesource/$ExtraDamageInstance$ExtraDamage" {
-import {$ExtraDamageInstance, $ExtraDamageInstance$Type} from "packages/yesman/epicfight/world/damagesource/$ExtraDamageInstance"
-import {$ExtraDamageInstance$ExtraDamageFunction, $ExtraDamageInstance$ExtraDamageFunction$Type} from "packages/yesman/epicfight/world/damagesource/$ExtraDamageInstance$ExtraDamageFunction"
-import {$ExtraDamageInstance$ExtraDamageTooltipFunction, $ExtraDamageInstance$ExtraDamageTooltipFunction$Type} from "packages/yesman/epicfight/world/damagesource/$ExtraDamageInstance$ExtraDamageTooltipFunction"
-
-export class $ExtraDamageInstance$ExtraDamage {
-
-constructor(arg0: $ExtraDamageInstance$ExtraDamageFunction$Type, arg1: $ExtraDamageInstance$ExtraDamageTooltipFunction$Type)
-
-public "create"(...arg0: (float)[]): $ExtraDamageInstance
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $ExtraDamageInstance$ExtraDamage$Type = ($ExtraDamageInstance$ExtraDamage);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $ExtraDamageInstance$ExtraDamage_ = $ExtraDamageInstance$ExtraDamage$Type;
-}}
 declare module "packages/yesman/epicfight/compat/kubejs/skill/$CustomChargeableSkill$CastSkillContext" {
 import {$Record, $Record$Type} from "packages/java/lang/$Record"
 import {$SkillContainer, $SkillContainer$Type} from "packages/yesman/epicfight/skill/$SkillContainer"
@@ -1612,10 +1055,10 @@ constructor(getSkill: $Skill$Type, getSkillContainer: $SkillContainer$Type, getF
 
 public "getFeedbackPacket"(): $SPSkillExecutionFeedback
 public "getSkillContainer"(): $SkillContainer
+public "getSkill"(): $Skill
 public "equals"(arg0: any): boolean
 public "toString"(): string
 public "hashCode"(): integer
-public "getSkill"(): $Skill
 get "feedbackPacket"(): $SPSkillExecutionFeedback
 get "skillContainer"(): $SkillContainer
 get "skill"(): $Skill
@@ -1632,33 +1075,6 @@ export type $CustomChargeableSkill$CastSkillContext$Type = ($CustomChargeableSki
 declare global {
 export type $CustomChargeableSkill$CastSkillContext_ = $CustomChargeableSkill$CastSkillContext$Type;
 }}
-declare module "packages/yesman/epicfight/client/renderer/patched/layer/$PatchedLayer" {
-import {$RenderLayer, $RenderLayer$Type} from "packages/net/minecraft/client/renderer/entity/layers/$RenderLayer"
-import {$PoseStack, $PoseStack$Type} from "packages/com/mojang/blaze3d/vertex/$PoseStack"
-import {$EntityModel, $EntityModel$Type} from "packages/net/minecraft/client/model/$EntityModel"
-import {$MultiBufferSource, $MultiBufferSource$Type} from "packages/net/minecraft/client/renderer/$MultiBufferSource"
-import {$OpenMatrix4f, $OpenMatrix4f$Type} from "packages/yesman/epicfight/api/utils/math/$OpenMatrix4f"
-import {$LivingEntityPatch, $LivingEntityPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/$LivingEntityPatch"
-import {$LivingEntity, $LivingEntity$Type} from "packages/net/minecraft/world/entity/$LivingEntity"
-
-export class $PatchedLayer<E extends $LivingEntity, T extends $LivingEntityPatch<(E)>, M extends $EntityModel<(E)>, R extends $RenderLayer<(E), (M)>> {
-
-constructor()
-
-public "renderLayer"(arg0: E, arg1: T, arg2: $RenderLayer$Type<(E), (M)>, arg3: $PoseStack$Type, arg4: $MultiBufferSource$Type, arg5: integer, arg6: ($OpenMatrix4f$Type)[], arg7: float, arg8: float, arg9: float, arg10: float): void
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $PatchedLayer$Type<E, T, M, R> = ($PatchedLayer<(E), (T), (M), (R)>);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $PatchedLayer_<E, T, M, R> = $PatchedLayer$Type<(E), (T), (M), (R)>;
-}}
 declare module "packages/yesman/epicfight/api/animation/$AnimationPlayer" {
 import {$AssetAccessor, $AssetAccessor$Type} from "packages/yesman/epicfight/api/asset/$AssetAccessor"
 import {$CallbackInfo, $CallbackInfo$Type} from "packages/org/spongepowered/asm/mixin/injection/callback/$CallbackInfo"
@@ -1669,37 +1085,37 @@ export class $AnimationPlayer {
 
 constructor()
 
-public "handler$blc000$tick"(arg0: $LivingEntityPatch$Type<(any)>, arg1: $CallbackInfo$Type): void
+public "handler$cgn000$tick"(arg0: $LivingEntityPatch$Type<(any)>, arg1: $CallbackInfo$Type): void
 public "getPrevElapsedTime"(): float
 public "getCurrentPose"(arg0: $LivingEntityPatch$Type<(any)>, arg1: float): $Pose
 public "setElapsedTime"(arg0: float, arg1: float): void
 public "setElapsedTime"(arg0: float): void
 public "setPlayAnimation"(arg0: $AssetAccessor$Type<(any)>): void
-public "setElapsedTimeCurrent"(arg0: float): void
 public "markDoNotResetTime"(): void
 public "setReversed"(arg0: boolean): void
-public "getRealAnimation"(): $AssetAccessor<(any)>
-public "tick"(arg0: $LivingEntityPatch$Type<(any)>): void
-public "getAnimation"(): $AssetAccessor<(any)>
 public "isEnd"(): boolean
+public "getRealAnimation"(): $AssetAccessor<(any)>
+public "getAnimation"(): $AssetAccessor<(any)>
 public "getElapsedTime"(): float
+public "tick"(arg0: $LivingEntityPatch$Type<(any)>): void
+public "setElapsedTimeCurrent"(arg0: float): void
+public "terminate"(arg0: $LivingEntityPatch$Type<(any)>): void
+public "isReversed"(): boolean
 public "toString"(): string
 public "isEmpty"(): boolean
 public "begin"(arg0: $AssetAccessor$Type<(any)>, arg1: $LivingEntityPatch$Type<(any)>): void
 public "reset"(): void
-public "terminate"(arg0: $LivingEntityPatch$Type<(any)>): void
-public "isReversed"(): boolean
 get "prevElapsedTime"(): float
 set "elapsedTime"(value: float)
 set "playAnimation"(value: $AssetAccessor$Type<(any)>)
-set "elapsedTimeCurrent"(value: float)
 set "reversed"(value: boolean)
+get "end"(): boolean
 get "realAnimation"(): $AssetAccessor<(any)>
 get "animation"(): $AssetAccessor<(any)>
-get "end"(): boolean
 get "elapsedTime"(): float
-get "empty"(): boolean
+set "elapsedTimeCurrent"(value: float)
 get "reversed"(): boolean
+get "empty"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1712,31 +1128,6 @@ export type $AnimationPlayer$Type = ($AnimationPlayer);
  */
 declare global {
 export type $AnimationPlayer_ = $AnimationPlayer$Type;
-}}
-declare module "packages/yesman/epicfight/mixin/common/$MixinProjectile" {
-import {$EntityHitResult, $EntityHitResult$Type} from "packages/net/minecraft/world/phys/$EntityHitResult"
-
-export interface $MixinProjectile {
-
- "invoke_onHitEntity"(arg0: $EntityHitResult$Type): void
-
-(arg0: $EntityHitResult$Type): void
-}
-
-export namespace $MixinProjectile {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $MixinProjectile$Type = ($MixinProjectile);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $MixinProjectile_ = $MixinProjectile$Type;
 }}
 declare module "packages/yesman/epicfight/world/level/block/$FractureBlock" {
 import {$VoxelShape, $VoxelShape$Type} from "packages/net/minecraft/world/phys/shapes/$VoxelShape"
@@ -1774,6 +1165,7 @@ static readonly "UPDATE_ALL_IMMEDIATE": integer
 static readonly "INDESTRUCTIBLE": float
 static readonly "INSTANT": float
 static readonly "UPDATE_LIMIT": integer
+ "hasCollision": boolean
 readonly "properties": $BlockBehaviour$Properties
 
 constructor(arg0: $BlockBehaviour$Properties$Type)
@@ -1795,52 +1187,6 @@ export type $FractureBlock$Type = ($FractureBlock);
  */
 declare global {
 export type $FractureBlock_ = $FractureBlock$Type;
-}}
-declare module "packages/yesman/epicfight/api/client/physics/cloth/$ClothSimulator$ClothObject" {
-import {$Mesh, $Mesh$Type} from "packages/yesman/epicfight/api/client/model/$Mesh"
-import {$VertexConsumer, $VertexConsumer$Type} from "packages/com/mojang/blaze3d/vertex/$VertexConsumer"
-import {$Armature, $Armature$Type} from "packages/yesman/epicfight/api/model/$Armature"
-import {$Vec3f, $Vec3f$Type} from "packages/yesman/epicfight/api/utils/math/$Vec3f"
-import {$OpenMatrix4f, $OpenMatrix4f$Type} from "packages/yesman/epicfight/api/utils/math/$OpenMatrix4f"
-import {$ClothSimulatable, $ClothSimulatable$Type} from "packages/yesman/epicfight/api/client/physics/cloth/$ClothSimulatable"
-import {$RenderType, $RenderType$Type} from "packages/net/minecraft/client/renderer/$RenderType"
-import {$ClothSimulator$ClothObjectBuilder, $ClothSimulator$ClothObjectBuilder$Type} from "packages/yesman/epicfight/api/client/physics/cloth/$ClothSimulator$ClothObjectBuilder"
-import {$Function, $Function$Type} from "packages/java/util/function/$Function"
-import {$SoftBodyTranslatable, $SoftBodyTranslatable$Type} from "packages/yesman/epicfight/api/client/model/$SoftBodyTranslatable"
-import {$PoseStack, $PoseStack$Type} from "packages/com/mojang/blaze3d/vertex/$PoseStack"
-import {$Mesh$DrawingFunction, $Mesh$DrawingFunction$Type} from "packages/yesman/epicfight/api/client/model/$Mesh$DrawingFunction"
-import {$SimulationObject, $SimulationObject$Type} from "packages/yesman/epicfight/api/physics/$SimulationObject"
-import {$MeshPart, $MeshPart$Type} from "packages/yesman/epicfight/api/client/model/$MeshPart"
-import {$MultiBufferSource, $MultiBufferSource$Type} from "packages/net/minecraft/client/renderer/$MultiBufferSource"
-import {$Map, $Map$Type} from "packages/java/util/$Map"
-
-export class $ClothSimulator$ClothObject implements $SimulationObject<($ClothSimulator$ClothObjectBuilder), ($SoftBodyTranslatable), ($ClothSimulatable)>, $Mesh {
-
-constructor(arg0: $ClothSimulator$ClothObjectBuilder$Type, arg1: $SoftBodyTranslatable$Type, arg2: $Map$Type<(string), ($MeshPart$Type)>, arg3: (float)[])
-
-public "getParticlePosition"(arg0: integer): $Vec3f
-public "scaleFromPose"(arg0: $PoseStack$Type, arg1: ($OpenMatrix4f$Type)[]): void
-public "drawOutline"(arg0: $PoseStack$Type, arg1: $VertexConsumer$Type, arg2: $Mesh$DrawingFunction$Type, arg3: float, arg4: float, arg5: float, arg6: float): void
-public "drawParts"(arg0: $PoseStack$Type, arg1: $VertexConsumer$Type, arg2: $Mesh$DrawingFunction$Type, arg3: integer, arg4: float, arg5: float, arg6: float, arg7: float, arg8: integer): void
-public "drawNormals"(arg0: $PoseStack$Type, arg1: $VertexConsumer$Type, arg2: $Mesh$DrawingFunction$Type, arg3: float, arg4: float, arg5: float, arg6: float): void
-public "captureMyself"(): $ClothSimulator$ClothObject
-public "drawPosed"(arg0: $PoseStack$Type, arg1: $VertexConsumer$Type, arg2: $Mesh$DrawingFunction$Type, arg3: integer, arg4: float, arg5: float, arg6: float, arg7: float, arg8: integer, arg9: $Armature$Type, arg10: ($OpenMatrix4f$Type)[]): void
-public "tick"(arg0: $ClothSimulatable$Type, arg1: $Function$Type<(float), ($OpenMatrix4f$Type)>, arg2: float, arg3: $Armature$Type, arg4: ($OpenMatrix4f$Type)[]): void
-public "initialize"(): void
-public "draw"(arg0: $PoseStack$Type, arg1: $VertexConsumer$Type, arg2: $Mesh$DrawingFunction$Type, arg3: integer, arg4: float, arg5: float, arg6: float, arg7: float, arg8: integer): void
-public "draw"(arg0: $PoseStack$Type, arg1: $MultiBufferSource$Type, arg2: $RenderType$Type, arg3: $Mesh$DrawingFunction$Type, arg4: integer, arg5: float, arg6: float, arg7: float, arg8: float, arg9: integer, arg10: $Armature$Type, arg11: ($OpenMatrix4f$Type)[]): void
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $ClothSimulator$ClothObject$Type = ($ClothSimulator$ClothObject);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $ClothSimulator$ClothObject_ = $ClothSimulator$ClothObject$Type;
 }}
 declare module "packages/yesman/epicfight/compat/kubejs/skill/$CustomSkill$GetTooltipOnItem" {
 import {$Record, $Record$Type} from "packages/java/lang/$Record"
@@ -1874,50 +1220,6 @@ export type $CustomSkill$GetTooltipOnItem$Type = ($CustomSkill$GetTooltipOnItem)
 declare global {
 export type $CustomSkill$GetTooltipOnItem_ = $CustomSkill$GetTooltipOnItem$Type;
 }}
-declare module "packages/yesman/epicfight/gameasset/$Armatures$ArmatureAccessor" {
-import {$Armature, $Armature$Type} from "packages/yesman/epicfight/api/model/$Armature"
-import {$Consumer, $Consumer$Type} from "packages/java/util/function/$Consumer"
-import {$Record, $Record$Type} from "packages/java/lang/$Record"
-import {$AssetAccessor, $AssetAccessor$Type} from "packages/yesman/epicfight/api/asset/$AssetAccessor"
-import {$Armatures$ArmatureContructor, $Armatures$ArmatureContructor$Type} from "packages/yesman/epicfight/gameasset/$Armatures$ArmatureContructor"
-import {$Class, $Class$Type} from "packages/java/lang/$Class"
-import {$ResourceLocation, $ResourceLocation$Type} from "packages/net/minecraft/resources/$ResourceLocation"
-import {$Runnable, $Runnable$Type} from "packages/java/lang/$Runnable"
-
-export class $Armatures$ArmatureAccessor<A extends $Armature> extends $Record implements $AssetAccessor<(A)> {
-
-constructor(registryName: $ResourceLocation$Type, armatureConstructor: $Armatures$ArmatureContructor$Type<(A)>, inRegistry: boolean)
-
-public "inRegistry"(): boolean
-public "armatureConstructor"(): $Armatures$ArmatureContructor<(A)>
-public "equals"(arg0: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
-public static "create"<A extends $Armature>(arg0: string, arg1: string, arg2: $Armatures$ArmatureContructor$Type<(A)>): $Armatures$ArmatureAccessor<(A)>
-public "registryName"(): $ResourceLocation
-public "doOrThrow"(arg0: $Consumer$Type<(A)>): void
-public "checkType"(arg0: $Class$Type<(any)>): boolean
-public "ifPresent"(arg0: $Consumer$Type<(A)>): void
-public "ifPresentOrElse"(arg0: $Consumer$Type<(A)>, arg1: $Runnable$Type): void
-public "isEmpty"(): boolean
-public "isPresent"(): boolean
-public "orElse"(arg0: A): A
-public "checkNotNull"(): void
-get "empty"(): boolean
-get "present"(): boolean
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $Armatures$ArmatureAccessor$Type<A> = ($Armatures$ArmatureAccessor<(A)>);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $Armatures$ArmatureAccessor_<A> = $Armatures$ArmatureAccessor$Type<(A)>;
-}}
 declare module "packages/yesman/epicfight/api/asset/$AssetAccessor" {
 import {$Consumer, $Consumer$Type} from "packages/java/util/function/$Consumer"
 import {$Class, $Class$Type} from "packages/java/lang/$Class"
@@ -1930,14 +1232,14 @@ export interface $AssetAccessor<O> extends $Supplier<(O)> {
  "inRegistry"(): boolean
  "doOrThrow"(arg0: $Consumer$Type<(O)>): void
  "checkType"(arg0: $Class$Type<(any)>): boolean
- "ifPresent"(arg0: $Consumer$Type<(O)>): void
  "ifPresentOrElse"(arg0: $Consumer$Type<(O)>, arg1: $Runnable$Type): void
+ "ifPresent"(arg0: $Consumer$Type<(O)>): void
+ "registryName"(): $ResourceLocation
+ "checkNotNull"(): void
  "get"(): O
  "isEmpty"(): boolean
  "isPresent"(): boolean
  "orElse"(arg0: O): O
- "registryName"(): $ResourceLocation
- "checkNotNull"(): void
 }
 
 export namespace $AssetAccessor {
@@ -2158,9 +1460,6 @@ constructor(arg0: $DamageSource$Type)
 
 public "calculateArmorNegation"(): float
 public "is"(arg0: $TagKey$Type<($DamageType$Type)>): boolean
-public "calculateImpact"(): float
-public "addRuntimeTag"(arg0: $TagKey$Type<($DamageType$Type)>): $EpicFightDamageSource
-public "setExecute"(): $EpicFightDamageSource
 public "attachDamageModifier"(arg0: $ValueModifier$Type): $EpicFightDamageSource
 public "attachArmorNegationModifier"(arg0: $ValueModifier$Type): $EpicFightDamageSource
 public "attachImpactModifier"(arg0: $ValueModifier$Type): $EpicFightDamageSource
@@ -2180,6 +1479,9 @@ public "isBasicAttack"(): boolean
 public "setAnimation"(arg0: $AnimationManager$AnimationAccessor$Type<(any)>): $EpicFightDamageSource
 public "getAnimation"(): $AnimationManager$AnimationAccessor<(any)>
 public "calculateDamageAgainst"(arg0: $Entity$Type, arg1: $LivingEntity$Type, arg2: float): float
+public "calculateImpact"(): float
+public "addRuntimeTag"(arg0: $TagKey$Type<($DamageType$Type)>): $EpicFightDamageSource
+public "setExecute"(): $EpicFightDamageSource
 set "usedItem"(value: $ItemStack$Type)
 get "usedItem"(): $ItemStack
 set "stunType"(value: $StunType$Type)
@@ -2248,50 +1550,6 @@ export type $HumanoidMesh$Type = ($HumanoidMesh);
 declare global {
 export type $HumanoidMesh_ = $HumanoidMesh$Type;
 }}
-declare module "packages/yesman/epicfight/api/physics/ik/$InverseKinematicsProvider" {
-import {$InverseKinematicsSimulator$InverseKinematicsBuilder, $InverseKinematicsSimulator$InverseKinematicsBuilder$Type} from "packages/yesman/epicfight/api/physics/ik/$InverseKinematicsSimulator$InverseKinematicsBuilder"
-import {$Armature, $Armature$Type} from "packages/yesman/epicfight/api/model/$Armature"
-import {$Vec3f, $Vec3f$Type} from "packages/yesman/epicfight/api/utils/math/$Vec3f"
-import {$InverseKinematicsSimulator$BakedInverseKinematicsDefinition, $InverseKinematicsSimulator$BakedInverseKinematicsDefinition$Type} from "packages/yesman/epicfight/api/physics/ik/$InverseKinematicsSimulator$BakedInverseKinematicsDefinition"
-import {$JointTransform, $JointTransform$Type} from "packages/yesman/epicfight/api/animation/$JointTransform"
-import {$EnderDragonPatch, $EnderDragonPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/boss/enderdragon/$EnderDragonPatch"
-import {$TransformSheet, $TransformSheet$Type} from "packages/yesman/epicfight/api/animation/$TransformSheet"
-import {$OpenMatrix4f, $OpenMatrix4f$Type} from "packages/yesman/epicfight/api/utils/math/$OpenMatrix4f"
-import {$InverseKinematicsSimulatable, $InverseKinematicsSimulatable$Type} from "packages/yesman/epicfight/api/physics/ik/$InverseKinematicsSimulatable"
-import {$InverseKinematicsSimulator$InverseKinematicsObject, $InverseKinematicsSimulator$InverseKinematicsObject$Type} from "packages/yesman/epicfight/api/physics/ik/$InverseKinematicsSimulator$InverseKinematicsObject"
-import {$Pose, $Pose$Type} from "packages/yesman/epicfight/api/animation/$Pose"
-import {$Joint, $Joint$Type} from "packages/yesman/epicfight/api/animation/$Joint"
-import {$Quaternionf, $Quaternionf$Type} from "packages/org/joml/$Quaternionf"
-import {$SimulationProvider, $SimulationProvider$Type} from "packages/yesman/epicfight/api/physics/$SimulationProvider"
-
-export interface $InverseKinematicsProvider extends $SimulationProvider<($InverseKinematicsSimulatable), ($InverseKinematicsSimulator$InverseKinematicsObject), ($InverseKinematicsSimulator$InverseKinematicsBuilder), ($InverseKinematicsProvider)> {
-
- "clipAnimation"(arg0: $TransformSheet$Type, arg1: $InverseKinematicsSimulator$BakedInverseKinematicsDefinition$Type): $TransformSheet
- "startPartAnimation"(arg0: $InverseKinematicsSimulator$BakedInverseKinematicsDefinition$Type, arg1: $InverseKinematicsSimulator$InverseKinematicsObject$Type, arg2: $TransformSheet$Type, arg3: $Vec3f$Type): void
- "startSimple"(arg0: $InverseKinematicsSimulator$InverseKinematicsObject$Type): void
- "getRayCastedTipPosition"(arg0: $InverseKinematicsSimulatable$Type, arg1: $Vec3f$Type, arg2: $OpenMatrix4f$Type, arg3: float, arg4: float): $Vec3f
- "correctRootRotation"(arg0: $JointTransform$Type, arg1: $EnderDragonPatch$Type, arg2: float): void
- "applyFabrikToJoint"(arg0: $Vec3f$Type, arg1: $Pose$Type, arg2: $Armature$Type, arg3: $Joint$Type, arg4: $Joint$Type, arg5: $Quaternionf$Type): void
- "createSimulationData"(arg0: $InverseKinematicsProvider$Type, arg1: $InverseKinematicsSimulatable$Type, arg2: $InverseKinematicsSimulator$InverseKinematicsBuilder$Type): $InverseKinematicsSimulator$InverseKinematicsObject
-
-(arg0: $TransformSheet$Type, arg1: $InverseKinematicsSimulator$BakedInverseKinematicsDefinition$Type): $TransformSheet
-}
-
-export namespace $InverseKinematicsProvider {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $InverseKinematicsProvider$Type = ($InverseKinematicsProvider);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $InverseKinematicsProvider_ = $InverseKinematicsProvider$Type;
-}}
 declare module "packages/yesman/epicfight/api/utils/datastruct/$TypeFlexibleHashMap$TypeKey" {
 export {} // Mark the file as a module, do not remove unless there are other import/exports!
 export interface $TypeFlexibleHashMap$TypeKey<T> {
@@ -2315,119 +1573,6 @@ export type $TypeFlexibleHashMap$TypeKey$Type<T> = ($TypeFlexibleHashMap$TypeKey
  */
 declare global {
 export type $TypeFlexibleHashMap$TypeKey_<T> = $TypeFlexibleHashMap$TypeKey$Type<(T)>;
-}}
-declare module "packages/yesman/epicfight/api/physics/$SimulatableObject" {
-import {$PhysicsSimulator, $PhysicsSimulator$Type} from "packages/yesman/epicfight/api/physics/$PhysicsSimulator"
-import {$SimulationTypes, $SimulationTypes$Type} from "packages/yesman/epicfight/api/physics/$SimulationTypes"
-import {$Optional, $Optional$Type} from "packages/java/util/$Optional"
-
-export interface $SimulatableObject {
-
- "getSimulator"<SIM extends $PhysicsSimulator<(any), (any), (any), (any), (any)>>(arg0: $SimulationTypes$Type<(any), (any), (any), (any), (any), (SIM)>): $Optional<(SIM)>
-
-(arg0: $SimulationTypes$Type<(any), (any), (any), (any), (any), (SIM)>): $Optional<(SIM)>
-}
-
-export namespace $SimulatableObject {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $SimulatableObject$Type = ($SimulatableObject);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $SimulatableObject_ = $SimulatableObject$Type;
-}}
-declare module "packages/yesman/epicfight/api/client/physics/cloth/$ClothSimulator$ClothObjectBuilder" {
-import {$ClothSimulator$ClothOBBCollider, $ClothSimulator$ClothOBBCollider$Type} from "packages/yesman/epicfight/api/client/physics/cloth/$ClothSimulator$ClothOBBCollider"
-import {$Function, $Function$Type} from "packages/java/util/function/$Function"
-import {$SimulationObject$SimulationObjectBuilder, $SimulationObject$SimulationObjectBuilder$Type} from "packages/yesman/epicfight/api/physics/$SimulationObject$SimulationObjectBuilder"
-import {$List, $List$Type} from "packages/java/util/$List"
-import {$Joint, $Joint$Type} from "packages/yesman/epicfight/api/animation/$Joint"
-import {$Pair, $Pair$Type} from "packages/com/mojang/datafixers/util/$Pair"
-import {$OpenMatrix4f, $OpenMatrix4f$Type} from "packages/yesman/epicfight/api/utils/math/$OpenMatrix4f"
-import {$ClothSimulatable, $ClothSimulatable$Type} from "packages/yesman/epicfight/api/client/physics/cloth/$ClothSimulatable"
-
-export class $ClothSimulator$ClothObjectBuilder extends $SimulationObject$SimulationObjectBuilder {
-
-constructor()
-
-public "parentJoint"(arg0: $Joint$Type): $ClothSimulator$ClothObjectBuilder
-public "putAll"(arg0: $List$Type<($Pair$Type<($Function$Type<($ClothSimulatable$Type), ($OpenMatrix4f$Type)>), ($ClothSimulator$ClothOBBCollider$Type)>)>): $ClothSimulator$ClothObjectBuilder
-public "addEntry"(arg0: $Function$Type<($ClothSimulatable$Type), ($OpenMatrix4f$Type)>, arg1: $ClothSimulator$ClothOBBCollider$Type): $ClothSimulator$ClothObjectBuilder
-public static "create"(): $ClothSimulator$ClothObjectBuilder
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $ClothSimulator$ClothObjectBuilder$Type = ($ClothSimulator$ClothObjectBuilder);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $ClothSimulator$ClothObjectBuilder_ = $ClothSimulator$ClothObjectBuilder$Type;
-}}
-declare module "packages/yesman/epicfight/world/capabilities/entitypatch/$HurtableEntityPatch" {
-import {$EntityState, $EntityState$Type} from "packages/yesman/epicfight/api/animation/types/$EntityState"
-import {$StunType, $StunType$Type} from "packages/yesman/epicfight/world/damagesource/$StunType"
-import {$SoundEvent, $SoundEvent$Type} from "packages/net/minecraft/sounds/$SoundEvent"
-import {$EntityPatch, $EntityPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/$EntityPatch"
-import {$EquipmentSlot, $EquipmentSlot$Type} from "packages/net/minecraft/world/entity/$EquipmentSlot"
-import {$Vec3, $Vec3$Type} from "packages/net/minecraft/world/phys/$Vec3"
-import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
-import {$OpenMatrix4f, $OpenMatrix4f$Type} from "packages/yesman/epicfight/api/utils/math/$OpenMatrix4f"
-import {$LivingEntity, $LivingEntity$Type} from "packages/net/minecraft/world/entity/$LivingEntity"
-import {$LivingEvent$LivingTickEvent, $LivingEvent$LivingTickEvent$Type} from "packages/net/minecraftforge/event/entity/living/$LivingEvent$LivingTickEvent"
-
-export class $HurtableEntityPatch<T extends $LivingEntity> extends $EntityPatch<(T)> {
-
-constructor()
-
-public "tick"(arg0: $LivingEvent$LivingTickEvent$Type): void
-public "isStunned"(): boolean
-public "getEntityState"(): $EntityState
-public "setStunReductionOnHit"(arg0: $StunType$Type): void
-public "getStunReduction"(): float
-public "setDefaultStunReduction"(arg0: $EquipmentSlot$Type, arg1: $ItemStack$Type, arg2: $ItemStack$Type): void
-public "shouldCancelKnockback"(): boolean
-public "knockBackEntity"(arg0: $Vec3$Type, arg1: float): void
-public "playSound"(arg0: $SoundEvent$Type, arg1: float, arg2: float): void
-public "playSound"(arg0: $SoundEvent$Type, arg1: float, arg2: float, arg3: float): void
-public "overrideRender"(): boolean
-public "getModelMatrix"(arg0: float): $OpenMatrix4f
-public "getStunArmor"(): float
-public "applyStun"(arg0: $StunType$Type, arg1: float): boolean
-public "getStunShield"(): float
-public "setStunShield"(arg0: float): void
-public "damageStunShield"(arg0: float, arg1: float): void
-public "getWeight"(): float
-get "stunned"(): boolean
-get "entityState"(): $EntityState
-set "stunReductionOnHit"(value: $StunType$Type)
-get "stunReduction"(): float
-get "stunArmor"(): float
-get "stunShield"(): float
-set "stunShield"(value: float)
-get "weight"(): float
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $HurtableEntityPatch$Type<T> = ($HurtableEntityPatch<(T)>);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $HurtableEntityPatch_<T> = $HurtableEntityPatch$Type<(T)>;
 }}
 declare module "packages/yesman/epicfight/api/utils/$HitEntityList$Priority" {
 import {$Enum, $Enum$Type} from "packages/java/lang/$Enum"
@@ -2550,80 +1695,6 @@ export type $AnimationProperty$PoseModifier$Type = ($AnimationProperty$PoseModif
 declare global {
 export type $AnimationProperty$PoseModifier_ = $AnimationProperty$PoseModifier$Type;
 }}
-declare module "packages/yesman/epicfight/api/animation/$ServerAnimator" {
-import {$AnimationPlayer, $AnimationPlayer$Type} from "packages/yesman/epicfight/api/animation/$AnimationPlayer"
-import {$EntityState, $EntityState$Type} from "packages/yesman/epicfight/api/animation/types/$EntityState"
-import {$AssetAccessor, $AssetAccessor$Type} from "packages/yesman/epicfight/api/asset/$AssetAccessor"
-import {$Pose, $Pose$Type} from "packages/yesman/epicfight/api/animation/$Pose"
-import {$Class, $Class$Type} from "packages/java/lang/$Class"
-import {$Optional, $Optional$Type} from "packages/java/util/$Optional"
-import {$Pair, $Pair$Type} from "packages/com/mojang/datafixers/util/$Pair"
-import {$LivingEntityPatch, $LivingEntityPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/$LivingEntityPatch"
-import {$Animator, $Animator$Type} from "packages/yesman/epicfight/api/animation/$Animator"
-
-export class $ServerAnimator extends $Animator {
-readonly "animationPlayer": $AnimationPlayer
- "hardPaused": boolean
- "softPaused": boolean
-
-constructor(arg0: $LivingEntityPatch$Type<(any)>)
-
-public "getPose"(arg0: float): $Pose
-public static "getAnimator"(arg0: $LivingEntityPatch$Type<(any)>): $Animator
-public "getPlayerFor"(arg0: $AssetAccessor$Type<(any)>): $AnimationPlayer
-public "tick"(): void
-public "getEntityState"(): $EntityState
-public "getPlayer"(arg0: $AssetAccessor$Type<(any)>): $Optional<($AnimationPlayer)>
-public "playShootingAnimation"(): void
-public "reserveAnimation"(arg0: $AssetAccessor$Type<(any)>): void
-public "playAnimationInstantly"(arg0: $AssetAccessor$Type<(any)>): void
-public "playAnimation"(arg0: $AssetAccessor$Type<(any)>, arg1: float): void
-public "stopPlaying"(arg0: $AssetAccessor$Type<(any)>): boolean
-public "setSoftPause"(arg0: boolean): void
-public "setHardPause"(arg0: boolean): void
-public "findFor"<T>(arg0: $Class$Type<(T)>): $Pair<($AnimationPlayer), (T)>
-get "entityState"(): $EntityState
-set "softPause"(value: boolean)
-set "hardPause"(value: boolean)
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $ServerAnimator$Type = ($ServerAnimator);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $ServerAnimator_ = $ServerAnimator$Type;
-}}
-declare module "packages/yesman/epicfight/world/damagesource/$ExtraDamageInstance$ExtraDamageFunction" {
-import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
-import {$LivingEntity, $LivingEntity$Type} from "packages/net/minecraft/world/entity/$LivingEntity"
-
-export interface $ExtraDamageInstance$ExtraDamageFunction {
-
- "getBonusDamage"(arg0: $LivingEntity$Type, arg1: $ItemStack$Type, arg2: $LivingEntity$Type, arg3: float, arg4: (float)[]): float
-
-(arg0: $LivingEntity$Type, arg1: $ItemStack$Type, arg2: $LivingEntity$Type, arg3: float, arg4: (float)[]): float
-}
-
-export namespace $ExtraDamageInstance$ExtraDamageFunction {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $ExtraDamageInstance$ExtraDamageFunction$Type = ($ExtraDamageInstance$ExtraDamageFunction);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $ExtraDamageInstance$ExtraDamageFunction_ = $ExtraDamageInstance$ExtraDamageFunction$Type;
-}}
 declare module "packages/yesman/epicfight/api/animation/$Keyframe" {
 import {$JointTransform, $JointTransform$Type} from "packages/yesman/epicfight/api/animation/$JointTransform"
 
@@ -2632,9 +1703,9 @@ export class $Keyframe {
 constructor(arg0: float, arg1: $JointTransform$Type)
 constructor(arg0: $Keyframe$Type)
 
-public "copyFrom"(arg0: $Keyframe$Type): void
 public "time"(): float
 public "setTime"(arg0: float): void
+public "copyFrom"(arg0: $Keyframe$Type): void
 public "toString"(): string
 public "transform"(): $JointTransform
 public static "empty"(): $Keyframe
@@ -2659,10 +1730,10 @@ export class $StaminaConsumeEvent extends $AbstractPlayerEvent<($PlayerPatch<(an
 
 constructor(arg0: $PlayerPatch$Type<(any)>, arg1: float)
 
-public "setAmount"(arg0: float): void
 public "getAmount"(): float
-set "amount"(value: float)
+public "setAmount"(arg0: float): void
 get "amount"(): float
+set "amount"(value: float)
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2675,100 +1746,6 @@ export type $StaminaConsumeEvent$Type = ($StaminaConsumeEvent);
  */
 declare global {
 export type $StaminaConsumeEvent_ = $StaminaConsumeEvent$Type;
-}}
-declare module "packages/yesman/epicfight/api/utils/$EntitySnapshot" {
-import {$VertexConsumer, $VertexConsumer$Type} from "packages/com/mojang/blaze3d/vertex/$VertexConsumer"
-import {$Vec3, $Vec3$Type} from "packages/net/minecraft/world/phys/$Vec3"
-import {$BakedModel, $BakedModel$Type} from "packages/net/minecraft/client/resources/model/$BakedModel"
-import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
-import {$ResourceLocation, $ResourceLocation$Type} from "packages/net/minecraft/resources/$ResourceLocation"
-import {$EntitySnapshot$PlayerSnapshot, $EntitySnapshot$PlayerSnapshot$Type} from "packages/yesman/epicfight/api/utils/$EntitySnapshot$PlayerSnapshot"
-import {$OpenMatrix4f, $OpenMatrix4f$Type} from "packages/yesman/epicfight/api/utils/math/$OpenMatrix4f"
-import {$RenderType, $RenderType$Type} from "packages/net/minecraft/client/renderer/$RenderType"
-import {$Function, $Function$Type} from "packages/java/util/function/$Function"
-import {$PoseStack, $PoseStack$Type} from "packages/com/mojang/blaze3d/vertex/$PoseStack"
-import {$List, $List$Type} from "packages/java/util/$List"
-import {$Mesh$DrawingFunction, $Mesh$DrawingFunction$Type} from "packages/yesman/epicfight/api/client/model/$Mesh$DrawingFunction"
-import {$AbstractClientPlayerPatch, $AbstractClientPlayerPatch$Type} from "packages/yesman/epicfight/client/world/capabilites/entitypatch/player/$AbstractClientPlayerPatch"
-import {$MultiBufferSource, $MultiBufferSource$Type} from "packages/net/minecraft/client/renderer/$MultiBufferSource"
-import {$LivingEntityPatch, $LivingEntityPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/$LivingEntityPatch"
-import {$BakedQuad, $BakedQuad$Type} from "packages/net/minecraft/client/renderer/block/model/$BakedQuad"
-
-export class $EntitySnapshot<T extends $LivingEntityPatch<(any)>> {
-
-constructor(arg0: T)
-
-public static "renderModelLists"(arg0: $BakedModel$Type, arg1: $ItemStack$Type, arg2: integer, arg3: integer, arg4: float, arg5: $PoseStack$Type, arg6: $VertexConsumer$Type, arg7: $Mesh$DrawingFunction$Type): void
-public static "renderQuadList"(arg0: $PoseStack$Type, arg1: $VertexConsumer$Type, arg2: $List$Type<($BakedQuad$Type)>, arg3: $ItemStack$Type, arg4: integer, arg5: integer, arg6: float, arg7: $Mesh$DrawingFunction$Type): void
-public "renderTextured"(arg0: $PoseStack$Type, arg1: $MultiBufferSource$Type, arg2: $Function$Type<($ResourceLocation$Type), ($RenderType$Type)>, arg3: $Mesh$DrawingFunction$Type, arg4: integer, arg5: float, arg6: float, arg7: float, arg8: float): void
-public "renderItems"(arg0: $PoseStack$Type, arg1: $MultiBufferSource$Type, arg2: $RenderType$Type, arg3: $Mesh$DrawingFunction$Type, arg4: integer, arg5: float): void
-public "getHeightHalf"(): float
-public static "capturePlayer"(arg0: $AbstractClientPlayerPatch$Type<(any)>): $EntitySnapshot$PlayerSnapshot
-public "poseMatrices"(): ($OpenMatrix4f)[]
-public "getModelMatrix"(): $OpenMatrix4f
-public "getYRot"(): float
-public static "captureLivingEntity"(arg0: $LivingEntityPatch$Type<(any)>): $EntitySnapshot<($LivingEntityPatch<(any)>)>
-public "getPosition"(): $Vec3
-public "render"(arg0: $PoseStack$Type, arg1: $MultiBufferSource$Type, arg2: $RenderType$Type, arg3: $Mesh$DrawingFunction$Type, arg4: integer, arg5: float, arg6: float, arg7: float, arg8: float): void
-get "heightHalf"(): float
-get "modelMatrix"(): $OpenMatrix4f
-get "yRot"(): float
-get "position"(): $Vec3
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $EntitySnapshot$Type<T> = ($EntitySnapshot<(T)>);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $EntitySnapshot_<T> = $EntitySnapshot$Type<(T)>;
-}}
-declare module "packages/yesman/epicfight/api/collider/$Collider" {
-import {$VertexConsumer, $VertexConsumer$Type} from "packages/com/mojang/blaze3d/vertex/$VertexConsumer"
-import {$CompoundTag, $CompoundTag$Type} from "packages/net/minecraft/nbt/$CompoundTag"
-import {$Armature, $Armature$Type} from "packages/yesman/epicfight/api/model/$Armature"
-import {$AttackAnimation, $AttackAnimation$Type} from "packages/yesman/epicfight/api/animation/types/$AttackAnimation"
-import {$Vec3, $Vec3$Type} from "packages/net/minecraft/world/phys/$Vec3"
-import {$RenderType, $RenderType$Type} from "packages/net/minecraft/client/renderer/$RenderType"
-import {$PoseStack, $PoseStack$Type} from "packages/com/mojang/blaze3d/vertex/$PoseStack"
-import {$List, $List$Type} from "packages/java/util/$List"
-import {$Pose, $Pose$Type} from "packages/yesman/epicfight/api/animation/$Pose"
-import {$Joint, $Joint$Type} from "packages/yesman/epicfight/api/animation/$Joint"
-import {$MultiBufferSource, $MultiBufferSource$Type} from "packages/net/minecraft/client/renderer/$MultiBufferSource"
-import {$AABB, $AABB$Type} from "packages/net/minecraft/world/phys/$AABB"
-import {$LivingEntityPatch, $LivingEntityPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/$LivingEntityPatch"
-import {$Entity, $Entity$Type} from "packages/net/minecraft/world/entity/$Entity"
-
-export class $Collider {
-
-constructor(arg0: $Vec3$Type, arg1: $AABB$Type)
-
-public "getCollideEntities"(arg0: $Entity$Type): $List<($Entity)>
-public "updateAndSelectCollideEntity"(arg0: $LivingEntityPatch$Type<(any)>, arg1: $AttackAnimation$Type, arg2: float, arg3: float, arg4: $Joint$Type, arg5: float): $List<($Entity)>
-public "drawInternal"(arg0: $PoseStack$Type, arg1: $VertexConsumer$Type, arg2: $Armature$Type, arg3: $Joint$Type, arg4: $Pose$Type, arg5: $Pose$Type, arg6: float, arg7: integer): void
-public "isCollide"(arg0: $Entity$Type): boolean
-public "getRenderType"(): $RenderType
-public "toString"(): string
-public "serialize"(arg0: $CompoundTag$Type): $CompoundTag
-public "draw"(arg0: $PoseStack$Type, arg1: $MultiBufferSource$Type, arg2: $LivingEntityPatch$Type<(any)>, arg3: $AttackAnimation$Type, arg4: $Joint$Type, arg5: float, arg6: float, arg7: float, arg8: float): void
-public "deepCopy"(): $Collider
-get "renderType"(): $RenderType
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $Collider$Type = ($Collider);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $Collider_ = $Collider$Type;
 }}
 declare module "packages/yesman/epicfight/api/animation/types/$DynamicAnimation" {
 import {$AnimationPlayer, $AnimationPlayer$Type} from "packages/yesman/epicfight/api/animation/$AnimationPlayer"
@@ -2794,8 +1771,8 @@ export class $DynamicAnimation {
 constructor(arg0: float, arg1: boolean)
 constructor()
 
+public "getCoord"(): $TransformSheet
 public "getJointMaskEntry"(arg0: $LivingEntityPatch$Type<(any)>, arg1: boolean): $Optional<($JointMaskEntry)>
-public "hasTransformFor"(arg0: string): boolean
 public "getStatesMap"(arg0: $LivingEntityPatch$Type<(any)>, arg1: float): $TypeFlexibleHashMap<($EntityState$StateFactor<(any)>)>
 public "renderDebugging"(arg0: $PoseStack$Type, arg1: $MultiBufferSource$Type, arg2: $LivingEntityPatch$Type<(any)>, arg3: float, arg4: float): void
 public "isMetaAnimation"(): boolean
@@ -2805,9 +1782,7 @@ public "isLinkAnimation"(): boolean
 public "getTransitionTime"(): float
 public "setTotalTime"(arg0: float): void
 public "isMainFrameAnimation"(): boolean
-public "isStaticAnimation"(): boolean
 public "linkTick"(arg0: $LivingEntityPatch$Type<(any)>, arg1: $AssetAccessor$Type<(any)>): void
-public "getCoord"(): $TransformSheet
 public "isRepeat"(): boolean
 public "getPoseByTime"(arg0: $LivingEntityPatch$Type<(any)>, arg1: float, arg2: float): $Pose
 public "modifyPose"(arg0: $DynamicAnimation$Type, arg1: $Pose$Type, arg2: $LivingEntityPatch$Type<(any)>, arg3: float, arg4: float): void
@@ -2815,39 +1790,41 @@ public "canBePlayedReverse"(): boolean
 public "isClientAnimation"(): boolean
 public "getRawPose"(arg0: float): $Pose
 public "getTransfroms"(): $Map<(string), ($TransformSheet)>
-public "isReboundAnimation"(): boolean
-public "isBasicAttackAnimation"(): boolean
+public "hasTransformFor"(arg0: string): boolean
 public "getPlaySpeed"(arg0: $LivingEntityPatch$Type<(any)>, arg1: $DynamicAnimation$Type): float
-public "getRegistryName"(): $ResourceLocation
-public "getRealAnimation"(): $AssetAccessor<(any)>
-public "tick"(arg0: $LivingEntityPatch$Type<(any)>): void
+public "isBasicAttackAnimation"(): boolean
+public "isReboundAnimation"(): boolean
 public "doesHeadRotFollowEntityHead"(): boolean
+public "getRealAnimation"(): $AssetAccessor<(any)>
+public "getRegistryName"(): $ResourceLocation
+public "tick"(arg0: $LivingEntityPatch$Type<(any)>): void
+public "isStaticAnimation"(): boolean
+public "getTotalTime"(): float
 public "getProperty"<V>(arg0: $AnimationProperty$Type<(V)>): $Optional<(V)>
 public "end"(arg0: $LivingEntityPatch$Type<(any)>, arg1: $AssetAccessor$Type<(any)>, arg2: boolean): void
 public "begin"(arg0: $LivingEntityPatch$Type<(any)>): void
 public "getId"(): integer
-public "getState"(arg0: $LivingEntityPatch$Type<(any)>, arg1: float): $EntityState
 public "getState"<T>(arg0: $EntityState$StateFactor$Type<(T)>, arg1: $LivingEntityPatch$Type<(any)>, arg2: float): T
+public "getState"(arg0: $LivingEntityPatch$Type<(any)>, arg1: float): $EntityState
 public "getAccessor"<A extends $DynamicAnimation>(): $AnimationManager$AnimationAccessor<(any)>
-public "getTotalTime"(): float
+get "coord"(): $TransformSheet
 get "metaAnimation"(): boolean
 get "animationClip"(): $AnimationClip
 get "linkAnimation"(): boolean
 get "transitionTime"(): float
 set "totalTime"(value: float)
 get "mainFrameAnimation"(): boolean
-get "staticAnimation"(): boolean
-get "coord"(): $TransformSheet
 get "repeat"(): boolean
 get "clientAnimation"(): boolean
 get "transfroms"(): $Map<(string), ($TransformSheet)>
-get "reboundAnimation"(): boolean
 get "basicAttackAnimation"(): boolean
-get "registryName"(): $ResourceLocation
+get "reboundAnimation"(): boolean
 get "realAnimation"(): $AssetAccessor<(any)>
+get "registryName"(): $ResourceLocation
+get "staticAnimation"(): boolean
+get "totalTime"(): float
 get "id"(): integer
 get "accessor"(): $AnimationManager$AnimationAccessor<(any)>
-get "totalTime"(): float
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2931,127 +1908,6 @@ export type $RightClickItemEvent$Type<T> = ($RightClickItemEvent<(T)>);
 declare global {
 export type $RightClickItemEvent_<T> = $RightClickItemEvent$Type<(T)>;
 }}
-declare module "packages/yesman/epicfight/world/entity/eventlistener/$SkillCancelEvent" {
-import {$PlayerPatch, $PlayerPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/player/$PlayerPatch"
-import {$SkillContainer, $SkillContainer$Type} from "packages/yesman/epicfight/skill/$SkillContainer"
-import {$AbstractPlayerEvent, $AbstractPlayerEvent$Type} from "packages/yesman/epicfight/world/entity/eventlistener/$AbstractPlayerEvent"
-
-export class $SkillCancelEvent extends $AbstractPlayerEvent<($PlayerPatch<(any)>)> {
-
-constructor(arg0: $PlayerPatch$Type<(any)>, arg1: $SkillContainer$Type)
-
-public "getSkillContainer"(): $SkillContainer
-get "skillContainer"(): $SkillContainer
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $SkillCancelEvent$Type = ($SkillCancelEvent);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $SkillCancelEvent_ = $SkillCancelEvent$Type;
-}}
-declare module "packages/yesman/epicfight/world/capabilities/entitypatch/$EntityDecorations" {
-import {$SoundEvent, $SoundEvent$Type} from "packages/net/minecraft/sounds/$SoundEvent"
-import {$Vec2i, $Vec2i$Type} from "packages/yesman/epicfight/api/utils/math/$Vec2i"
-import {$CapabilityItem, $CapabilityItem$Type} from "packages/yesman/epicfight/world/capabilities/item/$CapabilityItem"
-import {$Vector4f, $Vector4f$Type} from "packages/org/joml/$Vector4f"
-import {$EntityDecorations$ParticleGenerator, $EntityDecorations$ParticleGenerator$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/$EntityDecorations$ParticleGenerator"
-import {$EntityDecorations$RenderAttributeModifier, $EntityDecorations$RenderAttributeModifier$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/$EntityDecorations$RenderAttributeModifier"
-import {$Stream, $Stream$Type} from "packages/java/util/stream/$Stream"
-import {$TrailInfo, $TrailInfo$Type} from "packages/yesman/epicfight/api/client/animation/property/$TrailInfo"
-import {$EntityDecorations$DecorationOverlay, $EntityDecorations$DecorationOverlay$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/$EntityDecorations$DecorationOverlay"
-import {$ResourceLocation, $ResourceLocation$Type} from "packages/net/minecraft/resources/$ResourceLocation"
-import {$EntityDecorations$AnimationPropertyModifier, $EntityDecorations$AnimationPropertyModifier$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/$EntityDecorations$AnimationPropertyModifier"
-
-export class $EntityDecorations {
-static readonly "ADAPTIVE_SKIN_COLOR": $ResourceLocation
-static readonly "ADAPTIVE_SKIN_OVERLAY": $ResourceLocation
-static readonly "BERSERKER_PARTICLE": $ResourceLocation
-static readonly "BERSERKER_OVERLAY": $ResourceLocation
-static readonly "BONEBREAKER_OVERLAY": $ResourceLocation
-static readonly "EMERGENCY_ESCAPE_TRANSPARENCY_MODIFIER": $ResourceLocation
-static readonly "HYPERVITALITY_OVERLAY": $ResourceLocation
-static readonly "STAMINA_PILLAGER_ASHES_COLOR": $ResourceLocation
-static readonly "STAMINA_PILLAGER_ASHES_OVERLAY": $ResourceLocation
-static readonly "STAMINA_PILLAGER_ASHES_PARTICLE": $ResourceLocation
-static readonly "STAMINA_PILLAGER_FILLS_UP_OVERLAY": $ResourceLocation
-static readonly "STAMINA_PILLAGER_FILLS_UP_LIGHT": $ResourceLocation
-static readonly "FLASH_WHITE_OVERLAY": $ResourceLocation
-static readonly "FLASH_WHITE_LIGHT": $ResourceLocation
-static readonly "SWORDMASTER_SWING_SOUND": $ResourceLocation
-static readonly "SWORDMASTER_TRAIL_MODIFIER": $ResourceLocation
-static readonly "VENGEANCE_OVERLAY": $ResourceLocation
-
-constructor()
-
-public "removeOverlayCoordModifier"(arg0: $ResourceLocation$Type): boolean
-public "removeLightModifier"(arg0: $ResourceLocation$Type): boolean
-public "addSwingSoundModifier"(arg0: $ResourceLocation$Type, arg1: $EntityDecorations$AnimationPropertyModifier$Type<($SoundEvent$Type), ($CapabilityItem$Type)>): void
-public "removeSwingSoundModifier"(arg0: $ResourceLocation$Type): boolean
-public "addHurtSoundModifier"(arg0: $ResourceLocation$Type, arg1: $EntityDecorations$AnimationPropertyModifier$Type<($SoundEvent$Type), ($CapabilityItem$Type)>): void
-public "removeHurtSoundModifier"(arg0: $ResourceLocation$Type): boolean
-public "addTrailInfoModifier"(arg0: $ResourceLocation$Type, arg1: $EntityDecorations$AnimationPropertyModifier$Type<($TrailInfo$Type), ($CapabilityItem$Type)>): void
-public "removeTrailInfoModifier"(arg0: $ResourceLocation$Type): boolean
-public "removeParticleGenerator"(arg0: $ResourceLocation$Type): boolean
-public "getModifiedHurtSound"(arg0: $SoundEvent$Type, arg1: $CapabilityItem$Type): $SoundEvent
-public "getModifiedTrailInfo"(arg0: $TrailInfo$Type, arg1: $CapabilityItem$Type): $TrailInfo
-public "modifyOverlay"(arg0: $Vec2i$Type, arg1: float): void
-public "modifyColor"(arg0: $Vector4f$Type, arg1: float): void
-public "modifyLight"(arg0: $Vec2i$Type, arg1: float): void
-public "listDecorationOverlays"(): $Stream<($EntityDecorations$DecorationOverlay)>
-public "tick"(): void
-public "addDecorationOverlay"(arg0: $ResourceLocation$Type, arg1: $EntityDecorations$DecorationOverlay$Type): void
-public "removeDecorationOverlay"(arg0: $ResourceLocation$Type): void
-public "addColorModifier"(arg0: $ResourceLocation$Type, arg1: $EntityDecorations$RenderAttributeModifier$Type<($Vector4f$Type)>): void
-public "addOverlayCoordModifier"(arg0: $ResourceLocation$Type, arg1: $EntityDecorations$RenderAttributeModifier$Type<($Vec2i$Type)>): void
-public "addParticleGenerator"(arg0: $ResourceLocation$Type, arg1: $EntityDecorations$ParticleGenerator$Type): void
-public "addLightModifier"(arg0: $ResourceLocation$Type, arg1: $EntityDecorations$RenderAttributeModifier$Type<($Vec2i$Type)>): void
-public "removeColorModifier"(arg0: $ResourceLocation$Type): boolean
-public "getModifiedSwingSound"(arg0: $SoundEvent$Type, arg1: $CapabilityItem$Type): $SoundEvent
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $EntityDecorations$Type = ($EntityDecorations);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $EntityDecorations_ = $EntityDecorations$Type;
-}}
-declare module "packages/yesman/epicfight/world/effect/$VisibleMobEffect" {
-import {$Function, $Function$Type} from "packages/java/util/function/$Function"
-import {$MobEffectInstance, $MobEffectInstance$Type} from "packages/net/minecraft/world/effect/$MobEffectInstance"
-import {$MobEffectCategory, $MobEffectCategory$Type} from "packages/net/minecraft/world/effect/$MobEffectCategory"
-import {$ResourceLocation, $ResourceLocation$Type} from "packages/net/minecraft/resources/$ResourceLocation"
-import {$MobEffect, $MobEffect$Type} from "packages/net/minecraft/world/effect/$MobEffect"
-
-export class $VisibleMobEffect extends $MobEffect {
-
-constructor(arg0: $MobEffectCategory$Type, arg1: integer, arg2: $Function$Type<($MobEffectInstance$Type), (integer)>, ...arg3: ($ResourceLocation$Type)[])
-constructor(arg0: $MobEffectCategory$Type, arg1: integer, arg2: $ResourceLocation$Type)
-
-public "getIcon"(arg0: $MobEffectInstance$Type): $ResourceLocation
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $VisibleMobEffect$Type = ($VisibleMobEffect);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $VisibleMobEffect_ = $VisibleMobEffect$Type;
-}}
 declare module "packages/yesman/epicfight/world/entity/eventlistener/$BasicAttackEvent" {
 import {$ServerPlayerPatch, $ServerPlayerPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/player/$ServerPlayerPatch"
 import {$AbstractPlayerEvent, $AbstractPlayerEvent$Type} from "packages/yesman/epicfight/world/entity/eventlistener/$AbstractPlayerEvent"
@@ -3072,41 +1928,6 @@ export type $BasicAttackEvent$Type = ($BasicAttackEvent);
  */
 declare global {
 export type $BasicAttackEvent_ = $BasicAttackEvent$Type;
-}}
-declare module "packages/yesman/epicfight/client/renderer/patched/item/$RenderItemBase" {
-import {$JsonElement, $JsonElement$Type} from "packages/com/google/gson/$JsonElement"
-import {$Minecraft, $Minecraft$Type} from "packages/net/minecraft/client/$Minecraft"
-import {$InteractionHand, $InteractionHand$Type} from "packages/net/minecraft/world/$InteractionHand"
-import {$PoseStack, $PoseStack$Type} from "packages/com/mojang/blaze3d/vertex/$PoseStack"
-import {$TrailInfo, $TrailInfo$Type} from "packages/yesman/epicfight/api/client/animation/property/$TrailInfo"
-import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
-import {$MultiBufferSource, $MultiBufferSource$Type} from "packages/net/minecraft/client/renderer/$MultiBufferSource"
-import {$OpenMatrix4f, $OpenMatrix4f$Type} from "packages/yesman/epicfight/api/utils/math/$OpenMatrix4f"
-import {$LivingEntityPatch, $LivingEntityPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/$LivingEntityPatch"
-
-export class $RenderItemBase {
-readonly "transformHolder": $OpenMatrix4f
-
-constructor(arg0: $JsonElement$Type)
-
-public "appearedInAfterimage"(): boolean
-public "getCorrectionMatrix"(arg0: $LivingEntityPatch$Type<(any)>, arg1: $InteractionHand$Type, arg2: ($OpenMatrix4f$Type)[]): $OpenMatrix4f
-public "forceVanillaFirstPerson"(): boolean
-public "trailInfo"(): $TrailInfo
-public static "initItemRenderers"(arg0: $Minecraft$Type): void
-public "renderItemInHand"(arg0: $ItemStack$Type, arg1: $LivingEntityPatch$Type<(any)>, arg2: $InteractionHand$Type, arg3: ($OpenMatrix4f$Type)[], arg4: $MultiBufferSource$Type, arg5: $PoseStack$Type, arg6: integer, arg7: float): void
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $RenderItemBase$Type = ($RenderItemBase);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $RenderItemBase_ = $RenderItemBase$Type;
 }}
 declare module "packages/yesman/epicfight/world/capabilities/entitypatch/$LivingEntityPatch$ServerAnimationPacketProvider" {
 import {$AnimatorControlPacket$Action, $AnimatorControlPacket$Action$Type} from "packages/yesman/epicfight/network/common/$AnimatorControlPacket$Action"
@@ -3166,12 +1987,12 @@ public "removeSharedVariable"<T>(arg0: $AnimationVariables$SharedAnimationVariab
 public "removeSharedVariable"<T>(arg0: $AnimationVariables$SharedAnimationVariableKey$Type<(T)>, arg1: boolean): T
 public "putDefaultSharedVariable"<T>(arg0: $AnimationVariables$SharedAnimationVariableKey$Type<(T)>): void
 public "getOrDefaultSharedVariable"<T>(arg0: $AnimationVariables$SharedAnimationVariableKey$Type<(T)>): T
+public "remove"(arg0: $AnimationVariables$IndependentAnimationVariableKey$Type<(any)>, arg1: $AssetAccessor$Type<(any)>): void
 /**
  * 
  * @deprecated
  */
 public "remove"(arg0: $AnimationVariables$IndependentAnimationVariableKey$Type<(any)>, arg1: $AssetAccessor$Type<(any)>, arg2: boolean): void
-public "remove"(arg0: $AnimationVariables$IndependentAnimationVariableKey$Type<(any)>, arg1: $AssetAccessor$Type<(any)>): void
 public "get"<T>(arg0: $AnimationVariables$IndependentAnimationVariableKey$Type<(T)>, arg1: $AssetAccessor$Type<(any)>): $Optional<(T)>
 /**
  * 
@@ -3229,6 +2050,4200 @@ export type $DaggerItem$Type = ($DaggerItem);
 declare global {
 export type $DaggerItem_ = $DaggerItem$Type;
 }}
+declare module "packages/yesman/epicfight/skill/modules/$ChargeableSkill" {
+import {$HoldableSkill, $HoldableSkill$Type} from "packages/yesman/epicfight/skill/modules/$HoldableSkill"
+import {$KeyMapping, $KeyMapping$Type} from "packages/net/minecraft/client/$KeyMapping"
+import {$ControlEngine, $ControlEngine$Type} from "packages/yesman/epicfight/client/events/engine/$ControlEngine"
+import {$FriendlyByteBuf, $FriendlyByteBuf$Type} from "packages/net/minecraft/network/$FriendlyByteBuf"
+import {$SkillContainer, $SkillContainer$Type} from "packages/yesman/epicfight/skill/$SkillContainer"
+import {$SPSkillExecutionFeedback, $SPSkillExecutionFeedback$Type} from "packages/yesman/epicfight/network/server/$SPSkillExecutionFeedback"
+import {$Skill, $Skill$Type} from "packages/yesman/epicfight/skill/$Skill"
+
+export interface $ChargeableSkill extends $HoldableSkill {
+
+ "getMinChargingTicks"(): integer
+ "holdTick"(arg0: $SkillContainer$Type): void
+ "getAllowedMaxChargingTicks"(): integer
+ "getMaxChargingTicks"(): integer
+ "resetHolding"(arg0: $SkillContainer$Type): void
+ "getKeyMapping"(): $KeyMapping
+ "gatherHoldArguments"(arg0: $SkillContainer$Type, arg1: $ControlEngine$Type, arg2: $FriendlyByteBuf$Type): void
+ "onStopHolding"(arg0: $SkillContainer$Type, arg1: $SPSkillExecutionFeedback$Type): void
+ "asSkill"(): $Skill
+ "startHolding"(arg0: $SkillContainer$Type): void
+}
+
+export namespace $ChargeableSkill {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $ChargeableSkill$Type = ($ChargeableSkill);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $ChargeableSkill_ = $ChargeableSkill$Type;
+}}
+declare module "packages/yesman/epicfight/world/entity/eventlistener/$ComboCounterHandleEvent$Causal" {
+import {$Enum, $Enum$Type} from "packages/java/lang/$Enum"
+
+export class $ComboCounterHandleEvent$Causal extends $Enum<($ComboCounterHandleEvent$Causal)> {
+static readonly "ANOTHER_ACTION_ANIMATION": $ComboCounterHandleEvent$Causal
+static readonly "TIME_EXPIRED": $ComboCounterHandleEvent$Causal
+
+
+public static "values"(): ($ComboCounterHandleEvent$Causal)[]
+public static "valueOf"(arg0: string): $ComboCounterHandleEvent$Causal
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $ComboCounterHandleEvent$Causal$Type = (("time_expired") | ("another_action_animation")) | ($ComboCounterHandleEvent$Causal);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $ComboCounterHandleEvent$Causal_ = $ComboCounterHandleEvent$Causal$Type;
+}}
+declare module "packages/yesman/epicfight/world/entity/eventlistener/$DetachablePlayerEvent" {
+import {$PlayerPatch, $PlayerPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/player/$PlayerPatch"
+
+export interface $DetachablePlayerEvent<T extends $PlayerPatch<(any)>> {
+
+ "getPlayerPatch"(): T
+ "setCanceled"(arg0: boolean): void
+ "isCanceled"(): boolean
+}
+
+export namespace $DetachablePlayerEvent {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $DetachablePlayerEvent$Type<T> = ($DetachablePlayerEvent<(T)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $DetachablePlayerEvent_<T> = $DetachablePlayerEvent$Type<(T)>;
+}}
+declare module "packages/yesman/epicfight/network/common/$AnimatorControlPacket$Layer" {
+import {$Enum, $Enum$Type} from "packages/java/lang/$Enum"
+
+export class $AnimatorControlPacket$Layer extends $Enum<($AnimatorControlPacket$Layer)> {
+static readonly "ANIMATION": $AnimatorControlPacket$Layer
+static readonly "BASE_LAYER": $AnimatorControlPacket$Layer
+static readonly "COMPOSITE_LAYER": $AnimatorControlPacket$Layer
+
+
+public static "values"(): ($AnimatorControlPacket$Layer)[]
+public static "valueOf"(arg0: string): $AnimatorControlPacket$Layer
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $AnimatorControlPacket$Layer$Type = (("composite_layer") | ("base_layer") | ("animation")) | ($AnimatorControlPacket$Layer);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $AnimatorControlPacket$Layer_ = $AnimatorControlPacket$Layer$Type;
+}}
+declare module "packages/yesman/epicfight/api/animation/$Joint$HierarchicalJointAccessor" {
+import {$Joint$HierarchicalJointAccessor$Builder, $Joint$HierarchicalJointAccessor$Builder$Type} from "packages/yesman/epicfight/api/animation/$Joint$HierarchicalJointAccessor$Builder"
+import {$Joint, $Joint$Type} from "packages/yesman/epicfight/api/animation/$Joint"
+import {$Joint$AccessTicket, $Joint$AccessTicket$Type} from "packages/yesman/epicfight/api/animation/$Joint$AccessTicket"
+
+export class $Joint$HierarchicalJointAccessor {
+
+
+public "createAccessTicket"(arg0: $Joint$Type): $Joint$AccessTicket
+public "equals"(arg0: any): boolean
+public "hashCode"(): integer
+public static "builder"(): $Joint$HierarchicalJointAccessor$Builder
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Joint$HierarchicalJointAccessor$Type = ($Joint$HierarchicalJointAccessor);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Joint$HierarchicalJointAccessor_ = $Joint$HierarchicalJointAccessor$Type;
+}}
+declare module "packages/yesman/epicfight/api/client/model/$SoftBodyTranslatable$ClothSimulationInfo" {
+import {$Record, $Record$Type} from "packages/java/lang/$Record"
+import {$List, $List$Type} from "packages/java/util/$List"
+import {$ClothSimulator$ClothObject$ClothPart$ConstraintType, $ClothSimulator$ClothObject$ClothPart$ConstraintType$Type} from "packages/yesman/epicfight/api/client/physics/cloth/$ClothSimulator$ClothObject$ClothPart$ConstraintType"
+
+export class $SoftBodyTranslatable$ClothSimulationInfo extends $Record {
+
+constructor(particleMass: float, selfCollision: float, constraints: $List$Type<((integer)[])>, constraintTypes: ($ClothSimulator$ClothObject$ClothPart$ConstraintType$Type)[], compliances: (float)[], particles: (integer)[], weights: (float)[], rootDistance: (float)[], normalOffsetMapping: (integer)[])
+
+public "normalOffsetMapping"(): (integer)[]
+public "rootDistance"(): (float)[]
+public "particleMass"(): float
+public "selfCollision"(): float
+public "compliances"(): (float)[]
+public "constraints"(): $List<((integer)[])>
+public "particles"(): (integer)[]
+public "weights"(): (float)[]
+public "constraintTypes"(): ($ClothSimulator$ClothObject$ClothPart$ConstraintType)[]
+public "equals"(arg0: any): boolean
+public "toString"(): string
+public "hashCode"(): integer
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $SoftBodyTranslatable$ClothSimulationInfo$Type = ($SoftBodyTranslatable$ClothSimulationInfo);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $SoftBodyTranslatable$ClothSimulationInfo_ = $SoftBodyTranslatable$ClothSimulationInfo$Type;
+}}
+declare module "packages/yesman/epicfight/world/entity/eventlistener/$SetTargetEvent" {
+import {$ServerPlayerPatch, $ServerPlayerPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/player/$ServerPlayerPatch"
+import {$LivingEntity, $LivingEntity$Type} from "packages/net/minecraft/world/entity/$LivingEntity"
+import {$AbstractPlayerEvent, $AbstractPlayerEvent$Type} from "packages/yesman/epicfight/world/entity/eventlistener/$AbstractPlayerEvent"
+
+export class $SetTargetEvent extends $AbstractPlayerEvent<($ServerPlayerPatch)> {
+
+constructor(arg0: $ServerPlayerPatch$Type, arg1: $LivingEntity$Type)
+
+public "getTarget"(): $LivingEntity
+get "target"(): $LivingEntity
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $SetTargetEvent$Type = ($SetTargetEvent);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $SetTargetEvent_ = $SetTargetEvent$Type;
+}}
+declare module "packages/yesman/epicfight/world/level/block/$FractureBlockState" {
+import {$Comparable, $Comparable$Type} from "packages/java/lang/$Comparable"
+import {$MapCodec, $MapCodec$Type} from "packages/com/mojang/serialization/$MapCodec"
+import {$Vector3f, $Vector3f$Type} from "packages/org/joml/$Vector3f"
+import {$VoxelShape, $VoxelShape$Type} from "packages/net/minecraft/world/phys/shapes/$VoxelShape"
+import {$CollisionContext, $CollisionContext$Type} from "packages/net/minecraft/world/phys/shapes/$CollisionContext"
+import {$Direction, $Direction$Type} from "packages/net/minecraft/core/$Direction"
+import {$BlockState, $BlockState$Type} from "packages/net/minecraft/world/level/block/state/$BlockState"
+import {$Block, $Block$Type} from "packages/net/minecraft/world/level/block/$Block"
+import {$Codec, $Codec$Type} from "packages/com/mojang/serialization/$Codec"
+import {$BlockGetter, $BlockGetter$Type} from "packages/net/minecraft/world/level/$BlockGetter"
+import {$Property, $Property$Type} from "packages/net/minecraft/world/level/block/state/properties/$Property"
+import {$ImmutableMap, $ImmutableMap$Type} from "packages/com/google/common/collect/$ImmutableMap"
+import {$Quaternionf, $Quaternionf$Type} from "packages/org/joml/$Quaternionf"
+import {$BlockPos, $BlockPos$Type} from "packages/net/minecraft/core/$BlockPos"
+import {$RenderShape, $RenderShape$Type} from "packages/net/minecraft/world/level/block/$RenderShape"
+
+export class $FractureBlockState extends $BlockState {
+static readonly "CODEC": $Codec<($BlockState)>
+static readonly "NAME_TAG": string
+static readonly "PROPERTIES_TAG": string
+
+constructor(arg0: $Block$Type, arg1: $ImmutableMap$Type<($Property$Type<(any)>), ($Comparable$Type<(any)>)>, arg2: $MapCodec$Type<($BlockState$Type)>)
+
+public "getLifeTime"(): integer
+public "supportsExternalFaceHiding"(): boolean
+public "getShape"(arg0: $BlockGetter$Type, arg1: $BlockPos$Type, arg2: $CollisionContext$Type): $VoxelShape
+public "getCollisionShape"(arg0: $BlockGetter$Type, arg1: $BlockPos$Type, arg2: $CollisionContext$Type): $VoxelShape
+public "getVisualShape"(arg0: $BlockGetter$Type, arg1: $BlockPos$Type, arg2: $CollisionContext$Type): $VoxelShape
+public "getLightEmission"(arg0: $BlockGetter$Type, arg1: $BlockPos$Type): integer
+public "hidesNeighborFace"(arg0: $BlockGetter$Type, arg1: $BlockPos$Type, arg2: $BlockState$Type, arg3: $Direction$Type): boolean
+public "getShape"(arg0: $BlockGetter$Type, arg1: $BlockPos$Type): $VoxelShape
+public "getCollisionShape"(arg0: $BlockGetter$Type, arg1: $BlockPos$Type): $VoxelShape
+public "getRenderShape"(): $RenderShape
+public "hasBlockEntity"(): boolean
+public "getRotation"(): $Quaternionf
+public "getOriginalBlockState"(arg0: $BlockPos$Type): $BlockState
+public "getBouncing"(): double
+public "getTranslate"(): $Vector3f
+public "setFractureInfo"(arg0: $BlockPos$Type, arg1: $BlockState$Type, arg2: $Vector3f$Type, arg3: $Quaternionf$Type, arg4: double, arg5: integer): void
+public static "remove"(arg0: $BlockPos$Type): void
+public static "reset"(): void
+get "lifeTime"(): integer
+get "renderShape"(): $RenderShape
+get "rotation"(): $Quaternionf
+get "bouncing"(): double
+get "translate"(): $Vector3f
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $FractureBlockState$Type = ($FractureBlockState);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $FractureBlockState_ = $FractureBlockState$Type;
+}}
+declare module "packages/yesman/epicfight/world/entity/eventlistener/$ActionEvent" {
+import {$PlayerPatch, $PlayerPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/player/$PlayerPatch"
+import {$AnimationManager$AnimationAccessor, $AnimationManager$AnimationAccessor$Type} from "packages/yesman/epicfight/api/animation/$AnimationManager$AnimationAccessor"
+import {$AbstractPlayerEvent, $AbstractPlayerEvent$Type} from "packages/yesman/epicfight/world/entity/eventlistener/$AbstractPlayerEvent"
+
+export class $ActionEvent<T extends $PlayerPatch<(any)>> extends $AbstractPlayerEvent<(T)> {
+
+constructor(arg0: $PlayerPatch$Type<(any)>, arg1: $AnimationManager$AnimationAccessor$Type<(any)>)
+
+public "shouldResetActionTick"(): boolean
+public "resetActionTick"(arg0: boolean): void
+public "getAnimation"(): $AnimationManager$AnimationAccessor<(any)>
+get "animation"(): $AnimationManager$AnimationAccessor<(any)>
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $ActionEvent$Type<T> = ($ActionEvent<(T)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $ActionEvent_<T> = $ActionEvent$Type<(T)>;
+}}
+declare module "packages/yesman/epicfight/api/animation/types/$ActionAnimation" {
+import {$AnimationPlayer, $AnimationPlayer$Type} from "packages/yesman/epicfight/api/animation/$AnimationPlayer"
+import {$AnimationVariables$SharedAnimationVariableKey, $AnimationVariables$SharedAnimationVariableKey$Type} from "packages/yesman/epicfight/api/animation/$AnimationVariables$SharedAnimationVariableKey"
+import {$AnimationVariables$IndependentAnimationVariableKey, $AnimationVariables$IndependentAnimationVariableKey$Type} from "packages/yesman/epicfight/api/animation/$AnimationVariables$IndependentAnimationVariableKey"
+import {$AssetAccessor, $AssetAccessor$Type} from "packages/yesman/epicfight/api/asset/$AssetAccessor"
+import {$MainFrameAnimation, $MainFrameAnimation$Type} from "packages/yesman/epicfight/api/animation/types/$MainFrameAnimation"
+import {$Vec3, $Vec3$Type} from "packages/net/minecraft/world/phys/$Vec3"
+import {$TransformSheet, $TransformSheet$Type} from "packages/yesman/epicfight/api/animation/$TransformSheet"
+import {$LocalPlayerPatch, $LocalPlayerPatch$Type} from "packages/yesman/epicfight/client/world/capabilites/entitypatch/player/$LocalPlayerPatch"
+import {$DynamicAnimation, $DynamicAnimation$Type} from "packages/yesman/epicfight/api/animation/types/$DynamicAnimation"
+import {$AnimationManager$AnimationAccessor, $AnimationManager$AnimationAccessor$Type} from "packages/yesman/epicfight/api/animation/$AnimationManager$AnimationAccessor"
+import {$Pose, $Pose$Type} from "packages/yesman/epicfight/api/animation/$Pose"
+import {$LinkAnimation, $LinkAnimation$Type} from "packages/yesman/epicfight/api/animation/types/$LinkAnimation"
+import {$LivingEntityPatch, $LivingEntityPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/$LivingEntityPatch"
+
+export class $ActionAnimation extends $MainFrameAnimation {
+static readonly "ACTION_ANIMATION_COORD": $AnimationVariables$SharedAnimationVariableKey<($TransformSheet)>
+static readonly "BEGINNING_LOCATION": $AnimationVariables$IndependentAnimationVariableKey<($Vec3)>
+static readonly "INITIAL_LOOK_VEC_DOT": $AnimationVariables$IndependentAnimationVariableKey<(float)>
+static readonly "HAD_NO_PHYSICS": $AnimationVariables$IndependentAnimationVariableKey<(boolean)>
+
+constructor(arg0: float, arg1: $AnimationManager$AnimationAccessor$Type<(any)>, arg2: $AssetAccessor$Type<(any)>)
+constructor(arg0: float, arg1: float, arg2: string, arg3: $AssetAccessor$Type<(any)>)
+constructor(arg0: float, arg1: float, arg2: $AnimationManager$AnimationAccessor$Type<(any)>, arg3: $AssetAccessor$Type<(any)>)
+
+public "correctRawZCoord"(arg0: $LivingEntityPatch$Type<(any)>, arg1: $Pose$Type, arg2: float): void
+public "getExpectedMovement"(arg0: $LivingEntityPatch$Type<(any)>, arg1: float): $Vec3
+public "setLinkAnimation"(arg0: $AssetAccessor$Type<(any)>, arg1: $Pose$Type, arg2: boolean, arg3: float, arg4: $LivingEntityPatch$Type<(any)>, arg5: $LinkAnimation$Type): void
+public "putOnPlayer"(arg0: $AnimationPlayer$Type, arg1: $LivingEntityPatch$Type<(any)>): void
+public "linkTick"(arg0: $LivingEntityPatch$Type<(any)>, arg1: $AssetAccessor$Type<(any)>): void
+public "modifyPose"(arg0: $DynamicAnimation$Type, arg1: $Pose$Type, arg2: $LivingEntityPatch$Type<(any)>, arg3: float, arg4: float): void
+public "correctRootJoint"(arg0: $DynamicAnimation$Type, arg1: $Pose$Type, arg2: $LivingEntityPatch$Type<(any)>, arg3: float, arg4: float): void
+public "shouldPlayerMove"(arg0: $LocalPlayerPatch$Type): boolean
+public "tick"(arg0: $LivingEntityPatch$Type<(any)>): void
+public "begin"(arg0: $LivingEntityPatch$Type<(any)>): void
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $ActionAnimation$Type = ($ActionAnimation);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $ActionAnimation_ = $ActionAnimation$Type;
+}}
+declare module "packages/yesman/epicfight/api/animation/property/$AnimationProperty$StaticAnimationProperty" {
+import {$AnimationEvent$SimpleEvent, $AnimationEvent$SimpleEvent$Type} from "packages/yesman/epicfight/api/animation/property/$AnimationEvent$SimpleEvent"
+import {$LivingMotion, $LivingMotion$Type} from "packages/yesman/epicfight/api/animation/$LivingMotion"
+import {$CapabilityItem, $CapabilityItem$Type} from "packages/yesman/epicfight/world/capabilities/item/$CapabilityItem"
+import {$AnimationEvent$E2, $AnimationEvent$E2$Type} from "packages/yesman/epicfight/api/animation/property/$AnimationEvent$E2"
+import {$InverseKinematicsSimulator$BakedInverseKinematicsDefinition, $InverseKinematicsSimulator$BakedInverseKinematicsDefinition$Type} from "packages/yesman/epicfight/api/physics/ik/$InverseKinematicsSimulator$BakedInverseKinematicsDefinition"
+import {$AnimationProperty$PoseModifier, $AnimationProperty$PoseModifier$Type} from "packages/yesman/epicfight/api/animation/property/$AnimationProperty$PoseModifier"
+import {$ResourceLocation, $ResourceLocation$Type} from "packages/net/minecraft/resources/$ResourceLocation"
+import {$Codec, $Codec$Type} from "packages/com/mojang/serialization/$Codec"
+import {$InverseKinematicsSimulator$InverseKinematicsDefinition, $InverseKinematicsSimulator$InverseKinematicsDefinition$Type} from "packages/yesman/epicfight/api/physics/ik/$InverseKinematicsSimulator$InverseKinematicsDefinition"
+import {$AnimationProperty$PlaybackTimeModifier, $AnimationProperty$PlaybackTimeModifier$Type} from "packages/yesman/epicfight/api/animation/property/$AnimationProperty$PlaybackTimeModifier"
+import {$AnimationManager$AnimationAccessor, $AnimationManager$AnimationAccessor$Type} from "packages/yesman/epicfight/api/animation/$AnimationManager$AnimationAccessor"
+import {$List, $List$Type} from "packages/java/util/$List"
+import {$AnimationProperty, $AnimationProperty$Type} from "packages/yesman/epicfight/api/animation/property/$AnimationProperty"
+import {$AnimationEvent, $AnimationEvent$Type} from "packages/yesman/epicfight/api/animation/property/$AnimationEvent"
+import {$AnimationProperty$PlaybackSpeedModifier, $AnimationProperty$PlaybackSpeedModifier$Type} from "packages/yesman/epicfight/api/animation/property/$AnimationProperty$PlaybackSpeedModifier"
+import {$Map, $Map$Type} from "packages/java/util/$Map"
+
+export class $AnimationProperty$StaticAnimationProperty<T> extends $AnimationProperty<(T)> {
+static readonly "TICK_EVENTS": $AnimationProperty$StaticAnimationProperty<($List<($AnimationEvent<(any), (any)>)>)>
+static readonly "ON_BEGIN_EVENTS": $AnimationProperty$StaticAnimationProperty<($List<($AnimationEvent$SimpleEvent<(any)>)>)>
+static readonly "ON_END_EVENTS": $AnimationProperty$StaticAnimationProperty<($List<($AnimationEvent$SimpleEvent<(any)>)>)>
+static readonly "ON_ITEM_CHANGE_EVENT": $AnimationProperty$StaticAnimationProperty<($AnimationEvent$SimpleEvent<($AnimationEvent$E2<($CapabilityItem), ($CapabilityItem)>)>)>
+static readonly "PLAY_SPEED_MODIFIER": $AnimationProperty$StaticAnimationProperty<($AnimationProperty$PlaybackSpeedModifier)>
+static readonly "ELAPSED_TIME_MODIFIER": $AnimationProperty$StaticAnimationProperty<($AnimationProperty$PlaybackTimeModifier)>
+static readonly "POSE_MODIFIER": $AnimationProperty$StaticAnimationProperty<($AnimationProperty$PoseModifier)>
+static readonly "FIXED_HEAD_ROTATION": $AnimationProperty$StaticAnimationProperty<(boolean)>
+static readonly "TRANSITION_ANIMATIONS_FROM": $AnimationProperty$StaticAnimationProperty<($Map<($ResourceLocation), ($AnimationManager$AnimationAccessor<(any)>)>)>
+static readonly "TRANSITION_ANIMATIONS_TO": $AnimationProperty$StaticAnimationProperty<($Map<($ResourceLocation), ($AnimationManager$AnimationAccessor<(any)>)>)>
+static readonly "NO_PHYSICS": $AnimationProperty$StaticAnimationProperty<(boolean)>
+static readonly "IK_DEFINITION": $AnimationProperty$StaticAnimationProperty<($List<($InverseKinematicsSimulator$InverseKinematicsDefinition)>)>
+static readonly "BAKED_IK_DEFINITION": $AnimationProperty$StaticAnimationProperty<($List<($InverseKinematicsSimulator$BakedInverseKinematicsDefinition)>)>
+static readonly "RESET_LIVING_MOTION": $AnimationProperty$StaticAnimationProperty<($LivingMotion)>
+
+constructor(arg0: string, arg1: $Codec$Type<(T)>)
+constructor()
+
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $AnimationProperty$StaticAnimationProperty$Type<T> = ($AnimationProperty$StaticAnimationProperty<(T)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $AnimationProperty$StaticAnimationProperty_<T> = $AnimationProperty$StaticAnimationProperty$Type<(T)>;
+}}
+declare module "packages/yesman/epicfight/skill/modules/$HoldableSkill" {
+import {$KeyMapping, $KeyMapping$Type} from "packages/net/minecraft/client/$KeyMapping"
+import {$ControlEngine, $ControlEngine$Type} from "packages/yesman/epicfight/client/events/engine/$ControlEngine"
+import {$FriendlyByteBuf, $FriendlyByteBuf$Type} from "packages/net/minecraft/network/$FriendlyByteBuf"
+import {$SkillContainer, $SkillContainer$Type} from "packages/yesman/epicfight/skill/$SkillContainer"
+import {$SPSkillExecutionFeedback, $SPSkillExecutionFeedback$Type} from "packages/yesman/epicfight/network/server/$SPSkillExecutionFeedback"
+import {$Skill, $Skill$Type} from "packages/yesman/epicfight/skill/$Skill"
+
+export interface $HoldableSkill {
+
+ "getKeyMapping"(): $KeyMapping
+ "gatherHoldArguments"(arg0: $SkillContainer$Type, arg1: $ControlEngine$Type, arg2: $FriendlyByteBuf$Type): void
+ "onStopHolding"(arg0: $SkillContainer$Type, arg1: $SPSkillExecutionFeedback$Type): void
+ "holdTick"(arg0: $SkillContainer$Type): void
+ "asSkill"(): $Skill
+ "startHolding"(arg0: $SkillContainer$Type): void
+ "resetHolding"(arg0: $SkillContainer$Type): void
+
+(): $KeyMapping
+}
+
+export namespace $HoldableSkill {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $HoldableSkill$Type = ($HoldableSkill);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $HoldableSkill_ = $HoldableSkill$Type;
+}}
+declare module "packages/yesman/epicfight/api/utils/$EntitySnapshot$PlayerSnapshot" {
+import {$Function, $Function$Type} from "packages/java/util/function/$Function"
+import {$PoseStack, $PoseStack$Type} from "packages/com/mojang/blaze3d/vertex/$PoseStack"
+import {$Mesh$DrawingFunction, $Mesh$DrawingFunction$Type} from "packages/yesman/epicfight/api/client/model/$Mesh$DrawingFunction"
+import {$AbstractClientPlayerPatch, $AbstractClientPlayerPatch$Type} from "packages/yesman/epicfight/client/world/capabilites/entitypatch/player/$AbstractClientPlayerPatch"
+import {$MultiBufferSource, $MultiBufferSource$Type} from "packages/net/minecraft/client/renderer/$MultiBufferSource"
+import {$ResourceLocation, $ResourceLocation$Type} from "packages/net/minecraft/resources/$ResourceLocation"
+import {$EntitySnapshot, $EntitySnapshot$Type} from "packages/yesman/epicfight/api/utils/$EntitySnapshot"
+import {$RenderType, $RenderType$Type} from "packages/net/minecraft/client/renderer/$RenderType"
+
+export class $EntitySnapshot$PlayerSnapshot extends $EntitySnapshot<($AbstractClientPlayerPatch<(any)>)> {
+
+constructor(arg0: $AbstractClientPlayerPatch$Type<(any)>)
+
+public "renderTextured"(arg0: $PoseStack$Type, arg1: $MultiBufferSource$Type, arg2: $Function$Type<($ResourceLocation$Type), ($RenderType$Type)>, arg3: $Mesh$DrawingFunction$Type, arg4: integer, arg5: float, arg6: float, arg7: float, arg8: float): void
+public "render"(arg0: $PoseStack$Type, arg1: $MultiBufferSource$Type, arg2: $RenderType$Type, arg3: $Mesh$DrawingFunction$Type, arg4: integer, arg5: float, arg6: float, arg7: float, arg8: float): void
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $EntitySnapshot$PlayerSnapshot$Type = ($EntitySnapshot$PlayerSnapshot);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $EntitySnapshot$PlayerSnapshot_ = $EntitySnapshot$PlayerSnapshot$Type;
+}}
+declare module "packages/yesman/epicfight/api/animation/property/$AnimationEvent$SimpleEvent" {
+import {$AnimationEvent$Event, $AnimationEvent$Event$Type} from "packages/yesman/epicfight/api/animation/property/$AnimationEvent$Event"
+import {$AnimationEvent$Side, $AnimationEvent$Side$Type} from "packages/yesman/epicfight/api/animation/property/$AnimationEvent$Side"
+import {$AnimationEvent, $AnimationEvent$Type} from "packages/yesman/epicfight/api/animation/property/$AnimationEvent"
+
+export class $AnimationEvent$SimpleEvent<EVENT extends $AnimationEvent$Event<(any), (any), (any), (any), (any), (any), (any), (any), (any), (any)>> extends $AnimationEvent<(EVENT), ($AnimationEvent$SimpleEvent<(EVENT)>)> {
+
+
+public static "create"<E extends $AnimationEvent$Event<(any), (any), (any), (any), (any), (any), (any), (any), (any), (any)>>(arg0: E, arg1: $AnimationEvent$Side$Type): $AnimationEvent$SimpleEvent<(E)>
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $AnimationEvent$SimpleEvent$Type<EVENT> = ($AnimationEvent$SimpleEvent<(EVENT)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $AnimationEvent$SimpleEvent_<EVENT> = $AnimationEvent$SimpleEvent$Type<(EVENT)>;
+}}
+declare module "packages/yesman/epicfight/network/server/$SPSkillExecutionFeedback" {
+import {$NetworkEvent$Context, $NetworkEvent$Context$Type} from "packages/net/minecraftforge/network/$NetworkEvent$Context"
+import {$FriendlyByteBuf, $FriendlyByteBuf$Type} from "packages/net/minecraft/network/$FriendlyByteBuf"
+import {$SPSkillExecutionFeedback$FeedbackType, $SPSkillExecutionFeedback$FeedbackType$Type} from "packages/yesman/epicfight/network/server/$SPSkillExecutionFeedback$FeedbackType"
+import {$Supplier, $Supplier$Type} from "packages/java/util/function/$Supplier"
+
+export class $SPSkillExecutionFeedback {
+
+constructor()
+
+public static "held"(arg0: integer): $SPSkillExecutionFeedback
+public static "expired"(arg0: integer): $SPSkillExecutionFeedback
+public "getBuffer"(): $FriendlyByteBuf
+public static "executed"(arg0: integer): $SPSkillExecutionFeedback
+public static "fromBytes"(arg0: $FriendlyByteBuf$Type): $SPSkillExecutionFeedback
+public "setFeedbackType"(arg0: $SPSkillExecutionFeedback$FeedbackType$Type): void
+public static "toBytes"(arg0: $SPSkillExecutionFeedback$Type, arg1: $FriendlyByteBuf$Type): void
+public static "handle"(arg0: $SPSkillExecutionFeedback$Type, arg1: $Supplier$Type<($NetworkEvent$Context$Type)>): void
+get "buffer"(): $FriendlyByteBuf
+set "feedbackType"(value: $SPSkillExecutionFeedback$FeedbackType$Type)
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $SPSkillExecutionFeedback$Type = ($SPSkillExecutionFeedback);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $SPSkillExecutionFeedback_ = $SPSkillExecutionFeedback$Type;
+}}
+declare module "packages/yesman/epicfight/api/utils/math/$ValueModifier$Unified" {
+import {$Record, $Record$Type} from "packages/java/lang/$Record"
+import {$ValueModifier, $ValueModifier$Type} from "packages/yesman/epicfight/api/utils/math/$ValueModifier"
+import {$ValueModifier$ResultCalculator, $ValueModifier$ResultCalculator$Type} from "packages/yesman/epicfight/api/utils/math/$ValueModifier$ResultCalculator"
+
+export class $ValueModifier$Unified extends $Record implements $ValueModifier {
+
+constructor(adder: float, multiplier: float, setter: float)
+
+public "adder"(): float
+public "setter"(): float
+public "multiplier"(): float
+public "attach"(arg0: $ValueModifier$ResultCalculator$Type): void
+public "equals"(arg0: any): boolean
+public "toString"(): string
+public "hashCode"(): integer
+public static "calculator"(): $ValueModifier$ResultCalculator
+public static "adder"(arg0: float): $ValueModifier
+public static "setter"(arg0: float): $ValueModifier
+public static "multiplier"(arg0: float): $ValueModifier
+set "ter"(value: float)
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $ValueModifier$Unified$Type = ($ValueModifier$Unified);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $ValueModifier$Unified_ = $ValueModifier$Unified$Type;
+}}
+declare module "packages/yesman/epicfight/world/capabilities/entitypatch/$EntityDecorations$DecorationOverlay" {
+import {$Vector4f, $Vector4f$Type} from "packages/org/joml/$Vector4f"
+import {$ResourceLocation, $ResourceLocation$Type} from "packages/net/minecraft/resources/$ResourceLocation"
+import {$RenderType, $RenderType$Type} from "packages/net/minecraft/client/renderer/$RenderType"
+
+export interface $EntityDecorations$DecorationOverlay {
+
+ "getRenderType"(): $RenderType
+ "shouldRender"(): boolean
+ "shouldRemove"(): boolean
+ "color"(arg0: float): $Vector4f
+}
+
+export namespace $EntityDecorations$DecorationOverlay {
+const GENERIC: $ResourceLocation
+const NO_COLOR: $Vector4f
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $EntityDecorations$DecorationOverlay$Type = ($EntityDecorations$DecorationOverlay);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $EntityDecorations$DecorationOverlay_ = $EntityDecorations$DecorationOverlay$Type;
+}}
+declare module "packages/yesman/epicfight/api/client/forgeevent/$UpdatePlayerMotionEvent" {
+import {$LivingMotion, $LivingMotion$Type} from "packages/yesman/epicfight/api/animation/$LivingMotion"
+import {$ListenerList, $ListenerList$Type} from "packages/net/minecraftforge/eventbus/$ListenerList"
+import {$Event, $Event$Type} from "packages/net/minecraftforge/eventbus/api/$Event"
+import {$DetachablePlayerEvent, $DetachablePlayerEvent$Type} from "packages/yesman/epicfight/world/entity/eventlistener/$DetachablePlayerEvent"
+import {$AbstractClientPlayerPatch, $AbstractClientPlayerPatch$Type} from "packages/yesman/epicfight/client/world/capabilites/entitypatch/player/$AbstractClientPlayerPatch"
+
+export class $UpdatePlayerMotionEvent extends $Event implements $DetachablePlayerEvent<($AbstractClientPlayerPatch<(any)>)> {
+
+constructor(arg0: $AbstractClientPlayerPatch$Type<(any)>, arg1: $LivingMotion$Type)
+constructor()
+
+public "getMotion"(): $LivingMotion
+public "setMotion"(arg0: $LivingMotion$Type): void
+public "getListenerList"(): $ListenerList
+public "hasResult"(): boolean
+public "isCancelable"(): boolean
+public "setCanceled"(arg0: boolean): void
+public "isCanceled"(): boolean
+get "motion"(): $LivingMotion
+set "motion"(value: $LivingMotion$Type)
+get "listenerList"(): $ListenerList
+get "cancelable"(): boolean
+set "canceled"(value: boolean)
+get "canceled"(): boolean
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $UpdatePlayerMotionEvent$Type = ($UpdatePlayerMotionEvent);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $UpdatePlayerMotionEvent_ = $UpdatePlayerMotionEvent$Type;
+}}
+declare module "packages/yesman/epicfight/client/renderer/shader/compute/$ComputeShaderSetup$MeshPartBuffer" {
+export {} // Mark the file as a module, do not remove unless there are other import/exports!
+export interface $ComputeShaderSetup$MeshPartBuffer {
+
+ "partIdx"(): integer
+ "vboId"(): integer
+}
+
+export namespace $ComputeShaderSetup$MeshPartBuffer {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $ComputeShaderSetup$MeshPartBuffer$Type = ($ComputeShaderSetup$MeshPartBuffer);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $ComputeShaderSetup$MeshPartBuffer_ = $ComputeShaderSetup$MeshPartBuffer$Type;
+}}
+declare module "packages/yesman/epicfight/world/entity/eventlistener/$ModifyAttackSpeedEvent" {
+import {$CapabilityItem, $CapabilityItem$Type} from "packages/yesman/epicfight/world/capabilities/item/$CapabilityItem"
+import {$PlayerPatch, $PlayerPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/player/$PlayerPatch"
+import {$AbstractPlayerEvent, $AbstractPlayerEvent$Type} from "packages/yesman/epicfight/world/entity/eventlistener/$AbstractPlayerEvent"
+
+export class $ModifyAttackSpeedEvent extends $AbstractPlayerEvent<($PlayerPatch<(any)>)> {
+
+constructor(arg0: $PlayerPatch$Type<(any)>, arg1: $CapabilityItem$Type, arg2: float)
+
+public "getAttackSpeed"(): float
+public "getItemCapability"(): $CapabilityItem
+public "setAttackSpeed"(arg0: float): void
+get "attackSpeed"(): float
+get "itemCapability"(): $CapabilityItem
+set "attackSpeed"(value: float)
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $ModifyAttackSpeedEvent$Type = ($ModifyAttackSpeedEvent);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $ModifyAttackSpeedEvent_ = $ModifyAttackSpeedEvent$Type;
+}}
+declare module "packages/yesman/epicfight/api/client/animation/$Layer" {
+import {$AnimationPlayer, $AnimationPlayer$Type} from "packages/yesman/epicfight/api/animation/$AnimationPlayer"
+import {$Layer$Priority, $Layer$Priority$Type} from "packages/yesman/epicfight/api/client/animation/$Layer$Priority"
+import {$LivingMotion, $LivingMotion$Type} from "packages/yesman/epicfight/api/animation/$LivingMotion"
+import {$AssetAccessor, $AssetAccessor$Type} from "packages/yesman/epicfight/api/asset/$AssetAccessor"
+import {$Pose, $Pose$Type} from "packages/yesman/epicfight/api/animation/$Pose"
+import {$LayerOffAnimation, $LayerOffAnimation$Type} from "packages/yesman/epicfight/api/animation/types/$LayerOffAnimation"
+import {$Supplier, $Supplier$Type} from "packages/java/util/function/$Supplier"
+import {$LivingEntityPatch, $LivingEntityPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/$LivingEntityPatch"
+
+export class $Layer {
+readonly "animationPlayer": $AnimationPlayer
+
+constructor(arg0: $Layer$Priority$Type)
+constructor(arg0: $Layer$Priority$Type, arg1: $Supplier$Type<($AnimationPlayer$Type)>)
+
+public "getLivingMotion"(arg0: $LivingEntityPatch$Type<(any)>, arg1: boolean): $LivingMotion
+public "getEnabledPose"(arg0: $LivingEntityPatch$Type<(any)>, arg1: boolean, arg2: float): $Pose
+public "isOff"(): boolean
+public "copyLayerTo"(arg0: $Layer$Type, arg1: float): void
+public "disableLayer"(): void
+public static "setLayerOffAnimation"(arg0: $AssetAccessor$Type<(any)>, arg1: $Pose$Type, arg2: $LayerOffAnimation$Type, arg3: float): void
+public "getNextAnimation"(): $AssetAccessor<(any)>
+public "playAnimationInstantly"(arg0: $AssetAccessor$Type<(any)>, arg1: $LivingEntityPatch$Type<(any)>): void
+public "playAnimation"(arg0: $AssetAccessor$Type<(any)>, arg1: $LivingEntityPatch$Type<(any)>, arg2: float): void
+public "pause"(): void
+public "toString"(): string
+public "update"(arg0: $LivingEntityPatch$Type<(any)>): void
+public "off"(arg0: $LivingEntityPatch$Type<(any)>): void
+public "resume"(): void
+get "nextAnimation"(): $AssetAccessor<(any)>
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Layer$Type = ($Layer);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Layer_ = $Layer$Type;
+}}
+declare module "packages/yesman/epicfight/world/capabilities/item/$CapabilityItem$Builder" {
+import {$Function, $Function$Type} from "packages/java/util/function/$Function"
+import {$CapabilityItem, $CapabilityItem$Type} from "packages/yesman/epicfight/world/capabilities/item/$CapabilityItem"
+import {$WeaponCategory, $WeaponCategory$Type} from "packages/yesman/epicfight/world/capabilities/item/$WeaponCategory"
+import {$Attribute, $Attribute$Type} from "packages/net/minecraft/world/entity/ai/attributes/$Attribute"
+import {$AttributeModifier, $AttributeModifier$Type} from "packages/net/minecraft/world/entity/ai/attributes/$AttributeModifier"
+import {$Style, $Style$Type} from "packages/yesman/epicfight/world/capabilities/item/$Style"
+import {$Pair, $Pair$Type} from "packages/com/mojang/datafixers/util/$Pair"
+import {$Collider, $Collider$Type} from "packages/yesman/epicfight/api/collider/$Collider"
+
+export class $CapabilityItem$Builder {
+
+
+public "addStyleAttibutes"(arg0: $Style$Type, arg1: $Pair$Type<($Attribute$Type), ($AttributeModifier$Type)>): $CapabilityItem$Builder
+public "getCollider"(): $Collider
+public "category"(arg0: $WeaponCategory$Type): $CapabilityItem$Builder
+public "build"(): $CapabilityItem
+public "collider"(arg0: $Collider$Type): $CapabilityItem$Builder
+public "constructor"(arg0: $Function$Type<($CapabilityItem$Builder$Type), ($CapabilityItem$Type)>): $CapabilityItem$Builder
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $CapabilityItem$Builder$Type = ($CapabilityItem$Builder);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $CapabilityItem$Builder_ = $CapabilityItem$Builder$Type;
+}}
+declare module "packages/yesman/epicfight/world/capabilities/skill/$CapabilitySkill" {
+import {$CompoundTag, $CompoundTag$Type} from "packages/net/minecraft/nbt/$CompoundTag"
+import {$SkillSlot, $SkillSlot$Type} from "packages/yesman/epicfight/skill/$SkillSlot"
+import {$Set, $Set$Type} from "packages/java/util/$Set"
+import {$SkillContainer, $SkillContainer$Type} from "packages/yesman/epicfight/skill/$SkillContainer"
+import {$PlayerPatch, $PlayerPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/player/$PlayerPatch"
+import {$Stream, $Stream$Type} from "packages/java/util/stream/$Stream"
+import {$Skill, $Skill$Type} from "packages/yesman/epicfight/skill/$Skill"
+import {$SkillCategory, $SkillCategory$Type} from "packages/yesman/epicfight/skill/$SkillCategory"
+
+export class $CapabilitySkill {
+static readonly "EMPTY": $CapabilitySkill
+readonly "skillContainers": ($SkillContainer)[]
+
+constructor(arg0: $PlayerPatch$Type<(any)>)
+
+public "getSkillContainerFor"(arg0: $SkillSlot$Type): $SkillContainer
+public "getSkillContainerFor"(arg0: integer): $SkillContainer
+public "addLearnedSkill"(arg0: $Skill$Type): void
+public "removeLearnedSkill"(arg0: $Skill$Type): boolean
+public "hasCategory"(arg0: $SkillCategory$Type): boolean
+public "hasEmptyContainer"(arg0: $SkillCategory$Type): boolean
+public "getFirstEmptyContainer"(arg0: $SkillCategory$Type): $SkillContainer
+public "isEquipping"(arg0: $Skill$Type): boolean
+public "hasLearned"(arg0: $Skill$Type): boolean
+public "getSkillContainersFor"(arg0: $SkillCategory$Type): $Set<($SkillContainer)>
+public "listAcquiredSkills"(): $Stream<($Skill)>
+public "clearContainersAndLearnedSkills"(arg0: boolean): void
+public "removeSkillFromContainer"(arg0: $Skill$Type): void
+public "setSkillToContainer"(arg0: $Skill$Type, arg1: $SkillContainer$Type): void
+public "listSkillContainers"(): $Stream<($SkillContainer)>
+public "getSkillContainer"(arg0: $Skill$Type): $SkillContainer
+public "deserialize"(arg0: $CompoundTag$Type): void
+public "copyFrom"(arg0: $CapabilitySkill$Type): void
+public "serialize"(): $CompoundTag
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $CapabilitySkill$Type = ($CapabilitySkill);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $CapabilitySkill_ = $CapabilitySkill$Type;
+}}
+declare module "packages/yesman/epicfight/api/client/model/$VertexBuilder" {
+import {$List, $List$Type} from "packages/java/util/$List"
+
+export class $VertexBuilder {
+readonly "position": integer
+readonly "uv": integer
+readonly "normal": integer
+
+constructor(arg0: integer, arg1: integer, arg2: integer)
+
+public "equals"(arg0: any): boolean
+public "hashCode"(): integer
+public static "create"(arg0: (integer)[]): $List<($VertexBuilder)>
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $VertexBuilder$Type = ($VertexBuilder);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $VertexBuilder_ = $VertexBuilder$Type;
+}}
+declare module "packages/yesman/epicfight/api/client/animation/property/$TrailInfo$Builder" {
+import {$InteractionHand, $InteractionHand$Type} from "packages/net/minecraft/world/$InteractionHand"
+import {$SimpleParticleType, $SimpleParticleType$Type} from "packages/net/minecraft/core/particles/$SimpleParticleType"
+import {$TrailInfo, $TrailInfo$Type} from "packages/yesman/epicfight/api/client/animation/property/$TrailInfo"
+import {$Vec3, $Vec3$Type} from "packages/net/minecraft/world/phys/$Vec3"
+import {$ResourceLocation, $ResourceLocation$Type} from "packages/net/minecraft/resources/$ResourceLocation"
+
+export class $TrailInfo$Builder {
+
+constructor()
+
+public "updateInterval"(arg0: integer): $TrailInfo$Builder
+public "joint"(arg0: string): $TrailInfo$Builder
+public "blockLight"(arg0: integer): $TrailInfo$Builder
+public "skyLight"(arg0: integer): $TrailInfo$Builder
+public "texture"(arg0: $ResourceLocation$Type): $TrailInfo$Builder
+public "texture"(arg0: string): $TrailInfo$Builder
+public "startPos"(arg0: $Vec3$Type): $TrailInfo$Builder
+public "time"(arg0: float, arg1: float): $TrailInfo$Builder
+public "lifetime"(arg0: integer): $TrailInfo$Builder
+public "endPos"(arg0: $Vec3$Type): $TrailInfo$Builder
+public "itemSkinHand"(arg0: $InteractionHand$Type): $TrailInfo$Builder
+public "interpolations"(arg0: integer): $TrailInfo$Builder
+public "fadeTime"(arg0: float): $TrailInfo$Builder
+public "type"(arg0: $SimpleParticleType$Type): $TrailInfo$Builder
+public "b"(arg0: float): $TrailInfo$Builder
+public "g"(arg0: float): $TrailInfo$Builder
+public "create"(): $TrailInfo
+public "r"(arg0: float): $TrailInfo$Builder
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $TrailInfo$Builder$Type = ($TrailInfo$Builder);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $TrailInfo$Builder_ = $TrailInfo$Builder$Type;
+}}
+declare module "packages/yesman/epicfight/api/client/animation/$Layer$Priority" {
+import {$Enum, $Enum$Type} from "packages/java/lang/$Enum"
+
+export class $Layer$Priority extends $Enum<($Layer$Priority)> {
+static readonly "LOWEST": $Layer$Priority
+static readonly "LOW": $Layer$Priority
+static readonly "MIDDLE": $Layer$Priority
+static readonly "HIGH": $Layer$Priority
+static readonly "HIGHEST": $Layer$Priority
+
+
+public "highers"(): ($Layer$Priority)[]
+public "lowers"(): ($Layer$Priority)[]
+public "isHigherOrEqual"(arg0: $Layer$Priority$Type): boolean
+public "lowersAndEqual"(): ($Layer$Priority)[]
+public "isHigherThan"(arg0: $Layer$Priority$Type): boolean
+public static "values"(): ($Layer$Priority)[]
+public static "valueOf"(arg0: string): $Layer$Priority
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Layer$Priority$Type = (("high") | ("middle") | ("low") | ("highest") | ("lowest")) | ($Layer$Priority);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Layer$Priority_ = $Layer$Priority$Type;
+}}
+declare module "packages/yesman/epicfight/api/client/model/$MeshPartDefinition" {
+import {$Mesh$RenderProperties, $Mesh$RenderProperties$Type} from "packages/yesman/epicfight/api/client/model/$Mesh$RenderProperties"
+import {$Supplier, $Supplier$Type} from "packages/java/util/function/$Supplier"
+import {$OpenMatrix4f, $OpenMatrix4f$Type} from "packages/yesman/epicfight/api/utils/math/$OpenMatrix4f"
+
+export interface $MeshPartDefinition {
+
+ "getModelPartAnimationProvider"(): $Supplier<($OpenMatrix4f)>
+ "partName"(): string
+ "renderProperties"(): $Mesh$RenderProperties
+}
+
+export namespace $MeshPartDefinition {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $MeshPartDefinition$Type = ($MeshPartDefinition);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $MeshPartDefinition_ = $MeshPartDefinition$Type;
+}}
+declare module "packages/yesman/epicfight/world/entity/eventlistener/$ItemUseEndEvent" {
+import {$ServerPlayerPatch, $ServerPlayerPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/player/$ServerPlayerPatch"
+import {$LivingEntityUseItemEvent$Stop, $LivingEntityUseItemEvent$Stop$Type} from "packages/net/minecraftforge/event/entity/living/$LivingEntityUseItemEvent$Stop"
+import {$AbstractPlayerEvent, $AbstractPlayerEvent$Type} from "packages/yesman/epicfight/world/entity/eventlistener/$AbstractPlayerEvent"
+
+export class $ItemUseEndEvent extends $AbstractPlayerEvent<($ServerPlayerPatch)> {
+
+constructor(arg0: $ServerPlayerPatch$Type, arg1: $LivingEntityUseItemEvent$Stop$Type)
+
+public "getForgeEvent"(): $LivingEntityUseItemEvent$Stop
+get "forgeEvent"(): $LivingEntityUseItemEvent$Stop
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $ItemUseEndEvent$Type = ($ItemUseEndEvent);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $ItemUseEndEvent_ = $ItemUseEndEvent$Type;
+}}
+declare module "packages/yesman/epicfight/api/animation/types/$LayerOffAnimation" {
+import {$Layer$Priority, $Layer$Priority$Type} from "packages/yesman/epicfight/api/client/animation/$Layer$Priority"
+import {$AssetAccessor, $AssetAccessor$Type} from "packages/yesman/epicfight/api/asset/$AssetAccessor"
+import {$Class, $Class$Type} from "packages/java/lang/$Class"
+import {$ResourceLocation, $ResourceLocation$Type} from "packages/net/minecraft/resources/$ResourceLocation"
+import {$Runnable, $Runnable$Type} from "packages/java/lang/$Runnable"
+import {$AnimationClip, $AnimationClip$Type} from "packages/yesman/epicfight/api/animation/$AnimationClip"
+import {$DynamicAnimation, $DynamicAnimation$Type} from "packages/yesman/epicfight/api/animation/types/$DynamicAnimation"
+import {$Consumer, $Consumer$Type} from "packages/java/util/function/$Consumer"
+import {$AnimationManager$AnimationAccessor, $AnimationManager$AnimationAccessor$Type} from "packages/yesman/epicfight/api/animation/$AnimationManager$AnimationAccessor"
+import {$Pose, $Pose$Type} from "packages/yesman/epicfight/api/animation/$Pose"
+import {$Optional, $Optional$Type} from "packages/java/util/$Optional"
+import {$AnimationProperty, $AnimationProperty$Type} from "packages/yesman/epicfight/api/animation/property/$AnimationProperty"
+import {$LivingEntityPatch, $LivingEntityPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/$LivingEntityPatch"
+import {$JointMaskEntry, $JointMaskEntry$Type} from "packages/yesman/epicfight/api/client/animation/property/$JointMaskEntry"
+
+export class $LayerOffAnimation extends $DynamicAnimation implements $AnimationManager$AnimationAccessor<($LayerOffAnimation)> {
+
+constructor(arg0: $Layer$Priority$Type)
+
+public "getJointMaskEntry"(arg0: $LivingEntityPatch$Type<(any)>, arg1: boolean): $Optional<($JointMaskEntry)>
+public "inRegistry"(): boolean
+public "getAnimationClip"(): $AnimationClip
+public "isLinkAnimation"(): boolean
+public "setLastAnimation"(arg0: $AssetAccessor$Type<(any)>): void
+public "setLastPose"(arg0: $Pose$Type): void
+public "getPoseByTime"(arg0: $LivingEntityPatch$Type<(any)>, arg1: float, arg2: float): $Pose
+public "hasTransformFor"(arg0: string): boolean
+public "doesHeadRotFollowEntityHead"(): boolean
+public "getRealAnimation"(): $AssetAccessor<(any)>
+public "registryName"(): $ResourceLocation
+public "get"(): $LayerOffAnimation
+public "getProperty"<V>(arg0: $AnimationProperty$Type<(V)>): $Optional<(V)>
+public "end"(arg0: $LivingEntityPatch$Type<(any)>, arg1: $AssetAccessor$Type<(any)>, arg2: boolean): void
+public "id"(): integer
+public "isPresent"(): boolean
+public "getAccessor"(): $AnimationManager$AnimationAccessor<(any)>
+public "idBetween"(arg0: $AnimationManager$AnimationAccessor$Type<(any)>, arg1: $AnimationManager$AnimationAccessor$Type<(any)>): boolean
+public "doOrThrow"(arg0: $Consumer$Type<($LayerOffAnimation$Type)>): void
+public "checkType"(arg0: $Class$Type<(any)>): boolean
+public "ifPresentOrElse"(arg0: $Consumer$Type<($LayerOffAnimation$Type)>, arg1: $Runnable$Type): void
+public "ifPresent"(arg0: $Consumer$Type<($LayerOffAnimation$Type)>): void
+public "checkNotNull"(): void
+public "isEmpty"(): boolean
+public "orElse"(arg0: $LayerOffAnimation$Type): $LayerOffAnimation
+get "animationClip"(): $AnimationClip
+get "linkAnimation"(): boolean
+set "lastAnimation"(value: $AssetAccessor$Type<(any)>)
+set "lastPose"(value: $Pose$Type)
+get "realAnimation"(): $AssetAccessor<(any)>
+get "present"(): boolean
+get "accessor"(): $AnimationManager$AnimationAccessor<(any)>
+get "empty"(): boolean
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $LayerOffAnimation$Type = ($LayerOffAnimation);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $LayerOffAnimation_ = $LayerOffAnimation$Type;
+}}
+declare module "packages/yesman/epicfight/api/client/model/$StaticMesh" {
+import {$Mesh$RenderProperties, $Mesh$RenderProperties$Type} from "packages/yesman/epicfight/api/client/model/$Mesh$RenderProperties"
+import {$Armature, $Armature$Type} from "packages/yesman/epicfight/api/model/$Armature"
+import {$Vector3f, $Vector3f$Type} from "packages/org/joml/$Vector3f"
+import {$ClothSimulator$ClothObject, $ClothSimulator$ClothObject$Type} from "packages/yesman/epicfight/api/client/physics/cloth/$ClothSimulator$ClothObject"
+import {$ClothSimulatable, $ClothSimulatable$Type} from "packages/yesman/epicfight/api/client/physics/cloth/$ClothSimulatable"
+import {$RenderType, $RenderType$Type} from "packages/net/minecraft/client/renderer/$RenderType"
+import {$ClothSimulator$ClothObjectBuilder, $ClothSimulator$ClothObjectBuilder$Type} from "packages/yesman/epicfight/api/client/physics/cloth/$ClothSimulator$ClothObjectBuilder"
+import {$SoftBodyTranslatable, $SoftBodyTranslatable$Type} from "packages/yesman/epicfight/api/client/model/$SoftBodyTranslatable"
+import {$PoseStack, $PoseStack$Type} from "packages/com/mojang/blaze3d/vertex/$PoseStack"
+import {$List, $List$Type} from "packages/java/util/$List"
+import {$SoftBodyTranslatable$ClothSimulationInfo, $SoftBodyTranslatable$ClothSimulationInfo$Type} from "packages/yesman/epicfight/api/client/model/$SoftBodyTranslatable$ClothSimulationInfo"
+import {$Mesh, $Mesh$Type} from "packages/yesman/epicfight/api/client/model/$Mesh"
+import {$VertexConsumer, $VertexConsumer$Type} from "packages/com/mojang/blaze3d/vertex/$VertexConsumer"
+import {$Vector4f, $Vector4f$Type} from "packages/org/joml/$Vector4f"
+import {$Collection, $Collection$Type} from "packages/java/util/$Collection"
+import {$Vec3, $Vec3$Type} from "packages/net/minecraft/world/phys/$Vec3"
+import {$OpenMatrix4f, $OpenMatrix4f$Type} from "packages/yesman/epicfight/api/utils/math/$OpenMatrix4f"
+import {$VertexBuilder, $VertexBuilder$Type} from "packages/yesman/epicfight/api/client/model/$VertexBuilder"
+import {$Set, $Set$Type} from "packages/java/util/$Set"
+import {$Mesh$DrawingFunction, $Mesh$DrawingFunction$Type} from "packages/yesman/epicfight/api/client/model/$Mesh$DrawingFunction"
+import {$MeshPartDefinition, $MeshPartDefinition$Type} from "packages/yesman/epicfight/api/client/model/$MeshPartDefinition"
+import {$MeshPart, $MeshPart$Type} from "packages/yesman/epicfight/api/client/model/$MeshPart"
+import {$MultiBufferSource, $MultiBufferSource$Type} from "packages/net/minecraft/client/renderer/$MultiBufferSource"
+import {$Map, $Map$Type} from "packages/java/util/$Map"
+import {$Map$Entry, $Map$Entry$Type} from "packages/java/util/$Map$Entry"
+
+export class $StaticMesh<P extends $MeshPart> implements $Mesh, $SoftBodyTranslatable {
+
+constructor(arg0: $Map$Type<(string), ((number)[])>, arg1: $Map$Type<($MeshPartDefinition$Type), ($List$Type<($VertexBuilder$Type)>)>, arg2: $StaticMesh$Type<(P)>, arg3: $Mesh$RenderProperties$Type)
+
+public "getRenderProperties"(): $Mesh$RenderProperties
+public "uvs"(): (float)[]
+public "putSoftBodySimulationInfo"(arg0: $Map$Type<(string), ($SoftBodyTranslatable$ClothSimulationInfo$Type)>): void
+public "normalList"(): $List<($Vec3)>
+public "hasPart"(arg0: string): boolean
+public "getPart"(arg0: string): $MeshPart
+public "getAllParts"(): $Collection<(P)>
+public "getPartEntry"(): $Set<($Map$Entry<(string), (P)>)>
+public "getSoftBodySimulationInfo"(): $Map<(string), ($SoftBodyTranslatable$ClothSimulationInfo)>
+public "getVertexPosition"(arg0: integer, arg1: $Vector4f$Type): void
+public "getVertexPosition"(arg0: integer, arg1: $Vector4f$Type, arg2: ($OpenMatrix4f$Type)[]): void
+public "getVertexNormal"(arg0: integer, arg1: $Vector3f$Type): void
+public "getVertexNormal"(arg0: integer, arg1: integer, arg2: $Vector3f$Type, arg3: ($OpenMatrix4f$Type)[]): void
+public "createSimulationData"(arg0: $SoftBodyTranslatable$Type, arg1: $ClothSimulatable$Type, arg2: $ClothSimulator$ClothObjectBuilder$Type): $ClothSimulator$ClothObject
+public "normals"(): (float)[]
+public "initialize"(): void
+public "positions"(): (float)[]
+public "drawPosed"(arg0: $PoseStack$Type, arg1: $VertexConsumer$Type, arg2: $Mesh$DrawingFunction$Type, arg3: integer, arg4: float, arg5: float, arg6: float, arg7: float, arg8: integer, arg9: $Armature$Type, arg10: ($OpenMatrix4f$Type)[]): void
+public "draw"(arg0: $PoseStack$Type, arg1: $MultiBufferSource$Type, arg2: $RenderType$Type, arg3: $Mesh$DrawingFunction$Type, arg4: integer, arg5: float, arg6: float, arg7: float, arg8: float, arg9: integer, arg10: $Armature$Type, arg11: ($OpenMatrix4f$Type)[]): void
+public "draw"(arg0: $PoseStack$Type, arg1: $VertexConsumer$Type, arg2: $Mesh$DrawingFunction$Type, arg3: integer, arg4: float, arg5: float, arg6: float, arg7: float, arg8: integer): void
+public "canStartSoftBodySimulation"(): boolean
+public "getOriginalMesh"(): $StaticMesh<(any)>
+get "renderProperties"(): $Mesh$RenderProperties
+get "allParts"(): $Collection<(P)>
+get "partEntry"(): $Set<($Map$Entry<(string), (P)>)>
+get "softBodySimulationInfo"(): $Map<(string), ($SoftBodyTranslatable$ClothSimulationInfo)>
+get "originalMesh"(): $StaticMesh<(any)>
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $StaticMesh$Type<P> = ($StaticMesh<(P)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $StaticMesh_<P> = $StaticMesh$Type<(P)>;
+}}
+declare module "packages/yesman/epicfight/world/entity/eventlistener/$DealDamageEvent$Attack" {
+import {$ServerPlayerPatch, $ServerPlayerPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/player/$ServerPlayerPatch"
+import {$LivingAttackEvent, $LivingAttackEvent$Type} from "packages/net/minecraftforge/event/entity/living/$LivingAttackEvent"
+import {$DealDamageEvent, $DealDamageEvent$Type} from "packages/yesman/epicfight/world/entity/eventlistener/$DealDamageEvent"
+import {$LivingEntity, $LivingEntity$Type} from "packages/net/minecraft/world/entity/$LivingEntity"
+import {$EpicFightDamageSource, $EpicFightDamageSource$Type} from "packages/yesman/epicfight/world/damagesource/$EpicFightDamageSource"
+
+export class $DealDamageEvent$Attack extends $DealDamageEvent<($LivingAttackEvent)> {
+
+constructor(arg0: $ServerPlayerPatch$Type, arg1: $LivingEntity$Type, arg2: $EpicFightDamageSource$Type, arg3: $LivingAttackEvent$Type)
+
+public "getAttackDamage"(): float
+get "attackDamage"(): float
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $DealDamageEvent$Attack$Type = ($DealDamageEvent$Attack);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $DealDamageEvent$Attack_ = $DealDamageEvent$Attack$Type;
+}}
+declare module "packages/yesman/epicfight/network/server/$SPSetRemotePlayerSkill" {
+import {$NetworkEvent$Context, $NetworkEvent$Context$Type} from "packages/net/minecraftforge/network/$NetworkEvent$Context"
+import {$SkillSlot, $SkillSlot$Type} from "packages/yesman/epicfight/skill/$SkillSlot"
+import {$Record, $Record$Type} from "packages/java/lang/$Record"
+import {$FriendlyByteBuf, $FriendlyByteBuf$Type} from "packages/net/minecraft/network/$FriendlyByteBuf"
+import {$Supplier, $Supplier$Type} from "packages/java/util/function/$Supplier"
+import {$Skill, $Skill$Type} from "packages/yesman/epicfight/skill/$Skill"
+
+export class $SPSetRemotePlayerSkill extends $Record {
+
+constructor(entityId: integer, slot: $SkillSlot$Type, skill: $Skill$Type)
+
+public "entityId"(): integer
+public static "fromBytes"(arg0: $FriendlyByteBuf$Type): $SPSetRemotePlayerSkill
+public "skill"(): $Skill
+public "slot"(): $SkillSlot
+public "equals"(arg0: any): boolean
+public "toString"(): string
+public "hashCode"(): integer
+public static "toBytes"(arg0: $SPSetRemotePlayerSkill$Type, arg1: $FriendlyByteBuf$Type): void
+public static "handle"(arg0: $SPSetRemotePlayerSkill$Type, arg1: $Supplier$Type<($NetworkEvent$Context$Type)>): void
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $SPSetRemotePlayerSkill$Type = ($SPSetRemotePlayerSkill);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $SPSetRemotePlayerSkill_ = $SPSetRemotePlayerSkill$Type;
+}}
+declare module "packages/yesman/epicfight/network/server/$SPSkillExecutionFeedback$FeedbackType" {
+import {$Enum, $Enum$Type} from "packages/java/lang/$Enum"
+
+export class $SPSkillExecutionFeedback$FeedbackType extends $Enum<($SPSkillExecutionFeedback$FeedbackType)> {
+static readonly "EXECUTED": $SPSkillExecutionFeedback$FeedbackType
+static readonly "HOLDING_START": $SPSkillExecutionFeedback$FeedbackType
+static readonly "EXPIRED": $SPSkillExecutionFeedback$FeedbackType
+
+
+public static "values"(): ($SPSkillExecutionFeedback$FeedbackType)[]
+public static "valueOf"(arg0: string): $SPSkillExecutionFeedback$FeedbackType
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $SPSkillExecutionFeedback$FeedbackType$Type = (("expired") | ("executed") | ("holding_start")) | ($SPSkillExecutionFeedback$FeedbackType);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $SPSkillExecutionFeedback$FeedbackType_ = $SPSkillExecutionFeedback$FeedbackType$Type;
+}}
+declare module "packages/yesman/epicfight/client/world/capabilites/entitypatch/player/$AbstractClientPlayerPatch" {
+import {$AbstractClientPlayer, $AbstractClientPlayer$Type} from "packages/net/minecraft/client/player/$AbstractClientPlayer"
+import {$LivingMotion, $LivingMotion$Type} from "packages/yesman/epicfight/api/animation/$LivingMotion"
+import {$Armature, $Armature$Type} from "packages/yesman/epicfight/api/model/$Armature"
+import {$CapabilityItem, $CapabilityItem$Type} from "packages/yesman/epicfight/world/capabilities/item/$CapabilityItem"
+import {$PlayerPatch, $PlayerPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/player/$PlayerPatch"
+import {$SPEntityPairingPacket, $SPEntityPairingPacket$Type} from "packages/yesman/epicfight/network/server/$SPEntityPairingPacket"
+import {$ActionAnimation, $ActionAnimation$Type} from "packages/yesman/epicfight/api/animation/types/$ActionAnimation"
+import {$Vec3, $Vec3$Type} from "packages/net/minecraft/world/phys/$Vec3"
+import {$EntityDataAccessor, $EntityDataAccessor$Type} from "packages/net/minecraft/network/syncher/$EntityDataAccessor"
+import {$OpenMatrix4f, $OpenMatrix4f$Type} from "packages/yesman/epicfight/api/utils/math/$OpenMatrix4f"
+import {$EntitySnapshot, $EntitySnapshot$Type} from "packages/yesman/epicfight/api/utils/$EntitySnapshot"
+import {$ClothSimulatable, $ClothSimulatable$Type} from "packages/yesman/epicfight/api/client/physics/cloth/$ClothSimulatable"
+import {$EpicSkins, $EpicSkins$Type} from "packages/yesman/epicfight/client/online/$EpicSkins"
+import {$DynamicAnimation, $DynamicAnimation$Type} from "packages/yesman/epicfight/api/animation/types/$DynamicAnimation"
+import {$PhysicsSimulator, $PhysicsSimulator$Type} from "packages/yesman/epicfight/api/physics/$PhysicsSimulator"
+import {$SimulationTypes, $SimulationTypes$Type} from "packages/yesman/epicfight/api/physics/$SimulationTypes"
+import {$Pose, $Pose$Type} from "packages/yesman/epicfight/api/animation/$Pose"
+import {$Optional, $Optional$Type} from "packages/java/util/$Optional"
+import {$EntityJoinLevelEvent, $EntityJoinLevelEvent$Type} from "packages/net/minecraftforge/event/entity/$EntityJoinLevelEvent"
+import {$ClothSimulator, $ClothSimulator$Type} from "packages/yesman/epicfight/api/client/physics/cloth/$ClothSimulator"
+import {$Animator, $Animator$Type} from "packages/yesman/epicfight/api/animation/$Animator"
+
+export class $AbstractClientPlayerPatch<T extends $AbstractClientPlayer> extends $PlayerPatch<(T)> implements $ClothSimulatable {
+ "modelYRotO2": float
+ "xPosO2": double
+ "yPosO2": double
+ "zPosO2": double
+ "xCloakO2": double
+ "yCloakO2": double
+ "zCloakO2": double
+static "STAMINA": $EntityDataAccessor<(float)>
+ "dx": double
+ "dz": double
+static readonly "WEIGHT_CORRECTION": double
+ "currentLivingMotion": $LivingMotion
+ "currentCompositeMotion": $LivingMotion
+
+constructor()
+
+public "setEpicSkinsInformation"(arg0: $EpicSkins$Type): void
+public "getEpicSkinsInformation"(): $EpicSkins
+public "isEpicSkinsLoaded"(): boolean
+public "getSimulator"<SIM extends $PhysicsSimulator<(any), (any), (any), (any), (any)>>(arg0: $SimulationTypes$Type<(any), (any), (any), (any), (any), (SIM)>): $Optional<(SIM)>
+public "getClothSimulator"(): $ClothSimulator
+public "getAccurateCloakLocation"(arg0: float): $Vec3
+public "getAccuratePartialLocation"(arg0: float): $Vec3
+public "getObjectVelocity"(): $Vec3
+public "getAccurateYRot"(arg0: float): float
+public "getYRotDelta"(arg0: float): float
+public "getSimulatableAnimator"(): $Animator
+public "getGravity"(): float
+public "onJoinWorld"(arg0: T, arg1: $EntityJoinLevelEvent$Type): void
+public "getModelMatrix"(arg0: float): $OpenMatrix4f
+public "entityPairing"(arg0: $SPEntityPairingPacket$Type): void
+public "updateMotion"(arg0: boolean): void
+public "poseTick"(arg0: $DynamicAnimation$Type, arg1: $Pose$Type, arg2: float, arg3: float): void
+public "overrideRender"(): boolean
+public "onOldPosUpdate"(): void
+public "updateHeldItem"(arg0: $CapabilityItem$Type, arg1: $CapabilityItem$Type): void
+public "shouldMoveOnCurrentSide"(arg0: $ActionAnimation$Type): boolean
+public "captureEntitySnapshot"(): $EntitySnapshot<(any)>
+public "invalid"(): boolean
+public "getScale"(): float
+public "getArmature"(): $Armature
+public "getYRot"(): float
+public "getYRotO"(): float
+set "epicSkinsInformation"(value: $EpicSkins$Type)
+get "epicSkinsInformation"(): $EpicSkins
+get "epicSkinsLoaded"(): boolean
+get "clothSimulator"(): $ClothSimulator
+get "objectVelocity"(): $Vec3
+get "simulatableAnimator"(): $Animator
+get "gravity"(): float
+get "scale"(): float
+get "armature"(): $Armature
+get "yRot"(): float
+get "yRotO"(): float
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $AbstractClientPlayerPatch$Type<T> = ($AbstractClientPlayerPatch<(T)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $AbstractClientPlayerPatch_<T> = $AbstractClientPlayerPatch$Type<(T)>;
+}}
+declare module "packages/yesman/epicfight/api/animation/types/$StaticAnimation" {
+import {$Armature, $Armature$Type} from "packages/yesman/epicfight/api/model/$Armature"
+import {$AnimationVariables$IndependentAnimationVariableKey, $AnimationVariables$IndependentAnimationVariableKey$Type} from "packages/yesman/epicfight/api/animation/$AnimationVariables$IndependentAnimationVariableKey"
+import {$Layer$LayerType, $Layer$LayerType$Type} from "packages/yesman/epicfight/api/client/animation/$Layer$LayerType"
+import {$InverseKinematicsProvider, $InverseKinematicsProvider$Type} from "packages/yesman/epicfight/api/physics/ik/$InverseKinematicsProvider"
+import {$InverseKinematicsSimulator$BakedInverseKinematicsDefinition, $InverseKinematicsSimulator$BakedInverseKinematicsDefinition$Type} from "packages/yesman/epicfight/api/physics/ik/$InverseKinematicsSimulator$BakedInverseKinematicsDefinition"
+import {$ResourceLocation, $ResourceLocation$Type} from "packages/net/minecraft/resources/$ResourceLocation"
+import {$EntityState, $EntityState$Type} from "packages/yesman/epicfight/api/animation/types/$EntityState"
+import {$DynamicAnimation, $DynamicAnimation$Type} from "packages/yesman/epicfight/api/animation/types/$DynamicAnimation"
+import {$Function, $Function$Type} from "packages/java/util/function/$Function"
+import {$PoseStack, $PoseStack$Type} from "packages/com/mojang/blaze3d/vertex/$PoseStack"
+import {$InverseKinematicsSimulator$InverseKinematicsObject, $InverseKinematicsSimulator$InverseKinematicsObject$Type} from "packages/yesman/epicfight/api/physics/ik/$InverseKinematicsSimulator$InverseKinematicsObject"
+import {$List, $List$Type} from "packages/java/util/$List"
+import {$AnimationProperty, $AnimationProperty$Type} from "packages/yesman/epicfight/api/animation/property/$AnimationProperty"
+import {$JointMaskEntry, $JointMaskEntry$Type} from "packages/yesman/epicfight/api/client/animation/property/$JointMaskEntry"
+import {$AnimationProperty$StaticAnimationProperty, $AnimationProperty$StaticAnimationProperty$Type} from "packages/yesman/epicfight/api/animation/property/$AnimationProperty$StaticAnimationProperty"
+import {$InverseKinematicsSimulator$InverseKinematicsBuilder, $InverseKinematicsSimulator$InverseKinematicsBuilder$Type} from "packages/yesman/epicfight/api/physics/ik/$InverseKinematicsSimulator$InverseKinematicsBuilder"
+import {$Layer$Priority, $Layer$Priority$Type} from "packages/yesman/epicfight/api/client/animation/$Layer$Priority"
+import {$AssetAccessor, $AssetAccessor$Type} from "packages/yesman/epicfight/api/asset/$AssetAccessor"
+import {$Vec3f, $Vec3f$Type} from "packages/yesman/epicfight/api/utils/math/$Vec3f"
+import {$EntityState$StateFactor, $EntityState$StateFactor$Type} from "packages/yesman/epicfight/api/animation/types/$EntityState$StateFactor"
+import {$TypeFlexibleHashMap, $TypeFlexibleHashMap$Type} from "packages/yesman/epicfight/api/utils/datastruct/$TypeFlexibleHashMap"
+import {$JointTransform, $JointTransform$Type} from "packages/yesman/epicfight/api/animation/$JointTransform"
+import {$EnderDragonPatch, $EnderDragonPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/boss/enderdragon/$EnderDragonPatch"
+import {$TransformSheet, $TransformSheet$Type} from "packages/yesman/epicfight/api/animation/$TransformSheet"
+import {$OpenMatrix4f, $OpenMatrix4f$Type} from "packages/yesman/epicfight/api/utils/math/$OpenMatrix4f"
+import {$InverseKinematicsSimulatable, $InverseKinematicsSimulatable$Type} from "packages/yesman/epicfight/api/physics/ik/$InverseKinematicsSimulatable"
+import {$AnimationClip, $AnimationClip$Type} from "packages/yesman/epicfight/api/animation/$AnimationClip"
+import {$AnimationManager$AnimationAccessor, $AnimationManager$AnimationAccessor$Type} from "packages/yesman/epicfight/api/animation/$AnimationManager$AnimationAccessor"
+import {$Pose, $Pose$Type} from "packages/yesman/epicfight/api/animation/$Pose"
+import {$Optional, $Optional$Type} from "packages/java/util/$Optional"
+import {$Joint, $Joint$Type} from "packages/yesman/epicfight/api/animation/$Joint"
+import {$MultiBufferSource, $MultiBufferSource$Type} from "packages/net/minecraft/client/renderer/$MultiBufferSource"
+import {$LinkAnimation, $LinkAnimation$Type} from "packages/yesman/epicfight/api/animation/types/$LinkAnimation"
+import {$Quaternionf, $Quaternionf$Type} from "packages/org/joml/$Quaternionf"
+import {$AnimationEvent, $AnimationEvent$Type} from "packages/yesman/epicfight/api/animation/property/$AnimationEvent"
+import {$LivingEntityPatch, $LivingEntityPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/$LivingEntityPatch"
+
+export class $StaticAnimation extends $DynamicAnimation implements $InverseKinematicsProvider {
+static readonly "HAD_NO_PHYSICS": $AnimationVariables$IndependentAnimationVariableKey<(boolean)>
+
+constructor(arg0: float, arg1: boolean, arg2: $AnimationManager$AnimationAccessor$Type<(any)>, arg3: $AssetAccessor$Type<(any)>)
+constructor(arg0: boolean, arg1: $AnimationManager$AnimationAccessor$Type<(any)>, arg2: $AssetAccessor$Type<(any)>)
+constructor(arg0: $ResourceLocation$Type, arg1: float, arg2: boolean, arg3: string, arg4: $AssetAccessor$Type<(any)>)
+constructor(arg0: float, arg1: boolean, arg2: string, arg3: $AssetAccessor$Type<(any)>)
+constructor()
+
+public "getCoord"(): $TransformSheet
+public "getLayerType"(): $Layer$LayerType
+public "getJointMaskEntry"(arg0: $LivingEntityPatch$Type<(any)>, arg1: boolean): $Optional<($JointMaskEntry)>
+public "getStatesMap"(arg0: $LivingEntityPatch$Type<(any)>, arg1: float): $TypeFlexibleHashMap<($EntityState$StateFactor<(any)>)>
+public "renderDebugging"(arg0: $PoseStack$Type, arg1: $MultiBufferSource$Type, arg2: $LivingEntityPatch$Type<(any)>, arg3: float, arg4: float): void
+public "setLinkAnimation"(arg0: $AssetAccessor$Type<(any)>, arg1: $Pose$Type, arg2: boolean, arg3: float, arg4: $LivingEntityPatch$Type<(any)>, arg5: $LinkAnimation$Type): void
+public "getAnimationClip"(): $AnimationClip
+/**
+ * 
+ * @deprecated
+ */
+public "addPropertyUnsafe"(arg0: $AnimationProperty$Type<(any)>, arg1: any): $StaticAnimation
+public "setAccessor"(arg0: $AnimationManager$AnimationAccessor$Type<(any)>): void
+public "getSubAnimations"(): $List<($AssetAccessor<(any)>)>
+public "idBetween"(arg0: $StaticAnimation$Type, arg1: $StaticAnimation$Type): boolean
+public "getFileHash"(): string
+public static "getFileHash"(arg0: $ResourceLocation$Type): string
+public "loadAnimation"(): void
+public "modifyPose"(arg0: $DynamicAnimation$Type, arg1: $Pose$Type, arg2: $LivingEntityPatch$Type<(any)>, arg3: float, arg4: float): void
+public "addStateIfNotExist"<T, A extends $StaticAnimation>(arg0: $EntityState$StateFactor$Type<(T)>, arg1: T): A
+public "getModifiedLinkState"(arg0: $EntityState$StateFactor$Type<(any)>, arg1: any, arg2: $LivingEntityPatch$Type<(any)>, arg3: float): any
+public "createSimulationData"(arg0: $InverseKinematicsProvider$Type, arg1: $InverseKinematicsSimulatable$Type, arg2: $InverseKinematicsSimulator$InverseKinematicsBuilder$Type): $InverseKinematicsSimulator$InverseKinematicsObject
+public "addEvents"<A extends $StaticAnimation>(arg0: $AnimationProperty$StaticAnimationProperty$Type<(any)>, ...arg1: ($AnimationEvent$Type<(any), (any)>)[]): A
+public "addEvents"<A extends $StaticAnimation>(...arg0: ($AnimationEvent$Type<(any), (any)>)[]): A
+public "setResourceLocation"<A extends $StaticAnimation>(arg0: string, arg1: string): A
+public "addStateRemoveOld"<T, A extends $StaticAnimation>(arg0: $EntityState$StateFactor$Type<(T)>, arg1: T): A
+public "newTimePair"<A extends $StaticAnimation>(arg0: float, arg1: float): A
+public "getPlaySpeed"(arg0: $LivingEntityPatch$Type<(any)>, arg1: $DynamicAnimation$Type): float
+public "getArmature"(): $AssetAccessor<(any)>
+public "doesHeadRotFollowEntityHead"(): boolean
+public "getRealAnimation"(): $AnimationManager$AnimationAccessor<(any)>
+public "getRegistryName"(): $ResourceLocation
+public "tick"(arg0: $LivingEntityPatch$Type<(any)>): void
+public "isStaticAnimation"(): boolean
+public "newConditionalTimePair"<A extends $StaticAnimation>(arg0: $Function$Type<($LivingEntityPatch$Type<(any)>), (integer)>, arg1: float, arg2: float): A
+public "addConditionalState"<T, A extends $StaticAnimation>(arg0: integer, arg1: $EntityState$StateFactor$Type<(T)>, arg2: T): A
+public "invalidate"(): void
+public "isInvalid"(): boolean
+public "addProperty"<A extends $StaticAnimation, V>(arg0: $AnimationProperty$StaticAnimationProperty$Type<(V)>, arg1: V): A
+public "removeProperty"<A extends $StaticAnimation>(arg0: $AnimationProperty$StaticAnimationProperty$Type<(any)>): A
+public "removeState"<T, A extends $StaticAnimation>(arg0: $EntityState$StateFactor$Type<(T)>): A
+public "addState"<T, A extends $StaticAnimation>(arg0: $EntityState$StateFactor$Type<(T)>, arg1: T): A
+public "postInit"(): void
+public "getProperty"<V>(arg0: $AnimationProperty$Type<(V)>): $Optional<(V)>
+public "equals"(arg0: any): boolean
+public "toString"(): string
+public "end"(arg0: $LivingEntityPatch$Type<(any)>, arg1: $AssetAccessor$Type<(any)>, arg2: boolean): void
+public "begin"(arg0: $LivingEntityPatch$Type<(any)>): void
+public "getLocation"(): $ResourceLocation
+public "in"(arg0: ($StaticAnimation$Type)[]): boolean
+public "in"(arg0: ($AnimationManager$AnimationAccessor$Type<(any)>)[]): boolean
+public "getPriority"(): $Layer$Priority
+public "getId"(): integer
+public "getState"(arg0: $LivingEntityPatch$Type<(any)>, arg1: float): $EntityState
+public "getState"<T>(arg0: $EntityState$StateFactor$Type<(T)>, arg1: $LivingEntityPatch$Type<(any)>, arg2: float): T
+public "getAccessor"<A extends $DynamicAnimation>(): $AnimationManager$AnimationAccessor<(A)>
+public "clipAnimation"(arg0: $TransformSheet$Type, arg1: $InverseKinematicsSimulator$BakedInverseKinematicsDefinition$Type): $TransformSheet
+public "startPartAnimation"(arg0: $InverseKinematicsSimulator$BakedInverseKinematicsDefinition$Type, arg1: $InverseKinematicsSimulator$InverseKinematicsObject$Type, arg2: $TransformSheet$Type, arg3: $Vec3f$Type): void
+public "startSimple"(arg0: $InverseKinematicsSimulator$InverseKinematicsObject$Type): void
+public "getRayCastedTipPosition"(arg0: $InverseKinematicsSimulatable$Type, arg1: $Vec3f$Type, arg2: $OpenMatrix4f$Type, arg3: float, arg4: float): $Vec3f
+public "correctRootRotation"(arg0: $JointTransform$Type, arg1: $EnderDragonPatch$Type, arg2: float): void
+public "applyFabrikToJoint"(arg0: $Vec3f$Type, arg1: $Pose$Type, arg2: $Armature$Type, arg3: $Joint$Type, arg4: $Joint$Type, arg5: $Quaternionf$Type): void
+get "coord"(): $TransformSheet
+get "layerType"(): $Layer$LayerType
+get "animationClip"(): $AnimationClip
+set "accessor"(value: $AnimationManager$AnimationAccessor$Type<(any)>)
+get "subAnimations"(): $List<($AssetAccessor<(any)>)>
+get "fileHash"(): string
+get "armature"(): $AssetAccessor<(any)>
+get "realAnimation"(): $AnimationManager$AnimationAccessor<(any)>
+get "registryName"(): $ResourceLocation
+get "staticAnimation"(): boolean
+get "invalid"(): boolean
+get "location"(): $ResourceLocation
+get "priority"(): $Layer$Priority
+get "id"(): integer
+get "accessor"(): $AnimationManager$AnimationAccessor<(A)>
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $StaticAnimation$Type = ($StaticAnimation);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $StaticAnimation_ = $StaticAnimation$Type;
+}}
+declare module "packages/yesman/epicfight/world/capabilities/entitypatch/$EntityDecorations$AnimationPropertyModifier" {
+export {} // Mark the file as a module, do not remove unless there are other import/exports!
+export interface $EntityDecorations$AnimationPropertyModifier<T, O> {
+
+ "getModifiedValue"(arg0: T, arg1: O): T
+ "shouldRemove"(): boolean
+
+(arg0: T, arg1: O): T
+}
+
+export namespace $EntityDecorations$AnimationPropertyModifier {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $EntityDecorations$AnimationPropertyModifier$Type<T, O> = ($EntityDecorations$AnimationPropertyModifier<(T), (O)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $EntityDecorations$AnimationPropertyModifier_<T, O> = $EntityDecorations$AnimationPropertyModifier$Type<(T), (O)>;
+}}
+declare module "packages/yesman/epicfight/world/capabilities/projectile/$ProjectilePatch" {
+import {$ProjectileImpactEvent, $ProjectileImpactEvent$Type} from "packages/net/minecraftforge/event/entity/$ProjectileImpactEvent"
+import {$Projectile, $Projectile$Type} from "packages/net/minecraft/world/entity/projectile/$Projectile"
+import {$EntityJoinLevelEvent, $EntityJoinLevelEvent$Type} from "packages/net/minecraftforge/event/entity/$EntityJoinLevelEvent"
+import {$EntityPatch, $EntityPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/$EntityPatch"
+import {$OpenMatrix4f, $OpenMatrix4f$Type} from "packages/yesman/epicfight/api/utils/math/$OpenMatrix4f"
+import {$EpicFightDamageSource, $EpicFightDamageSource$Type} from "packages/yesman/epicfight/world/damagesource/$EpicFightDamageSource"
+
+export class $ProjectilePatch<T extends $Projectile> extends $EntityPatch<(T)> {
+
+constructor()
+
+public "setHit"(arg0: boolean): void
+public "onJoinWorld"(arg0: T, arg1: $EntityJoinLevelEvent$Type): void
+public "getModelMatrix"(arg0: float): $OpenMatrix4f
+public "overrideRender"(): boolean
+public "onAddedToWorld"(): void
+public "onProjectileImpact"(arg0: $ProjectileImpactEvent$Type): boolean
+public "hit"(): boolean
+public "createEpicFightDamageSource"(): $EpicFightDamageSource
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $ProjectilePatch$Type<T> = ($ProjectilePatch<(T)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $ProjectilePatch_<T> = $ProjectilePatch$Type<(T)>;
+}}
+declare module "packages/yesman/epicfight/world/entity/eventlistener/$DodgeSuccessEvent" {
+import {$ServerPlayerPatch, $ServerPlayerPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/player/$ServerPlayerPatch"
+import {$DamageSource, $DamageSource$Type} from "packages/net/minecraft/world/damagesource/$DamageSource"
+import {$Vec3, $Vec3$Type} from "packages/net/minecraft/world/phys/$Vec3"
+import {$AbstractPlayerEvent, $AbstractPlayerEvent$Type} from "packages/yesman/epicfight/world/entity/eventlistener/$AbstractPlayerEvent"
+
+export class $DodgeSuccessEvent extends $AbstractPlayerEvent<($ServerPlayerPatch)> {
+
+constructor(arg0: $ServerPlayerPatch$Type, arg1: $DamageSource$Type, arg2: $Vec3$Type)
+
+public "getDamageSource"(): $DamageSource
+public "getLocation"(): $Vec3
+get "damageSource"(): $DamageSource
+get "location"(): $Vec3
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $DodgeSuccessEvent$Type = ($DodgeSuccessEvent);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $DodgeSuccessEvent_ = $DodgeSuccessEvent$Type;
+}}
+declare module "packages/yesman/epicfight/compat/kubejs/skill/$CustomSkill" {
+import {$Component, $Component$Type} from "packages/net/minecraft/network/chat/$Component"
+import {$CapabilityItem, $CapabilityItem$Type} from "packages/yesman/epicfight/world/capabilities/item/$CapabilityItem"
+import {$CreativeModeTab, $CreativeModeTab$Type} from "packages/net/minecraft/world/item/$CreativeModeTab"
+import {$PlayerPatch, $PlayerPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/player/$PlayerPatch"
+import {$SkillContainer, $SkillContainer$Type} from "packages/yesman/epicfight/skill/$SkillContainer"
+import {$BattleModeGui, $BattleModeGui$Type} from "packages/yesman/epicfight/client/gui/$BattleModeGui"
+import {$LocalPlayerPatch, $LocalPlayerPatch$Type} from "packages/yesman/epicfight/client/world/capabilites/entitypatch/player/$LocalPlayerPatch"
+import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
+import {$Skill, $Skill$Type} from "packages/yesman/epicfight/skill/$Skill"
+import {$ResourceLocation, $ResourceLocation$Type} from "packages/net/minecraft/resources/$ResourceLocation"
+import {$GuiGraphics, $GuiGraphics$Type} from "packages/net/minecraft/client/gui/$GuiGraphics"
+import {$CustomSkill$CustomSkillBuilder, $CustomSkill$CustomSkillBuilder$Type} from "packages/yesman/epicfight/compat/kubejs/skill/$CustomSkill$CustomSkillBuilder"
+import {$FriendlyByteBuf, $FriendlyByteBuf$Type} from "packages/net/minecraft/network/$FriendlyByteBuf"
+import {$List, $List$Type} from "packages/java/util/$List"
+
+export class $CustomSkill extends $Skill {
+
+constructor(arg0: $CustomSkill$CustomSkillBuilder$Type)
+
+public "isExecutableState"(arg0: $PlayerPatch$Type<(any)>): boolean
+public "executeOnServer"(arg0: $SkillContainer$Type, arg1: $FriendlyByteBuf$Type): void
+public "cancelOnServer"(arg0: $SkillContainer$Type, arg1: $FriendlyByteBuf$Type): void
+public "executeOnClient"(arg0: $SkillContainer$Type, arg1: $FriendlyByteBuf$Type): void
+public "cancelOnClient"(arg0: $SkillContainer$Type, arg1: $FriendlyByteBuf$Type): void
+public "onInitiate"(arg0: $SkillContainer$Type): void
+public "onRemoved"(arg0: $SkillContainer$Type): void
+public "setConsumption"(arg0: $SkillContainer$Type, arg1: float): void
+public "updateContainer"(arg0: $SkillContainer$Type): void
+public "getCooldownRegenPerSecond"(arg0: $PlayerPatch$Type<(any)>): float
+public "getMaxDuration"(): integer
+public "shouldDeactivateAutomatically"(arg0: $PlayerPatch$Type<(any)>): boolean
+public "onScreen"(arg0: $LocalPlayerPatch$Type, arg1: float, arg2: float): void
+public "getTooltipOnItem"(arg0: $ItemStack$Type, arg1: $CapabilityItem$Type, arg2: $PlayerPatch$Type<(any)>): $List<($Component)>
+public "getTooltipArgsOfScreen"(arg0: $List$Type<(any)>): $List<(any)>
+public "drawOnGui"(arg0: $BattleModeGui$Type, arg1: $SkillContainer$Type, arg2: $GuiGraphics$Type, arg3: float, arg4: float, arg5: float): void
+public "getSkillTexture"(): $ResourceLocation
+public "shouldDraw"(arg0: $SkillContainer$Type): boolean
+public "getMaxStack"(): integer
+public "canExecute"(arg0: $SkillContainer$Type): boolean
+public "getCreativeTab"(): $CreativeModeTab
+get "maxDuration"(): integer
+get "skillTexture"(): $ResourceLocation
+get "maxStack"(): integer
+get "creativeTab"(): $CreativeModeTab
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $CustomSkill$Type = ($CustomSkill);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $CustomSkill_ = $CustomSkill$Type;
+}}
+declare module "packages/yesman/epicfight/skill/$Skill$Resource$ResourcePredicate" {
+import {$SkillContainer, $SkillContainer$Type} from "packages/yesman/epicfight/skill/$SkillContainer"
+import {$PlayerPatch, $PlayerPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/player/$PlayerPatch"
+
+export interface $Skill$Resource$ResourcePredicate {
+
+ "canExecute"(arg0: $SkillContainer$Type, arg1: $PlayerPatch$Type<(any)>, arg2: float): boolean
+
+(arg0: $SkillContainer$Type, arg1: $PlayerPatch$Type<(any)>, arg2: float): boolean
+}
+
+export namespace $Skill$Resource$ResourcePredicate {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Skill$Resource$ResourcePredicate$Type = ($Skill$Resource$ResourcePredicate);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Skill$Resource$ResourcePredicate_ = $Skill$Resource$ResourcePredicate$Type;
+}}
+declare module "packages/yesman/epicfight/api/client/physics/cloth/$ClothSimulator$ClothObject$ClothPart$ConstraintType" {
+import {$Enum, $Enum$Type} from "packages/java/lang/$Enum"
+
+export class $ClothSimulator$ClothObject$ClothPart$ConstraintType extends $Enum<($ClothSimulator$ClothObject$ClothPart$ConstraintType)> {
+static readonly "STRETCHING": $ClothSimulator$ClothObject$ClothPart$ConstraintType
+static readonly "SHAPING": $ClothSimulator$ClothObject$ClothPart$ConstraintType
+static readonly "BENDING": $ClothSimulator$ClothObject$ClothPart$ConstraintType
+static readonly "VOLUME": $ClothSimulator$ClothObject$ClothPart$ConstraintType
+
+
+public static "values"(): ($ClothSimulator$ClothObject$ClothPart$ConstraintType)[]
+public static "valueOf"(arg0: string): $ClothSimulator$ClothObject$ClothPart$ConstraintType
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $ClothSimulator$ClothObject$ClothPart$ConstraintType$Type = (("bending") | ("volume") | ("stretching") | ("shaping")) | ($ClothSimulator$ClothObject$ClothPart$ConstraintType);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $ClothSimulator$ClothObject$ClothPart$ConstraintType_ = $ClothSimulator$ClothObject$ClothPart$ConstraintType$Type;
+}}
+declare module "packages/yesman/epicfight/compat/kubejs/skill/$CustomChargeableSkill$GatherChargingArgumentsContext" {
+import {$Record, $Record$Type} from "packages/java/lang/$Record"
+import {$ControlEngine, $ControlEngine$Type} from "packages/yesman/epicfight/client/events/engine/$ControlEngine"
+import {$FriendlyByteBuf, $FriendlyByteBuf$Type} from "packages/net/minecraft/network/$FriendlyByteBuf"
+import {$Skill, $Skill$Type} from "packages/yesman/epicfight/skill/$Skill"
+import {$LocalPlayerPatch, $LocalPlayerPatch$Type} from "packages/yesman/epicfight/client/world/capabilites/entitypatch/player/$LocalPlayerPatch"
+
+export class $CustomChargeableSkill$GatherChargingArgumentsContext extends $Record {
+
+constructor(getSkill: $Skill$Type, getCaster: $LocalPlayerPatch$Type, getControlEngine: $ControlEngine$Type, getBuffer: $FriendlyByteBuf$Type)
+
+public "getCaster"(): $LocalPlayerPatch
+public "getControlEngine"(): $ControlEngine
+public "getBuffer"(): $FriendlyByteBuf
+public "getSkill"(): $Skill
+public "equals"(arg0: any): boolean
+public "toString"(): string
+public "hashCode"(): integer
+get "caster"(): $LocalPlayerPatch
+get "controlEngine"(): $ControlEngine
+get "buffer"(): $FriendlyByteBuf
+get "skill"(): $Skill
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $CustomChargeableSkill$GatherChargingArgumentsContext$Type = ($CustomChargeableSkill$GatherChargingArgumentsContext);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $CustomChargeableSkill$GatherChargingArgumentsContext_ = $CustomChargeableSkill$GatherChargingArgumentsContext$Type;
+}}
+declare module "packages/yesman/epicfight/world/damagesource/$ExtraDamageInstance$ExtraDamageTooltipFunction" {
+import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
+import {$MutableComponent, $MutableComponent$Type} from "packages/net/minecraft/network/chat/$MutableComponent"
+
+export interface $ExtraDamageInstance$ExtraDamageTooltipFunction {
+
+ "setTooltip"(arg0: $ItemStack$Type, arg1: $MutableComponent$Type, arg2: double, arg3: (float)[]): void
+
+(arg0: $ItemStack$Type, arg1: $MutableComponent$Type, arg2: double, arg3: (float)[]): void
+}
+
+export namespace $ExtraDamageInstance$ExtraDamageTooltipFunction {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $ExtraDamageInstance$ExtraDamageTooltipFunction$Type = ($ExtraDamageInstance$ExtraDamageTooltipFunction);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $ExtraDamageInstance$ExtraDamageTooltipFunction_ = $ExtraDamageInstance$ExtraDamageTooltipFunction$Type;
+}}
+declare module "packages/yesman/epicfight/mixin/client/$MixinEntityRenderer" {
+import {$Component, $Component$Type} from "packages/net/minecraft/network/chat/$Component"
+import {$PoseStack, $PoseStack$Type} from "packages/com/mojang/blaze3d/vertex/$PoseStack"
+import {$MultiBufferSource, $MultiBufferSource$Type} from "packages/net/minecraft/client/renderer/$MultiBufferSource"
+import {$Entity, $Entity$Type} from "packages/net/minecraft/world/entity/$Entity"
+
+export interface $MixinEntityRenderer {
+
+ "invokeShouldShowName"(arg0: $Entity$Type): boolean
+ "invokeRenderNameTag"(arg0: $Entity$Type, arg1: $Component$Type, arg2: $PoseStack$Type, arg3: $MultiBufferSource$Type, arg4: integer): void
+}
+
+export namespace $MixinEntityRenderer {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $MixinEntityRenderer$Type = ($MixinEntityRenderer);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $MixinEntityRenderer_ = $MixinEntityRenderer$Type;
+}}
+declare module "packages/yesman/epicfight/world/item/$GloveItem" {
+import {$Item, $Item$Type} from "packages/net/minecraft/world/item/$Item"
+import {$Multimap, $Multimap$Type} from "packages/com/google/common/collect/$Multimap"
+import {$WeaponItem, $WeaponItem$Type} from "packages/yesman/epicfight/world/item/$WeaponItem"
+import {$Item$Properties, $Item$Properties$Type} from "packages/net/minecraft/world/item/$Item$Properties"
+import {$Attribute, $Attribute$Type} from "packages/net/minecraft/world/entity/ai/attributes/$Attribute"
+import {$AttributeModifier, $AttributeModifier$Type} from "packages/net/minecraft/world/entity/ai/attributes/$AttributeModifier"
+import {$Tier, $Tier$Type} from "packages/net/minecraft/world/item/$Tier"
+import {$Block, $Block$Type} from "packages/net/minecraft/world/level/block/$Block"
+import {$Map, $Map$Type} from "packages/java/util/$Map"
+
+export class $GloveItem extends $WeaponItem {
+ "defaultModifiers": $Multimap<($Attribute), ($AttributeModifier)>
+ "tier": $Tier
+static readonly "BY_BLOCK": $Map<($Block), ($Item)>
+static readonly "MAX_STACK_SIZE": integer
+static readonly "EAT_DURATION": integer
+static readonly "MAX_BAR_WIDTH": integer
+
+constructor(arg0: $Item$Properties$Type, arg1: $Tier$Type)
+
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $GloveItem$Type = ($GloveItem);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $GloveItem_ = $GloveItem$Type;
+}}
+declare module "packages/yesman/epicfight/api/client/animation/property/$JointMaskEntry" {
+import {$JointMask$JointMaskSet, $JointMask$JointMaskSet$Type} from "packages/yesman/epicfight/api/client/animation/property/$JointMask$JointMaskSet"
+import {$LivingMotion, $LivingMotion$Type} from "packages/yesman/epicfight/api/animation/$LivingMotion"
+import {$Pair, $Pair$Type} from "packages/org/apache/commons/lang3/tuple/$Pair"
+import {$Set, $Set$Type} from "packages/java/util/$Set"
+import {$List, $List$Type} from "packages/java/util/$List"
+import {$JointMaskEntry$Builder, $JointMaskEntry$Builder$Type} from "packages/yesman/epicfight/api/client/animation/property/$JointMaskEntry$Builder"
+import {$Map$Entry, $Map$Entry$Type} from "packages/java/util/$Map$Entry"
+
+export class $JointMaskEntry {
+static readonly "BIPED_UPPER_JOINTS_WITH_ROOT": $JointMask$JointMaskSet
+static readonly "BASIC_ATTACK_MASK": $JointMaskEntry
+
+constructor(arg0: $JointMask$JointMaskSet$Type, arg1: $List$Type<($Pair$Type<($LivingMotion$Type), ($JointMask$JointMaskSet$Type)>)>)
+
+public "isMasked"(arg0: $LivingMotion$Type, arg1: string): boolean
+public "isValid"(): boolean
+public "getMask"(arg0: $LivingMotion$Type): $JointMask$JointMaskSet
+public "getDefaultMask"(): $JointMask$JointMaskSet
+public "toString"(): string
+public static "builder"(): $JointMaskEntry$Builder
+public "getEntries"(): $Set<($Map$Entry<($LivingMotion), ($JointMask$JointMaskSet)>)>
+get "valid"(): boolean
+get "defaultMask"(): $JointMask$JointMaskSet
+get "entries"(): $Set<($Map$Entry<($LivingMotion), ($JointMask$JointMaskSet)>)>
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $JointMaskEntry$Type = ($JointMaskEntry);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $JointMaskEntry_ = $JointMaskEntry$Type;
+}}
+declare module "packages/yesman/epicfight/skill/guard/$GuardSkill$Builder" {
+import {$CapabilityItem, $CapabilityItem$Type} from "packages/yesman/epicfight/world/capabilities/item/$CapabilityItem"
+import {$SkillBuilder, $SkillBuilder$Type} from "packages/yesman/epicfight/skill/$SkillBuilder"
+import {$WeaponCategory, $WeaponCategory$Type} from "packages/yesman/epicfight/world/capabilities/item/$WeaponCategory"
+import {$PlayerPatch, $PlayerPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/player/$PlayerPatch"
+import {$AnimationManager$AnimationAccessor, $AnimationManager$AnimationAccessor$Type} from "packages/yesman/epicfight/api/animation/$AnimationManager$AnimationAccessor"
+import {$BiFunction, $BiFunction$Type} from "packages/java/util/function/$BiFunction"
+import {$GuardSkill, $GuardSkill$Type} from "packages/yesman/epicfight/skill/guard/$GuardSkill"
+
+export class $GuardSkill$Builder extends $SkillBuilder<($GuardSkill)> {
+
+constructor()
+
+public "addGuardMotion"(arg0: $WeaponCategory$Type, arg1: $BiFunction$Type<($CapabilityItem$Type), ($PlayerPatch$Type<(any)>), ($AnimationManager$AnimationAccessor$Type<(any)>)>): $GuardSkill$Builder
+public "addGuardBreakMotion"(arg0: $WeaponCategory$Type, arg1: $BiFunction$Type<($CapabilityItem$Type), ($PlayerPatch$Type<(any)>), ($AnimationManager$AnimationAccessor$Type<(any)>)>): $GuardSkill$Builder
+public "addAdvancedGuardMotion"(arg0: $WeaponCategory$Type, arg1: $BiFunction$Type<($CapabilityItem$Type), ($PlayerPatch$Type<(any)>), (any)>): $GuardSkill$Builder
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $GuardSkill$Builder$Type = ($GuardSkill$Builder);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $GuardSkill$Builder_ = $GuardSkill$Builder$Type;
+}}
+declare module "packages/yesman/epicfight/world/entity/eventlistener/$TakeDamageEvent$Damage" {
+import {$TakeDamageEvent, $TakeDamageEvent$Type} from "packages/yesman/epicfight/world/entity/eventlistener/$TakeDamageEvent"
+import {$ServerPlayerPatch, $ServerPlayerPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/player/$ServerPlayerPatch"
+import {$DamageSource, $DamageSource$Type} from "packages/net/minecraft/world/damagesource/$DamageSource"
+
+export class $TakeDamageEvent$Damage extends $TakeDamageEvent {
+
+constructor(arg0: $ServerPlayerPatch$Type, arg1: $DamageSource$Type, arg2: float)
+
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $TakeDamageEvent$Damage$Type = ($TakeDamageEvent$Damage);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $TakeDamageEvent$Damage_ = $TakeDamageEvent$Damage$Type;
+}}
+declare module "packages/yesman/epicfight/api/forgeevent/$EntityStunEvent" {
+import {$StunType, $StunType$Type} from "packages/yesman/epicfight/world/damagesource/$StunType"
+import {$ListenerList, $ListenerList$Type} from "packages/net/minecraftforge/eventbus/$ListenerList"
+import {$Event, $Event$Type} from "packages/net/minecraftforge/eventbus/api/$Event"
+import {$HurtableEntityPatch, $HurtableEntityPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/$HurtableEntityPatch"
+import {$EpicFightDamageSource, $EpicFightDamageSource$Type} from "packages/yesman/epicfight/world/damagesource/$EpicFightDamageSource"
+
+export class $EntityStunEvent extends $Event {
+
+constructor(arg0: $EpicFightDamageSource$Type, arg1: $HurtableEntityPatch$Type<(any)>, arg2: $StunType$Type)
+constructor()
+
+public "getStunnedEntityPatch"(): $HurtableEntityPatch<(any)>
+public "getDamageSource"(): $EpicFightDamageSource
+public "getStunType"(): $StunType
+public "getListenerList"(): $ListenerList
+public "hasResult"(): boolean
+public "isCancelable"(): boolean
+get "stunnedEntityPatch"(): $HurtableEntityPatch<(any)>
+get "damageSource"(): $EpicFightDamageSource
+get "stunType"(): $StunType
+get "listenerList"(): $ListenerList
+get "cancelable"(): boolean
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $EntityStunEvent$Type = ($EntityStunEvent);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $EntityStunEvent_ = $EntityStunEvent$Type;
+}}
+declare module "packages/yesman/epicfight/world/capabilities/entitypatch/boss/$BossPatch" {
+import {$BossEvent, $BossEvent$Type} from "packages/net/minecraft/world/$BossEvent"
+import {$ServerPlayer, $ServerPlayer$Type} from "packages/net/minecraft/server/level/$ServerPlayer"
+import {$FriendlyByteBuf, $FriendlyByteBuf$Type} from "packages/net/minecraft/network/$FriendlyByteBuf"
+import {$LivingEntityPatch, $LivingEntityPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/$LivingEntityPatch"
+import {$Entity, $Entity$Type} from "packages/net/minecraft/world/entity/$Entity"
+
+export interface $BossPatch<T extends $Entity> {
+
+ "getBossEvent"(): $BossEvent
+ "recordBossEventOwner"(arg0: $ServerPlayer$Type): void
+ "removeBossEventOwner"(arg0: $ServerPlayer$Type): void
+ "processOwnerRecordPacket"(arg0: $FriendlyByteBuf$Type): void
+ "getOriginal"(): T
+ "cast"<P extends $LivingEntityPatch<(any)>>(): P
+}
+
+export namespace $BossPatch {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $BossPatch$Type<T> = ($BossPatch<(T)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $BossPatch_<T> = $BossPatch$Type<(T)>;
+}}
+declare module "packages/yesman/epicfight/skill/$Skill$ActivateType" {
+import {$Enum, $Enum$Type} from "packages/java/lang/$Enum"
+
+export class $Skill$ActivateType extends $Enum<($Skill$ActivateType)> {
+static readonly "ONE_SHOT": $Skill$ActivateType
+static readonly "DURATION": $Skill$ActivateType
+static readonly "DURATION_INFINITE": $Skill$ActivateType
+static readonly "TOGGLE": $Skill$ActivateType
+static readonly "HELD": $Skill$ActivateType
+
+
+public static "values"(): ($Skill$ActivateType)[]
+public static "valueOf"(arg0: string): $Skill$ActivateType
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Skill$ActivateType$Type = (("duration") | ("duration_infinite") | ("held") | ("one_shot") | ("toggle")) | ($Skill$ActivateType);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Skill$ActivateType_ = $Skill$ActivateType$Type;
+}}
+declare module "packages/yesman/epicfight/world/item/$WeaponItem" {
+import {$Item, $Item$Type} from "packages/net/minecraft/world/item/$Item"
+import {$Multimap, $Multimap$Type} from "packages/com/google/common/collect/$Multimap"
+import {$Item$Properties, $Item$Properties$Type} from "packages/net/minecraft/world/item/$Item$Properties"
+import {$Attribute, $Attribute$Type} from "packages/net/minecraft/world/entity/ai/attributes/$Attribute"
+import {$AttributeModifier, $AttributeModifier$Type} from "packages/net/minecraft/world/entity/ai/attributes/$AttributeModifier"
+import {$BlockState, $BlockState$Type} from "packages/net/minecraft/world/level/block/state/$BlockState"
+import {$SwordItem, $SwordItem$Type} from "packages/net/minecraft/world/item/$SwordItem"
+import {$Tier, $Tier$Type} from "packages/net/minecraft/world/item/$Tier"
+import {$Block, $Block$Type} from "packages/net/minecraft/world/level/block/$Block"
+import {$Map, $Map$Type} from "packages/java/util/$Map"
+
+export class $WeaponItem extends $SwordItem {
+ "defaultModifiers": $Multimap<($Attribute), ($AttributeModifier)>
+ "tier": $Tier
+static readonly "BY_BLOCK": $Map<($Block), ($Item)>
+static readonly "MAX_STACK_SIZE": integer
+static readonly "EAT_DURATION": integer
+static readonly "MAX_BAR_WIDTH": integer
+
+constructor(arg0: $Tier$Type, arg1: integer, arg2: float, arg3: $Item$Properties$Type)
+
+public "isCorrectToolForDrops"(arg0: $BlockState$Type): boolean
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $WeaponItem$Type = ($WeaponItem);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $WeaponItem_ = $WeaponItem$Type;
+}}
+declare module "packages/yesman/epicfight/api/client/animation/property/$JointMaskEntry$Builder" {
+import {$JointMask$JointMaskSet, $JointMask$JointMaskSet$Type} from "packages/yesman/epicfight/api/client/animation/property/$JointMask$JointMaskSet"
+import {$LivingMotion, $LivingMotion$Type} from "packages/yesman/epicfight/api/animation/$LivingMotion"
+import {$JointMaskEntry, $JointMaskEntry$Type} from "packages/yesman/epicfight/api/client/animation/property/$JointMaskEntry"
+
+export class $JointMaskEntry$Builder {
+
+constructor()
+
+public "defaultMask"(arg0: $JointMask$JointMaskSet$Type): $JointMaskEntry$Builder
+public "mask"(arg0: $LivingMotion$Type, arg1: $JointMask$JointMaskSet$Type): $JointMaskEntry$Builder
+public "create"(): $JointMaskEntry
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $JointMaskEntry$Builder$Type = ($JointMaskEntry$Builder);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $JointMaskEntry$Builder_ = $JointMaskEntry$Builder$Type;
+}}
+declare module "packages/yesman/epicfight/world/capabilities/entitypatch/$EntityPatch" {
+import {$LocalPlayer, $LocalPlayer$Type} from "packages/net/minecraft/client/player/$LocalPlayer"
+import {$LivingDeathEvent, $LivingDeathEvent$Type} from "packages/net/minecraftforge/event/entity/living/$LivingDeathEvent"
+import {$ServerPlayer, $ServerPlayer$Type} from "packages/net/minecraft/server/level/$ServerPlayer"
+import {$SPEntityPairingPacket, $SPEntityPairingPacket$Type} from "packages/yesman/epicfight/network/server/$SPEntityPairingPacket"
+import {$EntityJoinLevelEvent, $EntityJoinLevelEvent$Type} from "packages/net/minecraftforge/event/entity/$EntityJoinLevelEvent"
+import {$OpenMatrix4f, $OpenMatrix4f$Type} from "packages/yesman/epicfight/api/utils/math/$OpenMatrix4f"
+import {$Entity, $Entity$Type} from "packages/net/minecraft/world/entity/$Entity"
+
+export class $EntityPatch<T extends $Entity> {
+
+constructor()
+
+public "onConstructed"(arg0: T): void
+public "onJoinWorld"(arg0: T, arg1: $EntityJoinLevelEvent$Type): void
+public "getMatrix"(arg0: float): $OpenMatrix4f
+public "getAngleTo"(arg0: $Entity$Type): double
+public "getAngleToHorizontal"(arg0: $Entity$Type): double
+public "getModelMatrix"(arg0: float): $OpenMatrix4f
+public "fireEntityPairingEvent"(arg0: $SPEntityPairingPacket$Type): void
+public "entityPairing"(arg0: $SPEntityPairingPacket$Type): void
+public "isOutlineVisible"(arg0: $LocalPlayer$Type): boolean
+public "onDeath"(arg0: $LivingDeathEvent$Type): void
+public "overrideRender"(): boolean
+public "onStartTracking"(arg0: $ServerPlayer$Type): void
+public "onStopTracking"(arg0: $ServerPlayer$Type): void
+public "onAddedToWorld"(): void
+public "onOldPosUpdate"(): void
+public "getOriginal"(): T
+public "isLogicalClient"(): boolean
+public "isInitialized"(): boolean
+get "original"(): T
+get "logicalClient"(): boolean
+get "initialized"(): boolean
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $EntityPatch$Type<T> = ($EntityPatch<(T)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $EntityPatch_<T> = $EntityPatch$Type<(T)>;
+}}
+declare module "packages/yesman/epicfight/client/renderer/patched/entity/$PatchedLivingEntityRenderer" {
+import {$Armature, $Armature$Type} from "packages/yesman/epicfight/api/model/$Armature"
+import {$LivingEntityRenderer, $LivingEntityRenderer$Type} from "packages/net/minecraft/client/renderer/entity/$LivingEntityRenderer"
+import {$LayerRenderer, $LayerRenderer$Type} from "packages/yesman/epicfight/client/renderer/$LayerRenderer"
+import {$Class, $Class$Type} from "packages/java/lang/$Class"
+import {$LivingEntity, $LivingEntity$Type} from "packages/net/minecraft/world/entity/$LivingEntity"
+import {$PatchedEntityRenderer, $PatchedEntityRenderer$Type} from "packages/yesman/epicfight/client/renderer/patched/entity/$PatchedEntityRenderer"
+import {$EntityRendererProvider$Context, $EntityRendererProvider$Context$Type} from "packages/net/minecraft/client/renderer/entity/$EntityRendererProvider$Context"
+import {$EntityType, $EntityType$Type} from "packages/net/minecraft/world/entity/$EntityType"
+import {$PoseStack, $PoseStack$Type} from "packages/com/mojang/blaze3d/vertex/$PoseStack"
+import {$EntityModel, $EntityModel$Type} from "packages/net/minecraft/client/model/$EntityModel"
+import {$PatchedLayer, $PatchedLayer$Type} from "packages/yesman/epicfight/client/renderer/patched/layer/$PatchedLayer"
+import {$MultiBufferSource, $MultiBufferSource$Type} from "packages/net/minecraft/client/renderer/$MultiBufferSource"
+import {$LivingEntityPatch, $LivingEntityPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/$LivingEntityPatch"
+import {$SkinnedMesh, $SkinnedMesh$Type} from "packages/yesman/epicfight/api/client/model/$SkinnedMesh"
+
+export class $PatchedLivingEntityRenderer<E extends $LivingEntity, T extends $LivingEntityPatch<(E)>, M extends $EntityModel<(E)>, R extends $LivingEntityRenderer<(E), (M)>, AM extends $SkinnedMesh> extends $PatchedEntityRenderer<(E), (T), (R), (AM)> implements $LayerRenderer<(E), (T), (M)> {
+
+constructor(arg0: $EntityRendererProvider$Context$Type, arg1: $EntityType$Type<(any)>)
+
+public "mulPoseStack"(arg0: $PoseStack$Type, arg1: $Armature$Type, arg2: E, arg3: T, arg4: float): void
+public "initLayerLast"(arg0: $EntityRendererProvider$Context$Type, arg1: $EntityType$Type<(any)>): $PatchedLivingEntityRenderer<(E), (T), (M), (R), (AM)>
+public "addPatchedLayer"(arg0: $Class$Type<(any)>, arg1: $PatchedLayer$Type<(E), (T), (M), (any)>): void
+public "addPatchedLayerAlways"(arg0: $Class$Type<(any)>, arg1: $PatchedLayer$Type<(E), (T), (M), (any)>): void
+public "addCustomLayer"(arg0: $PatchedLayer$Type<(E), (T), (M), (any)>): void
+public "render"(arg0: E, arg1: T, arg2: R, arg3: $MultiBufferSource$Type, arg4: $PoseStack$Type, arg5: integer, arg6: float): void
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $PatchedLivingEntityRenderer$Type<E, T, M, R, AM> = ($PatchedLivingEntityRenderer<(E), (T), (M), (R), (AM)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $PatchedLivingEntityRenderer_<E, T, M, R, AM> = $PatchedLivingEntityRenderer$Type<(E), (T), (M), (R), (AM)>;
+}}
+declare module "packages/yesman/epicfight/api/client/model/$SoftBodyTranslatable" {
+import {$ClothSimulator$ClothObjectBuilder, $ClothSimulator$ClothObjectBuilder$Type} from "packages/yesman/epicfight/api/client/physics/cloth/$ClothSimulator$ClothObjectBuilder"
+import {$List, $List$Type} from "packages/java/util/$List"
+import {$StaticMesh, $StaticMesh$Type} from "packages/yesman/epicfight/api/client/model/$StaticMesh"
+import {$SoftBodyTranslatable$ClothSimulationInfo, $SoftBodyTranslatable$ClothSimulationInfo$Type} from "packages/yesman/epicfight/api/client/model/$SoftBodyTranslatable$ClothSimulationInfo"
+import {$ClothSimulator$ClothObject, $ClothSimulator$ClothObject$Type} from "packages/yesman/epicfight/api/client/physics/cloth/$ClothSimulator$ClothObject"
+import {$ClothSimulatable, $ClothSimulatable$Type} from "packages/yesman/epicfight/api/client/physics/cloth/$ClothSimulatable"
+import {$Map, $Map$Type} from "packages/java/util/$Map"
+import {$SimulationProvider, $SimulationProvider$Type} from "packages/yesman/epicfight/api/physics/$SimulationProvider"
+
+export interface $SoftBodyTranslatable extends $SimulationProvider<($ClothSimulatable), ($ClothSimulator$ClothObject), ($ClothSimulator$ClothObjectBuilder), ($SoftBodyTranslatable)> {
+
+ "putSoftBodySimulationInfo"(arg0: $Map$Type<(string), ($SoftBodyTranslatable$ClothSimulationInfo$Type)>): void
+ "canStartSoftBodySimulation"(): boolean
+ "getSoftBodySimulationInfo"(): $Map<(string), ($SoftBodyTranslatable$ClothSimulationInfo)>
+ "getOriginalMesh"(): $StaticMesh<(any)>
+ "createSimulationData"(arg0: $SoftBodyTranslatable$Type, arg1: $ClothSimulatable$Type, arg2: $ClothSimulator$ClothObjectBuilder$Type): $ClothSimulator$ClothObject
+}
+
+export namespace $SoftBodyTranslatable {
+const TRACKING_SIMULATION_SUBJECTS: $List<($ClothSimulatable)>
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $SoftBodyTranslatable$Type = ($SoftBodyTranslatable);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $SoftBodyTranslatable_ = $SoftBodyTranslatable$Type;
+}}
+declare module "packages/yesman/epicfight/world/entity/eventlistener/$PlayerKilledEvent" {
+import {$ServerPlayerPatch, $ServerPlayerPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/player/$ServerPlayerPatch"
+import {$DamageSource, $DamageSource$Type} from "packages/net/minecraft/world/damagesource/$DamageSource"
+import {$LivingEntity, $LivingEntity$Type} from "packages/net/minecraft/world/entity/$LivingEntity"
+import {$AbstractPlayerEvent, $AbstractPlayerEvent$Type} from "packages/yesman/epicfight/world/entity/eventlistener/$AbstractPlayerEvent"
+
+export class $PlayerKilledEvent extends $AbstractPlayerEvent<($ServerPlayerPatch)> {
+
+constructor(arg0: $ServerPlayerPatch$Type, arg1: $LivingEntity$Type, arg2: $DamageSource$Type)
+
+public "getDamageSource"(): $DamageSource
+public "getKilledEntity"(): $LivingEntity
+get "damageSource"(): $DamageSource
+get "killedEntity"(): $LivingEntity
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $PlayerKilledEvent$Type = ($PlayerKilledEvent);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $PlayerKilledEvent_ = $PlayerKilledEvent$Type;
+}}
+declare module "packages/yesman/epicfight/api/animation/types/$EntityState" {
+import {$Function, $Function$Type} from "packages/java/util/function/$Function"
+import {$ProjectileImpactEvent, $ProjectileImpactEvent$Type} from "packages/net/minecraftforge/event/entity/$ProjectileImpactEvent"
+import {$Consumer, $Consumer$Type} from "packages/java/util/function/$Consumer"
+import {$EntityState$StateFactor, $EntityState$StateFactor$Type} from "packages/yesman/epicfight/api/animation/types/$EntityState$StateFactor"
+import {$TypeFlexibleHashMap, $TypeFlexibleHashMap$Type} from "packages/yesman/epicfight/api/utils/datastruct/$TypeFlexibleHashMap"
+import {$DamageSource, $DamageSource$Type} from "packages/net/minecraft/world/damagesource/$DamageSource"
+import {$AttackResult$ResultType, $AttackResult$ResultType$Type} from "packages/yesman/epicfight/api/utils/$AttackResult$ResultType"
+
+export class $EntityState {
+static readonly "DEFAULT_STATE": $EntityState
+static readonly "TURNING_LOCKED": $EntityState$StateFactor<(boolean)>
+static readonly "MOVEMENT_LOCKED": $EntityState$StateFactor<(boolean)>
+static readonly "ATTACKING": $EntityState$StateFactor<(boolean)>
+static readonly "CAN_BASIC_ATTACK": $EntityState$StateFactor<(boolean)>
+static readonly "CAN_SKILL_EXECUTION": $EntityState$StateFactor<(boolean)>
+static readonly "CAN_USE_ITEM": $EntityState$StateFactor<(boolean)>
+static readonly "CAN_SWITCH_HAND_ITEM": $EntityState$StateFactor<(boolean)>
+static readonly "INACTION": $EntityState$StateFactor<(boolean)>
+static readonly "KNOCKDOWN": $EntityState$StateFactor<(boolean)>
+static readonly "LOCKON_ROTATE": $EntityState$StateFactor<(boolean)>
+static readonly "UPDATE_LIVING_MOTION": $EntityState$StateFactor<(boolean)>
+static readonly "HURT_LEVEL": $EntityState$StateFactor<(integer)>
+static readonly "PHASE_LEVEL": $EntityState$StateFactor<(integer)>
+static readonly "ATTACK_RESULT": $EntityState$StateFactor<($Function<($DamageSource), ($AttackResult$ResultType)>)>
+static readonly "PROJECTILE_IMPACT_RESULT": $EntityState$StateFactor<($Consumer<($ProjectileImpactEvent)>)>
+
+constructor(arg0: $TypeFlexibleHashMap$Type<($EntityState$StateFactor$Type<(any)>)>)
+
+public "knockDown"(): boolean
+public "canSwitchHoldingItem"(): boolean
+public "attacking"(): boolean
+public "lockonRotate"(): boolean
+public "getStateMap"(): $TypeFlexibleHashMap<($EntityState$StateFactor<(any)>)>
+public "setProjectileImpactResult"(arg0: $ProjectileImpactEvent$Type): void
+public "hurtLevel"(): integer
+public "canUseSkill"(): boolean
+public "canBasicAttack"(): boolean
+public "canUseItem"(): boolean
+public "turningLocked"(): boolean
+public "updateLivingMotion"(): boolean
+public "attackResult"(arg0: $DamageSource$Type): $AttackResult$ResultType
+public "inaction"(): boolean
+public "hurt"(): boolean
+public "movementLocked"(): boolean
+public "setState"<T>(arg0: $EntityState$StateFactor$Type<(T)>, arg1: T): void
+public "getLevel"(): integer
+public "toString"(): string
+public "getState"<T>(arg0: $EntityState$StateFactor$Type<(T)>): T
+get "stateMap"(): $TypeFlexibleHashMap<($EntityState$StateFactor<(any)>)>
+set "projectileImpactResult"(value: $ProjectileImpactEvent$Type)
+get "level"(): integer
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $EntityState$Type = ($EntityState);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $EntityState_ = $EntityState$Type;
+}}
+declare module "packages/yesman/epicfight/skill/$Skill" {
+import {$CompoundTag, $CompoundTag$Type} from "packages/net/minecraft/nbt/$CompoundTag"
+import {$Component, $Component$Type} from "packages/net/minecraft/network/chat/$Component"
+import {$CapabilityItem, $CapabilityItem$Type} from "packages/yesman/epicfight/world/capabilities/item/$CapabilityItem"
+import {$BattleModeGui, $BattleModeGui$Type} from "packages/yesman/epicfight/client/gui/$BattleModeGui"
+import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
+import {$ResourceLocation, $ResourceLocation$Type} from "packages/net/minecraft/resources/$ResourceLocation"
+import {$GuiGraphics, $GuiGraphics$Type} from "packages/net/minecraft/client/gui/$GuiGraphics"
+import {$SkillCategory, $SkillCategory$Type} from "packages/yesman/epicfight/skill/$SkillCategory"
+import {$List, $List$Type} from "packages/java/util/$List"
+import {$Skill$Resource, $Skill$Resource$Type} from "packages/yesman/epicfight/skill/$Skill$Resource"
+import {$EpicFightNetworkManager$PayloadBundleBuilder, $EpicFightNetworkManager$PayloadBundleBuilder$Type} from "packages/yesman/epicfight/network/$EpicFightNetworkManager$PayloadBundleBuilder"
+import {$ControlEngine, $ControlEngine$Type} from "packages/yesman/epicfight/client/events/engine/$ControlEngine"
+import {$CreativeModeTab, $CreativeModeTab$Type} from "packages/net/minecraft/world/item/$CreativeModeTab"
+import {$SkillContainer, $SkillContainer$Type} from "packages/yesman/epicfight/skill/$SkillContainer"
+import {$PlayerPatch, $PlayerPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/player/$PlayerPatch"
+import {$Skill$ActivateType, $Skill$ActivateType$Type} from "packages/yesman/epicfight/skill/$Skill$ActivateType"
+import {$LocalPlayerPatch, $LocalPlayerPatch$Type} from "packages/yesman/epicfight/client/world/capabilites/entitypatch/player/$LocalPlayerPatch"
+import {$SkillBookScreen$AttributeIconList, $SkillBookScreen$AttributeIconList$Type} from "packages/yesman/epicfight/client/gui/screen/$SkillBookScreen$AttributeIconList"
+import {$SkillCastEvent, $SkillCastEvent$Type} from "packages/yesman/epicfight/world/entity/eventlistener/$SkillCastEvent"
+import {$SkillBuilder, $SkillBuilder$Type} from "packages/yesman/epicfight/skill/$SkillBuilder"
+import {$FriendlyByteBuf, $FriendlyByteBuf$Type} from "packages/net/minecraft/network/$FriendlyByteBuf"
+import {$Set, $Set$Type} from "packages/java/util/$Set"
+import {$WeaponCategory, $WeaponCategory$Type} from "packages/yesman/epicfight/world/capabilities/item/$WeaponCategory"
+import {$Attribute, $Attribute$Type} from "packages/net/minecraft/world/entity/ai/attributes/$Attribute"
+import {$AttributeModifier, $AttributeModifier$Type} from "packages/net/minecraft/world/entity/ai/attributes/$AttributeModifier"
+import {$Map$Entry, $Map$Entry$Type} from "packages/java/util/$Map$Entry"
+
+export class $Skill {
+/**
+ * This field is a type stub generated by ProbeJS and shall not be used in any sense.
+ */
+ "probejsInternal$$Literal": Special.Skill
+/**
+ * This field is a type stub generated by ProbeJS and shall not be used in any sense.
+ */
+ "probejsInternal$$Tag": Special.SkillTag
+
+constructor(arg0: $SkillBuilder$Type<(any)>)
+
+public "isDisabled"(arg0: $SkillContainer$Type): boolean
+public "getTranslationKey"(): string
+public static "createIdentityBuilder"(): $SkillBuilder<($Skill)>
+public static "createMoverBuilder"(): $SkillBuilder<($Skill)>
+public "isExecutableState"(arg0: $PlayerPatch$Type<(any)>): boolean
+public "checkExecuteCondition"(arg0: $SkillContainer$Type): boolean
+public "validationFeedback"(arg0: $SkillContainer$Type): void
+public "getExecutionPacket"(arg0: $SkillContainer$Type, arg1: $FriendlyByteBuf$Type): any
+public "gatherArguments"(arg0: $SkillContainer$Type, arg1: $ControlEngine$Type): $FriendlyByteBuf
+public "executeOnServer"(arg0: $SkillContainer$Type, arg1: $FriendlyByteBuf$Type): void
+public "cancelOnServer"(arg0: $SkillContainer$Type, arg1: $FriendlyByteBuf$Type): void
+public "executeOnClient"(arg0: $SkillContainer$Type, arg1: $FriendlyByteBuf$Type): void
+public "cancelOnClient"(arg0: $SkillContainer$Type, arg1: $FriendlyByteBuf$Type): void
+public "onTracked"(arg0: $SkillContainer$Type, arg1: $EpicFightNetworkManager$PayloadBundleBuilder$Type): void
+public "onInitiate"(arg0: $SkillContainer$Type): void
+public "onInitiateClient"(arg0: $SkillContainer$Type): void
+public "onRemoveClient"(arg0: $SkillContainer$Type): void
+public "onRemoved"(arg0: $SkillContainer$Type): void
+public "onReset"(arg0: $SkillContainer$Type): void
+public "setConsumption"(arg0: $SkillContainer$Type, arg1: float): void
+public "updateContainer"(arg0: $SkillContainer$Type): void
+public "getCooldownRegenPerSecond"(arg0: $PlayerPatch$Type<(any)>): float
+public "isActivated"(arg0: $SkillContainer$Type): boolean
+public "setConsumptionSynchronize"(arg0: $SkillContainer$Type, arg1: float): void
+public static "setSkillConsumptionSynchronize"(arg0: $SkillContainer$Type, arg1: float): void
+public "setMaxDurationSynchronize"(arg0: $SkillContainer$Type, arg1: integer): void
+public static "setSkillMaxDurationSynchronize"(arg0: $SkillContainer$Type, arg1: integer): void
+public "setDurationSynchronize"(arg0: $SkillContainer$Type, arg1: integer): void
+public static "setSkillDurationSynchronize"(arg0: $SkillContainer$Type, arg1: integer): void
+public "setStackSynchronize"(arg0: $SkillContainer$Type, arg1: integer): void
+public static "setSkillStackSynchronize"(arg0: $SkillContainer$Type, arg1: integer): void
+public "setMaxResourceSynchronize"(arg0: $SkillContainer$Type, arg1: float): void
+public static "setSkillMaxResourceSynchronize"(arg0: $SkillContainer$Type, arg1: float): void
+public "getMaxDuration"(): integer
+public "getConsumption"(): float
+public "getModfierEntry"(): $Set<($Map$Entry<($Attribute), ($AttributeModifier)>)>
+public "resourcePredicate"(arg0: $PlayerPatch$Type<(any)>, arg1: $SkillCastEvent$Type): boolean
+public "shouldDeactivateAutomatically"(arg0: $PlayerPatch$Type<(any)>): boolean
+public "getActivateType"(): $Skill$ActivateType
+public "getPriorSkill"(): $Skill
+public "registerPropertiesToAnimation"(): $Skill
+public "onScreen"(arg0: $LocalPlayerPatch$Type, arg1: float, arg2: float): void
+public "getTooltipOnItem"(arg0: $ItemStack$Type, arg1: $CapabilityItem$Type, arg2: $PlayerPatch$Type<(any)>): $List<($Component)>
+public "getTooltipArgsOfScreen"(arg0: $List$Type<(any)>): $List<(any)>
+public "drawOnGui"(arg0: $BattleModeGui$Type, arg1: $SkillContainer$Type, arg2: $GuiGraphics$Type, arg3: float, arg4: float, arg5: float): void
+public "getSkillTexture"(): $ResourceLocation
+public "shouldDraw"(arg0: $SkillContainer$Type): boolean
+public "getAvailableWeaponCategories"(): $Set<($WeaponCategory)>
+public "getCustomConsumptionTooltips"(arg0: $SkillBookScreen$AttributeIconList$Type): boolean
+public "getDefaultConsumptionAmount"(arg0: $PlayerPatch$Type<(any)>): float
+public "getResourceType"(): $Skill$Resource
+public "getRegistryName"(): $ResourceLocation
+public "getMaxStack"(): integer
+public "setParams"(arg0: $CompoundTag$Type): void
+public "canExecute"(arg0: $SkillContainer$Type): boolean
+public "getDisplayName"(): $Component
+public "getCategory"(): $SkillCategory
+public static "createBuilder"(): $SkillBuilder<($Skill)>
+public "getCreativeTab"(): $CreativeModeTab
+public "toString"(): string
+get "translationKey"(): string
+get "maxDuration"(): integer
+get "consumption"(): float
+get "modfierEntry"(): $Set<($Map$Entry<($Attribute), ($AttributeModifier)>)>
+get "activateType"(): $Skill$ActivateType
+get "priorSkill"(): $Skill
+get "skillTexture"(): $ResourceLocation
+get "availableWeaponCategories"(): $Set<($WeaponCategory)>
+get "resourceType"(): $Skill$Resource
+get "registryName"(): $ResourceLocation
+get "maxStack"(): integer
+set "params"(value: $CompoundTag$Type)
+get "displayName"(): $Component
+get "category"(): $SkillCategory
+get "creativeTab"(): $CreativeModeTab
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Skill$Type = ($Skill);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Skill_ = $Skill$Type;
+}}
+declare module "packages/yesman/epicfight/api/client/animation/$Layer$LayerType" {
+import {$Enum, $Enum$Type} from "packages/java/lang/$Enum"
+
+export class $Layer$LayerType extends $Enum<($Layer$LayerType)> {
+static readonly "BASE_LAYER": $Layer$LayerType
+static readonly "COMPOSITE_LAYER": $Layer$LayerType
+
+
+public static "values"(): ($Layer$LayerType)[]
+public static "valueOf"(arg0: string): $Layer$LayerType
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Layer$LayerType$Type = (("composite_layer") | ("base_layer")) | ($Layer$LayerType);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Layer$LayerType_ = $Layer$LayerType$Type;
+}}
+declare module "packages/yesman/epicfight/world/entity/eventlistener/$ComboCounterHandleEvent" {
+import {$ComboCounterHandleEvent$Causal, $ComboCounterHandleEvent$Causal$Type} from "packages/yesman/epicfight/world/entity/eventlistener/$ComboCounterHandleEvent$Causal"
+import {$ServerPlayerPatch, $ServerPlayerPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/player/$ServerPlayerPatch"
+import {$AnimationManager$AnimationAccessor, $AnimationManager$AnimationAccessor$Type} from "packages/yesman/epicfight/api/animation/$AnimationManager$AnimationAccessor"
+import {$AbstractPlayerEvent, $AbstractPlayerEvent$Type} from "packages/yesman/epicfight/world/entity/eventlistener/$AbstractPlayerEvent"
+
+export class $ComboCounterHandleEvent extends $AbstractPlayerEvent<($ServerPlayerPatch)> {
+
+constructor(arg0: $ComboCounterHandleEvent$Causal$Type, arg1: $ServerPlayerPatch$Type, arg2: $AnimationManager$AnimationAccessor$Type<(any)>, arg3: integer, arg4: integer)
+
+public "getCausal"(): $ComboCounterHandleEvent$Causal
+public "getPrevValue"(): integer
+public "setNextValue"(arg0: integer): void
+public "getAnimation"(): $AnimationManager$AnimationAccessor<(any)>
+public "getNextValue"(): integer
+get "causal"(): $ComboCounterHandleEvent$Causal
+get "prevValue"(): integer
+set "nextValue"(value: integer)
+get "animation"(): $AnimationManager$AnimationAccessor<(any)>
+get "nextValue"(): integer
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $ComboCounterHandleEvent$Type = ($ComboCounterHandleEvent);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $ComboCounterHandleEvent_ = $ComboCounterHandleEvent$Type;
+}}
+declare module "packages/yesman/epicfight/client/renderer/$LayerRenderer" {
+import {$Class, $Class$Type} from "packages/java/lang/$Class"
+import {$EntityModel, $EntityModel$Type} from "packages/net/minecraft/client/model/$EntityModel"
+import {$PatchedLayer, $PatchedLayer$Type} from "packages/yesman/epicfight/client/renderer/patched/layer/$PatchedLayer"
+import {$LivingEntityPatch, $LivingEntityPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/$LivingEntityPatch"
+import {$LivingEntity, $LivingEntity$Type} from "packages/net/minecraft/world/entity/$LivingEntity"
+
+export interface $LayerRenderer<E extends $LivingEntity, T extends $LivingEntityPatch<(E)>, M extends $EntityModel<(E)>> {
+
+ "addPatchedLayer"(arg0: $Class$Type<(any)>, arg1: $PatchedLayer$Type<(E), (T), (M), (any)>): void
+ "addCustomLayer"(arg0: $PatchedLayer$Type<(E), (T), (M), (any)>): void
+}
+
+export namespace $LayerRenderer {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $LayerRenderer$Type<E, T, M> = ($LayerRenderer<(E), (T), (M)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $LayerRenderer_<E, T, M> = $LayerRenderer$Type<(E), (T), (M)>;
+}}
+declare module "packages/yesman/epicfight/world/capabilities/item/$WeaponCategory" {
+import {$ExtendableEnumManager, $ExtendableEnumManager$Type} from "packages/yesman/epicfight/api/utils/$ExtendableEnumManager"
+import {$ExtendableEnum, $ExtendableEnum$Type} from "packages/yesman/epicfight/api/utils/$ExtendableEnum"
+
+export interface $WeaponCategory extends $ExtendableEnum {
+
+ "universalOrdinal"(): integer
+
+(): integer
+}
+
+export namespace $WeaponCategory {
+const ENUM_MANAGER: $ExtendableEnumManager<($WeaponCategory)>
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $WeaponCategory$Type = ($WeaponCategory);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $WeaponCategory_ = $WeaponCategory$Type;
+}}
+declare module "packages/yesman/epicfight/skill/$SkillCategories" {
+import {$Enum, $Enum$Type} from "packages/java/lang/$Enum"
+import {$ResourceLocation, $ResourceLocation$Type} from "packages/net/minecraft/resources/$ResourceLocation"
+import {$SkillCategory, $SkillCategory$Type} from "packages/yesman/epicfight/skill/$SkillCategory"
+
+export class $SkillCategories extends $Enum<($SkillCategories)> implements $SkillCategory {
+static readonly "BASIC_ATTACK": $SkillCategories
+static readonly "DODGE": $SkillCategories
+static readonly "PASSIVE": $SkillCategories
+static readonly "WEAPON_PASSIVE": $SkillCategories
+static readonly "WEAPON_INNATE": $SkillCategories
+static readonly "GUARD": $SkillCategories
+static readonly "KNOCKDOWN_WAKEUP": $SkillCategories
+static readonly "MOVER": $SkillCategories
+static readonly "IDENTITY": $SkillCategories
+
+
+public "shouldSynchronize"(): boolean
+public "bookIcon"(): $ResourceLocation
+public "shouldSave"(): boolean
+public "universalOrdinal"(): integer
+public "learnable"(): boolean
+public static "values"(): ($SkillCategories)[]
+public static "valueOf"(arg0: string): $SkillCategories
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $SkillCategories$Type = (("basic_attack") | ("dodge") | ("weapon_passive") | ("knockdown_wakeup") | ("mover") | ("identity") | ("guard") | ("passive") | ("weapon_innate")) | ($SkillCategories);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $SkillCategories_ = $SkillCategories$Type;
+}}
+declare module "packages/yesman/epicfight/api/client/model/$Mesh" {
+import {$VertexConsumer, $VertexConsumer$Type} from "packages/com/mojang/blaze3d/vertex/$VertexConsumer"
+import {$Armature, $Armature$Type} from "packages/yesman/epicfight/api/model/$Armature"
+import {$PoseStack, $PoseStack$Type} from "packages/com/mojang/blaze3d/vertex/$PoseStack"
+import {$Mesh$DrawingFunction, $Mesh$DrawingFunction$Type} from "packages/yesman/epicfight/api/client/model/$Mesh$DrawingFunction"
+import {$MultiBufferSource, $MultiBufferSource$Type} from "packages/net/minecraft/client/renderer/$MultiBufferSource"
+import {$OpenMatrix4f, $OpenMatrix4f$Type} from "packages/yesman/epicfight/api/utils/math/$OpenMatrix4f"
+import {$RenderType, $RenderType$Type} from "packages/net/minecraft/client/renderer/$RenderType"
+
+export interface $Mesh {
+
+ "drawPosed"(arg0: $PoseStack$Type, arg1: $VertexConsumer$Type, arg2: $Mesh$DrawingFunction$Type, arg3: integer, arg4: float, arg5: float, arg6: float, arg7: float, arg8: integer, arg9: $Armature$Type, arg10: ($OpenMatrix4f$Type)[]): void
+ "draw"(arg0: $PoseStack$Type, arg1: $MultiBufferSource$Type, arg2: $RenderType$Type, arg3: $Mesh$DrawingFunction$Type, arg4: integer, arg5: float, arg6: float, arg7: float, arg8: float, arg9: integer, arg10: $Armature$Type, arg11: ($OpenMatrix4f$Type)[]): void
+ "draw"(arg0: $PoseStack$Type, arg1: $VertexConsumer$Type, arg2: $Mesh$DrawingFunction$Type, arg3: integer, arg4: float, arg5: float, arg6: float, arg7: float, arg8: integer): void
+ "initialize"(): void
+}
+
+export namespace $Mesh {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Mesh$Type = ($Mesh);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Mesh_ = $Mesh$Type;
+}}
+declare module "packages/yesman/epicfight/world/entity/eventlistener/$AttackEndEvent" {
+import {$ServerPlayerPatch, $ServerPlayerPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/player/$ServerPlayerPatch"
+import {$AnimationManager$AnimationAccessor, $AnimationManager$AnimationAccessor$Type} from "packages/yesman/epicfight/api/animation/$AnimationManager$AnimationAccessor"
+import {$AbstractPlayerEvent, $AbstractPlayerEvent$Type} from "packages/yesman/epicfight/world/entity/eventlistener/$AbstractPlayerEvent"
+
+export class $AttackEndEvent extends $AbstractPlayerEvent<($ServerPlayerPatch)> {
+
+constructor(arg0: $ServerPlayerPatch$Type, arg1: $AnimationManager$AnimationAccessor$Type<(any)>)
+
+public "getAnimation"(): $AnimationManager$AnimationAccessor<(any)>
+get "animation"(): $AnimationManager$AnimationAccessor<(any)>
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $AttackEndEvent$Type = ($AttackEndEvent);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $AttackEndEvent_ = $AttackEndEvent$Type;
+}}
+declare module "packages/yesman/epicfight/api/client/animation/$AnimationSubFileReader$PovSettings" {
+import {$Record, $Record$Type} from "packages/java/lang/$Record"
+import {$AnimationSubFileReader$PovSettings$RootTransformation, $AnimationSubFileReader$PovSettings$RootTransformation$Type} from "packages/yesman/epicfight/api/client/animation/$AnimationSubFileReader$PovSettings$RootTransformation"
+import {$AnimationSubFileReader$PovSettings$ViewLimit, $AnimationSubFileReader$PovSettings$ViewLimit$Type} from "packages/yesman/epicfight/api/client/animation/$AnimationSubFileReader$PovSettings$ViewLimit"
+import {$TransformSheet, $TransformSheet$Type} from "packages/yesman/epicfight/api/animation/$TransformSheet"
+import {$Map, $Map$Type} from "packages/java/util/$Map"
+
+export class $AnimationSubFileReader$PovSettings extends $Record {
+
+constructor(cameraTransform: $TransformSheet$Type, visibilities: $Map$Type<(string), (boolean)>, rootTransformation: $AnimationSubFileReader$PovSettings$RootTransformation$Type, viewLimit: $AnimationSubFileReader$PovSettings$ViewLimit$Type, visibilityOthers: boolean, hasUniqueAnimation: boolean, syncFrame: boolean)
+
+public "visibilities"(): $Map<(string), (boolean)>
+public "rootTransformation"(): $AnimationSubFileReader$PovSettings$RootTransformation
+public "visibilityOthers"(): boolean
+public "hasUniqueAnimation"(): boolean
+public "syncFrame"(): boolean
+public "cameraTransform"(): $TransformSheet
+public "viewLimit"(): $AnimationSubFileReader$PovSettings$ViewLimit
+public "equals"(arg0: any): boolean
+public "toString"(): string
+public "hashCode"(): integer
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $AnimationSubFileReader$PovSettings$Type = ($AnimationSubFileReader$PovSettings);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $AnimationSubFileReader$PovSettings_ = $AnimationSubFileReader$PovSettings$Type;
+}}
+declare module "packages/yesman/epicfight/world/capabilities/$EpicFightCapabilities" {
+import {$ServerPlayer, $ServerPlayer$Type} from "packages/net/minecraft/server/level/$ServerPlayer"
+import {$CapabilityItem, $CapabilityItem$Type} from "packages/yesman/epicfight/world/capabilities/item/$CapabilityItem"
+import {$PlayerPatch, $PlayerPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/player/$PlayerPatch"
+import {$Class, $Class$Type} from "packages/java/lang/$Class"
+import {$RegisterCapabilitiesEvent, $RegisterCapabilitiesEvent$Type} from "packages/net/minecraftforge/common/capabilities/$RegisterCapabilitiesEvent"
+import {$LocalPlayerPatch, $LocalPlayerPatch$Type} from "packages/yesman/epicfight/client/world/capabilites/entitypatch/player/$LocalPlayerPatch"
+import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
+import {$Capability, $Capability$Type} from "packages/net/minecraftforge/common/capabilities/$Capability"
+import {$ProjectilePatch, $ProjectilePatch$Type} from "packages/yesman/epicfight/world/capabilities/projectile/$ProjectilePatch"
+import {$LocalPlayer, $LocalPlayer$Type} from "packages/net/minecraft/client/player/$LocalPlayer"
+import {$Player, $Player$Type} from "packages/net/minecraft/world/entity/player/$Player"
+import {$ServerPlayerPatch, $ServerPlayerPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/player/$ServerPlayerPatch"
+import {$EntityPatch, $EntityPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/$EntityPatch"
+import {$Optional, $Optional$Type} from "packages/java/util/$Optional"
+import {$CapabilitySkill, $CapabilitySkill$Type} from "packages/yesman/epicfight/world/capabilities/skill/$CapabilitySkill"
+import {$Entity, $Entity$Type} from "packages/net/minecraft/world/entity/$Entity"
+
+export class $EpicFightCapabilities {
+static readonly "CAPABILITY_ENTITY": $Capability<($EntityPatch)>
+static readonly "CAPABILITY_ITEM": $Capability<($CapabilityItem)>
+static readonly "CAPABILITY_PROJECTILE": $Capability<($ProjectilePatch)>
+static readonly "CAPABILITY_SKILL": $Capability<($CapabilitySkill)>
+
+constructor()
+
+public static "getServerPlayerPatch"(arg0: $ServerPlayer$Type): $ServerPlayerPatch
+public static "getLocalPlayerPatch"(arg0: $LocalPlayer$Type): $LocalPlayerPatch
+public static "getPlayerPatchAsOptional"(arg0: $Entity$Type): $Optional<($PlayerPatch<(any)>)>
+public static "getServerPlayerPatchAsOptional"(arg0: $Entity$Type): $Optional<($ServerPlayerPatch)>
+public static "getLocalPlayerPatchAsOptional"(arg0: $Entity$Type): $Optional<($LocalPlayerPatch)>
+public static "getItemStackCapabilityOr"(arg0: $ItemStack$Type, arg1: $CapabilityItem$Type): $CapabilityItem
+public static "getItemCapability"(arg0: $ItemStack$Type): $Optional<($CapabilityItem)>
+public static "getPlayerPatch"(arg0: $Player$Type): $PlayerPatch<(any)>
+public static "getItemStackCapability"(arg0: $ItemStack$Type): $CapabilityItem
+public static "getEntityPatch"<T extends $EntityPatch<(any)>>(arg0: $Entity$Type, arg1: $Class$Type<(T)>): T
+public static "getUnparameterizedEntityPatch"<T extends $EntityPatch<(any)>>(arg0: $Entity$Type, arg1: $Class$Type<(T)>): $Optional<(T)>
+public static "getParameterizedEntityPatch"<E extends $Entity, T extends $EntityPatch<(E)>>(arg0: $Entity$Type, arg1: $Class$Type<(E)>, arg2: $Class$Type<(any)>): $Optional<(T)>
+public static "registerCapabilities"(arg0: $RegisterCapabilitiesEvent$Type): void
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $EpicFightCapabilities$Type = ($EpicFightCapabilities);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $EpicFightCapabilities_ = $EpicFightCapabilities$Type;
+}}
+declare module "packages/yesman/epicfight/api/animation/types/$AttackAnimation" {
+import {$AnimationVariables$SharedAnimationVariableKey, $AnimationVariables$SharedAnimationVariableKey$Type} from "packages/yesman/epicfight/api/animation/$AnimationVariables$SharedAnimationVariableKey"
+import {$AnimationVariables$IndependentAnimationVariableKey, $AnimationVariables$IndependentAnimationVariableKey$Type} from "packages/yesman/epicfight/api/animation/$AnimationVariables$IndependentAnimationVariableKey"
+import {$AssetAccessor, $AssetAccessor$Type} from "packages/yesman/epicfight/api/asset/$AssetAccessor"
+import {$AttackAnimation$Phase, $AttackAnimation$Phase$Type} from "packages/yesman/epicfight/api/animation/types/$AttackAnimation$Phase"
+import {$EntityState$StateFactor, $EntityState$StateFactor$Type} from "packages/yesman/epicfight/api/animation/types/$EntityState$StateFactor"
+import {$DamageSource, $DamageSource$Type} from "packages/net/minecraft/world/damagesource/$DamageSource"
+import {$ActionAnimation, $ActionAnimation$Type} from "packages/yesman/epicfight/api/animation/types/$ActionAnimation"
+import {$Vec3, $Vec3$Type} from "packages/net/minecraft/world/phys/$Vec3"
+import {$TransformSheet, $TransformSheet$Type} from "packages/yesman/epicfight/api/animation/$TransformSheet"
+import {$LivingEntity, $LivingEntity$Type} from "packages/net/minecraft/world/entity/$LivingEntity"
+import {$EpicFightDamageSource, $EpicFightDamageSource$Type} from "packages/yesman/epicfight/world/damagesource/$EpicFightDamageSource"
+import {$DynamicAnimation, $DynamicAnimation$Type} from "packages/yesman/epicfight/api/animation/types/$DynamicAnimation"
+import {$InteractionHand, $InteractionHand$Type} from "packages/net/minecraft/world/$InteractionHand"
+import {$AnimationProperty$AttackPhaseProperty, $AnimationProperty$AttackPhaseProperty$Type} from "packages/yesman/epicfight/api/animation/property/$AnimationProperty$AttackPhaseProperty"
+import {$AnimationManager$AnimationAccessor, $AnimationManager$AnimationAccessor$Type} from "packages/yesman/epicfight/api/animation/$AnimationManager$AnimationAccessor"
+import {$PoseStack, $PoseStack$Type} from "packages/com/mojang/blaze3d/vertex/$PoseStack"
+import {$List, $List$Type} from "packages/java/util/$List"
+import {$Joint, $Joint$Type} from "packages/yesman/epicfight/api/animation/$Joint"
+import {$MultiBufferSource, $MultiBufferSource$Type} from "packages/net/minecraft/client/renderer/$MultiBufferSource"
+import {$Collider, $Collider$Type} from "packages/yesman/epicfight/api/collider/$Collider"
+import {$LivingEntityPatch, $LivingEntityPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/$LivingEntityPatch"
+import {$Entity, $Entity$Type} from "packages/net/minecraft/world/entity/$Entity"
+
+export class $AttackAnimation extends $ActionAnimation {
+static readonly "ATTACK_TRIED_ENTITIES": $AnimationVariables$SharedAnimationVariableKey<($List<($Entity)>)>
+static readonly "ACTUALLY_HIT_ENTITIES": $AnimationVariables$SharedAnimationVariableKey<($List<($LivingEntity)>)>
+readonly "phases": ($AttackAnimation$Phase)[]
+static readonly "ACTION_ANIMATION_COORD": $AnimationVariables$SharedAnimationVariableKey<($TransformSheet)>
+static readonly "BEGINNING_LOCATION": $AnimationVariables$IndependentAnimationVariableKey<($Vec3)>
+static readonly "INITIAL_LOOK_VEC_DOT": $AnimationVariables$IndependentAnimationVariableKey<(float)>
+static readonly "HAD_NO_PHYSICS": $AnimationVariables$IndependentAnimationVariableKey<(boolean)>
+
+constructor(arg0: float, arg1: string, arg2: $AssetAccessor$Type<(any)>, ...arg3: ($AttackAnimation$Phase$Type)[])
+constructor(arg0: float, arg1: float, arg2: float, arg3: float, arg4: float, arg5: $InteractionHand$Type, arg6: $Collider$Type, arg7: $Joint$Type, arg8: string, arg9: $AssetAccessor$Type<(any)>)
+constructor(arg0: float, arg1: $AnimationManager$AnimationAccessor$Type<(any)>, arg2: $AssetAccessor$Type<(any)>, ...arg3: ($AttackAnimation$Phase$Type)[])
+constructor(arg0: float, arg1: float, arg2: float, arg3: float, arg4: float, arg5: $InteractionHand$Type, arg6: $Collider$Type, arg7: $Joint$Type, arg8: $AnimationManager$AnimationAccessor$Type<(any)>, arg9: $AssetAccessor$Type<(any)>)
+constructor(arg0: float, arg1: float, arg2: float, arg3: float, arg4: float, arg5: $Collider$Type, arg6: $Joint$Type, arg7: $AnimationManager$AnimationAccessor$Type<(any)>, arg8: $AssetAccessor$Type<(any)>)
+
+public "getTrueEntity"(arg0: $Entity$Type): $LivingEntity
+public "renderDebugging"(arg0: $PoseStack$Type, arg1: $MultiBufferSource$Type, arg2: $LivingEntityPatch$Type<(any)>, arg3: float, arg4: float): void
+public "linkTick"(arg0: $LivingEntityPatch$Type<(any)>, arg1: $AssetAccessor$Type<(any)>): void
+public "getModifiedLinkState"(arg0: $EntityState$StateFactor$Type<(any)>, arg1: any, arg2: $LivingEntityPatch$Type<(any)>, arg3: float): any
+public "getPhaseOrderByTime"(arg0: float): integer
+public "getPlaySpeed"(arg0: $LivingEntityPatch$Type<(any)>, arg1: $DynamicAnimation$Type): float
+public "getEpicFightDamageSource"(arg0: $DamageSource$Type, arg1: $LivingEntityPatch$Type<(any)>, arg2: $Entity$Type, arg3: $AttackAnimation$Phase$Type): $EpicFightDamageSource
+public "getEpicFightDamageSource"(arg0: $LivingEntityPatch$Type<(any)>, arg1: $Entity$Type, arg2: $AttackAnimation$Phase$Type): $EpicFightDamageSource
+public "getPhaseByTime"(arg0: float): $AttackAnimation$Phase
+public "tick"(arg0: $LivingEntityPatch$Type<(any)>): void
+public "addProperty"<V, A extends $AttackAnimation>(arg0: $AnimationProperty$AttackPhaseProperty$Type<(V)>, arg1: V): A
+public "addProperty"<V, A extends $AttackAnimation>(arg0: $AnimationProperty$AttackPhaseProperty$Type<(V)>, arg1: V, arg2: integer): A
+public "removeProperty"<A extends $AttackAnimation>(arg0: $AnimationProperty$AttackPhaseProperty$Type<(any)>, arg1: integer): A
+public "removeProperty"<A extends $AttackAnimation>(arg0: $AnimationProperty$AttackPhaseProperty$Type<(any)>): A
+public "end"(arg0: $LivingEntityPatch$Type<(any)>, arg1: $AssetAccessor$Type<(any)>, arg2: boolean): void
+public "begin"(arg0: $LivingEntityPatch$Type<(any)>): void
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $AttackAnimation$Type = ($AttackAnimation);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $AttackAnimation_ = $AttackAnimation$Type;
+}}
+declare module "packages/yesman/epicfight/world/damagesource/$ExtraDamageInstance" {
+import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
+import {$ExtraDamageInstance$ExtraDamage, $ExtraDamageInstance$ExtraDamage$Type} from "packages/yesman/epicfight/world/damagesource/$ExtraDamageInstance$ExtraDamage"
+import {$MutableComponent, $MutableComponent$Type} from "packages/net/minecraft/network/chat/$MutableComponent"
+import {$LivingEntity, $LivingEntity$Type} from "packages/net/minecraft/world/entity/$LivingEntity"
+
+export class $ExtraDamageInstance {
+static readonly "EVISCERATE_LOST_HEALTH": $ExtraDamageInstance$ExtraDamage
+static readonly "SWEEPING_EDGE_ENCHANTMENT": $ExtraDamageInstance$ExtraDamage
+
+constructor(arg0: $ExtraDamageInstance$ExtraDamage$Type, ...arg1: (float)[])
+
+public "setTooltips"(arg0: $ItemStack$Type, arg1: $MutableComponent$Type, arg2: double): void
+public "getParams"(): (float)[]
+public "toTransableComponentParams"(): (any)[]
+public "get"(arg0: $LivingEntity$Type, arg1: $ItemStack$Type, arg2: $LivingEntity$Type, arg3: float): float
+get "params"(): (float)[]
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $ExtraDamageInstance$Type = ($ExtraDamageInstance);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $ExtraDamageInstance_ = $ExtraDamageInstance$Type;
+}}
+declare module "packages/yesman/epicfight/api/animation/types/$MainFrameAnimation" {
+import {$Layer$Priority, $Layer$Priority$Type} from "packages/yesman/epicfight/api/client/animation/$Layer$Priority"
+import {$StaticAnimation, $StaticAnimation$Type} from "packages/yesman/epicfight/api/animation/types/$StaticAnimation"
+import {$AnimationVariables$IndependentAnimationVariableKey, $AnimationVariables$IndependentAnimationVariableKey$Type} from "packages/yesman/epicfight/api/animation/$AnimationVariables$IndependentAnimationVariableKey"
+import {$AssetAccessor, $AssetAccessor$Type} from "packages/yesman/epicfight/api/asset/$AssetAccessor"
+import {$AnimationManager$AnimationAccessor, $AnimationManager$AnimationAccessor$Type} from "packages/yesman/epicfight/api/animation/$AnimationManager$AnimationAccessor"
+import {$LivingEntityPatch, $LivingEntityPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/$LivingEntityPatch"
+
+export class $MainFrameAnimation extends $StaticAnimation {
+static readonly "HAD_NO_PHYSICS": $AnimationVariables$IndependentAnimationVariableKey<(boolean)>
+
+constructor(arg0: float, arg1: $AnimationManager$AnimationAccessor$Type<(any)>, arg2: $AssetAccessor$Type<(any)>)
+constructor(arg0: float, arg1: string, arg2: $AssetAccessor$Type<(any)>)
+
+public "isMainFrameAnimation"(): boolean
+public "tick"(arg0: $LivingEntityPatch$Type<(any)>): void
+public "begin"(arg0: $LivingEntityPatch$Type<(any)>): void
+public "getPriority"(): $Layer$Priority
+get "mainFrameAnimation"(): boolean
+get "priority"(): $Layer$Priority
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $MainFrameAnimation$Type = ($MainFrameAnimation);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $MainFrameAnimation_ = $MainFrameAnimation$Type;
+}}
+declare module "packages/yesman/epicfight/world/entity/eventlistener/$SkillCastEvent" {
+import {$FriendlyByteBuf, $FriendlyByteBuf$Type} from "packages/net/minecraft/network/$FriendlyByteBuf"
+import {$PlayerPatch, $PlayerPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/player/$PlayerPatch"
+import {$SkillContainer, $SkillContainer$Type} from "packages/yesman/epicfight/skill/$SkillContainer"
+import {$AbstractPlayerEvent, $AbstractPlayerEvent$Type} from "packages/yesman/epicfight/world/entity/eventlistener/$AbstractPlayerEvent"
+
+export class $SkillCastEvent extends $AbstractPlayerEvent<($PlayerPatch<(any)>)> {
+
+constructor(arg0: $PlayerPatch$Type<(any)>, arg1: $SkillContainer$Type, arg2: $FriendlyByteBuf$Type)
+
+public "setSkillExecutable"(arg0: boolean): void
+public "setStateExecutable"(arg0: boolean): void
+public "isSkillExecutable"(): boolean
+public "isStateExecutable"(): boolean
+public "getSkillContainer"(): $SkillContainer
+public "shouldReserveKey"(): boolean
+public "getArguments"(): $FriendlyByteBuf
+public "isExecutable"(): boolean
+set "skillExecutable"(value: boolean)
+set "stateExecutable"(value: boolean)
+get "skillExecutable"(): boolean
+get "stateExecutable"(): boolean
+get "skillContainer"(): $SkillContainer
+get "arguments"(): $FriendlyByteBuf
+get "executable"(): boolean
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $SkillCastEvent$Type = ($SkillCastEvent);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $SkillCastEvent_ = $SkillCastEvent$Type;
+}}
+declare module "packages/yesman/epicfight/api/client/animation/property/$TrailInfo" {
+import {$CompoundTag, $CompoundTag$Type} from "packages/net/minecraft/nbt/$CompoundTag"
+import {$JsonElement, $JsonElement$Type} from "packages/com/google/gson/$JsonElement"
+import {$Record, $Record$Type} from "packages/java/lang/$Record"
+import {$InteractionHand, $InteractionHand$Type} from "packages/net/minecraft/world/$InteractionHand"
+import {$TrailInfo$Builder, $TrailInfo$Builder$Type} from "packages/yesman/epicfight/api/client/animation/property/$TrailInfo$Builder"
+import {$SimpleParticleType, $SimpleParticleType$Type} from "packages/net/minecraft/core/particles/$SimpleParticleType"
+import {$Vec3, $Vec3$Type} from "packages/net/minecraft/world/phys/$Vec3"
+import {$ResourceLocation, $ResourceLocation$Type} from "packages/net/minecraft/resources/$ResourceLocation"
+
+export class $TrailInfo extends $Record {
+static readonly "GENERIC_TRAIL_TEXTURE": $ResourceLocation
+static readonly "SWORDMASTER_SWING_TRAIL_TEX": $ResourceLocation
+static readonly "PREVIEWER_DEFAULT_TRAIL": $TrailInfo
+static readonly "ANIMATION_DEFAULT_TRAIL": $TrailInfo
+
+constructor(start: $Vec3$Type, end: $Vec3$Type, joint: string, particle: $SimpleParticleType$Type, startTime: float, endTime: float, fadeTime: float, rCol: float, gCol: float, bCol: float, interpolateCount: integer, trailLifetime: integer, updateInterval: integer, blockLight: integer, skyLight: integer, texturePath: $ResourceLocation$Type, hand: $InteractionHand$Type)
+
+public "playable"(): boolean
+public "updateInterval"(): integer
+public "texturePath"(): $ResourceLocation
+public "particle"(): $SimpleParticleType
+public "joint"(): string
+public "blockLight"(): integer
+public "skyLight"(): integer
+public static "deserialize"(arg0: $CompoundTag$Type): $TrailInfo
+public static "deserialize"(arg0: $JsonElement$Type): $TrailInfo
+public "endTime"(): float
+public "overwrite"(arg0: $TrailInfo$Type): $TrailInfo
+public "hand"(): $InteractionHand
+public "rCol"(): float
+public "gCol"(): float
+public "unpackAsBuilder"(): $TrailInfo$Builder
+public "bCol"(): float
+public "trailLifetime"(): integer
+public "interpolateCount"(): integer
+public "fadeTime"(): float
+public static "isValidTime"(arg0: float): boolean
+public "equals"(arg0: any): boolean
+public "toString"(): string
+public "hashCode"(): integer
+public "start"(): $Vec3
+public "end"(): $Vec3
+public static "builder"(): $TrailInfo$Builder
+public "startTime"(): float
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $TrailInfo$Type = ($TrailInfo);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $TrailInfo_ = $TrailInfo$Type;
+}}
+declare module "packages/yesman/epicfight/api/physics/ik/$InverseKinematicsSimulatable" {
+import {$InverseKinematicsSimulator, $InverseKinematicsSimulator$Type} from "packages/yesman/epicfight/api/physics/ik/$InverseKinematicsSimulator"
+import {$PhysicsSimulator, $PhysicsSimulator$Type} from "packages/yesman/epicfight/api/physics/$PhysicsSimulator"
+import {$SimulatableObject, $SimulatableObject$Type} from "packages/yesman/epicfight/api/physics/$SimulatableObject"
+import {$SimulationTypes, $SimulationTypes$Type} from "packages/yesman/epicfight/api/physics/$SimulationTypes"
+import {$Optional, $Optional$Type} from "packages/java/util/$Optional"
+import {$OpenMatrix4f, $OpenMatrix4f$Type} from "packages/yesman/epicfight/api/utils/math/$OpenMatrix4f"
+import {$Entity, $Entity$Type} from "packages/net/minecraft/world/entity/$Entity"
+
+export interface $InverseKinematicsSimulatable extends $SimulatableObject {
+
+ "toEntity"(): $Entity
+ "getRootXRotO"(): float
+ "getRootXRot"(): float
+ "getRootZRotO"(): float
+ "getRootZRot"(): float
+ "getIKSimulator"(): $InverseKinematicsSimulator
+ "getModelMatrix"(arg0: float): $OpenMatrix4f
+ "getSimulator"<SIM extends $PhysicsSimulator<(any), (any), (any), (any), (any)>>(arg0: $SimulationTypes$Type<(any), (any), (any), (any), (any), (SIM)>): $Optional<(SIM)>
+}
+
+export namespace $InverseKinematicsSimulatable {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $InverseKinematicsSimulatable$Type = ($InverseKinematicsSimulatable);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $InverseKinematicsSimulatable_ = $InverseKinematicsSimulatable$Type;
+}}
+declare module "packages/yesman/epicfight/world/entity/eventlistener/$PlayerEventListener" {
+import {$Consumer, $Consumer$Type} from "packages/java/util/function/$Consumer"
+import {$UUID, $UUID$Type} from "packages/java/util/$UUID"
+import {$DetachablePlayerEvent, $DetachablePlayerEvent$Type} from "packages/yesman/epicfight/world/entity/eventlistener/$DetachablePlayerEvent"
+import {$PlayerPatch, $PlayerPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/player/$PlayerPatch"
+import {$PlayerEventListener$EventType, $PlayerEventListener$EventType$Type} from "packages/yesman/epicfight/world/entity/eventlistener/$PlayerEventListener$EventType"
+
+export class $PlayerEventListener {
+
+constructor(arg0: $PlayerPatch$Type<(any)>)
+
+public "triggerEvents"<T extends $DetachablePlayerEvent<(any)>>(arg0: $PlayerEventListener$EventType$Type<(T)>, arg1: T): boolean
+public "addEventListener"<T extends $DetachablePlayerEvent<(any)>>(arg0: $PlayerEventListener$EventType$Type<(T)>, arg1: $UUID$Type, arg2: $Consumer$Type<(T)>, arg3: integer): void
+public "addEventListener"<T extends $DetachablePlayerEvent<(any)>>(arg0: $PlayerEventListener$EventType$Type<(T)>, arg1: $UUID$Type, arg2: $Consumer$Type<(T)>): void
+public "removeListener"<T extends $DetachablePlayerEvent<(any)>>(arg0: $PlayerEventListener$EventType$Type<(T)>, arg1: $UUID$Type, arg2: integer): void
+public "removeListener"<T extends $DetachablePlayerEvent<(any)>>(arg0: $PlayerEventListener$EventType$Type<(T)>, arg1: $UUID$Type): void
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $PlayerEventListener$Type = ($PlayerEventListener);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $PlayerEventListener_ = $PlayerEventListener$Type;
+}}
+declare module "packages/yesman/epicfight/compat/kubejs/skill/$CustomSkill$CustomSkillBuilder" {
+import {$Skill$Resource, $Skill$Resource$Type} from "packages/yesman/epicfight/skill/$Skill$Resource"
+import {$Component, $Component$Type} from "packages/net/minecraft/network/chat/$Component"
+import {$Predicate, $Predicate$Type} from "packages/java/util/function/$Predicate"
+import {$PlayerPatch, $PlayerPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/player/$PlayerPatch"
+import {$SkillContainer, $SkillContainer$Type} from "packages/yesman/epicfight/skill/$SkillContainer"
+import {$Skill$ActivateType, $Skill$ActivateType$Type} from "packages/yesman/epicfight/skill/$Skill$ActivateType"
+import {$RegistryInfo, $RegistryInfo$Type} from "packages/dev/latvian/mods/kubejs/registry/$RegistryInfo"
+import {$Skill, $Skill$Type} from "packages/yesman/epicfight/skill/$Skill"
+import {$BuilderBase, $BuilderBase$Type} from "packages/dev/latvian/mods/kubejs/registry/$BuilderBase"
+import {$ResourceLocation, $ResourceLocation$Type} from "packages/net/minecraft/resources/$ResourceLocation"
+import {$SkillCategory, $SkillCategory$Type} from "packages/yesman/epicfight/skill/$SkillCategory"
+import {$BiConsumer, $BiConsumer$Type} from "packages/java/util/function/$BiConsumer"
+import {$Function, $Function$Type} from "packages/java/util/function/$Function"
+import {$Consumer, $Consumer$Type} from "packages/java/util/function/$Consumer"
+import {$FriendlyByteBuf, $FriendlyByteBuf$Type} from "packages/net/minecraft/network/$FriendlyByteBuf"
+import {$List, $List$Type} from "packages/java/util/$List"
+import {$SkillCategories, $SkillCategories$Type} from "packages/yesman/epicfight/skill/$SkillCategories"
+import {$CustomSkill$OnScreenContext, $CustomSkill$OnScreenContext$Type} from "packages/yesman/epicfight/compat/kubejs/skill/$CustomSkill$OnScreenContext"
+import {$CustomSkill$GetTooltipOnItem, $CustomSkill$GetTooltipOnItem$Type} from "packages/yesman/epicfight/compat/kubejs/skill/$CustomSkill$GetTooltipOnItem"
+import {$CustomSkill$DrawOnGuiContext, $CustomSkill$DrawOnGuiContext$Type} from "packages/yesman/epicfight/compat/kubejs/skill/$CustomSkill$DrawOnGuiContext"
+
+/**
+ * Creates a custom skill. The builder requires one of each of the following to function:
+ * - category
+ * - activateType
+ * - resource
+ * - texture
+ */
+export class $CustomSkill$CustomSkillBuilder extends $BuilderBase<($Skill)> {
+ "tab": $ResourceLocation
+ "category": $SkillCategory
+ "activateType": $Skill$ActivateType
+ "resource": $Skill$Resource
+readonly "id": $ResourceLocation
+ "translationKey": string
+ "displayName": $Component
+ "formattedDisplayName": boolean
+
+constructor(arg0: $ResourceLocation$Type)
+
+public "getRegistryType"(): $RegistryInfo<($Skill)>
+/**
+ * Predicate that is called to check if the skill is in executable state.
+ */
+public "executableState"(arg0: $Predicate$Type<($PlayerPatch$Type<(any)>)>): $CustomSkill$CustomSkillBuilder
+/**
+ * Called when the cooldown regeneration is being calculated.
+ */
+public "cooldownRegenPerSecond"(arg0: $Function$Type<($PlayerPatch$Type<(any)>), (float)>): $CustomSkill$CustomSkillBuilder
+/**
+ * Sets the max duration of the skill.
+ */
+public "maxDuration"(arg0: integer): $CustomSkill$CustomSkillBuilder
+/**
+ * This is called when the skill is executed on the server. This is where you should put your skill logic.
+ * The second argument is the buffer that is sent from the client. It's used for data synchronization.
+ */
+public "executeOnServer"(arg0: $BiConsumer$Type<($SkillContainer$Type), ($FriendlyByteBuf$Type)>): $CustomSkill$CustomSkillBuilder
+/**
+ * Called when the skill is cancelled on the server.
+ */
+public "cancelOnServer"(arg0: $BiConsumer$Type<($SkillContainer$Type), ($FriendlyByteBuf$Type)>): $CustomSkill$CustomSkillBuilder
+/**
+ * This is called when the skill is executed on the client. Best to use this in sync with the server if it is a skill that moves the player.
+ * The second argument is the buffer that is sent from the server. It's used for data synchronization.
+ */
+public "executeOnClient"(arg0: $BiConsumer$Type<($SkillContainer$Type), ($FriendlyByteBuf$Type)>): $CustomSkill$CustomSkillBuilder
+/**
+ * Called when the skill is cancelled on the client.
+ */
+public "cancelOnClient"(arg0: $BiConsumer$Type<($SkillContainer$Type), ($FriendlyByteBuf$Type)>): $CustomSkill$CustomSkillBuilder
+/**
+ * This is called when the skill is learned by the player.
+ */
+public "onInitiate"(arg0: $Consumer$Type<($SkillContainer$Type)>): $CustomSkill$CustomSkillBuilder
+/**
+ * This is called when the skill is removed from the player.
+ */
+public "onRemoved"(arg0: $Consumer$Type<($SkillContainer$Type)>): $CustomSkill$CustomSkillBuilder
+/**
+ * Called when resource consumption is being calculated.
+ */
+public "setConsumption"(arg0: $BiConsumer$Type<($SkillContainer$Type), (float)>): $CustomSkill$CustomSkillBuilder
+/**
+ * Called each tick the skill is active.
+ */
+public "updateContainer"(arg0: $Consumer$Type<($SkillContainer$Type)>): $CustomSkill$CustomSkillBuilder
+/**
+ * Predicate on whether the skill should deactivate automatically or not.
+ */
+public "shouldDeactivateAutomatically"(arg0: $Predicate$Type<($PlayerPatch$Type<(any)>)>): $CustomSkill$CustomSkillBuilder
+/**
+ * Consumer that is called when the skill is added from the skill HUD.
+ */
+public "onScreen"(arg0: $Consumer$Type<($CustomSkill$OnScreenContext$Type)>): $CustomSkill$CustomSkillBuilder
+/**
+ * Sets the tooltip of the skill on the item that has this skill as an innate.
+ */
+public "getTooltipOnItem"(arg0: $Function$Type<($CustomSkill$GetTooltipOnItem$Type), ($List$Type<($Component$Type)>)>): $CustomSkill$CustomSkillBuilder
+/**
+ * Sets the parameters of the description of the skill on the skill book GUI.
+ */
+public "getTooltipArgsOfScreen"(arg0: $Function$Type<($List$Type<(any)>), ($List$Type<(any)>)>): $CustomSkill$CustomSkillBuilder
+/**
+ * Consumer that is called to draw the skill on the GUI.
+ */
+public "drawOnGui"(arg0: $Consumer$Type<($CustomSkill$DrawOnGuiContext$Type)>): $CustomSkill$CustomSkillBuilder
+/**
+ * Predicate that is called to check if the skill should be drawn on the GUI.
+ */
+public "shouldDraw"(arg0: $Predicate$Type<($SkillContainer$Type)>): $CustomSkill$CustomSkillBuilder
+/**
+ * Sets the activate type of the skill. Input a string of the type.
+ */
+public "activateType"(arg0: $Skill$ActivateType$Type): $CustomSkill$CustomSkillBuilder
+/**
+ * Sets the texture of the skill. Input a string or resource location of the texture.
+ * Example: `minecraft:textures/block/stone.png`
+ * Required.
+ */
+public "texture"(arg0: $ResourceLocation$Type): $CustomSkill$CustomSkillBuilder
+public "createObject"(): $Skill
+/**
+ * Predicate that is called to check if the skill can be executed.
+ */
+public "canExecute"(arg0: $Predicate$Type<($SkillContainer$Type)>): $CustomSkill$CustomSkillBuilder
+/**
+ * Sets the category of the skill. Input a string of the category.
+ * Required.
+ */
+public "category"(arg0: $SkillCategories$Type): $CustomSkill$CustomSkillBuilder
+/**
+ * Sets the max stack size of the skill.
+ */
+public "maxStackSize"(arg0: integer): $CustomSkill$CustomSkillBuilder
+/**
+ * Sets the resource type of the skill. Input a string of the type.
+ */
+public "resource"(arg0: $Skill$Resource$Type): $CustomSkill$CustomSkillBuilder
+/**
+ * Sets the creative tab that the skill book for this skill will be in.
+ * Optional.
+ * The KubeJS tab is `'kubejs:kubejs'` and the Epic Fight tab is `epicfight:items`.
+ */
+public "tab"(arg0: $ResourceLocation$Type): $CustomSkill$CustomSkillBuilder
+get "registryType"(): $RegistryInfo<($Skill)>
+set "consumption"(value: $BiConsumer$Type<($SkillContainer$Type), (float)>)
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $CustomSkill$CustomSkillBuilder$Type = ($CustomSkill$CustomSkillBuilder);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $CustomSkill$CustomSkillBuilder_ = $CustomSkill$CustomSkillBuilder$Type;
+}}
+declare module "packages/yesman/epicfight/world/damagesource/$StunType" {
+import {$Enum, $Enum$Type} from "packages/java/lang/$Enum"
+
+export class $StunType extends $Enum<($StunType)> {
+static readonly "NONE": $StunType
+static readonly "SHORT": $StunType
+static readonly "LONG": $StunType
+static readonly "HOLD": $StunType
+static readonly "KNOCKDOWN": $StunType
+static readonly "NEUTRALIZE": $StunType
+static readonly "FALL": $StunType
+
+
+public "hasFixedStunTime"(): boolean
+public "toString"(): string
+public static "values"(): ($StunType)[]
+public static "valueOf"(arg0: string): $StunType
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $StunType$Type = (("neutralize") | ("knockdown") | ("fall") | ("short") | ("none") | ("long") | ("hold")) | ($StunType);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $StunType_ = $StunType$Type;
+}}
+declare module "packages/yesman/epicfight/api/physics/ik/$InverseKinematicsSimulator$InverseKinematicsDefinition" {
+import {$Record, $Record$Type} from "packages/java/lang/$Record"
+import {$AssetAccessor, $AssetAccessor$Type} from "packages/yesman/epicfight/api/asset/$AssetAccessor"
+import {$InverseKinematicsSimulator$BakedInverseKinematicsDefinition, $InverseKinematicsSimulator$BakedInverseKinematicsDefinition$Type} from "packages/yesman/epicfight/api/physics/ik/$InverseKinematicsSimulator$BakedInverseKinematicsDefinition"
+import {$Joint, $Joint$Type} from "packages/yesman/epicfight/api/animation/$Joint"
+import {$TransformSheet, $TransformSheet$Type} from "packages/yesman/epicfight/api/animation/$TransformSheet"
+import {$IntIntPair, $IntIntPair$Type} from "packages/it/unimi/dsi/fastutil/ints/$IntIntPair"
+import {$Map, $Map$Type} from "packages/java/util/$Map"
+
+export class $InverseKinematicsSimulator$InverseKinematicsDefinition extends $Record {
+
+constructor(startJoint: $Joint$Type, endJoint: $Joint$Type, opponentJoint: $Joint$Type, clipAnimation: boolean, startFrame: integer, endFrame: integer, initialPoseFrame: integer, rayLeastHeight: float, touchingGround: (boolean)[])
+
+public "initialPoseFrame"(): integer
+public "endJoint"(): $Joint
+public "clipAnimation"(): boolean
+public "startJoint"(): $Joint
+public "startFrame"(): integer
+public "endFrame"(): integer
+public "bake"(arg0: $AssetAccessor$Type<(any)>, arg1: $Map$Type<(string), ($TransformSheet$Type)>, arg2: boolean, arg3: boolean): $InverseKinematicsSimulator$BakedInverseKinematicsDefinition
+public "rayLeastHeight"(): float
+public "opponentJoint"(): $Joint
+public "touchingGround"(): (boolean)[]
+public "equals"(arg0: any): boolean
+public "toString"(): string
+public "hashCode"(): integer
+public static "create"(arg0: $Joint$Type, arg1: $Joint$Type, arg2: $Joint$Type, arg3: $IntIntPair$Type, arg4: float, arg5: integer, arg6: (boolean)[]): $InverseKinematicsSimulator$InverseKinematicsDefinition
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $InverseKinematicsSimulator$InverseKinematicsDefinition$Type = ($InverseKinematicsSimulator$InverseKinematicsDefinition);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $InverseKinematicsSimulator$InverseKinematicsDefinition_ = $InverseKinematicsSimulator$InverseKinematicsDefinition$Type;
+}}
+declare module "packages/yesman/epicfight/api/animation/$Joint" {
+import {$Consumer, $Consumer$Type} from "packages/java/util/function/$Consumer"
+import {$Joint$HierarchicalJointAccessor$Builder, $Joint$HierarchicalJointAccessor$Builder$Type} from "packages/yesman/epicfight/api/animation/$Joint$HierarchicalJointAccessor$Builder"
+import {$List, $List$Type} from "packages/java/util/$List"
+import {$OpenMatrix4f, $OpenMatrix4f$Type} from "packages/yesman/epicfight/api/utils/math/$OpenMatrix4f"
+
+export class $Joint {
+static readonly "EMPTY": $Joint
+
+constructor(arg0: string, arg1: integer, arg2: $OpenMatrix4f$Type)
+
+public "getLocalTransform"(): $OpenMatrix4f
+public "addSubJoints"(...arg0: ($Joint$Type)[]): void
+public "removeSubJoints"(...arg0: ($Joint$Type)[]): void
+public "getAllJoints"(): $List<($Joint)>
+public "iterSubJoints"(arg0: $Consumer$Type<($Joint$Type)>): void
+public "initOriginTransform"(arg0: $OpenMatrix4f$Type): void
+public "getToOrigin"(): $OpenMatrix4f
+public "getSubJoint"(arg0: integer): $Joint
+public "printIncludingChildren"(): string
+public "getSubJoints"(): $List<($Joint)>
+public "searchPath"(arg0: $Joint$HierarchicalJointAccessor$Builder$Type, arg1: string): $Joint$HierarchicalJointAccessor$Builder
+public "getName"(): string
+public "equals"(arg0: any): boolean
+public "toString"(): string
+public "hashCode"(): integer
+public "getId"(): integer
+get "localTransform"(): $OpenMatrix4f
+get "allJoints"(): $List<($Joint)>
+get "toOrigin"(): $OpenMatrix4f
+get "subJoints"(): $List<($Joint)>
+get "name"(): string
+get "id"(): integer
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Joint$Type = ($Joint);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Joint_ = $Joint$Type;
+}}
+declare module "packages/yesman/epicfight/api/animation/property/$AnimationEvent$Side" {
+import {$Enum, $Enum$Type} from "packages/java/lang/$Enum"
+
+export class $AnimationEvent$Side extends $Enum<($AnimationEvent$Side)> {
+static readonly "CLIENT": $AnimationEvent$Side
+static readonly "SERVER": $AnimationEvent$Side
+static readonly "BOTH": $AnimationEvent$Side
+static readonly "LOCAL_CLIENT": $AnimationEvent$Side
+
+
+public static "values"(): ($AnimationEvent$Side)[]
+public static "valueOf"(arg0: string): $AnimationEvent$Side
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $AnimationEvent$Side$Type = (("server") | ("client") | ("local_client") | ("both")) | ($AnimationEvent$Side);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $AnimationEvent$Side_ = $AnimationEvent$Side$Type;
+}}
+declare module "packages/yesman/epicfight/api/client/model/$Mesh$RenderProperties" {
+import {$Record, $Record$Type} from "packages/java/lang/$Record"
+import {$Vec3f, $Vec3f$Type} from "packages/yesman/epicfight/api/utils/math/$Vec3f"
+import {$ResourceLocation, $ResourceLocation$Type} from "packages/net/minecraft/resources/$ResourceLocation"
+
+export class $Mesh$RenderProperties extends $Record {
+
+constructor(customTexturePath: $ResourceLocation$Type, customColor: $Vec3f$Type, isTransparent: boolean)
+
+public "customTexturePath"(): $ResourceLocation
+public "isTransparent"(): boolean
+public "customColor"(): $Vec3f
+public "equals"(arg0: any): boolean
+public "toString"(): string
+public "hashCode"(): integer
+get "transparent"(): boolean
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Mesh$RenderProperties$Type = ($Mesh$RenderProperties);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Mesh$RenderProperties_ = $Mesh$RenderProperties$Type;
+}}
+declare module "packages/yesman/epicfight/api/animation/types/$AttackAnimation$Phase" {
+import {$AttackAnimation$JointColliderPair, $AttackAnimation$JointColliderPair$Type} from "packages/yesman/epicfight/api/animation/types/$AttackAnimation$JointColliderPair"
+import {$AttackAnimation, $AttackAnimation$Type} from "packages/yesman/epicfight/api/animation/types/$AttackAnimation"
+import {$InteractionHand, $InteractionHand$Type} from "packages/net/minecraft/world/$InteractionHand"
+import {$Set, $Set$Type} from "packages/java/util/$Set"
+import {$AnimationProperty$AttackPhaseProperty, $AnimationProperty$AttackPhaseProperty$Type} from "packages/yesman/epicfight/api/animation/property/$AnimationProperty$AttackPhaseProperty"
+import {$List, $List$Type} from "packages/java/util/$List"
+import {$Optional, $Optional$Type} from "packages/java/util/$Optional"
+import {$Joint, $Joint$Type} from "packages/yesman/epicfight/api/animation/$Joint"
+import {$Collider, $Collider$Type} from "packages/yesman/epicfight/api/collider/$Collider"
+import {$LivingEntityPatch, $LivingEntityPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/$LivingEntityPatch"
+import {$Entity, $Entity$Type} from "packages/net/minecraft/world/entity/$Entity"
+import {$Map$Entry, $Map$Entry$Type} from "packages/java/util/$Map$Entry"
+
+export class $AttackAnimation$Phase {
+readonly "start": float
+readonly "antic": float
+readonly "preDelay": float
+readonly "contact": float
+readonly "recovery": float
+readonly "end": float
+readonly "hand": $InteractionHand
+ "colliders": ($AttackAnimation$JointColliderPair)[]
+readonly "noStateBind": boolean
+
+constructor(arg0: float, arg1: float, arg2: float, arg3: float, arg4: float, arg5: $Joint$Type, arg6: $Collider$Type)
+constructor(arg0: float, arg1: float, arg2: float, arg3: float, arg4: float, arg5: float, arg6: boolean, arg7: $InteractionHand$Type, ...arg8: ($AttackAnimation$JointColliderPair$Type)[])
+constructor(arg0: float, arg1: float, arg2: float, arg3: float, arg4: float, arg5: float, arg6: $Joint$Type, arg7: $Collider$Type)
+constructor(arg0: float, arg1: float, arg2: float, arg3: float, arg4: float, arg5: float, arg6: $InteractionHand$Type, arg7: $Joint$Type, arg8: $Collider$Type)
+constructor(arg0: float, arg1: float, arg2: float, arg3: float, arg4: float, arg5: $InteractionHand$Type, arg6: $Joint$Type, arg7: $Collider$Type)
+constructor(arg0: float, arg1: float, arg2: float, arg3: float, arg4: float, arg5: float, arg6: $InteractionHand$Type, ...arg7: ($AttackAnimation$JointColliderPair$Type)[])
+constructor(arg0: float, arg1: float, arg2: float, arg3: float, arg4: float, arg5: float, arg6: boolean, arg7: $InteractionHand$Type, arg8: $Joint$Type, arg9: $Collider$Type)
+constructor(arg0: $InteractionHand$Type, arg1: $Joint$Type, arg2: $Collider$Type)
+
+public "getCollidingEntities"(arg0: $LivingEntityPatch$Type<(any)>, arg1: $AttackAnimation$Type, arg2: float, arg3: float, arg4: float): $List<($Entity)>
+public "getColliders"(): ($AttackAnimation$JointColliderPair)[]
+public "addProperties"(arg0: $Set$Type<($Map$Entry$Type<($AnimationProperty$AttackPhaseProperty$Type<(any)>), (any)>)>): void
+public "addProperty"<V>(arg0: $AnimationProperty$AttackPhaseProperty$Type<(V)>, arg1: V): $AttackAnimation$Phase
+public "removeProperty"(arg0: $AnimationProperty$AttackPhaseProperty$Type<(any)>): $AttackAnimation$Phase
+public "getHand"(): $InteractionHand
+public "getProperty"<V>(arg0: $AnimationProperty$AttackPhaseProperty$Type<(V)>): $Optional<(V)>
+get "colliders"(): ($AttackAnimation$JointColliderPair)[]
+get "hand"(): $InteractionHand
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $AttackAnimation$Phase$Type = ($AttackAnimation$Phase);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $AttackAnimation$Phase_ = $AttackAnimation$Phase$Type;
+}}
+declare module "packages/yesman/epicfight/main/$AuthenticationHelper$Status" {
+import {$Enum, $Enum$Type} from "packages/java/lang/$Enum"
+
+export class $AuthenticationHelper$Status extends $Enum<($AuthenticationHelper$Status)> {
+static readonly "UNAUTHENTICATED": $AuthenticationHelper$Status
+static readonly "AUTHENTICATED": $AuthenticationHelper$Status
+static readonly "OFFLINE_MODE": $AuthenticationHelper$Status
+
+
+public static "values"(): ($AuthenticationHelper$Status)[]
+public static "valueOf"(arg0: string): $AuthenticationHelper$Status
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $AuthenticationHelper$Status$Type = (("authenticated") | ("unauthenticated") | ("offline_mode")) | ($AuthenticationHelper$Status);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $AuthenticationHelper$Status_ = $AuthenticationHelper$Status$Type;
+}}
+declare module "packages/yesman/epicfight/api/animation/$AnimationVariables$AnimationVariableKey" {
+import {$TypeFlexibleHashMap$TypeKey, $TypeFlexibleHashMap$TypeKey$Type} from "packages/yesman/epicfight/api/utils/datastruct/$TypeFlexibleHashMap$TypeKey"
+import {$Animator, $Animator$Type} from "packages/yesman/epicfight/api/animation/$Animator"
+
+export class $AnimationVariables$AnimationVariableKey<T> implements $TypeFlexibleHashMap$TypeKey<(T)> {
+
+
+public "isSharedKey"(): boolean
+public "isSynched"(): boolean
+public "mutable"(): boolean
+public "defaultValue"(arg0: $Animator$Type): T
+public "defaultValue"(): T
+get "sharedKey"(): boolean
+get "synched"(): boolean
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $AnimationVariables$AnimationVariableKey$Type<T> = ($AnimationVariables$AnimationVariableKey<(T)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $AnimationVariables$AnimationVariableKey_<T> = $AnimationVariables$AnimationVariableKey$Type<(T)>;
+}}
+declare module "packages/yesman/epicfight/api/physics/$SimulationTypes" {
+import {$InverseKinematicsSimulator$InverseKinematicsBuilder, $InverseKinematicsSimulator$InverseKinematicsBuilder$Type} from "packages/yesman/epicfight/api/physics/ik/$InverseKinematicsSimulator$InverseKinematicsBuilder"
+import {$InverseKinematicsProvider, $InverseKinematicsProvider$Type} from "packages/yesman/epicfight/api/physics/ik/$InverseKinematicsProvider"
+import {$ResourceLocation, $ResourceLocation$Type} from "packages/net/minecraft/resources/$ResourceLocation"
+import {$ClothSimulator$ClothObject, $ClothSimulator$ClothObject$Type} from "packages/yesman/epicfight/api/client/physics/cloth/$ClothSimulator$ClothObject"
+import {$ClothSimulatable, $ClothSimulatable$Type} from "packages/yesman/epicfight/api/client/physics/cloth/$ClothSimulatable"
+import {$InverseKinematicsSimulatable, $InverseKinematicsSimulatable$Type} from "packages/yesman/epicfight/api/physics/ik/$InverseKinematicsSimulatable"
+import {$ClothSimulator$ClothObjectBuilder, $ClothSimulator$ClothObjectBuilder$Type} from "packages/yesman/epicfight/api/client/physics/cloth/$ClothSimulator$ClothObjectBuilder"
+import {$InverseKinematicsSimulator, $InverseKinematicsSimulator$Type} from "packages/yesman/epicfight/api/physics/ik/$InverseKinematicsSimulator"
+import {$SoftBodyTranslatable, $SoftBodyTranslatable$Type} from "packages/yesman/epicfight/api/client/model/$SoftBodyTranslatable"
+import {$SimulationObject$SimulationObjectBuilder, $SimulationObject$SimulationObjectBuilder$Type} from "packages/yesman/epicfight/api/physics/$SimulationObject$SimulationObjectBuilder"
+import {$PhysicsSimulator, $PhysicsSimulator$Type} from "packages/yesman/epicfight/api/physics/$PhysicsSimulator"
+import {$InverseKinematicsSimulator$InverseKinematicsObject, $InverseKinematicsSimulator$InverseKinematicsObject$Type} from "packages/yesman/epicfight/api/physics/ik/$InverseKinematicsSimulator$InverseKinematicsObject"
+import {$SimulationObject, $SimulationObject$Type} from "packages/yesman/epicfight/api/physics/$SimulationObject"
+import {$Joint, $Joint$Type} from "packages/yesman/epicfight/api/animation/$Joint"
+import {$ClothSimulator, $ClothSimulator$Type} from "packages/yesman/epicfight/api/client/physics/cloth/$ClothSimulator"
+import {$SimulationProvider, $SimulationProvider$Type} from "packages/yesman/epicfight/api/physics/$SimulationProvider"
+
+export interface $SimulationTypes<KEY, O, PV extends $SimulationProvider<(O), (DATA), (B), (PV)>, B extends $SimulationObject$SimulationObjectBuilder, DATA extends $SimulationObject<(B), (PV), (O)>, SIM extends $PhysicsSimulator<(KEY), (B), (PV), (O), (DATA)>> {
+
+}
+
+export namespace $SimulationTypes {
+const CLOTH: $SimulationTypes<($ResourceLocation), ($ClothSimulatable), ($SoftBodyTranslatable), ($ClothSimulator$ClothObjectBuilder), ($ClothSimulator$ClothObject), ($ClothSimulator)>
+const INVERSE_KINEMATICS: $SimulationTypes<($Joint), ($InverseKinematicsSimulatable), ($InverseKinematicsProvider), ($InverseKinematicsSimulator$InverseKinematicsBuilder), ($InverseKinematicsSimulator$InverseKinematicsObject), ($InverseKinematicsSimulator)>
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $SimulationTypes$Type<KEY, O, PV, B, DATA, SIM> = ($SimulationTypes<(KEY), (O), (PV), (B), (DATA), (SIM)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $SimulationTypes_<KEY, O, PV, B, DATA, SIM> = $SimulationTypes$Type<(KEY), (O), (PV), (B), (DATA), (SIM)>;
+}}
+declare module "packages/yesman/epicfight/particle/$HitParticleType" {
+import {$SimpleParticleType, $SimpleParticleType$Type} from "packages/net/minecraft/core/particles/$SimpleParticleType"
+import {$ServerLevel, $ServerLevel$Type} from "packages/net/minecraft/server/level/$ServerLevel"
+import {$Vector3d, $Vector3d$Type} from "packages/org/joml/$Vector3d"
+import {$BiFunction, $BiFunction$Type} from "packages/java/util/function/$BiFunction"
+import {$Entity, $Entity$Type} from "packages/net/minecraft/world/entity/$Entity"
+
+export class $HitParticleType extends $SimpleParticleType {
+static readonly "CENTER_OF_TARGET": $BiFunction<($Entity), ($Entity), ($Vector3d)>
+static readonly "RANDOM_WITHIN_BOUNDING_BOX": $BiFunction<($Entity), ($Entity), ($Vector3d)>
+static readonly "FRONT_OF_EYES": $BiFunction<($Entity), ($Entity), ($Vector3d)>
+static readonly "MIDDLE_OF_ENTITIES": $BiFunction<($Entity), ($Entity), ($Vector3d)>
+static readonly "ZERO": $BiFunction<($Entity), ($Entity), ($Vector3d)>
+static readonly "ATTACKER_XY_ROTATION": $BiFunction<($Entity), ($Entity), ($Vector3d)>
+static readonly "ATTACKER_Y_ROTATION": $BiFunction<($Entity), ($Entity), ($Vector3d)>
+ "positionProvider": $BiFunction<($Entity), ($Entity), ($Vector3d)>
+ "argumentProvider": $BiFunction<($Entity), ($Entity), ($Vector3d)>
+
+constructor(arg0: boolean)
+constructor(arg0: boolean, arg1: $BiFunction$Type<($Entity$Type), ($Entity$Type), ($Vector3d$Type)>, arg2: $BiFunction$Type<($Entity$Type), ($Entity$Type), ($Vector3d$Type)>)
+
+public "spawnParticleWithArgument"(arg0: $ServerLevel$Type, arg1: $Entity$Type, arg2: $Entity$Type): void
+public "spawnParticleWithArgument"(arg0: $ServerLevel$Type, arg1: double, arg2: double, arg3: double, arg4: double, arg5: double, arg6: double): void
+public "spawnParticleWithArgument"(arg0: $ServerLevel$Type, arg1: $BiFunction$Type<($Entity$Type), ($Entity$Type), ($Vector3d$Type)>, arg2: $BiFunction$Type<($Entity$Type), ($Entity$Type), ($Vector3d$Type)>, arg3: $Entity$Type, arg4: $Entity$Type): void
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $HitParticleType$Type = ($HitParticleType);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $HitParticleType_ = $HitParticleType$Type;
+}}
+declare module "packages/yesman/epicfight/world/capabilities/entitypatch/$EntityDecorations$ParticleGenerator" {
+export {} // Mark the file as a module, do not remove unless there are other import/exports!
+export interface $EntityDecorations$ParticleGenerator {
+
+ "generateParticles"(): void
+ "shouldRemove"(): boolean
+
+(): void
+}
+
+export namespace $EntityDecorations$ParticleGenerator {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $EntityDecorations$ParticleGenerator$Type = ($EntityDecorations$ParticleGenerator);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $EntityDecorations$ParticleGenerator_ = $EntityDecorations$ParticleGenerator$Type;
+}}
+declare module "packages/yesman/epicfight/skill/$SkillSlot" {
+import {$ExtendableEnumManager, $ExtendableEnumManager$Type} from "packages/yesman/epicfight/api/utils/$ExtendableEnumManager"
+import {$ExtendableEnum, $ExtendableEnum$Type} from "packages/yesman/epicfight/api/utils/$ExtendableEnum"
+import {$SkillCategory, $SkillCategory$Type} from "packages/yesman/epicfight/skill/$SkillCategory"
+
+export interface $SkillSlot extends $ExtendableEnum {
+
+ "category"(): $SkillCategory
+ "universalOrdinal"(): integer
+}
+
+export namespace $SkillSlot {
+const ENUM_MANAGER: $ExtendableEnumManager<($SkillSlot)>
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $SkillSlot$Type = ($SkillSlot);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $SkillSlot_ = $SkillSlot$Type;
+}}
+declare module "packages/yesman/epicfight/api/client/physics/$AbstractSimulator" {
+import {$Pair, $Pair$Type} from "packages/org/apache/commons/lang3/tuple/$Pair"
+import {$SimulationObject$SimulationObjectBuilder, $SimulationObject$SimulationObjectBuilder$Type} from "packages/yesman/epicfight/api/physics/$SimulationObject$SimulationObjectBuilder"
+import {$BooleanSupplier, $BooleanSupplier$Type} from "packages/java/util/function/$BooleanSupplier"
+import {$PhysicsSimulator, $PhysicsSimulator$Type} from "packages/yesman/epicfight/api/physics/$PhysicsSimulator"
+import {$List, $List$Type} from "packages/java/util/$List"
+import {$Optional, $Optional$Type} from "packages/java/util/$Optional"
+import {$SimulationObject, $SimulationObject$Type} from "packages/yesman/epicfight/api/physics/$SimulationObject"
+import {$SimulationProvider, $SimulationProvider$Type} from "packages/yesman/epicfight/api/physics/$SimulationProvider"
+
+export class $AbstractSimulator<KEY, B extends $SimulationObject$SimulationObjectBuilder, PV extends $SimulationProvider<(O), (SO), (B), (PV)>, O, SO extends $SimulationObject<(B), (PV), (O)>> implements $PhysicsSimulator<(KEY), (B), (PV), (O), (SO)> {
+
+constructor()
+
+public "restart"(arg0: KEY): void
+public "getAllRunningObjects"(): $List<($Pair<(KEY), (SO)>)>
+public "getRunningObject"(arg0: KEY): $Optional<(SO)>
+public "runWhen"(arg0: KEY, arg1: PV, arg2: B, arg3: $BooleanSupplier$Type): void
+public "runUntil"(arg0: KEY, arg1: PV, arg2: B, arg3: $BooleanSupplier$Type): void
+public "tick"(arg0: O): void
+public "isRunning"(arg0: KEY): boolean
+public "stop"(arg0: KEY): void
+get "allRunningObjects"(): $List<($Pair<(KEY), (SO)>)>
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $AbstractSimulator$Type<KEY, B, PV, O, SO> = ($AbstractSimulator<(KEY), (B), (PV), (O), (SO)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $AbstractSimulator_<KEY, B, PV, O, SO> = $AbstractSimulator$Type<(KEY), (B), (PV), (O), (SO)>;
+}}
+declare module "packages/yesman/epicfight/api/utils/$ExtendableEnum" {
+export {} // Mark the file as a module, do not remove unless there are other import/exports!
+export interface $ExtendableEnum {
+
+ "universalOrdinal"(): integer
+
+(): integer
+}
+
+export namespace $ExtendableEnum {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $ExtendableEnum$Type = ($ExtendableEnum);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $ExtendableEnum_ = $ExtendableEnum$Type;
+}}
+declare module "packages/yesman/epicfight/api/collider/$OBBCollider" {
+import {$VertexConsumer, $VertexConsumer$Type} from "packages/com/mojang/blaze3d/vertex/$VertexConsumer"
+import {$CompoundTag, $CompoundTag$Type} from "packages/net/minecraft/nbt/$CompoundTag"
+import {$Armature, $Armature$Type} from "packages/yesman/epicfight/api/model/$Armature"
+import {$OpenMatrix4f, $OpenMatrix4f$Type} from "packages/yesman/epicfight/api/utils/math/$OpenMatrix4f"
+import {$RenderType, $RenderType$Type} from "packages/net/minecraft/client/renderer/$RenderType"
+import {$PoseStack, $PoseStack$Type} from "packages/com/mojang/blaze3d/vertex/$PoseStack"
+import {$Pose, $Pose$Type} from "packages/yesman/epicfight/api/animation/$Pose"
+import {$Joint, $Joint$Type} from "packages/yesman/epicfight/api/animation/$Joint"
+import {$MultiBufferSource, $MultiBufferSource$Type} from "packages/net/minecraft/client/renderer/$MultiBufferSource"
+import {$AABB, $AABB$Type} from "packages/net/minecraft/world/phys/$AABB"
+import {$Collider, $Collider$Type} from "packages/yesman/epicfight/api/collider/$Collider"
+import {$Entity, $Entity$Type} from "packages/net/minecraft/world/entity/$Entity"
+
+export class $OBBCollider extends $Collider {
+
+constructor(arg0: $AABB$Type, arg1: double, arg2: double, arg3: double, arg4: double, arg5: double, arg6: double, arg7: double, arg8: double, arg9: double, arg10: double, arg11: double, arg12: double, arg13: double, arg14: double, arg15: double)
+constructor(arg0: double, arg1: double, arg2: double, arg3: double, arg4: double, arg5: double)
+constructor(arg0: $AABB$Type)
+
+public "drawInternal"(arg0: $PoseStack$Type, arg1: $VertexConsumer$Type, arg2: $Armature$Type, arg3: $Joint$Type, arg4: $Pose$Type, arg5: $Pose$Type, arg6: float, arg7: integer): void
+public "isCollide"(arg0: $Entity$Type): boolean
+public "isCollide"(arg0: $OBBCollider$Type): boolean
+public "getRenderType"(): $RenderType
+public "serialize"(arg0: $CompoundTag$Type): $CompoundTag
+public "draw"(arg0: $PoseStack$Type, arg1: $MultiBufferSource$Type, arg2: integer): void
+public "deepCopy"(): $OBBCollider
+public "toString"(): string
+public "transform"(arg0: $OpenMatrix4f$Type): void
+get "renderType"(): $RenderType
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $OBBCollider$Type = ($OBBCollider);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $OBBCollider_ = $OBBCollider$Type;
+}}
+declare module "packages/yesman/epicfight/api/animation/property/$AnimationEvent$E2" {
+import {$AnimationEvent$Event, $AnimationEvent$Event$Type} from "packages/yesman/epicfight/api/animation/property/$AnimationEvent$Event"
+import {$AssetAccessor, $AssetAccessor$Type} from "packages/yesman/epicfight/api/asset/$AssetAccessor"
+import {$AnimationParameters, $AnimationParameters$Type} from "packages/yesman/epicfight/api/animation/property/$AnimationParameters"
+import {$LivingEntityPatch, $LivingEntityPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/$LivingEntityPatch"
+
+export interface $AnimationEvent$E2<A, B> extends $AnimationEvent$Event<(A), (B), (void), (void), (void), (void), (void), (void), (void), (void)> {
+
+ "fire"(arg0: $LivingEntityPatch$Type<(any)>, arg1: $AssetAccessor$Type<(any)>, arg2: $AnimationParameters$Type<(A), (B), (void), (void), (void), (void), (void), (void), (void), (void)>): void
+
+(arg0: $LivingEntityPatch$Type<(any)>, arg1: $AssetAccessor$Type<(any)>, arg2: $AnimationParameters$Type<(A), (B), (void), (void), (void), (void), (void), (void), (void), (void)>): void
+}
+
+export namespace $AnimationEvent$E2 {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $AnimationEvent$E2$Type<A, B> = ($AnimationEvent$E2<(A), (B)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $AnimationEvent$E2_<A, B> = $AnimationEvent$E2$Type<(A), (B)>;
+}}
+declare module "packages/yesman/epicfight/world/damagesource/$ExtraDamageInstance$ExtraDamage" {
+import {$ExtraDamageInstance, $ExtraDamageInstance$Type} from "packages/yesman/epicfight/world/damagesource/$ExtraDamageInstance"
+import {$ExtraDamageInstance$ExtraDamageFunction, $ExtraDamageInstance$ExtraDamageFunction$Type} from "packages/yesman/epicfight/world/damagesource/$ExtraDamageInstance$ExtraDamageFunction"
+import {$ExtraDamageInstance$ExtraDamageTooltipFunction, $ExtraDamageInstance$ExtraDamageTooltipFunction$Type} from "packages/yesman/epicfight/world/damagesource/$ExtraDamageInstance$ExtraDamageTooltipFunction"
+
+export class $ExtraDamageInstance$ExtraDamage {
+
+constructor(arg0: $ExtraDamageInstance$ExtraDamageFunction$Type, arg1: $ExtraDamageInstance$ExtraDamageTooltipFunction$Type)
+
+public "create"(...arg0: (float)[]): $ExtraDamageInstance
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $ExtraDamageInstance$ExtraDamage$Type = ($ExtraDamageInstance$ExtraDamage);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $ExtraDamageInstance$ExtraDamage_ = $ExtraDamageInstance$ExtraDamage$Type;
+}}
+declare module "packages/yesman/epicfight/client/renderer/patched/layer/$PatchedLayer" {
+import {$RenderLayer, $RenderLayer$Type} from "packages/net/minecraft/client/renderer/entity/layers/$RenderLayer"
+import {$PoseStack, $PoseStack$Type} from "packages/com/mojang/blaze3d/vertex/$PoseStack"
+import {$EntityModel, $EntityModel$Type} from "packages/net/minecraft/client/model/$EntityModel"
+import {$MultiBufferSource, $MultiBufferSource$Type} from "packages/net/minecraft/client/renderer/$MultiBufferSource"
+import {$OpenMatrix4f, $OpenMatrix4f$Type} from "packages/yesman/epicfight/api/utils/math/$OpenMatrix4f"
+import {$LivingEntityPatch, $LivingEntityPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/$LivingEntityPatch"
+import {$LivingEntity, $LivingEntity$Type} from "packages/net/minecraft/world/entity/$LivingEntity"
+
+export class $PatchedLayer<E extends $LivingEntity, T extends $LivingEntityPatch<(E)>, M extends $EntityModel<(E)>, R extends $RenderLayer<(E), (M)>> {
+
+constructor()
+
+public "renderLayer"(arg0: E, arg1: T, arg2: $RenderLayer$Type<(E), (M)>, arg3: $PoseStack$Type, arg4: $MultiBufferSource$Type, arg5: integer, arg6: ($OpenMatrix4f$Type)[], arg7: float, arg8: float, arg9: float, arg10: float): void
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $PatchedLayer$Type<E, T, M, R> = ($PatchedLayer<(E), (T), (M), (R)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $PatchedLayer_<E, T, M, R> = $PatchedLayer$Type<(E), (T), (M), (R)>;
+}}
+declare module "packages/yesman/epicfight/mixin/common/$MixinProjectile" {
+import {$EntityHitResult, $EntityHitResult$Type} from "packages/net/minecraft/world/phys/$EntityHitResult"
+
+export interface $MixinProjectile {
+
+ "invoke_onHitEntity"(arg0: $EntityHitResult$Type): void
+
+(arg0: $EntityHitResult$Type): void
+}
+
+export namespace $MixinProjectile {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $MixinProjectile$Type = ($MixinProjectile);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $MixinProjectile_ = $MixinProjectile$Type;
+}}
+declare module "packages/yesman/epicfight/api/client/physics/cloth/$ClothSimulator$ClothObject" {
+import {$Mesh, $Mesh$Type} from "packages/yesman/epicfight/api/client/model/$Mesh"
+import {$VertexConsumer, $VertexConsumer$Type} from "packages/com/mojang/blaze3d/vertex/$VertexConsumer"
+import {$Armature, $Armature$Type} from "packages/yesman/epicfight/api/model/$Armature"
+import {$Vec3f, $Vec3f$Type} from "packages/yesman/epicfight/api/utils/math/$Vec3f"
+import {$OpenMatrix4f, $OpenMatrix4f$Type} from "packages/yesman/epicfight/api/utils/math/$OpenMatrix4f"
+import {$ClothSimulatable, $ClothSimulatable$Type} from "packages/yesman/epicfight/api/client/physics/cloth/$ClothSimulatable"
+import {$RenderType, $RenderType$Type} from "packages/net/minecraft/client/renderer/$RenderType"
+import {$ClothSimulator$ClothObjectBuilder, $ClothSimulator$ClothObjectBuilder$Type} from "packages/yesman/epicfight/api/client/physics/cloth/$ClothSimulator$ClothObjectBuilder"
+import {$Function, $Function$Type} from "packages/java/util/function/$Function"
+import {$SoftBodyTranslatable, $SoftBodyTranslatable$Type} from "packages/yesman/epicfight/api/client/model/$SoftBodyTranslatable"
+import {$PoseStack, $PoseStack$Type} from "packages/com/mojang/blaze3d/vertex/$PoseStack"
+import {$Mesh$DrawingFunction, $Mesh$DrawingFunction$Type} from "packages/yesman/epicfight/api/client/model/$Mesh$DrawingFunction"
+import {$SimulationObject, $SimulationObject$Type} from "packages/yesman/epicfight/api/physics/$SimulationObject"
+import {$MeshPart, $MeshPart$Type} from "packages/yesman/epicfight/api/client/model/$MeshPart"
+import {$MultiBufferSource, $MultiBufferSource$Type} from "packages/net/minecraft/client/renderer/$MultiBufferSource"
+import {$Map, $Map$Type} from "packages/java/util/$Map"
+
+export class $ClothSimulator$ClothObject implements $SimulationObject<($ClothSimulator$ClothObjectBuilder), ($SoftBodyTranslatable), ($ClothSimulatable)>, $Mesh {
+
+constructor(arg0: $ClothSimulator$ClothObjectBuilder$Type, arg1: $SoftBodyTranslatable$Type, arg2: $Map$Type<(string), ($MeshPart$Type)>, arg3: (float)[])
+
+public "scaleFromPose"(arg0: $PoseStack$Type, arg1: ($OpenMatrix4f$Type)[]): void
+public "drawOutline"(arg0: $PoseStack$Type, arg1: $VertexConsumer$Type, arg2: $Mesh$DrawingFunction$Type, arg3: float, arg4: float, arg5: float, arg6: float): void
+public "drawParts"(arg0: $PoseStack$Type, arg1: $VertexConsumer$Type, arg2: $Mesh$DrawingFunction$Type, arg3: integer, arg4: float, arg5: float, arg6: float, arg7: float, arg8: integer): void
+public "drawNormals"(arg0: $PoseStack$Type, arg1: $VertexConsumer$Type, arg2: $Mesh$DrawingFunction$Type, arg3: float, arg4: float, arg5: float, arg6: float): void
+public "getParticlePosition"(arg0: integer): $Vec3f
+public "drawPosed"(arg0: $PoseStack$Type, arg1: $VertexConsumer$Type, arg2: $Mesh$DrawingFunction$Type, arg3: integer, arg4: float, arg5: float, arg6: float, arg7: float, arg8: integer, arg9: $Armature$Type, arg10: ($OpenMatrix4f$Type)[]): void
+public "captureMyself"(): $ClothSimulator$ClothObject
+public "tick"(arg0: $ClothSimulatable$Type, arg1: $Function$Type<(float), ($OpenMatrix4f$Type)>, arg2: float, arg3: $Armature$Type, arg4: ($OpenMatrix4f$Type)[]): void
+public "draw"(arg0: $PoseStack$Type, arg1: $VertexConsumer$Type, arg2: $Mesh$DrawingFunction$Type, arg3: integer, arg4: float, arg5: float, arg6: float, arg7: float, arg8: integer): void
+public "initialize"(): void
+public "draw"(arg0: $PoseStack$Type, arg1: $MultiBufferSource$Type, arg2: $RenderType$Type, arg3: $Mesh$DrawingFunction$Type, arg4: integer, arg5: float, arg6: float, arg7: float, arg8: float, arg9: integer, arg10: $Armature$Type, arg11: ($OpenMatrix4f$Type)[]): void
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $ClothSimulator$ClothObject$Type = ($ClothSimulator$ClothObject);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $ClothSimulator$ClothObject_ = $ClothSimulator$ClothObject$Type;
+}}
+declare module "packages/yesman/epicfight/gameasset/$Armatures$ArmatureAccessor" {
+import {$Armature, $Armature$Type} from "packages/yesman/epicfight/api/model/$Armature"
+import {$Consumer, $Consumer$Type} from "packages/java/util/function/$Consumer"
+import {$Record, $Record$Type} from "packages/java/lang/$Record"
+import {$AssetAccessor, $AssetAccessor$Type} from "packages/yesman/epicfight/api/asset/$AssetAccessor"
+import {$Armatures$ArmatureContructor, $Armatures$ArmatureContructor$Type} from "packages/yesman/epicfight/gameasset/$Armatures$ArmatureContructor"
+import {$Class, $Class$Type} from "packages/java/lang/$Class"
+import {$ResourceLocation, $ResourceLocation$Type} from "packages/net/minecraft/resources/$ResourceLocation"
+import {$Runnable, $Runnable$Type} from "packages/java/lang/$Runnable"
+
+export class $Armatures$ArmatureAccessor<A extends $Armature> extends $Record implements $AssetAccessor<(A)> {
+
+constructor(registryName: $ResourceLocation$Type, armatureConstructor: $Armatures$ArmatureContructor$Type<(A)>, inRegistry: boolean)
+
+public "armatureConstructor"(): $Armatures$ArmatureContructor<(A)>
+public "inRegistry"(): boolean
+public "registryName"(): $ResourceLocation
+public "equals"(arg0: any): boolean
+public "toString"(): string
+public "hashCode"(): integer
+public static "create"<A extends $Armature>(arg0: string, arg1: string, arg2: $Armatures$ArmatureContructor$Type<(A)>): $Armatures$ArmatureAccessor<(A)>
+public "doOrThrow"(arg0: $Consumer$Type<(A)>): void
+public "checkType"(arg0: $Class$Type<(any)>): boolean
+public "ifPresentOrElse"(arg0: $Consumer$Type<(A)>, arg1: $Runnable$Type): void
+public "ifPresent"(arg0: $Consumer$Type<(A)>): void
+public "checkNotNull"(): void
+public "isEmpty"(): boolean
+public "isPresent"(): boolean
+public "orElse"(arg0: A): A
+get "empty"(): boolean
+get "present"(): boolean
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Armatures$ArmatureAccessor$Type<A> = ($Armatures$ArmatureAccessor<(A)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Armatures$ArmatureAccessor_<A> = $Armatures$ArmatureAccessor$Type<(A)>;
+}}
+declare module "packages/yesman/epicfight/api/physics/ik/$InverseKinematicsProvider" {
+import {$InverseKinematicsSimulator$InverseKinematicsBuilder, $InverseKinematicsSimulator$InverseKinematicsBuilder$Type} from "packages/yesman/epicfight/api/physics/ik/$InverseKinematicsSimulator$InverseKinematicsBuilder"
+import {$Armature, $Armature$Type} from "packages/yesman/epicfight/api/model/$Armature"
+import {$Vec3f, $Vec3f$Type} from "packages/yesman/epicfight/api/utils/math/$Vec3f"
+import {$InverseKinematicsSimulator$BakedInverseKinematicsDefinition, $InverseKinematicsSimulator$BakedInverseKinematicsDefinition$Type} from "packages/yesman/epicfight/api/physics/ik/$InverseKinematicsSimulator$BakedInverseKinematicsDefinition"
+import {$JointTransform, $JointTransform$Type} from "packages/yesman/epicfight/api/animation/$JointTransform"
+import {$EnderDragonPatch, $EnderDragonPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/boss/enderdragon/$EnderDragonPatch"
+import {$TransformSheet, $TransformSheet$Type} from "packages/yesman/epicfight/api/animation/$TransformSheet"
+import {$OpenMatrix4f, $OpenMatrix4f$Type} from "packages/yesman/epicfight/api/utils/math/$OpenMatrix4f"
+import {$InverseKinematicsSimulatable, $InverseKinematicsSimulatable$Type} from "packages/yesman/epicfight/api/physics/ik/$InverseKinematicsSimulatable"
+import {$InverseKinematicsSimulator$InverseKinematicsObject, $InverseKinematicsSimulator$InverseKinematicsObject$Type} from "packages/yesman/epicfight/api/physics/ik/$InverseKinematicsSimulator$InverseKinematicsObject"
+import {$Pose, $Pose$Type} from "packages/yesman/epicfight/api/animation/$Pose"
+import {$Joint, $Joint$Type} from "packages/yesman/epicfight/api/animation/$Joint"
+import {$Quaternionf, $Quaternionf$Type} from "packages/org/joml/$Quaternionf"
+import {$SimulationProvider, $SimulationProvider$Type} from "packages/yesman/epicfight/api/physics/$SimulationProvider"
+
+export interface $InverseKinematicsProvider extends $SimulationProvider<($InverseKinematicsSimulatable), ($InverseKinematicsSimulator$InverseKinematicsObject), ($InverseKinematicsSimulator$InverseKinematicsBuilder), ($InverseKinematicsProvider)> {
+
+ "clipAnimation"(arg0: $TransformSheet$Type, arg1: $InverseKinematicsSimulator$BakedInverseKinematicsDefinition$Type): $TransformSheet
+ "startPartAnimation"(arg0: $InverseKinematicsSimulator$BakedInverseKinematicsDefinition$Type, arg1: $InverseKinematicsSimulator$InverseKinematicsObject$Type, arg2: $TransformSheet$Type, arg3: $Vec3f$Type): void
+ "startSimple"(arg0: $InverseKinematicsSimulator$InverseKinematicsObject$Type): void
+ "getRayCastedTipPosition"(arg0: $InverseKinematicsSimulatable$Type, arg1: $Vec3f$Type, arg2: $OpenMatrix4f$Type, arg3: float, arg4: float): $Vec3f
+ "correctRootRotation"(arg0: $JointTransform$Type, arg1: $EnderDragonPatch$Type, arg2: float): void
+ "applyFabrikToJoint"(arg0: $Vec3f$Type, arg1: $Pose$Type, arg2: $Armature$Type, arg3: $Joint$Type, arg4: $Joint$Type, arg5: $Quaternionf$Type): void
+ "createSimulationData"(arg0: $InverseKinematicsProvider$Type, arg1: $InverseKinematicsSimulatable$Type, arg2: $InverseKinematicsSimulator$InverseKinematicsBuilder$Type): $InverseKinematicsSimulator$InverseKinematicsObject
+
+(arg0: $TransformSheet$Type, arg1: $InverseKinematicsSimulator$BakedInverseKinematicsDefinition$Type): $TransformSheet
+}
+
+export namespace $InverseKinematicsProvider {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $InverseKinematicsProvider$Type = ($InverseKinematicsProvider);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $InverseKinematicsProvider_ = $InverseKinematicsProvider$Type;
+}}
+declare module "packages/yesman/epicfight/api/physics/$SimulatableObject" {
+import {$PhysicsSimulator, $PhysicsSimulator$Type} from "packages/yesman/epicfight/api/physics/$PhysicsSimulator"
+import {$SimulationTypes, $SimulationTypes$Type} from "packages/yesman/epicfight/api/physics/$SimulationTypes"
+import {$Optional, $Optional$Type} from "packages/java/util/$Optional"
+
+export interface $SimulatableObject {
+
+ "getSimulator"<SIM extends $PhysicsSimulator<(any), (any), (any), (any), (any)>>(arg0: $SimulationTypes$Type<(any), (any), (any), (any), (any), (SIM)>): $Optional<(SIM)>
+
+(arg0: $SimulationTypes$Type<(any), (any), (any), (any), (any), (SIM)>): $Optional<(SIM)>
+}
+
+export namespace $SimulatableObject {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $SimulatableObject$Type = ($SimulatableObject);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $SimulatableObject_ = $SimulatableObject$Type;
+}}
+declare module "packages/yesman/epicfight/api/client/physics/cloth/$ClothSimulator$ClothObjectBuilder" {
+import {$ClothSimulator$ClothOBBCollider, $ClothSimulator$ClothOBBCollider$Type} from "packages/yesman/epicfight/api/client/physics/cloth/$ClothSimulator$ClothOBBCollider"
+import {$Function, $Function$Type} from "packages/java/util/function/$Function"
+import {$SimulationObject$SimulationObjectBuilder, $SimulationObject$SimulationObjectBuilder$Type} from "packages/yesman/epicfight/api/physics/$SimulationObject$SimulationObjectBuilder"
+import {$List, $List$Type} from "packages/java/util/$List"
+import {$Joint, $Joint$Type} from "packages/yesman/epicfight/api/animation/$Joint"
+import {$Pair, $Pair$Type} from "packages/com/mojang/datafixers/util/$Pair"
+import {$OpenMatrix4f, $OpenMatrix4f$Type} from "packages/yesman/epicfight/api/utils/math/$OpenMatrix4f"
+import {$ClothSimulatable, $ClothSimulatable$Type} from "packages/yesman/epicfight/api/client/physics/cloth/$ClothSimulatable"
+
+export class $ClothSimulator$ClothObjectBuilder extends $SimulationObject$SimulationObjectBuilder {
+
+constructor()
+
+public "parentJoint"(arg0: $Joint$Type): $ClothSimulator$ClothObjectBuilder
+public "putAll"(arg0: $List$Type<($Pair$Type<($Function$Type<($ClothSimulatable$Type), ($OpenMatrix4f$Type)>), ($ClothSimulator$ClothOBBCollider$Type)>)>): $ClothSimulator$ClothObjectBuilder
+public "addEntry"(arg0: $Function$Type<($ClothSimulatable$Type), ($OpenMatrix4f$Type)>, arg1: $ClothSimulator$ClothOBBCollider$Type): $ClothSimulator$ClothObjectBuilder
+public static "create"(): $ClothSimulator$ClothObjectBuilder
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $ClothSimulator$ClothObjectBuilder$Type = ($ClothSimulator$ClothObjectBuilder);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $ClothSimulator$ClothObjectBuilder_ = $ClothSimulator$ClothObjectBuilder$Type;
+}}
+declare module "packages/yesman/epicfight/world/capabilities/entitypatch/$HurtableEntityPatch" {
+import {$StunType, $StunType$Type} from "packages/yesman/epicfight/world/damagesource/$StunType"
+import {$SoundEvent, $SoundEvent$Type} from "packages/net/minecraft/sounds/$SoundEvent"
+import {$EntityState, $EntityState$Type} from "packages/yesman/epicfight/api/animation/types/$EntityState"
+import {$EntityPatch, $EntityPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/$EntityPatch"
+import {$EquipmentSlot, $EquipmentSlot$Type} from "packages/net/minecraft/world/entity/$EquipmentSlot"
+import {$Vec3, $Vec3$Type} from "packages/net/minecraft/world/phys/$Vec3"
+import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
+import {$OpenMatrix4f, $OpenMatrix4f$Type} from "packages/yesman/epicfight/api/utils/math/$OpenMatrix4f"
+import {$LivingEntity, $LivingEntity$Type} from "packages/net/minecraft/world/entity/$LivingEntity"
+import {$LivingEvent$LivingTickEvent, $LivingEvent$LivingTickEvent$Type} from "packages/net/minecraftforge/event/entity/living/$LivingEvent$LivingTickEvent"
+
+export class $HurtableEntityPatch<T extends $LivingEntity> extends $EntityPatch<(T)> {
+
+constructor()
+
+public "getModelMatrix"(arg0: float): $OpenMatrix4f
+public "getStunArmor"(): float
+public "applyStun"(arg0: $StunType$Type, arg1: float): boolean
+public "getStunShield"(): float
+public "setStunShield"(arg0: float): void
+public "damageStunShield"(arg0: float, arg1: float): void
+public "setStunReductionOnHit"(arg0: $StunType$Type): void
+public "getStunReduction"(): float
+public "setDefaultStunReduction"(arg0: $EquipmentSlot$Type, arg1: $ItemStack$Type, arg2: $ItemStack$Type): void
+public "shouldCancelKnockback"(): boolean
+public "knockBackEntity"(arg0: $Vec3$Type, arg1: float): void
+public "playSound"(arg0: $SoundEvent$Type, arg1: float, arg2: float): void
+public "playSound"(arg0: $SoundEvent$Type, arg1: float, arg2: float, arg3: float): void
+public "overrideRender"(): boolean
+public "isStunned"(): boolean
+public "getEntityState"(): $EntityState
+public "tick"(arg0: $LivingEvent$LivingTickEvent$Type): void
+public "getWeight"(): float
+get "stunArmor"(): float
+get "stunShield"(): float
+set "stunShield"(value: float)
+set "stunReductionOnHit"(value: $StunType$Type)
+get "stunReduction"(): float
+get "stunned"(): boolean
+get "entityState"(): $EntityState
+get "weight"(): float
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $HurtableEntityPatch$Type<T> = ($HurtableEntityPatch<(T)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $HurtableEntityPatch_<T> = $HurtableEntityPatch$Type<(T)>;
+}}
+declare module "packages/yesman/epicfight/api/animation/$ServerAnimator" {
+import {$AnimationPlayer, $AnimationPlayer$Type} from "packages/yesman/epicfight/api/animation/$AnimationPlayer"
+import {$EntityState, $EntityState$Type} from "packages/yesman/epicfight/api/animation/types/$EntityState"
+import {$AssetAccessor, $AssetAccessor$Type} from "packages/yesman/epicfight/api/asset/$AssetAccessor"
+import {$Pose, $Pose$Type} from "packages/yesman/epicfight/api/animation/$Pose"
+import {$Class, $Class$Type} from "packages/java/lang/$Class"
+import {$Optional, $Optional$Type} from "packages/java/util/$Optional"
+import {$Pair, $Pair$Type} from "packages/com/mojang/datafixers/util/$Pair"
+import {$LivingEntityPatch, $LivingEntityPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/$LivingEntityPatch"
+import {$Animator, $Animator$Type} from "packages/yesman/epicfight/api/animation/$Animator"
+
+export class $ServerAnimator extends $Animator {
+readonly "animationPlayer": $AnimationPlayer
+ "hardPaused": boolean
+ "softPaused": boolean
+
+constructor(arg0: $LivingEntityPatch$Type<(any)>)
+
+public "getPose"(arg0: float): $Pose
+public static "getAnimator"(arg0: $LivingEntityPatch$Type<(any)>): $Animator
+public "getPlayerFor"(arg0: $AssetAccessor$Type<(any)>): $AnimationPlayer
+public "playShootingAnimation"(): void
+public "getEntityState"(): $EntityState
+public "getPlayer"(arg0: $AssetAccessor$Type<(any)>): $Optional<($AnimationPlayer)>
+public "reserveAnimation"(arg0: $AssetAccessor$Type<(any)>): void
+public "playAnimationInstantly"(arg0: $AssetAccessor$Type<(any)>): void
+public "playAnimation"(arg0: $AssetAccessor$Type<(any)>, arg1: float): void
+public "stopPlaying"(arg0: $AssetAccessor$Type<(any)>): boolean
+public "setSoftPause"(arg0: boolean): void
+public "setHardPause"(arg0: boolean): void
+public "findFor"<T>(arg0: $Class$Type<(T)>): $Pair<($AnimationPlayer), (T)>
+public "tick"(): void
+get "entityState"(): $EntityState
+set "softPause"(value: boolean)
+set "hardPause"(value: boolean)
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $ServerAnimator$Type = ($ServerAnimator);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $ServerAnimator_ = $ServerAnimator$Type;
+}}
+declare module "packages/yesman/epicfight/world/damagesource/$ExtraDamageInstance$ExtraDamageFunction" {
+import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
+import {$LivingEntity, $LivingEntity$Type} from "packages/net/minecraft/world/entity/$LivingEntity"
+
+export interface $ExtraDamageInstance$ExtraDamageFunction {
+
+ "getBonusDamage"(arg0: $LivingEntity$Type, arg1: $ItemStack$Type, arg2: $LivingEntity$Type, arg3: float, arg4: (float)[]): float
+
+(arg0: $LivingEntity$Type, arg1: $ItemStack$Type, arg2: $LivingEntity$Type, arg3: float, arg4: (float)[]): float
+}
+
+export namespace $ExtraDamageInstance$ExtraDamageFunction {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $ExtraDamageInstance$ExtraDamageFunction$Type = ($ExtraDamageInstance$ExtraDamageFunction);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $ExtraDamageInstance$ExtraDamageFunction_ = $ExtraDamageInstance$ExtraDamageFunction$Type;
+}}
+declare module "packages/yesman/epicfight/api/utils/$EntitySnapshot" {
+import {$VertexConsumer, $VertexConsumer$Type} from "packages/com/mojang/blaze3d/vertex/$VertexConsumer"
+import {$Vec3, $Vec3$Type} from "packages/net/minecraft/world/phys/$Vec3"
+import {$BakedModel, $BakedModel$Type} from "packages/net/minecraft/client/resources/model/$BakedModel"
+import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
+import {$OpenMatrix4f, $OpenMatrix4f$Type} from "packages/yesman/epicfight/api/utils/math/$OpenMatrix4f"
+import {$ResourceLocation, $ResourceLocation$Type} from "packages/net/minecraft/resources/$ResourceLocation"
+import {$EntitySnapshot$PlayerSnapshot, $EntitySnapshot$PlayerSnapshot$Type} from "packages/yesman/epicfight/api/utils/$EntitySnapshot$PlayerSnapshot"
+import {$RenderType, $RenderType$Type} from "packages/net/minecraft/client/renderer/$RenderType"
+import {$Function, $Function$Type} from "packages/java/util/function/$Function"
+import {$PoseStack, $PoseStack$Type} from "packages/com/mojang/blaze3d/vertex/$PoseStack"
+import {$List, $List$Type} from "packages/java/util/$List"
+import {$Mesh$DrawingFunction, $Mesh$DrawingFunction$Type} from "packages/yesman/epicfight/api/client/model/$Mesh$DrawingFunction"
+import {$AbstractClientPlayerPatch, $AbstractClientPlayerPatch$Type} from "packages/yesman/epicfight/client/world/capabilites/entitypatch/player/$AbstractClientPlayerPatch"
+import {$MultiBufferSource, $MultiBufferSource$Type} from "packages/net/minecraft/client/renderer/$MultiBufferSource"
+import {$LivingEntityPatch, $LivingEntityPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/$LivingEntityPatch"
+import {$BakedQuad, $BakedQuad$Type} from "packages/net/minecraft/client/renderer/block/model/$BakedQuad"
+
+export class $EntitySnapshot<T extends $LivingEntityPatch<(any)>> {
+
+constructor(arg0: T)
+
+public "poseMatrices"(): ($OpenMatrix4f)[]
+public "renderItems"(arg0: $PoseStack$Type, arg1: $MultiBufferSource$Type, arg2: $RenderType$Type, arg3: $Mesh$DrawingFunction$Type, arg4: integer, arg5: float): void
+public "getHeightHalf"(): float
+public "renderTextured"(arg0: $PoseStack$Type, arg1: $MultiBufferSource$Type, arg2: $Function$Type<($ResourceLocation$Type), ($RenderType$Type)>, arg3: $Mesh$DrawingFunction$Type, arg4: integer, arg5: float, arg6: float, arg7: float, arg8: float): void
+public static "renderModelLists"(arg0: $BakedModel$Type, arg1: $ItemStack$Type, arg2: integer, arg3: integer, arg4: float, arg5: $PoseStack$Type, arg6: $VertexConsumer$Type, arg7: $Mesh$DrawingFunction$Type): void
+public static "renderQuadList"(arg0: $PoseStack$Type, arg1: $VertexConsumer$Type, arg2: $List$Type<($BakedQuad$Type)>, arg3: $ItemStack$Type, arg4: integer, arg5: integer, arg6: float, arg7: $Mesh$DrawingFunction$Type): void
+public static "capturePlayer"(arg0: $AbstractClientPlayerPatch$Type<(any)>): $EntitySnapshot$PlayerSnapshot
+public "getModelMatrix"(): $OpenMatrix4f
+public "getYRot"(): float
+public static "captureLivingEntity"(arg0: $LivingEntityPatch$Type<(any)>): $EntitySnapshot<($LivingEntityPatch<(any)>)>
+public "getPosition"(): $Vec3
+public "render"(arg0: $PoseStack$Type, arg1: $MultiBufferSource$Type, arg2: $RenderType$Type, arg3: $Mesh$DrawingFunction$Type, arg4: integer, arg5: float, arg6: float, arg7: float, arg8: float): void
+get "heightHalf"(): float
+get "modelMatrix"(): $OpenMatrix4f
+get "yRot"(): float
+get "position"(): $Vec3
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $EntitySnapshot$Type<T> = ($EntitySnapshot<(T)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $EntitySnapshot_<T> = $EntitySnapshot$Type<(T)>;
+}}
+declare module "packages/yesman/epicfight/api/collider/$Collider" {
+import {$VertexConsumer, $VertexConsumer$Type} from "packages/com/mojang/blaze3d/vertex/$VertexConsumer"
+import {$CompoundTag, $CompoundTag$Type} from "packages/net/minecraft/nbt/$CompoundTag"
+import {$Armature, $Armature$Type} from "packages/yesman/epicfight/api/model/$Armature"
+import {$AttackAnimation, $AttackAnimation$Type} from "packages/yesman/epicfight/api/animation/types/$AttackAnimation"
+import {$Vec3, $Vec3$Type} from "packages/net/minecraft/world/phys/$Vec3"
+import {$RenderType, $RenderType$Type} from "packages/net/minecraft/client/renderer/$RenderType"
+import {$PoseStack, $PoseStack$Type} from "packages/com/mojang/blaze3d/vertex/$PoseStack"
+import {$List, $List$Type} from "packages/java/util/$List"
+import {$Pose, $Pose$Type} from "packages/yesman/epicfight/api/animation/$Pose"
+import {$Joint, $Joint$Type} from "packages/yesman/epicfight/api/animation/$Joint"
+import {$MultiBufferSource, $MultiBufferSource$Type} from "packages/net/minecraft/client/renderer/$MultiBufferSource"
+import {$AABB, $AABB$Type} from "packages/net/minecraft/world/phys/$AABB"
+import {$LivingEntityPatch, $LivingEntityPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/$LivingEntityPatch"
+import {$Entity, $Entity$Type} from "packages/net/minecraft/world/entity/$Entity"
+
+export class $Collider {
+
+constructor(arg0: $Vec3$Type, arg1: $AABB$Type)
+
+public "updateAndSelectCollideEntity"(arg0: $LivingEntityPatch$Type<(any)>, arg1: $AttackAnimation$Type, arg2: float, arg3: float, arg4: $Joint$Type, arg5: float): $List<($Entity)>
+public "drawInternal"(arg0: $PoseStack$Type, arg1: $VertexConsumer$Type, arg2: $Armature$Type, arg3: $Joint$Type, arg4: $Pose$Type, arg5: $Pose$Type, arg6: float, arg7: integer): void
+public "isCollide"(arg0: $Entity$Type): boolean
+public "getCollideEntities"(arg0: $Entity$Type): $List<($Entity)>
+public "getRenderType"(): $RenderType
+public "serialize"(arg0: $CompoundTag$Type): $CompoundTag
+public "draw"(arg0: $PoseStack$Type, arg1: $MultiBufferSource$Type, arg2: $LivingEntityPatch$Type<(any)>, arg3: $AttackAnimation$Type, arg4: $Joint$Type, arg5: float, arg6: float, arg7: float, arg8: float): void
+public "deepCopy"(): $Collider
+public "toString"(): string
+get "renderType"(): $RenderType
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Collider$Type = ($Collider);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Collider_ = $Collider$Type;
+}}
+declare module "packages/yesman/epicfight/world/entity/eventlistener/$SkillCancelEvent" {
+import {$PlayerPatch, $PlayerPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/player/$PlayerPatch"
+import {$SkillContainer, $SkillContainer$Type} from "packages/yesman/epicfight/skill/$SkillContainer"
+import {$AbstractPlayerEvent, $AbstractPlayerEvent$Type} from "packages/yesman/epicfight/world/entity/eventlistener/$AbstractPlayerEvent"
+
+export class $SkillCancelEvent extends $AbstractPlayerEvent<($PlayerPatch<(any)>)> {
+
+constructor(arg0: $PlayerPatch$Type<(any)>, arg1: $SkillContainer$Type)
+
+public "getSkillContainer"(): $SkillContainer
+get "skillContainer"(): $SkillContainer
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $SkillCancelEvent$Type = ($SkillCancelEvent);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $SkillCancelEvent_ = $SkillCancelEvent$Type;
+}}
+declare module "packages/yesman/epicfight/world/capabilities/entitypatch/$EntityDecorations" {
+import {$Vec2i, $Vec2i$Type} from "packages/yesman/epicfight/api/utils/math/$Vec2i"
+import {$SoundEvent, $SoundEvent$Type} from "packages/net/minecraft/sounds/$SoundEvent"
+import {$Vector4f, $Vector4f$Type} from "packages/org/joml/$Vector4f"
+import {$CapabilityItem, $CapabilityItem$Type} from "packages/yesman/epicfight/world/capabilities/item/$CapabilityItem"
+import {$EntityDecorations$ParticleGenerator, $EntityDecorations$ParticleGenerator$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/$EntityDecorations$ParticleGenerator"
+import {$EntityDecorations$RenderAttributeModifier, $EntityDecorations$RenderAttributeModifier$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/$EntityDecorations$RenderAttributeModifier"
+import {$Stream, $Stream$Type} from "packages/java/util/stream/$Stream"
+import {$TrailInfo, $TrailInfo$Type} from "packages/yesman/epicfight/api/client/animation/property/$TrailInfo"
+import {$EntityDecorations$DecorationOverlay, $EntityDecorations$DecorationOverlay$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/$EntityDecorations$DecorationOverlay"
+import {$ResourceLocation, $ResourceLocation$Type} from "packages/net/minecraft/resources/$ResourceLocation"
+import {$EntityDecorations$AnimationPropertyModifier, $EntityDecorations$AnimationPropertyModifier$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/$EntityDecorations$AnimationPropertyModifier"
+
+export class $EntityDecorations {
+static readonly "ADAPTIVE_SKIN_COLOR": $ResourceLocation
+static readonly "ADAPTIVE_SKIN_OVERLAY": $ResourceLocation
+static readonly "BERSERKER_PARTICLE": $ResourceLocation
+static readonly "BERSERKER_OVERLAY": $ResourceLocation
+static readonly "BONEBREAKER_OVERLAY": $ResourceLocation
+static readonly "EMERGENCY_ESCAPE_TRANSPARENCY_MODIFIER": $ResourceLocation
+static readonly "HYPERVITALITY_OVERLAY": $ResourceLocation
+static readonly "STAMINA_PILLAGER_ASHES_COLOR": $ResourceLocation
+static readonly "STAMINA_PILLAGER_ASHES_OVERLAY": $ResourceLocation
+static readonly "STAMINA_PILLAGER_ASHES_PARTICLE": $ResourceLocation
+static readonly "STAMINA_PILLAGER_FILLS_UP_OVERLAY": $ResourceLocation
+static readonly "STAMINA_PILLAGER_FILLS_UP_LIGHT": $ResourceLocation
+static readonly "FLASH_WHITE_OVERLAY": $ResourceLocation
+static readonly "FLASH_WHITE_LIGHT": $ResourceLocation
+static readonly "SWORDMASTER_SWING_SOUND": $ResourceLocation
+static readonly "SWORDMASTER_TRAIL_MODIFIER": $ResourceLocation
+static readonly "VENGEANCE_OVERLAY": $ResourceLocation
+
+constructor()
+
+public "modifyColor"(arg0: $Vector4f$Type, arg1: float): void
+public "modifyLight"(arg0: $Vec2i$Type, arg1: float): void
+public "listDecorationOverlays"(): $Stream<($EntityDecorations$DecorationOverlay)>
+public "modifyOverlay"(arg0: $Vec2i$Type, arg1: float): void
+public "removeOverlayCoordModifier"(arg0: $ResourceLocation$Type): boolean
+public "removeLightModifier"(arg0: $ResourceLocation$Type): boolean
+public "addSwingSoundModifier"(arg0: $ResourceLocation$Type, arg1: $EntityDecorations$AnimationPropertyModifier$Type<($SoundEvent$Type), ($CapabilityItem$Type)>): void
+public "removeSwingSoundModifier"(arg0: $ResourceLocation$Type): boolean
+public "addHurtSoundModifier"(arg0: $ResourceLocation$Type, arg1: $EntityDecorations$AnimationPropertyModifier$Type<($SoundEvent$Type), ($CapabilityItem$Type)>): void
+public "removeHurtSoundModifier"(arg0: $ResourceLocation$Type): boolean
+public "addTrailInfoModifier"(arg0: $ResourceLocation$Type, arg1: $EntityDecorations$AnimationPropertyModifier$Type<($TrailInfo$Type), ($CapabilityItem$Type)>): void
+public "removeTrailInfoModifier"(arg0: $ResourceLocation$Type): boolean
+public "removeParticleGenerator"(arg0: $ResourceLocation$Type): boolean
+public "getModifiedHurtSound"(arg0: $SoundEvent$Type, arg1: $CapabilityItem$Type): $SoundEvent
+public "getModifiedTrailInfo"(arg0: $TrailInfo$Type, arg1: $CapabilityItem$Type): $TrailInfo
+public "addDecorationOverlay"(arg0: $ResourceLocation$Type, arg1: $EntityDecorations$DecorationOverlay$Type): void
+public "removeDecorationOverlay"(arg0: $ResourceLocation$Type): void
+public "addColorModifier"(arg0: $ResourceLocation$Type, arg1: $EntityDecorations$RenderAttributeModifier$Type<($Vector4f$Type)>): void
+public "addOverlayCoordModifier"(arg0: $ResourceLocation$Type, arg1: $EntityDecorations$RenderAttributeModifier$Type<($Vec2i$Type)>): void
+public "addParticleGenerator"(arg0: $ResourceLocation$Type, arg1: $EntityDecorations$ParticleGenerator$Type): void
+public "addLightModifier"(arg0: $ResourceLocation$Type, arg1: $EntityDecorations$RenderAttributeModifier$Type<($Vec2i$Type)>): void
+public "removeColorModifier"(arg0: $ResourceLocation$Type): boolean
+public "getModifiedSwingSound"(arg0: $SoundEvent$Type, arg1: $CapabilityItem$Type): $SoundEvent
+public "tick"(): void
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $EntityDecorations$Type = ($EntityDecorations);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $EntityDecorations_ = $EntityDecorations$Type;
+}}
+declare module "packages/yesman/epicfight/world/effect/$VisibleMobEffect" {
+import {$Function, $Function$Type} from "packages/java/util/function/$Function"
+import {$MobEffectInstance, $MobEffectInstance$Type} from "packages/net/minecraft/world/effect/$MobEffectInstance"
+import {$MobEffectCategory, $MobEffectCategory$Type} from "packages/net/minecraft/world/effect/$MobEffectCategory"
+import {$ResourceLocation, $ResourceLocation$Type} from "packages/net/minecraft/resources/$ResourceLocation"
+import {$MobEffect, $MobEffect$Type} from "packages/net/minecraft/world/effect/$MobEffect"
+
+export class $VisibleMobEffect extends $MobEffect {
+
+constructor(arg0: $MobEffectCategory$Type, arg1: integer, arg2: $Function$Type<($MobEffectInstance$Type), (integer)>, ...arg3: ($ResourceLocation$Type)[])
+constructor(arg0: $MobEffectCategory$Type, arg1: integer, arg2: $ResourceLocation$Type)
+
+public "getIcon"(arg0: $MobEffectInstance$Type): $ResourceLocation
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $VisibleMobEffect$Type = ($VisibleMobEffect);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $VisibleMobEffect_ = $VisibleMobEffect$Type;
+}}
+declare module "packages/yesman/epicfight/client/renderer/patched/item/$RenderItemBase" {
+import {$JsonElement, $JsonElement$Type} from "packages/com/google/gson/$JsonElement"
+import {$Minecraft, $Minecraft$Type} from "packages/net/minecraft/client/$Minecraft"
+import {$InteractionHand, $InteractionHand$Type} from "packages/net/minecraft/world/$InteractionHand"
+import {$PoseStack, $PoseStack$Type} from "packages/com/mojang/blaze3d/vertex/$PoseStack"
+import {$TrailInfo, $TrailInfo$Type} from "packages/yesman/epicfight/api/client/animation/property/$TrailInfo"
+import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
+import {$MultiBufferSource, $MultiBufferSource$Type} from "packages/net/minecraft/client/renderer/$MultiBufferSource"
+import {$OpenMatrix4f, $OpenMatrix4f$Type} from "packages/yesman/epicfight/api/utils/math/$OpenMatrix4f"
+import {$LivingEntityPatch, $LivingEntityPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/$LivingEntityPatch"
+
+export class $RenderItemBase {
+readonly "transformHolder": $OpenMatrix4f
+
+constructor(arg0: $JsonElement$Type)
+
+public "forceVanillaFirstPerson"(): boolean
+public "trailInfo"(): $TrailInfo
+public static "initItemRenderers"(arg0: $Minecraft$Type): void
+public "appearedInAfterimage"(): boolean
+public "getCorrectionMatrix"(arg0: $LivingEntityPatch$Type<(any)>, arg1: $InteractionHand$Type, arg2: ($OpenMatrix4f$Type)[]): $OpenMatrix4f
+public "renderItemInHand"(arg0: $ItemStack$Type, arg1: $LivingEntityPatch$Type<(any)>, arg2: $InteractionHand$Type, arg3: ($OpenMatrix4f$Type)[], arg4: $MultiBufferSource$Type, arg5: $PoseStack$Type, arg6: integer, arg7: float): void
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $RenderItemBase$Type = ($RenderItemBase);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $RenderItemBase_ = $RenderItemBase$Type;
+}}
 declare module "packages/yesman/epicfight/api/client/forgeevent/$UpdatePlayerMotionEvent$BaseLayer" {
 import {$LivingMotion, $LivingMotion$Type} from "packages/yesman/epicfight/api/animation/$LivingMotion"
 import {$ListenerList, $ListenerList$Type} from "packages/net/minecraftforge/eventbus/$ListenerList"
@@ -3237,8 +6252,8 @@ import {$AbstractClientPlayerPatch, $AbstractClientPlayerPatch$Type} from "packa
 
 export class $UpdatePlayerMotionEvent$BaseLayer extends $UpdatePlayerMotionEvent {
 
-constructor()
 constructor(arg0: $AbstractClientPlayerPatch$Type<(any)>, arg1: $LivingMotion$Type, arg2: boolean)
+constructor()
 
 public "inaction"(): boolean
 public "getListenerList"(): $ListenerList
@@ -3278,8 +6293,8 @@ public "slideUp"(): void
 public "slideDown"(): void
 public "getSlidingProgression"(): integer
 public "getFont"(): $Font
-public "init"(): void
 public "renderTick"(): void
+public "init"(): void
 get "slidingProgression"(): integer
 get "font"(): $Font
 }
@@ -3316,8 +6331,8 @@ constructor(arg0: $Faction$Type)
 constructor()
 
 public "setAttakTargetSync"(arg0: $LivingEntity$Type): void
-public "attack"(arg0: $EpicFightDamageSource$Type, arg1: $Entity$Type, arg2: $InteractionHand$Type): $AttackResult
 public "onJoinWorld"(arg0: T, arg1: $EntityJoinLevelEvent$Type): void
+public "attack"(arg0: $EpicFightDamageSource$Type, arg1: $Entity$Type, arg2: $InteractionHand$Type): $AttackResult
 public "getAttackDirectionPitch"(): float
 public "isTargetInvulnerable"(arg0: $Entity$Type): boolean
 public "getFaction"(): $Faction
@@ -3367,44 +6382,6 @@ export type $FakeBlockRenderer$Type = ($FakeBlockRenderer);
  */
 declare global {
 export type $FakeBlockRenderer_ = $FakeBlockRenderer$Type;
-}}
-declare module "packages/yesman/epicfight/skill/modules/$ChargeableSkill" {
-import {$HoldableSkill, $HoldableSkill$Type} from "packages/yesman/epicfight/skill/modules/$HoldableSkill"
-import {$KeyMapping, $KeyMapping$Type} from "packages/net/minecraft/client/$KeyMapping"
-import {$ControlEngine, $ControlEngine$Type} from "packages/yesman/epicfight/client/events/engine/$ControlEngine"
-import {$FriendlyByteBuf, $FriendlyByteBuf$Type} from "packages/net/minecraft/network/$FriendlyByteBuf"
-import {$SkillContainer, $SkillContainer$Type} from "packages/yesman/epicfight/skill/$SkillContainer"
-import {$SPSkillExecutionFeedback, $SPSkillExecutionFeedback$Type} from "packages/yesman/epicfight/network/server/$SPSkillExecutionFeedback"
-import {$Skill, $Skill$Type} from "packages/yesman/epicfight/skill/$Skill"
-
-export interface $ChargeableSkill extends $HoldableSkill {
-
- "holdTick"(arg0: $SkillContainer$Type): void
- "getAllowedMaxChargingTicks"(): integer
- "getMaxChargingTicks"(): integer
- "resetHolding"(arg0: $SkillContainer$Type): void
- "getMinChargingTicks"(): integer
- "getKeyMapping"(): $KeyMapping
- "asSkill"(): $Skill
- "startHolding"(arg0: $SkillContainer$Type): void
- "onStopHolding"(arg0: $SkillContainer$Type, arg1: $SPSkillExecutionFeedback$Type): void
- "gatherHoldArguments"(arg0: $SkillContainer$Type, arg1: $ControlEngine$Type, arg2: $FriendlyByteBuf$Type): void
-}
-
-export namespace $ChargeableSkill {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $ChargeableSkill$Type = ($ChargeableSkill);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $ChargeableSkill_ = $ChargeableSkill$Type;
 }}
 declare module "packages/yesman/epicfight/world/entity/eventlistener/$PlayerEventListener$EventType" {
 import {$DodgeSuccessEvent, $DodgeSuccessEvent$Type} from "packages/yesman/epicfight/world/entity/eventlistener/$DodgeSuccessEvent"
@@ -3493,78 +6470,6 @@ export type $PlayerEventListener$EventType$Type<T> = ($PlayerEventListener$Event
 declare global {
 export type $PlayerEventListener$EventType_<T> = $PlayerEventListener$EventType$Type<(T)>;
 }}
-declare module "packages/yesman/epicfight/world/entity/eventlistener/$ComboCounterHandleEvent$Causal" {
-import {$Enum, $Enum$Type} from "packages/java/lang/$Enum"
-
-export class $ComboCounterHandleEvent$Causal extends $Enum<($ComboCounterHandleEvent$Causal)> {
-static readonly "ANOTHER_ACTION_ANIMATION": $ComboCounterHandleEvent$Causal
-static readonly "TIME_EXPIRED": $ComboCounterHandleEvent$Causal
-
-
-public static "values"(): ($ComboCounterHandleEvent$Causal)[]
-public static "valueOf"(arg0: string): $ComboCounterHandleEvent$Causal
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $ComboCounterHandleEvent$Causal$Type = (("time_expired") | ("another_action_animation")) | ($ComboCounterHandleEvent$Causal);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $ComboCounterHandleEvent$Causal_ = $ComboCounterHandleEvent$Causal$Type;
-}}
-declare module "packages/yesman/epicfight/world/entity/eventlistener/$DetachablePlayerEvent" {
-import {$PlayerPatch, $PlayerPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/player/$PlayerPatch"
-
-export interface $DetachablePlayerEvent<T extends $PlayerPatch<(any)>> {
-
- "getPlayerPatch"(): T
- "setCanceled"(arg0: boolean): void
- "isCanceled"(): boolean
-}
-
-export namespace $DetachablePlayerEvent {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $DetachablePlayerEvent$Type<T> = ($DetachablePlayerEvent<(T)>);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $DetachablePlayerEvent_<T> = $DetachablePlayerEvent$Type<(T)>;
-}}
-declare module "packages/yesman/epicfight/network/common/$AnimatorControlPacket$Layer" {
-import {$Enum, $Enum$Type} from "packages/java/lang/$Enum"
-
-export class $AnimatorControlPacket$Layer extends $Enum<($AnimatorControlPacket$Layer)> {
-static readonly "ANIMATION": $AnimatorControlPacket$Layer
-static readonly "BASE_LAYER": $AnimatorControlPacket$Layer
-static readonly "COMPOSITE_LAYER": $AnimatorControlPacket$Layer
-
-
-public static "values"(): ($AnimatorControlPacket$Layer)[]
-public static "valueOf"(arg0: string): $AnimatorControlPacket$Layer
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $AnimatorControlPacket$Layer$Type = (("composite_layer") | ("base_layer") | ("animation")) | ($AnimatorControlPacket$Layer);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $AnimatorControlPacket$Layer_ = $AnimatorControlPacket$Layer$Type;
-}}
 declare module "packages/yesman/epicfight/gameasset/$Armatures$ArmatureContructor" {
 import {$Armature, $Armature$Type} from "packages/yesman/epicfight/api/model/$Armature"
 import {$Joint, $Joint$Type} from "packages/yesman/epicfight/api/animation/$Joint"
@@ -3620,8 +6525,8 @@ import {$Animator, $Animator$Type} from "packages/yesman/epicfight/api/animation
 export class $ClientAnimator extends $Animator {
 readonly "baseLayer": $Layer$BaseLayer
 
-constructor(arg0: $LivingEntityPatch$Type<(any)>)
 constructor(arg0: $LivingEntityPatch$Type<(any)>, arg1: $Supplier$Type<($Layer$BaseLayer$Type)>)
+constructor(arg0: $LivingEntityPatch$Type<(any)>)
 
 public "getPose"(arg0: float): $Pose
 public "getPose"(arg0: float, arg1: boolean): $Pose
@@ -3632,9 +6537,9 @@ public "iterAllLayers"(arg0: $Consumer$Type<($Layer$Type)>): void
 public "compareMotion"(arg0: $LivingMotion$Type): boolean
 public "setCurrentMotionsAsDefault"(): void
 public "getLivingMotion"(arg0: $LivingMotion$Type): $AssetAccessor<(any)>
+public "resetLivingAnimations"(): void
 public "getCompositeLivingMotion"(arg0: $LivingMotion$Type): $AssetAccessor<(any)>
 public "compareCompositeMotion"(arg0: $LivingMotion$Type): boolean
-public "resetLivingAnimations"(): void
 public "getCompositeLayer"(arg0: $Layer$Priority$Type): $Layer
 public "getJumpAnimation"(): $AssetAccessor<(any)>
 public "renderDebuggingInfoForAllLayers"(arg0: $PoseStack$Type, arg1: $MultiBufferSource$Type, arg2: float): void
@@ -3643,20 +6548,19 @@ public "iterVisibleLayers"(arg0: $Consumer$Type<($Layer$Type)>): void
 public "iterVisibleLayersUntilFalse"(arg0: $Function$Type<($Layer$Type), (boolean)>): boolean
 public "applyBindModifier"(arg0: $Pose$Type, arg1: $Pose$Type, arg2: $Joint$Type, arg3: $Map$Type<($Layer$Priority$Type), ($Pair$Type<($AssetAccessor$Type<(any)>), ($Pose$Type)>)>, arg4: boolean): void
 public "getComposedLayerPoseBelow"(arg0: $Layer$Priority$Type, arg1: float): $Pose
-public "forceResetBeforeAction"(arg0: $LivingMotion$Type, arg1: $LivingMotion$Type): void
 public "resetMotion"(arg0: boolean): void
 public "resetCompositeMotion"(): void
 public "offAllLayers"(): void
 public "isAiming"(): boolean
 public "getPriorityFor"(arg0: $AssetAccessor$Type<(any)>): $Layer$Priority
-public static "getAnimator"(arg0: $LivingEntityPatch$Type<(any)>): $Animator
-public "getPlayerFor"(arg0: $AssetAccessor$Type<(any)>): $AnimationPlayer
-public "tick"(): void
-public "getEntityState"(): $EntityState
-public "getPlayer"(arg0: $AssetAccessor$Type<(any)>): $Optional<($AnimationPlayer)>
-public "playShootingAnimation"(): void
+public "forceResetBeforeAction"(arg0: $LivingMotion$Type, arg1: $LivingMotion$Type): void
 public "currentCompositeMotion"(): $LivingMotion
 public "playDeathAnimation"(): void
+public static "getAnimator"(arg0: $LivingEntityPatch$Type<(any)>): $Animator
+public "getPlayerFor"(arg0: $AssetAccessor$Type<(any)>): $AnimationPlayer
+public "playShootingAnimation"(): void
+public "getEntityState"(): $EntityState
+public "getPlayer"(arg0: $AssetAccessor$Type<(any)>): $Optional<($AnimationPlayer)>
 public "reserveAnimation"(arg0: $AssetAccessor$Type<(any)>): void
 public "playAnimationInstantly"(arg0: $AssetAccessor$Type<(any)>): void
 public "playAnimation"(arg0: $AssetAccessor$Type<(any)>, arg1: float): void
@@ -3664,6 +6568,7 @@ public "stopPlaying"(arg0: $AssetAccessor$Type<(any)>): boolean
 public "setSoftPause"(arg0: boolean): void
 public "setHardPause"(arg0: boolean): void
 public "findFor"<T>(arg0: $Class$Type<(T)>): $Pair<($AnimationPlayer), (T)>
+public "tick"(): void
 public "getOwner"(): $LivingEntityPatch<(any)>
 public "postInit"(): void
 get "jumpAnimation"(): $AssetAccessor<(any)>
@@ -3716,9 +6621,9 @@ import {$ExtendableEnum, $ExtendableEnum$Type} from "packages/yesman/epicfight/a
 
 export interface $SkillCategory extends $ExtendableEnum {
 
- "shouldSave"(): boolean
  "shouldSynchronize"(): boolean
  "bookIcon"(): $ResourceLocation
+ "shouldSave"(): boolean
  "learnable"(): boolean
  "universalOrdinal"(): integer
 }
@@ -3738,31 +6643,6 @@ export type $SkillCategory$Type = ($SkillCategory);
  */
 declare global {
 export type $SkillCategory_ = $SkillCategory$Type;
-}}
-declare module "packages/yesman/epicfight/api/animation/$Joint$HierarchicalJointAccessor" {
-import {$Joint$HierarchicalJointAccessor$Builder, $Joint$HierarchicalJointAccessor$Builder$Type} from "packages/yesman/epicfight/api/animation/$Joint$HierarchicalJointAccessor$Builder"
-import {$Joint, $Joint$Type} from "packages/yesman/epicfight/api/animation/$Joint"
-import {$Joint$AccessTicket, $Joint$AccessTicket$Type} from "packages/yesman/epicfight/api/animation/$Joint$AccessTicket"
-
-export class $Joint$HierarchicalJointAccessor {
-
-
-public "createAccessTicket"(arg0: $Joint$Type): $Joint$AccessTicket
-public "equals"(arg0: any): boolean
-public "hashCode"(): integer
-public static "builder"(): $Joint$HierarchicalJointAccessor$Builder
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $Joint$HierarchicalJointAccessor$Type = ($Joint$HierarchicalJointAccessor);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $Joint$HierarchicalJointAccessor_ = $Joint$HierarchicalJointAccessor$Type;
 }}
 declare module "packages/yesman/epicfight/api/animation/property/$AnimationProperty" {
 import {$JsonElement, $JsonElement$Type} from "packages/com/google/gson/$JsonElement"
@@ -3824,8 +6704,8 @@ export class $EpicSkins extends $Record {
 
 constructor(cloakTexture: $Supplier$Type<($ResourceLocation$Type)>, r: float, g: float, b: float)
 
-public "cloakTexture"(): $Supplier<($ResourceLocation)>
 public static "initDefaultCape"(arg0: $AbstractClientPlayerPatch$Type<(any)>): void
+public "cloakTexture"(): $Supplier<($ResourceLocation)>
 public static "initEpicSkins"(arg0: $AbstractClientPlayerPatch$Type<(any)>): void
 public "equals"(arg0: any): boolean
 public "toString"(): string
@@ -3874,40 +6754,6 @@ export type $Faction$Type = ($Faction);
 declare global {
 export type $Faction_ = $Faction$Type;
 }}
-declare module "packages/yesman/epicfight/api/client/model/$SoftBodyTranslatable$ClothSimulationInfo" {
-import {$Record, $Record$Type} from "packages/java/lang/$Record"
-import {$List, $List$Type} from "packages/java/util/$List"
-import {$ClothSimulator$ClothObject$ClothPart$ConstraintType, $ClothSimulator$ClothObject$ClothPart$ConstraintType$Type} from "packages/yesman/epicfight/api/client/physics/cloth/$ClothSimulator$ClothObject$ClothPart$ConstraintType"
-
-export class $SoftBodyTranslatable$ClothSimulationInfo extends $Record {
-
-constructor(particleMass: float, selfCollision: float, constraints: $List$Type<((integer)[])>, constraintTypes: ($ClothSimulator$ClothObject$ClothPart$ConstraintType$Type)[], compliances: (float)[], particles: (integer)[], weights: (float)[], rootDistance: (float)[], normalOffsetMapping: (integer)[])
-
-public "constraintTypes"(): ($ClothSimulator$ClothObject$ClothPart$ConstraintType)[]
-public "rootDistance"(): (float)[]
-public "normalOffsetMapping"(): (integer)[]
-public "particleMass"(): float
-public "selfCollision"(): float
-public "compliances"(): (float)[]
-public "equals"(arg0: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
-public "constraints"(): $List<((integer)[])>
-public "particles"(): (integer)[]
-public "weights"(): (float)[]
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $SoftBodyTranslatable$ClothSimulationInfo$Type = ($SoftBodyTranslatable$ClothSimulationInfo);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $SoftBodyTranslatable$ClothSimulationInfo_ = $SoftBodyTranslatable$ClothSimulationInfo$Type;
-}}
 declare module "packages/yesman/epicfight/api/utils/$AttackResult" {
 import {$AttackResult$ResultType, $AttackResult$ResultType$Type} from "packages/yesman/epicfight/api/utils/$AttackResult$ResultType"
 
@@ -3934,33 +6780,9 @@ export type $AttackResult$Type = ($AttackResult);
 declare global {
 export type $AttackResult_ = $AttackResult$Type;
 }}
-declare module "packages/yesman/epicfight/world/entity/eventlistener/$SetTargetEvent" {
-import {$ServerPlayerPatch, $ServerPlayerPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/player/$ServerPlayerPatch"
-import {$LivingEntity, $LivingEntity$Type} from "packages/net/minecraft/world/entity/$LivingEntity"
-import {$AbstractPlayerEvent, $AbstractPlayerEvent$Type} from "packages/yesman/epicfight/world/entity/eventlistener/$AbstractPlayerEvent"
-
-export class $SetTargetEvent extends $AbstractPlayerEvent<($ServerPlayerPatch)> {
-
-constructor(arg0: $ServerPlayerPatch$Type, arg1: $LivingEntity$Type)
-
-public "getTarget"(): $LivingEntity
-get "target"(): $LivingEntity
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $SetTargetEvent$Type = ($SetTargetEvent);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $SetTargetEvent_ = $SetTargetEvent$Type;
-}}
 declare module "packages/yesman/epicfight/skill/$SkillDataManager" {
-import {$LocalPlayer, $LocalPlayer$Type} from "packages/net/minecraft/client/player/$LocalPlayer"
 import {$EpicFightNetworkManager$PayloadBundleBuilder, $EpicFightNetworkManager$PayloadBundleBuilder$Type} from "packages/yesman/epicfight/network/$EpicFightNetworkManager$PayloadBundleBuilder"
+import {$LocalPlayer, $LocalPlayer$Type} from "packages/net/minecraft/client/player/$LocalPlayer"
 import {$Function, $Function$Type} from "packages/java/util/function/$Function"
 import {$SkillDataKey, $SkillDataKey$Type} from "packages/yesman/epicfight/skill/$SkillDataKey"
 import {$ServerPlayer, $ServerPlayer$Type} from "packages/net/minecraft/server/level/$ServerPlayer"
@@ -3985,26 +6807,26 @@ public "setDataF"<T>(arg0: $SkillDataKey$Type<(T)>, arg1: $Function$Type<(T), (T
 public "setDataSyncF"<T>(arg0: $SkillDataKey$Type<(T)>, arg1: $Function$Type<(T), (T)>, arg2: $ServerPlayer$Type): void
 public "setDataSyncF"<T>(arg0: $SkillDataKey$Type<(T)>, arg1: $Function$Type<(T), (T)>): void
 public "getDataValueOptional"<T>(arg0: $SkillDataKey$Type<(T)>): $Optional<(T)>
+public "registerData"<T>(arg0: $SkillDataKey$Type<(T)>): void
+public "clearData"(): void
+public "onTracked"(arg0: $EpicFightNetworkManager$PayloadBundleBuilder$Type): void
+public "transferDataTo"(arg0: $SkillDataManager$Type): void
 /**
  * 
  * @deprecated
  */
 public "setDataSync"<T>(arg0: $SkillDataKey$Type<(T)>, arg1: T, arg2: $LocalPlayer$Type): void
-public "setDataSync"<T>(arg0: $SkillDataKey$Type<(T)>, arg1: T): void
 /**
  * 
  * @deprecated
  */
 public "setDataSync"<T>(arg0: $SkillDataKey$Type<(T)>, arg1: T, arg2: $ServerPlayer$Type): void
-public "onTracked"(arg0: $EpicFightNetworkManager$PayloadBundleBuilder$Type): void
-public "transferDataTo"(arg0: $SkillDataManager$Type): void
-public "clearData"(): void
-public "registerData"<T>(arg0: $SkillDataKey$Type<(T)>): void
+public "setDataSync"<T>(arg0: $SkillDataKey$Type<(T)>, arg1: T): void
 public "hasData"(arg0: $SkillDataKey$Type<(any)>): boolean
 public "removeData"<T>(arg0: $SkillDataKey$Type<(T)>): void
-public "keySet"(): $Set<($SkillDataKey<(any)>)>
 public "setData"<T>(arg0: $SkillDataKey$Type<(T)>, arg1: T): void
 public "getDataValue"<T>(arg0: $SkillDataKey$Type<(T)>): T
+public "keySet"(): $Set<($SkillDataKey<(any)>)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4056,13 +6878,13 @@ constructor(sound: $SoundEvent$Type, pitch: float, volume: float)
 
 public "pitch"(): float
 public "volume"(): float
+public "sound"(): $SoundEvent
+public static "fromBytes"(arg0: $FriendlyByteBuf$Type): $SPPlayUISound
 public "equals"(arg0: any): boolean
 public "toString"(): string
 public "hashCode"(): integer
 public static "toBytes"(arg0: $SPPlayUISound$Type, arg1: $FriendlyByteBuf$Type): void
 public static "handle"(arg0: $SPPlayUISound$Type, arg1: $Supplier$Type<($NetworkEvent$Context$Type)>): void
-public "sound"(): $SoundEvent
-public static "fromBytes"(arg0: $FriendlyByteBuf$Type): $SPPlayUISound
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4087,23 +6909,23 @@ export class $InverseKinematicsSimulator$BakedInverseKinematicsDefinition extend
 
 constructor(startJoint: $Joint$Type, endJoint: $Joint$Type, opponentJoint: $Joint$Type, clipAnimation: boolean, startFrame: integer, endFrame: integer, initialPoseFrame: integer, rayLeastHeight: float, touchingGround: (boolean)[], pathToEndJoint: $List$Type<(string)>, startPosition: $Vec3f$Type, endPosition: $Vec3f$Type, startToEnd: $Vec3f$Type, terminalBoneTransform: $TransformSheet$Type)
 
-public "clipAnimation"(): boolean
-public "startToEnd"(): $Vec3f
-public "endJoint"(): $Joint
-public "startJoint"(): $Joint
 public "pathToEndJoint"(): $List<(string)>
 public "initialPoseFrame"(): integer
+public "endJoint"(): $Joint
+public "clipAnimation"(): boolean
+public "startToEnd"(): $Vec3f
+public "startJoint"(): $Joint
 public "startFrame"(): integer
 public "endFrame"(): integer
 public "endPosition"(): $Vec3f
 public "startPosition"(): $Vec3f
-public "equals"(arg0: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
 public "rayLeastHeight"(): float
 public "opponentJoint"(): $Joint
 public "terminalBoneTransform"(): $TransformSheet
 public "touchingGround"(): (boolean)[]
+public "equals"(arg0: any): boolean
+public "toString"(): string
+public "hashCode"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4116,140 +6938,6 @@ export type $InverseKinematicsSimulator$BakedInverseKinematicsDefinition$Type = 
  */
 declare global {
 export type $InverseKinematicsSimulator$BakedInverseKinematicsDefinition_ = $InverseKinematicsSimulator$BakedInverseKinematicsDefinition$Type;
-}}
-declare module "packages/yesman/epicfight/world/level/block/$FractureBlockState" {
-import {$Comparable, $Comparable$Type} from "packages/java/lang/$Comparable"
-import {$MapCodec, $MapCodec$Type} from "packages/com/mojang/serialization/$MapCodec"
-import {$Vector3f, $Vector3f$Type} from "packages/org/joml/$Vector3f"
-import {$VoxelShape, $VoxelShape$Type} from "packages/net/minecraft/world/phys/shapes/$VoxelShape"
-import {$CollisionContext, $CollisionContext$Type} from "packages/net/minecraft/world/phys/shapes/$CollisionContext"
-import {$Direction, $Direction$Type} from "packages/net/minecraft/core/$Direction"
-import {$BlockState, $BlockState$Type} from "packages/net/minecraft/world/level/block/state/$BlockState"
-import {$Block, $Block$Type} from "packages/net/minecraft/world/level/block/$Block"
-import {$Codec, $Codec$Type} from "packages/com/mojang/serialization/$Codec"
-import {$BlockGetter, $BlockGetter$Type} from "packages/net/minecraft/world/level/$BlockGetter"
-import {$Property, $Property$Type} from "packages/net/minecraft/world/level/block/state/properties/$Property"
-import {$ImmutableMap, $ImmutableMap$Type} from "packages/com/google/common/collect/$ImmutableMap"
-import {$Quaternionf, $Quaternionf$Type} from "packages/org/joml/$Quaternionf"
-import {$BlockPos, $BlockPos$Type} from "packages/net/minecraft/core/$BlockPos"
-import {$RenderShape, $RenderShape$Type} from "packages/net/minecraft/world/level/block/$RenderShape"
-
-export class $FractureBlockState extends $BlockState {
-static readonly "CODEC": $Codec<($BlockState)>
-static readonly "NAME_TAG": string
-static readonly "PROPERTIES_TAG": string
-
-constructor(arg0: $Block$Type, arg1: $ImmutableMap$Type<($Property$Type<(any)>), ($Comparable$Type<(any)>)>, arg2: $MapCodec$Type<($BlockState$Type)>)
-
-public "getLifeTime"(): integer
-public "getShape"(arg0: $BlockGetter$Type, arg1: $BlockPos$Type, arg2: $CollisionContext$Type): $VoxelShape
-public "getVisualShape"(arg0: $BlockGetter$Type, arg1: $BlockPos$Type, arg2: $CollisionContext$Type): $VoxelShape
-public "getLightEmission"(arg0: $BlockGetter$Type, arg1: $BlockPos$Type): integer
-public "getCollisionShape"(arg0: $BlockGetter$Type, arg1: $BlockPos$Type): $VoxelShape
-public "supportsExternalFaceHiding"(): boolean
-public "hidesNeighborFace"(arg0: $BlockGetter$Type, arg1: $BlockPos$Type, arg2: $BlockState$Type, arg3: $Direction$Type): boolean
-public "getShape"(arg0: $BlockGetter$Type, arg1: $BlockPos$Type): $VoxelShape
-public "getCollisionShape"(arg0: $BlockGetter$Type, arg1: $BlockPos$Type, arg2: $CollisionContext$Type): $VoxelShape
-public static "remove"(arg0: $BlockPos$Type): void
-public static "reset"(): void
-public "getRenderShape"(): $RenderShape
-public "hasBlockEntity"(): boolean
-public "getRotation"(): $Quaternionf
-public "getOriginalBlockState"(arg0: $BlockPos$Type): $BlockState
-public "getBouncing"(): double
-public "getTranslate"(): $Vector3f
-public "setFractureInfo"(arg0: $BlockPos$Type, arg1: $BlockState$Type, arg2: $Vector3f$Type, arg3: $Quaternionf$Type, arg4: double, arg5: integer): void
-get "lifeTime"(): integer
-get "renderShape"(): $RenderShape
-get "rotation"(): $Quaternionf
-get "bouncing"(): double
-get "translate"(): $Vector3f
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $FractureBlockState$Type = ($FractureBlockState);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $FractureBlockState_ = $FractureBlockState$Type;
-}}
-declare module "packages/yesman/epicfight/world/entity/eventlistener/$ActionEvent" {
-import {$PlayerPatch, $PlayerPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/player/$PlayerPatch"
-import {$AnimationManager$AnimationAccessor, $AnimationManager$AnimationAccessor$Type} from "packages/yesman/epicfight/api/animation/$AnimationManager$AnimationAccessor"
-import {$AbstractPlayerEvent, $AbstractPlayerEvent$Type} from "packages/yesman/epicfight/world/entity/eventlistener/$AbstractPlayerEvent"
-
-export class $ActionEvent<T extends $PlayerPatch<(any)>> extends $AbstractPlayerEvent<(T)> {
-
-constructor(arg0: $PlayerPatch$Type<(any)>, arg1: $AnimationManager$AnimationAccessor$Type<(any)>)
-
-public "shouldResetActionTick"(): boolean
-public "resetActionTick"(arg0: boolean): void
-public "getAnimation"(): $AnimationManager$AnimationAccessor<(any)>
-get "animation"(): $AnimationManager$AnimationAccessor<(any)>
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $ActionEvent$Type<T> = ($ActionEvent<(T)>);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $ActionEvent_<T> = $ActionEvent$Type<(T)>;
-}}
-declare module "packages/yesman/epicfight/api/animation/types/$ActionAnimation" {
-import {$AnimationPlayer, $AnimationPlayer$Type} from "packages/yesman/epicfight/api/animation/$AnimationPlayer"
-import {$AnimationVariables$SharedAnimationVariableKey, $AnimationVariables$SharedAnimationVariableKey$Type} from "packages/yesman/epicfight/api/animation/$AnimationVariables$SharedAnimationVariableKey"
-import {$AnimationVariables$IndependentAnimationVariableKey, $AnimationVariables$IndependentAnimationVariableKey$Type} from "packages/yesman/epicfight/api/animation/$AnimationVariables$IndependentAnimationVariableKey"
-import {$AssetAccessor, $AssetAccessor$Type} from "packages/yesman/epicfight/api/asset/$AssetAccessor"
-import {$MainFrameAnimation, $MainFrameAnimation$Type} from "packages/yesman/epicfight/api/animation/types/$MainFrameAnimation"
-import {$Vec3, $Vec3$Type} from "packages/net/minecraft/world/phys/$Vec3"
-import {$TransformSheet, $TransformSheet$Type} from "packages/yesman/epicfight/api/animation/$TransformSheet"
-import {$LocalPlayerPatch, $LocalPlayerPatch$Type} from "packages/yesman/epicfight/client/world/capabilites/entitypatch/player/$LocalPlayerPatch"
-import {$DynamicAnimation, $DynamicAnimation$Type} from "packages/yesman/epicfight/api/animation/types/$DynamicAnimation"
-import {$AnimationManager$AnimationAccessor, $AnimationManager$AnimationAccessor$Type} from "packages/yesman/epicfight/api/animation/$AnimationManager$AnimationAccessor"
-import {$Pose, $Pose$Type} from "packages/yesman/epicfight/api/animation/$Pose"
-import {$LinkAnimation, $LinkAnimation$Type} from "packages/yesman/epicfight/api/animation/types/$LinkAnimation"
-import {$LivingEntityPatch, $LivingEntityPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/$LivingEntityPatch"
-
-export class $ActionAnimation extends $MainFrameAnimation {
-static readonly "ACTION_ANIMATION_COORD": $AnimationVariables$SharedAnimationVariableKey<($TransformSheet)>
-static readonly "BEGINNING_LOCATION": $AnimationVariables$IndependentAnimationVariableKey<($Vec3)>
-static readonly "INITIAL_LOOK_VEC_DOT": $AnimationVariables$IndependentAnimationVariableKey<(float)>
-static readonly "HAD_NO_PHYSICS": $AnimationVariables$IndependentAnimationVariableKey<(boolean)>
-
-constructor(arg0: float, arg1: float, arg2: $AnimationManager$AnimationAccessor$Type<(any)>, arg3: $AssetAccessor$Type<(any)>)
-constructor(arg0: float, arg1: float, arg2: string, arg3: $AssetAccessor$Type<(any)>)
-constructor(arg0: float, arg1: $AnimationManager$AnimationAccessor$Type<(any)>, arg2: $AssetAccessor$Type<(any)>)
-
-public "setLinkAnimation"(arg0: $AssetAccessor$Type<(any)>, arg1: $Pose$Type, arg2: boolean, arg3: float, arg4: $LivingEntityPatch$Type<(any)>, arg5: $LinkAnimation$Type): void
-public "putOnPlayer"(arg0: $AnimationPlayer$Type, arg1: $LivingEntityPatch$Type<(any)>): void
-public "linkTick"(arg0: $LivingEntityPatch$Type<(any)>, arg1: $AssetAccessor$Type<(any)>): void
-public "correctRootJoint"(arg0: $DynamicAnimation$Type, arg1: $Pose$Type, arg2: $LivingEntityPatch$Type<(any)>, arg3: float, arg4: float): void
-public "modifyPose"(arg0: $DynamicAnimation$Type, arg1: $Pose$Type, arg2: $LivingEntityPatch$Type<(any)>, arg3: float, arg4: float): void
-public "correctRawZCoord"(arg0: $LivingEntityPatch$Type<(any)>, arg1: $Pose$Type, arg2: float): void
-public "getExpectedMovement"(arg0: $LivingEntityPatch$Type<(any)>, arg1: float): $Vec3
-public "shouldPlayerMove"(arg0: $LocalPlayerPatch$Type): boolean
-public "tick"(arg0: $LivingEntityPatch$Type<(any)>): void
-public "begin"(arg0: $LivingEntityPatch$Type<(any)>): void
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $ActionAnimation$Type = ($ActionAnimation);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $ActionAnimation_ = $ActionAnimation$Type;
 }}
 declare module "packages/yesman/epicfight/world/entity/eventlistener/$ProjectileHitEvent" {
 import {$ProjectileImpactEvent, $ProjectileImpactEvent$Type} from "packages/net/minecraftforge/event/entity/$ProjectileImpactEvent"
@@ -4292,34 +6980,34 @@ static readonly "EMPTY_SHEET": $TransformSheet
 static readonly "EMPTY_SHEET_PROVIDER": $Function<($Vec3), ($TransformSheet)>
 
 constructor(arg0: ($Keyframe$Type)[])
+constructor(arg0: $List$Type<($Keyframe$Type)>)
 constructor(arg0: integer)
 constructor()
-constructor(arg0: $List$Type<($Keyframe$Type)>)
 
-public "getFirstFrame"(): $TransformSheet
-public "correctAnimationByNewPosition"(arg0: $Vec3f$Type, arg1: $Vec3f$Type, arg2: $Vec3f$Type, arg3: $Vec3f$Type): void
-public "getInterpolatedTransform"(arg0: $TransformSheet$InterpolationInfo$Type): $JointTransform
-public "getInterpolatedTransform"(arg0: float): $JointTransform
-public "extendsZCoord"(arg0: float, arg1: integer, arg2: integer): $TransformSheet
-public "getCorrectedModelCoord"(arg0: $LivingEntityPatch$Type<(any)>, arg1: $Vec3$Type, arg2: $Vec3$Type, arg3: integer, arg4: integer): $TransformSheet
-public "copyAll"(): $TransformSheet
-public "getKeyframes"(): ($Keyframe)[]
 public "getInterpolatedTranslation"(arg0: float): $Vec3f
 public "getStartTransform"(): $JointTransform
 public "createInterpolated"(arg0: (float)[]): $TransformSheet
 public "getInterpolationInfo"(arg0: float): $TransformSheet$InterpolationInfo
 public "getInterpolatedRotation"(arg0: float): $Quaternionf
-public "maxFrameTime"(): float
 public "transformToWorldCoordOriginAsDest"(arg0: $LivingEntityPatch$Type<(any)>, arg1: $Vec3$Type, arg2: $Vec3$Type, arg3: float, arg4: float, arg5: integer, arg6: integer): $TransformSheet
+public "maxFrameTime"(): float
+public "getInterpolatedTransform"(arg0: float): $JointTransform
+public "getInterpolatedTransform"(arg0: $TransformSheet$InterpolationInfo$Type): $JointTransform
+public "getFirstFrame"(): $TransformSheet
+public "correctAnimationByNewPosition"(arg0: $Vec3f$Type, arg1: $Vec3f$Type, arg2: $Vec3f$Type, arg3: $Vec3f$Type): void
+public "extendsZCoord"(arg0: float, arg1: integer, arg2: integer): $TransformSheet
+public "getCorrectedModelCoord"(arg0: $LivingEntityPatch$Type<(any)>, arg1: $Vec3$Type, arg2: $Vec3$Type, arg3: integer, arg4: integer): $TransformSheet
+public "copyAll"(): $TransformSheet
+public "getKeyframes"(): ($Keyframe)[]
 public "readFrom"(arg0: $TransformSheet$Type): $TransformSheet
+public "extend"(arg0: $TransformSheet$Type): $TransformSheet
 public "toString"(): string
 public "forEach"(arg0: $BiConsumer$Type<(integer), ($Keyframe$Type)>, arg1: integer, arg2: integer): void
 public "forEach"(arg0: $BiConsumer$Type<(integer), ($Keyframe$Type)>): void
 public "copy"(arg0: integer, arg1: integer): $TransformSheet
-public "extend"(arg0: $TransformSheet$Type): $TransformSheet
+get "startTransform"(): $JointTransform
 get "firstFrame"(): $TransformSheet
 get "keyframes"(): ($Keyframe)[]
-get "startTransform"(): $JointTransform
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4368,56 +7056,6 @@ export type $PatchedEntityRenderer$Type<E, T, R, AM> = ($PatchedEntityRenderer<(
 declare global {
 export type $PatchedEntityRenderer_<E, T, R, AM> = $PatchedEntityRenderer$Type<(E), (T), (R), (AM)>;
 }}
-declare module "packages/yesman/epicfight/api/animation/property/$AnimationProperty$StaticAnimationProperty" {
-import {$AnimationEvent$SimpleEvent, $AnimationEvent$SimpleEvent$Type} from "packages/yesman/epicfight/api/animation/property/$AnimationEvent$SimpleEvent"
-import {$LivingMotion, $LivingMotion$Type} from "packages/yesman/epicfight/api/animation/$LivingMotion"
-import {$CapabilityItem, $CapabilityItem$Type} from "packages/yesman/epicfight/world/capabilities/item/$CapabilityItem"
-import {$AnimationEvent$E2, $AnimationEvent$E2$Type} from "packages/yesman/epicfight/api/animation/property/$AnimationEvent$E2"
-import {$InverseKinematicsSimulator$BakedInverseKinematicsDefinition, $InverseKinematicsSimulator$BakedInverseKinematicsDefinition$Type} from "packages/yesman/epicfight/api/physics/ik/$InverseKinematicsSimulator$BakedInverseKinematicsDefinition"
-import {$AnimationProperty$PoseModifier, $AnimationProperty$PoseModifier$Type} from "packages/yesman/epicfight/api/animation/property/$AnimationProperty$PoseModifier"
-import {$ResourceLocation, $ResourceLocation$Type} from "packages/net/minecraft/resources/$ResourceLocation"
-import {$Codec, $Codec$Type} from "packages/com/mojang/serialization/$Codec"
-import {$InverseKinematicsSimulator$InverseKinematicsDefinition, $InverseKinematicsSimulator$InverseKinematicsDefinition$Type} from "packages/yesman/epicfight/api/physics/ik/$InverseKinematicsSimulator$InverseKinematicsDefinition"
-import {$AnimationProperty$PlaybackTimeModifier, $AnimationProperty$PlaybackTimeModifier$Type} from "packages/yesman/epicfight/api/animation/property/$AnimationProperty$PlaybackTimeModifier"
-import {$AnimationManager$AnimationAccessor, $AnimationManager$AnimationAccessor$Type} from "packages/yesman/epicfight/api/animation/$AnimationManager$AnimationAccessor"
-import {$List, $List$Type} from "packages/java/util/$List"
-import {$AnimationProperty, $AnimationProperty$Type} from "packages/yesman/epicfight/api/animation/property/$AnimationProperty"
-import {$AnimationEvent, $AnimationEvent$Type} from "packages/yesman/epicfight/api/animation/property/$AnimationEvent"
-import {$AnimationProperty$PlaybackSpeedModifier, $AnimationProperty$PlaybackSpeedModifier$Type} from "packages/yesman/epicfight/api/animation/property/$AnimationProperty$PlaybackSpeedModifier"
-import {$Map, $Map$Type} from "packages/java/util/$Map"
-
-export class $AnimationProperty$StaticAnimationProperty<T> extends $AnimationProperty<(T)> {
-static readonly "TICK_EVENTS": $AnimationProperty$StaticAnimationProperty<($List<($AnimationEvent<(any), (any)>)>)>
-static readonly "ON_BEGIN_EVENTS": $AnimationProperty$StaticAnimationProperty<($List<($AnimationEvent$SimpleEvent<(any)>)>)>
-static readonly "ON_END_EVENTS": $AnimationProperty$StaticAnimationProperty<($List<($AnimationEvent$SimpleEvent<(any)>)>)>
-static readonly "ON_ITEM_CHANGE_EVENT": $AnimationProperty$StaticAnimationProperty<($AnimationEvent$SimpleEvent<($AnimationEvent$E2<($CapabilityItem), ($CapabilityItem)>)>)>
-static readonly "PLAY_SPEED_MODIFIER": $AnimationProperty$StaticAnimationProperty<($AnimationProperty$PlaybackSpeedModifier)>
-static readonly "ELAPSED_TIME_MODIFIER": $AnimationProperty$StaticAnimationProperty<($AnimationProperty$PlaybackTimeModifier)>
-static readonly "POSE_MODIFIER": $AnimationProperty$StaticAnimationProperty<($AnimationProperty$PoseModifier)>
-static readonly "FIXED_HEAD_ROTATION": $AnimationProperty$StaticAnimationProperty<(boolean)>
-static readonly "TRANSITION_ANIMATIONS_FROM": $AnimationProperty$StaticAnimationProperty<($Map<($ResourceLocation), ($AnimationManager$AnimationAccessor<(any)>)>)>
-static readonly "TRANSITION_ANIMATIONS_TO": $AnimationProperty$StaticAnimationProperty<($Map<($ResourceLocation), ($AnimationManager$AnimationAccessor<(any)>)>)>
-static readonly "NO_PHYSICS": $AnimationProperty$StaticAnimationProperty<(boolean)>
-static readonly "IK_DEFINITION": $AnimationProperty$StaticAnimationProperty<($List<($InverseKinematicsSimulator$InverseKinematicsDefinition)>)>
-static readonly "BAKED_IK_DEFINITION": $AnimationProperty$StaticAnimationProperty<($List<($InverseKinematicsSimulator$BakedInverseKinematicsDefinition)>)>
-static readonly "RESET_LIVING_MOTION": $AnimationProperty$StaticAnimationProperty<($LivingMotion)>
-
-constructor(arg0: string, arg1: $Codec$Type<(T)>)
-constructor()
-
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $AnimationProperty$StaticAnimationProperty$Type<T> = ($AnimationProperty$StaticAnimationProperty<(T)>);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $AnimationProperty$StaticAnimationProperty_<T> = $AnimationProperty$StaticAnimationProperty$Type<(T)>;
-}}
 declare module "packages/yesman/epicfight/world/entity/eventlistener/$TakeDamageEvent$Hurt" {
 import {$TakeDamageEvent, $TakeDamageEvent$Type} from "packages/yesman/epicfight/world/entity/eventlistener/$TakeDamageEvent"
 import {$ServerPlayerPatch, $ServerPlayerPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/player/$ServerPlayerPatch"
@@ -4443,42 +7081,6 @@ export type $TakeDamageEvent$Hurt$Type = ($TakeDamageEvent$Hurt);
 declare global {
 export type $TakeDamageEvent$Hurt_ = $TakeDamageEvent$Hurt$Type;
 }}
-declare module "packages/yesman/epicfight/skill/modules/$HoldableSkill" {
-import {$KeyMapping, $KeyMapping$Type} from "packages/net/minecraft/client/$KeyMapping"
-import {$ControlEngine, $ControlEngine$Type} from "packages/yesman/epicfight/client/events/engine/$ControlEngine"
-import {$FriendlyByteBuf, $FriendlyByteBuf$Type} from "packages/net/minecraft/network/$FriendlyByteBuf"
-import {$SkillContainer, $SkillContainer$Type} from "packages/yesman/epicfight/skill/$SkillContainer"
-import {$SPSkillExecutionFeedback, $SPSkillExecutionFeedback$Type} from "packages/yesman/epicfight/network/server/$SPSkillExecutionFeedback"
-import {$Skill, $Skill$Type} from "packages/yesman/epicfight/skill/$Skill"
-
-export interface $HoldableSkill {
-
- "getKeyMapping"(): $KeyMapping
- "holdTick"(arg0: $SkillContainer$Type): void
- "asSkill"(): $Skill
- "startHolding"(arg0: $SkillContainer$Type): void
- "resetHolding"(arg0: $SkillContainer$Type): void
- "onStopHolding"(arg0: $SkillContainer$Type, arg1: $SPSkillExecutionFeedback$Type): void
- "gatherHoldArguments"(arg0: $SkillContainer$Type, arg1: $ControlEngine$Type, arg2: $FriendlyByteBuf$Type): void
-
-(): $KeyMapping
-}
-
-export namespace $HoldableSkill {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $HoldableSkill$Type = ($HoldableSkill);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $HoldableSkill_ = $HoldableSkill$Type;
-}}
 declare module "packages/yesman/epicfight/api/physics/ik/$InverseKinematicsSimulator" {
 import {$InverseKinematicsSimulator$InverseKinematicsBuilder, $InverseKinematicsSimulator$InverseKinematicsBuilder$Type} from "packages/yesman/epicfight/api/physics/ik/$InverseKinematicsSimulator$InverseKinematicsBuilder"
 import {$InverseKinematicsSimulator$InverseKinematicsObject, $InverseKinematicsSimulator$InverseKinematicsObject$Type} from "packages/yesman/epicfight/api/physics/ik/$InverseKinematicsSimulator$InverseKinematicsObject"
@@ -4503,57 +7105,6 @@ export type $InverseKinematicsSimulator$Type = ($InverseKinematicsSimulator);
  */
 declare global {
 export type $InverseKinematicsSimulator_ = $InverseKinematicsSimulator$Type;
-}}
-declare module "packages/yesman/epicfight/api/utils/$EntitySnapshot$PlayerSnapshot" {
-import {$Function, $Function$Type} from "packages/java/util/function/$Function"
-import {$PoseStack, $PoseStack$Type} from "packages/com/mojang/blaze3d/vertex/$PoseStack"
-import {$Mesh$DrawingFunction, $Mesh$DrawingFunction$Type} from "packages/yesman/epicfight/api/client/model/$Mesh$DrawingFunction"
-import {$AbstractClientPlayerPatch, $AbstractClientPlayerPatch$Type} from "packages/yesman/epicfight/client/world/capabilites/entitypatch/player/$AbstractClientPlayerPatch"
-import {$MultiBufferSource, $MultiBufferSource$Type} from "packages/net/minecraft/client/renderer/$MultiBufferSource"
-import {$ResourceLocation, $ResourceLocation$Type} from "packages/net/minecraft/resources/$ResourceLocation"
-import {$EntitySnapshot, $EntitySnapshot$Type} from "packages/yesman/epicfight/api/utils/$EntitySnapshot"
-import {$RenderType, $RenderType$Type} from "packages/net/minecraft/client/renderer/$RenderType"
-
-export class $EntitySnapshot$PlayerSnapshot extends $EntitySnapshot<($AbstractClientPlayerPatch<(any)>)> {
-
-constructor(arg0: $AbstractClientPlayerPatch$Type<(any)>)
-
-public "renderTextured"(arg0: $PoseStack$Type, arg1: $MultiBufferSource$Type, arg2: $Function$Type<($ResourceLocation$Type), ($RenderType$Type)>, arg3: $Mesh$DrawingFunction$Type, arg4: integer, arg5: float, arg6: float, arg7: float, arg8: float): void
-public "render"(arg0: $PoseStack$Type, arg1: $MultiBufferSource$Type, arg2: $RenderType$Type, arg3: $Mesh$DrawingFunction$Type, arg4: integer, arg5: float, arg6: float, arg7: float, arg8: float): void
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $EntitySnapshot$PlayerSnapshot$Type = ($EntitySnapshot$PlayerSnapshot);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $EntitySnapshot$PlayerSnapshot_ = $EntitySnapshot$PlayerSnapshot$Type;
-}}
-declare module "packages/yesman/epicfight/api/animation/property/$AnimationEvent$SimpleEvent" {
-import {$AnimationEvent$Event, $AnimationEvent$Event$Type} from "packages/yesman/epicfight/api/animation/property/$AnimationEvent$Event"
-import {$AnimationEvent$Side, $AnimationEvent$Side$Type} from "packages/yesman/epicfight/api/animation/property/$AnimationEvent$Side"
-import {$AnimationEvent, $AnimationEvent$Type} from "packages/yesman/epicfight/api/animation/property/$AnimationEvent"
-
-export class $AnimationEvent$SimpleEvent<EVENT extends $AnimationEvent$Event<(any), (any), (any), (any), (any), (any), (any), (any), (any), (any)>> extends $AnimationEvent<(EVENT), ($AnimationEvent$SimpleEvent<(EVENT)>)> {
-
-
-public static "create"<E extends $AnimationEvent$Event<(any), (any), (any), (any), (any), (any), (any), (any), (any), (any)>>(arg0: E, arg1: $AnimationEvent$Side$Type): $AnimationEvent$SimpleEvent<(E)>
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $AnimationEvent$SimpleEvent$Type<EVENT> = ($AnimationEvent$SimpleEvent<(EVENT)>);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $AnimationEvent$SimpleEvent_<EVENT> = $AnimationEvent$SimpleEvent$Type<(EVENT)>;
 }}
 declare module "packages/yesman/epicfight/client/renderer/$FirstPersonRenderer" {
 import {$LocalPlayer, $LocalPlayer$Type} from "packages/net/minecraft/client/player/$LocalPlayer"
@@ -4589,39 +7140,6 @@ export type $FirstPersonRenderer$Type = ($FirstPersonRenderer);
 declare global {
 export type $FirstPersonRenderer_ = $FirstPersonRenderer$Type;
 }}
-declare module "packages/yesman/epicfight/network/server/$SPSkillExecutionFeedback" {
-import {$NetworkEvent$Context, $NetworkEvent$Context$Type} from "packages/net/minecraftforge/network/$NetworkEvent$Context"
-import {$FriendlyByteBuf, $FriendlyByteBuf$Type} from "packages/net/minecraft/network/$FriendlyByteBuf"
-import {$SPSkillExecutionFeedback$FeedbackType, $SPSkillExecutionFeedback$FeedbackType$Type} from "packages/yesman/epicfight/network/server/$SPSkillExecutionFeedback$FeedbackType"
-import {$Supplier, $Supplier$Type} from "packages/java/util/function/$Supplier"
-
-export class $SPSkillExecutionFeedback {
-
-constructor()
-
-public static "held"(arg0: integer): $SPSkillExecutionFeedback
-public static "expired"(arg0: integer): $SPSkillExecutionFeedback
-public "getBuffer"(): $FriendlyByteBuf
-public static "toBytes"(arg0: $SPSkillExecutionFeedback$Type, arg1: $FriendlyByteBuf$Type): void
-public static "handle"(arg0: $SPSkillExecutionFeedback$Type, arg1: $Supplier$Type<($NetworkEvent$Context$Type)>): void
-public static "executed"(arg0: integer): $SPSkillExecutionFeedback
-public static "fromBytes"(arg0: $FriendlyByteBuf$Type): $SPSkillExecutionFeedback
-public "setFeedbackType"(arg0: $SPSkillExecutionFeedback$FeedbackType$Type): void
-get "buffer"(): $FriendlyByteBuf
-set "feedbackType"(value: $SPSkillExecutionFeedback$FeedbackType$Type)
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $SPSkillExecutionFeedback$Type = ($SPSkillExecutionFeedback);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $SPSkillExecutionFeedback_ = $SPSkillExecutionFeedback$Type;
-}}
 declare module "packages/yesman/epicfight/network/$EpicFightNetworkManager$PayloadBundleBuilder" {
 import {$BiConsumer, $BiConsumer$Type} from "packages/java/util/function/$BiConsumer"
 
@@ -4631,8 +7149,8 @@ constructor()
 
 public static "beginWith"(arg0: any): $EpicFightNetworkManager$PayloadBundleBuilder
 public "and"(arg0: any): $EpicFightNetworkManager$PayloadBundleBuilder
-public static "create"(): $EpicFightNetworkManager$PayloadBundleBuilder
 public "send"(arg0: $BiConsumer$Type<(any), ((any)[])>): void
+public static "create"(): $EpicFightNetworkManager$PayloadBundleBuilder
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4645,69 +7163,6 @@ export type $EpicFightNetworkManager$PayloadBundleBuilder$Type = ($EpicFightNetw
  */
 declare global {
 export type $EpicFightNetworkManager$PayloadBundleBuilder_ = $EpicFightNetworkManager$PayloadBundleBuilder$Type;
-}}
-declare module "packages/yesman/epicfight/api/utils/math/$ValueModifier$Unified" {
-import {$Record, $Record$Type} from "packages/java/lang/$Record"
-import {$ValueModifier, $ValueModifier$Type} from "packages/yesman/epicfight/api/utils/math/$ValueModifier"
-import {$ValueModifier$ResultCalculator, $ValueModifier$ResultCalculator$Type} from "packages/yesman/epicfight/api/utils/math/$ValueModifier$ResultCalculator"
-
-export class $ValueModifier$Unified extends $Record implements $ValueModifier {
-
-constructor(adder: float, multiplier: float, setter: float)
-
-public "adder"(): float
-public "setter"(): float
-public "multiplier"(): float
-public "equals"(arg0: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
-public "attach"(arg0: $ValueModifier$ResultCalculator$Type): void
-public static "adder"(arg0: float): $ValueModifier
-public static "calculator"(): $ValueModifier$ResultCalculator
-public static "setter"(arg0: float): $ValueModifier
-public static "multiplier"(arg0: float): $ValueModifier
-set "ter"(value: float)
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $ValueModifier$Unified$Type = ($ValueModifier$Unified);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $ValueModifier$Unified_ = $ValueModifier$Unified$Type;
-}}
-declare module "packages/yesman/epicfight/world/capabilities/entitypatch/$EntityDecorations$DecorationOverlay" {
-import {$Vector4f, $Vector4f$Type} from "packages/org/joml/$Vector4f"
-import {$ResourceLocation, $ResourceLocation$Type} from "packages/net/minecraft/resources/$ResourceLocation"
-import {$RenderType, $RenderType$Type} from "packages/net/minecraft/client/renderer/$RenderType"
-
-export interface $EntityDecorations$DecorationOverlay {
-
- "getRenderType"(): $RenderType
- "shouldRender"(): boolean
- "shouldRemove"(): boolean
- "color"(arg0: float): $Vector4f
-}
-
-export namespace $EntityDecorations$DecorationOverlay {
-const GENERIC: $ResourceLocation
-const NO_COLOR: $Vector4f
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $EntityDecorations$DecorationOverlay$Type = ($EntityDecorations$DecorationOverlay);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $EntityDecorations$DecorationOverlay_ = $EntityDecorations$DecorationOverlay$Type;
 }}
 declare module "packages/yesman/epicfight/api/client/physics/cloth/$ClothSimulatable" {
 import {$Armature, $Armature$Type} from "packages/yesman/epicfight/api/model/$Armature"
@@ -4778,46 +7233,6 @@ export type $CapabilityItem$ZoomInType$Type = (("always") | ("use_tick") | ("cus
 declare global {
 export type $CapabilityItem$ZoomInType_ = $CapabilityItem$ZoomInType$Type;
 }}
-declare module "packages/yesman/epicfight/api/client/forgeevent/$UpdatePlayerMotionEvent" {
-import {$LivingMotion, $LivingMotion$Type} from "packages/yesman/epicfight/api/animation/$LivingMotion"
-import {$ListenerList, $ListenerList$Type} from "packages/net/minecraftforge/eventbus/$ListenerList"
-import {$Event, $Event$Type} from "packages/net/minecraftforge/eventbus/api/$Event"
-import {$DetachablePlayerEvent, $DetachablePlayerEvent$Type} from "packages/yesman/epicfight/world/entity/eventlistener/$DetachablePlayerEvent"
-import {$AbstractClientPlayerPatch, $AbstractClientPlayerPatch$Type} from "packages/yesman/epicfight/client/world/capabilites/entitypatch/player/$AbstractClientPlayerPatch"
-
-export class $UpdatePlayerMotionEvent extends $Event implements $DetachablePlayerEvent<($AbstractClientPlayerPatch<(any)>)> {
-
-constructor()
-constructor(arg0: $AbstractClientPlayerPatch$Type<(any)>, arg1: $LivingMotion$Type)
-
-public "getMotion"(): $LivingMotion
-public "setMotion"(arg0: $LivingMotion$Type): void
-public "getPlayerPatch"(): $AbstractClientPlayerPatch<(any)>
-public "getListenerList"(): $ListenerList
-public "hasResult"(): boolean
-public "isCancelable"(): boolean
-public "setCanceled"(arg0: boolean): void
-public "isCanceled"(): boolean
-get "motion"(): $LivingMotion
-set "motion"(value: $LivingMotion$Type)
-get "playerPatch"(): $AbstractClientPlayerPatch<(any)>
-get "listenerList"(): $ListenerList
-get "cancelable"(): boolean
-set "canceled"(value: boolean)
-get "canceled"(): boolean
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $UpdatePlayerMotionEvent$Type = ($UpdatePlayerMotionEvent);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $UpdatePlayerMotionEvent_ = $UpdatePlayerMotionEvent$Type;
-}}
 declare module "packages/yesman/epicfight/world/capabilities/item/$Style" {
 import {$ExtendableEnumManager, $ExtendableEnumManager$Type} from "packages/yesman/epicfight/api/utils/$ExtendableEnumManager"
 import {$ExtendableEnum, $ExtendableEnum$Type} from "packages/yesman/epicfight/api/utils/$ExtendableEnum"
@@ -4867,18 +7282,18 @@ export class $SkinnedMesh extends $StaticMesh<($SkinnedMesh$SkinnedMeshPart)> {
 constructor(arg0: $Map$Type<(string), ((number)[])>, arg1: $Map$Type<($MeshPartDefinition$Type), ($List$Type<($VertexBuilder$Type)>)>, arg2: $SkinnedMesh$Type, arg3: $Mesh$RenderProperties$Type)
 
 public "toJsonObject"(): $JsonObject
-public "affectingWeightIndices"(): ((integer)[])[]
+public "affectingJointCounts"(): (integer)[]
+public "affectingJointIndices"(): ((integer)[])[]
+public "getMaxJointCount"(): integer
 public "getVertexPosition"(arg0: integer, arg1: $Vector4f$Type, arg2: ($OpenMatrix4f$Type)[]): void
 public "getVertexNormal"(arg0: integer, arg1: integer, arg2: $Vector3f$Type, arg3: ($OpenMatrix4f$Type)[]): void
 public "drawPosed"(arg0: $PoseStack$Type, arg1: $VertexConsumer$Type, arg2: $Mesh$DrawingFunction$Type, arg3: integer, arg4: float, arg5: float, arg6: float, arg7: float, arg8: integer, arg9: $Armature$Type, arg10: ($OpenMatrix4f$Type)[]): void
-public "getMaxJointCount"(): integer
-public "affectingJointCounts"(): (integer)[]
-public "affectingJointIndices"(): ((integer)[])[]
-public "destroy"(): void
+public "affectingWeightIndices"(): ((integer)[])[]
+public "draw"(arg0: $PoseStack$Type, arg1: $MultiBufferSource$Type, arg2: $RenderType$Type, arg3: $Mesh$DrawingFunction$Type, arg4: integer, arg5: float, arg6: float, arg7: float, arg8: float, arg9: integer, arg10: $Armature$Type, arg11: ($OpenMatrix4f$Type)[]): void
 public "draw"(arg0: $PoseStack$Type, arg1: $VertexConsumer$Type, arg2: $Mesh$DrawingFunction$Type, arg3: integer, arg4: float, arg5: float, arg6: float, arg7: float, arg8: integer): void
 public "draw"(arg0: $PoseStack$Type, arg1: $MultiBufferSource$Type, arg2: $RenderType$Type, arg3: integer, arg4: float, arg5: float, arg6: float, arg7: float, arg8: integer, arg9: $Armature$Type, arg10: ($OpenMatrix4f$Type)[]): void
-public "draw"(arg0: $PoseStack$Type, arg1: $MultiBufferSource$Type, arg2: $RenderType$Type, arg3: $Mesh$DrawingFunction$Type, arg4: integer, arg5: float, arg6: float, arg7: float, arg8: float, arg9: integer, arg10: $Armature$Type, arg11: ($OpenMatrix4f$Type)[]): void
 public "weights"(): (float)[]
+public "destroy"(): void
 get "maxJointCount"(): integer
 }
 /**
@@ -4912,57 +7327,6 @@ export type $SkillBookScreen$TextureInfo$Type = ($SkillBookScreen$TextureInfo);
  */
 declare global {
 export type $SkillBookScreen$TextureInfo_ = $SkillBookScreen$TextureInfo$Type;
-}}
-declare module "packages/yesman/epicfight/client/renderer/shader/compute/$ComputeShaderSetup$MeshPartBuffer" {
-export {} // Mark the file as a module, do not remove unless there are other import/exports!
-export interface $ComputeShaderSetup$MeshPartBuffer {
-
- "partIdx"(): integer
- "vboId"(): integer
-}
-
-export namespace $ComputeShaderSetup$MeshPartBuffer {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $ComputeShaderSetup$MeshPartBuffer$Type = ($ComputeShaderSetup$MeshPartBuffer);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $ComputeShaderSetup$MeshPartBuffer_ = $ComputeShaderSetup$MeshPartBuffer$Type;
-}}
-declare module "packages/yesman/epicfight/world/entity/eventlistener/$ModifyAttackSpeedEvent" {
-import {$CapabilityItem, $CapabilityItem$Type} from "packages/yesman/epicfight/world/capabilities/item/$CapabilityItem"
-import {$PlayerPatch, $PlayerPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/player/$PlayerPatch"
-import {$AbstractPlayerEvent, $AbstractPlayerEvent$Type} from "packages/yesman/epicfight/world/entity/eventlistener/$AbstractPlayerEvent"
-
-export class $ModifyAttackSpeedEvent extends $AbstractPlayerEvent<($PlayerPatch<(any)>)> {
-
-constructor(arg0: $PlayerPatch$Type<(any)>, arg1: $CapabilityItem$Type, arg2: float)
-
-public "getItemCapability"(): $CapabilityItem
-public "getAttackSpeed"(): float
-public "setAttackSpeed"(arg0: float): void
-get "itemCapability"(): $CapabilityItem
-get "attackSpeed"(): float
-set "attackSpeed"(value: float)
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $ModifyAttackSpeedEvent$Type = ($ModifyAttackSpeedEvent);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $ModifyAttackSpeedEvent_ = $ModifyAttackSpeedEvent$Type;
 }}
 declare module "packages/yesman/epicfight/world/entity/eventlistener/$AttackPhaseEndEvent" {
 import {$ServerPlayerPatch, $ServerPlayerPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/player/$ServerPlayerPatch"
@@ -5002,8 +7366,8 @@ static readonly "MISSED": $AttackResult$ResultType
 static readonly "BLOCKED": $AttackResult$ResultType
 
 
-public "dealtDamage"(): boolean
 public "shouldCount"(): boolean
+public "dealtDamage"(): boolean
 public static "values"(): ($AttackResult$ResultType)[]
 public static "valueOf"(arg0: string): $AttackResult$ResultType
 }
@@ -5028,9 +7392,9 @@ export class $AbstractPlayerEvent<T extends $PlayerPatch<(any)>> implements $Det
 constructor(arg0: T, arg1: boolean)
 
 public "getPlayerPatch"(): T
-public "toString"(): string
 public "setCanceled"(arg0: boolean): void
 public "isCanceled"(): boolean
+public "toString"(): string
 get "playerPatch"(): T
 set "canceled"(value: boolean)
 get "canceled"(): boolean
@@ -5086,156 +7450,6 @@ export type $CustomPassiveSkill$CustomPassiveSkillBuilder$Type = ($CustomPassive
  */
 declare global {
 export type $CustomPassiveSkill$CustomPassiveSkillBuilder_ = $CustomPassiveSkill$CustomPassiveSkillBuilder$Type;
-}}
-declare module "packages/yesman/epicfight/api/client/animation/$Layer" {
-import {$AnimationPlayer, $AnimationPlayer$Type} from "packages/yesman/epicfight/api/animation/$AnimationPlayer"
-import {$Layer$Priority, $Layer$Priority$Type} from "packages/yesman/epicfight/api/client/animation/$Layer$Priority"
-import {$LivingMotion, $LivingMotion$Type} from "packages/yesman/epicfight/api/animation/$LivingMotion"
-import {$AssetAccessor, $AssetAccessor$Type} from "packages/yesman/epicfight/api/asset/$AssetAccessor"
-import {$Pose, $Pose$Type} from "packages/yesman/epicfight/api/animation/$Pose"
-import {$LayerOffAnimation, $LayerOffAnimation$Type} from "packages/yesman/epicfight/api/animation/types/$LayerOffAnimation"
-import {$Supplier, $Supplier$Type} from "packages/java/util/function/$Supplier"
-import {$LivingEntityPatch, $LivingEntityPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/$LivingEntityPatch"
-
-export class $Layer {
-readonly "animationPlayer": $AnimationPlayer
-
-constructor(arg0: $Layer$Priority$Type)
-constructor(arg0: $Layer$Priority$Type, arg1: $Supplier$Type<($AnimationPlayer$Type)>)
-
-public "getLivingMotion"(arg0: $LivingEntityPatch$Type<(any)>, arg1: boolean): $LivingMotion
-public "getEnabledPose"(arg0: $LivingEntityPatch$Type<(any)>, arg1: boolean, arg2: float): $Pose
-public "isOff"(): boolean
-public "copyLayerTo"(arg0: $Layer$Type, arg1: float): void
-public "disableLayer"(): void
-public static "setLayerOffAnimation"(arg0: $AssetAccessor$Type<(any)>, arg1: $Pose$Type, arg2: $LayerOffAnimation$Type, arg3: float): void
-public "getNextAnimation"(): $AssetAccessor<(any)>
-public "playAnimationInstantly"(arg0: $AssetAccessor$Type<(any)>, arg1: $LivingEntityPatch$Type<(any)>): void
-public "playAnimation"(arg0: $AssetAccessor$Type<(any)>, arg1: $LivingEntityPatch$Type<(any)>, arg2: float): void
-public "pause"(): void
-public "toString"(): string
-public "update"(arg0: $LivingEntityPatch$Type<(any)>): void
-public "off"(arg0: $LivingEntityPatch$Type<(any)>): void
-public "resume"(): void
-get "nextAnimation"(): $AssetAccessor<(any)>
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $Layer$Type = ($Layer);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $Layer_ = $Layer$Type;
-}}
-declare module "packages/yesman/epicfight/world/capabilities/item/$CapabilityItem$Builder" {
-import {$Function, $Function$Type} from "packages/java/util/function/$Function"
-import {$CapabilityItem, $CapabilityItem$Type} from "packages/yesman/epicfight/world/capabilities/item/$CapabilityItem"
-import {$WeaponCategory, $WeaponCategory$Type} from "packages/yesman/epicfight/world/capabilities/item/$WeaponCategory"
-import {$Attribute, $Attribute$Type} from "packages/net/minecraft/world/entity/ai/attributes/$Attribute"
-import {$AttributeModifier, $AttributeModifier$Type} from "packages/net/minecraft/world/entity/ai/attributes/$AttributeModifier"
-import {$Style, $Style$Type} from "packages/yesman/epicfight/world/capabilities/item/$Style"
-import {$Pair, $Pair$Type} from "packages/com/mojang/datafixers/util/$Pair"
-import {$Collider, $Collider$Type} from "packages/yesman/epicfight/api/collider/$Collider"
-
-export class $CapabilityItem$Builder {
-
-
-public "addStyleAttibutes"(arg0: $Style$Type, arg1: $Pair$Type<($Attribute$Type), ($AttributeModifier$Type)>): $CapabilityItem$Builder
-public "getCollider"(): $Collider
-public "category"(arg0: $WeaponCategory$Type): $CapabilityItem$Builder
-public "constructor"(arg0: $Function$Type<($CapabilityItem$Builder$Type), ($CapabilityItem$Type)>): $CapabilityItem$Builder
-public "build"(): $CapabilityItem
-public "collider"(arg0: $Collider$Type): $CapabilityItem$Builder
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $CapabilityItem$Builder$Type = ($CapabilityItem$Builder);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $CapabilityItem$Builder_ = $CapabilityItem$Builder$Type;
-}}
-declare module "packages/yesman/epicfight/world/capabilities/skill/$CapabilitySkill" {
-import {$CompoundTag, $CompoundTag$Type} from "packages/net/minecraft/nbt/$CompoundTag"
-import {$SkillSlot, $SkillSlot$Type} from "packages/yesman/epicfight/skill/$SkillSlot"
-import {$Set, $Set$Type} from "packages/java/util/$Set"
-import {$SkillContainer, $SkillContainer$Type} from "packages/yesman/epicfight/skill/$SkillContainer"
-import {$PlayerPatch, $PlayerPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/player/$PlayerPatch"
-import {$Stream, $Stream$Type} from "packages/java/util/stream/$Stream"
-import {$Skill, $Skill$Type} from "packages/yesman/epicfight/skill/$Skill"
-import {$SkillCategory, $SkillCategory$Type} from "packages/yesman/epicfight/skill/$SkillCategory"
-
-export class $CapabilitySkill {
-static readonly "EMPTY": $CapabilitySkill
-readonly "skillContainers": ($SkillContainer)[]
-
-constructor(arg0: $PlayerPatch$Type<(any)>)
-
-public "getSkillContainerFor"(arg0: $SkillSlot$Type): $SkillContainer
-public "getSkillContainerFor"(arg0: integer): $SkillContainer
-public "addLearnedSkill"(arg0: $Skill$Type): void
-public "removeLearnedSkill"(arg0: $Skill$Type): boolean
-public "hasCategory"(arg0: $SkillCategory$Type): boolean
-public "hasEmptyContainer"(arg0: $SkillCategory$Type): boolean
-public "getFirstEmptyContainer"(arg0: $SkillCategory$Type): $SkillContainer
-public "isEquipping"(arg0: $Skill$Type): boolean
-public "hasLearned"(arg0: $Skill$Type): boolean
-public "getSkillContainersFor"(arg0: $SkillCategory$Type): $Set<($SkillContainer)>
-public "listAcquiredSkills"(): $Stream<($Skill)>
-public "clearContainersAndLearnedSkills"(arg0: boolean): void
-public "listSkillContainers"(): $Stream<($SkillContainer)>
-public "getSkillContainer"(arg0: $Skill$Type): $SkillContainer
-public "removeSkillFromContainer"(arg0: $Skill$Type): void
-public "setSkillToContainer"(arg0: $Skill$Type, arg1: $SkillContainer$Type): void
-public "deserialize"(arg0: $CompoundTag$Type): void
-public "copyFrom"(arg0: $CapabilitySkill$Type): void
-public "serialize"(): $CompoundTag
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $CapabilitySkill$Type = ($CapabilitySkill);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $CapabilitySkill_ = $CapabilitySkill$Type;
-}}
-declare module "packages/yesman/epicfight/api/client/model/$VertexBuilder" {
-import {$List, $List$Type} from "packages/java/util/$List"
-
-export class $VertexBuilder {
-readonly "position": integer
-readonly "uv": integer
-readonly "normal": integer
-
-constructor(arg0: integer, arg1: integer, arg2: integer)
-
-public "equals"(arg0: any): boolean
-public "hashCode"(): integer
-public static "create"(arg0: (integer)[]): $List<($VertexBuilder)>
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $VertexBuilder$Type = ($VertexBuilder);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $VertexBuilder_ = $VertexBuilder$Type;
 }}
 declare module "packages/yesman/epicfight/compat/kubejs/skill/$CustomChargeableSkill$CustomChargeableSkillBuilder" {
 import {$Skill$Resource, $Skill$Resource$Type} from "packages/yesman/epicfight/skill/$Skill$Resource"
@@ -5319,48 +7533,6 @@ export type $CustomChargeableSkill$CustomChargeableSkillBuilder$Type = ($CustomC
 declare global {
 export type $CustomChargeableSkill$CustomChargeableSkillBuilder_ = $CustomChargeableSkill$CustomChargeableSkillBuilder$Type;
 }}
-declare module "packages/yesman/epicfight/api/client/animation/property/$TrailInfo$Builder" {
-import {$InteractionHand, $InteractionHand$Type} from "packages/net/minecraft/world/$InteractionHand"
-import {$SimpleParticleType, $SimpleParticleType$Type} from "packages/net/minecraft/core/particles/$SimpleParticleType"
-import {$TrailInfo, $TrailInfo$Type} from "packages/yesman/epicfight/api/client/animation/property/$TrailInfo"
-import {$Vec3, $Vec3$Type} from "packages/net/minecraft/world/phys/$Vec3"
-import {$ResourceLocation, $ResourceLocation$Type} from "packages/net/minecraft/resources/$ResourceLocation"
-
-export class $TrailInfo$Builder {
-
-constructor()
-
-public "updateInterval"(arg0: integer): $TrailInfo$Builder
-public "blockLight"(arg0: integer): $TrailInfo$Builder
-public "skyLight"(arg0: integer): $TrailInfo$Builder
-public "texture"(arg0: string): $TrailInfo$Builder
-public "texture"(arg0: $ResourceLocation$Type): $TrailInfo$Builder
-public "joint"(arg0: string): $TrailInfo$Builder
-public "startPos"(arg0: $Vec3$Type): $TrailInfo$Builder
-public "lifetime"(arg0: integer): $TrailInfo$Builder
-public "time"(arg0: float, arg1: float): $TrailInfo$Builder
-public "type"(arg0: $SimpleParticleType$Type): $TrailInfo$Builder
-public "b"(arg0: float): $TrailInfo$Builder
-public "g"(arg0: float): $TrailInfo$Builder
-public "create"(): $TrailInfo
-public "r"(arg0: float): $TrailInfo$Builder
-public "endPos"(arg0: $Vec3$Type): $TrailInfo$Builder
-public "fadeTime"(arg0: float): $TrailInfo$Builder
-public "itemSkinHand"(arg0: $InteractionHand$Type): $TrailInfo$Builder
-public "interpolations"(arg0: integer): $TrailInfo$Builder
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $TrailInfo$Builder$Type = ($TrailInfo$Builder);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $TrailInfo$Builder_ = $TrailInfo$Builder$Type;
-}}
 declare module "packages/yesman/epicfight/api/animation/$Animator" {
 import {$AnimationPlayer, $AnimationPlayer$Type} from "packages/yesman/epicfight/api/animation/$AnimationPlayer"
 import {$EntityState, $EntityState$Type} from "packages/yesman/epicfight/api/animation/types/$EntityState"
@@ -5382,31 +7554,31 @@ public "getPose"(arg0: float): $Pose
 public "addLivingAnimation"(arg0: $LivingMotion$Type, arg1: $AssetAccessor$Type<(any)>): void
 public "getLivingAnimations"(): $Map<($LivingMotion), ($AssetAccessor<(any)>)>
 public "resetLivingAnimations"(): void
-public "getEntityPatch"(): $LivingEntityPatch<(any)>
-public "getPlayerFor"(arg0: $AssetAccessor$Type<(any)>): $AnimationPlayer
-public "tick"(): void
-public "getEntityState"(): $EntityState
-public "getPlayer"(arg0: $AssetAccessor$Type<(any)>): $Optional<($AnimationPlayer)>
-public "playShootingAnimation"(): void
 public "getVariables"(): $AnimationVariables
 public "getLivingAnimation"(arg0: $LivingMotion$Type, arg1: $AssetAccessor$Type<(any)>): $AssetAccessor<(any)>
 public "playDeathAnimation"(): void
+public "getEntityPatch"(): $LivingEntityPatch<(any)>
+public "getPlayerFor"(arg0: $AssetAccessor$Type<(any)>): $AnimationPlayer
+public "playShootingAnimation"(): void
+public "getEntityState"(): $EntityState
+public "getPlayer"(arg0: $AssetAccessor$Type<(any)>): $Optional<($AnimationPlayer)>
 public "reserveAnimation"(arg0: integer): void
 public "reserveAnimation"(arg0: $AssetAccessor$Type<(any)>): void
 public "playAnimationInstantly"(arg0: integer): void
 public "playAnimationInstantly"(arg0: $AssetAccessor$Type<(any)>): void
-public "playAnimation"(arg0: integer, arg1: float): void
 public "playAnimation"(arg0: $AssetAccessor$Type<(any)>, arg1: float): void
-public "stopPlaying"(arg0: integer): boolean
+public "playAnimation"(arg0: integer, arg1: float): void
 public "stopPlaying"(arg0: $AssetAccessor$Type<(any)>): boolean
+public "stopPlaying"(arg0: integer): boolean
 public "setSoftPause"(arg0: boolean): void
 public "setHardPause"(arg0: boolean): void
 public "findFor"<T>(arg0: $Class$Type<(T)>): $Pair<($AnimationPlayer), (T)>
+public "tick"(): void
 public "postInit"(): void
 get "livingAnimations"(): $Map<($LivingMotion), ($AssetAccessor<(any)>)>
+get "variables"(): $AnimationVariables
 get "entityPatch"(): $LivingEntityPatch<(any)>
 get "entityState"(): $EntityState
-get "variables"(): $AnimationVariables
 set "softPause"(value: boolean)
 set "hardPause"(value: boolean)
 }
@@ -5422,37 +7594,6 @@ export type $Animator$Type = ($Animator);
 declare global {
 export type $Animator_ = $Animator$Type;
 }}
-declare module "packages/yesman/epicfight/api/client/animation/$Layer$Priority" {
-import {$Enum, $Enum$Type} from "packages/java/lang/$Enum"
-
-export class $Layer$Priority extends $Enum<($Layer$Priority)> {
-static readonly "LOWEST": $Layer$Priority
-static readonly "LOW": $Layer$Priority
-static readonly "MIDDLE": $Layer$Priority
-static readonly "HIGH": $Layer$Priority
-static readonly "HIGHEST": $Layer$Priority
-
-
-public "isHigherThan"(arg0: $Layer$Priority$Type): boolean
-public "highers"(): ($Layer$Priority)[]
-public "lowers"(): ($Layer$Priority)[]
-public "isHigherOrEqual"(arg0: $Layer$Priority$Type): boolean
-public "lowersAndEqual"(): ($Layer$Priority)[]
-public static "values"(): ($Layer$Priority)[]
-public static "valueOf"(arg0: string): $Layer$Priority
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $Layer$Priority$Type = (("high") | ("middle") | ("low") | ("highest") | ("lowest")) | ($Layer$Priority);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $Layer$Priority_ = $Layer$Priority$Type;
-}}
 declare module "packages/yesman/epicfight/client/gui/$VersionNotifier" {
 import {$Minecraft, $Minecraft$Type} from "packages/net/minecraft/client/$Minecraft"
 import {$GuiGraphics, $GuiGraphics$Type} from "packages/net/minecraft/client/gui/$GuiGraphics"
@@ -5461,8 +7602,8 @@ export class $VersionNotifier {
 
 constructor(arg0: $Minecraft$Type)
 
-public "init"(): void
 public "render"(arg0: $GuiGraphics$Type, arg1: boolean): void
+public "init"(): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5541,278 +7682,6 @@ export type $LocalPlayerPatch$FirstPersonLayer$Type = ($LocalPlayerPatch$FirstPe
 declare global {
 export type $LocalPlayerPatch$FirstPersonLayer_ = $LocalPlayerPatch$FirstPersonLayer$Type;
 }}
-declare module "packages/yesman/epicfight/api/client/model/$MeshPartDefinition" {
-import {$Mesh$RenderProperties, $Mesh$RenderProperties$Type} from "packages/yesman/epicfight/api/client/model/$Mesh$RenderProperties"
-import {$Supplier, $Supplier$Type} from "packages/java/util/function/$Supplier"
-import {$OpenMatrix4f, $OpenMatrix4f$Type} from "packages/yesman/epicfight/api/utils/math/$OpenMatrix4f"
-
-export interface $MeshPartDefinition {
-
- "partName"(): string
- "getModelPartAnimationProvider"(): $Supplier<($OpenMatrix4f)>
- "renderProperties"(): $Mesh$RenderProperties
-}
-
-export namespace $MeshPartDefinition {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $MeshPartDefinition$Type = ($MeshPartDefinition);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $MeshPartDefinition_ = $MeshPartDefinition$Type;
-}}
-declare module "packages/yesman/epicfight/world/entity/eventlistener/$ItemUseEndEvent" {
-import {$ServerPlayerPatch, $ServerPlayerPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/player/$ServerPlayerPatch"
-import {$LivingEntityUseItemEvent$Stop, $LivingEntityUseItemEvent$Stop$Type} from "packages/net/minecraftforge/event/entity/living/$LivingEntityUseItemEvent$Stop"
-import {$AbstractPlayerEvent, $AbstractPlayerEvent$Type} from "packages/yesman/epicfight/world/entity/eventlistener/$AbstractPlayerEvent"
-
-export class $ItemUseEndEvent extends $AbstractPlayerEvent<($ServerPlayerPatch)> {
-
-constructor(arg0: $ServerPlayerPatch$Type, arg1: $LivingEntityUseItemEvent$Stop$Type)
-
-public "getForgeEvent"(): $LivingEntityUseItemEvent$Stop
-get "forgeEvent"(): $LivingEntityUseItemEvent$Stop
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $ItemUseEndEvent$Type = ($ItemUseEndEvent);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $ItemUseEndEvent_ = $ItemUseEndEvent$Type;
-}}
-declare module "packages/yesman/epicfight/api/animation/types/$LayerOffAnimation" {
-import {$Layer$Priority, $Layer$Priority$Type} from "packages/yesman/epicfight/api/client/animation/$Layer$Priority"
-import {$AssetAccessor, $AssetAccessor$Type} from "packages/yesman/epicfight/api/asset/$AssetAccessor"
-import {$Class, $Class$Type} from "packages/java/lang/$Class"
-import {$ResourceLocation, $ResourceLocation$Type} from "packages/net/minecraft/resources/$ResourceLocation"
-import {$Runnable, $Runnable$Type} from "packages/java/lang/$Runnable"
-import {$AnimationClip, $AnimationClip$Type} from "packages/yesman/epicfight/api/animation/$AnimationClip"
-import {$DynamicAnimation, $DynamicAnimation$Type} from "packages/yesman/epicfight/api/animation/types/$DynamicAnimation"
-import {$Consumer, $Consumer$Type} from "packages/java/util/function/$Consumer"
-import {$AnimationManager$AnimationAccessor, $AnimationManager$AnimationAccessor$Type} from "packages/yesman/epicfight/api/animation/$AnimationManager$AnimationAccessor"
-import {$Pose, $Pose$Type} from "packages/yesman/epicfight/api/animation/$Pose"
-import {$Optional, $Optional$Type} from "packages/java/util/$Optional"
-import {$AnimationProperty, $AnimationProperty$Type} from "packages/yesman/epicfight/api/animation/property/$AnimationProperty"
-import {$LivingEntityPatch, $LivingEntityPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/$LivingEntityPatch"
-import {$JointMaskEntry, $JointMaskEntry$Type} from "packages/yesman/epicfight/api/client/animation/property/$JointMaskEntry"
-
-export class $LayerOffAnimation extends $DynamicAnimation implements $AnimationManager$AnimationAccessor<($LayerOffAnimation)> {
-
-constructor(arg0: $Layer$Priority$Type)
-
-public "getJointMaskEntry"(arg0: $LivingEntityPatch$Type<(any)>, arg1: boolean): $Optional<($JointMaskEntry)>
-public "hasTransformFor"(arg0: string): boolean
-public "inRegistry"(): boolean
-public "getAnimationClip"(): $AnimationClip
-public "isLinkAnimation"(): boolean
-public "setLastAnimation"(arg0: $AssetAccessor$Type<(any)>): void
-public "setLastPose"(arg0: $Pose$Type): void
-public "getPoseByTime"(arg0: $LivingEntityPatch$Type<(any)>, arg1: float, arg2: float): $Pose
-public "getRealAnimation"(): $AssetAccessor<(any)>
-public "doesHeadRotFollowEntityHead"(): boolean
-public "get"(): $LayerOffAnimation
-public "getProperty"<V>(arg0: $AnimationProperty$Type<(V)>): $Optional<(V)>
-public "end"(arg0: $LivingEntityPatch$Type<(any)>, arg1: $AssetAccessor$Type<(any)>, arg2: boolean): void
-public "id"(): integer
-public "isPresent"(): boolean
-public "getAccessor"(): $AnimationManager$AnimationAccessor<(any)>
-public "registryName"(): $ResourceLocation
-public "idBetween"(arg0: $AnimationManager$AnimationAccessor$Type<(any)>, arg1: $AnimationManager$AnimationAccessor$Type<(any)>): boolean
-public "doOrThrow"(arg0: $Consumer$Type<($LayerOffAnimation$Type)>): void
-public "checkType"(arg0: $Class$Type<(any)>): boolean
-public "ifPresent"(arg0: $Consumer$Type<($LayerOffAnimation$Type)>): void
-public "ifPresentOrElse"(arg0: $Consumer$Type<($LayerOffAnimation$Type)>, arg1: $Runnable$Type): void
-public "isEmpty"(): boolean
-public "orElse"(arg0: $LayerOffAnimation$Type): $LayerOffAnimation
-public "checkNotNull"(): void
-get "animationClip"(): $AnimationClip
-get "linkAnimation"(): boolean
-set "lastAnimation"(value: $AssetAccessor$Type<(any)>)
-set "lastPose"(value: $Pose$Type)
-get "realAnimation"(): $AssetAccessor<(any)>
-get "present"(): boolean
-get "accessor"(): $AnimationManager$AnimationAccessor<(any)>
-get "empty"(): boolean
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $LayerOffAnimation$Type = ($LayerOffAnimation);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $LayerOffAnimation_ = $LayerOffAnimation$Type;
-}}
-declare module "packages/yesman/epicfight/api/client/model/$StaticMesh" {
-import {$Mesh$RenderProperties, $Mesh$RenderProperties$Type} from "packages/yesman/epicfight/api/client/model/$Mesh$RenderProperties"
-import {$Armature, $Armature$Type} from "packages/yesman/epicfight/api/model/$Armature"
-import {$Vector3f, $Vector3f$Type} from "packages/org/joml/$Vector3f"
-import {$ClothSimulator$ClothObject, $ClothSimulator$ClothObject$Type} from "packages/yesman/epicfight/api/client/physics/cloth/$ClothSimulator$ClothObject"
-import {$ClothSimulatable, $ClothSimulatable$Type} from "packages/yesman/epicfight/api/client/physics/cloth/$ClothSimulatable"
-import {$RenderType, $RenderType$Type} from "packages/net/minecraft/client/renderer/$RenderType"
-import {$ClothSimulator$ClothObjectBuilder, $ClothSimulator$ClothObjectBuilder$Type} from "packages/yesman/epicfight/api/client/physics/cloth/$ClothSimulator$ClothObjectBuilder"
-import {$SoftBodyTranslatable, $SoftBodyTranslatable$Type} from "packages/yesman/epicfight/api/client/model/$SoftBodyTranslatable"
-import {$PoseStack, $PoseStack$Type} from "packages/com/mojang/blaze3d/vertex/$PoseStack"
-import {$List, $List$Type} from "packages/java/util/$List"
-import {$SoftBodyTranslatable$ClothSimulationInfo, $SoftBodyTranslatable$ClothSimulationInfo$Type} from "packages/yesman/epicfight/api/client/model/$SoftBodyTranslatable$ClothSimulationInfo"
-import {$Mesh, $Mesh$Type} from "packages/yesman/epicfight/api/client/model/$Mesh"
-import {$VertexConsumer, $VertexConsumer$Type} from "packages/com/mojang/blaze3d/vertex/$VertexConsumer"
-import {$Vector4f, $Vector4f$Type} from "packages/org/joml/$Vector4f"
-import {$Collection, $Collection$Type} from "packages/java/util/$Collection"
-import {$Vec3, $Vec3$Type} from "packages/net/minecraft/world/phys/$Vec3"
-import {$OpenMatrix4f, $OpenMatrix4f$Type} from "packages/yesman/epicfight/api/utils/math/$OpenMatrix4f"
-import {$VertexBuilder, $VertexBuilder$Type} from "packages/yesman/epicfight/api/client/model/$VertexBuilder"
-import {$Set, $Set$Type} from "packages/java/util/$Set"
-import {$Mesh$DrawingFunction, $Mesh$DrawingFunction$Type} from "packages/yesman/epicfight/api/client/model/$Mesh$DrawingFunction"
-import {$MeshPartDefinition, $MeshPartDefinition$Type} from "packages/yesman/epicfight/api/client/model/$MeshPartDefinition"
-import {$MeshPart, $MeshPart$Type} from "packages/yesman/epicfight/api/client/model/$MeshPart"
-import {$MultiBufferSource, $MultiBufferSource$Type} from "packages/net/minecraft/client/renderer/$MultiBufferSource"
-import {$Map, $Map$Type} from "packages/java/util/$Map"
-import {$Map$Entry, $Map$Entry$Type} from "packages/java/util/$Map$Entry"
-
-export class $StaticMesh<P extends $MeshPart> implements $Mesh, $SoftBodyTranslatable {
-
-constructor(arg0: $Map$Type<(string), ((number)[])>, arg1: $Map$Type<($MeshPartDefinition$Type), ($List$Type<($VertexBuilder$Type)>)>, arg2: $StaticMesh$Type<(P)>, arg3: $Mesh$RenderProperties$Type)
-
-public "createSimulationData"(arg0: $SoftBodyTranslatable$Type, arg1: $ClothSimulatable$Type, arg2: $ClothSimulator$ClothObjectBuilder$Type): $ClothSimulator$ClothObject
-public "normalList"(): $List<($Vec3)>
-public "hasPart"(arg0: string): boolean
-public "getPart"(arg0: string): $MeshPart
-public "getAllParts"(): $Collection<(P)>
-public "getPartEntry"(): $Set<($Map$Entry<(string), (P)>)>
-public "getSoftBodySimulationInfo"(): $Map<(string), ($SoftBodyTranslatable$ClothSimulationInfo)>
-public "getVertexPosition"(arg0: integer, arg1: $Vector4f$Type, arg2: ($OpenMatrix4f$Type)[]): void
-public "getVertexPosition"(arg0: integer, arg1: $Vector4f$Type): void
-public "getVertexNormal"(arg0: integer, arg1: integer, arg2: $Vector3f$Type, arg3: ($OpenMatrix4f$Type)[]): void
-public "getVertexNormal"(arg0: integer, arg1: $Vector3f$Type): void
-public "getRenderProperties"(): $Mesh$RenderProperties
-public "uvs"(): (float)[]
-public "putSoftBodySimulationInfo"(arg0: $Map$Type<(string), ($SoftBodyTranslatable$ClothSimulationInfo$Type)>): void
-public "initialize"(): void
-public "positions"(): (float)[]
-public "normals"(): (float)[]
-public "drawPosed"(arg0: $PoseStack$Type, arg1: $VertexConsumer$Type, arg2: $Mesh$DrawingFunction$Type, arg3: integer, arg4: float, arg5: float, arg6: float, arg7: float, arg8: integer, arg9: $Armature$Type, arg10: ($OpenMatrix4f$Type)[]): void
-public "draw"(arg0: $PoseStack$Type, arg1: $VertexConsumer$Type, arg2: $Mesh$DrawingFunction$Type, arg3: integer, arg4: float, arg5: float, arg6: float, arg7: float, arg8: integer): void
-public "draw"(arg0: $PoseStack$Type, arg1: $MultiBufferSource$Type, arg2: $RenderType$Type, arg3: $Mesh$DrawingFunction$Type, arg4: integer, arg5: float, arg6: float, arg7: float, arg8: float, arg9: integer, arg10: $Armature$Type, arg11: ($OpenMatrix4f$Type)[]): void
-public "getOriginalMesh"(): $StaticMesh<(any)>
-public "canStartSoftBodySimulation"(): boolean
-get "allParts"(): $Collection<(P)>
-get "partEntry"(): $Set<($Map$Entry<(string), (P)>)>
-get "softBodySimulationInfo"(): $Map<(string), ($SoftBodyTranslatable$ClothSimulationInfo)>
-get "renderProperties"(): $Mesh$RenderProperties
-get "originalMesh"(): $StaticMesh<(any)>
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $StaticMesh$Type<P> = ($StaticMesh<(P)>);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $StaticMesh_<P> = $StaticMesh$Type<(P)>;
-}}
-declare module "packages/yesman/epicfight/world/entity/eventlistener/$DealDamageEvent$Attack" {
-import {$ServerPlayerPatch, $ServerPlayerPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/player/$ServerPlayerPatch"
-import {$LivingAttackEvent, $LivingAttackEvent$Type} from "packages/net/minecraftforge/event/entity/living/$LivingAttackEvent"
-import {$DealDamageEvent, $DealDamageEvent$Type} from "packages/yesman/epicfight/world/entity/eventlistener/$DealDamageEvent"
-import {$LivingEntity, $LivingEntity$Type} from "packages/net/minecraft/world/entity/$LivingEntity"
-import {$EpicFightDamageSource, $EpicFightDamageSource$Type} from "packages/yesman/epicfight/world/damagesource/$EpicFightDamageSource"
-
-export class $DealDamageEvent$Attack extends $DealDamageEvent<($LivingAttackEvent)> {
-
-constructor(arg0: $ServerPlayerPatch$Type, arg1: $LivingEntity$Type, arg2: $EpicFightDamageSource$Type, arg3: $LivingAttackEvent$Type)
-
-public "getAttackDamage"(): float
-get "attackDamage"(): float
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $DealDamageEvent$Attack$Type = ($DealDamageEvent$Attack);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $DealDamageEvent$Attack_ = $DealDamageEvent$Attack$Type;
-}}
-declare module "packages/yesman/epicfight/network/server/$SPSetRemotePlayerSkill" {
-import {$NetworkEvent$Context, $NetworkEvent$Context$Type} from "packages/net/minecraftforge/network/$NetworkEvent$Context"
-import {$SkillSlot, $SkillSlot$Type} from "packages/yesman/epicfight/skill/$SkillSlot"
-import {$Record, $Record$Type} from "packages/java/lang/$Record"
-import {$FriendlyByteBuf, $FriendlyByteBuf$Type} from "packages/net/minecraft/network/$FriendlyByteBuf"
-import {$Supplier, $Supplier$Type} from "packages/java/util/function/$Supplier"
-import {$Skill, $Skill$Type} from "packages/yesman/epicfight/skill/$Skill"
-
-export class $SPSetRemotePlayerSkill extends $Record {
-
-constructor(entityId: integer, slot: $SkillSlot$Type, skill: $Skill$Type)
-
-public "entityId"(): integer
-public "slot"(): $SkillSlot
-public "equals"(arg0: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
-public static "toBytes"(arg0: $SPSetRemotePlayerSkill$Type, arg1: $FriendlyByteBuf$Type): void
-public static "handle"(arg0: $SPSetRemotePlayerSkill$Type, arg1: $Supplier$Type<($NetworkEvent$Context$Type)>): void
-public static "fromBytes"(arg0: $FriendlyByteBuf$Type): $SPSetRemotePlayerSkill
-public "skill"(): $Skill
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $SPSetRemotePlayerSkill$Type = ($SPSetRemotePlayerSkill);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $SPSetRemotePlayerSkill_ = $SPSetRemotePlayerSkill$Type;
-}}
-declare module "packages/yesman/epicfight/network/server/$SPSkillExecutionFeedback$FeedbackType" {
-import {$Enum, $Enum$Type} from "packages/java/lang/$Enum"
-
-export class $SPSkillExecutionFeedback$FeedbackType extends $Enum<($SPSkillExecutionFeedback$FeedbackType)> {
-static readonly "EXECUTED": $SPSkillExecutionFeedback$FeedbackType
-static readonly "HOLDING_START": $SPSkillExecutionFeedback$FeedbackType
-static readonly "EXPIRED": $SPSkillExecutionFeedback$FeedbackType
-
-
-public static "values"(): ($SPSkillExecutionFeedback$FeedbackType)[]
-public static "valueOf"(arg0: string): $SPSkillExecutionFeedback$FeedbackType
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $SPSkillExecutionFeedback$FeedbackType$Type = (("expired") | ("executed") | ("holding_start")) | ($SPSkillExecutionFeedback$FeedbackType);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $SPSkillExecutionFeedback$FeedbackType_ = $SPSkillExecutionFeedback$FeedbackType$Type;
-}}
 declare module "packages/yesman/epicfight/api/animation/$JointTransform" {
 import {$Vec3f, $Vec3f$Type} from "packages/yesman/epicfight/api/utils/math/$Vec3f"
 import {$MatrixOperation, $MatrixOperation$Type} from "packages/yesman/epicfight/api/utils/math/$MatrixOperation"
@@ -5829,33 +7698,33 @@ static readonly "RESULT2": string
 
 constructor(arg0: $Vec3f$Type, arg1: $Quaternionf$Type, arg2: $Vec3f$Type)
 
-public "clearTransform"(): void
-public static "fromMatrixWithoutScale"(arg0: $OpenMatrix4f$Type): $JointTransform
-public "overwriteRotation"(arg0: $JointTransform$Type): void
 public "getAnimationBoundMatrix"(arg0: $Joint$Type, arg1: $OpenMatrix4f$Type): $OpenMatrix4f
 public static "fromPrimitives"(arg0: float, arg1: float, arg2: float, arg3: float, arg4: float, arg5: float, arg6: float, arg7: float, arg8: float, arg9: float): $JointTransform
 public "toMatrix"(): $OpenMatrix4f
+public static "fromMatrixWithoutScale"(arg0: $OpenMatrix4f$Type): $JointTransform
+public "overwriteRotation"(arg0: $JointTransform$Type): void
+public "clearTransform"(): void
 public static "fromMatrix"(arg0: $OpenMatrix4f$Type): $JointTransform
 public "frontResult"(arg0: $JointTransform$Type, arg1: $MatrixOperation$Type): void
-public "copyFrom"(arg0: $JointTransform$Type): $JointTransform
 public static "mul"(arg0: $JointTransform$Type, arg1: $JointTransform$Type, arg2: $MatrixOperation$Type): $JointTransform
-public "parent"(arg0: $JointTransform$Type, arg1: $MatrixOperation$Type): void
-public "toString"(): string
-public "scale"(): $Vec3f
-public static "scale"(arg0: $Vec3f$Type): $JointTransform
-public static "empty"(): $JointTransform
-public "copy"(): $JointTransform
+public "copyFrom"(arg0: $JointTransform$Type): $JointTransform
 public static "interpolate"(arg0: $JointTransform$Type, arg1: $JointTransform$Type, arg2: float): $JointTransform
 public static "interpolate"(arg0: $JointTransform$Type, arg1: $JointTransform$Type, arg2: float, arg3: $JointTransform$Type): $JointTransform
 public static "translation"(arg0: $Vec3f$Type): $JointTransform
 public "translation"(): $Vec3f
 public static "rotation"(arg0: $Quaternionf$Type): $JointTransform
 public "rotation"(): $Quaternionf
-public "jointLocal"(arg0: $JointTransform$Type, arg1: $MatrixOperation$Type): void
 public "mergeIfExist"(arg0: string, arg1: $JointTransform$Type): $JointTransform
 public "animationTransform"(arg0: $JointTransform$Type, arg1: $MatrixOperation$Type): void
 public static "interpolateTransform"(arg0: $JointTransform$Type, arg1: $JointTransform$Type, arg2: float, arg3: $JointTransform$Type): $JointTransform
 public static "translationRotation"(arg0: $Vec3f$Type, arg1: $Quaternionf$Type): $JointTransform
+public "jointLocal"(arg0: $JointTransform$Type, arg1: $MatrixOperation$Type): void
+public "parent"(arg0: $JointTransform$Type, arg1: $MatrixOperation$Type): void
+public "toString"(): string
+public "scale"(): $Vec3f
+public static "scale"(arg0: $Vec3f$Type): $JointTransform
+public static "empty"(): $JointTransform
+public "copy"(): $JointTransform
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5868,97 +7737,6 @@ export type $JointTransform$Type = ($JointTransform);
  */
 declare global {
 export type $JointTransform_ = $JointTransform$Type;
-}}
-declare module "packages/yesman/epicfight/client/world/capabilites/entitypatch/player/$AbstractClientPlayerPatch" {
-import {$AbstractClientPlayer, $AbstractClientPlayer$Type} from "packages/net/minecraft/client/player/$AbstractClientPlayer"
-import {$LivingMotion, $LivingMotion$Type} from "packages/yesman/epicfight/api/animation/$LivingMotion"
-import {$Armature, $Armature$Type} from "packages/yesman/epicfight/api/model/$Armature"
-import {$CapabilityItem, $CapabilityItem$Type} from "packages/yesman/epicfight/world/capabilities/item/$CapabilityItem"
-import {$PlayerPatch, $PlayerPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/player/$PlayerPatch"
-import {$SPEntityPairingPacket, $SPEntityPairingPacket$Type} from "packages/yesman/epicfight/network/server/$SPEntityPairingPacket"
-import {$ActionAnimation, $ActionAnimation$Type} from "packages/yesman/epicfight/api/animation/types/$ActionAnimation"
-import {$Vec3, $Vec3$Type} from "packages/net/minecraft/world/phys/$Vec3"
-import {$EntityDataAccessor, $EntityDataAccessor$Type} from "packages/net/minecraft/network/syncher/$EntityDataAccessor"
-import {$OpenMatrix4f, $OpenMatrix4f$Type} from "packages/yesman/epicfight/api/utils/math/$OpenMatrix4f"
-import {$EntitySnapshot, $EntitySnapshot$Type} from "packages/yesman/epicfight/api/utils/$EntitySnapshot"
-import {$ClothSimulatable, $ClothSimulatable$Type} from "packages/yesman/epicfight/api/client/physics/cloth/$ClothSimulatable"
-import {$EpicSkins, $EpicSkins$Type} from "packages/yesman/epicfight/client/online/$EpicSkins"
-import {$DynamicAnimation, $DynamicAnimation$Type} from "packages/yesman/epicfight/api/animation/types/$DynamicAnimation"
-import {$PhysicsSimulator, $PhysicsSimulator$Type} from "packages/yesman/epicfight/api/physics/$PhysicsSimulator"
-import {$SimulationTypes, $SimulationTypes$Type} from "packages/yesman/epicfight/api/physics/$SimulationTypes"
-import {$Pose, $Pose$Type} from "packages/yesman/epicfight/api/animation/$Pose"
-import {$Optional, $Optional$Type} from "packages/java/util/$Optional"
-import {$EntityJoinLevelEvent, $EntityJoinLevelEvent$Type} from "packages/net/minecraftforge/event/entity/$EntityJoinLevelEvent"
-import {$ClothSimulator, $ClothSimulator$Type} from "packages/yesman/epicfight/api/client/physics/cloth/$ClothSimulator"
-import {$Animator, $Animator$Type} from "packages/yesman/epicfight/api/animation/$Animator"
-
-export class $AbstractClientPlayerPatch<T extends $AbstractClientPlayer> extends $PlayerPatch<(T)> implements $ClothSimulatable {
- "modelYRotO2": float
- "xPosO2": double
- "yPosO2": double
- "zPosO2": double
- "xCloakO2": double
- "yCloakO2": double
- "zCloakO2": double
-static "STAMINA": $EntityDataAccessor<(float)>
- "dx": double
- "dz": double
-static readonly "WEIGHT_CORRECTION": double
- "currentLivingMotion": $LivingMotion
- "currentCompositeMotion": $LivingMotion
-
-constructor()
-
-public "setEpicSkinsInformation"(arg0: $EpicSkins$Type): void
-public "getEpicSkinsInformation"(): $EpicSkins
-public "isEpicSkinsLoaded"(): boolean
-public "getSimulator"<SIM extends $PhysicsSimulator<(any), (any), (any), (any), (any)>>(arg0: $SimulationTypes$Type<(any), (any), (any), (any), (any), (SIM)>): $Optional<(SIM)>
-public "getClothSimulator"(): $ClothSimulator
-public "getAccurateCloakLocation"(arg0: float): $Vec3
-public "getAccuratePartialLocation"(arg0: float): $Vec3
-public "getObjectVelocity"(): $Vec3
-public "getAccurateYRot"(arg0: float): float
-public "getYRotDelta"(arg0: float): float
-public "getSimulatableAnimator"(): $Animator
-public "getGravity"(): float
-public "onOldPosUpdate"(): void
-public "updateMotion"(arg0: boolean): void
-public "poseTick"(arg0: $DynamicAnimation$Type, arg1: $Pose$Type, arg2: float, arg3: float): void
-public "overrideRender"(): boolean
-public "onJoinWorld"(arg0: T, arg1: $EntityJoinLevelEvent$Type): void
-public "getModelMatrix"(arg0: float): $OpenMatrix4f
-public "entityPairing"(arg0: $SPEntityPairingPacket$Type): void
-public "updateHeldItem"(arg0: $CapabilityItem$Type, arg1: $CapabilityItem$Type): void
-public "shouldMoveOnCurrentSide"(arg0: $ActionAnimation$Type): boolean
-public "captureEntitySnapshot"(): $EntitySnapshot<(any)>
-public "invalid"(): boolean
-public "getScale"(): float
-public "getArmature"(): $Armature
-public "getYRot"(): float
-public "getYRotO"(): float
-set "epicSkinsInformation"(value: $EpicSkins$Type)
-get "epicSkinsInformation"(): $EpicSkins
-get "epicSkinsLoaded"(): boolean
-get "clothSimulator"(): $ClothSimulator
-get "objectVelocity"(): $Vec3
-get "simulatableAnimator"(): $Animator
-get "gravity"(): float
-get "scale"(): float
-get "armature"(): $Armature
-get "yRot"(): float
-get "yRotO"(): float
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $AbstractClientPlayerPatch$Type<T> = ($AbstractClientPlayerPatch<(T)>);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $AbstractClientPlayerPatch_<T> = $AbstractClientPlayerPatch$Type<(T)>;
 }}
 declare module "packages/yesman/epicfight/api/animation/$TransformSheet$InterpolationInfo" {
 import {$Record, $Record$Type} from "packages/java/lang/$Record"
@@ -5987,166 +7765,6 @@ export type $TransformSheet$InterpolationInfo$Type = ($TransformSheet$Interpolat
 declare global {
 export type $TransformSheet$InterpolationInfo_ = $TransformSheet$InterpolationInfo$Type;
 }}
-declare module "packages/yesman/epicfight/api/animation/types/$StaticAnimation" {
-import {$Armature, $Armature$Type} from "packages/yesman/epicfight/api/model/$Armature"
-import {$AnimationVariables$IndependentAnimationVariableKey, $AnimationVariables$IndependentAnimationVariableKey$Type} from "packages/yesman/epicfight/api/animation/$AnimationVariables$IndependentAnimationVariableKey"
-import {$Layer$LayerType, $Layer$LayerType$Type} from "packages/yesman/epicfight/api/client/animation/$Layer$LayerType"
-import {$InverseKinematicsProvider, $InverseKinematicsProvider$Type} from "packages/yesman/epicfight/api/physics/ik/$InverseKinematicsProvider"
-import {$InverseKinematicsSimulator$BakedInverseKinematicsDefinition, $InverseKinematicsSimulator$BakedInverseKinematicsDefinition$Type} from "packages/yesman/epicfight/api/physics/ik/$InverseKinematicsSimulator$BakedInverseKinematicsDefinition"
-import {$ResourceLocation, $ResourceLocation$Type} from "packages/net/minecraft/resources/$ResourceLocation"
-import {$EntityState, $EntityState$Type} from "packages/yesman/epicfight/api/animation/types/$EntityState"
-import {$DynamicAnimation, $DynamicAnimation$Type} from "packages/yesman/epicfight/api/animation/types/$DynamicAnimation"
-import {$Function, $Function$Type} from "packages/java/util/function/$Function"
-import {$PoseStack, $PoseStack$Type} from "packages/com/mojang/blaze3d/vertex/$PoseStack"
-import {$InverseKinematicsSimulator$InverseKinematicsObject, $InverseKinematicsSimulator$InverseKinematicsObject$Type} from "packages/yesman/epicfight/api/physics/ik/$InverseKinematicsSimulator$InverseKinematicsObject"
-import {$List, $List$Type} from "packages/java/util/$List"
-import {$AnimationProperty, $AnimationProperty$Type} from "packages/yesman/epicfight/api/animation/property/$AnimationProperty"
-import {$JointMaskEntry, $JointMaskEntry$Type} from "packages/yesman/epicfight/api/client/animation/property/$JointMaskEntry"
-import {$AnimationProperty$StaticAnimationProperty, $AnimationProperty$StaticAnimationProperty$Type} from "packages/yesman/epicfight/api/animation/property/$AnimationProperty$StaticAnimationProperty"
-import {$InverseKinematicsSimulator$InverseKinematicsBuilder, $InverseKinematicsSimulator$InverseKinematicsBuilder$Type} from "packages/yesman/epicfight/api/physics/ik/$InverseKinematicsSimulator$InverseKinematicsBuilder"
-import {$Layer$Priority, $Layer$Priority$Type} from "packages/yesman/epicfight/api/client/animation/$Layer$Priority"
-import {$AssetAccessor, $AssetAccessor$Type} from "packages/yesman/epicfight/api/asset/$AssetAccessor"
-import {$Vec3f, $Vec3f$Type} from "packages/yesman/epicfight/api/utils/math/$Vec3f"
-import {$EntityState$StateFactor, $EntityState$StateFactor$Type} from "packages/yesman/epicfight/api/animation/types/$EntityState$StateFactor"
-import {$TypeFlexibleHashMap, $TypeFlexibleHashMap$Type} from "packages/yesman/epicfight/api/utils/datastruct/$TypeFlexibleHashMap"
-import {$JointTransform, $JointTransform$Type} from "packages/yesman/epicfight/api/animation/$JointTransform"
-import {$EnderDragonPatch, $EnderDragonPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/boss/enderdragon/$EnderDragonPatch"
-import {$TransformSheet, $TransformSheet$Type} from "packages/yesman/epicfight/api/animation/$TransformSheet"
-import {$OpenMatrix4f, $OpenMatrix4f$Type} from "packages/yesman/epicfight/api/utils/math/$OpenMatrix4f"
-import {$InverseKinematicsSimulatable, $InverseKinematicsSimulatable$Type} from "packages/yesman/epicfight/api/physics/ik/$InverseKinematicsSimulatable"
-import {$AnimationClip, $AnimationClip$Type} from "packages/yesman/epicfight/api/animation/$AnimationClip"
-import {$AnimationManager$AnimationAccessor, $AnimationManager$AnimationAccessor$Type} from "packages/yesman/epicfight/api/animation/$AnimationManager$AnimationAccessor"
-import {$Pose, $Pose$Type} from "packages/yesman/epicfight/api/animation/$Pose"
-import {$Optional, $Optional$Type} from "packages/java/util/$Optional"
-import {$Joint, $Joint$Type} from "packages/yesman/epicfight/api/animation/$Joint"
-import {$MultiBufferSource, $MultiBufferSource$Type} from "packages/net/minecraft/client/renderer/$MultiBufferSource"
-import {$LinkAnimation, $LinkAnimation$Type} from "packages/yesman/epicfight/api/animation/types/$LinkAnimation"
-import {$Quaternionf, $Quaternionf$Type} from "packages/org/joml/$Quaternionf"
-import {$AnimationEvent, $AnimationEvent$Type} from "packages/yesman/epicfight/api/animation/property/$AnimationEvent"
-import {$LivingEntityPatch, $LivingEntityPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/$LivingEntityPatch"
-
-export class $StaticAnimation extends $DynamicAnimation implements $InverseKinematicsProvider {
-static readonly "HAD_NO_PHYSICS": $AnimationVariables$IndependentAnimationVariableKey<(boolean)>
-
-constructor(arg0: $ResourceLocation$Type, arg1: float, arg2: boolean, arg3: string, arg4: $AssetAccessor$Type<(any)>)
-constructor()
-constructor(arg0: float, arg1: boolean, arg2: $AnimationManager$AnimationAccessor$Type<(any)>, arg3: $AssetAccessor$Type<(any)>)
-constructor(arg0: float, arg1: boolean, arg2: string, arg3: $AssetAccessor$Type<(any)>)
-constructor(arg0: boolean, arg1: $AnimationManager$AnimationAccessor$Type<(any)>, arg2: $AssetAccessor$Type<(any)>)
-
-public "getLayerType"(): $Layer$LayerType
-public "getJointMaskEntry"(arg0: $LivingEntityPatch$Type<(any)>, arg1: boolean): $Optional<($JointMaskEntry)>
-public "getStatesMap"(arg0: $LivingEntityPatch$Type<(any)>, arg1: float): $TypeFlexibleHashMap<($EntityState$StateFactor<(any)>)>
-public "renderDebugging"(arg0: $PoseStack$Type, arg1: $MultiBufferSource$Type, arg2: $LivingEntityPatch$Type<(any)>, arg3: float, arg4: float): void
-public "setLinkAnimation"(arg0: $AssetAccessor$Type<(any)>, arg1: $Pose$Type, arg2: boolean, arg3: float, arg4: $LivingEntityPatch$Type<(any)>, arg5: $LinkAnimation$Type): void
-public "getAnimationClip"(): $AnimationClip
-public "newConditionalTimePair"<A extends $StaticAnimation>(arg0: $Function$Type<($LivingEntityPatch$Type<(any)>), (integer)>, arg1: float, arg2: float): A
-public "addConditionalState"<T, A extends $StaticAnimation>(arg0: integer, arg1: $EntityState$StateFactor$Type<(T)>, arg2: T): A
-public "isStaticAnimation"(): boolean
-public "idBetween"(arg0: $StaticAnimation$Type, arg1: $StaticAnimation$Type): boolean
-public "getCoord"(): $TransformSheet
-public static "getFileHash"(arg0: $ResourceLocation$Type): string
-public "getFileHash"(): string
-public "loadAnimation"(): void
-public "modifyPose"(arg0: $DynamicAnimation$Type, arg1: $Pose$Type, arg2: $LivingEntityPatch$Type<(any)>, arg3: float, arg4: float): void
-public "addStateIfNotExist"<T, A extends $StaticAnimation>(arg0: $EntityState$StateFactor$Type<(T)>, arg1: T): A
-public "getModifiedLinkState"(arg0: $EntityState$StateFactor$Type<(any)>, arg1: any, arg2: $LivingEntityPatch$Type<(any)>, arg3: float): any
-public "createSimulationData"(arg0: $InverseKinematicsProvider$Type, arg1: $InverseKinematicsSimulatable$Type, arg2: $InverseKinematicsSimulator$InverseKinematicsBuilder$Type): $InverseKinematicsSimulator$InverseKinematicsObject
-public "addEvents"<A extends $StaticAnimation>(...arg0: ($AnimationEvent$Type<(any), (any)>)[]): A
-public "addEvents"<A extends $StaticAnimation>(arg0: $AnimationProperty$StaticAnimationProperty$Type<(any)>, ...arg1: ($AnimationEvent$Type<(any), (any)>)[]): A
-public "setResourceLocation"<A extends $StaticAnimation>(arg0: string, arg1: string): A
-public "addStateRemoveOld"<T, A extends $StaticAnimation>(arg0: $EntityState$StateFactor$Type<(T)>, arg1: T): A
-public "newTimePair"<A extends $StaticAnimation>(arg0: float, arg1: float): A
-public "getPlaySpeed"(arg0: $LivingEntityPatch$Type<(any)>, arg1: $DynamicAnimation$Type): float
-/**
- * 
- * @deprecated
- */
-public "addPropertyUnsafe"(arg0: $AnimationProperty$Type<(any)>, arg1: any): $StaticAnimation
-public "setAccessor"(arg0: $AnimationManager$AnimationAccessor$Type<(any)>): void
-public "getSubAnimations"(): $List<($AssetAccessor<(any)>)>
-public "getRegistryName"(): $ResourceLocation
-public "tick"(arg0: $LivingEntityPatch$Type<(any)>): void
-public "getArmature"(): $AssetAccessor<(any)>
-public "doesHeadRotFollowEntityHead"(): boolean
-public "invalidate"(): void
-public "getProperty"<V>(arg0: $AnimationProperty$Type<(V)>): $Optional<(V)>
-public "equals"(arg0: any): boolean
-public "toString"(): string
-public "end"(arg0: $LivingEntityPatch$Type<(any)>, arg1: $AssetAccessor$Type<(any)>, arg2: boolean): void
-public "begin"(arg0: $LivingEntityPatch$Type<(any)>): void
-public "getLocation"(): $ResourceLocation
-public "in"(arg0: ($StaticAnimation$Type)[]): boolean
-public "in"(arg0: ($AnimationManager$AnimationAccessor$Type<(any)>)[]): boolean
-public "getPriority"(): $Layer$Priority
-public "getId"(): integer
-public "getState"(arg0: $LivingEntityPatch$Type<(any)>, arg1: float): $EntityState
-public "getState"<T>(arg0: $EntityState$StateFactor$Type<(T)>, arg1: $LivingEntityPatch$Type<(any)>, arg2: float): T
-public "getAccessor"<A extends $DynamicAnimation>(): $AnimationManager$AnimationAccessor<(A)>
-public "isInvalid"(): boolean
-public "addProperty"<A extends $StaticAnimation, V>(arg0: $AnimationProperty$StaticAnimationProperty$Type<(V)>, arg1: V): A
-public "removeProperty"<A extends $StaticAnimation>(arg0: $AnimationProperty$StaticAnimationProperty$Type<(any)>): A
-public "removeState"<T, A extends $StaticAnimation>(arg0: $EntityState$StateFactor$Type<(T)>): A
-public "addState"<T, A extends $StaticAnimation>(arg0: $EntityState$StateFactor$Type<(T)>, arg1: T): A
-public "postInit"(): void
-public "clipAnimation"(arg0: $TransformSheet$Type, arg1: $InverseKinematicsSimulator$BakedInverseKinematicsDefinition$Type): $TransformSheet
-public "startPartAnimation"(arg0: $InverseKinematicsSimulator$BakedInverseKinematicsDefinition$Type, arg1: $InverseKinematicsSimulator$InverseKinematicsObject$Type, arg2: $TransformSheet$Type, arg3: $Vec3f$Type): void
-public "startSimple"(arg0: $InverseKinematicsSimulator$InverseKinematicsObject$Type): void
-public "getRayCastedTipPosition"(arg0: $InverseKinematicsSimulatable$Type, arg1: $Vec3f$Type, arg2: $OpenMatrix4f$Type, arg3: float, arg4: float): $Vec3f
-public "correctRootRotation"(arg0: $JointTransform$Type, arg1: $EnderDragonPatch$Type, arg2: float): void
-public "applyFabrikToJoint"(arg0: $Vec3f$Type, arg1: $Pose$Type, arg2: $Armature$Type, arg3: $Joint$Type, arg4: $Joint$Type, arg5: $Quaternionf$Type): void
-get "layerType"(): $Layer$LayerType
-get "animationClip"(): $AnimationClip
-get "staticAnimation"(): boolean
-get "coord"(): $TransformSheet
-get "fileHash"(): string
-set "accessor"(value: $AnimationManager$AnimationAccessor$Type<(any)>)
-get "subAnimations"(): $List<($AssetAccessor<(any)>)>
-get "registryName"(): $ResourceLocation
-get "armature"(): $AssetAccessor<(any)>
-get "location"(): $ResourceLocation
-get "priority"(): $Layer$Priority
-get "id"(): integer
-get "accessor"(): $AnimationManager$AnimationAccessor<(A)>
-get "invalid"(): boolean
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $StaticAnimation$Type = ($StaticAnimation);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $StaticAnimation_ = $StaticAnimation$Type;
-}}
-declare module "packages/yesman/epicfight/world/capabilities/entitypatch/$EntityDecorations$AnimationPropertyModifier" {
-export {} // Mark the file as a module, do not remove unless there are other import/exports!
-export interface $EntityDecorations$AnimationPropertyModifier<T, O> {
-
- "getModifiedValue"(arg0: T, arg1: O): T
- "shouldRemove"(): boolean
-
-(arg0: T, arg1: O): T
-}
-
-export namespace $EntityDecorations$AnimationPropertyModifier {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $EntityDecorations$AnimationPropertyModifier$Type<T, O> = ($EntityDecorations$AnimationPropertyModifier<(T), (O)>);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $EntityDecorations$AnimationPropertyModifier_<T, O> = $EntityDecorations$AnimationPropertyModifier$Type<(T), (O)>;
-}}
 declare module "packages/yesman/epicfight/skill/$SkillDataKey$SkillDataKeyCallbacks" {
 import {$RegistryManager, $RegistryManager$Type} from "packages/net/minecraftforge/registries/$RegistryManager"
 import {$IForgeRegistryInternal, $IForgeRegistryInternal$Type} from "packages/net/minecraftforge/registries/$IForgeRegistryInternal"
@@ -6158,9 +7776,9 @@ import {$IForgeRegistry$ClearCallback, $IForgeRegistry$ClearCallback$Type} from 
 export class $SkillDataKey$SkillDataKeyCallbacks implements $IForgeRegistry$BakeCallback<($SkillDataKey<(any)>)>, $IForgeRegistry$CreateCallback<($SkillDataKey<(any)>)>, $IForgeRegistry$ClearCallback<($SkillDataKey<(any)>)> {
 
 
-public "onCreate"(arg0: $IForgeRegistryInternal$Type<($SkillDataKey$Type<(any)>)>, arg1: $RegistryManager$Type): void
 public "onBake"(arg0: $IForgeRegistryInternal$Type<($SkillDataKey$Type<(any)>)>, arg1: $RegistryManager$Type): void
 public "onClear"(arg0: $IForgeRegistryInternal$Type<($SkillDataKey$Type<(any)>)>, arg1: $RegistryManager$Type): void
+public "onCreate"(arg0: $IForgeRegistryInternal$Type<($SkillDataKey$Type<(any)>)>, arg1: $RegistryManager$Type): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -6312,66 +7930,6 @@ export type $AnimationProperty$PlaybackSpeedModifier$Type = ($AnimationProperty$
 declare global {
 export type $AnimationProperty$PlaybackSpeedModifier_ = $AnimationProperty$PlaybackSpeedModifier$Type;
 }}
-declare module "packages/yesman/epicfight/world/capabilities/projectile/$ProjectilePatch" {
-import {$ProjectileImpactEvent, $ProjectileImpactEvent$Type} from "packages/net/minecraftforge/event/entity/$ProjectileImpactEvent"
-import {$Projectile, $Projectile$Type} from "packages/net/minecraft/world/entity/projectile/$Projectile"
-import {$EntityJoinLevelEvent, $EntityJoinLevelEvent$Type} from "packages/net/minecraftforge/event/entity/$EntityJoinLevelEvent"
-import {$EntityPatch, $EntityPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/$EntityPatch"
-import {$OpenMatrix4f, $OpenMatrix4f$Type} from "packages/yesman/epicfight/api/utils/math/$OpenMatrix4f"
-import {$EpicFightDamageSource, $EpicFightDamageSource$Type} from "packages/yesman/epicfight/world/damagesource/$EpicFightDamageSource"
-
-export class $ProjectilePatch<T extends $Projectile> extends $EntityPatch<(T)> {
-
-constructor()
-
-public "setHit"(arg0: boolean): void
-public "onAddedToWorld"(): void
-public "onProjectileImpact"(arg0: $ProjectileImpactEvent$Type): boolean
-public "overrideRender"(): boolean
-public "onJoinWorld"(arg0: T, arg1: $EntityJoinLevelEvent$Type): void
-public "getModelMatrix"(arg0: float): $OpenMatrix4f
-public "hit"(): boolean
-public "createEpicFightDamageSource"(): $EpicFightDamageSource
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $ProjectilePatch$Type<T> = ($ProjectilePatch<(T)>);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $ProjectilePatch_<T> = $ProjectilePatch$Type<(T)>;
-}}
-declare module "packages/yesman/epicfight/world/entity/eventlistener/$DodgeSuccessEvent" {
-import {$ServerPlayerPatch, $ServerPlayerPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/player/$ServerPlayerPatch"
-import {$DamageSource, $DamageSource$Type} from "packages/net/minecraft/world/damagesource/$DamageSource"
-import {$Vec3, $Vec3$Type} from "packages/net/minecraft/world/phys/$Vec3"
-import {$AbstractPlayerEvent, $AbstractPlayerEvent$Type} from "packages/yesman/epicfight/world/entity/eventlistener/$AbstractPlayerEvent"
-
-export class $DodgeSuccessEvent extends $AbstractPlayerEvent<($ServerPlayerPatch)> {
-
-constructor(arg0: $ServerPlayerPatch$Type, arg1: $DamageSource$Type, arg2: $Vec3$Type)
-
-public "getDamageSource"(): $DamageSource
-public "getLocation"(): $Vec3
-get "damageSource"(): $DamageSource
-get "location"(): $Vec3
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $DodgeSuccessEvent$Type = ($DodgeSuccessEvent);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $DodgeSuccessEvent_ = $DodgeSuccessEvent$Type;
-}}
 declare module "packages/yesman/epicfight/world/capabilities/entitypatch/boss/enderdragon/$EnderDragonPatch" {
 import {$BossEvent, $BossEvent$Type} from "packages/net/minecraft/world/$BossEvent"
 import {$SoundEvent, $SoundEvent$Type} from "packages/net/minecraft/sounds/$SoundEvent"
@@ -6414,29 +7972,20 @@ static readonly "WEIGHT_CORRECTION": double
 
 constructor()
 
+public "getBossEvent"(): $BossEvent
+public "setIKHeightAndRootRotation"(): void
+public "getNearbyCrystals"(): integer
+public "setGroundPhase"(): void
+public "isGroundPhase"(): boolean
 public "toEntity"(): $Entity
 public "getRootXRotO"(): float
 public "getRootXRot"(): float
 public "getRootZRotO"(): float
 public "getRootZRot"(): float
-public "setIKHeightAndRootRotation"(): void
 public "getIKSimulator"(): $InverseKinematicsSimulator
 public "setFlyingPhase"(): void
-public "getNearbyCrystals"(): integer
-public "setGroundPhase"(): void
-public "isGroundPhase"(): boolean
 public static "initAttributes"(arg0: $EntityAttributeModificationEvent$Type): void
-public "getBossEvent"(): $BossEvent
 public "getSimulator"<SIM extends $PhysicsSimulator<(any), (any), (any), (any), (any)>>(arg0: $SimulationTypes$Type<(any), (any), (any), (any), (any), (SIM)>): $Optional<(SIM)>
-public "tick"(arg0: $LivingEvent$LivingTickEvent$Type): void
-public "onDeath"(arg0: $LivingDeathEvent$Type): void
-public "saveData"(arg0: $CompoundTag$Type): void
-public "initAnimator"(arg0: $Animator$Type): void
-public "updateMotion"(arg0: boolean): void
-public "serverTick"(arg0: $LivingEvent$LivingTickEvent$Type): void
-public "poseTick"(arg0: $DynamicAnimation$Type, arg1: $Pose$Type, arg2: float, arg3: float): void
-public "onStartTracking"(arg0: $ServerPlayer$Type): void
-public "onStopTracking"(arg0: $ServerPlayer$Type): void
 public "onConstructed"(arg0: $EnderDragon$Type): void
 public "onJoinWorld"(arg0: $EnderDragon$Type, arg1: $EntityJoinLevelEvent$Type): void
 public "getAngleTo"(arg0: $Entity$Type): double
@@ -6445,10 +7994,19 @@ public "getModelMatrix"(arg0: float): $OpenMatrix4f
 public "entityPairing"(arg0: $SPEntityPairingPacket$Type): void
 public "isOutlineVisible"(arg0: $LocalPlayer$Type): boolean
 public "damageStunShield"(arg0: float, arg1: float): void
+public "initAnimator"(arg0: $Animator$Type): void
+public "updateMotion"(arg0: boolean): void
+public "serverTick"(arg0: $LivingEvent$LivingTickEvent$Type): void
+public "poseTick"(arg0: $DynamicAnimation$Type, arg1: $Pose$Type, arg2: float, arg3: float): void
+public "onDeath"(arg0: $LivingDeathEvent$Type): void
+public "saveData"(arg0: $CompoundTag$Type): void
+public "onStartTracking"(arg0: $ServerPlayer$Type): void
+public "onStopTracking"(arg0: $ServerPlayer$Type): void
 public "tryHurt"(arg0: $DamageSource$Type, arg1: float): $AttackResult
 public "getYRotDeltaTo"(arg0: $Entity$Type): float
 public "getSwingSound"(arg0: $InteractionHand$Type): $SoundEvent
 public "shouldMoveOnCurrentSide"(arg0: $ActionAnimation$Type): boolean
+public "tick"(arg0: $LivingEvent$LivingTickEvent$Type): void
 public "clientTick"(arg0: $LivingEvent$LivingTickEvent$Type): void
 public "rotateTo"(arg0: $Entity$Type, arg1: float, arg2: boolean): void
 public "recordBossEventOwner"(arg0: $ServerPlayer$Type): void
@@ -6456,14 +8014,14 @@ public "removeBossEventOwner"(arg0: $ServerPlayer$Type): void
 public "processOwnerRecordPacket"(arg0: $FriendlyByteBuf$Type): void
 public "getOriginal"(): $EnderDragon
 public "cast"<P extends $LivingEntityPatch<(any)>>(): P
+get "bossEvent"(): $BossEvent
+get "nearbyCrystals"(): integer
+get "groundPhase"(): boolean
 get "rootXRotO"(): float
 get "rootXRot"(): float
 get "rootZRotO"(): float
 get "rootZRot"(): float
 get "iKSimulator"(): $InverseKinematicsSimulator
-get "nearbyCrystals"(): integer
-get "groundPhase"(): boolean
-get "bossEvent"(): $BossEvent
 get "original"(): $EnderDragon
 }
 /**
@@ -6488,8 +8046,8 @@ export class $ClothSimulator$ClothOBBCollider extends $OBBCollider {
 
 constructor(arg0: double, arg1: double, arg2: double, arg3: double, arg4: double, arg5: double)
 
-public "pushIfPointInside"(arg0: $Vec3f$Type, arg1: $Vec3f$Type, arg2: float, arg3: $List$Type<($Vec3f$Type)>, arg4: $List$Type<($ClothSimulator$ClothOBBCollider$Type)>): void
 public "getOuterAABB"(arg0: float): $AABB
+public "pushIfPointInside"(arg0: $Vec3f$Type, arg1: $Vec3f$Type, arg2: float, arg3: $List$Type<($Vec3f$Type)>, arg4: $List$Type<($ClothSimulator$ClothOBBCollider$Type)>): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -6556,64 +8114,6 @@ export type $JointMask$JointMaskSet$Type = ($JointMask$JointMaskSet);
 declare global {
 export type $JointMask$JointMaskSet_ = $JointMask$JointMaskSet$Type;
 }}
-declare module "packages/yesman/epicfight/compat/kubejs/skill/$CustomSkill" {
-import {$Component, $Component$Type} from "packages/net/minecraft/network/chat/$Component"
-import {$CapabilityItem, $CapabilityItem$Type} from "packages/yesman/epicfight/world/capabilities/item/$CapabilityItem"
-import {$CreativeModeTab, $CreativeModeTab$Type} from "packages/net/minecraft/world/item/$CreativeModeTab"
-import {$SkillContainer, $SkillContainer$Type} from "packages/yesman/epicfight/skill/$SkillContainer"
-import {$PlayerPatch, $PlayerPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/player/$PlayerPatch"
-import {$BattleModeGui, $BattleModeGui$Type} from "packages/yesman/epicfight/client/gui/$BattleModeGui"
-import {$LocalPlayerPatch, $LocalPlayerPatch$Type} from "packages/yesman/epicfight/client/world/capabilites/entitypatch/player/$LocalPlayerPatch"
-import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
-import {$Skill, $Skill$Type} from "packages/yesman/epicfight/skill/$Skill"
-import {$ResourceLocation, $ResourceLocation$Type} from "packages/net/minecraft/resources/$ResourceLocation"
-import {$GuiGraphics, $GuiGraphics$Type} from "packages/net/minecraft/client/gui/$GuiGraphics"
-import {$CustomSkill$CustomSkillBuilder, $CustomSkill$CustomSkillBuilder$Type} from "packages/yesman/epicfight/compat/kubejs/skill/$CustomSkill$CustomSkillBuilder"
-import {$FriendlyByteBuf, $FriendlyByteBuf$Type} from "packages/net/minecraft/network/$FriendlyByteBuf"
-import {$List, $List$Type} from "packages/java/util/$List"
-
-export class $CustomSkill extends $Skill {
-
-constructor(arg0: $CustomSkill$CustomSkillBuilder$Type)
-
-public "onInitiate"(arg0: $SkillContainer$Type): void
-public "onRemoved"(arg0: $SkillContainer$Type): void
-public "setConsumption"(arg0: $SkillContainer$Type, arg1: float): void
-public "updateContainer"(arg0: $SkillContainer$Type): void
-public "getCooldownRegenPerSecond"(arg0: $PlayerPatch$Type<(any)>): float
-public "getMaxDuration"(): integer
-public "shouldDeactivateAutomatically"(arg0: $PlayerPatch$Type<(any)>): boolean
-public "onScreen"(arg0: $LocalPlayerPatch$Type, arg1: float, arg2: float): void
-public "getTooltipOnItem"(arg0: $ItemStack$Type, arg1: $CapabilityItem$Type, arg2: $PlayerPatch$Type<(any)>): $List<($Component)>
-public "getTooltipArgsOfScreen"(arg0: $List$Type<(any)>): $List<(any)>
-public "drawOnGui"(arg0: $BattleModeGui$Type, arg1: $SkillContainer$Type, arg2: $GuiGraphics$Type, arg3: float, arg4: float, arg5: float): void
-public "getSkillTexture"(): $ResourceLocation
-public "shouldDraw"(arg0: $SkillContainer$Type): boolean
-public "isExecutableState"(arg0: $PlayerPatch$Type<(any)>): boolean
-public "executeOnServer"(arg0: $SkillContainer$Type, arg1: $FriendlyByteBuf$Type): void
-public "cancelOnServer"(arg0: $SkillContainer$Type, arg1: $FriendlyByteBuf$Type): void
-public "executeOnClient"(arg0: $SkillContainer$Type, arg1: $FriendlyByteBuf$Type): void
-public "cancelOnClient"(arg0: $SkillContainer$Type, arg1: $FriendlyByteBuf$Type): void
-public "getMaxStack"(): integer
-public "canExecute"(arg0: $SkillContainer$Type): boolean
-public "getCreativeTab"(): $CreativeModeTab
-get "maxDuration"(): integer
-get "skillTexture"(): $ResourceLocation
-get "maxStack"(): integer
-get "creativeTab"(): $CreativeModeTab
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $CustomSkill$Type = ($CustomSkill);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $CustomSkill_ = $CustomSkill$Type;
-}}
 declare module "packages/yesman/epicfight/mixin/client/$MixinAgeableListModel" {
 import {$Iterable, $Iterable$Type} from "packages/java/lang/$Iterable"
 import {$ModelPart, $ModelPart$Type} from "packages/net/minecraft/client/model/geom/$ModelPart"
@@ -6649,15 +8149,15 @@ import {$Pose$LoadOperation, $Pose$LoadOperation$Type} from "packages/yesman/epi
 export class $Pose {
 static readonly "EMPTY_POSE": $Pose
 
-constructor()
 constructor(arg0: $Map$Type<(string), ($JointTransform$Type)>)
+constructor()
 
+public static "interpolatePose"(arg0: $Pose$Type, arg1: $Pose$Type, arg2: float): $Pose
+public "forEachEnabledTransforms"(arg0: $BiConsumer$Type<(string), ($JointTransform$Type)>): void
 public "disableJoint"(arg0: $Predicate$Type<(any)>): void
 public "getJointTransformData"(): $Map<(string), ($JointTransform)>
 public "putJointData"(arg0: string, arg1: $JointTransform$Type): void
 public "disableAllJoints"(): void
-public static "interpolatePose"(arg0: $Pose$Type, arg1: $Pose$Type, arg2: float): $Pose
-public "forEachEnabledTransforms"(arg0: $BiConsumer$Type<(string), ($JointTransform$Type)>): void
 public "hasTransform"(arg0: string): boolean
 public "orElseEmpty"(arg0: string): $JointTransform
 public "get"(arg0: string): $JointTransform
@@ -6678,92 +8178,6 @@ export type $Pose$Type = ($Pose);
 declare global {
 export type $Pose_ = $Pose$Type;
 }}
-declare module "packages/yesman/epicfight/skill/$Skill$Resource$ResourcePredicate" {
-import {$SkillContainer, $SkillContainer$Type} from "packages/yesman/epicfight/skill/$SkillContainer"
-import {$PlayerPatch, $PlayerPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/player/$PlayerPatch"
-
-export interface $Skill$Resource$ResourcePredicate {
-
- "canExecute"(arg0: $SkillContainer$Type, arg1: $PlayerPatch$Type<(any)>, arg2: float): boolean
-
-(arg0: $SkillContainer$Type, arg1: $PlayerPatch$Type<(any)>, arg2: float): boolean
-}
-
-export namespace $Skill$Resource$ResourcePredicate {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $Skill$Resource$ResourcePredicate$Type = ($Skill$Resource$ResourcePredicate);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $Skill$Resource$ResourcePredicate_ = $Skill$Resource$ResourcePredicate$Type;
-}}
-declare module "packages/yesman/epicfight/api/client/physics/cloth/$ClothSimulator$ClothObject$ClothPart$ConstraintType" {
-import {$Enum, $Enum$Type} from "packages/java/lang/$Enum"
-
-export class $ClothSimulator$ClothObject$ClothPart$ConstraintType extends $Enum<($ClothSimulator$ClothObject$ClothPart$ConstraintType)> {
-static readonly "STRETCHING": $ClothSimulator$ClothObject$ClothPart$ConstraintType
-static readonly "SHAPING": $ClothSimulator$ClothObject$ClothPart$ConstraintType
-static readonly "BENDING": $ClothSimulator$ClothObject$ClothPart$ConstraintType
-static readonly "VOLUME": $ClothSimulator$ClothObject$ClothPart$ConstraintType
-
-
-public static "values"(): ($ClothSimulator$ClothObject$ClothPart$ConstraintType)[]
-public static "valueOf"(arg0: string): $ClothSimulator$ClothObject$ClothPart$ConstraintType
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $ClothSimulator$ClothObject$ClothPart$ConstraintType$Type = (("bending") | ("volume") | ("stretching") | ("shaping")) | ($ClothSimulator$ClothObject$ClothPart$ConstraintType);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $ClothSimulator$ClothObject$ClothPart$ConstraintType_ = $ClothSimulator$ClothObject$ClothPart$ConstraintType$Type;
-}}
-declare module "packages/yesman/epicfight/compat/kubejs/skill/$CustomChargeableSkill$GatherChargingArgumentsContext" {
-import {$Record, $Record$Type} from "packages/java/lang/$Record"
-import {$ControlEngine, $ControlEngine$Type} from "packages/yesman/epicfight/client/events/engine/$ControlEngine"
-import {$FriendlyByteBuf, $FriendlyByteBuf$Type} from "packages/net/minecraft/network/$FriendlyByteBuf"
-import {$Skill, $Skill$Type} from "packages/yesman/epicfight/skill/$Skill"
-import {$LocalPlayerPatch, $LocalPlayerPatch$Type} from "packages/yesman/epicfight/client/world/capabilites/entitypatch/player/$LocalPlayerPatch"
-
-export class $CustomChargeableSkill$GatherChargingArgumentsContext extends $Record {
-
-constructor(getSkill: $Skill$Type, getCaster: $LocalPlayerPatch$Type, getControlEngine: $ControlEngine$Type, getBuffer: $FriendlyByteBuf$Type)
-
-public "getCaster"(): $LocalPlayerPatch
-public "getControlEngine"(): $ControlEngine
-public "getBuffer"(): $FriendlyByteBuf
-public "equals"(arg0: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
-public "getSkill"(): $Skill
-get "caster"(): $LocalPlayerPatch
-get "controlEngine"(): $ControlEngine
-get "buffer"(): $FriendlyByteBuf
-get "skill"(): $Skill
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $CustomChargeableSkill$GatherChargingArgumentsContext$Type = ($CustomChargeableSkill$GatherChargingArgumentsContext);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $CustomChargeableSkill$GatherChargingArgumentsContext_ = $CustomChargeableSkill$GatherChargingArgumentsContext$Type;
-}}
 declare module "packages/yesman/epicfight/world/entity/eventlistener/$SkillConsumeEvent" {
 import {$Skill$Resource, $Skill$Resource$Type} from "packages/yesman/epicfight/skill/$Skill$Resource"
 import {$FriendlyByteBuf, $FriendlyByteBuf$Type} from "packages/net/minecraft/network/$FriendlyByteBuf"
@@ -6773,20 +8187,20 @@ import {$AbstractPlayerEvent, $AbstractPlayerEvent$Type} from "packages/yesman/e
 
 export class $SkillConsumeEvent extends $AbstractPlayerEvent<($PlayerPatch<(any)>)> {
 
-constructor(arg0: $PlayerPatch$Type<(any)>, arg1: $Skill$Type, arg2: $Skill$Resource$Type, arg3: $FriendlyByteBuf$Type)
 constructor(arg0: $PlayerPatch$Type<(any)>, arg1: $Skill$Type, arg2: $Skill$Resource$Type, arg3: float, arg4: $FriendlyByteBuf$Type)
+constructor(arg0: $PlayerPatch$Type<(any)>, arg1: $Skill$Type, arg2: $Skill$Resource$Type, arg3: $FriendlyByteBuf$Type)
 
-public "setAmount"(arg0: float): void
 public "getResourceType"(): $Skill$Resource
 public "getAmount"(): float
 public "getArguments"(): $FriendlyByteBuf
 public "getSkill"(): $Skill
+public "setAmount"(arg0: float): void
 public "setResourceType"(arg0: $Skill$Resource$Type): void
-set "amount"(value: float)
 get "resourceType"(): $Skill$Resource
 get "amount"(): float
 get "arguments"(): $FriendlyByteBuf
 get "skill"(): $Skill
+set "amount"(value: float)
 set "resourceType"(value: $Skill$Resource$Type)
 }
 /**
@@ -6800,32 +8214,6 @@ export type $SkillConsumeEvent$Type = ($SkillConsumeEvent);
  */
 declare global {
 export type $SkillConsumeEvent_ = $SkillConsumeEvent$Type;
-}}
-declare module "packages/yesman/epicfight/world/damagesource/$ExtraDamageInstance$ExtraDamageTooltipFunction" {
-import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
-import {$MutableComponent, $MutableComponent$Type} from "packages/net/minecraft/network/chat/$MutableComponent"
-
-export interface $ExtraDamageInstance$ExtraDamageTooltipFunction {
-
- "setTooltip"(arg0: $ItemStack$Type, arg1: $MutableComponent$Type, arg2: double, arg3: (float)[]): void
-
-(arg0: $ItemStack$Type, arg1: $MutableComponent$Type, arg2: double, arg3: (float)[]): void
-}
-
-export namespace $ExtraDamageInstance$ExtraDamageTooltipFunction {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $ExtraDamageInstance$ExtraDamageTooltipFunction$Type = ($ExtraDamageInstance$ExtraDamageTooltipFunction);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $ExtraDamageInstance$ExtraDamageTooltipFunction_ = $ExtraDamageInstance$ExtraDamageTooltipFunction$Type;
 }}
 declare module "packages/yesman/epicfight/world/entity/eventlistener/$AnimationBeginEvent" {
 import {$StaticAnimation, $StaticAnimation$Type} from "packages/yesman/epicfight/api/animation/types/$StaticAnimation"
@@ -6851,134 +8239,6 @@ export type $AnimationBeginEvent$Type = ($AnimationBeginEvent);
 declare global {
 export type $AnimationBeginEvent_ = $AnimationBeginEvent$Type;
 }}
-declare module "packages/yesman/epicfight/mixin/client/$MixinEntityRenderer" {
-import {$Component, $Component$Type} from "packages/net/minecraft/network/chat/$Component"
-import {$PoseStack, $PoseStack$Type} from "packages/com/mojang/blaze3d/vertex/$PoseStack"
-import {$MultiBufferSource, $MultiBufferSource$Type} from "packages/net/minecraft/client/renderer/$MultiBufferSource"
-import {$Entity, $Entity$Type} from "packages/net/minecraft/world/entity/$Entity"
-
-export interface $MixinEntityRenderer {
-
- "invokeShouldShowName"(arg0: $Entity$Type): boolean
- "invokeRenderNameTag"(arg0: $Entity$Type, arg1: $Component$Type, arg2: $PoseStack$Type, arg3: $MultiBufferSource$Type, arg4: integer): void
-}
-
-export namespace $MixinEntityRenderer {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $MixinEntityRenderer$Type = ($MixinEntityRenderer);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $MixinEntityRenderer_ = $MixinEntityRenderer$Type;
-}}
-declare module "packages/yesman/epicfight/world/item/$GloveItem" {
-import {$Item, $Item$Type} from "packages/net/minecraft/world/item/$Item"
-import {$Multimap, $Multimap$Type} from "packages/com/google/common/collect/$Multimap"
-import {$WeaponItem, $WeaponItem$Type} from "packages/yesman/epicfight/world/item/$WeaponItem"
-import {$Item$Properties, $Item$Properties$Type} from "packages/net/minecraft/world/item/$Item$Properties"
-import {$Attribute, $Attribute$Type} from "packages/net/minecraft/world/entity/ai/attributes/$Attribute"
-import {$AttributeModifier, $AttributeModifier$Type} from "packages/net/minecraft/world/entity/ai/attributes/$AttributeModifier"
-import {$Tier, $Tier$Type} from "packages/net/minecraft/world/item/$Tier"
-import {$Block, $Block$Type} from "packages/net/minecraft/world/level/block/$Block"
-import {$Map, $Map$Type} from "packages/java/util/$Map"
-
-export class $GloveItem extends $WeaponItem {
- "defaultModifiers": $Multimap<($Attribute), ($AttributeModifier)>
- "tier": $Tier
-static readonly "BY_BLOCK": $Map<($Block), ($Item)>
-static readonly "MAX_STACK_SIZE": integer
-static readonly "EAT_DURATION": integer
-static readonly "MAX_BAR_WIDTH": integer
-
-constructor(arg0: $Item$Properties$Type, arg1: $Tier$Type)
-
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $GloveItem$Type = ($GloveItem);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $GloveItem_ = $GloveItem$Type;
-}}
-declare module "packages/yesman/epicfight/api/client/animation/property/$JointMaskEntry" {
-import {$JointMask$JointMaskSet, $JointMask$JointMaskSet$Type} from "packages/yesman/epicfight/api/client/animation/property/$JointMask$JointMaskSet"
-import {$LivingMotion, $LivingMotion$Type} from "packages/yesman/epicfight/api/animation/$LivingMotion"
-import {$Pair, $Pair$Type} from "packages/org/apache/commons/lang3/tuple/$Pair"
-import {$Set, $Set$Type} from "packages/java/util/$Set"
-import {$List, $List$Type} from "packages/java/util/$List"
-import {$JointMaskEntry$Builder, $JointMaskEntry$Builder$Type} from "packages/yesman/epicfight/api/client/animation/property/$JointMaskEntry$Builder"
-import {$Map$Entry, $Map$Entry$Type} from "packages/java/util/$Map$Entry"
-
-export class $JointMaskEntry {
-static readonly "BIPED_UPPER_JOINTS_WITH_ROOT": $JointMask$JointMaskSet
-static readonly "BASIC_ATTACK_MASK": $JointMaskEntry
-
-constructor(arg0: $JointMask$JointMaskSet$Type, arg1: $List$Type<($Pair$Type<($LivingMotion$Type), ($JointMask$JointMaskSet$Type)>)>)
-
-public "isMasked"(arg0: $LivingMotion$Type, arg1: string): boolean
-public "isValid"(): boolean
-public "getMask"(arg0: $LivingMotion$Type): $JointMask$JointMaskSet
-public "toString"(): string
-public static "builder"(): $JointMaskEntry$Builder
-public "getEntries"(): $Set<($Map$Entry<($LivingMotion), ($JointMask$JointMaskSet)>)>
-public "getDefaultMask"(): $JointMask$JointMaskSet
-get "valid"(): boolean
-get "entries"(): $Set<($Map$Entry<($LivingMotion), ($JointMask$JointMaskSet)>)>
-get "defaultMask"(): $JointMask$JointMaskSet
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $JointMaskEntry$Type = ($JointMaskEntry);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $JointMaskEntry_ = $JointMaskEntry$Type;
-}}
-declare module "packages/yesman/epicfight/skill/guard/$GuardSkill$Builder" {
-import {$CapabilityItem, $CapabilityItem$Type} from "packages/yesman/epicfight/world/capabilities/item/$CapabilityItem"
-import {$SkillBuilder, $SkillBuilder$Type} from "packages/yesman/epicfight/skill/$SkillBuilder"
-import {$WeaponCategory, $WeaponCategory$Type} from "packages/yesman/epicfight/world/capabilities/item/$WeaponCategory"
-import {$PlayerPatch, $PlayerPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/player/$PlayerPatch"
-import {$AnimationManager$AnimationAccessor, $AnimationManager$AnimationAccessor$Type} from "packages/yesman/epicfight/api/animation/$AnimationManager$AnimationAccessor"
-import {$BiFunction, $BiFunction$Type} from "packages/java/util/function/$BiFunction"
-import {$GuardSkill, $GuardSkill$Type} from "packages/yesman/epicfight/skill/guard/$GuardSkill"
-
-export class $GuardSkill$Builder extends $SkillBuilder<($GuardSkill)> {
-
-constructor()
-
-public "addGuardMotion"(arg0: $WeaponCategory$Type, arg1: $BiFunction$Type<($CapabilityItem$Type), ($PlayerPatch$Type<(any)>), ($AnimationManager$AnimationAccessor$Type<(any)>)>): $GuardSkill$Builder
-public "addGuardBreakMotion"(arg0: $WeaponCategory$Type, arg1: $BiFunction$Type<($CapabilityItem$Type), ($PlayerPatch$Type<(any)>), ($AnimationManager$AnimationAccessor$Type<(any)>)>): $GuardSkill$Builder
-public "addAdvancedGuardMotion"(arg0: $WeaponCategory$Type, arg1: $BiFunction$Type<($CapabilityItem$Type), ($PlayerPatch$Type<(any)>), (any)>): $GuardSkill$Builder
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $GuardSkill$Builder$Type = ($GuardSkill$Builder);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $GuardSkill$Builder_ = $GuardSkill$Builder$Type;
-}}
 declare module "packages/yesman/epicfight/api/animation/types/$LinkAnimation" {
 import {$AssetAccessor, $AssetAccessor$Type} from "packages/yesman/epicfight/api/asset/$AssetAccessor"
 import {$EntityState$StateFactor, $EntityState$StateFactor$Type} from "packages/yesman/epicfight/api/animation/types/$EntityState$StateFactor"
@@ -7001,6 +8261,7 @@ export class $LinkAnimation extends $DynamicAnimation implements $AnimationManag
 
 constructor()
 
+public "getCoord"(): $TransformSheet
 public "getJointMaskEntry"(arg0: $LivingEntityPatch$Type<(any)>, arg1: boolean): $Optional<($JointMaskEntry)>
 public "getStatesMap"(arg0: $LivingEntityPatch$Type<(any)>, arg1: float): $TypeFlexibleHashMap<($EntityState$StateFactor<(any)>)>
 public "inRegistry"(): boolean
@@ -7009,21 +8270,20 @@ public "getAnimationClip"(): $AnimationClip
 public "isLinkAnimation"(): boolean
 public "getNextAnimation"(): $AssetAccessor<(any)>
 public "isMainFrameAnimation"(): boolean
-public "getCoord"(): $TransformSheet
-public "loadCoord"(arg0: $TransformSheet$Type): void
-public "getNextStartTime"(): float
 public "resetNextStartTime"(): void
 public "setNextStartTime"(arg0: float): void
 public "setConnectedAnimations"(arg0: $AssetAccessor$Type<(any)>, arg1: $AssetAccessor$Type<(any)>): void
 public "getPoseByTime"(arg0: $LivingEntityPatch$Type<(any)>, arg1: float, arg2: float): $Pose
 public "modifyPose"(arg0: $DynamicAnimation$Type, arg1: $Pose$Type, arg2: $LivingEntityPatch$Type<(any)>, arg3: float, arg4: float): void
-public "isReboundAnimation"(): boolean
+public "loadCoord"(arg0: $TransformSheet$Type): void
+public "getNextStartTime"(): float
 public "getPlaySpeed"(arg0: $LivingEntityPatch$Type<(any)>, arg1: $DynamicAnimation$Type): float
+public "isReboundAnimation"(): boolean
+public "doesHeadRotFollowEntityHead"(): boolean
 public "getRealAnimation"(): $AssetAccessor<(any)>
 public "tick"(arg0: $LivingEntityPatch$Type<(any)>): void
-public "doesHeadRotFollowEntityHead"(): boolean
 public "copyTo"(arg0: $LinkAnimation$Type): void
-public "get"(): $LinkAnimation
+public "registryName"(): $ResourceLocation
 public "toString"(): string
 public "end"(arg0: $LivingEntityPatch$Type<(any)>, arg1: $AssetAccessor$Type<(any)>, arg2: boolean): void
 public "id"(): integer
@@ -7031,23 +8291,22 @@ public "isPresent"(): boolean
 public "getState"<T>(arg0: $EntityState$StateFactor$Type<(T)>, arg1: $LivingEntityPatch$Type<(any)>, arg2: float): T
 public "getState"(arg0: $LivingEntityPatch$Type<(any)>, arg1: float): $EntityState
 public "getAccessor"(): $AnimationManager$AnimationAccessor<(any)>
-public "registryName"(): $ResourceLocation
 public "idBetween"(arg0: $AnimationManager$AnimationAccessor$Type<(any)>, arg1: $AnimationManager$AnimationAccessor$Type<(any)>): boolean
 public "doOrThrow"(arg0: $Consumer$Type<($LinkAnimation$Type)>): void
 public "checkType"(arg0: $Class$Type<(any)>): boolean
-public "ifPresent"(arg0: $Consumer$Type<($LinkAnimation$Type)>): void
 public "ifPresentOrElse"(arg0: $Consumer$Type<($LinkAnimation$Type)>, arg1: $Runnable$Type): void
+public "ifPresent"(arg0: $Consumer$Type<($LinkAnimation$Type)>): void
+public "checkNotNull"(): void
 public "isEmpty"(): boolean
 public "orElse"(arg0: $LinkAnimation$Type): $LinkAnimation
-public "checkNotNull"(): void
+get "coord"(): $TransformSheet
 get "fromAnimation"(): $AssetAccessor<(any)>
 get "animationClip"(): $AnimationClip
 get "linkAnimation"(): boolean
 get "nextAnimation"(): $AssetAccessor<(any)>
 get "mainFrameAnimation"(): boolean
-get "coord"(): $TransformSheet
-get "nextStartTime"(): float
 set "nextStartTime"(value: float)
+get "nextStartTime"(): float
 get "reboundAnimation"(): boolean
 get "realAnimation"(): $AssetAccessor<(any)>
 get "present"(): boolean
@@ -7080,13 +8339,13 @@ constructor(skillSlot: $SkillSlot$Type, entityId: integer, skill: $Skill$Type)
 
 public "skillSlot"(): $SkillSlot
 public "entityId"(): integer
+public static "fromBytes"(arg0: $FriendlyByteBuf$Type): $SPChangeSkill
+public "skill"(): $Skill
 public "equals"(arg0: any): boolean
 public "toString"(): string
 public "hashCode"(): integer
 public static "toBytes"(arg0: $SPChangeSkill$Type, arg1: $FriendlyByteBuf$Type): void
 public static "handle"(arg0: $SPChangeSkill$Type, arg1: $Supplier$Type<($NetworkEvent$Context$Type)>): void
-public static "fromBytes"(arg0: $FriendlyByteBuf$Type): $SPChangeSkill
-public "skill"(): $Skill
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -7122,8 +8381,8 @@ public "getVanillaPartTransform"(): $OpenMatrix4f
 public "getVertices"(): $List<($VertexBuilder)>
 public "getColor"(arg0: float, arg1: float, arg2: float, arg3: float): $Vector4f
 public "setHidden"(arg0: boolean): void
-public "isHidden"(): boolean
 public "draw"(arg0: $PoseStack$Type, arg1: $VertexConsumer$Type, arg2: $Mesh$DrawingFunction$Type, arg3: integer, arg4: float, arg5: float, arg6: float, arg7: float, arg8: integer): void
+public "isHidden"(): boolean
 get "vanillaPartTransform"(): $OpenMatrix4f
 get "vertices"(): $List<($VertexBuilder)>
 set "hidden"(value: boolean)
@@ -7171,11 +8430,43 @@ static readonly "IDENTITY": $OpenMatrix4f
  "m33": float
 
 constructor(arg0: float, arg1: float, arg2: float, arg3: float, arg4: float, arg5: float, arg6: float, arg7: float, arg8: float, arg9: float, arg10: float, arg11: float, arg12: float, arg13: float, arg14: float, arg15: float)
+constructor(arg0: $JointTransform$Type)
+constructor(arg0: $OpenMatrix4f$Type, arg1: boolean)
 constructor(arg0: $OpenMatrix4f$Type)
 constructor()
-constructor(arg0: $OpenMatrix4f$Type, arg1: boolean)
-constructor(arg0: $JointTransform$Type)
 
+public static "importFromMojangMatrix"(arg0: $Matrix4f$Type): $OpenMatrix4f
+public static "mulMatrices"(...arg0: ($OpenMatrix4f$Type)[]): $OpenMatrix4f
+public static "mulAsOrigin"(arg0: $OpenMatrix4f$Type, arg1: $OpenMatrix4f$Type, arg2: $OpenMatrix4f$Type): $OpenMatrix4f
+public static "ofTranslation"(arg0: float, arg1: float, arg2: float, arg3: $OpenMatrix4f$Type): $OpenMatrix4f
+public static "createScale"(arg0: float, arg1: float, arg2: float): $OpenMatrix4f
+public static "ofScale"(arg0: float, arg1: float, arg2: float, arg3: $OpenMatrix4f$Type): $OpenMatrix4f
+public "toQuaternion"(): $Quaternionf
+public "toQuaternion"(arg0: $Quaternionf$Type): $Quaternionf
+public static "toQuaternion"(arg0: $OpenMatrix4f$Type): $Quaternionf
+public static "toQuaternion"(arg0: $OpenMatrix4f$Type, arg1: $Quaternionf$Type): $Quaternionf
+public static "ofRotationDegree"(arg0: float, arg1: $Vec3f$Type, arg2: $OpenMatrix4f$Type): $OpenMatrix4f
+public "toScaleVector"(arg0: $Vec3f$Type): $Vec3f
+public "toScaleVector"(): $Vec3f
+public static "exportToMojangMatrix"(arg0: $OpenMatrix4f$Type, arg1: $Matrix4f$Type): $Matrix4f
+public static "exportToMojangMatrix"(arg0: $OpenMatrix4f$Type): $Matrix4f
+public static "allocateMatrixArray"(arg0: integer): ($OpenMatrix4f)[]
+public static "setIdentity"(arg0: $OpenMatrix4f$Type): $OpenMatrix4f
+public "setIdentity"(): $OpenMatrix4f
+public static "fromQuaternion"(arg0: $Quaternionf$Type): $OpenMatrix4f
+public static "fromQuaternion"(arg0: $Quaternionf$Type, arg1: $OpenMatrix4f$Type): $OpenMatrix4f
+public static "removeScale"(arg0: $OpenMatrix4f$Type, arg1: $OpenMatrix4f$Type): $OpenMatrix4f
+public "removeScale"(): $OpenMatrix4f
+public "removeTranslation"(): $OpenMatrix4f
+public static "removeTranslation"(arg0: $OpenMatrix4f$Type, arg1: $OpenMatrix4f$Type): $OpenMatrix4f
+public static "transform3v"(arg0: $OpenMatrix4f$Type, arg1: $Vec3f$Type, arg2: $Vec3f$Type): $Vec3f
+public static "createRotatorDeg"(arg0: float, arg1: $Vec3f$Type): $OpenMatrix4f
+public "rotateDeg"(arg0: float, arg1: $Vec3f$Type): $OpenMatrix4f
+public static "invert"(arg0: $OpenMatrix4f$Type, arg1: $OpenMatrix4f$Type): $OpenMatrix4f
+public "invert"(): $OpenMatrix4f
+public "transpose"(arg0: $OpenMatrix4f$Type): $OpenMatrix4f
+public static "transpose"(arg0: $OpenMatrix4f$Type, arg1: $OpenMatrix4f$Type): $OpenMatrix4f
+public "transpose"(): $OpenMatrix4f
 public static "createTranslation"(arg0: float, arg1: float, arg2: float): $OpenMatrix4f
 public "mulBack"(arg0: $OpenMatrix4f$Type): $OpenMatrix4f
 public "mulFront"(arg0: $OpenMatrix4f$Type): $OpenMatrix4f
@@ -7184,62 +8475,30 @@ public static "toTranslationVector"(arg0: $OpenMatrix4f$Type, arg1: $Vec3f$Type)
 public static "toTranslationVector"(arg0: $OpenMatrix4f$Type): $Vec3f
 public "toTranslationVector"(arg0: $Vec3f$Type): $Vec3f
 public static "mulAsOriginInverse"(arg0: $OpenMatrix4f$Type, arg1: $OpenMatrix4f$Type, arg2: $OpenMatrix4f$Type): $OpenMatrix4f
-public static "importFromMojangMatrix"(arg0: $Matrix4f$Type): $OpenMatrix4f
-public static "ofRotationDegree"(arg0: float, arg1: $Vec3f$Type, arg2: $OpenMatrix4f$Type): $OpenMatrix4f
-public static "ofScale"(arg0: float, arg1: float, arg2: float, arg3: $OpenMatrix4f$Type): $OpenMatrix4f
-public static "toQuaternion"(arg0: $OpenMatrix4f$Type): $Quaternionf
-public static "toQuaternion"(arg0: $OpenMatrix4f$Type, arg1: $Quaternionf$Type): $Quaternionf
-public "toQuaternion"(): $Quaternionf
-public "toQuaternion"(arg0: $Quaternionf$Type): $Quaternionf
-public "toScaleVector"(): $Vec3f
-public "toScaleVector"(arg0: $Vec3f$Type): $Vec3f
-public static "exportToMojangMatrix"(arg0: $OpenMatrix4f$Type, arg1: $Matrix4f$Type): $Matrix4f
-public static "exportToMojangMatrix"(arg0: $OpenMatrix4f$Type): $Matrix4f
-public static "allocateMatrixArray"(arg0: integer): ($OpenMatrix4f)[]
-public static "fromQuaternion"(arg0: $Quaternionf$Type): $OpenMatrix4f
-public static "fromQuaternion"(arg0: $Quaternionf$Type, arg1: $OpenMatrix4f$Type): $OpenMatrix4f
-public static "setIdentity"(arg0: $OpenMatrix4f$Type): $OpenMatrix4f
-public "setIdentity"(): $OpenMatrix4f
-public static "mulMatrices"(...arg0: ($OpenMatrix4f$Type)[]): $OpenMatrix4f
-public static "mulAsOrigin"(arg0: $OpenMatrix4f$Type, arg1: $OpenMatrix4f$Type, arg2: $OpenMatrix4f$Type): $OpenMatrix4f
-public static "ofTranslation"(arg0: float, arg1: float, arg2: float, arg3: $OpenMatrix4f$Type): $OpenMatrix4f
-public static "createScale"(arg0: float, arg1: float, arg2: float): $OpenMatrix4f
-public static "invert"(arg0: $OpenMatrix4f$Type, arg1: $OpenMatrix4f$Type): $OpenMatrix4f
-public "invert"(): $OpenMatrix4f
-public static "transpose"(arg0: $OpenMatrix4f$Type, arg1: $OpenMatrix4f$Type): $OpenMatrix4f
-public "transpose"(): $OpenMatrix4f
-public "transpose"(arg0: $OpenMatrix4f$Type): $OpenMatrix4f
-public static "removeScale"(arg0: $OpenMatrix4f$Type, arg1: $OpenMatrix4f$Type): $OpenMatrix4f
-public "removeScale"(): $OpenMatrix4f
-public "removeTranslation"(): $OpenMatrix4f
-public static "removeTranslation"(arg0: $OpenMatrix4f$Type, arg1: $OpenMatrix4f$Type): $OpenMatrix4f
-public static "transform3v"(arg0: $OpenMatrix4f$Type, arg1: $Vec3f$Type, arg2: $Vec3f$Type): $Vec3f
-public static "createRotatorDeg"(arg0: float, arg1: $Vec3f$Type): $OpenMatrix4f
-public "rotateDeg"(arg0: float, arg1: $Vec3f$Type): $OpenMatrix4f
 public static "mul"(arg0: $OpenMatrix4f$Type, arg1: $OpenMatrix4f$Type, arg2: $OpenMatrix4f$Type): $OpenMatrix4f
+public "rotate"(arg0: float, arg1: $Vec3f$Type, arg2: $OpenMatrix4f$Type): $OpenMatrix4f
+public "rotate"(arg0: float, arg1: $Vec3f$Type): $OpenMatrix4f
+public static "rotate"(arg0: float, arg1: $Vec3f$Type, arg2: $OpenMatrix4f$Type, arg3: $OpenMatrix4f$Type): $OpenMatrix4f
+public "unmodifiable"(): $OpenMatrix4f
+public "translate"(arg0: float, arg1: float, arg2: float): $OpenMatrix4f
+public "translate"(arg0: $Vec3f$Type): $OpenMatrix4f
+public "translate"(arg0: $Vec3f$Type, arg1: $OpenMatrix4f$Type): $OpenMatrix4f
+public static "translate"(arg0: $Vec3f$Type, arg1: $OpenMatrix4f$Type, arg2: $OpenMatrix4f$Type): $OpenMatrix4f
+public "determinant"(): float
 public static "add"(arg0: $OpenMatrix4f$Type, arg1: $OpenMatrix4f$Type, arg2: $OpenMatrix4f$Type): $OpenMatrix4f
 public "toString"(): string
-public "load"(arg0: $FloatBuffer$Type): $OpenMatrix4f
-public static "load"(arg0: $OpenMatrix4f$Type, arg1: $FloatBuffer$Type): $OpenMatrix4f
-public "load"(arg0: $OpenMatrix4f$Type): $OpenMatrix4f
 public static "load"(arg0: $OpenMatrix4f$Type, arg1: $OpenMatrix4f$Type): $OpenMatrix4f
 public static "load"(arg0: $OpenMatrix4f$Type, arg1: (float)[]): $OpenMatrix4f
+public static "load"(arg0: $OpenMatrix4f$Type, arg1: $FloatBuffer$Type): $OpenMatrix4f
+public "load"(arg0: $OpenMatrix4f$Type): $OpenMatrix4f
+public "load"(arg0: $FloatBuffer$Type): $OpenMatrix4f
 public "store"(arg0: $FloatBuffer$Type): $OpenMatrix4f
-public static "scale"(arg0: $Vec3f$Type, arg1: $OpenMatrix4f$Type, arg2: $OpenMatrix4f$Type): $OpenMatrix4f
 public "scale"(arg0: $Vec3f$Type): $OpenMatrix4f
+public static "scale"(arg0: $Vec3f$Type, arg1: $OpenMatrix4f$Type, arg2: $OpenMatrix4f$Type): $OpenMatrix4f
 public "scale"(arg0: float, arg1: float, arg2: float): $OpenMatrix4f
 public "toList"(): $List<(float)>
 public static "transform"(arg0: $OpenMatrix4f$Type, arg1: $Vec3$Type): $Vec3
 public static "transform"(arg0: $OpenMatrix4f$Type, arg1: $Vec4f$Type, arg2: $Vec4f$Type): $Vec4f
-public "rotate"(arg0: float, arg1: $Vec3f$Type): $OpenMatrix4f
-public static "rotate"(arg0: float, arg1: $Vec3f$Type, arg2: $OpenMatrix4f$Type, arg3: $OpenMatrix4f$Type): $OpenMatrix4f
-public "rotate"(arg0: float, arg1: $Vec3f$Type, arg2: $OpenMatrix4f$Type): $OpenMatrix4f
-public "unmodifiable"(): $OpenMatrix4f
-public static "translate"(arg0: $Vec3f$Type, arg1: $OpenMatrix4f$Type, arg2: $OpenMatrix4f$Type): $OpenMatrix4f
-public "translate"(arg0: $Vec3f$Type, arg1: $OpenMatrix4f$Type): $OpenMatrix4f
-public "translate"(arg0: $Vec3f$Type): $OpenMatrix4f
-public "translate"(arg0: float, arg1: float, arg2: float): $OpenMatrix4f
-public "determinant"(): float
 set "identity"(value: $OpenMatrix4f$Type)
 }
 /**
@@ -7266,12 +8525,12 @@ constructor(arg0: string)
 public "universalValues"(): $Collection<(T)>
 public "toTranslated"(arg0: $ExtendableEnum$Type): string
 public "assign"(arg0: T): integer
-public "get"(arg0: integer): T
-public "get"(arg0: string): T
-public "getOrThrow"(arg0: string): T
 public "getOrThrow"(arg0: integer): T
+public "getOrThrow"(arg0: string): T
 public "registerEnumCls"(arg0: string, arg1: $Class$Type<(any)>): void
 public "loadEnum"(): void
+public "get"(arg0: integer): T
+public "get"(arg0: string): T
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -7285,28 +8544,6 @@ export type $ExtendableEnumManager$Type<T> = ($ExtendableEnumManager<(T)>);
 declare global {
 export type $ExtendableEnumManager_<T> = $ExtendableEnumManager$Type<(T)>;
 }}
-declare module "packages/yesman/epicfight/world/entity/eventlistener/$TakeDamageEvent$Damage" {
-import {$TakeDamageEvent, $TakeDamageEvent$Type} from "packages/yesman/epicfight/world/entity/eventlistener/$TakeDamageEvent"
-import {$ServerPlayerPatch, $ServerPlayerPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/player/$ServerPlayerPatch"
-import {$DamageSource, $DamageSource$Type} from "packages/net/minecraft/world/damagesource/$DamageSource"
-
-export class $TakeDamageEvent$Damage extends $TakeDamageEvent {
-
-constructor(arg0: $ServerPlayerPatch$Type, arg1: $DamageSource$Type, arg2: float)
-
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $TakeDamageEvent$Damage$Type = ($TakeDamageEvent$Damage);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $TakeDamageEvent$Damage_ = $TakeDamageEvent$Damage$Type;
-}}
 declare module "packages/yesman/epicfight/world/item/$SkillBookItem" {
 import {$Component, $Component$Type} from "packages/net/minecraft/network/chat/$Component"
 import {$Item$Properties, $Item$Properties$Type} from "packages/net/minecraft/world/item/$Item$Properties"
@@ -7315,8 +8552,8 @@ import {$Skill, $Skill$Type} from "packages/yesman/epicfight/skill/$Skill"
 import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
 import {$Block, $Block$Type} from "packages/net/minecraft/world/level/block/$Block"
 import {$Item, $Item$Type} from "packages/net/minecraft/world/item/$Item"
-import {$TooltipFlag, $TooltipFlag$Type} from "packages/net/minecraft/world/item/$TooltipFlag"
 import {$InteractionResultHolder, $InteractionResultHolder$Type} from "packages/net/minecraft/world/$InteractionResultHolder"
+import {$TooltipFlag, $TooltipFlag$Type} from "packages/net/minecraft/world/item/$TooltipFlag"
 import {$Player, $Player$Type} from "packages/net/minecraft/world/entity/player/$Player"
 import {$InteractionHand, $InteractionHand$Type} from "packages/net/minecraft/world/$InteractionHand"
 import {$List, $List$Type} from "packages/java/util/$List"
@@ -7331,9 +8568,9 @@ static readonly "MAX_BAR_WIDTH": integer
 constructor(arg0: $Item$Properties$Type)
 
 public static "getContainSkill"(arg0: $ItemStack$Type): $Skill
+public "use"(arg0: $Level$Type, arg1: $Player$Type, arg2: $InteractionHand$Type): $InteractionResultHolder<($ItemStack)>
 public "appendHoverText"(arg0: $ItemStack$Type, arg1: $Level$Type, arg2: $List$Type<($Component$Type)>, arg3: $TooltipFlag$Type): void
 public "isFoil"(arg0: $ItemStack$Type): boolean
-public "use"(arg0: $Level$Type, arg1: $Player$Type, arg2: $InteractionHand$Type): $InteractionResultHolder<($ItemStack)>
 public static "setContainingSkill"(arg0: $Skill$Type, arg1: $ItemStack$Type): void
 public static "setContainingSkill"(arg0: string, arg1: $ItemStack$Type): void
 }
@@ -7433,49 +8670,13 @@ export type $AnimationSubFileReader$PovSettings$RootTransformation$Type = (("wor
 declare global {
 export type $AnimationSubFileReader$PovSettings$RootTransformation_ = $AnimationSubFileReader$PovSettings$RootTransformation$Type;
 }}
-declare module "packages/yesman/epicfight/api/forgeevent/$EntityStunEvent" {
-import {$StunType, $StunType$Type} from "packages/yesman/epicfight/world/damagesource/$StunType"
-import {$ListenerList, $ListenerList$Type} from "packages/net/minecraftforge/eventbus/$ListenerList"
-import {$Event, $Event$Type} from "packages/net/minecraftforge/eventbus/api/$Event"
-import {$HurtableEntityPatch, $HurtableEntityPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/$HurtableEntityPatch"
-import {$EpicFightDamageSource, $EpicFightDamageSource$Type} from "packages/yesman/epicfight/world/damagesource/$EpicFightDamageSource"
-
-export class $EntityStunEvent extends $Event {
-
-constructor()
-constructor(arg0: $EpicFightDamageSource$Type, arg1: $HurtableEntityPatch$Type<(any)>, arg2: $StunType$Type)
-
-public "getStunnedEntityPatch"(): $HurtableEntityPatch<(any)>
-public "getStunType"(): $StunType
-public "getDamageSource"(): $EpicFightDamageSource
-public "getListenerList"(): $ListenerList
-public "hasResult"(): boolean
-public "isCancelable"(): boolean
-get "stunnedEntityPatch"(): $HurtableEntityPatch<(any)>
-get "stunType"(): $StunType
-get "damageSource"(): $EpicFightDamageSource
-get "listenerList"(): $ListenerList
-get "cancelable"(): boolean
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $EntityStunEvent$Type = ($EntityStunEvent);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $EntityStunEvent_ = $EntityStunEvent$Type;
-}}
 declare module "packages/yesman/epicfight/client/gui/screen/$SkillBookScreen" {
 import {$Button, $Button$Type} from "packages/net/minecraft/client/gui/components/$Button"
 import {$NarratableEntry, $NarratableEntry$Type} from "packages/net/minecraft/client/gui/narration/$NarratableEntry"
 import {$SkillBookScreen$TextureInfo, $SkillBookScreen$TextureInfo$Type} from "packages/yesman/epicfight/client/gui/screen/$SkillBookScreen$TextureInfo"
 import {$Screen, $Screen$Type} from "packages/net/minecraft/client/gui/screens/$Screen"
-import {$Skill, $Skill$Type} from "packages/yesman/epicfight/skill/$Skill"
 import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
+import {$Skill, $Skill$Type} from "packages/yesman/epicfight/skill/$Skill"
 import {$ResourceLocation, $ResourceLocation$Type} from "packages/net/minecraft/resources/$ResourceLocation"
 import {$GuiGraphics, $GuiGraphics$Type} from "packages/net/minecraft/client/gui/$GuiGraphics"
 import {$Font, $Font$Type} from "packages/net/minecraft/client/gui/$Font"
@@ -7498,11 +8699,11 @@ readonly "narratables": $List<($NarratableEntry)>
 readonly "renderables": $List<($Renderable)>
  "font": $Font
 
-constructor(arg0: $Player$Type, arg1: $Skill$Type, arg2: $InteractionHand$Type, arg3: $Screen$Type)
 constructor(arg0: $Player$Type, arg1: $ItemStack$Type, arg2: $InteractionHand$Type)
+constructor(arg0: $Player$Type, arg1: $Skill$Type, arg2: $InteractionHand$Type, arg3: $Screen$Type)
 
-public "getLearnButton"(): $Button
 public static "registerIconItems"(): void
+public "getLearnButton"(): $Button
 public "render"(arg0: $GuiGraphics$Type, arg1: integer, arg2: integer, arg3: float, arg4: boolean): void
 public "render"(arg0: $GuiGraphics$Type, arg1: integer, arg2: integer, arg3: float): void
 public "onClose"(): void
@@ -7559,64 +8760,6 @@ export type $Layer$BaseLayer$Type = ($Layer$BaseLayer);
 declare global {
 export type $Layer$BaseLayer_ = $Layer$BaseLayer$Type;
 }}
-declare module "packages/yesman/epicfight/world/capabilities/entitypatch/boss/$BossPatch" {
-import {$BossEvent, $BossEvent$Type} from "packages/net/minecraft/world/$BossEvent"
-import {$ServerPlayer, $ServerPlayer$Type} from "packages/net/minecraft/server/level/$ServerPlayer"
-import {$FriendlyByteBuf, $FriendlyByteBuf$Type} from "packages/net/minecraft/network/$FriendlyByteBuf"
-import {$LivingEntityPatch, $LivingEntityPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/$LivingEntityPatch"
-import {$Entity, $Entity$Type} from "packages/net/minecraft/world/entity/$Entity"
-
-export interface $BossPatch<T extends $Entity> {
-
- "recordBossEventOwner"(arg0: $ServerPlayer$Type): void
- "removeBossEventOwner"(arg0: $ServerPlayer$Type): void
- "processOwnerRecordPacket"(arg0: $FriendlyByteBuf$Type): void
- "getBossEvent"(): $BossEvent
- "getOriginal"(): T
- "cast"<P extends $LivingEntityPatch<(any)>>(): P
-}
-
-export namespace $BossPatch {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $BossPatch$Type<T> = ($BossPatch<(T)>);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $BossPatch_<T> = $BossPatch$Type<(T)>;
-}}
-declare module "packages/yesman/epicfight/skill/$Skill$ActivateType" {
-import {$Enum, $Enum$Type} from "packages/java/lang/$Enum"
-
-export class $Skill$ActivateType extends $Enum<($Skill$ActivateType)> {
-static readonly "ONE_SHOT": $Skill$ActivateType
-static readonly "DURATION": $Skill$ActivateType
-static readonly "DURATION_INFINITE": $Skill$ActivateType
-static readonly "TOGGLE": $Skill$ActivateType
-static readonly "HELD": $Skill$ActivateType
-
-
-public static "values"(): ($Skill$ActivateType)[]
-public static "valueOf"(arg0: string): $Skill$ActivateType
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $Skill$ActivateType$Type = (("duration") | ("duration_infinite") | ("held") | ("one_shot") | ("toggle")) | ($Skill$ActivateType);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $Skill$ActivateType_ = $Skill$ActivateType$Type;
-}}
 declare module "packages/yesman/epicfight/client/gui/screen/$SkillBookScreen$AttributeIconList" {
 import {$SkillBookScreen, $SkillBookScreen$Type} from "packages/yesman/epicfight/client/gui/screen/$SkillBookScreen"
 import {$Component, $Component$Type} from "packages/net/minecraft/network/chat/$Component"
@@ -7634,9 +8777,9 @@ export class $SkillBookScreen$AttributeIconList extends $ContainerObjectSelectio
 
 constructor(arg0: $SkillBookScreen$Type, arg1: $Minecraft$Type, arg2: integer, arg3: integer, arg4: integer, arg5: integer, arg6: integer)
 
-public "add"(arg0: $Component$Type, arg1: $Component$Type, arg2: $SkillBookScreen$TextureInfo$Type): void
-public "add"(arg0: $Attribute$Type, arg1: $AttributeModifier$Type, arg2: $SkillBookScreen$TextureInfo$Type): void
 public "getRowLeft"(): integer
+public "add"(arg0: $Attribute$Type, arg1: $AttributeModifier$Type, arg2: $SkillBookScreen$TextureInfo$Type): void
+public "add"(arg0: $Component$Type, arg1: $Component$Type, arg2: $SkillBookScreen$TextureInfo$Type): void
 get "rowLeft"(): integer
 }
 /**
@@ -7650,42 +8793,6 @@ export type $SkillBookScreen$AttributeIconList$Type = ($SkillBookScreen$Attribut
  */
 declare global {
 export type $SkillBookScreen$AttributeIconList_ = $SkillBookScreen$AttributeIconList$Type;
-}}
-declare module "packages/yesman/epicfight/world/item/$WeaponItem" {
-import {$Item, $Item$Type} from "packages/net/minecraft/world/item/$Item"
-import {$Multimap, $Multimap$Type} from "packages/com/google/common/collect/$Multimap"
-import {$Item$Properties, $Item$Properties$Type} from "packages/net/minecraft/world/item/$Item$Properties"
-import {$Attribute, $Attribute$Type} from "packages/net/minecraft/world/entity/ai/attributes/$Attribute"
-import {$AttributeModifier, $AttributeModifier$Type} from "packages/net/minecraft/world/entity/ai/attributes/$AttributeModifier"
-import {$BlockState, $BlockState$Type} from "packages/net/minecraft/world/level/block/state/$BlockState"
-import {$SwordItem, $SwordItem$Type} from "packages/net/minecraft/world/item/$SwordItem"
-import {$Tier, $Tier$Type} from "packages/net/minecraft/world/item/$Tier"
-import {$Block, $Block$Type} from "packages/net/minecraft/world/level/block/$Block"
-import {$Map, $Map$Type} from "packages/java/util/$Map"
-
-export class $WeaponItem extends $SwordItem {
- "defaultModifiers": $Multimap<($Attribute), ($AttributeModifier)>
- "tier": $Tier
-static readonly "BY_BLOCK": $Map<($Block), ($Item)>
-static readonly "MAX_STACK_SIZE": integer
-static readonly "EAT_DURATION": integer
-static readonly "MAX_BAR_WIDTH": integer
-
-constructor(arg0: $Tier$Type, arg1: integer, arg2: float, arg3: $Item$Properties$Type)
-
-public "isCorrectToolForDrops"(arg0: $BlockState$Type): boolean
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $WeaponItem$Type = ($WeaponItem);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $WeaponItem_ = $WeaponItem$Type;
 }}
 declare module "packages/yesman/epicfight/api/physics/$SimulationObject$SimulationObjectBuilder" {
 export {} // Mark the file as a module, do not remove unless there are other import/exports!
@@ -7705,31 +8812,6 @@ export type $SimulationObject$SimulationObjectBuilder$Type = ($SimulationObject$
  */
 declare global {
 export type $SimulationObject$SimulationObjectBuilder_ = $SimulationObject$SimulationObjectBuilder$Type;
-}}
-declare module "packages/yesman/epicfight/api/client/animation/property/$JointMaskEntry$Builder" {
-import {$LivingMotion, $LivingMotion$Type} from "packages/yesman/epicfight/api/animation/$LivingMotion"
-import {$JointMask$JointMaskSet, $JointMask$JointMaskSet$Type} from "packages/yesman/epicfight/api/client/animation/property/$JointMask$JointMaskSet"
-import {$JointMaskEntry, $JointMaskEntry$Type} from "packages/yesman/epicfight/api/client/animation/property/$JointMaskEntry"
-
-export class $JointMaskEntry$Builder {
-
-constructor()
-
-public "mask"(arg0: $LivingMotion$Type, arg1: $JointMask$JointMaskSet$Type): $JointMaskEntry$Builder
-public "create"(): $JointMaskEntry
-public "defaultMask"(arg0: $JointMask$JointMaskSet$Type): $JointMaskEntry$Builder
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $JointMaskEntry$Builder$Type = ($JointMaskEntry$Builder);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $JointMaskEntry$Builder_ = $JointMaskEntry$Builder$Type;
 }}
 declare module "packages/yesman/epicfight/api/client/animation/property/$JointMask$BindModifier" {
 import {$LivingMotion, $LivingMotion$Type} from "packages/yesman/epicfight/api/animation/$LivingMotion"
@@ -7777,8 +8859,8 @@ public "getModifiedGamma"(arg0: double): double
 public "getOriginalGamma"(): double
 public "blendingTexture"(arg0: string, arg1: $ResourceLocation$Type): void
 public "flickering"(arg0: string, arg1: float, arg2: float): void
-public "remove"(arg0: string): void
 public "renderTick"(arg0: integer, arg1: integer): void
+public "remove"(arg0: string): void
 get "gammaChanged"(): boolean
 set "modifiedGamma"(value: double)
 get "originalGamma"(): double
@@ -7905,92 +8987,6 @@ export type $Joint$AccessTicket$Type = ($Joint$AccessTicket);
 declare global {
 export type $Joint$AccessTicket_ = $Joint$AccessTicket$Type;
 }}
-declare module "packages/yesman/epicfight/world/capabilities/entitypatch/$EntityPatch" {
-import {$LocalPlayer, $LocalPlayer$Type} from "packages/net/minecraft/client/player/$LocalPlayer"
-import {$LivingDeathEvent, $LivingDeathEvent$Type} from "packages/net/minecraftforge/event/entity/living/$LivingDeathEvent"
-import {$ServerPlayer, $ServerPlayer$Type} from "packages/net/minecraft/server/level/$ServerPlayer"
-import {$SPEntityPairingPacket, $SPEntityPairingPacket$Type} from "packages/yesman/epicfight/network/server/$SPEntityPairingPacket"
-import {$EntityJoinLevelEvent, $EntityJoinLevelEvent$Type} from "packages/net/minecraftforge/event/entity/$EntityJoinLevelEvent"
-import {$OpenMatrix4f, $OpenMatrix4f$Type} from "packages/yesman/epicfight/api/utils/math/$OpenMatrix4f"
-import {$Entity, $Entity$Type} from "packages/net/minecraft/world/entity/$Entity"
-
-export class $EntityPatch<T extends $Entity> {
-
-constructor()
-
-public "onOldPosUpdate"(): void
-public "getOriginal"(): T
-public "onDeath"(arg0: $LivingDeathEvent$Type): void
-public "onAddedToWorld"(): void
-public "isLogicalClient"(): boolean
-public "overrideRender"(): boolean
-public "onStartTracking"(arg0: $ServerPlayer$Type): void
-public "onStopTracking"(arg0: $ServerPlayer$Type): void
-public "onConstructed"(arg0: T): void
-public "onJoinWorld"(arg0: T, arg1: $EntityJoinLevelEvent$Type): void
-public "getMatrix"(arg0: float): $OpenMatrix4f
-public "getAngleTo"(arg0: $Entity$Type): double
-public "getAngleToHorizontal"(arg0: $Entity$Type): double
-public "getModelMatrix"(arg0: float): $OpenMatrix4f
-public "fireEntityPairingEvent"(arg0: $SPEntityPairingPacket$Type): void
-public "entityPairing"(arg0: $SPEntityPairingPacket$Type): void
-public "isOutlineVisible"(arg0: $LocalPlayer$Type): boolean
-public "isInitialized"(): boolean
-get "original"(): T
-get "logicalClient"(): boolean
-get "initialized"(): boolean
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $EntityPatch$Type<T> = ($EntityPatch<(T)>);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $EntityPatch_<T> = $EntityPatch$Type<(T)>;
-}}
-declare module "packages/yesman/epicfight/client/renderer/patched/entity/$PatchedLivingEntityRenderer" {
-import {$Armature, $Armature$Type} from "packages/yesman/epicfight/api/model/$Armature"
-import {$LivingEntityRenderer, $LivingEntityRenderer$Type} from "packages/net/minecraft/client/renderer/entity/$LivingEntityRenderer"
-import {$LayerRenderer, $LayerRenderer$Type} from "packages/yesman/epicfight/client/renderer/$LayerRenderer"
-import {$Class, $Class$Type} from "packages/java/lang/$Class"
-import {$LivingEntity, $LivingEntity$Type} from "packages/net/minecraft/world/entity/$LivingEntity"
-import {$PatchedEntityRenderer, $PatchedEntityRenderer$Type} from "packages/yesman/epicfight/client/renderer/patched/entity/$PatchedEntityRenderer"
-import {$EntityRendererProvider$Context, $EntityRendererProvider$Context$Type} from "packages/net/minecraft/client/renderer/entity/$EntityRendererProvider$Context"
-import {$EntityType, $EntityType$Type} from "packages/net/minecraft/world/entity/$EntityType"
-import {$PoseStack, $PoseStack$Type} from "packages/com/mojang/blaze3d/vertex/$PoseStack"
-import {$EntityModel, $EntityModel$Type} from "packages/net/minecraft/client/model/$EntityModel"
-import {$PatchedLayer, $PatchedLayer$Type} from "packages/yesman/epicfight/client/renderer/patched/layer/$PatchedLayer"
-import {$MultiBufferSource, $MultiBufferSource$Type} from "packages/net/minecraft/client/renderer/$MultiBufferSource"
-import {$LivingEntityPatch, $LivingEntityPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/$LivingEntityPatch"
-import {$SkinnedMesh, $SkinnedMesh$Type} from "packages/yesman/epicfight/api/client/model/$SkinnedMesh"
-
-export class $PatchedLivingEntityRenderer<E extends $LivingEntity, T extends $LivingEntityPatch<(E)>, M extends $EntityModel<(E)>, R extends $LivingEntityRenderer<(E), (M)>, AM extends $SkinnedMesh> extends $PatchedEntityRenderer<(E), (T), (R), (AM)> implements $LayerRenderer<(E), (T), (M)> {
-
-constructor(arg0: $EntityRendererProvider$Context$Type, arg1: $EntityType$Type<(any)>)
-
-public "addPatchedLayerAlways"(arg0: $Class$Type<(any)>, arg1: $PatchedLayer$Type<(E), (T), (M), (any)>): void
-public "addCustomLayer"(arg0: $PatchedLayer$Type<(E), (T), (M), (any)>): void
-public "addPatchedLayer"(arg0: $Class$Type<(any)>, arg1: $PatchedLayer$Type<(E), (T), (M), (any)>): void
-public "mulPoseStack"(arg0: $PoseStack$Type, arg1: $Armature$Type, arg2: E, arg3: T, arg4: float): void
-public "initLayerLast"(arg0: $EntityRendererProvider$Context$Type, arg1: $EntityType$Type<(any)>): $PatchedLivingEntityRenderer<(E), (T), (M), (R), (AM)>
-public "render"(arg0: E, arg1: T, arg2: R, arg3: $MultiBufferSource$Type, arg4: $PoseStack$Type, arg5: integer, arg6: float): void
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $PatchedLivingEntityRenderer$Type<E, T, M, R, AM> = ($PatchedLivingEntityRenderer<(E), (T), (M), (R), (AM)>);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $PatchedLivingEntityRenderer_<E, T, M, R, AM> = $PatchedLivingEntityRenderer$Type<(E), (T), (M), (R), (AM)>;
-}}
 declare module "packages/yesman/epicfight/api/physics/$SimulationProvider" {
 import {$SimulationObject$SimulationObjectBuilder, $SimulationObject$SimulationObjectBuilder$Type} from "packages/yesman/epicfight/api/physics/$SimulationObject$SimulationObjectBuilder"
 import {$SimulationObject, $SimulationObject$Type} from "packages/yesman/epicfight/api/physics/$SimulationObject"
@@ -8016,40 +9012,6 @@ export type $SimulationProvider$Type<OWN, OBJ, BUILDER, P> = ($SimulationProvide
  */
 declare global {
 export type $SimulationProvider_<OWN, OBJ, BUILDER, P> = $SimulationProvider$Type<(OWN), (OBJ), (BUILDER), (P)>;
-}}
-declare module "packages/yesman/epicfight/api/client/model/$SoftBodyTranslatable" {
-import {$ClothSimulator$ClothObjectBuilder, $ClothSimulator$ClothObjectBuilder$Type} from "packages/yesman/epicfight/api/client/physics/cloth/$ClothSimulator$ClothObjectBuilder"
-import {$List, $List$Type} from "packages/java/util/$List"
-import {$StaticMesh, $StaticMesh$Type} from "packages/yesman/epicfight/api/client/model/$StaticMesh"
-import {$SoftBodyTranslatable$ClothSimulationInfo, $SoftBodyTranslatable$ClothSimulationInfo$Type} from "packages/yesman/epicfight/api/client/model/$SoftBodyTranslatable$ClothSimulationInfo"
-import {$ClothSimulator$ClothObject, $ClothSimulator$ClothObject$Type} from "packages/yesman/epicfight/api/client/physics/cloth/$ClothSimulator$ClothObject"
-import {$ClothSimulatable, $ClothSimulatable$Type} from "packages/yesman/epicfight/api/client/physics/cloth/$ClothSimulatable"
-import {$Map, $Map$Type} from "packages/java/util/$Map"
-import {$SimulationProvider, $SimulationProvider$Type} from "packages/yesman/epicfight/api/physics/$SimulationProvider"
-
-export interface $SoftBodyTranslatable extends $SimulationProvider<($ClothSimulatable), ($ClothSimulator$ClothObject), ($ClothSimulator$ClothObjectBuilder), ($SoftBodyTranslatable)> {
-
- "getSoftBodySimulationInfo"(): $Map<(string), ($SoftBodyTranslatable$ClothSimulationInfo)>
- "getOriginalMesh"(): $StaticMesh<(any)>
- "putSoftBodySimulationInfo"(arg0: $Map$Type<(string), ($SoftBodyTranslatable$ClothSimulationInfo$Type)>): void
- "canStartSoftBodySimulation"(): boolean
- "createSimulationData"(arg0: $SoftBodyTranslatable$Type, arg1: $ClothSimulatable$Type, arg2: $ClothSimulator$ClothObjectBuilder$Type): $ClothSimulator$ClothObject
-}
-
-export namespace $SoftBodyTranslatable {
-const TRACKING_SIMULATION_SUBJECTS: $List<($ClothSimulatable)>
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $SoftBodyTranslatable$Type = ($SoftBodyTranslatable);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $SoftBodyTranslatable_ = $SoftBodyTranslatable$Type;
 }}
 declare module "packages/yesman/epicfight/network/$EntityPairingPacketType" {
 import {$Enum, $Enum$Type} from "packages/java/lang/$Enum"
@@ -8096,14 +9058,14 @@ export interface $AnimationManager$AnimationAccessor<A extends $DynamicAnimation
  "inRegistry"(): boolean
  "doOrThrow"(arg0: $Consumer$Type<(A)>): void
  "checkType"(arg0: $Class$Type<(any)>): boolean
- "ifPresent"(arg0: $Consumer$Type<(A)>): void
  "ifPresentOrElse"(arg0: $Consumer$Type<(A)>, arg1: $Runnable$Type): void
+ "ifPresent"(arg0: $Consumer$Type<(A)>): void
+ "registryName"(): $ResourceLocation
+ "checkNotNull"(): void
  "get"(): A
  "isEmpty"(): boolean
  "isPresent"(): boolean
  "orElse"(arg0: A): A
- "registryName"(): $ResourceLocation
- "checkNotNull"(): void
 }
 
 export namespace $AnimationManager$AnimationAccessor {
@@ -8120,98 +9082,6 @@ export type $AnimationManager$AnimationAccessor$Type<A> = ($AnimationManager$Ani
  */
 declare global {
 export type $AnimationManager$AnimationAccessor_<A> = $AnimationManager$AnimationAccessor$Type<(A)>;
-}}
-declare module "packages/yesman/epicfight/world/entity/eventlistener/$PlayerKilledEvent" {
-import {$ServerPlayerPatch, $ServerPlayerPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/player/$ServerPlayerPatch"
-import {$DamageSource, $DamageSource$Type} from "packages/net/minecraft/world/damagesource/$DamageSource"
-import {$LivingEntity, $LivingEntity$Type} from "packages/net/minecraft/world/entity/$LivingEntity"
-import {$AbstractPlayerEvent, $AbstractPlayerEvent$Type} from "packages/yesman/epicfight/world/entity/eventlistener/$AbstractPlayerEvent"
-
-export class $PlayerKilledEvent extends $AbstractPlayerEvent<($ServerPlayerPatch)> {
-
-constructor(arg0: $ServerPlayerPatch$Type, arg1: $LivingEntity$Type, arg2: $DamageSource$Type)
-
-public "getDamageSource"(): $DamageSource
-public "getKilledEntity"(): $LivingEntity
-get "damageSource"(): $DamageSource
-get "killedEntity"(): $LivingEntity
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $PlayerKilledEvent$Type = ($PlayerKilledEvent);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $PlayerKilledEvent_ = $PlayerKilledEvent$Type;
-}}
-declare module "packages/yesman/epicfight/api/animation/types/$EntityState" {
-import {$Function, $Function$Type} from "packages/java/util/function/$Function"
-import {$ProjectileImpactEvent, $ProjectileImpactEvent$Type} from "packages/net/minecraftforge/event/entity/$ProjectileImpactEvent"
-import {$Consumer, $Consumer$Type} from "packages/java/util/function/$Consumer"
-import {$EntityState$StateFactor, $EntityState$StateFactor$Type} from "packages/yesman/epicfight/api/animation/types/$EntityState$StateFactor"
-import {$TypeFlexibleHashMap, $TypeFlexibleHashMap$Type} from "packages/yesman/epicfight/api/utils/datastruct/$TypeFlexibleHashMap"
-import {$DamageSource, $DamageSource$Type} from "packages/net/minecraft/world/damagesource/$DamageSource"
-import {$AttackResult$ResultType, $AttackResult$ResultType$Type} from "packages/yesman/epicfight/api/utils/$AttackResult$ResultType"
-
-export class $EntityState {
-static readonly "DEFAULT_STATE": $EntityState
-static readonly "TURNING_LOCKED": $EntityState$StateFactor<(boolean)>
-static readonly "MOVEMENT_LOCKED": $EntityState$StateFactor<(boolean)>
-static readonly "ATTACKING": $EntityState$StateFactor<(boolean)>
-static readonly "CAN_BASIC_ATTACK": $EntityState$StateFactor<(boolean)>
-static readonly "CAN_SKILL_EXECUTION": $EntityState$StateFactor<(boolean)>
-static readonly "CAN_USE_ITEM": $EntityState$StateFactor<(boolean)>
-static readonly "CAN_SWITCH_HAND_ITEM": $EntityState$StateFactor<(boolean)>
-static readonly "INACTION": $EntityState$StateFactor<(boolean)>
-static readonly "KNOCKDOWN": $EntityState$StateFactor<(boolean)>
-static readonly "LOCKON_ROTATE": $EntityState$StateFactor<(boolean)>
-static readonly "UPDATE_LIVING_MOTION": $EntityState$StateFactor<(boolean)>
-static readonly "HURT_LEVEL": $EntityState$StateFactor<(integer)>
-static readonly "PHASE_LEVEL": $EntityState$StateFactor<(integer)>
-static readonly "ATTACK_RESULT": $EntityState$StateFactor<($Function<($DamageSource), ($AttackResult$ResultType)>)>
-static readonly "PROJECTILE_IMPACT_RESULT": $EntityState$StateFactor<($Consumer<($ProjectileImpactEvent)>)>
-
-constructor(arg0: $TypeFlexibleHashMap$Type<($EntityState$StateFactor$Type<(any)>)>)
-
-public "movementLocked"(): boolean
-public "hurtLevel"(): integer
-public "lockonRotate"(): boolean
-public "getStateMap"(): $TypeFlexibleHashMap<($EntityState$StateFactor<(any)>)>
-public "setProjectileImpactResult"(arg0: $ProjectileImpactEvent$Type): void
-public "knockDown"(): boolean
-public "canSwitchHoldingItem"(): boolean
-public "attacking"(): boolean
-public "updateLivingMotion"(): boolean
-public "canBasicAttack"(): boolean
-public "canUseItem"(): boolean
-public "turningLocked"(): boolean
-public "canUseSkill"(): boolean
-public "inaction"(): boolean
-public "attackResult"(arg0: $DamageSource$Type): $AttackResult$ResultType
-public "hurt"(): boolean
-public "setState"<T>(arg0: $EntityState$StateFactor$Type<(T)>, arg1: T): void
-public "toString"(): string
-public "getState"<T>(arg0: $EntityState$StateFactor$Type<(T)>): T
-public "getLevel"(): integer
-get "stateMap"(): $TypeFlexibleHashMap<($EntityState$StateFactor<(any)>)>
-set "projectileImpactResult"(value: $ProjectileImpactEvent$Type)
-get "level"(): integer
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $EntityState$Type = ($EntityState);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $EntityState_ = $EntityState$Type;
 }}
 declare module "packages/yesman/epicfight/client/events/engine/$RenderEngine" {
 import {$CompoundTag, $CompoundTag$Type} from "packages/net/minecraft/nbt/$CompoundTag"
@@ -8269,6 +9139,11 @@ public "reloadFakeBlockRenderer"(arg0: $FakeBlockRenderer$Type): void
 public "shouldRenderVanillaModel"(): boolean
 public "freeUnusedSources"(): void
 public "removeBossEventOwner"(arg0: $UUID$Type, arg1: $BossPatch$Type<(any)>): void
+public "addBossEventOwner"(arg0: $UUID$Type, arg1: $BossPatch$Type<(any)>): void
+public "reloadEntityRenderers"(arg0: $EntityRendererProvider$Context$Type): void
+public "resetRenderers"(): void
+public "reloadItemRenderers"(arg0: $Map$Type<($ResourceLocation$Type), ($JsonElement$Type)>): void
+public "registerCustomEntityRenderer"(arg0: $EntityType$Type<(any)>, arg1: string, arg2: $CompoundTag$Type): void
 public "getRendererEntries"(): $Set<($ResourceLocation)>
 public "setModelInitializerTimer"(arg0: integer): void
 public "getOverlayManager"(): $OverlayManager
@@ -8284,25 +9159,20 @@ public "correctCamera"(arg0: $ViewportEvent$ComputeCameraAngles$Type, arg1: floa
  * @deprecated
  */
 public "setRangedWeaponThirdPerson"(arg0: $ViewportEvent$ComputeCameraAngles$Type, arg1: $CameraType$Type, arg2: double): void
-public "reloadEntityRenderers"(arg0: $EntityRendererProvider$Context$Type): void
-public "resetRenderers"(): void
-public "reloadItemRenderers"(arg0: $Map$Type<($ResourceLocation$Type), ($JsonElement$Type)>): void
-public "registerCustomEntityRenderer"(arg0: $EntityType$Type<(any)>, arg1: string, arg2: $CompoundTag$Type): void
-public "addBossEventOwner"(arg0: $UUID$Type, arg1: $BossPatch$Type<(any)>): void
 public "getItemRenderer"(arg0: $ItemStack$Type): $RenderItemBase
-public "getEntityRenderer"(arg0: $Entity$Type): $PatchedEntityRenderer<(any), (any), (any), (any)>
 public "getEntityRenderer"(arg0: $EntityType$Type<(any)>): $PatchedEntityRenderer<(any), (any), (any), (any)>
+public "getEntityRenderer"(arg0: $Entity$Type): $PatchedEntityRenderer<(any), (any), (any), (any)>
 public "downSlideSkillUI"(): void
 public "upSlideSkillUI"(): void
 public static "asEntityHitResult"(arg0: $HitResult$Type): $EntityHitResult
 public static "asBlockHitResult"(arg0: $HitResult$Type): $BlockHitResult
+public static "hitResultNotEquals"(arg0: $HitResult$Type, arg1: $HitResult$Type$Type): boolean
 public "clear"(): void
 /**
  * 
  * @deprecated
  */
 public "initialize"(): void
-public static "hitResultNotEquals"(arg0: $HitResult$Type, arg1: $HitResult$Type$Type): boolean
 get "rendererEntries"(): $Set<($ResourceLocation)>
 set "modelInitializerTimer"(value: integer)
 get "overlayManager"(): $OverlayManager
@@ -8354,134 +9224,6 @@ export type $LongswordItem$Type = ($LongswordItem);
 declare global {
 export type $LongswordItem_ = $LongswordItem$Type;
 }}
-declare module "packages/yesman/epicfight/skill/$Skill" {
-import {$CompoundTag, $CompoundTag$Type} from "packages/net/minecraft/nbt/$CompoundTag"
-import {$Component, $Component$Type} from "packages/net/minecraft/network/chat/$Component"
-import {$CapabilityItem, $CapabilityItem$Type} from "packages/yesman/epicfight/world/capabilities/item/$CapabilityItem"
-import {$BattleModeGui, $BattleModeGui$Type} from "packages/yesman/epicfight/client/gui/$BattleModeGui"
-import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
-import {$ResourceLocation, $ResourceLocation$Type} from "packages/net/minecraft/resources/$ResourceLocation"
-import {$GuiGraphics, $GuiGraphics$Type} from "packages/net/minecraft/client/gui/$GuiGraphics"
-import {$SkillCategory, $SkillCategory$Type} from "packages/yesman/epicfight/skill/$SkillCategory"
-import {$List, $List$Type} from "packages/java/util/$List"
-import {$Skill$Resource, $Skill$Resource$Type} from "packages/yesman/epicfight/skill/$Skill$Resource"
-import {$EpicFightNetworkManager$PayloadBundleBuilder, $EpicFightNetworkManager$PayloadBundleBuilder$Type} from "packages/yesman/epicfight/network/$EpicFightNetworkManager$PayloadBundleBuilder"
-import {$ControlEngine, $ControlEngine$Type} from "packages/yesman/epicfight/client/events/engine/$ControlEngine"
-import {$CreativeModeTab, $CreativeModeTab$Type} from "packages/net/minecraft/world/item/$CreativeModeTab"
-import {$SkillContainer, $SkillContainer$Type} from "packages/yesman/epicfight/skill/$SkillContainer"
-import {$PlayerPatch, $PlayerPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/player/$PlayerPatch"
-import {$Skill$ActivateType, $Skill$ActivateType$Type} from "packages/yesman/epicfight/skill/$Skill$ActivateType"
-import {$LocalPlayerPatch, $LocalPlayerPatch$Type} from "packages/yesman/epicfight/client/world/capabilites/entitypatch/player/$LocalPlayerPatch"
-import {$SkillBookScreen$AttributeIconList, $SkillBookScreen$AttributeIconList$Type} from "packages/yesman/epicfight/client/gui/screen/$SkillBookScreen$AttributeIconList"
-import {$SkillCastEvent, $SkillCastEvent$Type} from "packages/yesman/epicfight/world/entity/eventlistener/$SkillCastEvent"
-import {$SkillBuilder, $SkillBuilder$Type} from "packages/yesman/epicfight/skill/$SkillBuilder"
-import {$Set, $Set$Type} from "packages/java/util/$Set"
-import {$WeaponCategory, $WeaponCategory$Type} from "packages/yesman/epicfight/world/capabilities/item/$WeaponCategory"
-import {$FriendlyByteBuf, $FriendlyByteBuf$Type} from "packages/net/minecraft/network/$FriendlyByteBuf"
-import {$Attribute, $Attribute$Type} from "packages/net/minecraft/world/entity/ai/attributes/$Attribute"
-import {$AttributeModifier, $AttributeModifier$Type} from "packages/net/minecraft/world/entity/ai/attributes/$AttributeModifier"
-import {$Map$Entry, $Map$Entry$Type} from "packages/java/util/$Map$Entry"
-
-export class $Skill {
-/**
- * This field is a type stub generated by ProbeJS and shall not be used in any sense.
- */
- "probejsInternal$$Literal": Special.Skill
-/**
- * This field is a type stub generated by ProbeJS and shall not be used in any sense.
- */
- "probejsInternal$$Tag": Special.SkillTag
-
-constructor(arg0: $SkillBuilder$Type<(any)>)
-
-public "isDisabled"(arg0: $SkillContainer$Type): boolean
-public "getTranslationKey"(): string
-public "onTracked"(arg0: $SkillContainer$Type, arg1: $EpicFightNetworkManager$PayloadBundleBuilder$Type): void
-public "onInitiate"(arg0: $SkillContainer$Type): void
-public "onInitiateClient"(arg0: $SkillContainer$Type): void
-public "onRemoveClient"(arg0: $SkillContainer$Type): void
-public "onRemoved"(arg0: $SkillContainer$Type): void
-public "onReset"(arg0: $SkillContainer$Type): void
-public "setConsumption"(arg0: $SkillContainer$Type, arg1: float): void
-public "updateContainer"(arg0: $SkillContainer$Type): void
-public "getCooldownRegenPerSecond"(arg0: $PlayerPatch$Type<(any)>): float
-public "isActivated"(arg0: $SkillContainer$Type): boolean
-public "setConsumptionSynchronize"(arg0: $SkillContainer$Type, arg1: float): void
-public static "setSkillConsumptionSynchronize"(arg0: $SkillContainer$Type, arg1: float): void
-public "setMaxDurationSynchronize"(arg0: $SkillContainer$Type, arg1: integer): void
-public static "setSkillMaxDurationSynchronize"(arg0: $SkillContainer$Type, arg1: integer): void
-public "setDurationSynchronize"(arg0: $SkillContainer$Type, arg1: integer): void
-public static "setSkillDurationSynchronize"(arg0: $SkillContainer$Type, arg1: integer): void
-public "setStackSynchronize"(arg0: $SkillContainer$Type, arg1: integer): void
-public static "setSkillStackSynchronize"(arg0: $SkillContainer$Type, arg1: integer): void
-public "setMaxResourceSynchronize"(arg0: $SkillContainer$Type, arg1: float): void
-public static "setSkillMaxResourceSynchronize"(arg0: $SkillContainer$Type, arg1: float): void
-public "getMaxDuration"(): integer
-public "getConsumption"(): float
-public "getModfierEntry"(): $Set<($Map$Entry<($Attribute), ($AttributeModifier)>)>
-public "resourcePredicate"(arg0: $PlayerPatch$Type<(any)>, arg1: $SkillCastEvent$Type): boolean
-public "shouldDeactivateAutomatically"(arg0: $PlayerPatch$Type<(any)>): boolean
-public "getActivateType"(): $Skill$ActivateType
-public "getPriorSkill"(): $Skill
-public "registerPropertiesToAnimation"(): $Skill
-public "onScreen"(arg0: $LocalPlayerPatch$Type, arg1: float, arg2: float): void
-public "getTooltipOnItem"(arg0: $ItemStack$Type, arg1: $CapabilityItem$Type, arg2: $PlayerPatch$Type<(any)>): $List<($Component)>
-public "getTooltipArgsOfScreen"(arg0: $List$Type<(any)>): $List<(any)>
-public "drawOnGui"(arg0: $BattleModeGui$Type, arg1: $SkillContainer$Type, arg2: $GuiGraphics$Type, arg3: float, arg4: float, arg5: float): void
-public "getSkillTexture"(): $ResourceLocation
-public "shouldDraw"(arg0: $SkillContainer$Type): boolean
-public "getAvailableWeaponCategories"(): $Set<($WeaponCategory)>
-public "getCustomConsumptionTooltips"(arg0: $SkillBookScreen$AttributeIconList$Type): boolean
-public "getDefaultConsumptionAmount"(arg0: $PlayerPatch$Type<(any)>): float
-public "getResourceType"(): $Skill$Resource
-public static "createIdentityBuilder"(): $SkillBuilder<($Skill)>
-public static "createMoverBuilder"(): $SkillBuilder<($Skill)>
-public "isExecutableState"(arg0: $PlayerPatch$Type<(any)>): boolean
-public "checkExecuteCondition"(arg0: $SkillContainer$Type): boolean
-public "validationFeedback"(arg0: $SkillContainer$Type): void
-public "getExecutionPacket"(arg0: $SkillContainer$Type, arg1: $FriendlyByteBuf$Type): any
-public "gatherArguments"(arg0: $SkillContainer$Type, arg1: $ControlEngine$Type): $FriendlyByteBuf
-public "executeOnServer"(arg0: $SkillContainer$Type, arg1: $FriendlyByteBuf$Type): void
-public "cancelOnServer"(arg0: $SkillContainer$Type, arg1: $FriendlyByteBuf$Type): void
-public "executeOnClient"(arg0: $SkillContainer$Type, arg1: $FriendlyByteBuf$Type): void
-public "cancelOnClient"(arg0: $SkillContainer$Type, arg1: $FriendlyByteBuf$Type): void
-public "getRegistryName"(): $ResourceLocation
-public "setParams"(arg0: $CompoundTag$Type): void
-public "getMaxStack"(): integer
-public "canExecute"(arg0: $SkillContainer$Type): boolean
-public "getDisplayName"(): $Component
-public "toString"(): string
-public "getCategory"(): $SkillCategory
-public static "createBuilder"(): $SkillBuilder<($Skill)>
-public "getCreativeTab"(): $CreativeModeTab
-get "translationKey"(): string
-get "maxDuration"(): integer
-get "consumption"(): float
-get "modfierEntry"(): $Set<($Map$Entry<($Attribute), ($AttributeModifier)>)>
-get "activateType"(): $Skill$ActivateType
-get "priorSkill"(): $Skill
-get "skillTexture"(): $ResourceLocation
-get "availableWeaponCategories"(): $Set<($WeaponCategory)>
-get "resourceType"(): $Skill$Resource
-get "registryName"(): $ResourceLocation
-set "params"(value: $CompoundTag$Type)
-get "maxStack"(): integer
-get "displayName"(): $Component
-get "category"(): $SkillCategory
-get "creativeTab"(): $CreativeModeTab
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $Skill$Type = ($Skill);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $Skill_ = $Skill$Type;
-}}
 declare module "packages/yesman/epicfight/compat/kubejs/$EFUtilsJS" {
 import {$SkillCastEvent, $SkillCastEvent$Type} from "packages/yesman/epicfight/world/entity/eventlistener/$SkillCastEvent"
 import {$Skill, $Skill$Type} from "packages/yesman/epicfight/skill/$Skill"
@@ -8531,116 +9273,6 @@ export type $TargetIndicatorCheckEvent$Type = ($TargetIndicatorCheckEvent);
 declare global {
 export type $TargetIndicatorCheckEvent_ = $TargetIndicatorCheckEvent$Type;
 }}
-declare module "packages/yesman/epicfight/api/client/animation/$Layer$LayerType" {
-import {$Enum, $Enum$Type} from "packages/java/lang/$Enum"
-
-export class $Layer$LayerType extends $Enum<($Layer$LayerType)> {
-static readonly "BASE_LAYER": $Layer$LayerType
-static readonly "COMPOSITE_LAYER": $Layer$LayerType
-
-
-public static "values"(): ($Layer$LayerType)[]
-public static "valueOf"(arg0: string): $Layer$LayerType
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $Layer$LayerType$Type = (("composite_layer") | ("base_layer")) | ($Layer$LayerType);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $Layer$LayerType_ = $Layer$LayerType$Type;
-}}
-declare module "packages/yesman/epicfight/world/entity/eventlistener/$ComboCounterHandleEvent" {
-import {$ComboCounterHandleEvent$Causal, $ComboCounterHandleEvent$Causal$Type} from "packages/yesman/epicfight/world/entity/eventlistener/$ComboCounterHandleEvent$Causal"
-import {$ServerPlayerPatch, $ServerPlayerPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/player/$ServerPlayerPatch"
-import {$AnimationManager$AnimationAccessor, $AnimationManager$AnimationAccessor$Type} from "packages/yesman/epicfight/api/animation/$AnimationManager$AnimationAccessor"
-import {$AbstractPlayerEvent, $AbstractPlayerEvent$Type} from "packages/yesman/epicfight/world/entity/eventlistener/$AbstractPlayerEvent"
-
-export class $ComboCounterHandleEvent extends $AbstractPlayerEvent<($ServerPlayerPatch)> {
-
-constructor(arg0: $ComboCounterHandleEvent$Causal$Type, arg1: $ServerPlayerPatch$Type, arg2: $AnimationManager$AnimationAccessor$Type<(any)>, arg3: integer, arg4: integer)
-
-public "getPrevValue"(): integer
-public "setNextValue"(arg0: integer): void
-public "getCausal"(): $ComboCounterHandleEvent$Causal
-public "getAnimation"(): $AnimationManager$AnimationAccessor<(any)>
-public "getNextValue"(): integer
-get "prevValue"(): integer
-set "nextValue"(value: integer)
-get "causal"(): $ComboCounterHandleEvent$Causal
-get "animation"(): $AnimationManager$AnimationAccessor<(any)>
-get "nextValue"(): integer
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $ComboCounterHandleEvent$Type = ($ComboCounterHandleEvent);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $ComboCounterHandleEvent_ = $ComboCounterHandleEvent$Type;
-}}
-declare module "packages/yesman/epicfight/client/renderer/$LayerRenderer" {
-import {$Class, $Class$Type} from "packages/java/lang/$Class"
-import {$EntityModel, $EntityModel$Type} from "packages/net/minecraft/client/model/$EntityModel"
-import {$PatchedLayer, $PatchedLayer$Type} from "packages/yesman/epicfight/client/renderer/patched/layer/$PatchedLayer"
-import {$LivingEntityPatch, $LivingEntityPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/$LivingEntityPatch"
-import {$LivingEntity, $LivingEntity$Type} from "packages/net/minecraft/world/entity/$LivingEntity"
-
-export interface $LayerRenderer<E extends $LivingEntity, T extends $LivingEntityPatch<(E)>, M extends $EntityModel<(E)>> {
-
- "addCustomLayer"(arg0: $PatchedLayer$Type<(E), (T), (M), (any)>): void
- "addPatchedLayer"(arg0: $Class$Type<(any)>, arg1: $PatchedLayer$Type<(E), (T), (M), (any)>): void
-}
-
-export namespace $LayerRenderer {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $LayerRenderer$Type<E, T, M> = ($LayerRenderer<(E), (T), (M)>);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $LayerRenderer_<E, T, M> = $LayerRenderer$Type<(E), (T), (M)>;
-}}
-declare module "packages/yesman/epicfight/world/capabilities/item/$WeaponCategory" {
-import {$ExtendableEnumManager, $ExtendableEnumManager$Type} from "packages/yesman/epicfight/api/utils/$ExtendableEnumManager"
-import {$ExtendableEnum, $ExtendableEnum$Type} from "packages/yesman/epicfight/api/utils/$ExtendableEnum"
-
-export interface $WeaponCategory extends $ExtendableEnum {
-
- "universalOrdinal"(): integer
-
-(): integer
-}
-
-export namespace $WeaponCategory {
-const ENUM_MANAGER: $ExtendableEnumManager<($WeaponCategory)>
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $WeaponCategory$Type = ($WeaponCategory);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $WeaponCategory_ = $WeaponCategory$Type;
-}}
 declare module "packages/yesman/epicfight/network/common/$AnimatorControlPacket" {
 import {$Layer$Priority, $Layer$Priority$Type} from "packages/yesman/epicfight/api/client/animation/$Layer$Priority"
 import {$AnimatorControlPacket$Action, $AnimatorControlPacket$Action$Type} from "packages/yesman/epicfight/network/common/$AnimatorControlPacket$Action"
@@ -8668,6 +9300,7 @@ declare global {
 export type $AnimatorControlPacket_ = $AnimatorControlPacket$Type;
 }}
 declare module "packages/yesman/epicfight/world/capabilities/entitypatch/player/$PlayerPatch" {
+import {$StunType, $StunType$Type} from "packages/yesman/epicfight/world/damagesource/$StunType"
 import {$LivingMotion, $LivingMotion$Type} from "packages/yesman/epicfight/api/animation/$LivingMotion"
 import {$PlayerEventListener, $PlayerEventListener$Type} from "packages/yesman/epicfight/world/entity/eventlistener/$PlayerEventListener"
 import {$CapabilityItem, $CapabilityItem$Type} from "packages/yesman/epicfight/world/capabilities/item/$CapabilityItem"
@@ -8689,9 +9322,9 @@ import {$LivingFallEvent, $LivingFallEvent$Type} from "packages/net/minecraftfor
 import {$Skill, $Skill$Type} from "packages/yesman/epicfight/skill/$Skill"
 import {$OpenMatrix4f, $OpenMatrix4f$Type} from "packages/yesman/epicfight/api/utils/math/$OpenMatrix4f"
 import {$SkillSlot, $SkillSlot$Type} from "packages/yesman/epicfight/skill/$SkillSlot"
-import {$PlayerPatch$PlayerMode, $PlayerPatch$PlayerMode$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/player/$PlayerPatch$PlayerMode"
-import {$InteractionHand, $InteractionHand$Type} from "packages/net/minecraft/world/$InteractionHand"
 import {$FriendlyByteBuf, $FriendlyByteBuf$Type} from "packages/net/minecraft/network/$FriendlyByteBuf"
+import {$InteractionHand, $InteractionHand$Type} from "packages/net/minecraft/world/$InteractionHand"
+import {$PlayerPatch$PlayerMode, $PlayerPatch$PlayerMode$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/player/$PlayerPatch$PlayerMode"
 import {$AnimationManager$AnimationAccessor, $AnimationManager$AnimationAccessor$Type} from "packages/yesman/epicfight/api/animation/$AnimationManager$AnimationAccessor"
 import {$Attribute, $Attribute$Type} from "packages/net/minecraft/world/entity/ai/attributes/$Attribute"
 import {$Optional, $Optional$Type} from "packages/java/util/$Optional"
@@ -8710,10 +9343,11 @@ static readonly "WEIGHT_CORRECTION": double
 constructor()
 
 public "getSkillContainerFor"(arg0: $Skill$Type): $Optional<($SkillContainer)>
-public "getStamina"(): float
-public "setStamina"(arg0: float): void
-public "getPlayerMode"(): $PlayerPatch$PlayerMode
-public "isEpicFightMode"(): boolean
+public "toggleMode"(): void
+public "consumeForSkill"(arg0: $Skill$Type, arg1: $Skill$Resource$Type, arg2: float): boolean
+public "consumeForSkill"(arg0: $Skill$Type, arg1: $Skill$Resource$Type, arg2: float, arg3: boolean, arg4: $FriendlyByteBuf$Type): boolean
+public "consumeForSkill"(arg0: $Skill$Type, arg1: $Skill$Resource$Type): boolean
+public "consumeForSkill"(arg0: $Skill$Type, arg1: $Skill$Resource$Type, arg2: $FriendlyByteBuf$Type): boolean
 public "resetActionTick"(): void
 public "getTickSinceLastAction"(): integer
 public "setStaminaRegenAwaitTicks"(arg0: integer): void
@@ -8725,43 +9359,42 @@ public "getLastChargingTick"(): integer
 public "setChargingAmount"(arg0: integer): void
 public "getHoldingSkill"(): $HoldableSkill
 public "getChargingAmount"(): integer
-public "getSkillChargingTicks"(): integer
 public "getSkillChargingTicks"(arg0: float): float
+public "getSkillChargingTicks"(): integer
 public "getAccumulatedChargeAmount"(): integer
 public "isInAir"(): boolean
 public "openSkillBook"(arg0: $ItemStack$Type, arg1: $InteractionHand$Type): void
-public "toggleMode"(): void
-public "getSkillCapability"(): $CapabilitySkill
 public "copySkillsFrom"(arg0: $PlayerPatch$Type<(any)>, arg1: boolean): void
 public "setModelYRot"(arg0: float, arg1: boolean): void
 public "disableModelYRot"(arg0: boolean): void
+public "getStamina"(): float
 public "getMaxStamina"(): float
+public "setStamina"(arg0: float): void
 public "toVanillaMode"(arg0: boolean): void
 public "toEpicFightMode"(arg0: boolean): void
+public "getAttackSpeed"(arg0: $InteractionHand$Type): float
 public "getModifiedAttackSpeed"(arg0: $CapabilityItem$Type, arg1: float): float
 public "getWeaponAttribute"(arg0: $Attribute$Type, arg1: $ItemStack$Type): double
 public "resetHolding"(): void
 public "getModifiedStaminaConsume"(arg0: float): float
 public "hasStamina"(arg0: float): boolean
 public "clampMaxAttributes"(): void
-public "consumeForSkill"(arg0: $Skill$Type, arg1: $Skill$Resource$Type, arg2: float): boolean
-public "consumeForSkill"(arg0: $Skill$Type, arg1: $Skill$Resource$Type): boolean
-public "consumeForSkill"(arg0: $Skill$Type, arg1: $Skill$Resource$Type, arg2: float, arg3: boolean, arg4: $FriendlyByteBuf$Type): boolean
-public "consumeForSkill"(arg0: $Skill$Type, arg1: $Skill$Resource$Type, arg2: $FriendlyByteBuf$Type): boolean
-public "getAttackSpeed"(arg0: $InteractionHand$Type): float
-public "onFall"(arg0: $LivingFallEvent$Type): void
-public "checkYTurn"(arg0: double): double
-public "checkXTurn"(arg0: double): double
-public "tick"(arg0: $LivingEvent$LivingTickEvent$Type): void
-public static "createSyncedEntityData"(arg0: $LivingEntity$Type): void
+public "getSkillCapability"(): $CapabilitySkill
+public "isEpicFightMode"(): boolean
+public "getPlayerMode"(): $PlayerPatch$PlayerMode
 public static "initPlayerDataAccessor"(): void
-public "attack"(arg0: $EpicFightDamageSource$Type, arg1: $Entity$Type, arg2: $InteractionHand$Type): $AttackResult
-public "initAnimator"(arg0: $Animator$Type): void
-public "serverTick"(arg0: $LivingEvent$LivingTickEvent$Type): void
 public "onJoinWorld"(arg0: T, arg1: $EntityJoinLevelEvent$Type): void
 public "getModelMatrix"(arg0: float): $OpenMatrix4f
+public "initAnimator"(arg0: $Animator$Type): void
+public "serverTick"(arg0: $LivingEvent$LivingTickEvent$Type): void
+public "attack"(arg0: $EpicFightDamageSource$Type, arg1: $Entity$Type, arg2: $InteractionHand$Type): $AttackResult
+public "onFall"(arg0: $LivingFallEvent$Type): void
+public static "createSyncedEntityData"(arg0: $LivingEntity$Type): void
+public "getHitAnimation"(arg0: $StunType$Type): $AnimationManager$AnimationAccessor<(any)>
 public "cancelItemUse"(): void
 public "getDamageSource"(arg0: $AnimationManager$AnimationAccessor$Type<(any)>, arg1: $InteractionHand$Type): $EpicFightDamageSource
+public "checkYTurn"(arg0: double): double
+public "checkXTurn"(arg0: double): double
 public "getModifiedBaseDamage"(arg0: float): float
 public "getYRotLimit"(): float
 public "shouldMoveOnCurrentSide"(arg0: $ActionAnimation$Type): boolean
@@ -8774,15 +9407,12 @@ public "setYRot"(arg0: float): void
 public "setYRotO"(arg0: float): void
 public "getFaction"(): $Faction
 public "getEventListener"(): $PlayerEventListener
+public "tick"(arg0: $LivingEvent$LivingTickEvent$Type): void
 public "toMode"(arg0: $PlayerPatch$PlayerMode$Type, arg1: boolean): void
 public "isVanillaMode"(): boolean
-public "getSkill"(arg0: $Skill$Type): $SkillContainer
 public "getSkill"(arg0: integer): $SkillContainer
+public "getSkill"(arg0: $Skill$Type): $SkillContainer
 public "getSkill"(arg0: $SkillSlot$Type): $SkillContainer
-get "stamina"(): float
-set "stamina"(value: float)
-get "playerMode"(): $PlayerPatch$PlayerMode
-get "epicFightMode"(): boolean
 get "tickSinceLastAction"(): integer
 set "staminaRegenAwaitTicks"(value: integer)
 get "staminaRegenAwaitTicks"(): integer
@@ -8794,8 +9424,12 @@ get "chargingAmount"(): integer
 get "skillChargingTicks"(): integer
 get "accumulatedChargeAmount"(): integer
 get "inAir"(): boolean
-get "skillCapability"(): $CapabilitySkill
+get "stamina"(): float
 get "maxStamina"(): float
+set "stamina"(value: float)
+get "skillCapability"(): $CapabilitySkill
+get "epicFightMode"(): boolean
+get "playerMode"(): $PlayerPatch$PlayerMode
 get "yRotLimit"(): float
 get "xOld"(): double
 get "yOld"(): double
@@ -8819,43 +9453,6 @@ export type $PlayerPatch$Type<T> = ($PlayerPatch<(T)>);
  */
 declare global {
 export type $PlayerPatch_<T> = $PlayerPatch$Type<(T)>;
-}}
-declare module "packages/yesman/epicfight/skill/$SkillCategories" {
-import {$Enum, $Enum$Type} from "packages/java/lang/$Enum"
-import {$ResourceLocation, $ResourceLocation$Type} from "packages/net/minecraft/resources/$ResourceLocation"
-import {$SkillCategory, $SkillCategory$Type} from "packages/yesman/epicfight/skill/$SkillCategory"
-
-export class $SkillCategories extends $Enum<($SkillCategories)> implements $SkillCategory {
-static readonly "BASIC_ATTACK": $SkillCategories
-static readonly "DODGE": $SkillCategories
-static readonly "PASSIVE": $SkillCategories
-static readonly "WEAPON_PASSIVE": $SkillCategories
-static readonly "WEAPON_INNATE": $SkillCategories
-static readonly "GUARD": $SkillCategories
-static readonly "KNOCKDOWN_WAKEUP": $SkillCategories
-static readonly "MOVER": $SkillCategories
-static readonly "IDENTITY": $SkillCategories
-
-
-public "shouldSave"(): boolean
-public "shouldSynchronize"(): boolean
-public "bookIcon"(): $ResourceLocation
-public "universalOrdinal"(): integer
-public static "values"(): ($SkillCategories)[]
-public static "valueOf"(arg0: string): $SkillCategories
-public "learnable"(): boolean
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $SkillCategories$Type = (("basic_attack") | ("dodge") | ("weapon_passive") | ("knockdown_wakeup") | ("mover") | ("identity") | ("guard") | ("passive") | ("weapon_innate")) | ($SkillCategories);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $SkillCategories_ = $SkillCategories$Type;
 }}
 declare module "packages/yesman/epicfight/api/client/model/$SkinnedMesh$SkinnedMeshPart" {
 import {$VertexConsumer, $VertexConsumer$Type} from "packages/com/mojang/blaze3d/vertex/$VertexConsumer"
@@ -8984,12 +9581,12 @@ import {$AbstractPlayerEvent, $AbstractPlayerEvent$Type} from "packages/yesman/e
 
 export class $MovementInputEvent extends $AbstractPlayerEvent<($LocalPlayerPatch)> {
 
+constructor(arg0: $LocalPlayerPatch$Type, arg1: $PlayerInputState$Type)
 /**
  * 
  * @deprecated
  */
 constructor(arg0: $LocalPlayerPatch$Type, arg1: $Input$Type)
-constructor(arg0: $LocalPlayerPatch$Type, arg1: $PlayerInputState$Type)
 
 public "getInputState"(): $PlayerInputState
 /**
@@ -9086,96 +9683,6 @@ export type $AnimationProperty$AttackPhaseProperty$Type<T> = ($AnimationProperty
 declare global {
 export type $AnimationProperty$AttackPhaseProperty_<T> = $AnimationProperty$AttackPhaseProperty$Type<(T)>;
 }}
-declare module "packages/yesman/epicfight/api/client/model/$Mesh" {
-import {$VertexConsumer, $VertexConsumer$Type} from "packages/com/mojang/blaze3d/vertex/$VertexConsumer"
-import {$Armature, $Armature$Type} from "packages/yesman/epicfight/api/model/$Armature"
-import {$PoseStack, $PoseStack$Type} from "packages/com/mojang/blaze3d/vertex/$PoseStack"
-import {$Mesh$DrawingFunction, $Mesh$DrawingFunction$Type} from "packages/yesman/epicfight/api/client/model/$Mesh$DrawingFunction"
-import {$MultiBufferSource, $MultiBufferSource$Type} from "packages/net/minecraft/client/renderer/$MultiBufferSource"
-import {$OpenMatrix4f, $OpenMatrix4f$Type} from "packages/yesman/epicfight/api/utils/math/$OpenMatrix4f"
-import {$RenderType, $RenderType$Type} from "packages/net/minecraft/client/renderer/$RenderType"
-
-export interface $Mesh {
-
- "drawPosed"(arg0: $PoseStack$Type, arg1: $VertexConsumer$Type, arg2: $Mesh$DrawingFunction$Type, arg3: integer, arg4: float, arg5: float, arg6: float, arg7: float, arg8: integer, arg9: $Armature$Type, arg10: ($OpenMatrix4f$Type)[]): void
- "initialize"(): void
- "draw"(arg0: $PoseStack$Type, arg1: $VertexConsumer$Type, arg2: $Mesh$DrawingFunction$Type, arg3: integer, arg4: float, arg5: float, arg6: float, arg7: float, arg8: integer): void
- "draw"(arg0: $PoseStack$Type, arg1: $MultiBufferSource$Type, arg2: $RenderType$Type, arg3: $Mesh$DrawingFunction$Type, arg4: integer, arg5: float, arg6: float, arg7: float, arg8: float, arg9: integer, arg10: $Armature$Type, arg11: ($OpenMatrix4f$Type)[]): void
-}
-
-export namespace $Mesh {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $Mesh$Type = ($Mesh);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $Mesh_ = $Mesh$Type;
-}}
-declare module "packages/yesman/epicfight/world/entity/eventlistener/$AttackEndEvent" {
-import {$ServerPlayerPatch, $ServerPlayerPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/player/$ServerPlayerPatch"
-import {$AnimationManager$AnimationAccessor, $AnimationManager$AnimationAccessor$Type} from "packages/yesman/epicfight/api/animation/$AnimationManager$AnimationAccessor"
-import {$AbstractPlayerEvent, $AbstractPlayerEvent$Type} from "packages/yesman/epicfight/world/entity/eventlistener/$AbstractPlayerEvent"
-
-export class $AttackEndEvent extends $AbstractPlayerEvent<($ServerPlayerPatch)> {
-
-constructor(arg0: $ServerPlayerPatch$Type, arg1: $AnimationManager$AnimationAccessor$Type<(any)>)
-
-public "getAnimation"(): $AnimationManager$AnimationAccessor<(any)>
-get "animation"(): $AnimationManager$AnimationAccessor<(any)>
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $AttackEndEvent$Type = ($AttackEndEvent);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $AttackEndEvent_ = $AttackEndEvent$Type;
-}}
-declare module "packages/yesman/epicfight/api/client/animation/$AnimationSubFileReader$PovSettings" {
-import {$Record, $Record$Type} from "packages/java/lang/$Record"
-import {$AnimationSubFileReader$PovSettings$RootTransformation, $AnimationSubFileReader$PovSettings$RootTransformation$Type} from "packages/yesman/epicfight/api/client/animation/$AnimationSubFileReader$PovSettings$RootTransformation"
-import {$AnimationSubFileReader$PovSettings$ViewLimit, $AnimationSubFileReader$PovSettings$ViewLimit$Type} from "packages/yesman/epicfight/api/client/animation/$AnimationSubFileReader$PovSettings$ViewLimit"
-import {$TransformSheet, $TransformSheet$Type} from "packages/yesman/epicfight/api/animation/$TransformSheet"
-import {$Map, $Map$Type} from "packages/java/util/$Map"
-
-export class $AnimationSubFileReader$PovSettings extends $Record {
-
-constructor(cameraTransform: $TransformSheet$Type, visibilities: $Map$Type<(string), (boolean)>, rootTransformation: $AnimationSubFileReader$PovSettings$RootTransformation$Type, viewLimit: $AnimationSubFileReader$PovSettings$ViewLimit$Type, visibilityOthers: boolean, hasUniqueAnimation: boolean, syncFrame: boolean)
-
-public "visibilities"(): $Map<(string), (boolean)>
-public "rootTransformation"(): $AnimationSubFileReader$PovSettings$RootTransformation
-public "visibilityOthers"(): boolean
-public "hasUniqueAnimation"(): boolean
-public "syncFrame"(): boolean
-public "cameraTransform"(): $TransformSheet
-public "viewLimit"(): $AnimationSubFileReader$PovSettings$ViewLimit
-public "equals"(arg0: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $AnimationSubFileReader$PovSettings$Type = ($AnimationSubFileReader$PovSettings);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $AnimationSubFileReader$PovSettings_ = $AnimationSubFileReader$PovSettings$Type;
-}}
 declare module "packages/yesman/epicfight/client/world/capabilites/entitypatch/player/$LocalPlayerPatch" {
 import {$LivingMotion, $LivingMotion$Type} from "packages/yesman/epicfight/api/animation/$LivingMotion"
 import {$ClientPlayerNetworkEvent$Clone, $ClientPlayerNetworkEvent$Clone$Type} from "packages/net/minecraftforge/client/event/$ClientPlayerNetworkEvent$Clone"
@@ -9212,13 +9719,6 @@ static readonly "WEIGHT_CORRECTION": double
 
 constructor()
 
-public "setStamina"(arg0: float): void
-public "openSkillBook"(arg0: $ItemStack$Type, arg1: $InteractionHand$Type): void
-public "setModelYRot"(arg0: float, arg1: boolean): void
-public "disableModelYRot"(arg0: boolean): void
-public "toVanillaMode"(arg0: boolean): void
-public "toEpicFightMode"(arg0: boolean): void
-public "resetHolding"(): void
 public "onRespawnLocalPlayer"(arg0: $ClientPlayerNetworkEvent$Clone$Type): void
 public "getStaminaO"(): float
 public "getPrevChargingAmount"(): integer
@@ -9228,6 +9728,13 @@ public "hasCameraAnimation"(): boolean
 public "getModelYRot"(): float
 public "setModelYRotInGui"(arg0: float): void
 public "disableModelYRotInGui"(arg0: float): void
+public "openSkillBook"(arg0: $ItemStack$Type, arg1: $InteractionHand$Type): void
+public "setModelYRot"(arg0: float, arg1: boolean): void
+public "disableModelYRot"(arg0: boolean): void
+public "setStamina"(arg0: float): void
+public "toVanillaMode"(arg0: boolean): void
+public "toEpicFightMode"(arg0: boolean): void
+public "resetHolding"(): void
 /**
  * 
  * @deprecated
@@ -9238,14 +9745,13 @@ public "isTargetLockedOn"(): boolean
  * @deprecated
  */
 public "toggleLockOn"(): void
-public "checkYTurn"(arg0: double): double
-public "checkXTurn"(arg0: double): double
-public "tick"(arg0: $LivingEvent$LivingTickEvent$Type): void
-public "playShootingAnimation"(): void
-public "overrideRender"(): boolean
 public "onConstructed"(arg0: $LocalPlayer$Type): void
 public "onJoinWorld"(arg0: $LocalPlayer$Type, arg1: $EntityJoinLevelEvent$Type): void
+public "overrideRender"(): boolean
 public "playAnimationSynchronized"(arg0: $AssetAccessor$Type<(any)>, arg1: float): void
+public "checkYTurn"(arg0: double): double
+public "checkXTurn"(arg0: double): double
+public "playShootingAnimation"(): void
 public "reserveAnimation"(arg0: $AssetAccessor$Type<(any)>): void
 public "playAnimationInstantly"(arg0: $AssetAccessor$Type<(any)>): void
 public "stopPlaying"(arg0: $AssetAccessor$Type<(any)>): void
@@ -9256,7 +9762,7 @@ public "updateHeldItem"(arg0: $CapabilityItem$Type, arg1: $CapabilityItem$Type):
 public "shouldMoveOnCurrentSide"(arg0: $ActionAnimation$Type): boolean
 public "isFirstPerson"(): boolean
 public "shouldBlockMoving"(): boolean
-public "getTarget"(): $LivingEntity
+public "tick"(arg0: $LivingEvent$LivingTickEvent$Type): void
 public "canPlayAttackAnimation"(): boolean
 public "clientTick"(arg0: $LivingEvent$LivingTickEvent$Type): void
 /**
@@ -9264,20 +9770,21 @@ public "clientTick"(arg0: $LivingEvent$LivingTickEvent$Type): void
  * @deprecated
  */
 public "setLockOn"(arg0: boolean): void
+public "getTarget"(): $LivingEntity
 public "getArmature"(): $Armature
 public "getYRot"(): float
 public "getYRotO"(): float
-set "stamina"(value: float)
 get "staminaO"(): float
 get "prevChargingAmount"(): integer
 get "firstPersonLayer"(): $LocalPlayerPatch$FirstPersonLayer
 get "povSettings"(): $AnimationSubFileReader$PovSettings
 get "modelYRot"(): float
 set "modelYRotInGui"(value: float)
+set "stamina"(value: float)
 get "targetLockedOn"(): boolean
 get "firstPerson"(): boolean
-get "target"(): $LivingEntity
 set "lockOn"(value: boolean)
+get "target"(): $LivingEntity
 get "armature"(): $Armature
 get "yRot"(): float
 get "yRotO"(): float
@@ -9312,8 +9819,6 @@ export class $ClientEngine {
 
 constructor()
 
-public "initAuthHelper"(arg0: $AuthenticationHelper$Type): void
-public "playUISound"(arg0: $SPPlayUISound$Type): void
 public "getAuthHelper"(): $AuthenticationHelper
 /**
  * 
@@ -9321,6 +9826,8 @@ public "getAuthHelper"(): $AuthenticationHelper
  */
 public "isBattleMode"(): boolean
 public "isVanillaModelDebuggingMode"(): boolean
+public "initAuthHelper"(arg0: $AuthenticationHelper$Type): void
+public "playUISound"(arg0: $SPPlayUISound$Type): void
 public "isEpicFightMode"(): boolean
 public static "makeCustomLowestParticleRenderTypeComparator"(arg0: $List$Type<($ParticleRenderType$Type)>): $Comparator<($ParticleRenderType)>
 /**
@@ -9328,8 +9835,8 @@ public static "makeCustomLowestParticleRenderTypeComparator"(arg0: $List$Type<($
  * @deprecated
  */
 public "getPlayerPatch"(): $LocalPlayerPatch
-public static "getInstance"(): $ClientEngine
 public "switchVanillaModelDebuggingMode"(): boolean
+public static "getInstance"(): $ClientEngine
 get "authHelper"(): $AuthenticationHelper
 get "battleMode"(): boolean
 get "vanillaModelDebuggingMode"(): boolean
@@ -9441,19 +9948,19 @@ export class $CustomChargeableSkill extends $CustomSkill implements $ChargeableS
 constructor(arg0: $CustomChargeableSkill$CustomChargeableSkillBuilder$Type)
 
 public "getKeyMapping"(): $KeyMapping
+public "gatherHoldArguments"(arg0: $SkillContainer$Type, arg1: $ControlEngine$Type, arg2: $FriendlyByteBuf$Type): void
+public "getMinChargingTicks"(): integer
+public "onStopHolding"(arg0: $SkillContainer$Type, arg1: $SPSkillExecutionFeedback$Type): void
 public "holdTick"(arg0: $SkillContainer$Type): void
 public "getAllowedMaxChargingTicks"(): integer
 public "startHolding"(arg0: $SkillContainer$Type): void
 public "getMaxChargingTicks"(): integer
 public "resetHolding"(arg0: $SkillContainer$Type): void
-public "getMinChargingTicks"(): integer
-public "onStopHolding"(arg0: $SkillContainer$Type, arg1: $SPSkillExecutionFeedback$Type): void
-public "gatherHoldArguments"(arg0: $SkillContainer$Type, arg1: $ControlEngine$Type, arg2: $FriendlyByteBuf$Type): void
 public "asSkill"(): $Skill
 get "keyMapping"(): $KeyMapping
+get "minChargingTicks"(): integer
 get "allowedMaxChargingTicks"(): integer
 get "maxChargingTicks"(): integer
-get "minChargingTicks"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -9479,7 +9986,6 @@ export class $AnimationEvent<EVENT extends $AnimationEvent$Event<(any), (any), (
 public "executeWithNewParams"(arg0: $LivingEntityPatch$Type<(any)>, arg1: $AssetAccessor$Type<(any)>, arg2: float, arg3: float, arg4: $AnimationParameters$Type<(any), (any), (any), (any), (any), (any), (any), (any), (any), (any)>): void
 public "execute"(arg0: $LivingEntityPatch$Type<(any)>, arg1: $AssetAccessor$Type<(any)>, arg2: float, arg3: float): void
 public "getParameters"(): $AnimationParameters<(any), (any), (any), (any), (any), (any), (any), (any), (any), (any)>
-public "params"<A, B, C, D, E>(arg0: A, arg1: B, arg2: C, arg3: D, arg4: E): T
 public "params"<A, B, C, D, E, F>(arg0: A, arg1: B, arg2: C, arg3: D, arg4: E, arg5: F): T
 public "params"<A, B, C, D, E, F, G>(arg0: A, arg1: B, arg2: C, arg3: D, arg4: E, arg5: F, arg6: G): T
 public "params"<A, B, C, D, E, F, G, H>(arg0: A, arg1: B, arg2: C, arg3: D, arg4: E, arg5: F, arg6: G, arg7: H): T
@@ -9489,6 +9995,7 @@ public "params"<A>(arg0: A): T
 public "params"<A, B>(arg0: A, arg1: B): T
 public "params"<A, B, C>(arg0: A, arg1: B, arg2: C): T
 public "params"<A, B, C, D>(arg0: A, arg1: B, arg2: C, arg3: D): T
+public "params"<A, B, C, D, E>(arg0: A, arg1: B, arg2: C, arg3: D, arg4: E): T
 get "parameters"(): $AnimationParameters<(any), (any), (any), (any), (any), (any), (any), (any), (any), (any)>
 }
 /**
@@ -9503,198 +10010,15 @@ export type $AnimationEvent$Type<EVENT, T> = ($AnimationEvent<(EVENT), (T)>);
 declare global {
 export type $AnimationEvent_<EVENT, T> = $AnimationEvent$Type<(EVENT), (T)>;
 }}
-declare module "packages/yesman/epicfight/world/capabilities/$EpicFightCapabilities" {
-import {$ServerPlayer, $ServerPlayer$Type} from "packages/net/minecraft/server/level/$ServerPlayer"
-import {$CapabilityItem, $CapabilityItem$Type} from "packages/yesman/epicfight/world/capabilities/item/$CapabilityItem"
-import {$PlayerPatch, $PlayerPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/player/$PlayerPatch"
-import {$Class, $Class$Type} from "packages/java/lang/$Class"
-import {$RegisterCapabilitiesEvent, $RegisterCapabilitiesEvent$Type} from "packages/net/minecraftforge/common/capabilities/$RegisterCapabilitiesEvent"
-import {$LocalPlayerPatch, $LocalPlayerPatch$Type} from "packages/yesman/epicfight/client/world/capabilites/entitypatch/player/$LocalPlayerPatch"
-import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
-import {$Capability, $Capability$Type} from "packages/net/minecraftforge/common/capabilities/$Capability"
-import {$ProjectilePatch, $ProjectilePatch$Type} from "packages/yesman/epicfight/world/capabilities/projectile/$ProjectilePatch"
-import {$LocalPlayer, $LocalPlayer$Type} from "packages/net/minecraft/client/player/$LocalPlayer"
-import {$Player, $Player$Type} from "packages/net/minecraft/world/entity/player/$Player"
-import {$ServerPlayerPatch, $ServerPlayerPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/player/$ServerPlayerPatch"
-import {$EntityPatch, $EntityPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/$EntityPatch"
-import {$Optional, $Optional$Type} from "packages/java/util/$Optional"
-import {$CapabilitySkill, $CapabilitySkill$Type} from "packages/yesman/epicfight/world/capabilities/skill/$CapabilitySkill"
-import {$Entity, $Entity$Type} from "packages/net/minecraft/world/entity/$Entity"
-
-export class $EpicFightCapabilities {
-static readonly "CAPABILITY_ENTITY": $Capability<($EntityPatch)>
-static readonly "CAPABILITY_ITEM": $Capability<($CapabilityItem)>
-static readonly "CAPABILITY_PROJECTILE": $Capability<($ProjectilePatch)>
-static readonly "CAPABILITY_SKILL": $Capability<($CapabilitySkill)>
-
-constructor()
-
-public static "getServerPlayerPatch"(arg0: $ServerPlayer$Type): $ServerPlayerPatch
-public static "getLocalPlayerPatch"(arg0: $LocalPlayer$Type): $LocalPlayerPatch
-public static "getPlayerPatchAsOptional"(arg0: $Entity$Type): $Optional<($PlayerPatch<(any)>)>
-public static "getServerPlayerPatchAsOptional"(arg0: $Entity$Type): $Optional<($ServerPlayerPatch)>
-public static "getLocalPlayerPatchAsOptional"(arg0: $Entity$Type): $Optional<($LocalPlayerPatch)>
-public static "getItemCapability"(arg0: $ItemStack$Type): $Optional<($CapabilityItem)>
-public static "getItemStackCapabilityOr"(arg0: $ItemStack$Type, arg1: $CapabilityItem$Type): $CapabilityItem
-public static "getEntityPatch"<T extends $EntityPatch<(any)>>(arg0: $Entity$Type, arg1: $Class$Type<(T)>): T
-public static "getUnparameterizedEntityPatch"<T extends $EntityPatch<(any)>>(arg0: $Entity$Type, arg1: $Class$Type<(T)>): $Optional<(T)>
-public static "getParameterizedEntityPatch"<E extends $Entity, T extends $EntityPatch<(E)>>(arg0: $Entity$Type, arg1: $Class$Type<(E)>, arg2: $Class$Type<(any)>): $Optional<(T)>
-public static "getPlayerPatch"(arg0: $Player$Type): $PlayerPatch<(any)>
-public static "getItemStackCapability"(arg0: $ItemStack$Type): $CapabilityItem
-public static "registerCapabilities"(arg0: $RegisterCapabilitiesEvent$Type): void
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $EpicFightCapabilities$Type = ($EpicFightCapabilities);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $EpicFightCapabilities_ = $EpicFightCapabilities$Type;
-}}
-declare module "packages/yesman/epicfight/api/animation/types/$AttackAnimation" {
-import {$AnimationVariables$SharedAnimationVariableKey, $AnimationVariables$SharedAnimationVariableKey$Type} from "packages/yesman/epicfight/api/animation/$AnimationVariables$SharedAnimationVariableKey"
-import {$AnimationVariables$IndependentAnimationVariableKey, $AnimationVariables$IndependentAnimationVariableKey$Type} from "packages/yesman/epicfight/api/animation/$AnimationVariables$IndependentAnimationVariableKey"
-import {$AssetAccessor, $AssetAccessor$Type} from "packages/yesman/epicfight/api/asset/$AssetAccessor"
-import {$AttackAnimation$Phase, $AttackAnimation$Phase$Type} from "packages/yesman/epicfight/api/animation/types/$AttackAnimation$Phase"
-import {$EntityState$StateFactor, $EntityState$StateFactor$Type} from "packages/yesman/epicfight/api/animation/types/$EntityState$StateFactor"
-import {$DamageSource, $DamageSource$Type} from "packages/net/minecraft/world/damagesource/$DamageSource"
-import {$ActionAnimation, $ActionAnimation$Type} from "packages/yesman/epicfight/api/animation/types/$ActionAnimation"
-import {$Vec3, $Vec3$Type} from "packages/net/minecraft/world/phys/$Vec3"
-import {$TransformSheet, $TransformSheet$Type} from "packages/yesman/epicfight/api/animation/$TransformSheet"
-import {$LivingEntity, $LivingEntity$Type} from "packages/net/minecraft/world/entity/$LivingEntity"
-import {$EpicFightDamageSource, $EpicFightDamageSource$Type} from "packages/yesman/epicfight/world/damagesource/$EpicFightDamageSource"
-import {$DynamicAnimation, $DynamicAnimation$Type} from "packages/yesman/epicfight/api/animation/types/$DynamicAnimation"
-import {$InteractionHand, $InteractionHand$Type} from "packages/net/minecraft/world/$InteractionHand"
-import {$AnimationProperty$AttackPhaseProperty, $AnimationProperty$AttackPhaseProperty$Type} from "packages/yesman/epicfight/api/animation/property/$AnimationProperty$AttackPhaseProperty"
-import {$AnimationManager$AnimationAccessor, $AnimationManager$AnimationAccessor$Type} from "packages/yesman/epicfight/api/animation/$AnimationManager$AnimationAccessor"
-import {$PoseStack, $PoseStack$Type} from "packages/com/mojang/blaze3d/vertex/$PoseStack"
-import {$List, $List$Type} from "packages/java/util/$List"
-import {$Joint, $Joint$Type} from "packages/yesman/epicfight/api/animation/$Joint"
-import {$MultiBufferSource, $MultiBufferSource$Type} from "packages/net/minecraft/client/renderer/$MultiBufferSource"
-import {$Collider, $Collider$Type} from "packages/yesman/epicfight/api/collider/$Collider"
-import {$LivingEntityPatch, $LivingEntityPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/$LivingEntityPatch"
-import {$Entity, $Entity$Type} from "packages/net/minecraft/world/entity/$Entity"
-
-export class $AttackAnimation extends $ActionAnimation {
-static readonly "ATTACK_TRIED_ENTITIES": $AnimationVariables$SharedAnimationVariableKey<($List<($Entity)>)>
-static readonly "ACTUALLY_HIT_ENTITIES": $AnimationVariables$SharedAnimationVariableKey<($List<($LivingEntity)>)>
-readonly "phases": ($AttackAnimation$Phase)[]
-static readonly "ACTION_ANIMATION_COORD": $AnimationVariables$SharedAnimationVariableKey<($TransformSheet)>
-static readonly "BEGINNING_LOCATION": $AnimationVariables$IndependentAnimationVariableKey<($Vec3)>
-static readonly "INITIAL_LOOK_VEC_DOT": $AnimationVariables$IndependentAnimationVariableKey<(float)>
-static readonly "HAD_NO_PHYSICS": $AnimationVariables$IndependentAnimationVariableKey<(boolean)>
-
-constructor(arg0: float, arg1: $AnimationManager$AnimationAccessor$Type<(any)>, arg2: $AssetAccessor$Type<(any)>, ...arg3: ($AttackAnimation$Phase$Type)[])
-constructor(arg0: float, arg1: float, arg2: float, arg3: float, arg4: float, arg5: $InteractionHand$Type, arg6: $Collider$Type, arg7: $Joint$Type, arg8: $AnimationManager$AnimationAccessor$Type<(any)>, arg9: $AssetAccessor$Type<(any)>)
-constructor(arg0: float, arg1: float, arg2: float, arg3: float, arg4: float, arg5: $Collider$Type, arg6: $Joint$Type, arg7: $AnimationManager$AnimationAccessor$Type<(any)>, arg8: $AssetAccessor$Type<(any)>)
-constructor(arg0: float, arg1: float, arg2: float, arg3: float, arg4: float, arg5: $InteractionHand$Type, arg6: $Collider$Type, arg7: $Joint$Type, arg8: string, arg9: $AssetAccessor$Type<(any)>)
-constructor(arg0: float, arg1: string, arg2: $AssetAccessor$Type<(any)>, ...arg3: ($AttackAnimation$Phase$Type)[])
-
-public "renderDebugging"(arg0: $PoseStack$Type, arg1: $MultiBufferSource$Type, arg2: $LivingEntityPatch$Type<(any)>, arg3: float, arg4: float): void
-public "linkTick"(arg0: $LivingEntityPatch$Type<(any)>, arg1: $AssetAccessor$Type<(any)>): void
-public "getModifiedLinkState"(arg0: $EntityState$StateFactor$Type<(any)>, arg1: any, arg2: $LivingEntityPatch$Type<(any)>, arg3: float): any
-public "getTrueEntity"(arg0: $Entity$Type): $LivingEntity
-public "getPlaySpeed"(arg0: $LivingEntityPatch$Type<(any)>, arg1: $DynamicAnimation$Type): float
-public "getPhaseOrderByTime"(arg0: float): integer
-public "tick"(arg0: $LivingEntityPatch$Type<(any)>): void
-public "getEpicFightDamageSource"(arg0: $DamageSource$Type, arg1: $LivingEntityPatch$Type<(any)>, arg2: $Entity$Type, arg3: $AttackAnimation$Phase$Type): $EpicFightDamageSource
-public "getEpicFightDamageSource"(arg0: $LivingEntityPatch$Type<(any)>, arg1: $Entity$Type, arg2: $AttackAnimation$Phase$Type): $EpicFightDamageSource
-public "getPhaseByTime"(arg0: float): $AttackAnimation$Phase
-public "end"(arg0: $LivingEntityPatch$Type<(any)>, arg1: $AssetAccessor$Type<(any)>, arg2: boolean): void
-public "begin"(arg0: $LivingEntityPatch$Type<(any)>): void
-public "addProperty"<V, A extends $AttackAnimation>(arg0: $AnimationProperty$AttackPhaseProperty$Type<(V)>, arg1: V): A
-public "addProperty"<V, A extends $AttackAnimation>(arg0: $AnimationProperty$AttackPhaseProperty$Type<(V)>, arg1: V, arg2: integer): A
-public "removeProperty"<A extends $AttackAnimation>(arg0: $AnimationProperty$AttackPhaseProperty$Type<(any)>, arg1: integer): A
-public "removeProperty"<A extends $AttackAnimation>(arg0: $AnimationProperty$AttackPhaseProperty$Type<(any)>): A
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $AttackAnimation$Type = ($AttackAnimation);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $AttackAnimation_ = $AttackAnimation$Type;
-}}
-declare module "packages/yesman/epicfight/world/damagesource/$ExtraDamageInstance" {
-import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
-import {$ExtraDamageInstance$ExtraDamage, $ExtraDamageInstance$ExtraDamage$Type} from "packages/yesman/epicfight/world/damagesource/$ExtraDamageInstance$ExtraDamage"
-import {$MutableComponent, $MutableComponent$Type} from "packages/net/minecraft/network/chat/$MutableComponent"
-import {$LivingEntity, $LivingEntity$Type} from "packages/net/minecraft/world/entity/$LivingEntity"
-
-export class $ExtraDamageInstance {
-static readonly "EVISCERATE_LOST_HEALTH": $ExtraDamageInstance$ExtraDamage
-static readonly "SWEEPING_EDGE_ENCHANTMENT": $ExtraDamageInstance$ExtraDamage
-
-constructor(arg0: $ExtraDamageInstance$ExtraDamage$Type, ...arg1: (float)[])
-
-public "setTooltips"(arg0: $ItemStack$Type, arg1: $MutableComponent$Type, arg2: double): void
-public "get"(arg0: $LivingEntity$Type, arg1: $ItemStack$Type, arg2: $LivingEntity$Type, arg3: float): float
-public "getParams"(): (float)[]
-public "toTransableComponentParams"(): (any)[]
-get "params"(): (float)[]
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $ExtraDamageInstance$Type = ($ExtraDamageInstance);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $ExtraDamageInstance_ = $ExtraDamageInstance$Type;
-}}
-declare module "packages/yesman/epicfight/api/animation/types/$MainFrameAnimation" {
-import {$Layer$Priority, $Layer$Priority$Type} from "packages/yesman/epicfight/api/client/animation/$Layer$Priority"
-import {$StaticAnimation, $StaticAnimation$Type} from "packages/yesman/epicfight/api/animation/types/$StaticAnimation"
-import {$AnimationVariables$IndependentAnimationVariableKey, $AnimationVariables$IndependentAnimationVariableKey$Type} from "packages/yesman/epicfight/api/animation/$AnimationVariables$IndependentAnimationVariableKey"
-import {$AssetAccessor, $AssetAccessor$Type} from "packages/yesman/epicfight/api/asset/$AssetAccessor"
-import {$AnimationManager$AnimationAccessor, $AnimationManager$AnimationAccessor$Type} from "packages/yesman/epicfight/api/animation/$AnimationManager$AnimationAccessor"
-import {$LivingEntityPatch, $LivingEntityPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/$LivingEntityPatch"
-
-export class $MainFrameAnimation extends $StaticAnimation {
-static readonly "HAD_NO_PHYSICS": $AnimationVariables$IndependentAnimationVariableKey<(boolean)>
-
-constructor(arg0: float, arg1: $AnimationManager$AnimationAccessor$Type<(any)>, arg2: $AssetAccessor$Type<(any)>)
-constructor(arg0: float, arg1: string, arg2: $AssetAccessor$Type<(any)>)
-
-public "isMainFrameAnimation"(): boolean
-public "tick"(arg0: $LivingEntityPatch$Type<(any)>): void
-public "begin"(arg0: $LivingEntityPatch$Type<(any)>): void
-public "getPriority"(): $Layer$Priority
-get "mainFrameAnimation"(): boolean
-get "priority"(): $Layer$Priority
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $MainFrameAnimation$Type = ($MainFrameAnimation);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $MainFrameAnimation_ = $MainFrameAnimation$Type;
-}}
 declare module "packages/yesman/epicfight/world/capabilities/entitypatch/$EntityDecorations$RenderAttributeModifier" {
 export {} // Mark the file as a module, do not remove unless there are other import/exports!
 export interface $EntityDecorations$RenderAttributeModifier<T> {
 
- "tick"(): void
- "shouldRemove"(): boolean
  "modifyValue"(arg0: T, arg1: float): void
+ "shouldRemove"(): boolean
+ "tick"(): void
 
-(): void
+(arg0: T, arg1: float): void
 }
 
 export namespace $EntityDecorations$RenderAttributeModifier {
@@ -9711,44 +10035,6 @@ export type $EntityDecorations$RenderAttributeModifier$Type<T> = ($EntityDecorat
  */
 declare global {
 export type $EntityDecorations$RenderAttributeModifier_<T> = $EntityDecorations$RenderAttributeModifier$Type<(T)>;
-}}
-declare module "packages/yesman/epicfight/world/entity/eventlistener/$SkillCastEvent" {
-import {$FriendlyByteBuf, $FriendlyByteBuf$Type} from "packages/net/minecraft/network/$FriendlyByteBuf"
-import {$PlayerPatch, $PlayerPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/player/$PlayerPatch"
-import {$SkillContainer, $SkillContainer$Type} from "packages/yesman/epicfight/skill/$SkillContainer"
-import {$AbstractPlayerEvent, $AbstractPlayerEvent$Type} from "packages/yesman/epicfight/world/entity/eventlistener/$AbstractPlayerEvent"
-
-export class $SkillCastEvent extends $AbstractPlayerEvent<($PlayerPatch<(any)>)> {
-
-constructor(arg0: $PlayerPatch$Type<(any)>, arg1: $SkillContainer$Type, arg2: $FriendlyByteBuf$Type)
-
-public "shouldReserveKey"(): boolean
-public "getSkillContainer"(): $SkillContainer
-public "setSkillExecutable"(arg0: boolean): void
-public "setStateExecutable"(arg0: boolean): void
-public "isSkillExecutable"(): boolean
-public "isStateExecutable"(): boolean
-public "getArguments"(): $FriendlyByteBuf
-public "isExecutable"(): boolean
-get "skillContainer"(): $SkillContainer
-set "skillExecutable"(value: boolean)
-set "stateExecutable"(value: boolean)
-get "skillExecutable"(): boolean
-get "stateExecutable"(): boolean
-get "arguments"(): $FriendlyByteBuf
-get "executable"(): boolean
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $SkillCastEvent$Type = ($SkillCastEvent);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $SkillCastEvent_ = $SkillCastEvent$Type;
 }}
 declare module "packages/yesman/epicfight/api/utils/math/$Vec4f" {
 import {$Vec3f, $Vec3f$Type} from "packages/yesman/epicfight/api/utils/math/$Vec3f"
@@ -9835,30 +10121,30 @@ export class $PlayerInputState extends $Record {
 
 constructor(leftImpulse: float, forwardImpulse: float, up: boolean, down: boolean, left: boolean, right: boolean, jumping: boolean, sneaking: boolean)
 
-public static "fromVanillaInput"(arg0: $Input$Type): $PlayerInputState
-public static "applyToVanillaInput"(arg0: $PlayerInputState$Type, arg1: $Input$Type): $Input
 public "hasForwardImpulse"(): boolean
 public "withUp"(arg0: boolean): $PlayerInputState
 public "withDown"(arg0: boolean): $PlayerInputState
 public "withLeft"(arg0: boolean): $PlayerInputState
 public "withRight"(arg0: boolean): $PlayerInputState
 public "withSneaking"(arg0: boolean): $PlayerInputState
-public "getMoveVector"(): $Vec2
+public static "fromVanillaInput"(arg0: $Input$Type): $PlayerInputState
+public static "applyToVanillaInput"(arg0: $PlayerInputState$Type, arg1: $Input$Type): $Input
 public "withJumping"(arg0: boolean): $PlayerInputState
-public "jumping"(): boolean
+public "getMoveVector"(): $Vec2
 public "sneaking"(): boolean
+public "jumping"(): boolean
 public "down"(): boolean
 public "up"(): boolean
-public "equals"(arg0: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
-public "copyWith"(arg0: float, arg1: float, arg2: boolean, arg3: boolean, arg4: boolean, arg5: boolean, arg6: boolean, arg7: boolean): $PlayerInputState
 public "left"(): boolean
 public "right"(): boolean
 public "forwardImpulse"(): float
 public "leftImpulse"(): float
 public "withForwardImpulse"(arg0: float): $PlayerInputState
 public "withLeftImpulse"(arg0: float): $PlayerInputState
+public "equals"(arg0: any): boolean
+public "toString"(): string
+public "hashCode"(): integer
+public "copyWith"(arg0: float, arg1: float, arg2: boolean, arg3: boolean, arg4: boolean, arg5: boolean, arg6: boolean, arg7: boolean): $PlayerInputState
 get "moveVector"(): $Vec2
 }
 /**
@@ -9965,12 +10251,13 @@ static readonly "ZERO": $Vec3f
  "x": float
  "y": float
 
-constructor()
+constructor(arg0: $Vec3$Type)
 constructor(arg0: double, arg1: double, arg2: double)
 constructor(arg0: float, arg1: float, arg2: float)
-constructor(arg0: $Vec3$Type)
+constructor()
 
-public "toDoubleVector"(): $Vec3
+public static "getNearest"(arg0: $Vec3f$Type, arg1: $List$Type<($Vec3f$Type)>): integer
+public static "getNearest"(arg0: $Vec3f$Type, ...arg1: ($Vec3f$Type)[]): integer
 public static "getMostSimilar"(arg0: $Vec3f$Type, arg1: $Vec3f$Type, arg2: $List$Type<($Vec3f$Type)>): integer
 public static "getMostSimilar"(arg0: $Vec3f$Type, arg1: $Vec3f$Type, ...arg2: ($Vec3f$Type)[]): integer
 public "toMojangVector"(): $Vector3f
@@ -9981,43 +10268,41 @@ public "lengthSqr"(): float
 public "distanceSqr"(arg0: $Vec3f$Type): float
 public "horizontalDistanceSqr"(): float
 public "validateValues"(): boolean
-public static "getRotatorBetween"(arg0: $Vec3f$Type, arg1: $Vec3f$Type, arg2: $Quaternionf$Type): $Quaternionf
 public static "getAngleBetween"(arg0: $Vec3f$Type, arg1: $Vec3f$Type): float
+public static "getRotatorBetween"(arg0: $Vec3f$Type, arg1: $Vec3f$Type, arg2: $Quaternionf$Type): $Quaternionf
 public "horizontalDistance"(): float
+public "toDoubleVector"(): $Vec3
 public "invalidate"(): void
-public "sub"(arg0: float, arg1: float, arg2: float): $Vec3f
-public static "sub"(arg0: $Vec3f$Type, arg1: $Vec3f$Type, arg2: $Vec3f$Type): $Vec3f
-public "sub"(arg0: $Vec3f$Type): $Vec3f
-public static "average"(arg0: $Vec3f$Type, ...arg1: ($Vec3f$Type)[]): $Vec3f
 public static "average"(arg0: $Collection$Type<($Vec3f$Type)>, arg1: $Vec3f$Type): $Vec3f
+public static "average"(arg0: $Vec3f$Type, ...arg1: ($Vec3f$Type)[]): $Vec3f
+public "multiply"(arg0: $Vec3f$Type): $Vec3f
+public static "multiply"(arg0: $Vec3f$Type, arg1: $Vec3f$Type, arg2: float, arg3: float, arg4: float): $Vec3f
+public "multiply"(arg0: float, arg1: float, arg2: float): $Vec3f
+public static "rotate"(arg0: $Quaternionf$Type, arg1: $Vec3f$Type, arg2: $Vec3f$Type): $Vec3f
+public "rotate"(arg0: float, arg1: $Vec3f$Type): void
+public static "rotate"(arg0: float, arg1: $Vec3f$Type, arg2: $Vec3f$Type, arg3: $Vec3f$Type): $Vec3f
+public "sub"(arg0: float, arg1: float, arg2: float): $Vec3f
+public "sub"(arg0: $Vec3f$Type): $Vec3f
+public static "sub"(arg0: $Vec3f$Type, arg1: $Vec3f$Type, arg2: $Vec3f$Type): $Vec3f
+public static "interpolate"(arg0: $Vec3f$Type, arg1: $Vec3f$Type, arg2: float, arg3: $Vec3f$Type): $Vec3f
+public static "cross"(arg0: $Vec3f$Type, arg1: $Vec3f$Type, arg2: $Vec3f$Type): $Vec3f
+public "add"(arg0: float, arg1: float, arg2: float): $Vec3f
 public static "add"(arg0: $Vec3f$Type, arg1: $Vec3f$Type, arg2: $Vec3f$Type): $Vec3f
 public "add"(arg0: $Vec3$Type): $Vec3f
-public "add"(arg0: float, arg1: float, arg2: float): $Vec3f
 public "add"(arg0: $Vec3f$Type): $Vec3f
 public "equals"(arg0: any): boolean
 public "length"(): float
 public "toString"(): string
 public "hashCode"(): integer
-public "scale"(arg0: float): $Vec3f
 public static "scale"(arg0: $Vec3f$Type, arg1: $Vec3f$Type, arg2: float): $Vec3f
 public static "dot"(arg0: $Vec3f$Type, arg1: $Vec3f$Type): float
+public "set"(arg0: float, arg1: float, arg2: float): $Vec3f
 public "set"(arg0: $Vec3f$Type): $Vec3f
 public "set"(arg0: $Vec3$Type): $Vec3f
-public "set"(arg0: float, arg1: float, arg2: float): $Vec3f
 public "copy"(): $Vec3f
-public static "normalize"(arg0: $Vec3f$Type, arg1: $Vec3f$Type): $Vec3f
 public "normalize"(): $Vec3f
+public static "normalize"(arg0: $Vec3f$Type, arg1: $Vec3f$Type): $Vec3f
 public "distance"(arg0: $Vec3f$Type): float
-public "multiply"(arg0: float, arg1: float, arg2: float): $Vec3f
-public static "multiply"(arg0: $Vec3f$Type, arg1: $Vec3f$Type, arg2: float, arg3: float, arg4: float): $Vec3f
-public "multiply"(arg0: $Vec3f$Type): $Vec3f
-public static "rotate"(arg0: $Quaternionf$Type, arg1: $Vec3f$Type, arg2: $Vec3f$Type): $Vec3f
-public "rotate"(arg0: float, arg1: $Vec3f$Type): void
-public static "rotate"(arg0: float, arg1: $Vec3f$Type, arg2: $Vec3f$Type, arg3: $Vec3f$Type): $Vec3f
-public static "interpolate"(arg0: $Vec3f$Type, arg1: $Vec3f$Type, arg2: float, arg3: $Vec3f$Type): $Vec3f
-public static "cross"(arg0: $Vec3f$Type, arg1: $Vec3f$Type, arg2: $Vec3f$Type): $Vec3f
-public static "getNearest"(arg0: $Vec3f$Type, ...arg1: ($Vec3f$Type)[]): integer
-public static "getNearest"(arg0: $Vec3f$Type, arg1: $List$Type<($Vec3f$Type)>): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -10042,13 +10327,13 @@ export class $DealDamageEvent<T extends $LivingEvent> extends $AbstractPlayerEve
 
 constructor(arg0: $ServerPlayerPatch$Type, arg1: $LivingEntity$Type, arg2: $EpicFightDamageSource$Type, arg3: T, arg4: boolean)
 
-public "getForgeEvent"(): T
-public "getAttackDamage"(): float
 public "getDamageSource"(): $EpicFightDamageSource
+public "getAttackDamage"(): float
+public "getForgeEvent"(): T
 public "getTarget"(): $LivingEntity
-get "forgeEvent"(): T
-get "attackDamage"(): float
 get "damageSource"(): $EpicFightDamageSource
+get "attackDamage"(): float
+get "forgeEvent"(): T
 get "target"(): $LivingEntity
 }
 /**
@@ -10069,8 +10354,8 @@ import {$SoundEvent, $SoundEvent$Type} from "packages/net/minecraft/sounds/$Soun
 import {$LivingMotion, $LivingMotion$Type} from "packages/yesman/epicfight/api/animation/$LivingMotion"
 import {$CompoundTag, $CompoundTag$Type} from "packages/net/minecraft/nbt/$CompoundTag"
 import {$HitParticleType, $HitParticleType$Type} from "packages/yesman/epicfight/particle/$HitParticleType"
-import {$LivingDeathEvent, $LivingDeathEvent$Type} from "packages/net/minecraftforge/event/entity/living/$LivingDeathEvent"
 import {$Armature, $Armature$Type} from "packages/yesman/epicfight/api/model/$Armature"
+import {$LivingDeathEvent, $LivingDeathEvent$Type} from "packages/net/minecraftforge/event/entity/living/$LivingDeathEvent"
 import {$CapabilityItem, $CapabilityItem$Type} from "packages/yesman/epicfight/world/capabilities/item/$CapabilityItem"
 import {$LivingEntityPatch$ServerAnimationPacketProvider, $LivingEntityPatch$ServerAnimationPacketProvider$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/$LivingEntityPatch$ServerAnimationPacketProvider"
 import {$DamageSource, $DamageSource$Type} from "packages/net/minecraft/world/damagesource/$DamageSource"
@@ -10086,9 +10371,9 @@ import {$Faction, $Faction$Type} from "packages/yesman/epicfight/world/capabilit
 import {$HurtableEntityPatch, $HurtableEntityPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/$HurtableEntityPatch"
 import {$List, $List$Type} from "packages/java/util/$List"
 import {$Collider, $Collider$Type} from "packages/yesman/epicfight/api/collider/$Collider"
-import {$LivingEvent$LivingTickEvent, $LivingEvent$LivingTickEvent$Type} from "packages/net/minecraftforge/event/entity/living/$LivingEvent$LivingTickEvent"
 import {$AttackResult, $AttackResult$Type} from "packages/yesman/epicfight/api/utils/$AttackResult"
 import {$Entity, $Entity$Type} from "packages/net/minecraft/world/entity/$Entity"
+import {$LivingEvent$LivingTickEvent, $LivingEvent$LivingTickEvent$Type} from "packages/net/minecraftforge/event/entity/living/$LivingEvent$LivingTickEvent"
 import {$AnimatorControlPacket$Action, $AnimatorControlPacket$Action$Type} from "packages/yesman/epicfight/network/common/$AnimatorControlPacket$Action"
 import {$AssetAccessor, $AssetAccessor$Type} from "packages/yesman/epicfight/api/asset/$AssetAccessor"
 import {$SPEntityPairingPacket, $SPEntityPairingPacket$Type} from "packages/yesman/epicfight/network/server/$SPEntityPairingPacket"
@@ -10116,24 +10401,13 @@ static readonly "WEIGHT_CORRECTION": double
 
 constructor()
 
-public "onFall"(arg0: $LivingFallEvent$Type): void
-public "getAnimator"<A extends $Animator>(): A
-public "tick"(arg0: $LivingEvent$LivingTickEvent$Type): void
-public "onDeath"(arg0: $LivingDeathEvent$Type): void
-public static "initLivingEntityDataAccessor"(): void
-public static "createSyncedEntityData"(arg0: $LivingEntity$Type): void
-public "setLastAttackResult"(arg0: $AttackResult$Type): void
-public "getEpicFightDamageSource"(): $EpicFightDamageSource
-public "onAttackBlocked"(arg0: $DamageSource$Type, arg1: $LivingEntityPatch$Type<(any)>): void
-public "setLastAttackEntity"(arg0: $Entity$Type): void
-public "canPush"(arg0: $Entity$Type): boolean
-public "initAttributesFromCompound"(arg0: $CompoundTag$Type): void
-public "saveData"(arg0: $CompoundTag$Type): void
-public "isStunned"(): boolean
-public "getEntityState"(): $EntityState
-public "onStrike"(arg0: $AttackAnimation$Type, arg1: $InteractionHand$Type): void
-public "attack"(arg0: $EpicFightDamageSource$Type, arg1: $Entity$Type, arg2: $InteractionHand$Type): $AttackResult
-public "playShootingAnimation"(): void
+public "onConstructed"(arg0: T): void
+public "onJoinWorld"(arg0: T, arg1: $EntityJoinLevelEvent$Type): void
+public "getModelMatrix"(arg0: float): $OpenMatrix4f
+public "entityPairing"(arg0: $SPEntityPairingPacket$Type): void
+public "applyStun"(arg0: $StunType$Type, arg1: float): boolean
+public "getStunShield"(): float
+public "setStunShield"(arg0: float): void
 public "isLastAttackSuccess"(): boolean
 public "setParentJointOfHand"(arg0: $InteractionHand$Type, arg1: $Joint$Type): void
 public "updateMotion"(arg0: boolean): void
@@ -10144,14 +10418,19 @@ public "aboutToDeath"(): void
 public "isAirborneState"(): boolean
 public "setAirborneState"(arg0: boolean): void
 public "poseTick"(arg0: $DynamicAnimation$Type, arg1: $Pose$Type, arg2: float, arg3: float): void
+public "attack"(arg0: $EpicFightDamageSource$Type, arg1: $Entity$Type, arg2: $InteractionHand$Type): $AttackResult
+public "onFall"(arg0: $LivingFallEvent$Type): void
+public "onDeath"(arg0: $LivingDeathEvent$Type): void
+public static "initLivingEntityDataAccessor"(): void
+public static "createSyncedEntityData"(arg0: $LivingEntity$Type): void
+public "setLastAttackResult"(arg0: $AttackResult$Type): void
+public "getEpicFightDamageSource"(): $EpicFightDamageSource
+public "onAttackBlocked"(arg0: $DamageSource$Type, arg1: $LivingEntityPatch$Type<(any)>): void
+public "setLastAttackEntity"(arg0: $Entity$Type): void
+public "canPush"(arg0: $Entity$Type): boolean
+public "initAttributesFromCompound"(arg0: $CompoundTag$Type): void
+public "saveData"(arg0: $CompoundTag$Type): void
 public "overrideRender"(): boolean
-public "onConstructed"(arg0: T): void
-public "onJoinWorld"(arg0: T, arg1: $EntityJoinLevelEvent$Type): void
-public "getModelMatrix"(arg0: float): $OpenMatrix4f
-public "entityPairing"(arg0: $SPEntityPairingPacket$Type): void
-public "applyStun"(arg0: $StunType$Type, arg1: float): boolean
-public "getStunShield"(): float
-public "setStunShield"(arg0: float): void
 public "getHitAnimation"(arg0: $StunType$Type): $AssetAccessor<(any)>
 public "playAnimationSynchronized"(arg0: $AssetAccessor$Type<(any)>, arg1: float, arg2: $LivingEntityPatch$ServerAnimationPacketProvider$Type): void
 public "playAnimationSynchronized"(arg0: $AssetAccessor$Type<(any)>, arg1: float): void
@@ -10166,6 +10445,11 @@ public "getDamageSource"(arg0: $AnimationManager$AnimationAccessor$Type<(any)>, 
 public "getArmorNegation"(arg0: $InteractionHand$Type): float
 public "tryHurt"(arg0: $DamageSource$Type, arg1: float): $AttackResult
 public "tryHarm"(arg0: $Entity$Type, arg1: $EpicFightDamageSource$Type, arg2: float): $AttackResult
+public "getAnimator"<A extends $Animator>(): A
+public "playShootingAnimation"(): void
+public "isStunned"(): boolean
+public "getEntityState"(): $EntityState
+public "onStrike"(arg0: $AttackAnimation$Type, arg1: $InteractionHand$Type): void
 public "setLastAttackSuccess"(arg0: boolean): void
 public "getModifiedBaseDamage"(arg0: float): float
 public "onDrop"(arg0: $LivingDropsEvent$Type): boolean
@@ -10174,8 +10458,8 @@ public "setExecutionResistance"(arg0: integer): void
 public "getYRotDeltaTo"(arg0: $Entity$Type): float
 public "getYRotLimit"(): float
 public "getAttackDirectionPitch"(): float
-public "reserveAnimation"(arg0: $AssetAccessor$Type<(any)>, arg1: $LivingEntityPatch$ServerAnimationPacketProvider$Type): void
 public "reserveAnimation"(arg0: $AssetAccessor$Type<(any)>): void
+public "reserveAnimation"(arg0: $AssetAccessor$Type<(any)>, arg1: $LivingEntityPatch$ServerAnimationPacketProvider$Type): void
 public "playAnimationInstantly"(arg0: $AssetAccessor$Type<(any)>, arg1: $LivingEntityPatch$ServerAnimationPacketProvider$Type): void
 public "playAnimationInstantly"(arg0: $AssetAccessor$Type<(any)>): void
 public "playAnimation"(arg0: $AssetAccessor$Type<(any)>, arg1: float, arg2: $LivingEntityPatch$ServerAnimationPacketProvider$Type): void
@@ -10226,26 +10510,27 @@ public "getFaction"(): $Faction
 public "getEntityDecorations"(): $EntityDecorations
 public "captureEntitySnapshot"(): $EntitySnapshot<(any)>
 public "flashTargetIndicator"(arg0: $LocalPlayerPatch$Type): boolean
+public "tick"(arg0: $LivingEvent$LivingTickEvent$Type): void
 public "getImpact"(arg0: $InteractionHand$Type): float
-public "getTarget"(): $LivingEntity
 public "getWeight"(): float
 public "rotateTo"(arg0: float, arg1: float, arg2: boolean): void
 public "rotateTo"(arg0: $Entity$Type, arg1: float, arg2: boolean): void
-get "animator"(): A
-set "lastAttackResult"(value: $AttackResult$Type)
-get "epicFightDamageSource"(): $EpicFightDamageSource
-set "lastAttackEntity"(value: $Entity$Type)
-get "stunned"(): boolean
-get "entityState"(): $EntityState
+public "getTarget"(): $LivingEntity
+get "stunShield"(): float
+set "stunShield"(value: float)
 get "lastAttackSuccess"(): boolean
 get "armature"(): $Armature
 set "maxStunShield"(value: float)
 get "maxStunShield"(): float
 get "airborneState"(): boolean
 set "airborneState"(value: boolean)
-get "stunShield"(): float
-set "stunShield"(value: float)
+set "lastAttackResult"(value: $AttackResult$Type)
+get "epicFightDamageSource"(): $EpicFightDamageSource
+set "lastAttackEntity"(value: $Entity$Type)
 get "offhandItemValid"(): boolean
+get "animator"(): A
+get "stunned"(): boolean
+get "entityState"(): $EntityState
 set "lastAttackSuccess"(value: boolean)
 get "executionResistance"(): integer
 set "executionResistance"(value: integer)
@@ -10270,8 +10555,8 @@ get "currentlyAttackTriedEntities"(): $List<($Entity)>
 get "currentlyActuallyHitEntities"(): $List<($LivingEntity)>
 get "faction"(): $Faction
 get "entityDecorations"(): $EntityDecorations
-get "target"(): $LivingEntity
 get "weight"(): float
+get "target"(): $LivingEntity
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -10300,10 +10585,7 @@ readonly "rootJoint": $Joint
 
 constructor(arg0: string, arg1: integer, arg2: $Joint$Type, arg3: $Map$Type<(string), ($Joint$Type)>)
 
-public "getPoseMatrices"(): ($OpenMatrix4f)[]
-public "setPose"(arg0: $Pose$Type): void
-public "gatherAllJointsInPathToTerminal"(arg0: string, arg1: $Collection$Type<(string)>): void
-public "getJointNumber"(): integer
+public "getPoseAsTransformMatrix"(arg0: $Pose$Type, arg1: boolean): ($OpenMatrix4f)[]
 public "toJsonObject"(): $JsonObject
 public "bakeOriginMatrices"(): void
 /**
@@ -10314,16 +10596,19 @@ public "getBindedTransformFor"(arg0: $Pose$Type, arg1: $Joint$Type): $OpenMatrix
 public "searchPathIndex"(arg0: $Joint$Type, arg1: string): $Joint$HierarchicalJointAccessor
 public "searchPathIndex"(arg0: string): $Joint$HierarchicalJointAccessor
 public "getBoundTransformByJointIndex"(arg0: $Pose$Type, arg1: $Joint$AccessTicket$Type): $OpenMatrix4f
-public "getPoseAsTransformMatrix"(arg0: $Pose$Type, arg1: boolean): ($OpenMatrix4f)[]
+public "gatherAllJointsInPathToTerminal"(arg0: string, arg1: $Collection$Type<(string)>): void
+public "getJointNumber"(): integer
+public "setPose"(arg0: $Pose$Type): void
+public "getPoseMatrices"(): ($OpenMatrix4f)[]
+public "searchJointById"(arg0: integer): $Joint
 public "hasJoint"(arg0: string): boolean
 public "searchJointByName"(arg0: string): $Joint
 public "getBoundTransformFor"(arg0: $Pose$Type, arg1: $Joint$Type): $OpenMatrix4f
-public "toString"(): string
 public "deepCopy"(): $Armature
-public "searchJointById"(arg0: integer): $Joint
-get "poseMatrices"(): ($OpenMatrix4f)[]
-set "pose"(value: $Pose$Type)
+public "toString"(): string
 get "jointNumber"(): integer
+set "pose"(value: $Pose$Type)
+get "poseMatrices"(): ($OpenMatrix4f)[]
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -10347,12 +10632,12 @@ import {$SimulationProvider, $SimulationProvider$Type} from "packages/yesman/epi
 export interface $PhysicsSimulator<KEY, B extends $SimulationObject$SimulationObjectBuilder, PV extends $SimulationProvider<(O), (T), (B), (PV)>, O, T extends $SimulationObject<(B), (PV), (O)>> {
 
  "restart"(arg0: KEY): void
+ "getRunningObject"(arg0: KEY): $Optional<(T)>
  "runWhen"(arg0: KEY, arg1: PV, arg2: B, arg3: $BooleanSupplier$Type): void
  "runUntil"(arg0: KEY, arg1: PV, arg2: B, arg3: $BooleanSupplier$Type): void
- "getRunningObject"(arg0: KEY): $Optional<(T)>
  "tick"(arg0: O): void
- "stop"(arg0: KEY): void
  "isRunning"(arg0: KEY): boolean
+ "stop"(arg0: KEY): void
 }
 
 export namespace $PhysicsSimulator {
@@ -10370,100 +10655,6 @@ export type $PhysicsSimulator$Type<KEY, B, PV, O, T> = ($PhysicsSimulator<(KEY),
 declare global {
 export type $PhysicsSimulator_<KEY, B, PV, O, T> = $PhysicsSimulator$Type<(KEY), (B), (PV), (O), (T)>;
 }}
-declare module "packages/yesman/epicfight/api/client/animation/property/$TrailInfo" {
-import {$CompoundTag, $CompoundTag$Type} from "packages/net/minecraft/nbt/$CompoundTag"
-import {$JsonElement, $JsonElement$Type} from "packages/com/google/gson/$JsonElement"
-import {$Record, $Record$Type} from "packages/java/lang/$Record"
-import {$InteractionHand, $InteractionHand$Type} from "packages/net/minecraft/world/$InteractionHand"
-import {$TrailInfo$Builder, $TrailInfo$Builder$Type} from "packages/yesman/epicfight/api/client/animation/property/$TrailInfo$Builder"
-import {$SimpleParticleType, $SimpleParticleType$Type} from "packages/net/minecraft/core/particles/$SimpleParticleType"
-import {$Vec3, $Vec3$Type} from "packages/net/minecraft/world/phys/$Vec3"
-import {$ResourceLocation, $ResourceLocation$Type} from "packages/net/minecraft/resources/$ResourceLocation"
-
-export class $TrailInfo extends $Record {
-static readonly "GENERIC_TRAIL_TEXTURE": $ResourceLocation
-static readonly "SWORDMASTER_SWING_TRAIL_TEX": $ResourceLocation
-static readonly "PREVIEWER_DEFAULT_TRAIL": $TrailInfo
-static readonly "ANIMATION_DEFAULT_TRAIL": $TrailInfo
-
-constructor(start: $Vec3$Type, end: $Vec3$Type, joint: string, particle: $SimpleParticleType$Type, startTime: float, endTime: float, fadeTime: float, rCol: float, gCol: float, bCol: float, interpolateCount: integer, trailLifetime: integer, updateInterval: integer, blockLight: integer, skyLight: integer, texturePath: $ResourceLocation$Type, hand: $InteractionHand$Type)
-
-public "updateInterval"(): integer
-public "playable"(): boolean
-public "blockLight"(): integer
-public "skyLight"(): integer
-public static "deserialize"(arg0: $CompoundTag$Type): $TrailInfo
-public static "deserialize"(arg0: $JsonElement$Type): $TrailInfo
-public "particle"(): $SimpleParticleType
-public "joint"(): string
-public "equals"(arg0: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
-public "start"(): $Vec3
-public "end"(): $Vec3
-public static "builder"(): $TrailInfo$Builder
-public "startTime"(): float
-public "endTime"(): float
-public "overwrite"(arg0: $TrailInfo$Type): $TrailInfo
-public "hand"(): $InteractionHand
-public "texturePath"(): $ResourceLocation
-public "rCol"(): float
-public "gCol"(): float
-public "bCol"(): float
-public "trailLifetime"(): integer
-public "interpolateCount"(): integer
-public "fadeTime"(): float
-public static "isValidTime"(arg0: float): boolean
-public "unpackAsBuilder"(): $TrailInfo$Builder
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $TrailInfo$Type = ($TrailInfo);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $TrailInfo_ = $TrailInfo$Type;
-}}
-declare module "packages/yesman/epicfight/api/physics/ik/$InverseKinematicsSimulatable" {
-import {$InverseKinematicsSimulator, $InverseKinematicsSimulator$Type} from "packages/yesman/epicfight/api/physics/ik/$InverseKinematicsSimulator"
-import {$PhysicsSimulator, $PhysicsSimulator$Type} from "packages/yesman/epicfight/api/physics/$PhysicsSimulator"
-import {$SimulatableObject, $SimulatableObject$Type} from "packages/yesman/epicfight/api/physics/$SimulatableObject"
-import {$SimulationTypes, $SimulationTypes$Type} from "packages/yesman/epicfight/api/physics/$SimulationTypes"
-import {$Optional, $Optional$Type} from "packages/java/util/$Optional"
-import {$OpenMatrix4f, $OpenMatrix4f$Type} from "packages/yesman/epicfight/api/utils/math/$OpenMatrix4f"
-import {$Entity, $Entity$Type} from "packages/net/minecraft/world/entity/$Entity"
-
-export interface $InverseKinematicsSimulatable extends $SimulatableObject {
-
- "toEntity"(): $Entity
- "getRootXRotO"(): float
- "getRootXRot"(): float
- "getRootZRotO"(): float
- "getRootZRot"(): float
- "getIKSimulator"(): $InverseKinematicsSimulator
- "getModelMatrix"(arg0: float): $OpenMatrix4f
- "getSimulator"<SIM extends $PhysicsSimulator<(any), (any), (any), (any), (any)>>(arg0: $SimulationTypes$Type<(any), (any), (any), (any), (any), (SIM)>): $Optional<(SIM)>
-}
-
-export namespace $InverseKinematicsSimulatable {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $InverseKinematicsSimulatable$Type = ($InverseKinematicsSimulatable);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $InverseKinematicsSimulatable_ = $InverseKinematicsSimulatable$Type;
-}}
 declare module "packages/yesman/epicfight/skill/$SkillDataKey" {
 import {$Set, $Set$Type} from "packages/java/util/$Set"
 import {$FriendlyByteBuf, $FriendlyByteBuf$Type} from "packages/net/minecraft/network/$FriendlyByteBuf"
@@ -10478,19 +10669,19 @@ export class $SkillDataKey<T> {
 constructor(arg0: $PacketBufferCodec$Type<(T)>, arg1: T, arg2: boolean)
 
 public static "getRegistryCallback"(): $SkillDataKey$SkillDataKeyCallbacks
+public static "getIdMap"(): $IdMapper<($SkillDataKey<(any)>)>
 public static "getSkillDataKeyMap"(): $Map<($Class<(any)>), ($Set<($SkillDataKey<(any)>)>)>
 public "readFromBuffer"(arg0: $FriendlyByteBuf$Type): T
-public "writeToBuffer"(arg0: $FriendlyByteBuf$Type, arg1: T): void
-public static "createSkillDataKey"<T>(arg0: $PacketBufferCodec$Type<(T)>, arg1: T, arg2: boolean, ...arg3: ($Class$Type<(any)>)[]): $SkillDataKey<(T)>
 public static "createSkillDataKey"<T>(arg0: $PacketBufferCodec$Type<(T)>, arg1: T, ...arg2: ($Class$Type<(any)>)[]): $SkillDataKey<(T)>
+public static "createSkillDataKey"<T>(arg0: $PacketBufferCodec$Type<(T)>, arg1: T, arg2: boolean, ...arg3: ($Class$Type<(any)>)[]): $SkillDataKey<(T)>
+public "writeToBuffer"(arg0: $FriendlyByteBuf$Type, arg1: T): void
 public "syncronizeToTrackingPlayers"(): boolean
 public "getId"(): integer
 public "defaultValue"(): T
-public static "getIdMap"(): $IdMapper<($SkillDataKey<(any)>)>
 get "registryCallback"(): $SkillDataKey$SkillDataKeyCallbacks
+get "idMap"(): $IdMapper<($SkillDataKey<(any)>)>
 get "skillDataKeyMap"(): $Map<($Class<(any)>), ($Set<($SkillDataKey<(any)>)>)>
 get "id"(): integer
-get "idMap"(): $IdMapper<($SkillDataKey<(any)>)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -10504,41 +10695,12 @@ export type $SkillDataKey$Type<T> = ($SkillDataKey<(T)>);
 declare global {
 export type $SkillDataKey_<T> = $SkillDataKey$Type<(T)>;
 }}
-declare module "packages/yesman/epicfight/world/entity/eventlistener/$PlayerEventListener" {
-import {$Consumer, $Consumer$Type} from "packages/java/util/function/$Consumer"
-import {$UUID, $UUID$Type} from "packages/java/util/$UUID"
-import {$DetachablePlayerEvent, $DetachablePlayerEvent$Type} from "packages/yesman/epicfight/world/entity/eventlistener/$DetachablePlayerEvent"
-import {$PlayerPatch, $PlayerPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/player/$PlayerPatch"
-import {$PlayerEventListener$EventType, $PlayerEventListener$EventType$Type} from "packages/yesman/epicfight/world/entity/eventlistener/$PlayerEventListener$EventType"
-
-export class $PlayerEventListener {
-
-constructor(arg0: $PlayerPatch$Type<(any)>)
-
-public "triggerEvents"<T extends $DetachablePlayerEvent<(any)>>(arg0: $PlayerEventListener$EventType$Type<(T)>, arg1: T): boolean
-public "addEventListener"<T extends $DetachablePlayerEvent<(any)>>(arg0: $PlayerEventListener$EventType$Type<(T)>, arg1: $UUID$Type, arg2: $Consumer$Type<(T)>): void
-public "addEventListener"<T extends $DetachablePlayerEvent<(any)>>(arg0: $PlayerEventListener$EventType$Type<(T)>, arg1: $UUID$Type, arg2: $Consumer$Type<(T)>, arg3: integer): void
-public "removeListener"<T extends $DetachablePlayerEvent<(any)>>(arg0: $PlayerEventListener$EventType$Type<(T)>, arg1: $UUID$Type, arg2: integer): void
-public "removeListener"<T extends $DetachablePlayerEvent<(any)>>(arg0: $PlayerEventListener$EventType$Type<(T)>, arg1: $UUID$Type): void
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $PlayerEventListener$Type = ($PlayerEventListener);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $PlayerEventListener_ = $PlayerEventListener$Type;
-}}
 declare module "packages/yesman/epicfight/world/item/$UchigatanaItem" {
 import {$Multimap, $Multimap$Type} from "packages/com/google/common/collect/$Multimap"
 import {$Component, $Component$Type} from "packages/net/minecraft/network/chat/$Component"
 import {$Item$Properties, $Item$Properties$Type} from "packages/net/minecraft/world/item/$Item$Properties"
-import {$Level, $Level$Type} from "packages/net/minecraft/world/level/$Level"
 import {$BlockState, $BlockState$Type} from "packages/net/minecraft/world/level/block/state/$BlockState"
+import {$Level, $Level$Type} from "packages/net/minecraft/world/level/$Level"
 import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
 import {$Tier, $Tier$Type} from "packages/net/minecraft/world/item/$Tier"
 import {$Block, $Block$Type} from "packages/net/minecraft/world/level/block/$Block"
@@ -10560,10 +10722,10 @@ static readonly "MAX_BAR_WIDTH": integer
 
 constructor(arg0: $Item$Properties$Type)
 
-public "appendHoverText"(arg0: $ItemStack$Type, arg1: $Level$Type, arg2: $List$Type<($Component$Type)>, arg3: $TooltipFlag$Type): void
-public "isValidRepairItem"(arg0: $ItemStack$Type, arg1: $ItemStack$Type): boolean
 public "getDestroySpeed"(arg0: $ItemStack$Type, arg1: $BlockState$Type): float
 public "isCorrectToolForDrops"(arg0: $BlockState$Type): boolean
+public "appendHoverText"(arg0: $ItemStack$Type, arg1: $Level$Type, arg2: $List$Type<($Component$Type)>, arg3: $TooltipFlag$Type): void
+public "isValidRepairItem"(arg0: $ItemStack$Type, arg1: $ItemStack$Type): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -10576,167 +10738,6 @@ export type $UchigatanaItem$Type = ($UchigatanaItem);
  */
 declare global {
 export type $UchigatanaItem_ = $UchigatanaItem$Type;
-}}
-declare module "packages/yesman/epicfight/compat/kubejs/skill/$CustomSkill$CustomSkillBuilder" {
-import {$Skill$Resource, $Skill$Resource$Type} from "packages/yesman/epicfight/skill/$Skill$Resource"
-import {$Component, $Component$Type} from "packages/net/minecraft/network/chat/$Component"
-import {$Predicate, $Predicate$Type} from "packages/java/util/function/$Predicate"
-import {$PlayerPatch, $PlayerPatch$Type} from "packages/yesman/epicfight/world/capabilities/entitypatch/player/$PlayerPatch"
-import {$SkillContainer, $SkillContainer$Type} from "packages/yesman/epicfight/skill/$SkillContainer"
-import {$Skill$ActivateType, $Skill$ActivateType$Type} from "packages/yesman/epicfight/skill/$Skill$ActivateType"
-import {$RegistryInfo, $RegistryInfo$Type} from "packages/dev/latvian/mods/kubejs/registry/$RegistryInfo"
-import {$Skill, $Skill$Type} from "packages/yesman/epicfight/skill/$Skill"
-import {$BuilderBase, $BuilderBase$Type} from "packages/dev/latvian/mods/kubejs/registry/$BuilderBase"
-import {$ResourceLocation, $ResourceLocation$Type} from "packages/net/minecraft/resources/$ResourceLocation"
-import {$SkillCategory, $SkillCategory$Type} from "packages/yesman/epicfight/skill/$SkillCategory"
-import {$BiConsumer, $BiConsumer$Type} from "packages/java/util/function/$BiConsumer"
-import {$Function, $Function$Type} from "packages/java/util/function/$Function"
-import {$Consumer, $Consumer$Type} from "packages/java/util/function/$Consumer"
-import {$FriendlyByteBuf, $FriendlyByteBuf$Type} from "packages/net/minecraft/network/$FriendlyByteBuf"
-import {$List, $List$Type} from "packages/java/util/$List"
-import {$SkillCategories, $SkillCategories$Type} from "packages/yesman/epicfight/skill/$SkillCategories"
-import {$CustomSkill$OnScreenContext, $CustomSkill$OnScreenContext$Type} from "packages/yesman/epicfight/compat/kubejs/skill/$CustomSkill$OnScreenContext"
-import {$CustomSkill$GetTooltipOnItem, $CustomSkill$GetTooltipOnItem$Type} from "packages/yesman/epicfight/compat/kubejs/skill/$CustomSkill$GetTooltipOnItem"
-import {$CustomSkill$DrawOnGuiContext, $CustomSkill$DrawOnGuiContext$Type} from "packages/yesman/epicfight/compat/kubejs/skill/$CustomSkill$DrawOnGuiContext"
-
-/**
- * Creates a custom skill. The builder requires one of each of the following to function:
- * - category
- * - activateType
- * - resource
- * - texture
- */
-export class $CustomSkill$CustomSkillBuilder extends $BuilderBase<($Skill)> {
- "tab": $ResourceLocation
- "category": $SkillCategory
- "activateType": $Skill$ActivateType
- "resource": $Skill$Resource
-readonly "id": $ResourceLocation
- "translationKey": string
- "displayName": $Component
- "formattedDisplayName": boolean
-
-constructor(arg0: $ResourceLocation$Type)
-
-public "getRegistryType"(): $RegistryInfo<($Skill)>
-/**
- * Predicate that is called to check if the skill is in executable state.
- */
-public "executableState"(arg0: $Predicate$Type<($PlayerPatch$Type<(any)>)>): $CustomSkill$CustomSkillBuilder
-/**
- * Called when the cooldown regeneration is being calculated.
- */
-public "cooldownRegenPerSecond"(arg0: $Function$Type<($PlayerPatch$Type<(any)>), (float)>): $CustomSkill$CustomSkillBuilder
-/**
- * Sets the activate type of the skill. Input a string of the type.
- */
-public "activateType"(arg0: $Skill$ActivateType$Type): $CustomSkill$CustomSkillBuilder
-/**
- * This is called when the skill is learned by the player.
- */
-public "onInitiate"(arg0: $Consumer$Type<($SkillContainer$Type)>): $CustomSkill$CustomSkillBuilder
-/**
- * This is called when the skill is removed from the player.
- */
-public "onRemoved"(arg0: $Consumer$Type<($SkillContainer$Type)>): $CustomSkill$CustomSkillBuilder
-/**
- * Called when resource consumption is being calculated.
- */
-public "setConsumption"(arg0: $BiConsumer$Type<($SkillContainer$Type), (float)>): $CustomSkill$CustomSkillBuilder
-/**
- * Called each tick the skill is active.
- */
-public "updateContainer"(arg0: $Consumer$Type<($SkillContainer$Type)>): $CustomSkill$CustomSkillBuilder
-/**
- * Predicate on whether the skill should deactivate automatically or not.
- */
-public "shouldDeactivateAutomatically"(arg0: $Predicate$Type<($PlayerPatch$Type<(any)>)>): $CustomSkill$CustomSkillBuilder
-/**
- * Consumer that is called when the skill is added from the skill HUD.
- */
-public "onScreen"(arg0: $Consumer$Type<($CustomSkill$OnScreenContext$Type)>): $CustomSkill$CustomSkillBuilder
-/**
- * Sets the tooltip of the skill on the item that has this skill as an innate.
- */
-public "getTooltipOnItem"(arg0: $Function$Type<($CustomSkill$GetTooltipOnItem$Type), ($List$Type<($Component$Type)>)>): $CustomSkill$CustomSkillBuilder
-/**
- * Sets the parameters of the description of the skill on the skill book GUI.
- */
-public "getTooltipArgsOfScreen"(arg0: $Function$Type<($List$Type<(any)>), ($List$Type<(any)>)>): $CustomSkill$CustomSkillBuilder
-/**
- * Consumer that is called to draw the skill on the GUI.
- */
-public "drawOnGui"(arg0: $Consumer$Type<($CustomSkill$DrawOnGuiContext$Type)>): $CustomSkill$CustomSkillBuilder
-/**
- * Predicate that is called to check if the skill should be drawn on the GUI.
- */
-public "shouldDraw"(arg0: $Predicate$Type<($SkillContainer$Type)>): $CustomSkill$CustomSkillBuilder
-/**
- * Sets the max duration of the skill.
- */
-public "maxDuration"(arg0: integer): $CustomSkill$CustomSkillBuilder
-/**
- * This is called when the skill is executed on the server. This is where you should put your skill logic.
- * The second argument is the buffer that is sent from the client. It's used for data synchronization.
- */
-public "executeOnServer"(arg0: $BiConsumer$Type<($SkillContainer$Type), ($FriendlyByteBuf$Type)>): $CustomSkill$CustomSkillBuilder
-/**
- * Called when the skill is cancelled on the server.
- */
-public "cancelOnServer"(arg0: $BiConsumer$Type<($SkillContainer$Type), ($FriendlyByteBuf$Type)>): $CustomSkill$CustomSkillBuilder
-/**
- * This is called when the skill is executed on the client. Best to use this in sync with the server if it is a skill that moves the player.
- * The second argument is the buffer that is sent from the server. It's used for data synchronization.
- */
-public "executeOnClient"(arg0: $BiConsumer$Type<($SkillContainer$Type), ($FriendlyByteBuf$Type)>): $CustomSkill$CustomSkillBuilder
-/**
- * Called when the skill is cancelled on the client.
- */
-public "cancelOnClient"(arg0: $BiConsumer$Type<($SkillContainer$Type), ($FriendlyByteBuf$Type)>): $CustomSkill$CustomSkillBuilder
-/**
- * Sets the texture of the skill. Input a string or resource location of the texture.
- * Example: `minecraft:textures/block/stone.png`
- * Required.
- */
-public "texture"(arg0: $ResourceLocation$Type): $CustomSkill$CustomSkillBuilder
-public "createObject"(): $Skill
-/**
- * Sets the resource type of the skill. Input a string of the type.
- */
-public "resource"(arg0: $Skill$Resource$Type): $CustomSkill$CustomSkillBuilder
-/**
- * Predicate that is called to check if the skill can be executed.
- */
-public "canExecute"(arg0: $Predicate$Type<($SkillContainer$Type)>): $CustomSkill$CustomSkillBuilder
-/**
- * Sets the category of the skill. Input a string of the category.
- * Required.
- */
-public "category"(arg0: $SkillCategories$Type): $CustomSkill$CustomSkillBuilder
-/**
- * Sets the max stack size of the skill.
- */
-public "maxStackSize"(arg0: integer): $CustomSkill$CustomSkillBuilder
-/**
- * Sets the creative tab that the skill book for this skill will be in.
- * Optional.
- * The KubeJS tab is `'kubejs:kubejs'` and the Epic Fight tab is `epicfight:items`.
- */
-public "tab"(arg0: $ResourceLocation$Type): $CustomSkill$CustomSkillBuilder
-get "registryType"(): $RegistryInfo<($Skill)>
-set "consumption"(value: $BiConsumer$Type<($SkillContainer$Type), (float)>)
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $CustomSkill$CustomSkillBuilder$Type = ($CustomSkill$CustomSkillBuilder);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $CustomSkill$CustomSkillBuilder_ = $CustomSkill$CustomSkillBuilder$Type;
 }}
 declare module "packages/yesman/epicfight/network/server/$SPAnimatorControl" {
 import {$NetworkEvent$Context, $NetworkEvent$Context$Type} from "packages/net/minecraftforge/network/$NetworkEvent$Context"
@@ -10751,16 +10752,16 @@ import {$LivingEntityPatch, $LivingEntityPatch$Type} from "packages/yesman/epicf
 
 export class $SPAnimatorControl extends $AnimatorControlPacket {
 
+constructor(arg0: $AnimatorControlPacket$Action$Type, arg1: $AssetAccessor$Type<(any)>, arg2: integer, arg3: float, arg4: boolean)
+constructor(arg0: $AnimatorControlPacket$Action$Type, arg1: $AssetAccessor$Type<(any)>, arg2: float, arg3: $LivingEntityPatch$Type<(any)>)
+constructor(arg0: $AnimatorControlPacket$Action$Type, arg1: integer, arg2: integer, arg3: float, arg4: boolean)
 constructor(arg0: $AnimatorControlPacket$Action$Type, arg1: integer, arg2: integer, arg3: float, arg4: boolean, arg5: $AnimatorControlPacket$Layer$Type, arg6: $AnimatorControlPacket$Priority$Type)
 constructor(arg0: $AnimatorControlPacket$Action$Type, arg1: $AssetAccessor$Type<(any)>, arg2: float, arg3: $LivingEntityPatch$Type<(any)>, arg4: $AnimatorControlPacket$Layer$Type, arg5: $AnimatorControlPacket$Priority$Type)
-constructor(arg0: $AnimatorControlPacket$Action$Type, arg1: $AssetAccessor$Type<(any)>, arg2: float, arg3: $LivingEntityPatch$Type<(any)>)
-constructor(arg0: $AnimatorControlPacket$Action$Type, arg1: $AssetAccessor$Type<(any)>, arg2: integer, arg3: float, arg4: boolean)
-constructor(arg0: $AnimatorControlPacket$Action$Type, arg1: integer, arg2: integer, arg3: float, arg4: boolean)
 
-public static "toBytes"(arg0: $SPAnimatorControl$Type, arg1: $FriendlyByteBuf$Type): void
-public static "handle"(arg0: $SPAnimatorControl$Type, arg1: $Supplier$Type<($NetworkEvent$Context$Type)>): void
 public static "fromBytes"(arg0: $FriendlyByteBuf$Type): $SPAnimatorControl
 public "onArrive"<T extends $SPAnimatorControl>(): void
+public static "toBytes"(arg0: $SPAnimatorControl$Type, arg1: $FriendlyByteBuf$Type): void
+public static "handle"(arg0: $SPAnimatorControl$Type, arg1: $Supplier$Type<($NetworkEvent$Context$Type)>): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_

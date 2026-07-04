@@ -22,33 +22,12 @@ export type $ExpHunterEnchantment$Type = ($ExpHunterEnchantment);
 declare global {
 export type $ExpHunterEnchantment_ = $ExpHunterEnchantment$Type;
 }}
-declare module "packages/net/felinamods/epicstatsmodremastered/potion/$OverweightMobEffect" {
-import {$MobEffect, $MobEffect$Type} from "packages/net/minecraft/world/effect/$MobEffect"
-
-export class $OverweightMobEffect extends $MobEffect {
-
-constructor()
-
-public "isDurationEffectTick"(arg0: integer, arg1: integer): boolean
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $OverweightMobEffect$Type = ($OverweightMobEffect);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $OverweightMobEffect_ = $OverweightMobEffect$Type;
-}}
 declare module "packages/net/felinamods/epicstatsmodremastered/item/$WithHatItem$Helmet" {
 import {$Multimap, $Multimap$Type} from "packages/com/google/common/collect/$Multimap"
 import {$Component, $Component$Type} from "packages/net/minecraft/network/chat/$Component"
 import {$IClientItemExtensions, $IClientItemExtensions$Type} from "packages/net/minecraftforge/client/extensions/common/$IClientItemExtensions"
-import {$EquipmentSlot, $EquipmentSlot$Type} from "packages/net/minecraft/world/entity/$EquipmentSlot"
 import {$Level, $Level$Type} from "packages/net/minecraft/world/level/$Level"
+import {$EquipmentSlot, $EquipmentSlot$Type} from "packages/net/minecraft/world/entity/$EquipmentSlot"
 import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
 import {$Equipable, $Equipable$Type} from "packages/net/minecraft/world/item/$Equipable"
 import {$Block, $Block$Type} from "packages/net/minecraft/world/level/block/$Block"
@@ -73,10 +52,10 @@ static readonly "MAX_BAR_WIDTH": integer
 
 constructor()
 
+public "inventoryTick"(arg0: $ItemStack$Type, arg1: $Level$Type, arg2: $Entity$Type, arg3: integer, arg4: boolean): void
+public "appendHoverText"(arg0: $ItemStack$Type, arg1: $Level$Type, arg2: $List$Type<($Component$Type)>, arg3: $TooltipFlag$Type): void
 public "initializeClient"(arg0: $Consumer$Type<($IClientItemExtensions$Type)>): void
 public "getArmorTexture"(arg0: $ItemStack$Type, arg1: $Entity$Type, arg2: $EquipmentSlot$Type, arg3: string): string
-public "appendHoverText"(arg0: $ItemStack$Type, arg1: $Level$Type, arg2: $List$Type<($Component$Type)>, arg3: $TooltipFlag$Type): void
-public "inventoryTick"(arg0: $ItemStack$Type, arg1: $Level$Type, arg2: $Entity$Type, arg3: integer, arg4: boolean): void
 public static "get"(arg0: $ItemStack$Type): $Equipable
 }
 /**
@@ -90,6 +69,84 @@ export type $WithHatItem$Helmet$Type = ($WithHatItem$Helmet);
  */
 declare global {
 export type $WithHatItem$Helmet_ = $WithHatItem$Helmet$Type;
+}}
+declare module "packages/net/felinamods/epicstatsmodremastered/potion/$WisdomMobEffect" {
+import {$MobEffect, $MobEffect$Type} from "packages/net/minecraft/world/effect/$MobEffect"
+
+export class $WisdomMobEffect extends $MobEffect {
+
+constructor()
+
+public "isDurationEffectTick"(arg0: integer, arg1: integer): boolean
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $WisdomMobEffect$Type = ($WisdomMobEffect);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $WisdomMobEffect_ = $WisdomMobEffect$Type;
+}}
+declare module "packages/net/felinamods/epicstatsmodremastered/item/$TheLostBookItem" {
+import {$Item, $Item$Type} from "packages/net/minecraft/world/item/$Item"
+import {$Component, $Component$Type} from "packages/net/minecraft/network/chat/$Component"
+import {$TooltipFlag, $TooltipFlag$Type} from "packages/net/minecraft/world/item/$TooltipFlag"
+import {$List, $List$Type} from "packages/java/util/$List"
+import {$Level, $Level$Type} from "packages/net/minecraft/world/level/$Level"
+import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
+import {$UseAnim, $UseAnim$Type} from "packages/net/minecraft/world/item/$UseAnim"
+import {$Block, $Block$Type} from "packages/net/minecraft/world/level/block/$Block"
+import {$Map, $Map$Type} from "packages/java/util/$Map"
+
+export class $TheLostBookItem extends $Item {
+static readonly "BY_BLOCK": $Map<($Block), ($Item)>
+static readonly "MAX_STACK_SIZE": integer
+static readonly "EAT_DURATION": integer
+static readonly "MAX_BAR_WIDTH": integer
+
+constructor()
+
+public "getUseAnimation"(arg0: $ItemStack$Type): $UseAnim
+public "appendHoverText"(arg0: $ItemStack$Type, arg1: $Level$Type, arg2: $List$Type<($Component$Type)>, arg3: $TooltipFlag$Type): void
+public "isFoil"(arg0: $ItemStack$Type): boolean
+public "getUseDuration"(arg0: $ItemStack$Type): integer
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $TheLostBookItem$Type = ($TheLostBookItem);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $TheLostBookItem_ = $TheLostBookItem$Type;
+}}
+declare module "packages/net/felinamods/epicstatsmodremastered/potion/$OverweightMobEffect" {
+import {$MobEffect, $MobEffect$Type} from "packages/net/minecraft/world/effect/$MobEffect"
+
+export class $OverweightMobEffect extends $MobEffect {
+
+constructor()
+
+public "isDurationEffectTick"(arg0: integer, arg1: integer): boolean
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $OverweightMobEffect$Type = ($OverweightMobEffect);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $OverweightMobEffect_ = $OverweightMobEffect$Type;
 }}
 declare module "packages/net/felinamods/epicstatsmodremastered/item/$ForbbidenAppleItem" {
 import {$Item, $Item$Type} from "packages/net/minecraft/world/item/$Item"
@@ -196,17 +253,18 @@ static readonly "UPDATE_ALL_IMMEDIATE": integer
 static readonly "INDESTRUCTIBLE": float
 static readonly "INSTANT": float
 static readonly "UPDATE_LIMIT": integer
+ "hasCollision": boolean
 readonly "properties": $BlockBehaviour$Properties
 
 constructor()
 
-public "getStateForPlacement"(arg0: $BlockPlaceContext$Type): $BlockState
 public "rotate"(arg0: $BlockState$Type, arg1: $Rotation$Type): $BlockState
 public "mirror"(arg0: $BlockState$Type, arg1: $Mirror$Type): $BlockState
+public "getStateForPlacement"(arg0: $BlockPlaceContext$Type): $BlockState
+public "propagatesSkylightDown"(arg0: $BlockState$Type, arg1: $BlockGetter$Type, arg2: $BlockPos$Type): boolean
 public "getLightBlock"(arg0: $BlockState$Type, arg1: $BlockGetter$Type, arg2: $BlockPos$Type): integer
 public "getShape"(arg0: $BlockState$Type, arg1: $BlockGetter$Type, arg2: $BlockPos$Type, arg3: $CollisionContext$Type): $VoxelShape
 public "getVisualShape"(arg0: $BlockState$Type, arg1: $BlockGetter$Type, arg2: $BlockPos$Type, arg3: $CollisionContext$Type): $VoxelShape
-public "propagatesSkylightDown"(arg0: $BlockState$Type, arg1: $BlockGetter$Type, arg2: $BlockPos$Type): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -254,17 +312,18 @@ static readonly "UPDATE_ALL_IMMEDIATE": integer
 static readonly "INDESTRUCTIBLE": float
 static readonly "INSTANT": float
 static readonly "UPDATE_LIMIT": integer
+ "hasCollision": boolean
 readonly "properties": $BlockBehaviour$Properties
 
 constructor()
 
-public "getStateForPlacement"(arg0: $BlockPlaceContext$Type): $BlockState
 public "rotate"(arg0: $BlockState$Type, arg1: $Rotation$Type): $BlockState
 public "mirror"(arg0: $BlockState$Type, arg1: $Mirror$Type): $BlockState
+public "getStateForPlacement"(arg0: $BlockPlaceContext$Type): $BlockState
+public "propagatesSkylightDown"(arg0: $BlockState$Type, arg1: $BlockGetter$Type, arg2: $BlockPos$Type): boolean
 public "getLightBlock"(arg0: $BlockState$Type, arg1: $BlockGetter$Type, arg2: $BlockPos$Type): integer
 public "getShape"(arg0: $BlockState$Type, arg1: $BlockGetter$Type, arg2: $BlockPos$Type, arg3: $CollisionContext$Type): $VoxelShape
 public "getVisualShape"(arg0: $BlockState$Type, arg1: $BlockGetter$Type, arg2: $BlockPos$Type, arg3: $CollisionContext$Type): $VoxelShape
-public "propagatesSkylightDown"(arg0: $BlockState$Type, arg1: $BlockGetter$Type, arg2: $BlockPos$Type): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -277,61 +336,4 @@ export type $EngiruBlock$Type = ($EngiruBlock);
  */
 declare global {
 export type $EngiruBlock_ = $EngiruBlock$Type;
-}}
-declare module "packages/net/felinamods/epicstatsmodremastered/potion/$WisdomMobEffect" {
-import {$MobEffect, $MobEffect$Type} from "packages/net/minecraft/world/effect/$MobEffect"
-
-export class $WisdomMobEffect extends $MobEffect {
-
-constructor()
-
-public "isDurationEffectTick"(arg0: integer, arg1: integer): boolean
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $WisdomMobEffect$Type = ($WisdomMobEffect);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $WisdomMobEffect_ = $WisdomMobEffect$Type;
-}}
-declare module "packages/net/felinamods/epicstatsmodremastered/item/$TheLostBookItem" {
-import {$Item, $Item$Type} from "packages/net/minecraft/world/item/$Item"
-import {$Component, $Component$Type} from "packages/net/minecraft/network/chat/$Component"
-import {$TooltipFlag, $TooltipFlag$Type} from "packages/net/minecraft/world/item/$TooltipFlag"
-import {$List, $List$Type} from "packages/java/util/$List"
-import {$Level, $Level$Type} from "packages/net/minecraft/world/level/$Level"
-import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
-import {$UseAnim, $UseAnim$Type} from "packages/net/minecraft/world/item/$UseAnim"
-import {$Block, $Block$Type} from "packages/net/minecraft/world/level/block/$Block"
-import {$Map, $Map$Type} from "packages/java/util/$Map"
-
-export class $TheLostBookItem extends $Item {
-static readonly "BY_BLOCK": $Map<($Block), ($Item)>
-static readonly "MAX_STACK_SIZE": integer
-static readonly "EAT_DURATION": integer
-static readonly "MAX_BAR_WIDTH": integer
-
-constructor()
-
-public "getUseDuration"(arg0: $ItemStack$Type): integer
-public "appendHoverText"(arg0: $ItemStack$Type, arg1: $Level$Type, arg2: $List$Type<($Component$Type)>, arg3: $TooltipFlag$Type): void
-public "isFoil"(arg0: $ItemStack$Type): boolean
-public "getUseAnimation"(arg0: $ItemStack$Type): $UseAnim
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $TheLostBookItem$Type = ($TheLostBookItem);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $TheLostBookItem_ = $TheLostBookItem$Type;
 }}

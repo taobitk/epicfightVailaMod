@@ -66,6 +66,48 @@ export type $DaggerItem$Type = ($DaggerItem);
 declare global {
 export type $DaggerItem_ = $DaggerItem$Type;
 }}
+declare module "packages/net/corruptdog/cdm/world/item/items/$YamatoItem" {
+import {$Multimap, $Multimap$Type} from "packages/com/google/common/collect/$Multimap"
+import {$Component, $Component$Type} from "packages/net/minecraft/network/chat/$Component"
+import {$Item$Properties, $Item$Properties$Type} from "packages/net/minecraft/world/item/$Item$Properties"
+import {$Level, $Level$Type} from "packages/net/minecraft/world/level/$Level"
+import {$EquipmentSlot, $EquipmentSlot$Type} from "packages/net/minecraft/world/entity/$EquipmentSlot"
+import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
+import {$Tier, $Tier$Type} from "packages/net/minecraft/world/item/$Tier"
+import {$Block, $Block$Type} from "packages/net/minecraft/world/level/block/$Block"
+import {$Item, $Item$Type} from "packages/net/minecraft/world/item/$Item"
+import {$TooltipFlag, $TooltipFlag$Type} from "packages/net/minecraft/world/item/$TooltipFlag"
+import {$WeaponItem, $WeaponItem$Type} from "packages/yesman/epicfight/world/item/$WeaponItem"
+import {$Attribute, $Attribute$Type} from "packages/net/minecraft/world/entity/ai/attributes/$Attribute"
+import {$List, $List$Type} from "packages/java/util/$List"
+import {$AttributeModifier, $AttributeModifier$Type} from "packages/net/minecraft/world/entity/ai/attributes/$AttributeModifier"
+import {$Map, $Map$Type} from "packages/java/util/$Map"
+
+export class $YamatoItem extends $WeaponItem {
+ "defaultModifiers": $Multimap<($Attribute), ($AttributeModifier)>
+ "tier": $Tier
+static readonly "BY_BLOCK": $Map<($Block), ($Item)>
+static readonly "MAX_STACK_SIZE": integer
+static readonly "EAT_DURATION": integer
+static readonly "MAX_BAR_WIDTH": integer
+
+constructor(arg0: $Item$Properties$Type)
+
+public "appendHoverText"(arg0: $ItemStack$Type, arg1: $Level$Type, arg2: $List$Type<($Component$Type)>, arg3: $TooltipFlag$Type): void
+public "getAttributeModifiers"(arg0: $EquipmentSlot$Type, arg1: $ItemStack$Type): $Multimap<($Attribute), ($AttributeModifier)>
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $YamatoItem$Type = ($YamatoItem);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $YamatoItem_ = $YamatoItem$Type;
+}}
 declare module "packages/net/corruptdog/cdm/world/item/items/$PhantomKatanaItem" {
 import {$Multimap, $Multimap$Type} from "packages/com/google/common/collect/$Multimap"
 import {$Component, $Component$Type} from "packages/net/minecraft/network/chat/$Component"
@@ -255,46 +297,4 @@ export type $TachiItem$Type = ($TachiItem);
  */
 declare global {
 export type $TachiItem_ = $TachiItem$Type;
-}}
-declare module "packages/net/corruptdog/cdm/world/item/items/$YamatoItem" {
-import {$Multimap, $Multimap$Type} from "packages/com/google/common/collect/$Multimap"
-import {$Component, $Component$Type} from "packages/net/minecraft/network/chat/$Component"
-import {$Item$Properties, $Item$Properties$Type} from "packages/net/minecraft/world/item/$Item$Properties"
-import {$Level, $Level$Type} from "packages/net/minecraft/world/level/$Level"
-import {$EquipmentSlot, $EquipmentSlot$Type} from "packages/net/minecraft/world/entity/$EquipmentSlot"
-import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
-import {$Tier, $Tier$Type} from "packages/net/minecraft/world/item/$Tier"
-import {$Block, $Block$Type} from "packages/net/minecraft/world/level/block/$Block"
-import {$Item, $Item$Type} from "packages/net/minecraft/world/item/$Item"
-import {$TooltipFlag, $TooltipFlag$Type} from "packages/net/minecraft/world/item/$TooltipFlag"
-import {$WeaponItem, $WeaponItem$Type} from "packages/yesman/epicfight/world/item/$WeaponItem"
-import {$Attribute, $Attribute$Type} from "packages/net/minecraft/world/entity/ai/attributes/$Attribute"
-import {$List, $List$Type} from "packages/java/util/$List"
-import {$AttributeModifier, $AttributeModifier$Type} from "packages/net/minecraft/world/entity/ai/attributes/$AttributeModifier"
-import {$Map, $Map$Type} from "packages/java/util/$Map"
-
-export class $YamatoItem extends $WeaponItem {
- "defaultModifiers": $Multimap<($Attribute), ($AttributeModifier)>
- "tier": $Tier
-static readonly "BY_BLOCK": $Map<($Block), ($Item)>
-static readonly "MAX_STACK_SIZE": integer
-static readonly "EAT_DURATION": integer
-static readonly "MAX_BAR_WIDTH": integer
-
-constructor(arg0: $Item$Properties$Type)
-
-public "appendHoverText"(arg0: $ItemStack$Type, arg1: $Level$Type, arg2: $List$Type<($Component$Type)>, arg3: $TooltipFlag$Type): void
-public "getAttributeModifiers"(arg0: $EquipmentSlot$Type, arg1: $ItemStack$Type): $Multimap<($Attribute), ($AttributeModifier)>
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $YamatoItem$Type = ($YamatoItem);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $YamatoItem_ = $YamatoItem$Type;
 }}

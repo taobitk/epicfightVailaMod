@@ -77,6 +77,30 @@ export type $EntityRendererInter$Type<T> = ($EntityRendererInter<(T)>);
 declare global {
 export type $EntityRendererInter_<T> = $EntityRendererInter$Type<(T)>;
 }}
+declare module "packages/dev/tr7zw/transition/mixin/$EntityAccessor" {
+import {$Vec3, $Vec3$Type} from "packages/net/minecraft/world/phys/$Vec3"
+
+export interface $EntityAccessor {
+
+ "transition$getRawPosition"(): $Vec3
+ "transition$setRawPosition"(arg0: $Vec3$Type): void
+}
+
+export namespace $EntityAccessor {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $EntityAccessor$Type = ($EntityAccessor);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $EntityAccessor_ = $EntityAccessor$Type;
+}}
 declare module "packages/dev/tr7zw/entityculling/versionless/access/$Cullable" {
 export {} // Mark the file as a module, do not remove unless there are other import/exports!
 export interface $Cullable {
@@ -103,30 +127,6 @@ export type $Cullable$Type = ($Cullable);
  */
 declare global {
 export type $Cullable_ = $Cullable$Type;
-}}
-declare module "packages/dev/tr7zw/transition/mixin/$EntityAccessor" {
-import {$Vec3, $Vec3$Type} from "packages/net/minecraft/world/phys/$Vec3"
-
-export interface $EntityAccessor {
-
- "transition$getRawPosition"(): $Vec3
- "transition$setRawPosition"(arg0: $Vec3$Type): void
-}
-
-export namespace $EntityAccessor {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $EntityAccessor$Type = ($EntityAccessor);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $EntityAccessor_ = $EntityAccessor$Type;
 }}
 declare module "packages/dev/tr7zw/transition/mc/extending/$ExtensionHolder" {
 import {$Class, $Class$Type} from "packages/java/lang/$Class"

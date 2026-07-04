@@ -1,3 +1,27 @@
+declare module "packages/mod/chloeprime/aaaparticles/api/client/effekseer/$ParticleEmitter$Type" {
+import {$Enum, $Enum$Type} from "packages/java/lang/$Enum"
+
+export class $ParticleEmitter$Type extends $Enum<($ParticleEmitter$Type)> {
+static readonly "WORLD": $ParticleEmitter$Type
+static readonly "FIRST_PERSON_MAINHAND": $ParticleEmitter$Type
+static readonly "FIRST_PERSON_OFFHAND": $ParticleEmitter$Type
+
+
+public static "values"(): ($ParticleEmitter$Type)[]
+public static "valueOf"(arg0: string): $ParticleEmitter$Type
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $ParticleEmitter$Type$Type = (("world") | ("first_person_offhand") | ("first_person_mainhand")) | ($ParticleEmitter$Type);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $ParticleEmitter$Type_ = $ParticleEmitter$Type$Type;
+}}
 declare module "packages/mod/chloeprime/aaaparticles/api/common/$ParticleEmitterInfo" {
 import {$Player, $Player$Type} from "packages/net/minecraft/world/entity/player/$Player"
 import {$FriendlyByteBuf, $FriendlyByteBuf$Type} from "packages/net/minecraft/network/$FriendlyByteBuf"
@@ -13,10 +37,18 @@ export class $ParticleEmitterInfo implements $Cloneable {
 readonly "effek": $ResourceLocation
 readonly "emitter": $ResourceLocation
 
-constructor(arg0: $ResourceLocation$Type)
 constructor(arg0: $ResourceLocation$Type, arg1: $ResourceLocation$Type)
+constructor(arg0: $ResourceLocation$Type)
 constructor(arg0: $FriendlyByteBuf$Type)
 
+public "entitySpaceRelativePosition"(arg0: $Vec3$Type): $ParticleEmitterInfo
+public "entitySpaceRelativePosition"(arg0: double, arg1: double, arg2: double): $ParticleEmitterInfo
+public "useEntityHeadSpace"(arg0: boolean): $ParticleEmitterInfo
+public "useEntityHeadSpace"(): $ParticleEmitterInfo
+public "useEntityVelocityAsRotation"(): $ParticleEmitterInfo
+public "useEntityVelocityAsRotation"(arg0: boolean): $ParticleEmitterInfo
+public "getBoundEntity"(arg0: $Level$Type): $Optional<($Entity)>
+public "spawnInWorld"(arg0: $Level$Type, arg1: $Player$Type): void
 public "hasEmitter"(): boolean
 public "isPositionSet"(): boolean
 public "isRotationSet"(): boolean
@@ -30,33 +62,25 @@ public "usingEntityVelocityAsRotation"(): boolean
 public "rotationFromForward"(arg0: $Vec3$Type, arg1: float): $ParticleEmitterInfo
 public "rotationFromForward"(arg0: $Vec3$Type): $ParticleEmitterInfo
 public "bindOnEntity"(arg0: $Entity$Type): $ParticleEmitterInfo
-public "entitySpaceRelativePosition"(arg0: double, arg1: double, arg2: double): $ParticleEmitterInfo
-public "entitySpaceRelativePosition"(arg0: $Vec3$Type): $ParticleEmitterInfo
-public "useEntityHeadSpace"(arg0: boolean): $ParticleEmitterInfo
-public "useEntityHeadSpace"(): $ParticleEmitterInfo
-public "useEntityVelocityAsRotation"(arg0: boolean): $ParticleEmitterInfo
-public "useEntityVelocityAsRotation"(): $ParticleEmitterInfo
-public "getBoundEntity"(arg0: $Level$Type): $Optional<($Entity)>
-public "spawnInWorld"(arg0: $Level$Type, arg1: $Player$Type): void
 public "copyTo"(arg0: $ParticleEmitterInfo$Type): void
+public "hasParameters"(): boolean
+public "rotation"(): $Vec3
+public "rotation"(arg0: $Vec2$Type): $ParticleEmitterInfo
+public "rotation"(arg0: float, arg1: float, arg2: float): $ParticleEmitterInfo
+public "speed"(): float
+public "speed"(arg0: float): $ParticleEmitterInfo
 public "clone"(): $ParticleEmitterInfo
 public "trigger"(arg0: integer): $ParticleEmitterInfo
-public "scale"(arg0: float, arg1: float, arg2: float): $ParticleEmitterInfo
 public "scale"(arg0: float): $ParticleEmitterInfo
 public "scale"(): $Vec3
+public "scale"(arg0: float, arg1: float, arg2: float): $ParticleEmitterInfo
 public "encode"(arg0: $FriendlyByteBuf$Type): void
 public "position"(arg0: double, arg1: double, arg2: double): $ParticleEmitterInfo
-public "position"(arg0: $Vec3$Type): $ParticleEmitterInfo
 public "position"(): $Vec3
+public "position"(arg0: $Vec3$Type): $ParticleEmitterInfo
 public "parameter"(arg0: integer, arg1: float): $ParticleEmitterInfo
 public static "create"(arg0: $Level$Type, arg1: $ResourceLocation$Type, arg2: $ResourceLocation$Type): $ParticleEmitterInfo
 public static "create"(arg0: $Level$Type, arg1: $ResourceLocation$Type): $ParticleEmitterInfo
-public "hasParameters"(): boolean
-public "rotation"(): $Vec3
-public "rotation"(arg0: float, arg1: float, arg2: float): $ParticleEmitterInfo
-public "rotation"(arg0: $Vec2$Type): $ParticleEmitterInfo
-public "speed"(arg0: float): $ParticleEmitterInfo
-public "speed"(): float
 get "positionSet"(): boolean
 get "rotationSet"(): boolean
 get "scaleSet"(): boolean
@@ -148,30 +172,6 @@ export type $EffekFpvRenderer$Type = ($EffekFpvRenderer);
  */
 declare global {
 export type $EffekFpvRenderer_ = $EffekFpvRenderer$Type;
-}}
-declare module "packages/mod/chloeprime/aaaparticles/api/client/effekseer/$ParticleEmitter$Type" {
-import {$Enum, $Enum$Type} from "packages/java/lang/$Enum"
-
-export class $ParticleEmitter$Type extends $Enum<($ParticleEmitter$Type)> {
-static readonly "WORLD": $ParticleEmitter$Type
-static readonly "FIRST_PERSON_MAINHAND": $ParticleEmitter$Type
-static readonly "FIRST_PERSON_OFFHAND": $ParticleEmitter$Type
-
-
-public static "values"(): ($ParticleEmitter$Type)[]
-public static "valueOf"(arg0: string): $ParticleEmitter$Type
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $ParticleEmitter$Type$Type = (("world") | ("first_person_offhand") | ("first_person_mainhand")) | ($ParticleEmitter$Type);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $ParticleEmitter$Type_ = $ParticleEmitter$Type$Type;
 }}
 declare module "packages/mod/chloeprime/aaaparticles/api/common/$AAALevel" {
 import {$ParticleEmitter$Type, $ParticleEmitter$Type$Type} from "packages/mod/chloeprime/aaaparticles/api/client/effekseer/$ParticleEmitter$Type"

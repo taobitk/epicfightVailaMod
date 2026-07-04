@@ -27,72 +27,6 @@ export type $TSClassType$Type = ($TSClassType);
 declare global {
 export type $TSClassType_ = $TSClassType$Type;
 }}
-declare module "packages/moe/wolfgirl/probejs/lang/typescript/code/type/js/$JSLambdaType" {
-import {$ClassPath, $ClassPath$Type} from "packages/moe/wolfgirl/probejs/lang/java/clazz/$ClassPath"
-import {$Collection, $Collection$Type} from "packages/java/util/$Collection"
-import {$List, $List$Type} from "packages/java/util/$List"
-import {$ParamDecl, $ParamDecl$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/code/member/$ParamDecl"
-import {$Declaration, $Declaration$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/$Declaration"
-import {$BaseType$FormatType, $BaseType$FormatType$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/code/type/$BaseType$FormatType"
-import {$BaseType, $BaseType$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/code/type/$BaseType"
-import {$MethodDecl, $MethodDecl$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/code/member/$MethodDecl"
-
-export class $JSLambdaType extends $BaseType {
-readonly "params": $List<($ParamDecl)>
-readonly "returnType": $BaseType
-
-constructor(params: $List$Type<($ParamDecl$Type)>, returnType: $BaseType$Type)
-
-public "asMethod"(methodName: string): $MethodDecl
-public "formatWithName"(name: string, declaration: $Declaration$Type, input: $BaseType$FormatType$Type): string
-public "getUsedClassPaths"(): $Collection<($ClassPath)>
-public "format"(declaration: $Declaration$Type, input: $BaseType$FormatType$Type): $List<(string)>
-get "usedClassPaths"(): $Collection<($ClassPath)>
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $JSLambdaType$Type = ($JSLambdaType);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $JSLambdaType_ = $JSLambdaType$Type;
-}}
-declare module "packages/moe/wolfgirl/probejs/lang/typescript/code/type/js/$JSLambdaType$Builder" {
-import {$JSLambdaType, $JSLambdaType$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/code/type/js/$JSLambdaType"
-import {$List, $List$Type} from "packages/java/util/$List"
-import {$ParamDecl, $ParamDecl$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/code/member/$ParamDecl"
-import {$BaseType, $BaseType$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/code/type/$BaseType"
-
-export class $JSLambdaType$Builder {
-readonly "params": $List<($ParamDecl)>
- "returnType": $BaseType
- "arrowFunction": boolean
-
-constructor()
-
-public "returnType"(type: $BaseType$Type): $JSLambdaType$Builder
-public "method"(): $JSLambdaType$Builder
-public "param"(symbol: string, type: $BaseType$Type, isOptional: boolean, isVarArg: boolean): $JSLambdaType$Builder
-public "param"(symbol: string, type: $BaseType$Type, isOptional: boolean): $JSLambdaType$Builder
-public "param"(symbol: string, type: $BaseType$Type): $JSLambdaType$Builder
-public "build"(): $JSLambdaType
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $JSLambdaType$Builder$Type = ($JSLambdaType$Builder);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $JSLambdaType$Builder_ = $JSLambdaType$Builder$Type;
-}}
 declare module "packages/moe/wolfgirl/probejs/lang/java/base/$ClassPathProvider" {
 import {$ClassPath, $ClassPath$Type} from "packages/moe/wolfgirl/probejs/lang/java/clazz/$ClassPath"
 import {$Collection, $Collection$Type} from "packages/java/util/$Collection"
@@ -118,113 +52,6 @@ export type $ClassPathProvider$Type = ($ClassPathProvider);
  */
 declare global {
 export type $ClassPathProvider_ = $ClassPathProvider$Type;
-}}
-declare module "packages/moe/wolfgirl/probejs/lang/typescript/code/member/$MethodDecl" {
-import {$ClassPath, $ClassPath$Type} from "packages/moe/wolfgirl/probejs/lang/java/clazz/$ClassPath"
-import {$Collection, $Collection$Type} from "packages/java/util/$Collection"
-import {$List, $List$Type} from "packages/java/util/$List"
-import {$TSVariableType, $TSVariableType$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/code/type/$TSVariableType"
-import {$ParamDecl, $ParamDecl$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/code/member/$ParamDecl"
-import {$Declaration, $Declaration$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/$Declaration"
-import {$CommentableCode, $CommentableCode$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/code/member/$CommentableCode"
-import {$BaseType, $BaseType$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/code/type/$BaseType"
-
-export class $MethodDecl extends $CommentableCode {
- "name": string
- "isAbstract": boolean
- "isStatic": boolean
- "isInterface": boolean
- "variableTypes": $List<($TSVariableType)>
- "params": $List<($ParamDecl)>
- "returnType": $BaseType
- "content": string
-readonly "comments": $List<(string)>
-
-constructor(name: string, variableTypes: $List$Type<($TSVariableType$Type)>, params: $List$Type<($ParamDecl$Type)>, returnType: $BaseType$Type)
-
-public "formatRaw"(declaration: $Declaration$Type): $List<(string)>
-public "getUsedClassPaths"(): $Collection<($ClassPath)>
-get "usedClassPaths"(): $Collection<($ClassPath)>
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $MethodDecl$Type = ($MethodDecl);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $MethodDecl_ = $MethodDecl$Type;
-}}
-declare module "packages/moe/wolfgirl/probejs/lang/typescript/$ScriptDump" {
-import {$Path, $Path$Type} from "packages/java/nio/file/$Path"
-import {$ClassPath, $ClassPath$Type} from "packages/moe/wolfgirl/probejs/lang/java/clazz/$ClassPath"
-import {$Collection, $Collection$Type} from "packages/java/util/$Collection"
-import {$Predicate, $Predicate$Type} from "packages/java/util/function/$Predicate"
-import {$Class, $Class$Type} from "packages/java/lang/$Class"
-import {$ScriptType, $ScriptType$Type} from "packages/dev/latvian/mods/kubejs/script/$ScriptType"
-import {$Code, $Code$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/code/$Code"
-import {$ScriptManager, $ScriptManager$Type} from "packages/dev/latvian/mods/kubejs/script/$ScriptManager"
-import {$Wrapped$Global, $Wrapped$Global$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/code/ts/$Wrapped$Global"
-import {$Transpiler, $Transpiler$Type} from "packages/moe/wolfgirl/probejs/lang/transpiler/$Transpiler"
-import {$Set, $Set$Type} from "packages/java/util/$Set"
-import {$Supplier, $Supplier$Type} from "packages/java/util/function/$Supplier"
-import {$Pair, $Pair$Type} from "packages/com/mojang/datafixers/util/$Pair"
-import {$Clazz, $Clazz$Type} from "packages/moe/wolfgirl/probejs/lang/java/clazz/$Clazz"
-import {$BaseType, $BaseType$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/code/type/$BaseType"
-import {$Map, $Map$Type} from "packages/java/util/$Map"
-
-export class $ScriptDump {
-static readonly "SERVER_DUMP": $Supplier<($ScriptDump)>
-static readonly "CLIENT_DUMP": $Supplier<($ScriptDump)>
-static readonly "STARTUP_DUMP": $Supplier<($ScriptDump)>
-readonly "scriptType": $ScriptType
-readonly "manager": $ScriptManager
-readonly "basePath": $Path
-readonly "scriptPath": $Path
-readonly "globals": $Map<(string), ($Pair<($Collection<(string)>), ($Wrapped$Global)>)>
-readonly "transpiler": $Transpiler
-readonly "recordedClasses": $Set<($Clazz)>
- "dumped": integer
- "total": integer
-
-constructor(manager: $ScriptManager$Type, basePath: $Path$Type, scriptPath: $Path$Type, scriptPredicate: $Predicate$Type<($Clazz$Type)>)
-
-public "addGlobal"(identifier: string, ...content: ($Code$Type)[]): void
-public "addGlobal"(identifier: string, excludedNames: $Collection$Type<(string)>, ...content: ($Code$Type)[]): void
-public "ensurePath"(path: string): $Path
-public "ensurePath"(path: string, script: boolean): $Path
-public "getTypeFolder"(): $Path
-public "getPackageFolder"(): $Path
-public "getGlobalFolder"(): $Path
-public "dumpClasses"(): void
-public "dumpGlobal"(): void
-public "dumpJSConfig"(): void
-public "assignType"(classPath: $Class$Type<(any)>, type: $BaseType$Type): void
-public "assignType"(classPath: $ClassPath$Type, type: $BaseType$Type): void
-public "dump"(): void
-public "getSource"(): $Path
-public "removeClasses"(): void
-public "acceptClasses"(classes: $Collection$Type<($Clazz$Type)>): void
-public "retrieveClasses"(): $Set<($Class<(any)>)>
-get "typeFolder"(): $Path
-get "packageFolder"(): $Path
-get "globalFolder"(): $Path
-get "source"(): $Path
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $ScriptDump$Type = ($ScriptDump);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $ScriptDump_ = $ScriptDump$Type;
 }}
 declare module "packages/moe/wolfgirl/probejs/lang/java/clazz/$Clazz" {
 import {$TypeDescriptor, $TypeDescriptor$Type} from "packages/moe/wolfgirl/probejs/lang/java/type/$TypeDescriptor"
@@ -271,33 +98,6 @@ export type $Clazz$Type = ($Clazz);
  */
 declare global {
 export type $Clazz_ = $Clazz$Type;
-}}
-declare module "packages/moe/wolfgirl/probejs/events/$TypingModificationEventJS" {
-import {$ClassPath, $ClassPath$Type} from "packages/moe/wolfgirl/probejs/lang/java/clazz/$ClassPath"
-import {$Consumer, $Consumer$Type} from "packages/java/util/function/$Consumer"
-import {$Class, $Class$Type} from "packages/java/lang/$Class"
-import {$ScriptEventJS, $ScriptEventJS$Type} from "packages/moe/wolfgirl/probejs/events/$ScriptEventJS"
-import {$ScriptDump, $ScriptDump$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/$ScriptDump"
-import {$Map, $Map$Type} from "packages/java/util/$Map"
-import {$TypeScriptFile, $TypeScriptFile$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/$TypeScriptFile"
-
-export class $TypingModificationEventJS extends $ScriptEventJS {
-
-constructor(dump: $ScriptDump$Type, files: $Map$Type<($ClassPath$Type), ($TypeScriptFile$Type)>)
-
-public "modify"(clazz: $Class$Type<(any)>, file: $Consumer$Type<($TypeScriptFile$Type)>): void
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $TypingModificationEventJS$Type = ($TypingModificationEventJS);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $TypingModificationEventJS_ = $TypingModificationEventJS$Type;
 }}
 declare module "packages/moe/wolfgirl/probejs/lang/typescript/code/type/js/$JSTypeOfType" {
 import {$ClassPath, $ClassPath$Type} from "packages/moe/wolfgirl/probejs/lang/java/clazz/$ClassPath"
@@ -352,30 +152,6 @@ export type $BaseType$FormatType$Type = (("input") | ("variable") | ("return")) 
 declare global {
 export type $BaseType$FormatType_ = $BaseType$FormatType$Type;
 }}
-declare module "packages/moe/wolfgirl/probejs/events/$SnippetGenerationEventJS" {
-import {$Snippet, $Snippet$Type} from "packages/moe/wolfgirl/probejs/lang/snippet/$Snippet"
-import {$EventJS, $EventJS$Type} from "packages/dev/latvian/mods/kubejs/event/$EventJS"
-import {$Consumer, $Consumer$Type} from "packages/java/util/function/$Consumer"
-import {$SnippetDump, $SnippetDump$Type} from "packages/moe/wolfgirl/probejs/lang/snippet/$SnippetDump"
-
-export class $SnippetGenerationEventJS extends $EventJS {
-
-constructor(dump: $SnippetDump$Type)
-
-public "create"(name: string, handler: $Consumer$Type<($Snippet$Type)>): void
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $SnippetGenerationEventJS$Type = ($SnippetGenerationEventJS);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $SnippetGenerationEventJS_ = $SnippetGenerationEventJS$Type;
-}}
 declare module "packages/moe/wolfgirl/probejs/lang/typescript/code/$Code" {
 import {$ClassPath, $ClassPath$Type} from "packages/moe/wolfgirl/probejs/lang/java/clazz/$ClassPath"
 import {$Collection, $Collection$Type} from "packages/java/util/$Collection"
@@ -403,61 +179,6 @@ export type $Code$Type = ($Code);
 declare global {
 export type $Code_ = $Code$Type;
 }}
-declare module "packages/moe/wolfgirl/probejs/lang/java/base/$TypeVariableHolder" {
-import {$Annotation, $Annotation$Type} from "packages/java/lang/annotation/$Annotation"
-import {$AnnotationHolder, $AnnotationHolder$Type} from "packages/moe/wolfgirl/probejs/lang/java/base/$AnnotationHolder"
-import {$List, $List$Type} from "packages/java/util/$List"
-import {$VariableType, $VariableType$Type} from "packages/moe/wolfgirl/probejs/lang/java/type/impl/$VariableType"
-import {$TypeVariable, $TypeVariable$Type} from "packages/java/lang/reflect/$TypeVariable"
-
-export class $TypeVariableHolder extends $AnnotationHolder {
-readonly "variableTypes": $List<($VariableType)>
-
-constructor(variables: ($TypeVariable$Type<(any)>)[], annotations: ($Annotation$Type)[])
-
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $TypeVariableHolder$Type = ($TypeVariableHolder);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $TypeVariableHolder_ = $TypeVariableHolder$Type;
-}}
-declare module "packages/moe/wolfgirl/probejs/lang/typescript/code/type/$TSParamType" {
-import {$ClassPath, $ClassPath$Type} from "packages/moe/wolfgirl/probejs/lang/java/clazz/$ClassPath"
-import {$Collection, $Collection$Type} from "packages/java/util/$Collection"
-import {$List, $List$Type} from "packages/java/util/$List"
-import {$Declaration, $Declaration$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/$Declaration"
-import {$BaseType$FormatType, $BaseType$FormatType$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/code/type/$BaseType$FormatType"
-import {$BaseType, $BaseType$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/code/type/$BaseType"
-
-export class $TSParamType extends $BaseType {
- "baseType": $BaseType
-readonly "params": $List<($BaseType)>
-
-constructor(baseType: $BaseType$Type, params: $List$Type<($BaseType$Type)>)
-
-public "getUsedClassPaths"(): $Collection<($ClassPath)>
-public "format"(declaration: $Declaration$Type, input: $BaseType$FormatType$Type): $List<(string)>
-get "usedClassPaths"(): $Collection<($ClassPath)>
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $TSParamType$Type = ($TSParamType);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $TSParamType_ = $TSParamType$Type;
-}}
 declare module "packages/moe/wolfgirl/probejs/lang/transpiler/$TypeConverter" {
 import {$TypeDescriptor, $TypeDescriptor$Type} from "packages/moe/wolfgirl/probejs/lang/java/type/$TypeDescriptor"
 import {$ClassPath, $ClassPath$Type} from "packages/moe/wolfgirl/probejs/lang/java/clazz/$ClassPath"
@@ -477,9 +198,9 @@ readonly "scriptManager": $ScriptManager
 constructor(manager: $ScriptManager$Type)
 
 public "addType"(clazz: $Class$Type<(any)>, type: $BaseType$Type): void
-public "convertType"(typeDesc: $TypeDescJS$Type): $BaseType
 public "convertType"(baseType: $BaseType$Type): $BaseType
 public "convertType"(descriptor: $TypeDescriptor$Type): $BaseType
+public "convertType"(typeDesc: $TypeDescJS$Type): $BaseType
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -545,70 +266,6 @@ export type $Clazz$ClassType$Type = (("record") | ("interface") | ("class") | ("
 declare global {
 export type $Clazz$ClassType_ = $Clazz$ClassType$Type;
 }}
-declare module "packages/moe/wolfgirl/probejs/lang/snippet/$Snippet" {
-import {$JsonObject, $JsonObject$Type} from "packages/com/google/gson/$JsonObject"
-import {$Collection, $Collection$Type} from "packages/java/util/$Collection"
-import {$List, $List$Type} from "packages/java/util/$List"
-import {$Registry, $Registry$Type} from "packages/net/minecraft/core/$Registry"
-import {$ResourceKey, $ResourceKey$Type} from "packages/net/minecraft/resources/$ResourceKey"
-import {$Variable, $Variable$Type} from "packages/moe/wolfgirl/probejs/lang/snippet/parts/$Variable"
-
-export class $Snippet {
-readonly "name": string
-
-constructor(name: string)
-
-public "tabStop"(): $Snippet
-public "tabStop"(enumeration: integer): $Snippet
-public "tabStop"(enumeration: integer, defaultValue: string): $Snippet
-public "choices"(choices: $Collection$Type<(string)>): $Snippet
-public "choices"(enumeration: integer, choices: $Collection$Type<(string)>): $Snippet
-public "variable"(variable: $Variable$Type): $Snippet
-public "getPrefixes"(): $List<(string)>
-public "description"(description: string): $Snippet
-public "newline"(): $Snippet
-public "literal"(content: string): $Snippet
-public "compile"(): $JsonObject
-public "prefix"(prefix: string): $Snippet
-public "registry"<T>(registry: $ResourceKey$Type<($Registry$Type<(T)>)>): $Snippet
-get "prefixes"(): $List<(string)>
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $Snippet$Type = ($Snippet);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $Snippet_ = $Snippet$Type;
-}}
-declare module "packages/moe/wolfgirl/probejs/lang/java/clazz/members/$FieldInfo$FieldAttributes" {
-import {$Field, $Field$Type} from "packages/java/lang/reflect/$Field"
-
-export class $FieldInfo$FieldAttributes {
-readonly "isFinal": boolean
-readonly "isStatic": boolean
-
-constructor(field: $Field$Type)
-
-public "getStaticValue"(): any
-get "staticValue"(): any
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $FieldInfo$FieldAttributes$Type = ($FieldInfo$FieldAttributes);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $FieldInfo$FieldAttributes_ = $FieldInfo$FieldAttributes$Type;
-}}
 declare module "packages/moe/wolfgirl/probejs/lang/java/clazz/$ClassPath" {
 import {$Path, $Path$Type} from "packages/java/nio/file/$Path"
 import {$Record, $Record$Type} from "packages/java/lang/$Record"
@@ -654,29 +311,6 @@ export type $ClassPath$Type = ($ClassPath);
 declare global {
 export type $ClassPath_ = $ClassPath$Type;
 }}
-declare module "packages/moe/wolfgirl/probejs/lang/java/clazz/members/$MethodInfo$MethodAttributes" {
-import {$Method, $Method$Type} from "packages/java/lang/reflect/$Method"
-
-export class $MethodInfo$MethodAttributes {
-readonly "isStatic": boolean
-readonly "isDefault": boolean
-readonly "isAbstract": boolean
-
-constructor(method: $Method$Type)
-
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $MethodInfo$MethodAttributes$Type = ($MethodInfo$MethodAttributes);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $MethodInfo$MethodAttributes_ = $MethodInfo$MethodAttributes$Type;
-}}
 declare module "packages/moe/wolfgirl/probejs/lang/snippet/$SnippetDump" {
 import {$Snippet, $Snippet$Type} from "packages/moe/wolfgirl/probejs/lang/snippet/$Snippet"
 import {$Path, $Path$Type} from "packages/java/nio/file/$Path"
@@ -687,9 +321,9 @@ export class $SnippetDump {
 
 constructor()
 
+public "fromDocs"(): void
 public "snippet"(name: string): $Snippet
 public "writeTo"(path: $Path$Type): void
-public "fromDocs"(): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -764,23 +398,23 @@ const THIS: $JSPrimitiveType
 const OBJECT: $JSPrimitiveType
 const NULL: $JSPrimitiveType
 function typeMaybeGeneric(clazz: $Class$Type<(any)>): $BaseType
-function typeOf(clazz: $Class$Type<(any)>): $JSTypeOfType
-function typeOf(classPath: $ClassPath$Type): $JSTypeOfType
-function typeOf(classType: $BaseType$Type): $JSTypeOfType
 function ignoreContext(type: $BaseType$Type, formatType: $BaseType$FormatType$Type): $BaseType
-function literal(content: any): $JSPrimitiveType
+function typeOf(classType: $BaseType$Type): $JSTypeOfType
+function typeOf(classPath: $ClassPath$Type): $JSTypeOfType
+function typeOf(clazz: $Class$Type<(any)>): $JSTypeOfType
 function and(...types: ($BaseType$Type)[]): $JSJoinedType$Intersection
 function or(...types: ($BaseType$Type)[]): $BaseType
+function literal(content: any): $JSPrimitiveType
+function object(): $JSObjectType$Builder
+function custom(formatter: $BiFunction$Type<($Declaration$Type), ($BaseType$FormatType$Type), (string)>, ...imports: ($ClassPath$Type)[]): $BaseType
+function arrayOf(...types: ($BaseType$Type)[]): $JSArrayType
+function parameterized(base: $BaseType$Type, ...params: ($BaseType$Type)[]): $TSParamType
+function primitive(type: string): $JSPrimitiveType
 function type(classPath: $ClassPath$Type): $TSClassType
 function type(clazz: $Class$Type<(any)>): $TSClassType
 function generic(symbol: string, extendOn: $BaseType$Type): $TSVariableType
 function generic(symbol: string): $TSVariableType
 function lambda(): $JSLambdaType$Builder
-function object(): $JSObjectType$Builder
-function custom(formatter: $BiFunction$Type<($Declaration$Type), ($BaseType$FormatType$Type), (string)>, ...imports: ($ClassPath$Type)[]): $BaseType
-function primitive(type: string): $JSPrimitiveType
-function arrayOf(...types: ($BaseType$Type)[]): $JSArrayType
-function parameterized(base: $BaseType$Type, ...params: ($BaseType$Type)[]): $TSParamType
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -825,95 +459,6 @@ export type $ParamDecl$Type = ($ParamDecl);
 declare global {
 export type $ParamDecl_ = $ParamDecl$Type;
 }}
-declare module "packages/moe/wolfgirl/probejs/lang/snippet/parts/$Variable" {
-import {$Enum, $Enum$Type} from "packages/java/lang/$Enum"
-import {$SnippetPart, $SnippetPart$Type} from "packages/moe/wolfgirl/probejs/lang/snippet/parts/$SnippetPart"
-
-export class $Variable extends $Enum<($Variable)> implements $SnippetPart {
-static readonly "LINE_COMMENT": $Variable
-static readonly "BLOCK_COMMENT_END": $Variable
-static readonly "BLOCK_COMMENT_START": $Variable
-static readonly "UUID": $Variable
-static readonly "RANDOM_HEX": $Variable
-static readonly "RANDOM": $Variable
-static readonly "CURRENT_TIMEZONE_OFFSET": $Variable
-static readonly "CURRENT_SECONDS_UNIX": $Variable
-static readonly "CURRENT_SECOND": $Variable
-static readonly "CURRENT_MINUTE": $Variable
-static readonly "CURRENT_HOUR": $Variable
-static readonly "CURRENT_DAY_NAME_SHORT": $Variable
-static readonly "CURRENT_DAY_NAME": $Variable
-static readonly "CURRENT_DATE": $Variable
-static readonly "CURRENT_MONTH_NAME_SHORT": $Variable
-static readonly "CURRENT_MONTH_NAME": $Variable
-static readonly "CURRENT_MONTH": $Variable
-static readonly "CURRENT_YEAR_SHORT": $Variable
-static readonly "CURRENT_YEAR": $Variable
-static readonly "CURSOR_NUMBER": $Variable
-static readonly "CURSOR_INDEX": $Variable
-static readonly "WORKSPACE_FOLDER": $Variable
-static readonly "WORKSPACE_NAME": $Variable
-static readonly "CLIPBOARD": $Variable
-static readonly "RELATIVE_FILEPATH": $Variable
-static readonly "TM_FILEPATH": $Variable
-static readonly "TM_DIRECTORY": $Variable
-static readonly "TM_FILENAME_BASE": $Variable
-static readonly "TM_FILENAME": $Variable
-static readonly "TM_LINE_NUMBER": $Variable
-static readonly "TM_LINE_INDEX": $Variable
-static readonly "TM_CURRENT_WORD": $Variable
-static readonly "TM_CURRENT_LINE": $Variable
-static readonly "TM_SELECTED_TEXT": $Variable
-
-
-public static "values"(): ($Variable)[]
-public static "valueOf"(name: string): $Variable
-public "format"(): string
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $Variable$Type = (("cursor_index") | ("current_day_name_short") | ("tm_current_line") | ("block_comment_end") | ("current_month_name_short") | ("uuid") | ("clipboard") | ("random") | ("tm_line_index") | ("current_year_short") | ("current_year") | ("current_second") | ("line_comment") | ("workspace_folder") | ("workspace_name") | ("tm_filename_base") | ("tm_current_word") | ("current_hour") | ("tm_filepath") | ("tm_directory") | ("current_timezone_offset") | ("tm_selected_text") | ("relative_filepath") | ("current_date") | ("tm_filename") | ("current_seconds_unix") | ("current_minute") | ("random_hex") | ("current_month") | ("tm_line_number") | ("block_comment_start") | ("current_day_name") | ("current_month_name") | ("cursor_number")) | ($Variable);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $Variable_ = $Variable$Type;
-}}
-declare module "packages/moe/wolfgirl/probejs/lang/transpiler/$Transpiler" {
-import {$ClassPath, $ClassPath$Type} from "packages/moe/wolfgirl/probejs/lang/java/clazz/$ClassPath"
-import {$Set, $Set$Type} from "packages/java/util/$Set"
-import {$TypeConverter, $TypeConverter$Type} from "packages/moe/wolfgirl/probejs/lang/transpiler/$TypeConverter"
-import {$Collection, $Collection$Type} from "packages/java/util/$Collection"
-import {$Class, $Class$Type} from "packages/java/lang/$Class"
-import {$ScriptManager, $ScriptManager$Type} from "packages/dev/latvian/mods/kubejs/script/$ScriptManager"
-import {$Clazz, $Clazz$Type} from "packages/moe/wolfgirl/probejs/lang/java/clazz/$Clazz"
-import {$Map, $Map$Type} from "packages/java/util/$Map"
-import {$TypeScriptFile, $TypeScriptFile$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/$TypeScriptFile"
-
-export class $Transpiler {
-readonly "typeConverter": $TypeConverter
-readonly "rejectedClasses": $Set<($ClassPath)>
-
-constructor(manager: $ScriptManager$Type)
-
-public "reject"(clazz: $Class$Type<(any)>): void
-public "dump"(clazzes: $Collection$Type<($Clazz$Type)>): $Map<($ClassPath), ($TypeScriptFile)>
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $Transpiler$Type = ($Transpiler);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $Transpiler_ = $Transpiler$Type;
-}}
 declare module "packages/moe/wolfgirl/probejs/lang/typescript/code/ts/$Wrapped" {
 import {$ClassPath, $ClassPath$Type} from "packages/moe/wolfgirl/probejs/lang/java/clazz/$ClassPath"
 import {$Collection, $Collection$Type} from "packages/java/util/$Collection"
@@ -928,11 +473,11 @@ readonly "comments": $List<(string)>
 
 constructor()
 
-public "formatRaw"(declaration: $Declaration$Type): $List<(string)>
 public "getUsedClassPaths"(): $Collection<($ClassPath)>
+public "addCode"(inner: $Code$Type): void
+public "formatRaw"(declaration: $Declaration$Type): $List<(string)>
 public "isEmpty"(): boolean
 public "merge"(other: $Wrapped$Type): void
-public "addCode"(inner: $Code$Type): void
 get "usedClassPaths"(): $Collection<($ClassPath)>
 get "empty"(): boolean
 }
@@ -977,40 +522,6 @@ export type $JSArrayType$Type = ($JSArrayType);
 declare global {
 export type $JSArrayType_ = $JSArrayType$Type;
 }}
-declare module "packages/moe/wolfgirl/probejs/lang/java/type/impl/$VariableType" {
-import {$TypeDescriptor, $TypeDescriptor$Type} from "packages/moe/wolfgirl/probejs/lang/java/type/$TypeDescriptor"
-import {$List, $List$Type} from "packages/java/util/$List"
-import {$Stream, $Stream$Type} from "packages/java/util/stream/$Stream"
-import {$AnnotatedTypeVariable, $AnnotatedTypeVariable$Type} from "packages/java/lang/reflect/$AnnotatedTypeVariable"
-import {$TypeVariable, $TypeVariable$Type} from "packages/java/lang/reflect/$TypeVariable"
-
-export class $VariableType extends $TypeDescriptor {
- "symbol": string
- "descriptors": $List<($TypeDescriptor)>
-
-constructor(typeVariable: $TypeVariable$Type<(any)>, checkBounds: boolean)
-constructor(typeVariable: $AnnotatedTypeVariable$Type)
-constructor(typeVariable: $AnnotatedTypeVariable$Type, checkBounds: boolean)
-constructor(typeVariable: $TypeVariable$Type<(any)>)
-
-public "getSymbol"(): string
-public "stream"(): $Stream<($TypeDescriptor)>
-public "getDescriptors"(): $List<($TypeDescriptor)>
-get "symbol"(): string
-get "descriptors"(): $List<($TypeDescriptor)>
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $VariableType$Type = ($VariableType);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $VariableType_ = $VariableType$Type;
-}}
 declare module "packages/moe/wolfgirl/probejs/lang/typescript/code/type/js/$JSJoinedType$Intersection" {
 import {$List, $List$Type} from "packages/java/util/$List"
 import {$JSJoinedType, $JSJoinedType$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/code/type/js/$JSJoinedType"
@@ -1034,65 +545,6 @@ export type $JSJoinedType$Intersection$Type = ($JSJoinedType$Intersection);
  */
 declare global {
 export type $JSJoinedType$Intersection_ = $JSJoinedType$Intersection$Type;
-}}
-declare module "packages/moe/wolfgirl/probejs/lang/typescript/code/type/js/$JSJoinedType" {
-import {$ClassPath, $ClassPath$Type} from "packages/moe/wolfgirl/probejs/lang/java/clazz/$ClassPath"
-import {$Collection, $Collection$Type} from "packages/java/util/$Collection"
-import {$List, $List$Type} from "packages/java/util/$List"
-import {$Declaration, $Declaration$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/$Declaration"
-import {$BaseType$FormatType, $BaseType$FormatType$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/code/type/$BaseType$FormatType"
-import {$BaseType, $BaseType$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/code/type/$BaseType"
-
-export class $JSJoinedType extends $BaseType {
-readonly "delimiter": string
-readonly "types": $List<($BaseType)>
-
-
-public "getUsedClassPaths"(): $Collection<($ClassPath)>
-public "format"(declaration: $Declaration$Type, input: $BaseType$FormatType$Type): $List<(string)>
-get "usedClassPaths"(): $Collection<($ClassPath)>
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $JSJoinedType$Type = ($JSJoinedType);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $JSJoinedType_ = $JSJoinedType$Type;
-}}
-declare module "packages/moe/wolfgirl/probejs/lang/typescript/code/type/$TSVariableType" {
-import {$ClassPath, $ClassPath$Type} from "packages/moe/wolfgirl/probejs/lang/java/clazz/$ClassPath"
-import {$Collection, $Collection$Type} from "packages/java/util/$Collection"
-import {$List, $List$Type} from "packages/java/util/$List"
-import {$Declaration, $Declaration$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/$Declaration"
-import {$BaseType$FormatType, $BaseType$FormatType$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/code/type/$BaseType$FormatType"
-import {$BaseType, $BaseType$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/code/type/$BaseType"
-
-export class $TSVariableType extends $BaseType {
-readonly "symbol": string
- "extendsType": $BaseType
-
-constructor(symbol: string, extendsType: $BaseType$Type)
-
-public "getUsedClassPaths"(): $Collection<($ClassPath)>
-public "format"(declaration: $Declaration$Type, input: $BaseType$FormatType$Type): $List<(string)>
-get "usedClassPaths"(): $Collection<($ClassPath)>
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $TSVariableType$Type = ($TSVariableType);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $TSVariableType_ = $TSVariableType$Type;
 }}
 declare module "packages/moe/wolfgirl/probejs/lang/java/clazz/members/$ConstructorInfo" {
 import {$ClassPath, $ClassPath$Type} from "packages/moe/wolfgirl/probejs/lang/java/clazz/$ClassPath"
@@ -1135,12 +587,12 @@ readonly "comments": $List<(string)>
 
 constructor()
 
+public "addComment"(...comments: (string)[]): void
+public "newline"(...comments: (string)[]): void
 public "formatComments"(): $List<(string)>
 public "formatRaw"(declaration: $Declaration$Type): $List<(string)>
 public "addCommentAtStart"(...comments: (string)[]): void
 public "linebreak"(): void
-public "addComment"(...comments: (string)[]): void
-public "newline"(...comments: (string)[]): void
 public "format"(declaration: $Declaration$Type): $List<(string)>
 }
 /**
@@ -1276,32 +728,6 @@ export type $ClassProvider$Type = ($ClassProvider);
 declare global {
 export type $ClassProvider_ = $ClassProvider$Type;
 }}
-declare module "packages/moe/wolfgirl/probejs/lang/typescript/code/ts/$Wrapped$Global" {
-import {$List, $List$Type} from "packages/java/util/$List"
-import {$Code, $Code$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/code/$Code"
-import {$Declaration, $Declaration$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/$Declaration"
-import {$Wrapped, $Wrapped$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/code/ts/$Wrapped"
-
-export class $Wrapped$Global extends $Wrapped {
-readonly "codes": $List<($Code)>
-readonly "comments": $List<(string)>
-
-constructor()
-
-public "formatRaw"(declaration: $Declaration$Type): $List<(string)>
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $Wrapped$Global$Type = ($Wrapped$Global);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $Wrapped$Global_ = $Wrapped$Global$Type;
-}}
 declare module "packages/moe/wolfgirl/probejs/lang/typescript/code/type/js/$JSPrimitiveType" {
 import {$ClassPath, $ClassPath$Type} from "packages/moe/wolfgirl/probejs/lang/java/clazz/$ClassPath"
 import {$Collection, $Collection$Type} from "packages/java/util/$Collection"
@@ -1332,34 +758,6 @@ export type $JSPrimitiveType$Type = ($JSPrimitiveType);
  */
 declare global {
 export type $JSPrimitiveType_ = $JSPrimitiveType$Type;
-}}
-declare module "packages/moe/wolfgirl/probejs/lang/typescript/$Declaration" {
-import {$ClassPath, $ClassPath$Type} from "packages/moe/wolfgirl/probejs/lang/java/clazz/$ClassPath"
-import {$Reference, $Reference$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/$Reference"
-import {$Map, $Map$Type} from "packages/java/util/$Map"
-
-export class $Declaration {
-static readonly "INPUT_TEMPLATE": string
-readonly "references": $Map<($ClassPath), ($Reference)>
-
-constructor()
-
-public "exclude"(name: string): void
-public "getSymbol"(path: $ClassPath$Type): string
-public "getSymbol"(path: $ClassPath$Type, input: boolean): string
-public "addClass"(path: $ClassPath$Type): void
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $Declaration$Type = ($Declaration);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $Declaration_ = $Declaration$Type;
 }}
 declare module "packages/moe/wolfgirl/probejs/lang/typescript/code/type/$TSArrayType" {
 import {$ClassPath, $ClassPath$Type} from "packages/moe/wolfgirl/probejs/lang/java/clazz/$ClassPath"
@@ -1458,8 +856,8 @@ readonly "members": $Map<(string), ($BaseType)>
 
 constructor()
 
-public "member"(name: string, type: $BaseType$Type): $JSObjectType$Builder
 public "build"(): $JSObjectType
+public "member"(name: string, type: $BaseType$Type): $JSObjectType$Builder
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1472,6 +870,632 @@ export type $JSObjectType$Builder$Type = ($JSObjectType$Builder);
  */
 declare global {
 export type $JSObjectType$Builder_ = $JSObjectType$Builder$Type;
+}}
+declare module "packages/moe/wolfgirl/probejs/lang/snippet/parts/$SnippetPart" {
+export {} // Mark the file as a module, do not remove unless there are other import/exports!
+export interface $SnippetPart {
+
+ "format"(): string
+
+(): string
+}
+
+export namespace $SnippetPart {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $SnippetPart$Type = ($SnippetPart);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $SnippetPart_ = $SnippetPart$Type;
+}}
+declare module "packages/moe/wolfgirl/probejs/lang/typescript/code/type/js/$JSLambdaType" {
+import {$ClassPath, $ClassPath$Type} from "packages/moe/wolfgirl/probejs/lang/java/clazz/$ClassPath"
+import {$Collection, $Collection$Type} from "packages/java/util/$Collection"
+import {$List, $List$Type} from "packages/java/util/$List"
+import {$ParamDecl, $ParamDecl$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/code/member/$ParamDecl"
+import {$Declaration, $Declaration$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/$Declaration"
+import {$BaseType$FormatType, $BaseType$FormatType$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/code/type/$BaseType$FormatType"
+import {$BaseType, $BaseType$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/code/type/$BaseType"
+import {$MethodDecl, $MethodDecl$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/code/member/$MethodDecl"
+
+export class $JSLambdaType extends $BaseType {
+readonly "params": $List<($ParamDecl)>
+readonly "returnType": $BaseType
+
+constructor(params: $List$Type<($ParamDecl$Type)>, returnType: $BaseType$Type)
+
+public "asMethod"(methodName: string): $MethodDecl
+public "getUsedClassPaths"(): $Collection<($ClassPath)>
+public "formatWithName"(name: string, declaration: $Declaration$Type, input: $BaseType$FormatType$Type): string
+public "format"(declaration: $Declaration$Type, input: $BaseType$FormatType$Type): $List<(string)>
+get "usedClassPaths"(): $Collection<($ClassPath)>
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $JSLambdaType$Type = ($JSLambdaType);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $JSLambdaType_ = $JSLambdaType$Type;
+}}
+declare module "packages/moe/wolfgirl/probejs/lang/typescript/code/type/js/$JSLambdaType$Builder" {
+import {$JSLambdaType, $JSLambdaType$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/code/type/js/$JSLambdaType"
+import {$List, $List$Type} from "packages/java/util/$List"
+import {$ParamDecl, $ParamDecl$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/code/member/$ParamDecl"
+import {$BaseType, $BaseType$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/code/type/$BaseType"
+
+export class $JSLambdaType$Builder {
+readonly "params": $List<($ParamDecl)>
+ "returnType": $BaseType
+ "arrowFunction": boolean
+
+constructor()
+
+public "build"(): $JSLambdaType
+public "returnType"(type: $BaseType$Type): $JSLambdaType$Builder
+public "method"(): $JSLambdaType$Builder
+public "param"(symbol: string, type: $BaseType$Type, isOptional: boolean): $JSLambdaType$Builder
+public "param"(symbol: string, type: $BaseType$Type): $JSLambdaType$Builder
+public "param"(symbol: string, type: $BaseType$Type, isOptional: boolean, isVarArg: boolean): $JSLambdaType$Builder
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $JSLambdaType$Builder$Type = ($JSLambdaType$Builder);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $JSLambdaType$Builder_ = $JSLambdaType$Builder$Type;
+}}
+declare module "packages/moe/wolfgirl/probejs/lang/typescript/code/member/$MethodDecl" {
+import {$ClassPath, $ClassPath$Type} from "packages/moe/wolfgirl/probejs/lang/java/clazz/$ClassPath"
+import {$Collection, $Collection$Type} from "packages/java/util/$Collection"
+import {$List, $List$Type} from "packages/java/util/$List"
+import {$TSVariableType, $TSVariableType$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/code/type/$TSVariableType"
+import {$ParamDecl, $ParamDecl$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/code/member/$ParamDecl"
+import {$Declaration, $Declaration$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/$Declaration"
+import {$CommentableCode, $CommentableCode$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/code/member/$CommentableCode"
+import {$BaseType, $BaseType$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/code/type/$BaseType"
+
+export class $MethodDecl extends $CommentableCode {
+ "name": string
+ "isAbstract": boolean
+ "isStatic": boolean
+ "isInterface": boolean
+ "variableTypes": $List<($TSVariableType)>
+ "params": $List<($ParamDecl)>
+ "returnType": $BaseType
+ "content": string
+readonly "comments": $List<(string)>
+
+constructor(name: string, variableTypes: $List$Type<($TSVariableType$Type)>, params: $List$Type<($ParamDecl$Type)>, returnType: $BaseType$Type)
+
+public "getUsedClassPaths"(): $Collection<($ClassPath)>
+public "formatRaw"(declaration: $Declaration$Type): $List<(string)>
+get "usedClassPaths"(): $Collection<($ClassPath)>
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $MethodDecl$Type = ($MethodDecl);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $MethodDecl_ = $MethodDecl$Type;
+}}
+declare module "packages/moe/wolfgirl/probejs/lang/typescript/$ScriptDump" {
+import {$Path, $Path$Type} from "packages/java/nio/file/$Path"
+import {$ClassPath, $ClassPath$Type} from "packages/moe/wolfgirl/probejs/lang/java/clazz/$ClassPath"
+import {$Collection, $Collection$Type} from "packages/java/util/$Collection"
+import {$Predicate, $Predicate$Type} from "packages/java/util/function/$Predicate"
+import {$Class, $Class$Type} from "packages/java/lang/$Class"
+import {$ScriptType, $ScriptType$Type} from "packages/dev/latvian/mods/kubejs/script/$ScriptType"
+import {$Code, $Code$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/code/$Code"
+import {$ScriptManager, $ScriptManager$Type} from "packages/dev/latvian/mods/kubejs/script/$ScriptManager"
+import {$Wrapped$Global, $Wrapped$Global$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/code/ts/$Wrapped$Global"
+import {$Transpiler, $Transpiler$Type} from "packages/moe/wolfgirl/probejs/lang/transpiler/$Transpiler"
+import {$Set, $Set$Type} from "packages/java/util/$Set"
+import {$Supplier, $Supplier$Type} from "packages/java/util/function/$Supplier"
+import {$Pair, $Pair$Type} from "packages/com/mojang/datafixers/util/$Pair"
+import {$Clazz, $Clazz$Type} from "packages/moe/wolfgirl/probejs/lang/java/clazz/$Clazz"
+import {$BaseType, $BaseType$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/code/type/$BaseType"
+import {$Map, $Map$Type} from "packages/java/util/$Map"
+
+export class $ScriptDump {
+static readonly "SERVER_DUMP": $Supplier<($ScriptDump)>
+static readonly "CLIENT_DUMP": $Supplier<($ScriptDump)>
+static readonly "STARTUP_DUMP": $Supplier<($ScriptDump)>
+readonly "scriptType": $ScriptType
+readonly "manager": $ScriptManager
+readonly "basePath": $Path
+readonly "scriptPath": $Path
+readonly "globals": $Map<(string), ($Pair<($Collection<(string)>), ($Wrapped$Global)>)>
+readonly "transpiler": $Transpiler
+readonly "recordedClasses": $Set<($Clazz)>
+ "dumped": integer
+ "total": integer
+
+constructor(manager: $ScriptManager$Type, basePath: $Path$Type, scriptPath: $Path$Type, scriptPredicate: $Predicate$Type<($Clazz$Type)>)
+
+public "removeClasses"(): void
+public "retrieveClasses"(): $Set<($Class<(any)>)>
+public "getPackageFolder"(): $Path
+public "getGlobalFolder"(): $Path
+public "dumpClasses"(): void
+public "acceptClasses"(classes: $Collection$Type<($Clazz$Type)>): void
+public "assignType"(classPath: $ClassPath$Type, type: $BaseType$Type): void
+public "assignType"(classPath: $Class$Type<(any)>, type: $BaseType$Type): void
+public "getSource"(): $Path
+public "dump"(): void
+public "addGlobal"(identifier: string, ...content: ($Code$Type)[]): void
+public "addGlobal"(identifier: string, excludedNames: $Collection$Type<(string)>, ...content: ($Code$Type)[]): void
+public "ensurePath"(path: string): $Path
+public "ensurePath"(path: string, script: boolean): $Path
+public "getTypeFolder"(): $Path
+public "dumpGlobal"(): void
+public "dumpJSConfig"(): void
+get "packageFolder"(): $Path
+get "globalFolder"(): $Path
+get "source"(): $Path
+get "typeFolder"(): $Path
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $ScriptDump$Type = ($ScriptDump);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $ScriptDump_ = $ScriptDump$Type;
+}}
+declare module "packages/moe/wolfgirl/probejs/events/$TypingModificationEventJS" {
+import {$ClassPath, $ClassPath$Type} from "packages/moe/wolfgirl/probejs/lang/java/clazz/$ClassPath"
+import {$Consumer, $Consumer$Type} from "packages/java/util/function/$Consumer"
+import {$Class, $Class$Type} from "packages/java/lang/$Class"
+import {$ScriptEventJS, $ScriptEventJS$Type} from "packages/moe/wolfgirl/probejs/events/$ScriptEventJS"
+import {$ScriptDump, $ScriptDump$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/$ScriptDump"
+import {$Map, $Map$Type} from "packages/java/util/$Map"
+import {$TypeScriptFile, $TypeScriptFile$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/$TypeScriptFile"
+
+export class $TypingModificationEventJS extends $ScriptEventJS {
+
+constructor(dump: $ScriptDump$Type, files: $Map$Type<($ClassPath$Type), ($TypeScriptFile$Type)>)
+
+public "modify"(clazz: $Class$Type<(any)>, file: $Consumer$Type<($TypeScriptFile$Type)>): void
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $TypingModificationEventJS$Type = ($TypingModificationEventJS);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $TypingModificationEventJS_ = $TypingModificationEventJS$Type;
+}}
+declare module "packages/moe/wolfgirl/probejs/events/$SnippetGenerationEventJS" {
+import {$Snippet, $Snippet$Type} from "packages/moe/wolfgirl/probejs/lang/snippet/$Snippet"
+import {$EventJS, $EventJS$Type} from "packages/dev/latvian/mods/kubejs/event/$EventJS"
+import {$Consumer, $Consumer$Type} from "packages/java/util/function/$Consumer"
+import {$SnippetDump, $SnippetDump$Type} from "packages/moe/wolfgirl/probejs/lang/snippet/$SnippetDump"
+
+export class $SnippetGenerationEventJS extends $EventJS {
+
+constructor(dump: $SnippetDump$Type)
+
+public "create"(name: string, handler: $Consumer$Type<($Snippet$Type)>): void
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $SnippetGenerationEventJS$Type = ($SnippetGenerationEventJS);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $SnippetGenerationEventJS_ = $SnippetGenerationEventJS$Type;
+}}
+declare module "packages/moe/wolfgirl/probejs/lang/java/base/$TypeVariableHolder" {
+import {$Annotation, $Annotation$Type} from "packages/java/lang/annotation/$Annotation"
+import {$AnnotationHolder, $AnnotationHolder$Type} from "packages/moe/wolfgirl/probejs/lang/java/base/$AnnotationHolder"
+import {$List, $List$Type} from "packages/java/util/$List"
+import {$VariableType, $VariableType$Type} from "packages/moe/wolfgirl/probejs/lang/java/type/impl/$VariableType"
+import {$TypeVariable, $TypeVariable$Type} from "packages/java/lang/reflect/$TypeVariable"
+
+export class $TypeVariableHolder extends $AnnotationHolder {
+readonly "variableTypes": $List<($VariableType)>
+
+constructor(variables: ($TypeVariable$Type<(any)>)[], annotations: ($Annotation$Type)[])
+
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $TypeVariableHolder$Type = ($TypeVariableHolder);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $TypeVariableHolder_ = $TypeVariableHolder$Type;
+}}
+declare module "packages/moe/wolfgirl/probejs/lang/typescript/code/type/$TSParamType" {
+import {$ClassPath, $ClassPath$Type} from "packages/moe/wolfgirl/probejs/lang/java/clazz/$ClassPath"
+import {$Collection, $Collection$Type} from "packages/java/util/$Collection"
+import {$List, $List$Type} from "packages/java/util/$List"
+import {$Declaration, $Declaration$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/$Declaration"
+import {$BaseType$FormatType, $BaseType$FormatType$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/code/type/$BaseType$FormatType"
+import {$BaseType, $BaseType$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/code/type/$BaseType"
+
+export class $TSParamType extends $BaseType {
+ "baseType": $BaseType
+readonly "params": $List<($BaseType)>
+
+constructor(baseType: $BaseType$Type, params: $List$Type<($BaseType$Type)>)
+
+public "getUsedClassPaths"(): $Collection<($ClassPath)>
+public "format"(declaration: $Declaration$Type, input: $BaseType$FormatType$Type): $List<(string)>
+get "usedClassPaths"(): $Collection<($ClassPath)>
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $TSParamType$Type = ($TSParamType);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $TSParamType_ = $TSParamType$Type;
+}}
+declare module "packages/moe/wolfgirl/probejs/lang/snippet/$Snippet" {
+import {$JsonObject, $JsonObject$Type} from "packages/com/google/gson/$JsonObject"
+import {$Collection, $Collection$Type} from "packages/java/util/$Collection"
+import {$List, $List$Type} from "packages/java/util/$List"
+import {$Registry, $Registry$Type} from "packages/net/minecraft/core/$Registry"
+import {$ResourceKey, $ResourceKey$Type} from "packages/net/minecraft/resources/$ResourceKey"
+import {$Variable, $Variable$Type} from "packages/moe/wolfgirl/probejs/lang/snippet/parts/$Variable"
+
+export class $Snippet {
+readonly "name": string
+
+constructor(name: string)
+
+public "tabStop"(): $Snippet
+public "tabStop"(enumeration: integer): $Snippet
+public "tabStop"(enumeration: integer, defaultValue: string): $Snippet
+public "choices"(choices: $Collection$Type<(string)>): $Snippet
+public "choices"(enumeration: integer, choices: $Collection$Type<(string)>): $Snippet
+public "getPrefixes"(): $List<(string)>
+public "description"(description: string): $Snippet
+public "newline"(): $Snippet
+public "literal"(content: string): $Snippet
+public "variable"(variable: $Variable$Type): $Snippet
+public "registry"<T>(registry: $ResourceKey$Type<($Registry$Type<(T)>)>): $Snippet
+public "compile"(): $JsonObject
+public "prefix"(prefix: string): $Snippet
+get "prefixes"(): $List<(string)>
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Snippet$Type = ($Snippet);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Snippet_ = $Snippet$Type;
+}}
+declare module "packages/moe/wolfgirl/probejs/lang/java/clazz/members/$FieldInfo$FieldAttributes" {
+import {$Field, $Field$Type} from "packages/java/lang/reflect/$Field"
+
+export class $FieldInfo$FieldAttributes {
+readonly "isFinal": boolean
+readonly "isStatic": boolean
+
+constructor(field: $Field$Type)
+
+public "getStaticValue"(): any
+get "staticValue"(): any
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $FieldInfo$FieldAttributes$Type = ($FieldInfo$FieldAttributes);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $FieldInfo$FieldAttributes_ = $FieldInfo$FieldAttributes$Type;
+}}
+declare module "packages/moe/wolfgirl/probejs/lang/java/clazz/members/$MethodInfo$MethodAttributes" {
+import {$Method, $Method$Type} from "packages/java/lang/reflect/$Method"
+
+export class $MethodInfo$MethodAttributes {
+readonly "isStatic": boolean
+readonly "isDefault": boolean
+readonly "isAbstract": boolean
+
+constructor(method: $Method$Type)
+
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $MethodInfo$MethodAttributes$Type = ($MethodInfo$MethodAttributes);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $MethodInfo$MethodAttributes_ = $MethodInfo$MethodAttributes$Type;
+}}
+declare module "packages/moe/wolfgirl/probejs/lang/snippet/parts/$Variable" {
+import {$Enum, $Enum$Type} from "packages/java/lang/$Enum"
+import {$SnippetPart, $SnippetPart$Type} from "packages/moe/wolfgirl/probejs/lang/snippet/parts/$SnippetPart"
+
+export class $Variable extends $Enum<($Variable)> implements $SnippetPart {
+static readonly "LINE_COMMENT": $Variable
+static readonly "BLOCK_COMMENT_END": $Variable
+static readonly "BLOCK_COMMENT_START": $Variable
+static readonly "UUID": $Variable
+static readonly "RANDOM_HEX": $Variable
+static readonly "RANDOM": $Variable
+static readonly "CURRENT_TIMEZONE_OFFSET": $Variable
+static readonly "CURRENT_SECONDS_UNIX": $Variable
+static readonly "CURRENT_SECOND": $Variable
+static readonly "CURRENT_MINUTE": $Variable
+static readonly "CURRENT_HOUR": $Variable
+static readonly "CURRENT_DAY_NAME_SHORT": $Variable
+static readonly "CURRENT_DAY_NAME": $Variable
+static readonly "CURRENT_DATE": $Variable
+static readonly "CURRENT_MONTH_NAME_SHORT": $Variable
+static readonly "CURRENT_MONTH_NAME": $Variable
+static readonly "CURRENT_MONTH": $Variable
+static readonly "CURRENT_YEAR_SHORT": $Variable
+static readonly "CURRENT_YEAR": $Variable
+static readonly "CURSOR_NUMBER": $Variable
+static readonly "CURSOR_INDEX": $Variable
+static readonly "WORKSPACE_FOLDER": $Variable
+static readonly "WORKSPACE_NAME": $Variable
+static readonly "CLIPBOARD": $Variable
+static readonly "RELATIVE_FILEPATH": $Variable
+static readonly "TM_FILEPATH": $Variable
+static readonly "TM_DIRECTORY": $Variable
+static readonly "TM_FILENAME_BASE": $Variable
+static readonly "TM_FILENAME": $Variable
+static readonly "TM_LINE_NUMBER": $Variable
+static readonly "TM_LINE_INDEX": $Variable
+static readonly "TM_CURRENT_WORD": $Variable
+static readonly "TM_CURRENT_LINE": $Variable
+static readonly "TM_SELECTED_TEXT": $Variable
+
+
+public static "values"(): ($Variable)[]
+public static "valueOf"(name: string): $Variable
+public "format"(): string
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Variable$Type = (("cursor_index") | ("current_day_name_short") | ("tm_current_line") | ("block_comment_end") | ("current_month_name_short") | ("uuid") | ("clipboard") | ("random") | ("tm_line_index") | ("current_year_short") | ("current_year") | ("current_second") | ("line_comment") | ("workspace_folder") | ("workspace_name") | ("tm_filename_base") | ("tm_current_word") | ("current_hour") | ("tm_filepath") | ("tm_directory") | ("current_timezone_offset") | ("tm_selected_text") | ("relative_filepath") | ("current_date") | ("tm_filename") | ("current_seconds_unix") | ("current_minute") | ("random_hex") | ("current_month") | ("tm_line_number") | ("block_comment_start") | ("current_day_name") | ("current_month_name") | ("cursor_number")) | ($Variable);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Variable_ = $Variable$Type;
+}}
+declare module "packages/moe/wolfgirl/probejs/lang/transpiler/$Transpiler" {
+import {$ClassPath, $ClassPath$Type} from "packages/moe/wolfgirl/probejs/lang/java/clazz/$ClassPath"
+import {$Set, $Set$Type} from "packages/java/util/$Set"
+import {$TypeConverter, $TypeConverter$Type} from "packages/moe/wolfgirl/probejs/lang/transpiler/$TypeConverter"
+import {$Collection, $Collection$Type} from "packages/java/util/$Collection"
+import {$Class, $Class$Type} from "packages/java/lang/$Class"
+import {$ScriptManager, $ScriptManager$Type} from "packages/dev/latvian/mods/kubejs/script/$ScriptManager"
+import {$Clazz, $Clazz$Type} from "packages/moe/wolfgirl/probejs/lang/java/clazz/$Clazz"
+import {$Map, $Map$Type} from "packages/java/util/$Map"
+import {$TypeScriptFile, $TypeScriptFile$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/$TypeScriptFile"
+
+export class $Transpiler {
+readonly "typeConverter": $TypeConverter
+readonly "rejectedClasses": $Set<($ClassPath)>
+
+constructor(manager: $ScriptManager$Type)
+
+public "reject"(clazz: $Class$Type<(any)>): void
+public "dump"(clazzes: $Collection$Type<($Clazz$Type)>): $Map<($ClassPath), ($TypeScriptFile)>
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Transpiler$Type = ($Transpiler);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Transpiler_ = $Transpiler$Type;
+}}
+declare module "packages/moe/wolfgirl/probejs/lang/java/type/impl/$VariableType" {
+import {$TypeDescriptor, $TypeDescriptor$Type} from "packages/moe/wolfgirl/probejs/lang/java/type/$TypeDescriptor"
+import {$List, $List$Type} from "packages/java/util/$List"
+import {$Stream, $Stream$Type} from "packages/java/util/stream/$Stream"
+import {$AnnotatedTypeVariable, $AnnotatedTypeVariable$Type} from "packages/java/lang/reflect/$AnnotatedTypeVariable"
+import {$TypeVariable, $TypeVariable$Type} from "packages/java/lang/reflect/$TypeVariable"
+
+export class $VariableType extends $TypeDescriptor {
+ "symbol": string
+ "descriptors": $List<($TypeDescriptor)>
+
+constructor(typeVariable: $AnnotatedTypeVariable$Type)
+constructor(typeVariable: $TypeVariable$Type<(any)>)
+constructor(typeVariable: $AnnotatedTypeVariable$Type, checkBounds: boolean)
+constructor(typeVariable: $TypeVariable$Type<(any)>, checkBounds: boolean)
+
+public "getDescriptors"(): $List<($TypeDescriptor)>
+public "getSymbol"(): string
+public "stream"(): $Stream<($TypeDescriptor)>
+get "descriptors"(): $List<($TypeDescriptor)>
+get "symbol"(): string
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $VariableType$Type = ($VariableType);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $VariableType_ = $VariableType$Type;
+}}
+declare module "packages/moe/wolfgirl/probejs/lang/typescript/code/type/js/$JSJoinedType" {
+import {$ClassPath, $ClassPath$Type} from "packages/moe/wolfgirl/probejs/lang/java/clazz/$ClassPath"
+import {$Collection, $Collection$Type} from "packages/java/util/$Collection"
+import {$List, $List$Type} from "packages/java/util/$List"
+import {$Declaration, $Declaration$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/$Declaration"
+import {$BaseType$FormatType, $BaseType$FormatType$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/code/type/$BaseType$FormatType"
+import {$BaseType, $BaseType$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/code/type/$BaseType"
+
+export class $JSJoinedType extends $BaseType {
+readonly "delimiter": string
+readonly "types": $List<($BaseType)>
+
+
+public "getUsedClassPaths"(): $Collection<($ClassPath)>
+public "format"(declaration: $Declaration$Type, input: $BaseType$FormatType$Type): $List<(string)>
+get "usedClassPaths"(): $Collection<($ClassPath)>
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $JSJoinedType$Type = ($JSJoinedType);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $JSJoinedType_ = $JSJoinedType$Type;
+}}
+declare module "packages/moe/wolfgirl/probejs/lang/typescript/code/type/$TSVariableType" {
+import {$ClassPath, $ClassPath$Type} from "packages/moe/wolfgirl/probejs/lang/java/clazz/$ClassPath"
+import {$Collection, $Collection$Type} from "packages/java/util/$Collection"
+import {$List, $List$Type} from "packages/java/util/$List"
+import {$Declaration, $Declaration$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/$Declaration"
+import {$BaseType$FormatType, $BaseType$FormatType$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/code/type/$BaseType$FormatType"
+import {$BaseType, $BaseType$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/code/type/$BaseType"
+
+export class $TSVariableType extends $BaseType {
+readonly "symbol": string
+ "extendsType": $BaseType
+
+constructor(symbol: string, extendsType: $BaseType$Type)
+
+public "getUsedClassPaths"(): $Collection<($ClassPath)>
+public "format"(declaration: $Declaration$Type, input: $BaseType$FormatType$Type): $List<(string)>
+get "usedClassPaths"(): $Collection<($ClassPath)>
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $TSVariableType$Type = ($TSVariableType);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $TSVariableType_ = $TSVariableType$Type;
+}}
+declare module "packages/moe/wolfgirl/probejs/lang/typescript/code/ts/$Wrapped$Global" {
+import {$List, $List$Type} from "packages/java/util/$List"
+import {$Code, $Code$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/code/$Code"
+import {$Declaration, $Declaration$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/$Declaration"
+import {$Wrapped, $Wrapped$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/code/ts/$Wrapped"
+
+export class $Wrapped$Global extends $Wrapped {
+readonly "codes": $List<($Code)>
+readonly "comments": $List<(string)>
+
+constructor()
+
+public "formatRaw"(declaration: $Declaration$Type): $List<(string)>
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Wrapped$Global$Type = ($Wrapped$Global);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Wrapped$Global_ = $Wrapped$Global$Type;
+}}
+declare module "packages/moe/wolfgirl/probejs/lang/typescript/$Declaration" {
+import {$ClassPath, $ClassPath$Type} from "packages/moe/wolfgirl/probejs/lang/java/clazz/$ClassPath"
+import {$Reference, $Reference$Type} from "packages/moe/wolfgirl/probejs/lang/typescript/$Reference"
+import {$Map, $Map$Type} from "packages/java/util/$Map"
+
+export class $Declaration {
+static readonly "INPUT_TEMPLATE": string
+readonly "references": $Map<($ClassPath), ($Reference)>
+
+constructor()
+
+public "exclude"(name: string): void
+public "getSymbol"(path: $ClassPath$Type, input: boolean): string
+public "getSymbol"(path: $ClassPath$Type): string
+public "addClass"(path: $ClassPath$Type): void
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Declaration$Type = ($Declaration);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Declaration_ = $Declaration$Type;
 }}
 declare module "packages/moe/wolfgirl/probejs/lang/java/clazz/$Clazz$ClassAttribute" {
 import {$Clazz$ClassType, $Clazz$ClassType$Type} from "packages/moe/wolfgirl/probejs/lang/java/clazz/$Clazz$ClassType"
@@ -1558,30 +1582,6 @@ export type $ParamInfo$Type = ($ParamInfo);
 declare global {
 export type $ParamInfo_ = $ParamInfo$Type;
 }}
-declare module "packages/moe/wolfgirl/probejs/lang/snippet/parts/$SnippetPart" {
-export {} // Mark the file as a module, do not remove unless there are other import/exports!
-export interface $SnippetPart {
-
- "format"(): string
-
-(): string
-}
-
-export namespace $SnippetPart {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $SnippetPart$Type = ($SnippetPart);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $SnippetPart_ = $SnippetPart$Type;
-}}
 declare module "packages/moe/wolfgirl/probejs/lang/typescript/$TypeScriptFile" {
 import {$ClassPath, $ClassPath$Type} from "packages/moe/wolfgirl/probejs/lang/java/clazz/$ClassPath"
 import {$Path, $Path$Type} from "packages/java/nio/file/$Path"
@@ -1601,11 +1601,11 @@ constructor(self: $ClassPath$Type)
 
 public "findCode"<T extends $Code>(type: $Class$Type<(T)>): $Optional<(T)>
 public "writeAsModule"(writer: $BufferedWriter$Type): void
+public "addCode"(code: $Code$Type): void
 public "excludeSymbol"(name: string): void
 public "format"(): string
-public "write"(writeTo: $Path$Type): void
 public "write"(writer: $BufferedWriter$Type): void
-public "addCode"(code: $Code$Type): void
+public "write"(writeTo: $Path$Type): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_

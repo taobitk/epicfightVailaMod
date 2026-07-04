@@ -19,51 +19,62 @@ export type $RandomAccess$Type = ($RandomAccess);
 declare global {
 export type $RandomAccess_ = $RandomAccess$Type;
 }}
-declare module "packages/java/util/$Optional" {
-import {$Function, $Function$Type} from "packages/java/util/function/$Function"
-import {$Throwable, $Throwable$Type} from "packages/java/lang/$Throwable"
+declare module "packages/java/util/concurrent/$ConcurrentHashMap$KeySetView" {
+import {$Serializable, $Serializable$Type} from "packages/java/io/$Serializable"
 import {$Consumer, $Consumer$Type} from "packages/java/util/function/$Consumer"
-import {$Predicate, $Predicate$Type} from "packages/java/util/function/$Predicate"
-import {$Stream, $Stream$Type} from "packages/java/util/stream/$Stream"
-import {$Supplier, $Supplier$Type} from "packages/java/util/function/$Supplier"
-import {$Runnable, $Runnable$Type} from "packages/java/lang/$Runnable"
+import {$Set, $Set$Type} from "packages/java/util/$Set"
+import {$ConcurrentHashMap$CollectionView, $ConcurrentHashMap$CollectionView$Type} from "packages/java/util/concurrent/$ConcurrentHashMap$CollectionView"
+import {$Collection, $Collection$Type} from "packages/java/util/$Collection"
+import {$Iterator, $Iterator$Type} from "packages/java/util/$Iterator"
+import {$Spliterator, $Spliterator$Type} from "packages/java/util/$Spliterator"
 
-export class $Optional<T> {
+export class $ConcurrentHashMap$KeySetView<K, V> extends $ConcurrentHashMap$CollectionView<(K), (V), (K)> implements $Set<(K)>, $Serializable {
 
 
-public "ifPresent"(arg0: $Consumer$Type<(any)>): void
-public "ifPresentOrElse"(arg0: $Consumer$Type<(any)>, arg1: $Runnable$Type): void
-public "or"(arg0: $Supplier$Type<(any)>): $Optional<(T)>
-public "orElseGet"(arg0: $Supplier$Type<(any)>): T
-public "get"(): T
+public "getMappedValue"(): V
+public "add"(arg0: K): boolean
+public "remove"(arg0: any): boolean
 public "equals"(arg0: any): boolean
-public "toString"(): string
 public "hashCode"(): integer
+public "iterator"(): $Iterator<(K)>
+public "contains"(arg0: any): boolean
+public "spliterator"(): $Spliterator<(K)>
+public "addAll"(arg0: $Collection$Type<(any)>): boolean
+public "forEach"(arg0: $Consumer$Type<(any)>): void
+public static "copyOf"<E>(arg0: $Collection$Type<(any)>): $Set<(K)>
+public "clear"(): void
 public "isEmpty"(): boolean
-public "map"<U>(arg0: $Function$Type<(any), (any)>): $Optional<(U)>
-public "stream"(): $Stream<(T)>
-public static "of"<T>(arg0: T): $Optional<(T)>
-public "filter"(arg0: $Predicate$Type<(any)>): $Optional<(T)>
-public static "empty"<T>(): $Optional<(T)>
-public "flatMap"<U>(arg0: $Function$Type<(any), (any)>): $Optional<(U)>
-public "isPresent"(): boolean
-public "orElse"(arg0: T): T
-public "orElseThrow"(): T
-public "orElseThrow"<X extends $Throwable>(arg0: $Supplier$Type<(any)>): T
-public static "ofNullable"<T>(arg0: T): $Optional<(T)>
-get "present"(): boolean
+public "size"(): integer
+public "toArray"<T>(arg0: (T)[]): (T)[]
+public "toArray"(): (any)[]
+public static "of"<E>(arg0: K, arg1: K, arg2: K, arg3: K, arg4: K, arg5: K): $Set<(K)>
+public static "of"<E>(arg0: K, arg1: K, arg2: K, arg3: K, arg4: K): $Set<(K)>
+public static "of"<E>(arg0: K): $Set<(K)>
+public static "of"<E>(arg0: K, arg1: K, arg2: K, arg3: K): $Set<(K)>
+public static "of"<E>(arg0: K, arg1: K, arg2: K, arg3: K, arg4: K, arg5: K, arg6: K, arg7: K, arg8: K, arg9: K): $Set<(K)>
+public static "of"<E>(arg0: K, arg1: K, arg2: K, arg3: K, arg4: K, arg5: K, arg6: K, arg7: K, arg8: K): $Set<(K)>
+public static "of"<E>(arg0: K, arg1: K, arg2: K, arg3: K, arg4: K, arg5: K, arg6: K, arg7: K): $Set<(K)>
+public static "of"<E>(arg0: K, arg1: K, arg2: K, arg3: K, arg4: K, arg5: K, arg6: K): $Set<(K)>
+public static "of"<E>(...arg0: (K)[]): $Set<(K)>
+public static "of"<E>(arg0: K, arg1: K, arg2: K): $Set<(K)>
+public static "of"<E>(): $Set<(K)>
+public static "of"<E>(arg0: K, arg1: K): $Set<(K)>
+public "retainAll"(arg0: $Collection$Type<(any)>): boolean
+public "containsAll"(arg0: $Collection$Type<(any)>): boolean
+get "mappedValue"(): V
+get "empty"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $Optional$Type<T> = ($Optional<(T)>);
+export type $ConcurrentHashMap$KeySetView$Type<K, V> = ($ConcurrentHashMap$KeySetView<(K), (V)>);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
  */
 declare global {
-export type $Optional_<T> = $Optional$Type<(T)>;
+export type $ConcurrentHashMap$KeySetView_<K, V> = $ConcurrentHashMap$KeySetView$Type<(K), (V)>;
 }}
 declare module "packages/java/util/$SortedSet" {
 import {$Comparator, $Comparator$Type} from "packages/java/util/$Comparator"
@@ -206,6 +217,52 @@ export type $Deque$Type<E> = ($Deque<(E)>);
 declare global {
 export type $Deque_<E> = $Deque$Type<(E)>;
 }}
+declare module "packages/java/util/$ResourceBundle" {
+import {$ResourceBundle$Control, $ResourceBundle$Control$Type} from "packages/java/util/$ResourceBundle$Control"
+import {$Module, $Module$Type} from "packages/java/lang/$Module"
+import {$Enumeration, $Enumeration$Type} from "packages/java/util/$Enumeration"
+import {$Set, $Set$Type} from "packages/java/util/$Set"
+import {$ClassLoader, $ClassLoader$Type} from "packages/java/lang/$ClassLoader"
+import {$Locale, $Locale$Type} from "packages/java/util/$Locale"
+
+export class $ResourceBundle {
+
+constructor()
+
+public "getBaseBundleName"(): string
+public "getStringArray"(arg0: string): (string)[]
+public "getString"(arg0: string): string
+public "getKeys"(): $Enumeration<(string)>
+public static "clearCache"(): void
+public static "clearCache"(arg0: $ClassLoader$Type): void
+public static "getBundle"(arg0: string, arg1: $Locale$Type, arg2: $ResourceBundle$Control$Type): $ResourceBundle
+public static "getBundle"(arg0: string, arg1: $Locale$Type, arg2: $ClassLoader$Type, arg3: $ResourceBundle$Control$Type): $ResourceBundle
+public static "getBundle"(arg0: string, arg1: $Locale$Type, arg2: $ClassLoader$Type): $ResourceBundle
+public static "getBundle"(arg0: string, arg1: $Locale$Type): $ResourceBundle
+public static "getBundle"(arg0: string, arg1: $Module$Type): $ResourceBundle
+public static "getBundle"(arg0: string): $ResourceBundle
+public static "getBundle"(arg0: string, arg1: $Locale$Type, arg2: $Module$Type): $ResourceBundle
+public static "getBundle"(arg0: string, arg1: $ResourceBundle$Control$Type): $ResourceBundle
+public "getLocale"(): $Locale
+public "containsKey"(arg0: string): boolean
+public "keySet"(): $Set<(string)>
+public "getObject"(arg0: string): any
+get "baseBundleName"(): string
+get "keys"(): $Enumeration<(string)>
+get "locale"(): $Locale
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $ResourceBundle$Type = ($ResourceBundle);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $ResourceBundle_ = $ResourceBundle$Type;
+}}
 declare module "packages/java/util/stream/$LongStream$LongMapMultiConsumer" {
 import {$LongConsumer, $LongConsumer$Type} from "packages/java/util/function/$LongConsumer"
 
@@ -297,11 +354,11 @@ import {$Delayed, $Delayed$Type} from "packages/java/util/concurrent/$Delayed"
 export interface $ScheduledFuture<V> extends $Delayed, $Future<(V)> {
 
  "getDelay"(arg0: $TimeUnit$Type): long
- "get"(arg0: long, arg1: $TimeUnit$Type): V
- "get"(): V
  "cancel"(arg0: boolean): boolean
  "isCancelled"(): boolean
  "isDone"(): boolean
+ "get"(): V
+ "get"(arg0: long, arg1: $TimeUnit$Type): V
  "compareTo"(arg0: $Delayed$Type): integer
 }
 
@@ -319,106 +376,6 @@ export type $ScheduledFuture$Type<V> = ($ScheduledFuture<(V)>);
  */
 declare global {
 export type $ScheduledFuture_<V> = $ScheduledFuture$Type<(V)>;
-}}
-declare module "packages/java/util/$List" {
-import {$Comparator, $Comparator$Type} from "packages/java/util/$Comparator"
-import {$Consumer, $Consumer$Type} from "packages/java/util/function/$Consumer"
-import {$UnaryOperator, $UnaryOperator$Type} from "packages/java/util/function/$UnaryOperator"
-import {$Collection, $Collection$Type} from "packages/java/util/$Collection"
-import {$IntFunction, $IntFunction$Type} from "packages/java/util/function/$IntFunction"
-import {$Predicate, $Predicate$Type} from "packages/java/util/function/$Predicate"
-import {$Stream, $Stream$Type} from "packages/java/util/stream/$Stream"
-import {$ListIterator, $ListIterator$Type} from "packages/java/util/$ListIterator"
-import {$Iterator, $Iterator$Type} from "packages/java/util/$Iterator"
-import {$Spliterator, $Spliterator$Type} from "packages/java/util/$Spliterator"
-
-export interface $List<E> extends $Collection<(E)> {
-
- "add"(arg0: integer, arg1: E): void
- "add"(arg0: E): boolean
- "remove"(arg0: any): boolean
- "remove"(arg0: integer): E
- "get"(arg0: integer): E
- "equals"(arg0: any): boolean
- "hashCode"(): integer
- "indexOf"(arg0: any): integer
- "clear"(): void
- "lastIndexOf"(arg0: any): integer
- "isEmpty"(): boolean
- "replaceAll"(arg0: $UnaryOperator$Type<(E)>): void
- "size"(): integer
- "subList"(arg0: integer, arg1: integer): $List<(E)>
- "toArray"(): (any)[]
- "toArray"<T>(arg0: (T)[]): (T)[]
- "iterator"(): $Iterator<(E)>
- "contains"(arg0: any): boolean
- "spliterator"(): $Spliterator<(E)>
- "addAll"(arg0: integer, arg1: $Collection$Type<(any)>): boolean
- "addAll"(arg0: $Collection$Type<(any)>): boolean
- "set"(arg0: integer, arg1: E): E
- "sort"(arg0: $Comparator$Type<(any)>): void
- "removeAll"(arg0: $Collection$Type<(any)>): boolean
- "retainAll"(arg0: $Collection$Type<(any)>): boolean
- "listIterator"(arg0: integer): $ListIterator<(E)>
- "listIterator"(): $ListIterator<(E)>
- "containsAll"(arg0: $Collection$Type<(any)>): boolean
- "toArray"<T>(arg0: $IntFunction$Type<((T)[])>): (T)[]
- "stream"(): $Stream<(E)>
- "removeIf"(arg0: $Predicate$Type<(any)>): boolean
- "parallelStream"(): $Stream<(E)>
- "forEach"(arg0: $Consumer$Type<(any)>): void
-}
-
-export namespace $List {
-function copyOf<E>(arg0: $Collection$Type<(any)>): $List<(E)>
-function of<E>(arg0: E, arg1: E, arg2: E, arg3: E): $List<(E)>
-function of<E>(arg0: E, arg1: E, arg2: E): $List<(E)>
-function of<E>(arg0: E, arg1: E): $List<(E)>
-function of<E>(arg0: E): $List<(E)>
-function of<E>(): $List<(E)>
-function of<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E, arg6: E, arg7: E): $List<(E)>
-function of<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E, arg6: E): $List<(E)>
-function of<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E): $List<(E)>
-function of<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E): $List<(E)>
-function of<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E, arg6: E, arg7: E, arg8: E, arg9: E): $List<(E)>
-function of<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E, arg6: E, arg7: E, arg8: E): $List<(E)>
-function of<E>(...arg0: (E)[]): $List<(E)>
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $List$Type<E> = ((E)[]) | ($List<(E)>);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $List_<E> = $List$Type<(E)>;
-}}
-declare module "packages/java/util/function/$ObjDoubleConsumer" {
-export {} // Mark the file as a module, do not remove unless there are other import/exports!
-export interface $ObjDoubleConsumer<T> {
-
- "accept"(arg0: T, arg1: double): void
-
-(arg0: T, arg1: double): void
-}
-
-export namespace $ObjDoubleConsumer {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $ObjDoubleConsumer$Type<T> = ($ObjDoubleConsumer<(T)>);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $ObjDoubleConsumer_<T> = $ObjDoubleConsumer$Type<(T)>;
 }}
 declare module "packages/java/util/concurrent/$ThreadFactory" {
 import {$Thread, $Thread$Type} from "packages/java/lang/$Thread"
@@ -446,35 +403,6 @@ export type $ThreadFactory$Type = ($ThreadFactory);
 declare global {
 export type $ThreadFactory_ = $ThreadFactory$Type;
 }}
-declare module "packages/java/util/function/$BinaryOperator" {
-import {$Comparator, $Comparator$Type} from "packages/java/util/$Comparator"
-import {$Function, $Function$Type} from "packages/java/util/function/$Function"
-import {$BiFunction, $BiFunction$Type} from "packages/java/util/function/$BiFunction"
-
-export interface $BinaryOperator<T> extends $BiFunction<(T), (T), (T)> {
-
- "andThen"<V>(arg0: $Function$Type<(any), (any)>): $BiFunction<(T), (T), (V)>
- "apply"(arg0: T, arg1: T): T
-
-(arg0: $Comparator$Type<(any)>): $BinaryOperator<(T)>
-}
-
-export namespace $BinaryOperator {
-function maxBy<T>(arg0: $Comparator$Type<(any)>): $BinaryOperator<(T)>
-function minBy<T>(arg0: $Comparator$Type<(any)>): $BinaryOperator<(T)>
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $BinaryOperator$Type<T> = ($BinaryOperator<(T)>);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $BinaryOperator_<T> = $BinaryOperator$Type<(T)>;
-}}
 declare module "packages/java/util/$IdentityHashMap" {
 import {$BiConsumer, $BiConsumer$Type} from "packages/java/util/function/$BiConsumer"
 import {$Serializable, $Serializable$Type} from "packages/java/io/$Serializable"
@@ -488,8 +416,8 @@ import {$Map$Entry, $Map$Entry$Type} from "packages/java/util/$Map$Entry"
 
 export class $IdentityHashMap<K, V> extends $AbstractMap<(K), (V)> implements $Map<(K), (V)>, $Serializable, $Cloneable {
 
-constructor(arg0: integer)
 constructor()
+constructor(arg0: integer)
 constructor(arg0: $Map$Type<(any), (any)>)
 
 public "remove"(arg0: any): V
@@ -537,30 +465,6 @@ export type $IdentityHashMap$Type<K, V> = ($IdentityHashMap<(K), (V)>);
 declare global {
 export type $IdentityHashMap_<K, V> = $IdentityHashMap$Type<(K), (V)>;
 }}
-declare module "packages/java/util/function/$ObjIntConsumer" {
-export {} // Mark the file as a module, do not remove unless there are other import/exports!
-export interface $ObjIntConsumer<T> {
-
- "accept"(arg0: T, arg1: integer): void
-
-(arg0: T, arg1: integer): void
-}
-
-export namespace $ObjIntConsumer {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $ObjIntConsumer$Type<T> = ($ObjIntConsumer<(T)>);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $ObjIntConsumer_<T> = $ObjIntConsumer$Type<(T)>;
-}}
 declare module "packages/java/util/zip/$ZipEntry" {
 import {$FileTime, $FileTime$Type} from "packages/java/nio/file/attribute/$FileTime"
 import {$Cloneable, $Cloneable$Type} from "packages/java/lang/$Cloneable"
@@ -579,6 +483,7 @@ static readonly "DEFLATED": integer
 constructor(arg0: $ZipEntry$Type)
 constructor(arg0: string)
 
+public "getComment"(): string
 public "isDirectory"(): boolean
 public "getLastModifiedTime"(): $FileTime
 public "setLastModifiedTime"(arg0: $FileTime$Type): $ZipEntry
@@ -599,13 +504,13 @@ public "setMethod"(arg0: integer): void
 public "setExtra"(arg0: (byte)[]): void
 public "getExtra"(): (byte)[]
 public "setComment"(arg0: string): void
-public "getComment"(): string
 public "getName"(): string
 public "toString"(): string
 public "hashCode"(): integer
 public "clone"(): any
 public "getMethod"(): integer
 public "getSize"(): long
+get "comment"(): string
 get "directory"(): boolean
 get "lastModifiedTime"(): $FileTime
 set "lastModifiedTime"(value: $FileTime$Type)
@@ -626,7 +531,6 @@ set "method"(value: integer)
 set "extra"(value: (byte)[])
 get "extra"(): (byte)[]
 set "comment"(value: string)
-get "comment"(): string
 get "name"(): string
 get "method"(): integer
 get "size"(): long
@@ -642,167 +546,6 @@ export type $ZipEntry$Type = ($ZipEntry);
  */
 declare global {
 export type $ZipEntry_ = $ZipEntry$Type;
-}}
-declare module "packages/java/util/$Date" {
-import {$Comparable, $Comparable$Type} from "packages/java/lang/$Comparable"
-import {$Serializable, $Serializable$Type} from "packages/java/io/$Serializable"
-import {$Instant, $Instant$Type} from "packages/java/time/$Instant"
-import {$Cloneable, $Cloneable$Type} from "packages/java/lang/$Cloneable"
-
-export class $Date implements $Serializable, $Cloneable, $Comparable<($Date)> {
-
-constructor()
-/**
- * 
- * @deprecated
- */
-constructor(arg0: string)
-/**
- * 
- * @deprecated
- */
-constructor(arg0: integer, arg1: integer, arg2: integer)
-constructor(arg0: long)
-/**
- * 
- * @deprecated
- */
-constructor(arg0: integer, arg1: integer, arg2: integer, arg3: integer, arg4: integer, arg5: integer)
-/**
- * 
- * @deprecated
- */
-constructor(arg0: integer, arg1: integer, arg2: integer, arg3: integer, arg4: integer)
-
-/**
- * 
- * @deprecated
- */
-public "setDate"(arg0: integer): void
-/**
- * 
- * @deprecated
- */
-public "getDate"(): integer
-/**
- * 
- * @deprecated
- */
-public "getMonth"(): integer
-public "getTime"(): long
-/**
- * 
- * @deprecated
- */
-public "getYear"(): integer
-/**
- * 
- * @deprecated
- */
-public "getSeconds"(): integer
-public "toInstant"(): $Instant
-/**
- * 
- * @deprecated
- */
-public static "UTC"(arg0: integer, arg1: integer, arg2: integer, arg3: integer, arg4: integer, arg5: integer): long
-public "setTime"(arg0: long): void
-public "equals"(arg0: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
-public "clone"(): any
-public "compareTo"(arg0: $Date$Type): integer
-public static "from"(arg0: $Instant$Type): $Date
-public "before"(arg0: $Date$Type): boolean
-public "after"(arg0: $Date$Type): boolean
-/**
- * 
- * @deprecated
- */
-public static "parse"(arg0: string): long
-/**
- * 
- * @deprecated
- */
-public "setMonth"(arg0: integer): void
-/**
- * 
- * @deprecated
- */
-public "getHours"(): integer
-/**
- * 
- * @deprecated
- */
-public "getMinutes"(): integer
-/**
- * 
- * @deprecated
- */
-public "setHours"(arg0: integer): void
-/**
- * 
- * @deprecated
- */
-public "setMinutes"(arg0: integer): void
-/**
- * 
- * @deprecated
- */
-public "setSeconds"(arg0: integer): void
-/**
- * 
- * @deprecated
- */
-public "setYear"(arg0: integer): void
-/**
- * 
- * @deprecated
- */
-public "getDay"(): integer
-/**
- * 
- * @deprecated
- */
-public "toLocaleString"(): string
-/**
- * 
- * @deprecated
- */
-public "toGMTString"(): string
-/**
- * 
- * @deprecated
- */
-public "getTimezoneOffset"(): integer
-set "date"(value: integer)
-get "date"(): integer
-get "month"(): integer
-get "time"(): long
-get "year"(): integer
-get "seconds"(): integer
-set "time"(value: long)
-set "month"(value: integer)
-get "hours"(): integer
-get "minutes"(): integer
-set "hours"(value: integer)
-set "minutes"(value: integer)
-set "seconds"(value: integer)
-set "year"(value: integer)
-get "day"(): integer
-get "timezoneOffset"(): integer
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $Date$Type = ($Date);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $Date_ = $Date$Type;
 }}
 declare module "packages/java/util/$Locale$Category" {
 import {$Enum, $Enum$Type} from "packages/java/lang/$Enum"
@@ -839,9 +582,9 @@ export class $OptionalLong {
 
 
 public "getAsLong"(): long
-public "ifPresent"(arg0: $LongConsumer$Type): void
 public "ifPresentOrElse"(arg0: $LongConsumer$Type, arg1: $Runnable$Type): void
 public "orElseGet"(arg0: $LongSupplier$Type): long
+public "ifPresent"(arg0: $LongConsumer$Type): void
 public "equals"(arg0: any): boolean
 public "toString"(): string
 public "hashCode"(): integer
@@ -936,21 +679,21 @@ constructor()
 constructor(arg0: long, arg1: long, arg2: long, arg3: long)
 
 public "getSum"(): long
-public "getAverage"(): double
 public "getCount"(): long
-public "toString"(): string
-public "accept"(arg0: long): void
-public "accept"(arg0: integer): void
-public "combine"(arg0: $LongSummaryStatistics$Type): void
 public "getMax"(): long
 public "getMin"(): long
+public "getAverage"(): double
+public "toString"(): string
+public "accept"(arg0: integer): void
+public "accept"(arg0: long): void
+public "combine"(arg0: $LongSummaryStatistics$Type): void
 public "andThen"(arg0: $LongConsumer$Type): $LongConsumer
 public "andThen"(arg0: $IntConsumer$Type): $IntConsumer
 get "sum"(): long
-get "average"(): double
 get "count"(): long
 get "max"(): long
 get "min"(): long
+get "average"(): double
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -978,11 +721,11 @@ export interface $Map$Entry<K, V> {
 }
 
 export namespace $Map$Entry {
-function copyOf<K, V>(arg0: $Map$Entry$Type<(any), (any)>): $Map$Entry<(K), (V)>
-function comparingByKey<K, V>(arg0: $Comparator$Type<(any)>): $Comparator<($Map$Entry<(K), (V)>)>
 function comparingByKey<K, V>(): $Comparator<($Map$Entry<(K), (V)>)>
+function comparingByKey<K, V>(arg0: $Comparator$Type<(any)>): $Comparator<($Map$Entry<(K), (V)>)>
 function comparingByValue<K, V>(): $Comparator<($Map$Entry<(K), (V)>)>
 function comparingByValue<K, V>(arg0: $Comparator$Type<(any)>): $Comparator<($Map$Entry<(K), (V)>)>
+function copyOf<K, V>(arg0: $Map$Entry$Type<(any), (any)>): $Map$Entry<(K), (V)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -995,96 +738,6 @@ export type $Map$Entry$Type<K, V> = ($Map$Entry<(K), (V)>);
  */
 declare global {
 export type $Map$Entry_<K, V> = $Map$Entry$Type<(K), (V)>;
-}}
-declare module "packages/java/util/stream/$IntStream" {
-import {$ObjIntConsumer, $ObjIntConsumer$Type} from "packages/java/util/function/$ObjIntConsumer"
-import {$LongStream, $LongStream$Type} from "packages/java/util/stream/$LongStream"
-import {$OptionalDouble, $OptionalDouble$Type} from "packages/java/util/$OptionalDouble"
-import {$IntSupplier, $IntSupplier$Type} from "packages/java/util/function/$IntSupplier"
-import {$IntBinaryOperator, $IntBinaryOperator$Type} from "packages/java/util/function/$IntBinaryOperator"
-import {$IntSummaryStatistics, $IntSummaryStatistics$Type} from "packages/java/util/$IntSummaryStatistics"
-import {$DoubleStream, $DoubleStream$Type} from "packages/java/util/stream/$DoubleStream"
-import {$Runnable, $Runnable$Type} from "packages/java/lang/$Runnable"
-import {$IntStream$IntMapMultiConsumer, $IntStream$IntMapMultiConsumer$Type} from "packages/java/util/stream/$IntStream$IntMapMultiConsumer"
-import {$IntUnaryOperator, $IntUnaryOperator$Type} from "packages/java/util/function/$IntUnaryOperator"
-import {$IntStream$Builder, $IntStream$Builder$Type} from "packages/java/util/stream/$IntStream$Builder"
-import {$BiConsumer, $BiConsumer$Type} from "packages/java/util/function/$BiConsumer"
-import {$IntToDoubleFunction, $IntToDoubleFunction$Type} from "packages/java/util/function/$IntToDoubleFunction"
-import {$IntPredicate, $IntPredicate$Type} from "packages/java/util/function/$IntPredicate"
-import {$IntFunction, $IntFunction$Type} from "packages/java/util/function/$IntFunction"
-import {$BaseStream, $BaseStream$Type} from "packages/java/util/stream/$BaseStream"
-import {$Stream, $Stream$Type} from "packages/java/util/stream/$Stream"
-import {$IntConsumer, $IntConsumer$Type} from "packages/java/util/function/$IntConsumer"
-import {$Supplier, $Supplier$Type} from "packages/java/util/function/$Supplier"
-import {$IntToLongFunction, $IntToLongFunction$Type} from "packages/java/util/function/$IntToLongFunction"
-import {$OptionalInt, $OptionalInt$Type} from "packages/java/util/$OptionalInt"
-
-export interface $IntStream extends $BaseStream<(integer), ($IntStream)> {
-
- "boxed"(): $Stream<(integer)>
- "average"(): $OptionalDouble
- "summaryStatistics"(): $IntSummaryStatistics
- "asLongStream"(): $LongStream
- "asDoubleStream"(): $DoubleStream
- "sorted"(): $IntStream
- "forEachOrdered"(arg0: $IntConsumer$Type): void
- "mapToLong"(arg0: $IntToLongFunction$Type): $LongStream
- "mapToDouble"(arg0: $IntToDoubleFunction$Type): $DoubleStream
- "mapMulti"(arg0: $IntStream$IntMapMultiConsumer$Type): $IntStream
- "takeWhile"(arg0: $IntPredicate$Type): $IntStream
- "dropWhile"(arg0: $IntPredicate$Type): $IntStream
- "noneMatch"(arg0: $IntPredicate$Type): boolean
- "min"(): $OptionalInt
- "max"(): $OptionalInt
- "toArray"(): (integer)[]
- "map"(arg0: $IntUnaryOperator$Type): $IntStream
- "collect"<R>(arg0: $Supplier$Type<(R)>, arg1: $ObjIntConsumer$Type<(R)>, arg2: $BiConsumer$Type<(R), (R)>): R
- "count"(): long
- "limit"(arg0: long): $IntStream
- "filter"(arg0: $IntPredicate$Type): $IntStream
- "anyMatch"(arg0: $IntPredicate$Type): boolean
- "flatMap"(arg0: $IntFunction$Type<(any)>): $IntStream
- "forEach"(arg0: $IntConsumer$Type): void
- "findAny"(): $OptionalInt
- "skip"(arg0: long): $IntStream
- "peek"(arg0: $IntConsumer$Type): $IntStream
- "sum"(): integer
- "reduce"(arg0: integer, arg1: $IntBinaryOperator$Type): integer
- "reduce"(arg0: $IntBinaryOperator$Type): $OptionalInt
- "distinct"(): $IntStream
- "findFirst"(): $OptionalInt
- "allMatch"(arg0: $IntPredicate$Type): boolean
- "parallel"(): $IntStream
- "mapToObj"<U>(arg0: $IntFunction$Type<(any)>): $Stream<(U)>
- "isParallel"(): boolean
- "unordered"(): $IntStream
- "onClose"(arg0: $Runnable$Type): $IntStream
- "close"(): void
-}
-
-export namespace $IntStream {
-function rangeClosed(arg0: integer, arg1: integer): $IntStream
-function generate(arg0: $IntSupplier$Type): $IntStream
-function of(...arg0: (integer)[]): $IntStream
-function of(arg0: integer): $IntStream
-function builder(): $IntStream$Builder
-function concat(arg0: $IntStream$Type, arg1: $IntStream$Type): $IntStream
-function empty(): $IntStream
-function range(arg0: integer, arg1: integer): $IntStream
-function iterate(arg0: integer, arg1: $IntPredicate$Type, arg2: $IntUnaryOperator$Type): $IntStream
-function iterate(arg0: integer, arg1: $IntUnaryOperator$Type): $IntStream
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $IntStream$Type = ($IntStream);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $IntStream_ = $IntStream$Type;
 }}
 declare module "packages/java/util/$Locale" {
 import {$Locale$FilteringMode, $Locale$FilteringMode$Type} from "packages/java/util/$Locale$FilteringMode"
@@ -1160,6 +813,7 @@ public "toLanguageTag"(): string
 public static "forLanguageTag"(arg0: string): $Locale
 public "getISO3Language"(): string
 public "getISO3Country"(): string
+public "getLanguage"(): string
 public "equals"(arg0: any): boolean
 public "toString"(): string
 public "hashCode"(): integer
@@ -1169,7 +823,6 @@ public static "getDefault"(arg0: $Locale$Category$Type): $Locale
 public static "lookup"(arg0: $List$Type<($Locale$LanguageRange$Type)>, arg1: $Collection$Type<($Locale$Type)>): $Locale
 public static "filter"(arg0: $List$Type<($Locale$LanguageRange$Type)>, arg1: $Collection$Type<($Locale$Type)>): $List<($Locale)>
 public static "filter"(arg0: $List$Type<($Locale$LanguageRange$Type)>, arg1: $Collection$Type<($Locale$Type)>, arg2: $Locale$FilteringMode$Type): $List<($Locale)>
-public "getLanguage"(): string
 get "script"(): string
 get "country"(): string
 get "variant"(): string
@@ -1187,8 +840,8 @@ get "iSOLanguages"(): (string)[]
 get "extensionKeys"(): $Set<(character)>
 get "iSO3Language"(): string
 get "iSO3Country"(): string
-get "default"(): $Locale
 get "language"(): string
+get "default"(): $Locale
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1348,33 +1001,6 @@ export type $ZipConstants$Type = ($ZipConstants);
 declare global {
 export type $ZipConstants_ = $ZipConstants$Type;
 }}
-declare module "packages/java/util/function/$IntPredicate" {
-export {} // Mark the file as a module, do not remove unless there are other import/exports!
-export interface $IntPredicate {
-
- "negate"(): $IntPredicate
- "and"(arg0: $IntPredicate$Type): $IntPredicate
- "or"(arg0: $IntPredicate$Type): $IntPredicate
- "test"(arg0: integer): boolean
-
-(): $IntPredicate
-}
-
-export namespace $IntPredicate {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $IntPredicate$Type = ($IntPredicate);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $IntPredicate_ = $IntPredicate$Type;
-}}
 declare module "packages/java/util/$PrimitiveIterator" {
 import {$Consumer, $Consumer$Type} from "packages/java/util/function/$Consumer"
 import {$Iterator, $Iterator$Type} from "packages/java/util/$Iterator"
@@ -1403,6 +1029,29 @@ export type $PrimitiveIterator$Type<T, T_CONS> = ($PrimitiveIterator<(T), (T_CON
 declare global {
 export type $PrimitiveIterator_<T, T_CONS> = $PrimitiveIterator$Type<(T), (T_CONS)>;
 }}
+declare module "packages/java/util/$EventObject" {
+import {$Serializable, $Serializable$Type} from "packages/java/io/$Serializable"
+
+export class $EventObject implements $Serializable {
+
+constructor(arg0: any)
+
+public "getSource"(): any
+public "toString"(): string
+get "source"(): any
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $EventObject$Type = ($EventObject);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $EventObject_ = $EventObject$Type;
+}}
 declare module "packages/java/util/zip/$ZipFile" {
 import {$Closeable, $Closeable$Type} from "packages/java/io/$Closeable"
 import {$File, $File$Type} from "packages/java/io/$File"
@@ -1422,21 +1071,21 @@ export class $ZipFile implements $ZipConstants, $Closeable {
 static readonly "OPEN_READ": integer
 static readonly "OPEN_DELETE": integer
 
-constructor(arg0: $File$Type, arg1: $Charset$Type)
 constructor(arg0: string, arg1: $Charset$Type)
 constructor(arg0: $File$Type, arg1: integer, arg2: $Charset$Type)
-constructor(arg0: string)
-constructor(arg0: $File$Type, arg1: integer)
 constructor(arg0: $File$Type)
+constructor(arg0: $File$Type, arg1: $Charset$Type)
+constructor(arg0: $File$Type, arg1: integer)
+constructor(arg0: string)
 
 public "getComment"(): string
+public "getEntry"(arg0: string): $ZipEntry
 public "getName"(): string
 public "size"(): integer
 public "stream"(): $Stream<(any)>
 public "close"(): void
 public "entries"(): $Enumeration<(any)>
 public "getInputStream"(arg0: $ZipEntry$Type): $InputStream
-public "getEntry"(arg0: string): $ZipEntry
 get "comment"(): string
 get "name"(): string
 }
@@ -1451,189 +1100,6 @@ export type $ZipFile$Type = ($ZipFile);
  */
 declare global {
 export type $ZipFile_ = $ZipFile$Type;
-}}
-declare module "packages/java/util/concurrent/$CompletableFuture" {
-import {$BiConsumer, $BiConsumer$Type} from "packages/java/util/function/$BiConsumer"
-import {$Function, $Function$Type} from "packages/java/util/function/$Function"
-import {$Throwable, $Throwable$Type} from "packages/java/lang/$Throwable"
-import {$CompletionStage, $CompletionStage$Type} from "packages/java/util/concurrent/$CompletionStage"
-import {$Consumer, $Consumer$Type} from "packages/java/util/function/$Consumer"
-import {$Future, $Future$Type} from "packages/java/util/concurrent/$Future"
-import {$Supplier, $Supplier$Type} from "packages/java/util/function/$Supplier"
-import {$Executor, $Executor$Type} from "packages/java/util/concurrent/$Executor"
-import {$TimeUnit, $TimeUnit$Type} from "packages/java/util/concurrent/$TimeUnit"
-import {$BiFunction, $BiFunction$Type} from "packages/java/util/function/$BiFunction"
-import {$Runnable, $Runnable$Type} from "packages/java/lang/$Runnable"
-
-export class $CompletableFuture<T> implements $Future<(T)>, $CompletionStage<(T)> {
-
-constructor()
-
-public "completeAsync"(arg0: $Supplier$Type<(any)>): $CompletableFuture<(T)>
-public "completeAsync"(arg0: $Supplier$Type<(any)>, arg1: $Executor$Type): $CompletableFuture<(T)>
-public "exceptionallyComposeAsync"(arg0: $Function$Type<($Throwable$Type), (any)>): $CompletableFuture<(T)>
-public "whenCompleteAsync"(arg0: $BiConsumer$Type<(any), (any)>): $CompletableFuture<(T)>
-public "handleAsync"<U>(arg0: $BiFunction$Type<(any), ($Throwable$Type), (any)>): $CompletableFuture<(U)>
-public "handleAsync"<U>(arg0: $BiFunction$Type<(any), ($Throwable$Type), (any)>, arg1: $Executor$Type): $CompletableFuture<(U)>
-public "runAfterEitherAsync"(arg0: $CompletionStage$Type<(any)>, arg1: $Runnable$Type, arg2: $Executor$Type): $CompletableFuture<(void)>
-public "runAfterEither"(arg0: $CompletionStage$Type<(any)>, arg1: $Runnable$Type): $CompletableFuture<(void)>
-public "acceptEither"(arg0: $CompletionStage$Type<(any)>, arg1: $Consumer$Type<(any)>): $CompletableFuture<(void)>
-public "applyToEitherAsync"<U>(arg0: $CompletionStage$Type<(any)>, arg1: $Function$Type<(any), (U)>, arg2: $Executor$Type): $CompletableFuture<(U)>
-public "applyToEitherAsync"<U>(arg0: $CompletionStage$Type<(any)>, arg1: $Function$Type<(any), (U)>): $CompletableFuture<(U)>
-public "applyToEither"<U>(arg0: $CompletionStage$Type<(any)>, arg1: $Function$Type<(any), (U)>): $CompletableFuture<(U)>
-public "runAfterBothAsync"(arg0: $CompletionStage$Type<(any)>, arg1: $Runnable$Type): $CompletableFuture<(void)>
-public "runAfterBothAsync"(arg0: $CompletionStage$Type<(any)>, arg1: $Runnable$Type, arg2: $Executor$Type): $CompletableFuture<(void)>
-public "runAfterBoth"(arg0: $CompletionStage$Type<(any)>, arg1: $Runnable$Type): $CompletableFuture<(void)>
-public "thenCombineAsync"<U, V>(arg0: $CompletionStage$Type<(any)>, arg1: $BiFunction$Type<(any), (any), (any)>, arg2: $Executor$Type): $CompletableFuture<(V)>
-public "thenRunAsync"(arg0: $Runnable$Type): $CompletableFuture<(void)>
-public "thenRunAsync"(arg0: $Runnable$Type, arg1: $Executor$Type): $CompletableFuture<(void)>
-public "thenRun"(arg0: $Runnable$Type): $CompletableFuture<(void)>
-public "thenApplyAsync"<U>(arg0: $Function$Type<(any), (any)>, arg1: $Executor$Type): $CompletableFuture<(U)>
-public "thenApplyAsync"<U>(arg0: $Function$Type<(any), (any)>): $CompletableFuture<(U)>
-public "thenApply"<U>(arg0: $Function$Type<(any), (any)>): $CompletableFuture<(U)>
-public static "runAsync"(arg0: $Runnable$Type): $CompletableFuture<(void)>
-public static "runAsync"(arg0: $Runnable$Type, arg1: $Executor$Type): $CompletableFuture<(void)>
-public static "completedFuture"<U>(arg0: U): $CompletableFuture<(U)>
-public "getNow"(arg0: T): T
-public "completeExceptionally"(arg0: $Throwable$Type): boolean
-public static "anyOf"(...arg0: ($CompletableFuture$Type<(any)>)[]): $CompletableFuture<(any)>
-public "isCompletedExceptionally"(): boolean
-public "obtrudeValue"(arg0: T): void
-public "obtrudeException"(arg0: $Throwable$Type): void
-public "getNumberOfDependents"(): integer
-public "minimalCompletionStage"(): $CompletionStage<(T)>
-public "orTimeout"(arg0: long, arg1: $TimeUnit$Type): $CompletableFuture<(T)>
-public "completeOnTimeout"(arg0: T, arg1: long, arg2: $TimeUnit$Type): $CompletableFuture<(T)>
-public static "delayedExecutor"(arg0: long, arg1: $TimeUnit$Type, arg2: $Executor$Type): $Executor
-public static "delayedExecutor"(arg0: long, arg1: $TimeUnit$Type): $Executor
-public static "completedStage"<U>(arg0: U): $CompletionStage<(U)>
-public static "failedFuture"<U>(arg0: $Throwable$Type): $CompletableFuture<(U)>
-public static "failedStage"<U>(arg0: $Throwable$Type): $CompletionStage<(U)>
-public "newIncompleteFuture"<U>(): $CompletableFuture<(U)>
-public "toCompletableFuture"(): $CompletableFuture<(T)>
-public "defaultExecutor"(): $Executor
-public "complete"(arg0: T): boolean
-public static "allOf"(...arg0: ($CompletableFuture$Type<(any)>)[]): $CompletableFuture<(void)>
-public "get"(arg0: long, arg1: $TimeUnit$Type): T
-public "get"(): T
-public "toString"(): string
-public "join"(): T
-public "copy"(): $CompletableFuture<(T)>
-public "handle"<U>(arg0: $BiFunction$Type<(any), ($Throwable$Type), (any)>): $CompletableFuture<(U)>
-public "cancel"(arg0: boolean): boolean
-public "isCancelled"(): boolean
-public "isDone"(): boolean
-public static "supplyAsync"<U>(arg0: $Supplier$Type<(U)>): $CompletableFuture<(U)>
-public static "supplyAsync"<U>(arg0: $Supplier$Type<(U)>, arg1: $Executor$Type): $CompletableFuture<(U)>
-public "whenComplete"(arg0: $BiConsumer$Type<(any), (any)>): $CompletableFuture<(T)>
-get "completedExceptionally"(): boolean
-get "numberOfDependents"(): integer
-get "cancelled"(): boolean
-get "done"(): boolean
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $CompletableFuture$Type<T> = ($CompletableFuture<(T)>);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $CompletableFuture_<T> = $CompletableFuture$Type<(T)>;
-}}
-declare module "packages/java/util/$IntSummaryStatistics" {
-import {$IntConsumer, $IntConsumer$Type} from "packages/java/util/function/$IntConsumer"
-
-export class $IntSummaryStatistics implements $IntConsumer {
-
-constructor()
-constructor(arg0: long, arg1: integer, arg2: integer, arg3: long)
-
-public "getSum"(): long
-public "getAverage"(): double
-public "getCount"(): long
-public "toString"(): string
-public "accept"(arg0: integer): void
-public "combine"(arg0: $IntSummaryStatistics$Type): void
-public "getMax"(): integer
-public "getMin"(): integer
-public "andThen"(arg0: $IntConsumer$Type): $IntConsumer
-get "sum"(): long
-get "average"(): double
-get "count"(): long
-get "max"(): integer
-get "min"(): integer
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $IntSummaryStatistics$Type = ($IntSummaryStatistics);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $IntSummaryStatistics_ = $IntSummaryStatistics$Type;
-}}
-declare module "packages/java/util/concurrent/atomic/$AtomicReference" {
-import {$BinaryOperator, $BinaryOperator$Type} from "packages/java/util/function/$BinaryOperator"
-import {$Serializable, $Serializable$Type} from "packages/java/io/$Serializable"
-import {$UnaryOperator, $UnaryOperator$Type} from "packages/java/util/function/$UnaryOperator"
-
-export class $AtomicReference<V> implements $Serializable {
-
-constructor(arg0: V)
-constructor()
-
-public "get"(): V
-public "toString"(): string
-public "set"(arg0: V): void
-public "getOpaque"(): V
-public "setOpaque"(arg0: V): void
-public "getAcquire"(): V
-public "setRelease"(arg0: V): void
-public "compareAndSet"(arg0: V, arg1: V): boolean
-public "compareAndExchange"(arg0: V, arg1: V): V
-public "compareAndExchangeAcquire"(arg0: V, arg1: V): V
-public "compareAndExchangeRelease"(arg0: V, arg1: V): V
-public "weakCompareAndSetPlain"(arg0: V, arg1: V): boolean
-/**
- * 
- * @deprecated
- */
-public "weakCompareAndSet"(arg0: V, arg1: V): boolean
-public "weakCompareAndSetAcquire"(arg0: V, arg1: V): boolean
-public "weakCompareAndSetRelease"(arg0: V, arg1: V): boolean
-public "getAndSet"(arg0: V): V
-public "lazySet"(arg0: V): void
-public "weakCompareAndSetVolatile"(arg0: V, arg1: V): boolean
-public "getAndUpdate"(arg0: $UnaryOperator$Type<(V)>): V
-public "updateAndGet"(arg0: $UnaryOperator$Type<(V)>): V
-public "getAndAccumulate"(arg0: V, arg1: $BinaryOperator$Type<(V)>): V
-public "accumulateAndGet"(arg0: V, arg1: $BinaryOperator$Type<(V)>): V
-public "getPlain"(): V
-public "setPlain"(arg0: V): void
-get "opaque"(): V
-set "opaque"(value: V)
-get "acquire"(): V
-set "release"(value: V)
-get "plain"(): V
-set "plain"(value: V)
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $AtomicReference$Type<V> = ($AtomicReference<(V)>);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $AtomicReference_<V> = $AtomicReference$Type<(V)>;
 }}
 declare module "packages/java/util/$Spliterator$OfLong" {
 import {$Comparator, $Comparator$Type} from "packages/java/util/$Comparator"
@@ -1669,29 +1135,42 @@ export type $Spliterator$OfLong$Type = ($Spliterator$OfLong);
 declare global {
 export type $Spliterator$OfLong_ = $Spliterator$OfLong$Type;
 }}
-declare module "packages/java/util/function/$IntToDoubleFunction" {
-export {} // Mark the file as a module, do not remove unless there are other import/exports!
-export interface $IntToDoubleFunction {
+declare module "packages/java/util/$ResourceBundle$Control" {
+import {$List, $List$Type} from "packages/java/util/$List"
+import {$ClassLoader, $ClassLoader$Type} from "packages/java/lang/$ClassLoader"
+import {$ResourceBundle, $ResourceBundle$Type} from "packages/java/util/$ResourceBundle"
+import {$Locale, $Locale$Type} from "packages/java/util/$Locale"
 
- "applyAsDouble"(arg0: integer): double
+export class $ResourceBundle$Control {
+static readonly "FORMAT_DEFAULT": $List<(string)>
+static readonly "FORMAT_CLASS": $List<(string)>
+static readonly "FORMAT_PROPERTIES": $List<(string)>
+static readonly "TTL_DONT_CACHE": long
+static readonly "TTL_NO_EXPIRATION_CONTROL": long
 
-(arg0: integer): double
-}
 
-export namespace $IntToDoubleFunction {
-const probejs$$marker: never
+public "toBundleName"(arg0: string, arg1: $Locale$Type): string
+public "getFallbackLocale"(arg0: string, arg1: $Locale$Type): $Locale
+public "newBundle"(arg0: string, arg1: $Locale$Type, arg2: string, arg3: $ClassLoader$Type, arg4: boolean): $ResourceBundle
+public "getTimeToLive"(arg0: string, arg1: $Locale$Type): long
+public "needsReload"(arg0: string, arg1: $Locale$Type, arg2: string, arg3: $ClassLoader$Type, arg4: $ResourceBundle$Type, arg5: long): boolean
+public "getCandidateLocales"(arg0: string, arg1: $Locale$Type): $List<($Locale)>
+public static "getNoFallbackControl"(arg0: $List$Type<(string)>): $ResourceBundle$Control
+public "toResourceName"(arg0: string, arg1: string): string
+public "getFormats"(arg0: string): $List<(string)>
+public static "getControl"(arg0: $List$Type<(string)>): $ResourceBundle$Control
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $IntToDoubleFunction$Type = ($IntToDoubleFunction);
+export type $ResourceBundle$Control$Type = ($ResourceBundle$Control);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
  */
 declare global {
-export type $IntToDoubleFunction_ = $IntToDoubleFunction$Type;
+export type $ResourceBundle$Control_ = $ResourceBundle$Control$Type;
 }}
 declare module "packages/java/util/function/$IntConsumer" {
 export {} // Mark the file as a module, do not remove unless there are other import/exports!
@@ -1742,6 +1221,7 @@ public "toDays"(arg0: long): long
 public "timedWait"(arg0: any, arg1: long): void
 public "timedJoin"(arg0: $Thread$Type, arg1: long): void
 public "toChronoUnit"(): $ChronoUnit
+public "toNanos"(arg0: long): long
 public static "values"(): ($TimeUnit)[]
 public "convert"(arg0: long, arg1: $TimeUnit$Type): long
 public "convert"(arg0: $Duration$Type): long
@@ -1749,7 +1229,6 @@ public static "valueOf"(arg0: string): $TimeUnit
 public static "of"(arg0: $ChronoUnit$Type): $TimeUnit
 public "sleep"(arg0: long): void
 public "toMillis"(arg0: long): long
-public "toNanos"(arg0: long): long
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1762,32 +1241,6 @@ export type $TimeUnit$Type = (("milliseconds") | ("seconds") | ("hours") | ("min
  */
 declare global {
 export type $TimeUnit_ = $TimeUnit$Type;
-}}
-declare module "packages/java/util/function/$BiFunction" {
-import {$Function, $Function$Type} from "packages/java/util/function/$Function"
-
-export interface $BiFunction<T, U, R> {
-
- "andThen"<V>(arg0: $Function$Type<(any), (any)>): $BiFunction<(T), (U), (V)>
- "apply"(arg0: T, arg1: U): R
-
-(arg0: $Function$Type<(any), (any)>): $BiFunction<(T), (U), (V)>
-}
-
-export namespace $BiFunction {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $BiFunction$Type<T, U, R> = ($BiFunction<(T), (U), (R)>);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $BiFunction_<T, U, R> = $BiFunction$Type<(T), (U), (R)>;
 }}
 declare module "packages/java/util/$AbstractMap" {
 import {$BiConsumer, $BiConsumer$Type} from "packages/java/util/function/$BiConsumer"
@@ -1855,59 +1308,6 @@ export type $AbstractMap$Type<K, V> = ($AbstractMap<(K), (V)>);
  */
 declare global {
 export type $AbstractMap_<K, V> = $AbstractMap$Type<(K), (V)>;
-}}
-declare module "packages/java/util/function/$IntBinaryOperator" {
-export {} // Mark the file as a module, do not remove unless there are other import/exports!
-export interface $IntBinaryOperator {
-
- "applyAsInt"(arg0: integer, arg1: integer): integer
-
-(arg0: integer, arg1: integer): integer
-}
-
-export namespace $IntBinaryOperator {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $IntBinaryOperator$Type = ($IntBinaryOperator);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $IntBinaryOperator_ = $IntBinaryOperator$Type;
-}}
-declare module "packages/java/util/$PrimitiveIterator$OfInt" {
-import {$Consumer, $Consumer$Type} from "packages/java/util/function/$Consumer"
-import {$IntConsumer, $IntConsumer$Type} from "packages/java/util/function/$IntConsumer"
-import {$PrimitiveIterator, $PrimitiveIterator$Type} from "packages/java/util/$PrimitiveIterator"
-
-export interface $PrimitiveIterator$OfInt extends $PrimitiveIterator<(integer), ($IntConsumer)> {
-
- "forEachRemaining"(arg0: $IntConsumer$Type): void
- "forEachRemaining"(arg0: $Consumer$Type<(any)>): void
- "nextInt"(): integer
- "remove"(): void
- "hasNext"(): boolean
-}
-
-export namespace $PrimitiveIterator$OfInt {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $PrimitiveIterator$OfInt$Type = ($PrimitiveIterator$OfInt);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $PrimitiveIterator$OfInt_ = $PrimitiveIterator$OfInt$Type;
 }}
 declare module "packages/java/util/$AbstractList" {
 import {$Comparator, $Comparator$Type} from "packages/java/util/$Comparator"
@@ -1991,6 +1391,13 @@ static readonly "LONG": integer
 
 constructor()
 
+public "toZoneId"(): $ZoneId
+public static "setDefault"(arg0: $TimeZone$Type): void
+public "getID"(): string
+public "getDisplayName"(): string
+public "getDisplayName"(arg0: $Locale$Type): string
+public "getDisplayName"(arg0: boolean, arg1: integer): string
+public "getDisplayName"(arg0: boolean, arg1: integer, arg2: $Locale$Type): string
 public "inDaylightTime"(arg0: $Date$Type): boolean
 public "getRawOffset"(): integer
 public "getDSTSavings"(): integer
@@ -2001,27 +1408,20 @@ public "setID"(arg0: string): void
 public "setRawOffset"(arg0: integer): void
 public "observesDaylightTime"(): boolean
 public "hasSameRules"(arg0: $TimeZone$Type): boolean
-public static "getTimeZone"(arg0: $ZoneId$Type): $TimeZone
 public static "getTimeZone"(arg0: string): $TimeZone
-public "toZoneId"(): $ZoneId
-public static "setDefault"(arg0: $TimeZone$Type): void
-public "getID"(): string
-public "getDisplayName"(arg0: $Locale$Type): string
-public "getDisplayName"(arg0: boolean, arg1: integer): string
-public "getDisplayName"(arg0: boolean, arg1: integer, arg2: $Locale$Type): string
-public "getDisplayName"(): string
+public static "getTimeZone"(arg0: $ZoneId$Type): $TimeZone
 public "clone"(): any
 public static "getDefault"(): $TimeZone
 public "getOffset"(arg0: integer, arg1: integer, arg2: integer, arg3: integer, arg4: integer, arg5: integer): integer
 public "getOffset"(arg0: long): integer
+set "default"(value: $TimeZone$Type)
+get "iD"(): string
+get "displayName"(): string
 get "rawOffset"(): integer
 get "dSTSavings"(): integer
 get "availableIDs"(): (string)[]
 set "iD"(value: string)
 set "rawOffset"(value: integer)
-set "default"(value: $TimeZone$Type)
-get "iD"(): string
-get "displayName"(): string
 get "default"(): $TimeZone
 }
 /**
@@ -2113,79 +1513,6 @@ export type $Supplier$Type<T> = ($Supplier<(T)>);
 declare global {
 export type $Supplier_<T> = $Supplier$Type<(T)>;
 }}
-declare module "packages/java/util/$SortedMap" {
-import {$Comparator, $Comparator$Type} from "packages/java/util/$Comparator"
-import {$BiConsumer, $BiConsumer$Type} from "packages/java/util/function/$BiConsumer"
-import {$Function, $Function$Type} from "packages/java/util/function/$Function"
-import {$Set, $Set$Type} from "packages/java/util/$Set"
-import {$Collection, $Collection$Type} from "packages/java/util/$Collection"
-import {$BiFunction, $BiFunction$Type} from "packages/java/util/function/$BiFunction"
-import {$Map$Entry, $Map$Entry$Type} from "packages/java/util/$Map$Entry"
-import {$Map, $Map$Type} from "packages/java/util/$Map"
-
-export interface $SortedMap<K, V> extends $Map<(K), (V)> {
-
- "firstKey"(): K
- "subMap"(arg0: K, arg1: K): $SortedMap<(K), (V)>
- "headMap"(arg0: K): $SortedMap<(K), (V)>
- "tailMap"(arg0: K): $SortedMap<(K), (V)>
- "lastKey"(): K
- "values"(): $Collection<(V)>
- "entrySet"(): $Set<($Map$Entry<(K), (V)>)>
- "keySet"(): $Set<(K)>
- "comparator"(): $Comparator<(any)>
- "remove"(arg0: any): V
- "remove"(arg0: any, arg1: any): boolean
- "get"(arg0: any): V
- "put"(arg0: K, arg1: V): V
- "equals"(arg0: any): boolean
- "hashCode"(): integer
- "clear"(): void
- "isEmpty"(): boolean
- "replace"(arg0: K, arg1: V): V
- "replace"(arg0: K, arg1: V, arg2: V): boolean
- "replaceAll"(arg0: $BiFunction$Type<(any), (any), (any)>): void
- "size"(): integer
- "merge"(arg0: K, arg1: V, arg2: $BiFunction$Type<(any), (any), (any)>): V
- "putAll"(arg0: $Map$Type<(any), (any)>): void
- "putIfAbsent"(arg0: K, arg1: V): V
- "compute"(arg0: K, arg1: $BiFunction$Type<(any), (any), (any)>): V
- "forEach"(arg0: $BiConsumer$Type<(any), (any)>): void
- "containsKey"(arg0: any): boolean
- "computeIfAbsent"(arg0: K, arg1: $Function$Type<(any), (any)>): V
- "containsValue"(arg0: any): boolean
- "getOrDefault"(arg0: any, arg1: V): V
- "computeIfPresent"(arg0: K, arg1: $BiFunction$Type<(any), (any), (any)>): V
-}
-
-export namespace $SortedMap {
-function copyOf<K, V>(arg0: $Map$Type<(any), (any)>): $Map<(K), (V)>
-function of<K, V>(arg0: K, arg1: V, arg2: K, arg3: V, arg4: K, arg5: V, arg6: K, arg7: V, arg8: K, arg9: V): $Map<(K), (V)>
-function of<K, V>(arg0: K, arg1: V, arg2: K, arg3: V, arg4: K, arg5: V, arg6: K, arg7: V): $Map<(K), (V)>
-function of<K, V>(arg0: K, arg1: V, arg2: K, arg3: V, arg4: K, arg5: V): $Map<(K), (V)>
-function of<K, V>(): $Map<(K), (V)>
-function of<K, V>(arg0: K, arg1: V, arg2: K, arg3: V): $Map<(K), (V)>
-function of<K, V>(arg0: K, arg1: V): $Map<(K), (V)>
-function of<K, V>(arg0: K, arg1: V, arg2: K, arg3: V, arg4: K, arg5: V, arg6: K, arg7: V, arg8: K, arg9: V, arg10: K, arg11: V, arg12: K, arg13: V, arg14: K, arg15: V, arg16: K, arg17: V, arg18: K, arg19: V): $Map<(K), (V)>
-function of<K, V>(arg0: K, arg1: V, arg2: K, arg3: V, arg4: K, arg5: V, arg6: K, arg7: V, arg8: K, arg9: V, arg10: K, arg11: V, arg12: K, arg13: V, arg14: K, arg15: V, arg16: K, arg17: V): $Map<(K), (V)>
-function of<K, V>(arg0: K, arg1: V, arg2: K, arg3: V, arg4: K, arg5: V, arg6: K, arg7: V, arg8: K, arg9: V, arg10: K, arg11: V, arg12: K, arg13: V, arg14: K, arg15: V): $Map<(K), (V)>
-function of<K, V>(arg0: K, arg1: V, arg2: K, arg3: V, arg4: K, arg5: V, arg6: K, arg7: V, arg8: K, arg9: V, arg10: K, arg11: V, arg12: K, arg13: V): $Map<(K), (V)>
-function of<K, V>(arg0: K, arg1: V, arg2: K, arg3: V, arg4: K, arg5: V, arg6: K, arg7: V, arg8: K, arg9: V, arg10: K, arg11: V): $Map<(K), (V)>
-function entry<K, V>(arg0: K, arg1: V): $Map$Entry<(K), (V)>
-function ofEntries<K, V>(...arg0: ($Map$Entry$Type<(any), (any)>)[]): $Map<(K), (V)>
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $SortedMap$Type<K, V> = ($SortedMap<(K), (V)>);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $SortedMap_<K, V> = $SortedMap$Type<(K), (V)>;
-}}
 declare module "packages/java/util/function/$IntSupplier" {
 export {} // Mark the file as a module, do not remove unless there are other import/exports!
 export interface $IntSupplier {
@@ -2209,6 +1536,30 @@ export type $IntSupplier$Type = ($IntSupplier);
  */
 declare global {
 export type $IntSupplier_ = $IntSupplier$Type;
+}}
+declare module "packages/java/util/function/$ToDoubleBiFunction" {
+export {} // Mark the file as a module, do not remove unless there are other import/exports!
+export interface $ToDoubleBiFunction<T, U> {
+
+ "applyAsDouble"(arg0: T, arg1: U): double
+
+(arg0: T, arg1: U): double
+}
+
+export namespace $ToDoubleBiFunction {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $ToDoubleBiFunction$Type<T, U> = ($ToDoubleBiFunction<(T), (U)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $ToDoubleBiFunction_<T, U> = $ToDoubleBiFunction$Type<(T), (U)>;
 }}
 declare module "packages/java/util/$Properties" {
 import {$OutputStream, $OutputStream$Type} from "packages/java/io/$OutputStream"
@@ -2312,76 +1663,58 @@ export type $Properties$Type = ($Properties);
 declare global {
 export type $Properties_ = $Properties$Type;
 }}
-declare module "packages/java/util/$Locale$LanguageRange" {
-import {$List, $List$Type} from "packages/java/util/$List"
-import {$Map, $Map$Type} from "packages/java/util/$Map"
-
-export class $Locale$LanguageRange {
-static readonly "MAX_WEIGHT": double
-static readonly "MIN_WEIGHT": double
-
-constructor(arg0: string, arg1: double)
-constructor(arg0: string)
-
-public static "mapEquivalents"(arg0: $List$Type<($Locale$LanguageRange$Type)>, arg1: $Map$Type<(string), ($List$Type<(string)>)>): $List<($Locale$LanguageRange)>
-public "equals"(arg0: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
-public static "parse"(arg0: string): $List<($Locale$LanguageRange)>
-public static "parse"(arg0: string, arg1: $Map$Type<(string), ($List$Type<(string)>)>): $List<($Locale$LanguageRange)>
-public "getRange"(): string
-public "getWeight"(): double
-get "range"(): string
-get "weight"(): double
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $Locale$LanguageRange$Type = ($Locale$LanguageRange);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $Locale$LanguageRange_ = $Locale$LanguageRange$Type;
-}}
-declare module "packages/java/util/$UUID" {
-import {$Comparable, $Comparable$Type} from "packages/java/lang/$Comparable"
+declare module "packages/java/util/concurrent/$ConcurrentHashMap$CollectionView" {
 import {$Serializable, $Serializable$Type} from "packages/java/io/$Serializable"
+import {$Consumer, $Consumer$Type} from "packages/java/util/function/$Consumer"
+import {$Collection, $Collection$Type} from "packages/java/util/$Collection"
+import {$IntFunction, $IntFunction$Type} from "packages/java/util/function/$IntFunction"
+import {$Predicate, $Predicate$Type} from "packages/java/util/function/$Predicate"
+import {$ConcurrentHashMap, $ConcurrentHashMap$Type} from "packages/java/util/concurrent/$ConcurrentHashMap"
+import {$Stream, $Stream$Type} from "packages/java/util/stream/$Stream"
+import {$Iterator, $Iterator$Type} from "packages/java/util/$Iterator"
+import {$Spliterator, $Spliterator$Type} from "packages/java/util/$Spliterator"
 
-export class $UUID implements $Serializable, $Comparable<($UUID)> {
+export class $ConcurrentHashMap$CollectionView<K, V, E> implements $Collection<(E)>, $Serializable {
 
-constructor(arg0: long, arg1: long)
 
-public static "nameUUIDFromBytes"(arg0: (byte)[]): $UUID
-public "getLeastSignificantBits"(): long
-public "getMostSignificantBits"(): long
-public "clockSequence"(): integer
-public "variant"(): integer
-public "equals"(arg0: any): boolean
+public "getMap"(): $ConcurrentHashMap<(K), (V)>
+public "remove"(arg0: any): boolean
 public "toString"(): string
-public "version"(): integer
+public "clear"(): void
+public "isEmpty"(): boolean
+public "size"(): integer
+public "toArray"(): (any)[]
+public "toArray"<T>(arg0: (T)[]): (T)[]
+public "iterator"(): $Iterator<(E)>
+public "contains"(arg0: any): boolean
+public "removeAll"(arg0: $Collection$Type<(any)>): boolean
+public "retainAll"(arg0: $Collection$Type<(any)>): boolean
+public "containsAll"(arg0: $Collection$Type<(any)>): boolean
+public "add"(arg0: E): boolean
+public "equals"(arg0: any): boolean
 public "hashCode"(): integer
-public "compareTo"(arg0: $UUID$Type): integer
-public "timestamp"(): long
-public "node"(): long
-public static "fromString"(arg0: string): $UUID
-public static "randomUUID"(): $UUID
-get "leastSignificantBits"(): long
-get "mostSignificantBits"(): long
+public "toArray"<T>(arg0: $IntFunction$Type<((T)[])>): (T)[]
+public "stream"(): $Stream<(E)>
+public "spliterator"(): $Spliterator<(E)>
+public "addAll"(arg0: $Collection$Type<(any)>): boolean
+public "removeIf"(arg0: $Predicate$Type<(any)>): boolean
+public "parallelStream"(): $Stream<(E)>
+public "forEach"(arg0: $Consumer$Type<(any)>): void
+[Symbol.iterator](): IterableIterator<E>;
+get "map"(): $ConcurrentHashMap<(K), (V)>
+get "empty"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $UUID$Type = (string) | ($UUID);
+export type $ConcurrentHashMap$CollectionView$Type<K, V, E> = ($ConcurrentHashMap$CollectionView<(K), (V), (E)>);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
  */
 declare global {
-export type $UUID_ = $UUID$Type;
+export type $ConcurrentHashMap$CollectionView_<K, V, E> = $ConcurrentHashMap$CollectionView$Type<(K), (V), (E)>;
 }}
 declare module "packages/java/util/stream/$DoubleStream" {
 import {$ObjDoubleConsumer, $ObjDoubleConsumer$Type} from "packages/java/util/function/$ObjDoubleConsumer"
@@ -2410,7 +1743,6 @@ import {$DoublePredicate, $DoublePredicate$Type} from "packages/java/util/functi
 export interface $DoubleStream extends $BaseStream<(double), ($DoubleStream)> {
 
  "boxed"(): $Stream<(double)>
- "sequential"(): $DoubleStream
  "average"(): $OptionalDouble
  "summaryStatistics"(): $DoubleSummaryStatistics
  "sorted"(): $DoubleStream
@@ -2421,6 +1753,8 @@ export interface $DoubleStream extends $BaseStream<(double), ($DoubleStream)> {
  "takeWhile"(arg0: $DoublePredicate$Type): $DoubleStream
  "dropWhile"(arg0: $DoublePredicate$Type): $DoubleStream
  "noneMatch"(arg0: $DoublePredicate$Type): boolean
+ "parallel"(): $DoubleStream
+ "mapToObj"<U>(arg0: $DoubleFunction$Type<(any)>): $Stream<(U)>
  "min"(): $OptionalDouble
  "max"(): $OptionalDouble
  "toArray"(): (double)[]
@@ -2443,7 +1777,6 @@ export interface $DoubleStream extends $BaseStream<(double), ($DoubleStream)> {
  "distinct"(): $DoubleStream
  "findFirst"(): $OptionalDouble
  "allMatch"(arg0: $DoublePredicate$Type): boolean
- "mapToObj"<U>(arg0: $DoubleFunction$Type<(any)>): $Stream<(U)>
  "isParallel"(): boolean
  "unordered"(): $DoubleStream
  "onClose"(arg0: $Runnable$Type): $DoubleStream
@@ -2452,13 +1785,13 @@ export interface $DoubleStream extends $BaseStream<(double), ($DoubleStream)> {
 
 export namespace $DoubleStream {
 function generate(arg0: $DoubleSupplier$Type): $DoubleStream
+function iterate(arg0: double, arg1: $DoublePredicate$Type, arg2: $DoubleUnaryOperator$Type): $DoubleStream
+function iterate(arg0: double, arg1: $DoubleUnaryOperator$Type): $DoubleStream
 function of(arg0: double): $DoubleStream
 function of(...arg0: (double)[]): $DoubleStream
 function builder(): $DoubleStream$Builder
 function concat(arg0: $DoubleStream$Type, arg1: $DoubleStream$Type): $DoubleStream
 function empty(): $DoubleStream
-function iterate(arg0: double, arg1: $DoublePredicate$Type, arg2: $DoubleUnaryOperator$Type): $DoubleStream
-function iterate(arg0: double, arg1: $DoubleUnaryOperator$Type): $DoubleStream
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2505,9 +1838,9 @@ export class $OptionalInt {
 
 
 public "getAsInt"(): integer
-public "ifPresent"(arg0: $IntConsumer$Type): void
 public "ifPresentOrElse"(arg0: $IntConsumer$Type, arg1: $Runnable$Type): void
 public "orElseGet"(arg0: $IntSupplier$Type): integer
+public "ifPresent"(arg0: $IntConsumer$Type): void
 public "equals"(arg0: any): boolean
 public "toString"(): string
 public "hashCode"(): integer
@@ -2558,119 +1891,6 @@ export type $ToDoubleFunction$Type<T> = ($ToDoubleFunction<(T)>);
 declare global {
 export type $ToDoubleFunction_<T> = $ToDoubleFunction$Type<(T)>;
 }}
-declare module "packages/java/util/function/$BiConsumer" {
-export {} // Mark the file as a module, do not remove unless there are other import/exports!
-export interface $BiConsumer<T, U> {
-
- "andThen"(arg0: $BiConsumer$Type<(any), (any)>): $BiConsumer<(T), (U)>
- "accept"(arg0: T, arg1: U): void
-
-(arg0: $BiConsumer$Type<(any), (any)>): $BiConsumer<(T), (U)>
-}
-
-export namespace $BiConsumer {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $BiConsumer$Type<T, U> = ($BiConsumer<(T), (U)>);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $BiConsumer_<T, U> = $BiConsumer$Type<(T), (U)>;
-}}
-declare module "packages/java/util/$AbstractSequentialList" {
-import {$Collection, $Collection$Type} from "packages/java/util/$Collection"
-import {$List, $List$Type} from "packages/java/util/$List"
-import {$AbstractList, $AbstractList$Type} from "packages/java/util/$AbstractList"
-import {$ListIterator, $ListIterator$Type} from "packages/java/util/$ListIterator"
-import {$Iterator, $Iterator$Type} from "packages/java/util/$Iterator"
-
-export class $AbstractSequentialList<E> extends $AbstractList<(E)> {
-
-
-public "add"(arg0: integer, arg1: E): void
-public "remove"(arg0: integer): E
-public "get"(arg0: integer): E
-public "iterator"(): $Iterator<(E)>
-public "addAll"(arg0: integer, arg1: $Collection$Type<(any)>): boolean
-public "set"(arg0: integer, arg1: E): E
-public "listIterator"(arg0: integer): $ListIterator<(E)>
-public "remove"(arg0: any): boolean
-public static "copyOf"<E>(arg0: $Collection$Type<(any)>): $List<(E)>
-public "isEmpty"(): boolean
-public "size"(): integer
-public "toArray"(): (any)[]
-public "toArray"<T>(arg0: (T)[]): (T)[]
-public static "of"<E>(arg0: E, arg1: E, arg2: E, arg3: E): $List<(E)>
-public static "of"<E>(arg0: E, arg1: E, arg2: E): $List<(E)>
-public static "of"<E>(arg0: E, arg1: E): $List<(E)>
-public static "of"<E>(arg0: E): $List<(E)>
-public static "of"<E>(): $List<(E)>
-public static "of"<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E, arg6: E, arg7: E): $List<(E)>
-public static "of"<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E, arg6: E): $List<(E)>
-public static "of"<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E): $List<(E)>
-public static "of"<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E): $List<(E)>
-public static "of"<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E, arg6: E, arg7: E, arg8: E, arg9: E): $List<(E)>
-public static "of"<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E, arg6: E, arg7: E, arg8: E): $List<(E)>
-public static "of"<E>(...arg0: (E)[]): $List<(E)>
-public "contains"(arg0: any): boolean
-public "addAll"(arg0: $Collection$Type<(any)>): boolean
-public "removeAll"(arg0: $Collection$Type<(any)>): boolean
-public "retainAll"(arg0: $Collection$Type<(any)>): boolean
-public "containsAll"(arg0: $Collection$Type<(any)>): boolean
-get "empty"(): boolean
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $AbstractSequentialList$Type<E> = ($AbstractSequentialList<(E)>);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $AbstractSequentialList_<E> = $AbstractSequentialList$Type<(E)>;
-}}
-declare module "packages/java/util/$Spliterator$OfDouble" {
-import {$Comparator, $Comparator$Type} from "packages/java/util/$Comparator"
-import {$Consumer, $Consumer$Type} from "packages/java/util/function/$Consumer"
-import {$Spliterator$OfPrimitive, $Spliterator$OfPrimitive$Type} from "packages/java/util/$Spliterator$OfPrimitive"
-import {$DoubleConsumer, $DoubleConsumer$Type} from "packages/java/util/function/$DoubleConsumer"
-
-export interface $Spliterator$OfDouble extends $Spliterator$OfPrimitive<(double), ($DoubleConsumer), ($Spliterator$OfDouble)> {
-
- "tryAdvance"(arg0: $Consumer$Type<(any)>): boolean
- "tryAdvance"(arg0: $DoubleConsumer$Type): boolean
- "forEachRemaining"(arg0: $Consumer$Type<(any)>): void
- "forEachRemaining"(arg0: $DoubleConsumer$Type): void
- "estimateSize"(): long
- "getExactSizeIfKnown"(): long
- "hasCharacteristics"(arg0: integer): boolean
- "getComparator"(): $Comparator<(any)>
- "characteristics"(): integer
-}
-
-export namespace $Spliterator$OfDouble {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $Spliterator$OfDouble$Type = ($Spliterator$OfDouble);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $Spliterator$OfDouble_ = $Spliterator$OfDouble$Type;
-}}
 declare module "packages/java/util/function/$DoubleToIntFunction" {
 export {} // Mark the file as a module, do not remove unless there are other import/exports!
 export interface $DoubleToIntFunction {
@@ -2694,31 +1914,6 @@ export type $DoubleToIntFunction$Type = ($DoubleToIntFunction);
  */
 declare global {
 export type $DoubleToIntFunction_ = $DoubleToIntFunction$Type;
-}}
-declare module "packages/java/util/function/$LongConsumer" {
-export {} // Mark the file as a module, do not remove unless there are other import/exports!
-export interface $LongConsumer {
-
- "andThen"(arg0: $LongConsumer$Type): $LongConsumer
- "accept"(arg0: long): void
-
-(arg0: $LongConsumer$Type): $LongConsumer
-}
-
-export namespace $LongConsumer {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $LongConsumer$Type = ($LongConsumer);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $LongConsumer_ = $LongConsumer$Type;
 }}
 declare module "packages/java/util/function/$BiPredicate" {
 export {} // Mark the file as a module, do not remove unless there are other import/exports!
@@ -2747,62 +1942,13 @@ export type $BiPredicate$Type<T, U> = ($BiPredicate<(T), (U)>);
 declare global {
 export type $BiPredicate_<T, U> = $BiPredicate$Type<(T), (U)>;
 }}
-declare module "packages/java/util/function/$ToIntFunction" {
-export {} // Mark the file as a module, do not remove unless there are other import/exports!
-export interface $ToIntFunction<T> {
-
- "applyAsInt"(arg0: T): integer
-
-(arg0: T): integer
-}
-
-export namespace $ToIntFunction {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $ToIntFunction$Type<T> = ($ToIntFunction<(T)>);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $ToIntFunction_<T> = $ToIntFunction$Type<(T)>;
-}}
-declare module "packages/java/util/stream/$IntStream$IntMapMultiConsumer" {
-import {$IntConsumer, $IntConsumer$Type} from "packages/java/util/function/$IntConsumer"
-
-export interface $IntStream$IntMapMultiConsumer {
-
- "accept"(arg0: integer, arg1: $IntConsumer$Type): void
-
-(arg0: integer, arg1: $IntConsumer$Type): void
-}
-
-export namespace $IntStream$IntMapMultiConsumer {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $IntStream$IntMapMultiConsumer$Type = ($IntStream$IntMapMultiConsumer);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $IntStream$IntMapMultiConsumer_ = $IntStream$IntMapMultiConsumer$Type;
-}}
 declare module "packages/java/util/function/$LongUnaryOperator" {
 export {} // Mark the file as a module, do not remove unless there are other import/exports!
 export interface $LongUnaryOperator {
 
+ "compose"(arg0: $LongUnaryOperator$Type): $LongUnaryOperator
  "andThen"(arg0: $LongUnaryOperator$Type): $LongUnaryOperator
  "applyAsLong"(arg0: long): long
- "compose"(arg0: $LongUnaryOperator$Type): $LongUnaryOperator
 
 (arg0: $LongUnaryOperator$Type): $LongUnaryOperator
 }
@@ -2899,59 +2045,6 @@ export type $Queue$Type<E> = ($Queue<(E)>);
  */
 declare global {
 export type $Queue_<E> = $Queue$Type<(E)>;
-}}
-declare module "packages/java/util/$AbstractSet" {
-import {$Set, $Set$Type} from "packages/java/util/$Set"
-import {$Collection, $Collection$Type} from "packages/java/util/$Collection"
-import {$AbstractCollection, $AbstractCollection$Type} from "packages/java/util/$AbstractCollection"
-import {$Iterator, $Iterator$Type} from "packages/java/util/$Iterator"
-import {$Spliterator, $Spliterator$Type} from "packages/java/util/$Spliterator"
-
-export class $AbstractSet<E> extends $AbstractCollection<(E)> implements $Set<(E)> {
-
-
-public "equals"(arg0: any): boolean
-public "hashCode"(): integer
-public "removeAll"(arg0: $Collection$Type<(any)>): boolean
-public "add"(arg0: E): boolean
-public "remove"(arg0: any): boolean
-public static "copyOf"<E>(arg0: $Collection$Type<(any)>): $Set<(E)>
-public "clear"(): void
-public "isEmpty"(): boolean
-public "size"(): integer
-public "toArray"<T>(arg0: (T)[]): (T)[]
-public "toArray"(): (any)[]
-public "iterator"(): $Iterator<(E)>
-public static "of"<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E): $Set<(E)>
-public static "of"<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E): $Set<(E)>
-public static "of"<E>(arg0: E): $Set<(E)>
-public static "of"<E>(arg0: E, arg1: E, arg2: E, arg3: E): $Set<(E)>
-public static "of"<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E, arg6: E, arg7: E, arg8: E, arg9: E): $Set<(E)>
-public static "of"<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E, arg6: E, arg7: E, arg8: E): $Set<(E)>
-public static "of"<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E, arg6: E, arg7: E): $Set<(E)>
-public static "of"<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E, arg6: E): $Set<(E)>
-public static "of"<E>(...arg0: (E)[]): $Set<(E)>
-public static "of"<E>(arg0: E, arg1: E, arg2: E): $Set<(E)>
-public static "of"<E>(): $Set<(E)>
-public static "of"<E>(arg0: E, arg1: E): $Set<(E)>
-public "contains"(arg0: any): boolean
-public "spliterator"(): $Spliterator<(E)>
-public "addAll"(arg0: $Collection$Type<(any)>): boolean
-public "retainAll"(arg0: $Collection$Type<(any)>): boolean
-public "containsAll"(arg0: $Collection$Type<(any)>): boolean
-get "empty"(): boolean
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $AbstractSet$Type<E> = ($AbstractSet<(E)>);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $AbstractSet_<E> = $AbstractSet$Type<(E)>;
 }}
 declare module "packages/java/util/$Set" {
 import {$Consumer, $Consumer$Type} from "packages/java/util/function/$Consumer"
@@ -3136,6 +2229,2536 @@ export type $Comparator$Type<T> = ($Comparator<(T)>);
 declare global {
 export type $Comparator_<T> = $Comparator$Type<(T)>;
 }}
+declare module "packages/java/util/function/$IntToLongFunction" {
+export {} // Mark the file as a module, do not remove unless there are other import/exports!
+export interface $IntToLongFunction {
+
+ "applyAsLong"(arg0: integer): long
+
+(arg0: integer): long
+}
+
+export namespace $IntToLongFunction {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $IntToLongFunction$Type = ($IntToLongFunction);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $IntToLongFunction_ = $IntToLongFunction$Type;
+}}
+declare module "packages/java/util/$Locale$IsoCountryCode" {
+import {$Enum, $Enum$Type} from "packages/java/lang/$Enum"
+
+export class $Locale$IsoCountryCode extends $Enum<($Locale$IsoCountryCode)> {
+static readonly "PART1_ALPHA2": $Locale$IsoCountryCode
+static readonly "PART1_ALPHA3": $Locale$IsoCountryCode
+static readonly "PART3": $Locale$IsoCountryCode
+
+
+public static "values"(): ($Locale$IsoCountryCode)[]
+public static "valueOf"(arg0: string): $Locale$IsoCountryCode
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Locale$IsoCountryCode$Type = (("part3") | ("part1_alpha2") | ("part1_alpha3")) | ($Locale$IsoCountryCode);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Locale$IsoCountryCode_ = $Locale$IsoCountryCode$Type;
+}}
+declare module "packages/java/util/concurrent/$Future" {
+import {$TimeUnit, $TimeUnit$Type} from "packages/java/util/concurrent/$TimeUnit"
+
+export interface $Future<V> {
+
+ "cancel"(arg0: boolean): boolean
+ "isCancelled"(): boolean
+ "isDone"(): boolean
+ "get"(): V
+ "get"(arg0: long, arg1: $TimeUnit$Type): V
+}
+
+export namespace $Future {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Future$Type<V> = ($Future<(V)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Future_<V> = $Future$Type<(V)>;
+}}
+declare module "packages/java/util/function/$ToLongBiFunction" {
+export {} // Mark the file as a module, do not remove unless there are other import/exports!
+export interface $ToLongBiFunction<T, U> {
+
+ "applyAsLong"(arg0: T, arg1: U): long
+
+(arg0: T, arg1: U): long
+}
+
+export namespace $ToLongBiFunction {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $ToLongBiFunction$Type<T, U> = ($ToLongBiFunction<(T), (U)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $ToLongBiFunction_<T, U> = $ToLongBiFunction$Type<(T), (U)>;
+}}
+declare module "packages/java/util/function/$ToLongFunction" {
+export {} // Mark the file as a module, do not remove unless there are other import/exports!
+export interface $ToLongFunction<T> {
+
+ "applyAsLong"(arg0: T): long
+
+(arg0: T): long
+}
+
+export namespace $ToLongFunction {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $ToLongFunction$Type<T> = ($ToLongFunction<(T)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $ToLongFunction_<T> = $ToLongFunction$Type<(T)>;
+}}
+declare module "packages/java/util/$Iterator" {
+import {$Consumer, $Consumer$Type} from "packages/java/util/function/$Consumer"
+
+export interface $Iterator<E> {
+
+ "remove"(): void
+ "forEachRemaining"(arg0: $Consumer$Type<(any)>): void
+ "hasNext"(): boolean
+ "next"(): E
+}
+
+export namespace $Iterator {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Iterator$Type<E> = ($Iterator<(E)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Iterator_<E> = $Iterator$Type<(E)>;
+}}
+declare module "packages/java/util/function/$LongBinaryOperator" {
+export {} // Mark the file as a module, do not remove unless there are other import/exports!
+export interface $LongBinaryOperator {
+
+ "applyAsLong"(arg0: long, arg1: long): long
+
+(arg0: long, arg1: long): long
+}
+
+export namespace $LongBinaryOperator {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $LongBinaryOperator$Type = ($LongBinaryOperator);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $LongBinaryOperator_ = $LongBinaryOperator$Type;
+}}
+declare module "packages/java/util/function/$LongPredicate" {
+export {} // Mark the file as a module, do not remove unless there are other import/exports!
+export interface $LongPredicate {
+
+ "negate"(): $LongPredicate
+ "and"(arg0: $LongPredicate$Type): $LongPredicate
+ "or"(arg0: $LongPredicate$Type): $LongPredicate
+ "test"(arg0: long): boolean
+
+(): $LongPredicate
+}
+
+export namespace $LongPredicate {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $LongPredicate$Type = ($LongPredicate);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $LongPredicate_ = $LongPredicate$Type;
+}}
+declare module "packages/java/util/stream/$Stream$Builder" {
+import {$Consumer, $Consumer$Type} from "packages/java/util/function/$Consumer"
+import {$Stream, $Stream$Type} from "packages/java/util/stream/$Stream"
+
+export interface $Stream$Builder<T> extends $Consumer<(T)> {
+
+ "build"(): $Stream<(T)>
+ "add"(arg0: T): $Stream$Builder<(T)>
+ "accept"(arg0: T): void
+ "andThen"(arg0: $Consumer$Type<(any)>): $Consumer<(T)>
+}
+
+export namespace $Stream$Builder {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Stream$Builder$Type<T> = ($Stream$Builder<(T)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Stream$Builder_<T> = $Stream$Builder$Type<(T)>;
+}}
+declare module "packages/java/util/$AbstractCollection" {
+import {$Consumer, $Consumer$Type} from "packages/java/util/function/$Consumer"
+import {$Collection, $Collection$Type} from "packages/java/util/$Collection"
+import {$IntFunction, $IntFunction$Type} from "packages/java/util/function/$IntFunction"
+import {$Predicate, $Predicate$Type} from "packages/java/util/function/$Predicate"
+import {$Stream, $Stream$Type} from "packages/java/util/stream/$Stream"
+import {$Iterator, $Iterator$Type} from "packages/java/util/$Iterator"
+import {$Spliterator, $Spliterator$Type} from "packages/java/util/$Spliterator"
+
+export class $AbstractCollection<E> implements $Collection<(E)> {
+
+
+public "add"(arg0: E): boolean
+public "remove"(arg0: any): boolean
+public "toString"(): string
+public "clear"(): void
+public "isEmpty"(): boolean
+public "size"(): integer
+public "toArray"(): (any)[]
+public "toArray"<T>(arg0: (T)[]): (T)[]
+public "iterator"(): $Iterator<(E)>
+public "contains"(arg0: any): boolean
+public "addAll"(arg0: $Collection$Type<(any)>): boolean
+public "removeAll"(arg0: $Collection$Type<(any)>): boolean
+public "retainAll"(arg0: $Collection$Type<(any)>): boolean
+public "containsAll"(arg0: $Collection$Type<(any)>): boolean
+public "equals"(arg0: any): boolean
+public "hashCode"(): integer
+public "toArray"<T>(arg0: $IntFunction$Type<((T)[])>): (T)[]
+public "stream"(): $Stream<(E)>
+public "spliterator"(): $Spliterator<(E)>
+public "removeIf"(arg0: $Predicate$Type<(any)>): boolean
+public "parallelStream"(): $Stream<(E)>
+public "forEach"(arg0: $Consumer$Type<(any)>): void
+[Symbol.iterator](): IterableIterator<E>;
+get "empty"(): boolean
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $AbstractCollection$Type<E> = ($AbstractCollection<(E)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $AbstractCollection_<E> = $AbstractCollection$Type<(E)>;
+}}
+declare module "packages/java/util/concurrent/$ScheduledExecutorService" {
+import {$ExecutorService, $ExecutorService$Type} from "packages/java/util/concurrent/$ExecutorService"
+import {$Collection, $Collection$Type} from "packages/java/util/$Collection"
+import {$Callable, $Callable$Type} from "packages/java/util/concurrent/$Callable"
+import {$List, $List$Type} from "packages/java/util/$List"
+import {$Future, $Future$Type} from "packages/java/util/concurrent/$Future"
+import {$ScheduledFuture, $ScheduledFuture$Type} from "packages/java/util/concurrent/$ScheduledFuture"
+import {$TimeUnit, $TimeUnit$Type} from "packages/java/util/concurrent/$TimeUnit"
+import {$Runnable, $Runnable$Type} from "packages/java/lang/$Runnable"
+
+export interface $ScheduledExecutorService extends $ExecutorService {
+
+ "schedule"(arg0: $Runnable$Type, arg1: long, arg2: $TimeUnit$Type): $ScheduledFuture<(any)>
+ "schedule"<V>(arg0: $Callable$Type<(V)>, arg1: long, arg2: $TimeUnit$Type): $ScheduledFuture<(V)>
+ "scheduleWithFixedDelay"(arg0: $Runnable$Type, arg1: long, arg2: long, arg3: $TimeUnit$Type): $ScheduledFuture<(any)>
+ "scheduleAtFixedRate"(arg0: $Runnable$Type, arg1: long, arg2: long, arg3: $TimeUnit$Type): $ScheduledFuture<(any)>
+ "isShutdown"(): boolean
+ "shutdownNow"(): $List<($Runnable)>
+ "isTerminated"(): boolean
+ "awaitTermination"(arg0: long, arg1: $TimeUnit$Type): boolean
+ "submit"<T>(arg0: $Callable$Type<(T)>): $Future<(T)>
+ "submit"(arg0: $Runnable$Type): $Future<(any)>
+ "submit"<T>(arg0: $Runnable$Type, arg1: T): $Future<(T)>
+ "invokeAll"<T>(arg0: $Collection$Type<(any)>, arg1: long, arg2: $TimeUnit$Type): $List<($Future<(T)>)>
+ "invokeAll"<T>(arg0: $Collection$Type<(any)>): $List<($Future<(T)>)>
+ "invokeAny"<T>(arg0: $Collection$Type<(any)>): T
+ "invokeAny"<T>(arg0: $Collection$Type<(any)>, arg1: long, arg2: $TimeUnit$Type): T
+ "shutdown"(): void
+ "execute"(arg0: $Runnable$Type): void
+}
+
+export namespace $ScheduledExecutorService {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $ScheduledExecutorService$Type = ($ScheduledExecutorService);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $ScheduledExecutorService_ = $ScheduledExecutorService$Type;
+}}
+declare module "packages/java/util/function/$DoubleUnaryOperator" {
+export {} // Mark the file as a module, do not remove unless there are other import/exports!
+export interface $DoubleUnaryOperator {
+
+ "compose"(arg0: $DoubleUnaryOperator$Type): $DoubleUnaryOperator
+ "andThen"(arg0: $DoubleUnaryOperator$Type): $DoubleUnaryOperator
+ "applyAsDouble"(arg0: double): double
+
+(arg0: $DoubleUnaryOperator$Type): $DoubleUnaryOperator
+}
+
+export namespace $DoubleUnaryOperator {
+function identity(): $DoubleUnaryOperator
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $DoubleUnaryOperator$Type = ($DoubleUnaryOperator);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $DoubleUnaryOperator_ = $DoubleUnaryOperator$Type;
+}}
+declare module "packages/java/util/concurrent/$Delayed" {
+import {$Comparable, $Comparable$Type} from "packages/java/lang/$Comparable"
+import {$TimeUnit, $TimeUnit$Type} from "packages/java/util/concurrent/$TimeUnit"
+
+export interface $Delayed extends $Comparable<($Delayed)> {
+
+ "getDelay"(arg0: $TimeUnit$Type): long
+ "compareTo"(arg0: $Delayed$Type): integer
+}
+
+export namespace $Delayed {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Delayed$Type = ($Delayed);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Delayed_ = $Delayed$Type;
+}}
+declare module "packages/java/util/$Random" {
+import {$LongStream, $LongStream$Type} from "packages/java/util/stream/$LongStream"
+import {$Serializable, $Serializable$Type} from "packages/java/io/$Serializable"
+import {$RandomGenerator, $RandomGenerator$Type} from "packages/java/util/random/$RandomGenerator"
+import {$IntStream, $IntStream$Type} from "packages/java/util/stream/$IntStream"
+import {$DoubleStream, $DoubleStream$Type} from "packages/java/util/stream/$DoubleStream"
+
+export class $Random implements $RandomGenerator, $Serializable {
+
+constructor(arg0: long)
+constructor()
+
+public "nextBoolean"(): boolean
+public "nextLong"(): long
+public "nextFloat"(): float
+public "longs"(arg0: long, arg1: long, arg2: long): $LongStream
+public "longs"(arg0: long): $LongStream
+public "longs"(arg0: long, arg1: long): $LongStream
+public "longs"(): $LongStream
+public "doubles"(): $DoubleStream
+public "doubles"(arg0: long, arg1: double, arg2: double): $DoubleStream
+public "doubles"(arg0: long): $DoubleStream
+public "doubles"(arg0: double, arg1: double): $DoubleStream
+public "setSeed"(arg0: long): void
+public "nextGaussian"(): double
+public "ints"(): $IntStream
+public "ints"(arg0: long, arg1: integer, arg2: integer): $IntStream
+public "ints"(arg0: integer, arg1: integer): $IntStream
+public "ints"(arg0: long): $IntStream
+public "nextBytes"(arg0: (byte)[]): void
+public "nextDouble"(): double
+public "nextInt"(): integer
+public "nextInt"(arg0: integer): integer
+public "nextLong"(arg0: long, arg1: long): long
+public "nextLong"(arg0: long): long
+public "nextFloat"(arg0: float): float
+public "nextFloat"(arg0: float, arg1: float): float
+public "nextGaussian"(arg0: double, arg1: double): double
+public "isDeprecated"(): boolean
+public "nextExponential"(): double
+public "nextDouble"(arg0: double): double
+public "nextDouble"(arg0: double, arg1: double): double
+public "nextInt"(arg0: integer, arg1: integer): integer
+public static "getDefault"(): $RandomGenerator
+public static "of"(arg0: string): $RandomGenerator
+set "seed"(value: long)
+get "deprecated"(): boolean
+get "default"(): $RandomGenerator
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Random$Type = ($Random);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Random_ = $Random$Type;
+}}
+declare module "packages/java/util/concurrent/$Callable" {
+export {} // Mark the file as a module, do not remove unless there are other import/exports!
+export interface $Callable<V> {
+
+ "call"(): V
+
+(): V
+}
+
+export namespace $Callable {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Callable$Type<V> = ($Callable<(V)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Callable_<V> = $Callable$Type<(V)>;
+}}
+declare module "packages/java/util/$HashMap" {
+import {$BiConsumer, $BiConsumer$Type} from "packages/java/util/function/$BiConsumer"
+import {$Function, $Function$Type} from "packages/java/util/function/$Function"
+import {$Serializable, $Serializable$Type} from "packages/java/io/$Serializable"
+import {$Set, $Set$Type} from "packages/java/util/$Set"
+import {$Collection, $Collection$Type} from "packages/java/util/$Collection"
+import {$Cloneable, $Cloneable$Type} from "packages/java/lang/$Cloneable"
+import {$AbstractMap, $AbstractMap$Type} from "packages/java/util/$AbstractMap"
+import {$BiFunction, $BiFunction$Type} from "packages/java/util/function/$BiFunction"
+import {$Map, $Map$Type} from "packages/java/util/$Map"
+import {$Map$Entry, $Map$Entry$Type} from "packages/java/util/$Map$Entry"
+
+export class $HashMap<K, V> extends $AbstractMap<(K), (V)> implements $Map<(K), (V)>, $Cloneable, $Serializable {
+
+constructor(arg0: integer, arg1: float)
+constructor(arg0: $Map$Type<(any), (any)>)
+constructor(arg0: integer)
+constructor()
+
+public "remove"(arg0: any, arg1: any): boolean
+public "remove"(arg0: any): V
+public "get"(arg0: any): V
+public "put"(arg0: K, arg1: V): V
+public "values"(): $Collection<(V)>
+public "clone"(): any
+public "clear"(): void
+public "isEmpty"(): boolean
+public "replace"(arg0: K, arg1: V, arg2: V): boolean
+public "replace"(arg0: K, arg1: V): V
+public "replaceAll"(arg0: $BiFunction$Type<(any), (any), (any)>): void
+public "size"(): integer
+public "merge"(arg0: K, arg1: V, arg2: $BiFunction$Type<(any), (any), (any)>): V
+public "entrySet"(): $Set<($Map$Entry<(K), (V)>)>
+public "putAll"(arg0: $Map$Type<(any), (any)>): void
+public "putIfAbsent"(arg0: K, arg1: V): V
+public "compute"(arg0: K, arg1: $BiFunction$Type<(any), (any), (any)>): V
+public "forEach"(arg0: $BiConsumer$Type<(any), (any)>): void
+public "containsKey"(arg0: any): boolean
+public "computeIfAbsent"(arg0: K, arg1: $Function$Type<(any), (any)>): V
+public "keySet"(): $Set<(K)>
+public "containsValue"(arg0: any): boolean
+public "getOrDefault"(arg0: any, arg1: V): V
+public "computeIfPresent"(arg0: K, arg1: $BiFunction$Type<(any), (any), (any)>): V
+public "equals"(arg0: any): boolean
+public "hashCode"(): integer
+public static "copyOf"<K, V>(arg0: $Map$Type<(any), (any)>): $Map<(K), (V)>
+public static "of"<K, V>(arg0: K, arg1: V, arg2: K, arg3: V, arg4: K, arg5: V, arg6: K, arg7: V, arg8: K, arg9: V): $Map<(K), (V)>
+public static "of"<K, V>(arg0: K, arg1: V, arg2: K, arg3: V, arg4: K, arg5: V, arg6: K, arg7: V): $Map<(K), (V)>
+public static "of"<K, V>(arg0: K, arg1: V, arg2: K, arg3: V, arg4: K, arg5: V): $Map<(K), (V)>
+public static "of"<K, V>(): $Map<(K), (V)>
+public static "of"<K, V>(arg0: K, arg1: V, arg2: K, arg3: V): $Map<(K), (V)>
+public static "of"<K, V>(arg0: K, arg1: V): $Map<(K), (V)>
+public static "of"<K, V>(arg0: K, arg1: V, arg2: K, arg3: V, arg4: K, arg5: V, arg6: K, arg7: V, arg8: K, arg9: V, arg10: K, arg11: V, arg12: K, arg13: V, arg14: K, arg15: V, arg16: K, arg17: V, arg18: K, arg19: V): $Map<(K), (V)>
+public static "of"<K, V>(arg0: K, arg1: V, arg2: K, arg3: V, arg4: K, arg5: V, arg6: K, arg7: V, arg8: K, arg9: V, arg10: K, arg11: V, arg12: K, arg13: V, arg14: K, arg15: V, arg16: K, arg17: V): $Map<(K), (V)>
+public static "of"<K, V>(arg0: K, arg1: V, arg2: K, arg3: V, arg4: K, arg5: V, arg6: K, arg7: V, arg8: K, arg9: V, arg10: K, arg11: V, arg12: K, arg13: V, arg14: K, arg15: V): $Map<(K), (V)>
+public static "of"<K, V>(arg0: K, arg1: V, arg2: K, arg3: V, arg4: K, arg5: V, arg6: K, arg7: V, arg8: K, arg9: V, arg10: K, arg11: V, arg12: K, arg13: V): $Map<(K), (V)>
+public static "of"<K, V>(arg0: K, arg1: V, arg2: K, arg3: V, arg4: K, arg5: V, arg6: K, arg7: V, arg8: K, arg9: V, arg10: K, arg11: V): $Map<(K), (V)>
+public static "entry"<K, V>(arg0: K, arg1: V): $Map$Entry<(K), (V)>
+public static "ofEntries"<K, V>(...arg0: ($Map$Entry$Type<(any), (any)>)[]): $Map<(K), (V)>
+get "empty"(): boolean
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $HashMap$Type<K, V> = ($HashMap<(K), (V)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $HashMap_<K, V> = $HashMap$Type<(K), (V)>;
+}}
+declare module "packages/java/util/function/$BooleanSupplier" {
+export {} // Mark the file as a module, do not remove unless there are other import/exports!
+export interface $BooleanSupplier {
+
+ "getAsBoolean"(): boolean
+
+(): boolean
+}
+
+export namespace $BooleanSupplier {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $BooleanSupplier$Type = ($BooleanSupplier);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $BooleanSupplier_ = $BooleanSupplier$Type;
+}}
+declare module "packages/java/util/$BitSet" {
+import {$Serializable, $Serializable$Type} from "packages/java/io/$Serializable"
+import {$IntStream, $IntStream$Type} from "packages/java/util/stream/$IntStream"
+import {$LongBuffer, $LongBuffer$Type} from "packages/java/nio/$LongBuffer"
+import {$Cloneable, $Cloneable$Type} from "packages/java/lang/$Cloneable"
+import {$ByteBuffer, $ByteBuffer$Type} from "packages/java/nio/$ByteBuffer"
+
+export class $BitSet implements $Cloneable, $Serializable {
+
+constructor(arg0: integer)
+constructor()
+
+public "nextSetBit"(arg0: integer): integer
+public "toLongArray"(): (long)[]
+public "previousSetBit"(arg0: integer): integer
+public "previousClearBit"(arg0: integer): integer
+public "intersects"(arg0: $BitSet$Type): boolean
+public "and"(arg0: $BitSet$Type): void
+public "xor"(arg0: $BitSet$Type): void
+public "andNot"(arg0: $BitSet$Type): void
+public "or"(arg0: $BitSet$Type): void
+public "cardinality"(): integer
+public "get"(arg0: integer): boolean
+public "get"(arg0: integer, arg1: integer): $BitSet
+public "equals"(arg0: any): boolean
+public "length"(): integer
+public "toString"(): string
+public "hashCode"(): integer
+public "clone"(): any
+public static "valueOf"(arg0: $ByteBuffer$Type): $BitSet
+public static "valueOf"(arg0: (long)[]): $BitSet
+public static "valueOf"(arg0: (byte)[]): $BitSet
+public static "valueOf"(arg0: $LongBuffer$Type): $BitSet
+public "clear"(arg0: integer, arg1: integer): void
+public "clear"(arg0: integer): void
+public "clear"(): void
+public "isEmpty"(): boolean
+public "size"(): integer
+public "stream"(): $IntStream
+public "set"(arg0: integer): void
+public "set"(arg0: integer, arg1: integer, arg2: boolean): void
+public "set"(arg0: integer, arg1: integer): void
+public "set"(arg0: integer, arg1: boolean): void
+public "toByteArray"(): (byte)[]
+public "flip"(arg0: integer, arg1: integer): void
+public "flip"(arg0: integer): void
+public "nextClearBit"(arg0: integer): integer
+get "empty"(): boolean
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $BitSet$Type = ($BitSet);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $BitSet_ = $BitSet$Type;
+}}
+declare module "packages/java/util/$ListIterator" {
+import {$Consumer, $Consumer$Type} from "packages/java/util/function/$Consumer"
+import {$Iterator, $Iterator$Type} from "packages/java/util/$Iterator"
+
+export interface $ListIterator<E> extends $Iterator<(E)> {
+
+ "add"(arg0: E): void
+ "remove"(): void
+ "hasNext"(): boolean
+ "next"(): E
+ "set"(arg0: E): void
+ "nextIndex"(): integer
+ "previousIndex"(): integer
+ "hasPrevious"(): boolean
+ "previous"(): E
+ "forEachRemaining"(arg0: $Consumer$Type<(any)>): void
+}
+
+export namespace $ListIterator {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $ListIterator$Type<E> = ($ListIterator<(E)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $ListIterator_<E> = $ListIterator$Type<(E)>;
+}}
+declare module "packages/java/util/stream/$DoubleStream$Builder" {
+import {$DoubleConsumer, $DoubleConsumer$Type} from "packages/java/util/function/$DoubleConsumer"
+import {$DoubleStream, $DoubleStream$Type} from "packages/java/util/stream/$DoubleStream"
+
+export interface $DoubleStream$Builder extends $DoubleConsumer {
+
+ "build"(): $DoubleStream
+ "add"(arg0: double): $DoubleStream$Builder
+ "accept"(arg0: double): void
+ "andThen"(arg0: $DoubleConsumer$Type): $DoubleConsumer
+}
+
+export namespace $DoubleStream$Builder {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $DoubleStream$Builder$Type = ($DoubleStream$Builder);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $DoubleStream$Builder_ = $DoubleStream$Builder$Type;
+}}
+declare module "packages/java/util/stream/$LongStream$Builder" {
+import {$LongStream, $LongStream$Type} from "packages/java/util/stream/$LongStream"
+import {$LongConsumer, $LongConsumer$Type} from "packages/java/util/function/$LongConsumer"
+
+export interface $LongStream$Builder extends $LongConsumer {
+
+ "build"(): $LongStream
+ "add"(arg0: long): $LongStream$Builder
+ "accept"(arg0: long): void
+ "andThen"(arg0: $LongConsumer$Type): $LongConsumer
+}
+
+export namespace $LongStream$Builder {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $LongStream$Builder$Type = ($LongStream$Builder);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $LongStream$Builder_ = $LongStream$Builder$Type;
+}}
+declare module "packages/java/util/$Vector" {
+import {$Comparator, $Comparator$Type} from "packages/java/util/$Comparator"
+import {$Serializable, $Serializable$Type} from "packages/java/io/$Serializable"
+import {$Collection, $Collection$Type} from "packages/java/util/$Collection"
+import {$Predicate, $Predicate$Type} from "packages/java/util/function/$Predicate"
+import {$AbstractList, $AbstractList$Type} from "packages/java/util/$AbstractList"
+import {$ListIterator, $ListIterator$Type} from "packages/java/util/$ListIterator"
+import {$Spliterator, $Spliterator$Type} from "packages/java/util/$Spliterator"
+import {$Consumer, $Consumer$Type} from "packages/java/util/function/$Consumer"
+import {$UnaryOperator, $UnaryOperator$Type} from "packages/java/util/function/$UnaryOperator"
+import {$Enumeration, $Enumeration$Type} from "packages/java/util/$Enumeration"
+import {$List, $List$Type} from "packages/java/util/$List"
+import {$Cloneable, $Cloneable$Type} from "packages/java/lang/$Cloneable"
+import {$RandomAccess, $RandomAccess$Type} from "packages/java/util/$RandomAccess"
+import {$Iterator, $Iterator$Type} from "packages/java/util/$Iterator"
+
+export class $Vector<E> extends $AbstractList<(E)> implements $List<(E)>, $RandomAccess, $Cloneable, $Serializable {
+
+constructor(arg0: integer, arg1: integer)
+constructor(arg0: integer)
+constructor(arg0: $Collection$Type<(any)>)
+constructor()
+
+public "setSize"(arg0: integer): void
+public "copyInto"(arg0: (any)[]): void
+public "removeElementAt"(arg0: integer): void
+public "removeElement"(arg0: any): boolean
+public "insertElementAt"(arg0: E, arg1: integer): void
+public "removeAllElements"(): void
+public "firstElement"(): E
+public "lastElement"(): E
+public "setElementAt"(arg0: E, arg1: integer): void
+public "addElement"(arg0: E): void
+public "add"(arg0: E): boolean
+public "add"(arg0: integer, arg1: E): void
+public "remove"(arg0: integer): E
+public "remove"(arg0: any): boolean
+public "get"(arg0: integer): E
+public "equals"(arg0: any): boolean
+public "toString"(): string
+public "hashCode"(): integer
+public "clone"(): any
+public "indexOf"(arg0: any, arg1: integer): integer
+public "indexOf"(arg0: any): integer
+public "clear"(): void
+public "lastIndexOf"(arg0: any, arg1: integer): integer
+public "lastIndexOf"(arg0: any): integer
+public "isEmpty"(): boolean
+public "replaceAll"(arg0: $UnaryOperator$Type<(E)>): void
+public "size"(): integer
+public "subList"(arg0: integer, arg1: integer): $List<(E)>
+public "toArray"<T>(arg0: (T)[]): (T)[]
+public "toArray"(): (any)[]
+public "iterator"(): $Iterator<(E)>
+public "contains"(arg0: any): boolean
+public "elements"(): $Enumeration<(E)>
+public "spliterator"(): $Spliterator<(E)>
+public "addAll"(arg0: integer, arg1: $Collection$Type<(any)>): boolean
+public "addAll"(arg0: $Collection$Type<(any)>): boolean
+public "set"(arg0: integer, arg1: E): E
+public "forEach"(arg0: $Consumer$Type<(any)>): void
+public "capacity"(): integer
+public "ensureCapacity"(arg0: integer): void
+public "trimToSize"(): void
+public "elementAt"(arg0: integer): E
+public "removeIf"(arg0: $Predicate$Type<(any)>): boolean
+public "sort"(arg0: $Comparator$Type<(any)>): void
+public "removeAll"(arg0: $Collection$Type<(any)>): boolean
+public "retainAll"(arg0: $Collection$Type<(any)>): boolean
+public "listIterator"(arg0: integer): $ListIterator<(E)>
+public "listIterator"(): $ListIterator<(E)>
+public "containsAll"(arg0: $Collection$Type<(any)>): boolean
+public static "copyOf"<E>(arg0: $Collection$Type<(any)>): $List<(E)>
+public static "of"<E>(arg0: E, arg1: E, arg2: E, arg3: E): $List<(E)>
+public static "of"<E>(arg0: E, arg1: E, arg2: E): $List<(E)>
+public static "of"<E>(arg0: E, arg1: E): $List<(E)>
+public static "of"<E>(arg0: E): $List<(E)>
+public static "of"<E>(): $List<(E)>
+public static "of"<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E, arg6: E, arg7: E): $List<(E)>
+public static "of"<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E, arg6: E): $List<(E)>
+public static "of"<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E): $List<(E)>
+public static "of"<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E): $List<(E)>
+public static "of"<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E, arg6: E, arg7: E, arg8: E, arg9: E): $List<(E)>
+public static "of"<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E, arg6: E, arg7: E, arg8: E): $List<(E)>
+public static "of"<E>(...arg0: (E)[]): $List<(E)>
+get "empty"(): boolean
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Vector$Type<E> = ($Vector<(E)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Vector_<E> = $Vector$Type<(E)>;
+}}
+declare module "packages/java/util/function/$LongToIntFunction" {
+export {} // Mark the file as a module, do not remove unless there are other import/exports!
+export interface $LongToIntFunction {
+
+ "applyAsInt"(arg0: long): integer
+
+(arg0: long): integer
+}
+
+export namespace $LongToIntFunction {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $LongToIntFunction$Type = ($LongToIntFunction);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $LongToIntFunction_ = $LongToIntFunction$Type;
+}}
+declare module "packages/java/util/$LinkedHashMap" {
+import {$BiConsumer, $BiConsumer$Type} from "packages/java/util/function/$BiConsumer"
+import {$Function, $Function$Type} from "packages/java/util/function/$Function"
+import {$HashMap, $HashMap$Type} from "packages/java/util/$HashMap"
+import {$Set, $Set$Type} from "packages/java/util/$Set"
+import {$Collection, $Collection$Type} from "packages/java/util/$Collection"
+import {$BiFunction, $BiFunction$Type} from "packages/java/util/function/$BiFunction"
+import {$Map, $Map$Type} from "packages/java/util/$Map"
+import {$Map$Entry, $Map$Entry$Type} from "packages/java/util/$Map$Entry"
+
+export class $LinkedHashMap<K, V> extends $HashMap<(K), (V)> implements $Map<(K), (V)> {
+
+constructor(arg0: integer, arg1: float, arg2: boolean)
+constructor(arg0: integer)
+constructor()
+constructor(arg0: integer, arg1: float)
+constructor(arg0: $Map$Type<(any), (any)>)
+
+public "get"(arg0: any): V
+public "values"(): $Collection<(V)>
+public "clear"(): void
+public "replaceAll"(arg0: $BiFunction$Type<(any), (any), (any)>): void
+public "entrySet"(): $Set<($Map$Entry<(K), (V)>)>
+public "forEach"(arg0: $BiConsumer$Type<(any), (any)>): void
+public "keySet"(): $Set<(K)>
+public "containsValue"(arg0: any): boolean
+public "getOrDefault"(arg0: any, arg1: V): V
+public "remove"(arg0: any): V
+public "remove"(arg0: any, arg1: any): boolean
+public "put"(arg0: K, arg1: V): V
+public "equals"(arg0: any): boolean
+public "hashCode"(): integer
+public static "copyOf"<K, V>(arg0: $Map$Type<(any), (any)>): $Map<(K), (V)>
+public "isEmpty"(): boolean
+public "replace"(arg0: K, arg1: V): V
+public "replace"(arg0: K, arg1: V, arg2: V): boolean
+public "size"(): integer
+public static "of"<K, V>(arg0: K, arg1: V, arg2: K, arg3: V, arg4: K, arg5: V, arg6: K, arg7: V, arg8: K, arg9: V): $Map<(K), (V)>
+public static "of"<K, V>(arg0: K, arg1: V, arg2: K, arg3: V, arg4: K, arg5: V, arg6: K, arg7: V): $Map<(K), (V)>
+public static "of"<K, V>(arg0: K, arg1: V, arg2: K, arg3: V, arg4: K, arg5: V): $Map<(K), (V)>
+public static "of"<K, V>(): $Map<(K), (V)>
+public static "of"<K, V>(arg0: K, arg1: V, arg2: K, arg3: V): $Map<(K), (V)>
+public static "of"<K, V>(arg0: K, arg1: V): $Map<(K), (V)>
+public static "of"<K, V>(arg0: K, arg1: V, arg2: K, arg3: V, arg4: K, arg5: V, arg6: K, arg7: V, arg8: K, arg9: V, arg10: K, arg11: V, arg12: K, arg13: V, arg14: K, arg15: V, arg16: K, arg17: V, arg18: K, arg19: V): $Map<(K), (V)>
+public static "of"<K, V>(arg0: K, arg1: V, arg2: K, arg3: V, arg4: K, arg5: V, arg6: K, arg7: V, arg8: K, arg9: V, arg10: K, arg11: V, arg12: K, arg13: V, arg14: K, arg15: V, arg16: K, arg17: V): $Map<(K), (V)>
+public static "of"<K, V>(arg0: K, arg1: V, arg2: K, arg3: V, arg4: K, arg5: V, arg6: K, arg7: V, arg8: K, arg9: V, arg10: K, arg11: V, arg12: K, arg13: V, arg14: K, arg15: V): $Map<(K), (V)>
+public static "of"<K, V>(arg0: K, arg1: V, arg2: K, arg3: V, arg4: K, arg5: V, arg6: K, arg7: V, arg8: K, arg9: V, arg10: K, arg11: V, arg12: K, arg13: V): $Map<(K), (V)>
+public static "of"<K, V>(arg0: K, arg1: V, arg2: K, arg3: V, arg4: K, arg5: V, arg6: K, arg7: V, arg8: K, arg9: V, arg10: K, arg11: V): $Map<(K), (V)>
+public "merge"(arg0: K, arg1: V, arg2: $BiFunction$Type<(any), (any), (any)>): V
+public "putAll"(arg0: $Map$Type<(any), (any)>): void
+public "putIfAbsent"(arg0: K, arg1: V): V
+public "compute"(arg0: K, arg1: $BiFunction$Type<(any), (any), (any)>): V
+public static "entry"<K, V>(arg0: K, arg1: V): $Map$Entry<(K), (V)>
+public "containsKey"(arg0: any): boolean
+public "computeIfAbsent"(arg0: K, arg1: $Function$Type<(any), (any)>): V
+public "computeIfPresent"(arg0: K, arg1: $BiFunction$Type<(any), (any), (any)>): V
+public static "ofEntries"<K, V>(...arg0: ($Map$Entry$Type<(any), (any)>)[]): $Map<(K), (V)>
+get "empty"(): boolean
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $LinkedHashMap$Type<K, V> = ($LinkedHashMap<(K), (V)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $LinkedHashMap_<K, V> = $LinkedHashMap$Type<(K), (V)>;
+}}
+declare module "packages/java/util/function/$DoubleBinaryOperator" {
+export {} // Mark the file as a module, do not remove unless there are other import/exports!
+export interface $DoubleBinaryOperator {
+
+ "applyAsDouble"(arg0: double, arg1: double): double
+
+(arg0: double, arg1: double): double
+}
+
+export namespace $DoubleBinaryOperator {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $DoubleBinaryOperator$Type = ($DoubleBinaryOperator);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $DoubleBinaryOperator_ = $DoubleBinaryOperator$Type;
+}}
+declare module "packages/java/util/function/$UnaryOperator" {
+import {$Function, $Function$Type} from "packages/java/util/function/$Function"
+
+export interface $UnaryOperator<T> extends $Function<(T), (T)> {
+
+ "compose"<V>(arg0: $Function$Type<(any), (any)>): $Function<(V), (T)>
+ "andThen"<V>(arg0: $Function$Type<(any), (any)>): $Function<(T), (V)>
+ "apply"(arg0: T): T
+
+(): $UnaryOperator<(T)>
+}
+
+export namespace $UnaryOperator {
+function identity<T>(): $UnaryOperator<(T)>
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $UnaryOperator$Type<T> = ($UnaryOperator<(T)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $UnaryOperator_<T> = $UnaryOperator$Type<(T)>;
+}}
+declare module "packages/java/util/function/$ObjLongConsumer" {
+export {} // Mark the file as a module, do not remove unless there are other import/exports!
+export interface $ObjLongConsumer<T> {
+
+ "accept"(arg0: T, arg1: long): void
+
+(arg0: T, arg1: long): void
+}
+
+export namespace $ObjLongConsumer {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $ObjLongConsumer$Type<T> = ($ObjLongConsumer<(T)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $ObjLongConsumer_<T> = $ObjLongConsumer$Type<(T)>;
+}}
+declare module "packages/java/util/$Collection" {
+import {$Consumer, $Consumer$Type} from "packages/java/util/function/$Consumer"
+import {$IntFunction, $IntFunction$Type} from "packages/java/util/function/$IntFunction"
+import {$Predicate, $Predicate$Type} from "packages/java/util/function/$Predicate"
+import {$Stream, $Stream$Type} from "packages/java/util/stream/$Stream"
+import {$Iterator, $Iterator$Type} from "packages/java/util/$Iterator"
+import {$Spliterator, $Spliterator$Type} from "packages/java/util/$Spliterator"
+import {$Iterable, $Iterable$Type} from "packages/java/lang/$Iterable"
+
+export interface $Collection<E> extends $Iterable<(E)> {
+
+ "add"(arg0: E): boolean
+ "remove"(arg0: any): boolean
+ "equals"(arg0: any): boolean
+ "hashCode"(): integer
+ "clear"(): void
+ "isEmpty"(): boolean
+ "size"(): integer
+ "toArray"<T>(arg0: (T)[]): (T)[]
+ "toArray"<T>(arg0: $IntFunction$Type<((T)[])>): (T)[]
+ "toArray"(): (any)[]
+ "iterator"(): $Iterator<(E)>
+ "stream"(): $Stream<(E)>
+ "contains"(arg0: any): boolean
+ "spliterator"(): $Spliterator<(E)>
+ "addAll"(arg0: $Collection$Type<(any)>): boolean
+ "removeIf"(arg0: $Predicate$Type<(any)>): boolean
+ "removeAll"(arg0: $Collection$Type<(any)>): boolean
+ "retainAll"(arg0: $Collection$Type<(any)>): boolean
+ "containsAll"(arg0: $Collection$Type<(any)>): boolean
+ "parallelStream"(): $Stream<(E)>
+ "forEach"(arg0: $Consumer$Type<(any)>): void
+}
+
+export namespace $Collection {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Collection$Type<E> = ((E)[]) | ($Collection<(E)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Collection_<E> = $Collection$Type<(E)>;
+}}
+declare module "packages/java/util/$Dictionary" {
+import {$Enumeration, $Enumeration$Type} from "packages/java/util/$Enumeration"
+
+export class $Dictionary<K, V> {
+
+constructor()
+
+public "remove"(arg0: any): V
+public "get"(arg0: any): V
+public "put"(arg0: K, arg1: V): V
+public "isEmpty"(): boolean
+public "size"(): integer
+public "elements"(): $Enumeration<(V)>
+public "keys"(): $Enumeration<(K)>
+get "empty"(): boolean
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Dictionary$Type<K, V> = ($Dictionary<(K), (V)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Dictionary_<K, V> = $Dictionary$Type<(K), (V)>;
+}}
+declare module "packages/java/util/function/$DoubleFunction" {
+export {} // Mark the file as a module, do not remove unless there are other import/exports!
+export interface $DoubleFunction<R> {
+
+ "apply"(arg0: double): R
+
+(arg0: double): R
+}
+
+export namespace $DoubleFunction {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $DoubleFunction$Type<R> = ($DoubleFunction<(R)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $DoubleFunction_<R> = $DoubleFunction$Type<(R)>;
+}}
+declare module "packages/java/util/function/$Function" {
+export {} // Mark the file as a module, do not remove unless there are other import/exports!
+export interface $Function<T, R> {
+
+ "compose"<V>(arg0: $Function$Type<(any), (any)>): $Function<(V), (R)>
+ "andThen"<V>(arg0: $Function$Type<(any), (any)>): $Function<(T), (V)>
+ "apply"(arg0: T): R
+
+(arg0: $Function$Type<(any), (any)>): $Function<(V), (R)>
+}
+
+export namespace $Function {
+function identity<T>(): $Function<(T), (T)>
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Function$Type<T, R> = ($Function<(T), (R)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Function_<T, R> = $Function$Type<(T), (R)>;
+}}
+declare module "packages/java/util/$Currency" {
+import {$Serializable, $Serializable$Type} from "packages/java/io/$Serializable"
+import {$Set, $Set$Type} from "packages/java/util/$Set"
+import {$Locale, $Locale$Type} from "packages/java/util/$Locale"
+
+export class $Currency implements $Serializable {
+
+
+public "getSymbol"(): string
+public "getSymbol"(arg0: $Locale$Type): string
+public "getDisplayName"(): string
+public "getDisplayName"(arg0: $Locale$Type): string
+public static "getAvailableCurrencies"(): $Set<($Currency)>
+public "getDefaultFractionDigits"(): integer
+public "getNumericCode"(): integer
+public "getNumericCodeAsString"(): string
+public "getCurrencyCode"(): string
+public "toString"(): string
+public static "getInstance"(arg0: string): $Currency
+public static "getInstance"(arg0: $Locale$Type): $Currency
+get "symbol"(): string
+get "displayName"(): string
+get "availableCurrencies"(): $Set<($Currency)>
+get "defaultFractionDigits"(): integer
+get "numericCode"(): integer
+get "numericCodeAsString"(): string
+get "currencyCode"(): string
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Currency$Type = ($Currency);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Currency_ = $Currency$Type;
+}}
+declare module "packages/java/util/stream/$LongStream" {
+import {$ObjLongConsumer, $ObjLongConsumer$Type} from "packages/java/util/function/$ObjLongConsumer"
+import {$LongFunction, $LongFunction$Type} from "packages/java/util/function/$LongFunction"
+import {$LongConsumer, $LongConsumer$Type} from "packages/java/util/function/$LongConsumer"
+import {$OptionalDouble, $OptionalDouble$Type} from "packages/java/util/$OptionalDouble"
+import {$IntStream, $IntStream$Type} from "packages/java/util/stream/$IntStream"
+import {$LongBinaryOperator, $LongBinaryOperator$Type} from "packages/java/util/function/$LongBinaryOperator"
+import {$PrimitiveIterator$OfLong, $PrimitiveIterator$OfLong$Type} from "packages/java/util/$PrimitiveIterator$OfLong"
+import {$LongStream$Builder, $LongStream$Builder$Type} from "packages/java/util/stream/$LongStream$Builder"
+import {$LongSummaryStatistics, $LongSummaryStatistics$Type} from "packages/java/util/$LongSummaryStatistics"
+import {$DoubleStream, $DoubleStream$Type} from "packages/java/util/stream/$DoubleStream"
+import {$LongToIntFunction, $LongToIntFunction$Type} from "packages/java/util/function/$LongToIntFunction"
+import {$LongUnaryOperator, $LongUnaryOperator$Type} from "packages/java/util/function/$LongUnaryOperator"
+import {$Runnable, $Runnable$Type} from "packages/java/lang/$Runnable"
+import {$BiConsumer, $BiConsumer$Type} from "packages/java/util/function/$BiConsumer"
+import {$LongToDoubleFunction, $LongToDoubleFunction$Type} from "packages/java/util/function/$LongToDoubleFunction"
+import {$LongPredicate, $LongPredicate$Type} from "packages/java/util/function/$LongPredicate"
+import {$OptionalLong, $OptionalLong$Type} from "packages/java/util/$OptionalLong"
+import {$BaseStream, $BaseStream$Type} from "packages/java/util/stream/$BaseStream"
+import {$LongStream$LongMapMultiConsumer, $LongStream$LongMapMultiConsumer$Type} from "packages/java/util/stream/$LongStream$LongMapMultiConsumer"
+import {$Stream, $Stream$Type} from "packages/java/util/stream/$Stream"
+import {$Supplier, $Supplier$Type} from "packages/java/util/function/$Supplier"
+import {$LongSupplier, $LongSupplier$Type} from "packages/java/util/function/$LongSupplier"
+
+export interface $LongStream extends $BaseStream<(long), ($LongStream)> {
+
+ "boxed"(): $Stream<(long)>
+ "average"(): $OptionalDouble
+ "summaryStatistics"(): $LongSummaryStatistics
+ "asDoubleStream"(): $DoubleStream
+ "sorted"(): $LongStream
+ "forEachOrdered"(arg0: $LongConsumer$Type): void
+ "mapToInt"(arg0: $LongToIntFunction$Type): $IntStream
+ "mapToDouble"(arg0: $LongToDoubleFunction$Type): $DoubleStream
+ "mapMulti"(arg0: $LongStream$LongMapMultiConsumer$Type): $LongStream
+ "takeWhile"(arg0: $LongPredicate$Type): $LongStream
+ "dropWhile"(arg0: $LongPredicate$Type): $LongStream
+ "noneMatch"(arg0: $LongPredicate$Type): boolean
+ "mapToObj"<U>(arg0: $LongFunction$Type<(any)>): $Stream<(U)>
+ "min"(): $OptionalLong
+ "max"(): $OptionalLong
+ "toArray"(): (long)[]
+ "iterator"(): $PrimitiveIterator$OfLong
+ "map"(arg0: $LongUnaryOperator$Type): $LongStream
+ "collect"<R>(arg0: $Supplier$Type<(R)>, arg1: $ObjLongConsumer$Type<(R)>, arg2: $BiConsumer$Type<(R), (R)>): R
+ "count"(): long
+ "limit"(arg0: long): $LongStream
+ "filter"(arg0: $LongPredicate$Type): $LongStream
+ "anyMatch"(arg0: $LongPredicate$Type): boolean
+ "flatMap"(arg0: $LongFunction$Type<(any)>): $LongStream
+ "forEach"(arg0: $LongConsumer$Type): void
+ "findAny"(): $OptionalLong
+ "skip"(arg0: long): $LongStream
+ "peek"(arg0: $LongConsumer$Type): $LongStream
+ "sum"(): long
+ "reduce"(arg0: long, arg1: $LongBinaryOperator$Type): long
+ "reduce"(arg0: $LongBinaryOperator$Type): $OptionalLong
+ "distinct"(): $LongStream
+ "findFirst"(): $OptionalLong
+ "allMatch"(arg0: $LongPredicate$Type): boolean
+ "isParallel"(): boolean
+ "unordered"(): $LongStream
+ "onClose"(arg0: $Runnable$Type): $LongStream
+ "close"(): void
+}
+
+export namespace $LongStream {
+function rangeClosed(arg0: long, arg1: long): $LongStream
+function generate(arg0: $LongSupplier$Type): $LongStream
+function range(arg0: long, arg1: long): $LongStream
+function iterate(arg0: long, arg1: $LongUnaryOperator$Type): $LongStream
+function iterate(arg0: long, arg1: $LongPredicate$Type, arg2: $LongUnaryOperator$Type): $LongStream
+function of(arg0: long): $LongStream
+function of(...arg0: (long)[]): $LongStream
+function builder(): $LongStream$Builder
+function concat(arg0: $LongStream$Type, arg1: $LongStream$Type): $LongStream
+function empty(): $LongStream
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $LongStream$Type = ($LongStream);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $LongStream_ = $LongStream$Type;
+}}
+declare module "packages/java/util/concurrent/$AbstractExecutorService" {
+import {$ExecutorService, $ExecutorService$Type} from "packages/java/util/concurrent/$ExecutorService"
+import {$Collection, $Collection$Type} from "packages/java/util/$Collection"
+import {$Future, $Future$Type} from "packages/java/util/concurrent/$Future"
+import {$Callable, $Callable$Type} from "packages/java/util/concurrent/$Callable"
+import {$List, $List$Type} from "packages/java/util/$List"
+import {$TimeUnit, $TimeUnit$Type} from "packages/java/util/concurrent/$TimeUnit"
+import {$Runnable, $Runnable$Type} from "packages/java/lang/$Runnable"
+
+export class $AbstractExecutorService implements $ExecutorService {
+
+constructor()
+
+public "submit"(arg0: $Runnable$Type): $Future<(any)>
+public "submit"<T>(arg0: $Runnable$Type, arg1: T): $Future<(T)>
+public "submit"<T>(arg0: $Callable$Type<(T)>): $Future<(T)>
+public "invokeAll"<T>(arg0: $Collection$Type<(any)>): $List<($Future<(T)>)>
+public "invokeAll"<T>(arg0: $Collection$Type<(any)>, arg1: long, arg2: $TimeUnit$Type): $List<($Future<(T)>)>
+public "invokeAny"<T>(arg0: $Collection$Type<(any)>): T
+public "invokeAny"<T>(arg0: $Collection$Type<(any)>, arg1: long, arg2: $TimeUnit$Type): T
+public "isShutdown"(): boolean
+public "shutdownNow"(): $List<($Runnable)>
+public "isTerminated"(): boolean
+public "awaitTermination"(arg0: long, arg1: $TimeUnit$Type): boolean
+public "shutdown"(): void
+public "execute"(arg0: $Runnable$Type): void
+get "terminated"(): boolean
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $AbstractExecutorService$Type = ($AbstractExecutorService);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $AbstractExecutorService_ = $AbstractExecutorService$Type;
+}}
+declare module "packages/java/util/function/$IntUnaryOperator" {
+export {} // Mark the file as a module, do not remove unless there are other import/exports!
+export interface $IntUnaryOperator {
+
+ "compose"(arg0: $IntUnaryOperator$Type): $IntUnaryOperator
+ "andThen"(arg0: $IntUnaryOperator$Type): $IntUnaryOperator
+ "applyAsInt"(arg0: integer): integer
+
+(arg0: $IntUnaryOperator$Type): $IntUnaryOperator
+}
+
+export namespace $IntUnaryOperator {
+function identity(): $IntUnaryOperator
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $IntUnaryOperator$Type = ($IntUnaryOperator);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $IntUnaryOperator_ = $IntUnaryOperator$Type;
+}}
+declare module "packages/java/util/stream/$Collector$Characteristics" {
+import {$Enum, $Enum$Type} from "packages/java/lang/$Enum"
+
+export class $Collector$Characteristics extends $Enum<($Collector$Characteristics)> {
+static readonly "CONCURRENT": $Collector$Characteristics
+static readonly "UNORDERED": $Collector$Characteristics
+static readonly "IDENTITY_FINISH": $Collector$Characteristics
+
+
+public static "values"(): ($Collector$Characteristics)[]
+public static "valueOf"(arg0: string): $Collector$Characteristics
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Collector$Characteristics$Type = (("unordered") | ("identity_finish") | ("concurrent")) | ($Collector$Characteristics);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Collector$Characteristics_ = $Collector$Characteristics$Type;
+}}
+declare module "packages/java/util/$OptionalDouble" {
+import {$Throwable, $Throwable$Type} from "packages/java/lang/$Throwable"
+import {$DoubleConsumer, $DoubleConsumer$Type} from "packages/java/util/function/$DoubleConsumer"
+import {$DoubleSupplier, $DoubleSupplier$Type} from "packages/java/util/function/$DoubleSupplier"
+import {$Supplier, $Supplier$Type} from "packages/java/util/function/$Supplier"
+import {$Runnable, $Runnable$Type} from "packages/java/lang/$Runnable"
+import {$DoubleStream, $DoubleStream$Type} from "packages/java/util/stream/$DoubleStream"
+
+export class $OptionalDouble {
+
+
+public "getAsDouble"(): double
+public "ifPresentOrElse"(arg0: $DoubleConsumer$Type, arg1: $Runnable$Type): void
+public "orElseGet"(arg0: $DoubleSupplier$Type): double
+public "ifPresent"(arg0: $DoubleConsumer$Type): void
+public "equals"(arg0: any): boolean
+public "toString"(): string
+public "hashCode"(): integer
+public "isEmpty"(): boolean
+public "stream"(): $DoubleStream
+public static "of"(arg0: double): $OptionalDouble
+public static "empty"(): $OptionalDouble
+public "isPresent"(): boolean
+public "orElse"(arg0: double): double
+public "orElseThrow"<X extends $Throwable>(arg0: $Supplier$Type<(any)>): double
+public "orElseThrow"(): double
+get "asDouble"(): double
+get "present"(): boolean
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $OptionalDouble$Type = ($OptionalDouble);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $OptionalDouble_ = $OptionalDouble$Type;
+}}
+declare module "packages/java/util/$Optional" {
+import {$Function, $Function$Type} from "packages/java/util/function/$Function"
+import {$Throwable, $Throwable$Type} from "packages/java/lang/$Throwable"
+import {$Consumer, $Consumer$Type} from "packages/java/util/function/$Consumer"
+import {$Predicate, $Predicate$Type} from "packages/java/util/function/$Predicate"
+import {$Stream, $Stream$Type} from "packages/java/util/stream/$Stream"
+import {$Supplier, $Supplier$Type} from "packages/java/util/function/$Supplier"
+import {$Runnable, $Runnable$Type} from "packages/java/lang/$Runnable"
+
+export class $Optional<T> {
+
+
+public "ifPresentOrElse"(arg0: $Consumer$Type<(any)>, arg1: $Runnable$Type): void
+public "or"(arg0: $Supplier$Type<(any)>): $Optional<(T)>
+public "orElseGet"(arg0: $Supplier$Type<(any)>): T
+public "ifPresent"(arg0: $Consumer$Type<(any)>): void
+public static "ofNullable"<T>(arg0: T): $Optional<(T)>
+public "get"(): T
+public "equals"(arg0: any): boolean
+public "toString"(): string
+public "hashCode"(): integer
+public "isEmpty"(): boolean
+public "map"<U>(arg0: $Function$Type<(any), (any)>): $Optional<(U)>
+public "stream"(): $Stream<(T)>
+public static "of"<T>(arg0: T): $Optional<(T)>
+public "filter"(arg0: $Predicate$Type<(any)>): $Optional<(T)>
+public static "empty"<T>(): $Optional<(T)>
+public "flatMap"<U>(arg0: $Function$Type<(any), (any)>): $Optional<(U)>
+public "isPresent"(): boolean
+public "orElse"(arg0: T): T
+public "orElseThrow"<X extends $Throwable>(arg0: $Supplier$Type<(any)>): T
+public "orElseThrow"(): T
+get "present"(): boolean
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Optional$Type<T> = ($Optional<(T)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Optional_<T> = $Optional$Type<(T)>;
+}}
+declare module "packages/java/util/$List" {
+import {$Comparator, $Comparator$Type} from "packages/java/util/$Comparator"
+import {$Consumer, $Consumer$Type} from "packages/java/util/function/$Consumer"
+import {$UnaryOperator, $UnaryOperator$Type} from "packages/java/util/function/$UnaryOperator"
+import {$Collection, $Collection$Type} from "packages/java/util/$Collection"
+import {$IntFunction, $IntFunction$Type} from "packages/java/util/function/$IntFunction"
+import {$Predicate, $Predicate$Type} from "packages/java/util/function/$Predicate"
+import {$Stream, $Stream$Type} from "packages/java/util/stream/$Stream"
+import {$ListIterator, $ListIterator$Type} from "packages/java/util/$ListIterator"
+import {$Iterator, $Iterator$Type} from "packages/java/util/$Iterator"
+import {$Spliterator, $Spliterator$Type} from "packages/java/util/$Spliterator"
+
+export interface $List<E> extends $Collection<(E)> {
+
+ "add"(arg0: integer, arg1: E): void
+ "add"(arg0: E): boolean
+ "remove"(arg0: any): boolean
+ "remove"(arg0: integer): E
+ "get"(arg0: integer): E
+ "equals"(arg0: any): boolean
+ "hashCode"(): integer
+ "indexOf"(arg0: any): integer
+ "clear"(): void
+ "lastIndexOf"(arg0: any): integer
+ "isEmpty"(): boolean
+ "replaceAll"(arg0: $UnaryOperator$Type<(E)>): void
+ "size"(): integer
+ "subList"(arg0: integer, arg1: integer): $List<(E)>
+ "toArray"(): (any)[]
+ "toArray"<T>(arg0: (T)[]): (T)[]
+ "iterator"(): $Iterator<(E)>
+ "contains"(arg0: any): boolean
+ "spliterator"(): $Spliterator<(E)>
+ "addAll"(arg0: integer, arg1: $Collection$Type<(any)>): boolean
+ "addAll"(arg0: $Collection$Type<(any)>): boolean
+ "set"(arg0: integer, arg1: E): E
+ "sort"(arg0: $Comparator$Type<(any)>): void
+ "removeAll"(arg0: $Collection$Type<(any)>): boolean
+ "retainAll"(arg0: $Collection$Type<(any)>): boolean
+ "listIterator"(arg0: integer): $ListIterator<(E)>
+ "listIterator"(): $ListIterator<(E)>
+ "containsAll"(arg0: $Collection$Type<(any)>): boolean
+ "toArray"<T>(arg0: $IntFunction$Type<((T)[])>): (T)[]
+ "stream"(): $Stream<(E)>
+ "removeIf"(arg0: $Predicate$Type<(any)>): boolean
+ "parallelStream"(): $Stream<(E)>
+ "forEach"(arg0: $Consumer$Type<(any)>): void
+}
+
+export namespace $List {
+function copyOf<E>(arg0: $Collection$Type<(any)>): $List<(E)>
+function of<E>(arg0: E, arg1: E, arg2: E, arg3: E): $List<(E)>
+function of<E>(arg0: E, arg1: E, arg2: E): $List<(E)>
+function of<E>(arg0: E, arg1: E): $List<(E)>
+function of<E>(arg0: E): $List<(E)>
+function of<E>(): $List<(E)>
+function of<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E, arg6: E, arg7: E): $List<(E)>
+function of<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E, arg6: E): $List<(E)>
+function of<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E): $List<(E)>
+function of<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E): $List<(E)>
+function of<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E, arg6: E, arg7: E, arg8: E, arg9: E): $List<(E)>
+function of<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E, arg6: E, arg7: E, arg8: E): $List<(E)>
+function of<E>(...arg0: (E)[]): $List<(E)>
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $List$Type<E> = ((E)[]) | ($List<(E)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $List_<E> = $List$Type<(E)>;
+}}
+declare module "packages/java/util/function/$ObjDoubleConsumer" {
+export {} // Mark the file as a module, do not remove unless there are other import/exports!
+export interface $ObjDoubleConsumer<T> {
+
+ "accept"(arg0: T, arg1: double): void
+
+(arg0: T, arg1: double): void
+}
+
+export namespace $ObjDoubleConsumer {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $ObjDoubleConsumer$Type<T> = ($ObjDoubleConsumer<(T)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $ObjDoubleConsumer_<T> = $ObjDoubleConsumer$Type<(T)>;
+}}
+declare module "packages/java/util/function/$BinaryOperator" {
+import {$Comparator, $Comparator$Type} from "packages/java/util/$Comparator"
+import {$Function, $Function$Type} from "packages/java/util/function/$Function"
+import {$BiFunction, $BiFunction$Type} from "packages/java/util/function/$BiFunction"
+
+export interface $BinaryOperator<T> extends $BiFunction<(T), (T), (T)> {
+
+ "andThen"<V>(arg0: $Function$Type<(any), (any)>): $BiFunction<(T), (T), (V)>
+ "apply"(arg0: T, arg1: T): T
+
+(arg0: $Comparator$Type<(any)>): $BinaryOperator<(T)>
+}
+
+export namespace $BinaryOperator {
+function maxBy<T>(arg0: $Comparator$Type<(any)>): $BinaryOperator<(T)>
+function minBy<T>(arg0: $Comparator$Type<(any)>): $BinaryOperator<(T)>
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $BinaryOperator$Type<T> = ($BinaryOperator<(T)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $BinaryOperator_<T> = $BinaryOperator$Type<(T)>;
+}}
+declare module "packages/java/util/function/$ObjIntConsumer" {
+export {} // Mark the file as a module, do not remove unless there are other import/exports!
+export interface $ObjIntConsumer<T> {
+
+ "accept"(arg0: T, arg1: integer): void
+
+(arg0: T, arg1: integer): void
+}
+
+export namespace $ObjIntConsumer {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $ObjIntConsumer$Type<T> = ($ObjIntConsumer<(T)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $ObjIntConsumer_<T> = $ObjIntConsumer$Type<(T)>;
+}}
+declare module "packages/java/util/$Date" {
+import {$Comparable, $Comparable$Type} from "packages/java/lang/$Comparable"
+import {$Serializable, $Serializable$Type} from "packages/java/io/$Serializable"
+import {$Instant, $Instant$Type} from "packages/java/time/$Instant"
+import {$Cloneable, $Cloneable$Type} from "packages/java/lang/$Cloneable"
+
+export class $Date implements $Serializable, $Cloneable, $Comparable<($Date)> {
+
+/**
+ * 
+ * @deprecated
+ */
+constructor(arg0: string)
+constructor()
+/**
+ * 
+ * @deprecated
+ */
+constructor(arg0: integer, arg1: integer, arg2: integer, arg3: integer, arg4: integer)
+/**
+ * 
+ * @deprecated
+ */
+constructor(arg0: integer, arg1: integer, arg2: integer, arg3: integer, arg4: integer, arg5: integer)
+constructor(arg0: long)
+/**
+ * 
+ * @deprecated
+ */
+constructor(arg0: integer, arg1: integer, arg2: integer)
+
+/**
+ * 
+ * @deprecated
+ */
+public "setMonth"(arg0: integer): void
+/**
+ * 
+ * @deprecated
+ */
+public "getHours"(): integer
+/**
+ * 
+ * @deprecated
+ */
+public "getMinutes"(): integer
+/**
+ * 
+ * @deprecated
+ */
+public "setHours"(arg0: integer): void
+/**
+ * 
+ * @deprecated
+ */
+public "setMinutes"(arg0: integer): void
+/**
+ * 
+ * @deprecated
+ */
+public "setSeconds"(arg0: integer): void
+/**
+ * 
+ * @deprecated
+ */
+public "setYear"(arg0: integer): void
+/**
+ * 
+ * @deprecated
+ */
+public "getDay"(): integer
+/**
+ * 
+ * @deprecated
+ */
+public "toLocaleString"(): string
+/**
+ * 
+ * @deprecated
+ */
+public "toGMTString"(): string
+/**
+ * 
+ * @deprecated
+ */
+public "getTimezoneOffset"(): integer
+/**
+ * 
+ * @deprecated
+ */
+public "getMonth"(): integer
+public "getTime"(): long
+/**
+ * 
+ * @deprecated
+ */
+public "getYear"(): integer
+/**
+ * 
+ * @deprecated
+ */
+public "getSeconds"(): integer
+public "toInstant"(): $Instant
+/**
+ * 
+ * @deprecated
+ */
+public static "UTC"(arg0: integer, arg1: integer, arg2: integer, arg3: integer, arg4: integer, arg5: integer): long
+public "setTime"(arg0: long): void
+/**
+ * 
+ * @deprecated
+ */
+public "setDate"(arg0: integer): void
+public "before"(arg0: $Date$Type): boolean
+public "after"(arg0: $Date$Type): boolean
+/**
+ * 
+ * @deprecated
+ */
+public static "parse"(arg0: string): long
+/**
+ * 
+ * @deprecated
+ */
+public "getDate"(): integer
+public "equals"(arg0: any): boolean
+public "toString"(): string
+public "hashCode"(): integer
+public "clone"(): any
+public "compareTo"(arg0: $Date$Type): integer
+public static "from"(arg0: $Instant$Type): $Date
+set "month"(value: integer)
+get "hours"(): integer
+get "minutes"(): integer
+set "hours"(value: integer)
+set "minutes"(value: integer)
+set "seconds"(value: integer)
+set "year"(value: integer)
+get "day"(): integer
+get "timezoneOffset"(): integer
+get "month"(): integer
+get "time"(): long
+get "year"(): integer
+get "seconds"(): integer
+set "time"(value: long)
+set "date"(value: integer)
+get "date"(): integer
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Date$Type = ($Date);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Date_ = $Date$Type;
+}}
+declare module "packages/java/util/stream/$IntStream" {
+import {$ObjIntConsumer, $ObjIntConsumer$Type} from "packages/java/util/function/$ObjIntConsumer"
+import {$LongStream, $LongStream$Type} from "packages/java/util/stream/$LongStream"
+import {$OptionalDouble, $OptionalDouble$Type} from "packages/java/util/$OptionalDouble"
+import {$IntSupplier, $IntSupplier$Type} from "packages/java/util/function/$IntSupplier"
+import {$IntBinaryOperator, $IntBinaryOperator$Type} from "packages/java/util/function/$IntBinaryOperator"
+import {$IntSummaryStatistics, $IntSummaryStatistics$Type} from "packages/java/util/$IntSummaryStatistics"
+import {$DoubleStream, $DoubleStream$Type} from "packages/java/util/stream/$DoubleStream"
+import {$Runnable, $Runnable$Type} from "packages/java/lang/$Runnable"
+import {$IntStream$IntMapMultiConsumer, $IntStream$IntMapMultiConsumer$Type} from "packages/java/util/stream/$IntStream$IntMapMultiConsumer"
+import {$IntUnaryOperator, $IntUnaryOperator$Type} from "packages/java/util/function/$IntUnaryOperator"
+import {$IntStream$Builder, $IntStream$Builder$Type} from "packages/java/util/stream/$IntStream$Builder"
+import {$BiConsumer, $BiConsumer$Type} from "packages/java/util/function/$BiConsumer"
+import {$IntToDoubleFunction, $IntToDoubleFunction$Type} from "packages/java/util/function/$IntToDoubleFunction"
+import {$IntPredicate, $IntPredicate$Type} from "packages/java/util/function/$IntPredicate"
+import {$IntFunction, $IntFunction$Type} from "packages/java/util/function/$IntFunction"
+import {$BaseStream, $BaseStream$Type} from "packages/java/util/stream/$BaseStream"
+import {$Stream, $Stream$Type} from "packages/java/util/stream/$Stream"
+import {$IntConsumer, $IntConsumer$Type} from "packages/java/util/function/$IntConsumer"
+import {$Supplier, $Supplier$Type} from "packages/java/util/function/$Supplier"
+import {$IntToLongFunction, $IntToLongFunction$Type} from "packages/java/util/function/$IntToLongFunction"
+import {$OptionalInt, $OptionalInt$Type} from "packages/java/util/$OptionalInt"
+import {$PrimitiveIterator$OfInt, $PrimitiveIterator$OfInt$Type} from "packages/java/util/$PrimitiveIterator$OfInt"
+
+export interface $IntStream extends $BaseStream<(integer), ($IntStream)> {
+
+ "boxed"(): $Stream<(integer)>
+ "average"(): $OptionalDouble
+ "summaryStatistics"(): $IntSummaryStatistics
+ "asLongStream"(): $LongStream
+ "asDoubleStream"(): $DoubleStream
+ "sorted"(): $IntStream
+ "forEachOrdered"(arg0: $IntConsumer$Type): void
+ "mapToLong"(arg0: $IntToLongFunction$Type): $LongStream
+ "mapToDouble"(arg0: $IntToDoubleFunction$Type): $DoubleStream
+ "mapMulti"(arg0: $IntStream$IntMapMultiConsumer$Type): $IntStream
+ "takeWhile"(arg0: $IntPredicate$Type): $IntStream
+ "dropWhile"(arg0: $IntPredicate$Type): $IntStream
+ "noneMatch"(arg0: $IntPredicate$Type): boolean
+ "mapToObj"<U>(arg0: $IntFunction$Type<(any)>): $Stream<(U)>
+ "min"(): $OptionalInt
+ "max"(): $OptionalInt
+ "toArray"(): (integer)[]
+ "iterator"(): $PrimitiveIterator$OfInt
+ "map"(arg0: $IntUnaryOperator$Type): $IntStream
+ "collect"<R>(arg0: $Supplier$Type<(R)>, arg1: $ObjIntConsumer$Type<(R)>, arg2: $BiConsumer$Type<(R), (R)>): R
+ "count"(): long
+ "limit"(arg0: long): $IntStream
+ "filter"(arg0: $IntPredicate$Type): $IntStream
+ "anyMatch"(arg0: $IntPredicate$Type): boolean
+ "flatMap"(arg0: $IntFunction$Type<(any)>): $IntStream
+ "forEach"(arg0: $IntConsumer$Type): void
+ "findAny"(): $OptionalInt
+ "skip"(arg0: long): $IntStream
+ "peek"(arg0: $IntConsumer$Type): $IntStream
+ "sum"(): integer
+ "reduce"(arg0: integer, arg1: $IntBinaryOperator$Type): integer
+ "reduce"(arg0: $IntBinaryOperator$Type): $OptionalInt
+ "distinct"(): $IntStream
+ "findFirst"(): $OptionalInt
+ "allMatch"(arg0: $IntPredicate$Type): boolean
+ "isParallel"(): boolean
+ "unordered"(): $IntStream
+ "onClose"(arg0: $Runnable$Type): $IntStream
+ "close"(): void
+}
+
+export namespace $IntStream {
+function rangeClosed(arg0: integer, arg1: integer): $IntStream
+function generate(arg0: $IntSupplier$Type): $IntStream
+function range(arg0: integer, arg1: integer): $IntStream
+function iterate(arg0: integer, arg1: $IntPredicate$Type, arg2: $IntUnaryOperator$Type): $IntStream
+function iterate(arg0: integer, arg1: $IntUnaryOperator$Type): $IntStream
+function of(...arg0: (integer)[]): $IntStream
+function of(arg0: integer): $IntStream
+function builder(): $IntStream$Builder
+function concat(arg0: $IntStream$Type, arg1: $IntStream$Type): $IntStream
+function empty(): $IntStream
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $IntStream$Type = ($IntStream);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $IntStream_ = $IntStream$Type;
+}}
+declare module "packages/java/util/function/$IntPredicate" {
+export {} // Mark the file as a module, do not remove unless there are other import/exports!
+export interface $IntPredicate {
+
+ "negate"(): $IntPredicate
+ "and"(arg0: $IntPredicate$Type): $IntPredicate
+ "or"(arg0: $IntPredicate$Type): $IntPredicate
+ "test"(arg0: integer): boolean
+
+(): $IntPredicate
+}
+
+export namespace $IntPredicate {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $IntPredicate$Type = ($IntPredicate);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $IntPredicate_ = $IntPredicate$Type;
+}}
+declare module "packages/java/util/concurrent/$CompletableFuture" {
+import {$Function, $Function$Type} from "packages/java/util/function/$Function"
+import {$Throwable, $Throwable$Type} from "packages/java/lang/$Throwable"
+import {$CompletionStage, $CompletionStage$Type} from "packages/java/util/concurrent/$CompletionStage"
+import {$Consumer, $Consumer$Type} from "packages/java/util/function/$Consumer"
+import {$Future, $Future$Type} from "packages/java/util/concurrent/$Future"
+import {$Supplier, $Supplier$Type} from "packages/java/util/function/$Supplier"
+import {$Executor, $Executor$Type} from "packages/java/util/concurrent/$Executor"
+import {$TimeUnit, $TimeUnit$Type} from "packages/java/util/concurrent/$TimeUnit"
+import {$Runnable, $Runnable$Type} from "packages/java/lang/$Runnable"
+import {$BiFunction, $BiFunction$Type} from "packages/java/util/function/$BiFunction"
+
+export class $CompletableFuture<T> implements $Future<(T)>, $CompletionStage<(T)> {
+
+constructor()
+
+public "completeAsync"(arg0: $Supplier$Type<(any)>): $CompletableFuture<(T)>
+public "completeAsync"(arg0: $Supplier$Type<(any)>, arg1: $Executor$Type): $CompletableFuture<(T)>
+public "exceptionallyCompose"(arg0: $Function$Type<($Throwable$Type), (any)>): $CompletableFuture<(T)>
+public "thenComposeAsync"<U>(arg0: $Function$Type<(any), (any)>): $CompletableFuture<(U)>
+public "thenComposeAsync"<U>(arg0: $Function$Type<(any), (any)>, arg1: $Executor$Type): $CompletableFuture<(U)>
+public "runAfterEitherAsync"(arg0: $CompletionStage$Type<(any)>, arg1: $Runnable$Type): $CompletableFuture<(void)>
+public "runAfterEitherAsync"(arg0: $CompletionStage$Type<(any)>, arg1: $Runnable$Type, arg2: $Executor$Type): $CompletableFuture<(void)>
+public "acceptEitherAsync"(arg0: $CompletionStage$Type<(any)>, arg1: $Consumer$Type<(any)>): $CompletableFuture<(void)>
+public "acceptEitherAsync"(arg0: $CompletionStage$Type<(any)>, arg1: $Consumer$Type<(any)>, arg2: $Executor$Type): $CompletableFuture<(void)>
+public "acceptEither"(arg0: $CompletionStage$Type<(any)>, arg1: $Consumer$Type<(any)>): $CompletableFuture<(void)>
+public "applyToEitherAsync"<U>(arg0: $CompletionStage$Type<(any)>, arg1: $Function$Type<(any), (U)>): $CompletableFuture<(U)>
+public "applyToEither"<U>(arg0: $CompletionStage$Type<(any)>, arg1: $Function$Type<(any), (U)>): $CompletableFuture<(U)>
+public "runAfterBothAsync"(arg0: $CompletionStage$Type<(any)>, arg1: $Runnable$Type, arg2: $Executor$Type): $CompletableFuture<(void)>
+public "runAfterBothAsync"(arg0: $CompletionStage$Type<(any)>, arg1: $Runnable$Type): $CompletableFuture<(void)>
+public "runAfterBoth"(arg0: $CompletionStage$Type<(any)>, arg1: $Runnable$Type): $CompletableFuture<(void)>
+public "thenCombineAsync"<U, V>(arg0: $CompletionStage$Type<(any)>, arg1: $BiFunction$Type<(any), (any), (any)>): $CompletableFuture<(V)>
+public "thenCombine"<U, V>(arg0: $CompletionStage$Type<(any)>, arg1: $BiFunction$Type<(any), (any), (any)>): $CompletableFuture<(V)>
+public "thenRunAsync"(arg0: $Runnable$Type, arg1: $Executor$Type): $CompletableFuture<(void)>
+public "thenRunAsync"(arg0: $Runnable$Type): $CompletableFuture<(void)>
+public "thenAcceptAsync"(arg0: $Consumer$Type<(any)>): $CompletableFuture<(void)>
+public "thenAccept"(arg0: $Consumer$Type<(any)>): $CompletableFuture<(void)>
+public "thenApply"<U>(arg0: $Function$Type<(any), (any)>): $CompletableFuture<(U)>
+public static "runAsync"(arg0: $Runnable$Type, arg1: $Executor$Type): $CompletableFuture<(void)>
+public static "runAsync"(arg0: $Runnable$Type): $CompletableFuture<(void)>
+public static "completedFuture"<U>(arg0: U): $CompletableFuture<(U)>
+public "getNow"(arg0: T): T
+public "completeExceptionally"(arg0: $Throwable$Type): boolean
+public static "anyOf"(...arg0: ($CompletableFuture$Type<(any)>)[]): $CompletableFuture<(any)>
+public "isCompletedExceptionally"(): boolean
+public "obtrudeValue"(arg0: T): void
+public "obtrudeException"(arg0: $Throwable$Type): void
+public "getNumberOfDependents"(): integer
+public "minimalCompletionStage"(): $CompletionStage<(T)>
+public "orTimeout"(arg0: long, arg1: $TimeUnit$Type): $CompletableFuture<(T)>
+public "completeOnTimeout"(arg0: T, arg1: long, arg2: $TimeUnit$Type): $CompletableFuture<(T)>
+public static "delayedExecutor"(arg0: long, arg1: $TimeUnit$Type): $Executor
+public static "delayedExecutor"(arg0: long, arg1: $TimeUnit$Type, arg2: $Executor$Type): $Executor
+public static "completedStage"<U>(arg0: U): $CompletionStage<(U)>
+public static "failedFuture"<U>(arg0: $Throwable$Type): $CompletableFuture<(U)>
+public static "failedStage"<U>(arg0: $Throwable$Type): $CompletionStage<(U)>
+public "defaultExecutor"(): $Executor
+public static "allOf"(...arg0: ($CompletableFuture$Type<(any)>)[]): $CompletableFuture<(void)>
+public "newIncompleteFuture"<U>(): $CompletableFuture<(U)>
+public "toCompletableFuture"(): $CompletableFuture<(T)>
+public "complete"(arg0: T): boolean
+public "cancel"(arg0: boolean): boolean
+public "isCancelled"(): boolean
+public "isDone"(): boolean
+public static "supplyAsync"<U>(arg0: $Supplier$Type<(U)>): $CompletableFuture<(U)>
+public static "supplyAsync"<U>(arg0: $Supplier$Type<(U)>, arg1: $Executor$Type): $CompletableFuture<(U)>
+public "get"(arg0: long, arg1: $TimeUnit$Type): T
+public "get"(): T
+public "toString"(): string
+public "join"(): T
+public "copy"(): $CompletableFuture<(T)>
+get "completedExceptionally"(): boolean
+get "numberOfDependents"(): integer
+get "cancelled"(): boolean
+get "done"(): boolean
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $CompletableFuture$Type<T> = ($CompletableFuture<(T)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $CompletableFuture_<T> = $CompletableFuture$Type<(T)>;
+}}
+declare module "packages/java/util/$IntSummaryStatistics" {
+import {$IntConsumer, $IntConsumer$Type} from "packages/java/util/function/$IntConsumer"
+
+export class $IntSummaryStatistics implements $IntConsumer {
+
+constructor()
+constructor(arg0: long, arg1: integer, arg2: integer, arg3: long)
+
+public "getSum"(): long
+public "getCount"(): long
+public "getMax"(): integer
+public "getMin"(): integer
+public "getAverage"(): double
+public "toString"(): string
+public "accept"(arg0: integer): void
+public "combine"(arg0: $IntSummaryStatistics$Type): void
+public "andThen"(arg0: $IntConsumer$Type): $IntConsumer
+get "sum"(): long
+get "count"(): long
+get "max"(): integer
+get "min"(): integer
+get "average"(): double
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $IntSummaryStatistics$Type = ($IntSummaryStatistics);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $IntSummaryStatistics_ = $IntSummaryStatistics$Type;
+}}
+declare module "packages/java/util/concurrent/atomic/$AtomicReference" {
+import {$BinaryOperator, $BinaryOperator$Type} from "packages/java/util/function/$BinaryOperator"
+import {$Serializable, $Serializable$Type} from "packages/java/io/$Serializable"
+import {$UnaryOperator, $UnaryOperator$Type} from "packages/java/util/function/$UnaryOperator"
+
+export class $AtomicReference<V> implements $Serializable {
+
+constructor(arg0: V)
+constructor()
+
+public "weakCompareAndSetVolatile"(arg0: V, arg1: V): boolean
+public "getAndUpdate"(arg0: $UnaryOperator$Type<(V)>): V
+public "updateAndGet"(arg0: $UnaryOperator$Type<(V)>): V
+public "getAndAccumulate"(arg0: V, arg1: $BinaryOperator$Type<(V)>): V
+public "accumulateAndGet"(arg0: V, arg1: $BinaryOperator$Type<(V)>): V
+public "getPlain"(): V
+public "setPlain"(arg0: V): void
+public "get"(): V
+public "toString"(): string
+public "set"(arg0: V): void
+public "getOpaque"(): V
+public "setOpaque"(arg0: V): void
+public "getAcquire"(): V
+public "setRelease"(arg0: V): void
+public "compareAndSet"(arg0: V, arg1: V): boolean
+public "compareAndExchange"(arg0: V, arg1: V): V
+public "compareAndExchangeAcquire"(arg0: V, arg1: V): V
+public "compareAndExchangeRelease"(arg0: V, arg1: V): V
+public "weakCompareAndSetPlain"(arg0: V, arg1: V): boolean
+/**
+ * 
+ * @deprecated
+ */
+public "weakCompareAndSet"(arg0: V, arg1: V): boolean
+public "weakCompareAndSetAcquire"(arg0: V, arg1: V): boolean
+public "weakCompareAndSetRelease"(arg0: V, arg1: V): boolean
+public "getAndSet"(arg0: V): V
+public "lazySet"(arg0: V): void
+get "plain"(): V
+set "plain"(value: V)
+get "opaque"(): V
+set "opaque"(value: V)
+get "acquire"(): V
+set "release"(value: V)
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $AtomicReference$Type<V> = ($AtomicReference<(V)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $AtomicReference_<V> = $AtomicReference$Type<(V)>;
+}}
+declare module "packages/java/util/function/$IntToDoubleFunction" {
+export {} // Mark the file as a module, do not remove unless there are other import/exports!
+export interface $IntToDoubleFunction {
+
+ "applyAsDouble"(arg0: integer): double
+
+(arg0: integer): double
+}
+
+export namespace $IntToDoubleFunction {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $IntToDoubleFunction$Type = ($IntToDoubleFunction);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $IntToDoubleFunction_ = $IntToDoubleFunction$Type;
+}}
+declare module "packages/java/util/function/$BiFunction" {
+import {$Function, $Function$Type} from "packages/java/util/function/$Function"
+
+export interface $BiFunction<T, U, R> {
+
+ "andThen"<V>(arg0: $Function$Type<(any), (any)>): $BiFunction<(T), (U), (V)>
+ "apply"(arg0: T, arg1: U): R
+
+(arg0: $Function$Type<(any), (any)>): $BiFunction<(T), (U), (V)>
+}
+
+export namespace $BiFunction {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $BiFunction$Type<T, U, R> = ($BiFunction<(T), (U), (R)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $BiFunction_<T, U, R> = $BiFunction$Type<(T), (U), (R)>;
+}}
+declare module "packages/java/util/function/$IntBinaryOperator" {
+export {} // Mark the file as a module, do not remove unless there are other import/exports!
+export interface $IntBinaryOperator {
+
+ "applyAsInt"(arg0: integer, arg1: integer): integer
+
+(arg0: integer, arg1: integer): integer
+}
+
+export namespace $IntBinaryOperator {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $IntBinaryOperator$Type = ($IntBinaryOperator);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $IntBinaryOperator_ = $IntBinaryOperator$Type;
+}}
+declare module "packages/java/util/$PrimitiveIterator$OfInt" {
+import {$Consumer, $Consumer$Type} from "packages/java/util/function/$Consumer"
+import {$IntConsumer, $IntConsumer$Type} from "packages/java/util/function/$IntConsumer"
+import {$PrimitiveIterator, $PrimitiveIterator$Type} from "packages/java/util/$PrimitiveIterator"
+
+export interface $PrimitiveIterator$OfInt extends $PrimitiveIterator<(integer), ($IntConsumer)> {
+
+ "nextInt"(): integer
+ "forEachRemaining"(arg0: $Consumer$Type<(any)>): void
+ "forEachRemaining"(arg0: $IntConsumer$Type): void
+ "next"(): integer
+ "remove"(): void
+ "hasNext"(): boolean
+}
+
+export namespace $PrimitiveIterator$OfInt {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $PrimitiveIterator$OfInt$Type = ($PrimitiveIterator$OfInt);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $PrimitiveIterator$OfInt_ = $PrimitiveIterator$OfInt$Type;
+}}
+declare module "packages/java/util/function/$ToIntBiFunction" {
+export {} // Mark the file as a module, do not remove unless there are other import/exports!
+export interface $ToIntBiFunction<T, U> {
+
+ "applyAsInt"(arg0: T, arg1: U): integer
+
+(arg0: T, arg1: U): integer
+}
+
+export namespace $ToIntBiFunction {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $ToIntBiFunction$Type<T, U> = ($ToIntBiFunction<(T), (U)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $ToIntBiFunction_<T, U> = $ToIntBiFunction$Type<(T), (U)>;
+}}
+declare module "packages/java/util/$SortedMap" {
+import {$Comparator, $Comparator$Type} from "packages/java/util/$Comparator"
+import {$BiConsumer, $BiConsumer$Type} from "packages/java/util/function/$BiConsumer"
+import {$Function, $Function$Type} from "packages/java/util/function/$Function"
+import {$Set, $Set$Type} from "packages/java/util/$Set"
+import {$Collection, $Collection$Type} from "packages/java/util/$Collection"
+import {$BiFunction, $BiFunction$Type} from "packages/java/util/function/$BiFunction"
+import {$Map$Entry, $Map$Entry$Type} from "packages/java/util/$Map$Entry"
+import {$Map, $Map$Type} from "packages/java/util/$Map"
+
+export interface $SortedMap<K, V> extends $Map<(K), (V)> {
+
+ "firstKey"(): K
+ "subMap"(arg0: K, arg1: K): $SortedMap<(K), (V)>
+ "headMap"(arg0: K): $SortedMap<(K), (V)>
+ "tailMap"(arg0: K): $SortedMap<(K), (V)>
+ "lastKey"(): K
+ "values"(): $Collection<(V)>
+ "entrySet"(): $Set<($Map$Entry<(K), (V)>)>
+ "keySet"(): $Set<(K)>
+ "comparator"(): $Comparator<(any)>
+ "remove"(arg0: any): V
+ "remove"(arg0: any, arg1: any): boolean
+ "get"(arg0: any): V
+ "put"(arg0: K, arg1: V): V
+ "equals"(arg0: any): boolean
+ "hashCode"(): integer
+ "clear"(): void
+ "isEmpty"(): boolean
+ "replace"(arg0: K, arg1: V): V
+ "replace"(arg0: K, arg1: V, arg2: V): boolean
+ "replaceAll"(arg0: $BiFunction$Type<(any), (any), (any)>): void
+ "size"(): integer
+ "merge"(arg0: K, arg1: V, arg2: $BiFunction$Type<(any), (any), (any)>): V
+ "putAll"(arg0: $Map$Type<(any), (any)>): void
+ "putIfAbsent"(arg0: K, arg1: V): V
+ "compute"(arg0: K, arg1: $BiFunction$Type<(any), (any), (any)>): V
+ "forEach"(arg0: $BiConsumer$Type<(any), (any)>): void
+ "containsKey"(arg0: any): boolean
+ "computeIfAbsent"(arg0: K, arg1: $Function$Type<(any), (any)>): V
+ "containsValue"(arg0: any): boolean
+ "getOrDefault"(arg0: any, arg1: V): V
+ "computeIfPresent"(arg0: K, arg1: $BiFunction$Type<(any), (any), (any)>): V
+}
+
+export namespace $SortedMap {
+function copyOf<K, V>(arg0: $Map$Type<(any), (any)>): $Map<(K), (V)>
+function of<K, V>(arg0: K, arg1: V, arg2: K, arg3: V, arg4: K, arg5: V, arg6: K, arg7: V, arg8: K, arg9: V): $Map<(K), (V)>
+function of<K, V>(arg0: K, arg1: V, arg2: K, arg3: V, arg4: K, arg5: V, arg6: K, arg7: V): $Map<(K), (V)>
+function of<K, V>(arg0: K, arg1: V, arg2: K, arg3: V, arg4: K, arg5: V): $Map<(K), (V)>
+function of<K, V>(): $Map<(K), (V)>
+function of<K, V>(arg0: K, arg1: V, arg2: K, arg3: V): $Map<(K), (V)>
+function of<K, V>(arg0: K, arg1: V): $Map<(K), (V)>
+function of<K, V>(arg0: K, arg1: V, arg2: K, arg3: V, arg4: K, arg5: V, arg6: K, arg7: V, arg8: K, arg9: V, arg10: K, arg11: V, arg12: K, arg13: V, arg14: K, arg15: V, arg16: K, arg17: V, arg18: K, arg19: V): $Map<(K), (V)>
+function of<K, V>(arg0: K, arg1: V, arg2: K, arg3: V, arg4: K, arg5: V, arg6: K, arg7: V, arg8: K, arg9: V, arg10: K, arg11: V, arg12: K, arg13: V, arg14: K, arg15: V, arg16: K, arg17: V): $Map<(K), (V)>
+function of<K, V>(arg0: K, arg1: V, arg2: K, arg3: V, arg4: K, arg5: V, arg6: K, arg7: V, arg8: K, arg9: V, arg10: K, arg11: V, arg12: K, arg13: V, arg14: K, arg15: V): $Map<(K), (V)>
+function of<K, V>(arg0: K, arg1: V, arg2: K, arg3: V, arg4: K, arg5: V, arg6: K, arg7: V, arg8: K, arg9: V, arg10: K, arg11: V, arg12: K, arg13: V): $Map<(K), (V)>
+function of<K, V>(arg0: K, arg1: V, arg2: K, arg3: V, arg4: K, arg5: V, arg6: K, arg7: V, arg8: K, arg9: V, arg10: K, arg11: V): $Map<(K), (V)>
+function entry<K, V>(arg0: K, arg1: V): $Map$Entry<(K), (V)>
+function ofEntries<K, V>(...arg0: ($Map$Entry$Type<(any), (any)>)[]): $Map<(K), (V)>
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $SortedMap$Type<K, V> = ($SortedMap<(K), (V)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $SortedMap_<K, V> = $SortedMap$Type<(K), (V)>;
+}}
+declare module "packages/java/util/$Locale$LanguageRange" {
+import {$List, $List$Type} from "packages/java/util/$List"
+import {$Map, $Map$Type} from "packages/java/util/$Map"
+
+export class $Locale$LanguageRange {
+static readonly "MAX_WEIGHT": double
+static readonly "MIN_WEIGHT": double
+
+constructor(arg0: string)
+constructor(arg0: string, arg1: double)
+
+public "getRange"(): string
+public static "mapEquivalents"(arg0: $List$Type<($Locale$LanguageRange$Type)>, arg1: $Map$Type<(string), ($List$Type<(string)>)>): $List<($Locale$LanguageRange)>
+public static "parse"(arg0: string, arg1: $Map$Type<(string), ($List$Type<(string)>)>): $List<($Locale$LanguageRange)>
+public static "parse"(arg0: string): $List<($Locale$LanguageRange)>
+public "getWeight"(): double
+public "equals"(arg0: any): boolean
+public "toString"(): string
+public "hashCode"(): integer
+get "range"(): string
+get "weight"(): double
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Locale$LanguageRange$Type = ($Locale$LanguageRange);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Locale$LanguageRange_ = $Locale$LanguageRange$Type;
+}}
+declare module "packages/java/util/$UUID" {
+import {$Comparable, $Comparable$Type} from "packages/java/lang/$Comparable"
+import {$Serializable, $Serializable$Type} from "packages/java/io/$Serializable"
+
+export class $UUID implements $Serializable, $Comparable<($UUID)> {
+
+constructor(arg0: long, arg1: long)
+
+public static "nameUUIDFromBytes"(arg0: (byte)[]): $UUID
+public "getLeastSignificantBits"(): long
+public "getMostSignificantBits"(): long
+public "clockSequence"(): integer
+public "variant"(): integer
+public static "fromString"(arg0: string): $UUID
+public static "randomUUID"(): $UUID
+public "equals"(arg0: any): boolean
+public "toString"(): string
+public "version"(): integer
+public "hashCode"(): integer
+public "compareTo"(arg0: $UUID$Type): integer
+public "timestamp"(): long
+public "node"(): long
+get "leastSignificantBits"(): long
+get "mostSignificantBits"(): long
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $UUID$Type = (string) | ($UUID);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $UUID_ = $UUID$Type;
+}}
+declare module "packages/java/util/function/$BiConsumer" {
+export {} // Mark the file as a module, do not remove unless there are other import/exports!
+export interface $BiConsumer<T, U> {
+
+ "andThen"(arg0: $BiConsumer$Type<(any), (any)>): $BiConsumer<(T), (U)>
+ "accept"(arg0: T, arg1: U): void
+
+(arg0: $BiConsumer$Type<(any), (any)>): $BiConsumer<(T), (U)>
+}
+
+export namespace $BiConsumer {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $BiConsumer$Type<T, U> = ($BiConsumer<(T), (U)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $BiConsumer_<T, U> = $BiConsumer$Type<(T), (U)>;
+}}
+declare module "packages/java/util/$AbstractSequentialList" {
+import {$Collection, $Collection$Type} from "packages/java/util/$Collection"
+import {$List, $List$Type} from "packages/java/util/$List"
+import {$AbstractList, $AbstractList$Type} from "packages/java/util/$AbstractList"
+import {$ListIterator, $ListIterator$Type} from "packages/java/util/$ListIterator"
+import {$Iterator, $Iterator$Type} from "packages/java/util/$Iterator"
+
+export class $AbstractSequentialList<E> extends $AbstractList<(E)> {
+
+
+public "add"(arg0: integer, arg1: E): void
+public "remove"(arg0: integer): E
+public "get"(arg0: integer): E
+public "iterator"(): $Iterator<(E)>
+public "addAll"(arg0: integer, arg1: $Collection$Type<(any)>): boolean
+public "set"(arg0: integer, arg1: E): E
+public "listIterator"(arg0: integer): $ListIterator<(E)>
+public "remove"(arg0: any): boolean
+public static "copyOf"<E>(arg0: $Collection$Type<(any)>): $List<(E)>
+public "isEmpty"(): boolean
+public "size"(): integer
+public "toArray"(): (any)[]
+public "toArray"<T>(arg0: (T)[]): (T)[]
+public static "of"<E>(arg0: E, arg1: E, arg2: E, arg3: E): $List<(E)>
+public static "of"<E>(arg0: E, arg1: E, arg2: E): $List<(E)>
+public static "of"<E>(arg0: E, arg1: E): $List<(E)>
+public static "of"<E>(arg0: E): $List<(E)>
+public static "of"<E>(): $List<(E)>
+public static "of"<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E, arg6: E, arg7: E): $List<(E)>
+public static "of"<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E, arg6: E): $List<(E)>
+public static "of"<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E): $List<(E)>
+public static "of"<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E): $List<(E)>
+public static "of"<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E, arg6: E, arg7: E, arg8: E, arg9: E): $List<(E)>
+public static "of"<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E, arg6: E, arg7: E, arg8: E): $List<(E)>
+public static "of"<E>(...arg0: (E)[]): $List<(E)>
+public "contains"(arg0: any): boolean
+public "addAll"(arg0: $Collection$Type<(any)>): boolean
+public "removeAll"(arg0: $Collection$Type<(any)>): boolean
+public "retainAll"(arg0: $Collection$Type<(any)>): boolean
+public "containsAll"(arg0: $Collection$Type<(any)>): boolean
+get "empty"(): boolean
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $AbstractSequentialList$Type<E> = ($AbstractSequentialList<(E)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $AbstractSequentialList_<E> = $AbstractSequentialList$Type<(E)>;
+}}
+declare module "packages/java/util/$Spliterator$OfDouble" {
+import {$Comparator, $Comparator$Type} from "packages/java/util/$Comparator"
+import {$Consumer, $Consumer$Type} from "packages/java/util/function/$Consumer"
+import {$Spliterator$OfPrimitive, $Spliterator$OfPrimitive$Type} from "packages/java/util/$Spliterator$OfPrimitive"
+import {$DoubleConsumer, $DoubleConsumer$Type} from "packages/java/util/function/$DoubleConsumer"
+
+export interface $Spliterator$OfDouble extends $Spliterator$OfPrimitive<(double), ($DoubleConsumer), ($Spliterator$OfDouble)> {
+
+ "tryAdvance"(arg0: $Consumer$Type<(any)>): boolean
+ "tryAdvance"(arg0: $DoubleConsumer$Type): boolean
+ "forEachRemaining"(arg0: $Consumer$Type<(any)>): void
+ "forEachRemaining"(arg0: $DoubleConsumer$Type): void
+ "estimateSize"(): long
+ "getExactSizeIfKnown"(): long
+ "hasCharacteristics"(arg0: integer): boolean
+ "getComparator"(): $Comparator<(any)>
+ "characteristics"(): integer
+}
+
+export namespace $Spliterator$OfDouble {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Spliterator$OfDouble$Type = ($Spliterator$OfDouble);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Spliterator$OfDouble_ = $Spliterator$OfDouble$Type;
+}}
+declare module "packages/java/util/function/$LongConsumer" {
+export {} // Mark the file as a module, do not remove unless there are other import/exports!
+export interface $LongConsumer {
+
+ "andThen"(arg0: $LongConsumer$Type): $LongConsumer
+ "accept"(arg0: long): void
+
+(arg0: $LongConsumer$Type): $LongConsumer
+}
+
+export namespace $LongConsumer {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $LongConsumer$Type = ($LongConsumer);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $LongConsumer_ = $LongConsumer$Type;
+}}
+declare module "packages/java/util/function/$ToIntFunction" {
+export {} // Mark the file as a module, do not remove unless there are other import/exports!
+export interface $ToIntFunction<T> {
+
+ "applyAsInt"(arg0: T): integer
+
+(arg0: T): integer
+}
+
+export namespace $ToIntFunction {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $ToIntFunction$Type<T> = ($ToIntFunction<(T)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $ToIntFunction_<T> = $ToIntFunction$Type<(T)>;
+}}
+declare module "packages/java/util/stream/$IntStream$IntMapMultiConsumer" {
+import {$IntConsumer, $IntConsumer$Type} from "packages/java/util/function/$IntConsumer"
+
+export interface $IntStream$IntMapMultiConsumer {
+
+ "accept"(arg0: integer, arg1: $IntConsumer$Type): void
+
+(arg0: integer, arg1: $IntConsumer$Type): void
+}
+
+export namespace $IntStream$IntMapMultiConsumer {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $IntStream$IntMapMultiConsumer$Type = ($IntStream$IntMapMultiConsumer);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $IntStream$IntMapMultiConsumer_ = $IntStream$IntMapMultiConsumer$Type;
+}}
+declare module "packages/java/util/$AbstractSet" {
+import {$Set, $Set$Type} from "packages/java/util/$Set"
+import {$Collection, $Collection$Type} from "packages/java/util/$Collection"
+import {$AbstractCollection, $AbstractCollection$Type} from "packages/java/util/$AbstractCollection"
+import {$Iterator, $Iterator$Type} from "packages/java/util/$Iterator"
+import {$Spliterator, $Spliterator$Type} from "packages/java/util/$Spliterator"
+
+export class $AbstractSet<E> extends $AbstractCollection<(E)> implements $Set<(E)> {
+
+
+public "equals"(arg0: any): boolean
+public "hashCode"(): integer
+public "removeAll"(arg0: $Collection$Type<(any)>): boolean
+public "add"(arg0: E): boolean
+public "remove"(arg0: any): boolean
+public static "copyOf"<E>(arg0: $Collection$Type<(any)>): $Set<(E)>
+public "clear"(): void
+public "isEmpty"(): boolean
+public "size"(): integer
+public "toArray"<T>(arg0: (T)[]): (T)[]
+public "toArray"(): (any)[]
+public "iterator"(): $Iterator<(E)>
+public static "of"<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E): $Set<(E)>
+public static "of"<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E): $Set<(E)>
+public static "of"<E>(arg0: E): $Set<(E)>
+public static "of"<E>(arg0: E, arg1: E, arg2: E, arg3: E): $Set<(E)>
+public static "of"<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E, arg6: E, arg7: E, arg8: E, arg9: E): $Set<(E)>
+public static "of"<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E, arg6: E, arg7: E, arg8: E): $Set<(E)>
+public static "of"<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E, arg6: E, arg7: E): $Set<(E)>
+public static "of"<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E, arg6: E): $Set<(E)>
+public static "of"<E>(...arg0: (E)[]): $Set<(E)>
+public static "of"<E>(arg0: E, arg1: E, arg2: E): $Set<(E)>
+public static "of"<E>(): $Set<(E)>
+public static "of"<E>(arg0: E, arg1: E): $Set<(E)>
+public "contains"(arg0: any): boolean
+public "spliterator"(): $Spliterator<(E)>
+public "addAll"(arg0: $Collection$Type<(any)>): boolean
+public "retainAll"(arg0: $Collection$Type<(any)>): boolean
+public "containsAll"(arg0: $Collection$Type<(any)>): boolean
+get "empty"(): boolean
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $AbstractSet$Type<E> = ($AbstractSet<(E)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $AbstractSet_<E> = $AbstractSet$Type<(E)>;
+}}
 declare module "packages/java/util/function/$Consumer" {
 export {} // Mark the file as a module, do not remove unless there are other import/exports!
 export interface $Consumer<T> {
@@ -3160,30 +4783,6 @@ export type $Consumer$Type<T> = ($Consumer<(T)>);
  */
 declare global {
 export type $Consumer_<T> = $Consumer$Type<(T)>;
-}}
-declare module "packages/java/util/function/$IntToLongFunction" {
-export {} // Mark the file as a module, do not remove unless there are other import/exports!
-export interface $IntToLongFunction {
-
- "applyAsLong"(arg0: integer): long
-
-(arg0: integer): long
-}
-
-export namespace $IntToLongFunction {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $IntToLongFunction$Type = ($IntToLongFunction);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $IntToLongFunction_ = $IntToLongFunction$Type;
 }}
 declare module "packages/java/util/function/$LongFunction" {
 export {} // Mark the file as a module, do not remove unless there are other import/exports!
@@ -3246,57 +4845,6 @@ export type $Spliterator$Type<T> = ($Spliterator<(T)>);
  */
 declare global {
 export type $Spliterator_<T> = $Spliterator$Type<(T)>;
-}}
-declare module "packages/java/util/$Locale$IsoCountryCode" {
-import {$Enum, $Enum$Type} from "packages/java/lang/$Enum"
-
-export class $Locale$IsoCountryCode extends $Enum<($Locale$IsoCountryCode)> {
-static readonly "PART1_ALPHA2": $Locale$IsoCountryCode
-static readonly "PART1_ALPHA3": $Locale$IsoCountryCode
-static readonly "PART3": $Locale$IsoCountryCode
-
-
-public static "values"(): ($Locale$IsoCountryCode)[]
-public static "valueOf"(arg0: string): $Locale$IsoCountryCode
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $Locale$IsoCountryCode$Type = (("part3") | ("part1_alpha2") | ("part1_alpha3")) | ($Locale$IsoCountryCode);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $Locale$IsoCountryCode_ = $Locale$IsoCountryCode$Type;
-}}
-declare module "packages/java/util/concurrent/$Future" {
-import {$TimeUnit, $TimeUnit$Type} from "packages/java/util/concurrent/$TimeUnit"
-
-export interface $Future<V> {
-
- "get"(arg0: long, arg1: $TimeUnit$Type): V
- "get"(): V
- "cancel"(arg0: boolean): boolean
- "isCancelled"(): boolean
- "isDone"(): boolean
-}
-
-export namespace $Future {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $Future$Type<V> = ($Future<(V)>);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $Future_<V> = $Future$Type<(V)>;
 }}
 declare module "packages/java/util/concurrent/$Executor" {
 import {$Runnable, $Runnable$Type} from "packages/java/lang/$Runnable"
@@ -3376,8 +4924,8 @@ export interface $CompletionStage<T> {
  "thenApplyAsync"<U>(arg0: $Function$Type<(any), (any)>): $CompletionStage<(U)>
  "thenApply"<U>(arg0: $Function$Type<(any), (any)>): $CompletionStage<(U)>
  "toCompletableFuture"(): $CompletableFuture<(T)>
- "handle"<U>(arg0: $BiFunction$Type<(any), ($Throwable$Type), (any)>): $CompletionStage<(U)>
  "whenComplete"(arg0: $BiConsumer$Type<(any), (any)>): $CompletionStage<(T)>
+ "handle"<U>(arg0: $BiFunction$Type<(any), ($Throwable$Type), (any)>): $CompletionStage<(U)>
 }
 
 export namespace $CompletionStage {
@@ -3402,9 +4950,10 @@ import {$PrimitiveIterator, $PrimitiveIterator$Type} from "packages/java/util/$P
 
 export interface $PrimitiveIterator$OfDouble extends $PrimitiveIterator<(double), ($DoubleConsumer)> {
 
- "forEachRemaining"(arg0: $DoubleConsumer$Type): void
- "forEachRemaining"(arg0: $Consumer$Type<(any)>): void
  "nextDouble"(): double
+ "forEachRemaining"(arg0: $Consumer$Type<(any)>): void
+ "forEachRemaining"(arg0: $DoubleConsumer$Type): void
+ "next"(): double
  "remove"(): void
  "hasNext"(): boolean
 }
@@ -3450,17 +4999,17 @@ export interface $RandomGenerator {
  "nextGaussian"(arg0: double, arg1: double): double
  "isDeprecated"(): boolean
  "nextExponential"(): double
- "nextBytes"(arg0: (byte)[]): void
- "nextDouble"(arg0: double, arg1: double): double
- "nextDouble"(): double
- "nextDouble"(arg0: double): double
- "nextInt"(arg0: integer, arg1: integer): integer
- "nextInt"(arg0: integer): integer
- "nextInt"(): integer
- "ints"(): $IntStream
+ "ints"(arg0: long, arg1: integer, arg2: integer): $IntStream
  "ints"(arg0: long): $IntStream
  "ints"(arg0: integer, arg1: integer): $IntStream
- "ints"(arg0: long, arg1: integer, arg2: integer): $IntStream
+ "ints"(): $IntStream
+ "nextBytes"(arg0: (byte)[]): void
+ "nextDouble"(arg0: double): double
+ "nextDouble"(): double
+ "nextDouble"(arg0: double, arg1: double): double
+ "nextInt"(): integer
+ "nextInt"(arg0: integer): integer
+ "nextInt"(arg0: integer, arg1: integer): integer
 
 (): boolean
 }
@@ -3487,9 +5036,9 @@ import {$IntConsumer, $IntConsumer$Type} from "packages/java/util/function/$IntC
 
 export interface $IntStream$Builder extends $IntConsumer {
 
+ "build"(): $IntStream
  "add"(arg0: integer): $IntStream$Builder
  "accept"(arg0: integer): void
- "build"(): $IntStream
  "andThen"(arg0: $IntConsumer$Type): $IntConsumer
 }
 
@@ -3507,80 +5056,6 @@ export type $IntStream$Builder$Type = ($IntStream$Builder);
  */
 declare global {
 export type $IntStream$Builder_ = $IntStream$Builder$Type;
-}}
-declare module "packages/java/util/function/$ToLongFunction" {
-export {} // Mark the file as a module, do not remove unless there are other import/exports!
-export interface $ToLongFunction<T> {
-
- "applyAsLong"(arg0: T): long
-
-(arg0: T): long
-}
-
-export namespace $ToLongFunction {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $ToLongFunction$Type<T> = ($ToLongFunction<(T)>);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $ToLongFunction_<T> = $ToLongFunction$Type<(T)>;
-}}
-declare module "packages/java/util/$Iterator" {
-import {$Consumer, $Consumer$Type} from "packages/java/util/function/$Consumer"
-
-export interface $Iterator<E> {
-
- "remove"(): void
- "forEachRemaining"(arg0: $Consumer$Type<(any)>): void
- "hasNext"(): boolean
- "next"(): E
-}
-
-export namespace $Iterator {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $Iterator$Type<E> = ($Iterator<(E)>);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $Iterator_<E> = $Iterator$Type<(E)>;
-}}
-declare module "packages/java/util/function/$LongBinaryOperator" {
-export {} // Mark the file as a module, do not remove unless there are other import/exports!
-export interface $LongBinaryOperator {
-
- "applyAsLong"(arg0: long, arg1: long): long
-
-(arg0: long, arg1: long): long
-}
-
-export namespace $LongBinaryOperator {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $LongBinaryOperator$Type = ($LongBinaryOperator);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $LongBinaryOperator_ = $LongBinaryOperator$Type;
 }}
 declare module "packages/java/util/$Stack" {
 import {$Vector, $Vector$Type} from "packages/java/util/$Vector"
@@ -3713,336 +5188,101 @@ export type $Enumeration$Type<E> = ($Enumeration<(E)>);
 declare global {
 export type $Enumeration_<E> = $Enumeration$Type<(E)>;
 }}
-declare module "packages/java/util/function/$LongPredicate" {
-export {} // Mark the file as a module, do not remove unless there are other import/exports!
-export interface $LongPredicate {
-
- "negate"(): $LongPredicate
- "and"(arg0: $LongPredicate$Type): $LongPredicate
- "or"(arg0: $LongPredicate$Type): $LongPredicate
- "test"(arg0: long): boolean
-
-(): $LongPredicate
-}
-
-export namespace $LongPredicate {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $LongPredicate$Type = ($LongPredicate);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $LongPredicate_ = $LongPredicate$Type;
-}}
-declare module "packages/java/util/stream/$Stream$Builder" {
-import {$Consumer, $Consumer$Type} from "packages/java/util/function/$Consumer"
-import {$Stream, $Stream$Type} from "packages/java/util/stream/$Stream"
-
-export interface $Stream$Builder<T> extends $Consumer<(T)> {
-
- "add"(arg0: T): $Stream$Builder<(T)>
- "accept"(arg0: T): void
- "build"(): $Stream<(T)>
- "andThen"(arg0: $Consumer$Type<(any)>): $Consumer<(T)>
-}
-
-export namespace $Stream$Builder {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $Stream$Builder$Type<T> = ($Stream$Builder<(T)>);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $Stream$Builder_<T> = $Stream$Builder$Type<(T)>;
-}}
-declare module "packages/java/util/$AbstractCollection" {
-import {$Consumer, $Consumer$Type} from "packages/java/util/function/$Consumer"
-import {$Collection, $Collection$Type} from "packages/java/util/$Collection"
-import {$IntFunction, $IntFunction$Type} from "packages/java/util/function/$IntFunction"
-import {$Predicate, $Predicate$Type} from "packages/java/util/function/$Predicate"
-import {$Stream, $Stream$Type} from "packages/java/util/stream/$Stream"
-import {$Iterator, $Iterator$Type} from "packages/java/util/$Iterator"
-import {$Spliterator, $Spliterator$Type} from "packages/java/util/$Spliterator"
-
-export class $AbstractCollection<E> implements $Collection<(E)> {
-
-
-public "add"(arg0: E): boolean
-public "remove"(arg0: any): boolean
-public "toString"(): string
-public "clear"(): void
-public "isEmpty"(): boolean
-public "size"(): integer
-public "toArray"(): (any)[]
-public "toArray"<T>(arg0: (T)[]): (T)[]
-public "iterator"(): $Iterator<(E)>
-public "contains"(arg0: any): boolean
-public "addAll"(arg0: $Collection$Type<(any)>): boolean
-public "removeAll"(arg0: $Collection$Type<(any)>): boolean
-public "retainAll"(arg0: $Collection$Type<(any)>): boolean
-public "containsAll"(arg0: $Collection$Type<(any)>): boolean
-public "equals"(arg0: any): boolean
-public "hashCode"(): integer
-public "toArray"<T>(arg0: $IntFunction$Type<((T)[])>): (T)[]
-public "stream"(): $Stream<(E)>
-public "spliterator"(): $Spliterator<(E)>
-public "removeIf"(arg0: $Predicate$Type<(any)>): boolean
-public "parallelStream"(): $Stream<(E)>
-public "forEach"(arg0: $Consumer$Type<(any)>): void
-[Symbol.iterator](): IterableIterator<E>;
-get "empty"(): boolean
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $AbstractCollection$Type<E> = ($AbstractCollection<(E)>);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $AbstractCollection_<E> = $AbstractCollection$Type<(E)>;
-}}
-declare module "packages/java/util/concurrent/$ScheduledExecutorService" {
-import {$ExecutorService, $ExecutorService$Type} from "packages/java/util/concurrent/$ExecutorService"
-import {$Collection, $Collection$Type} from "packages/java/util/$Collection"
-import {$Callable, $Callable$Type} from "packages/java/util/concurrent/$Callable"
-import {$List, $List$Type} from "packages/java/util/$List"
-import {$Future, $Future$Type} from "packages/java/util/concurrent/$Future"
-import {$ScheduledFuture, $ScheduledFuture$Type} from "packages/java/util/concurrent/$ScheduledFuture"
-import {$TimeUnit, $TimeUnit$Type} from "packages/java/util/concurrent/$TimeUnit"
-import {$Runnable, $Runnable$Type} from "packages/java/lang/$Runnable"
-
-export interface $ScheduledExecutorService extends $ExecutorService {
-
- "schedule"(arg0: $Runnable$Type, arg1: long, arg2: $TimeUnit$Type): $ScheduledFuture<(any)>
- "schedule"<V>(arg0: $Callable$Type<(V)>, arg1: long, arg2: $TimeUnit$Type): $ScheduledFuture<(V)>
- "scheduleWithFixedDelay"(arg0: $Runnable$Type, arg1: long, arg2: long, arg3: $TimeUnit$Type): $ScheduledFuture<(any)>
- "scheduleAtFixedRate"(arg0: $Runnable$Type, arg1: long, arg2: long, arg3: $TimeUnit$Type): $ScheduledFuture<(any)>
- "shutdownNow"(): $List<($Runnable)>
- "isTerminated"(): boolean
- "awaitTermination"(arg0: long, arg1: $TimeUnit$Type): boolean
- "submit"<T>(arg0: $Callable$Type<(T)>): $Future<(T)>
- "submit"(arg0: $Runnable$Type): $Future<(any)>
- "submit"<T>(arg0: $Runnable$Type, arg1: T): $Future<(T)>
- "invokeAll"<T>(arg0: $Collection$Type<(any)>): $List<($Future<(T)>)>
- "invokeAll"<T>(arg0: $Collection$Type<(any)>, arg1: long, arg2: $TimeUnit$Type): $List<($Future<(T)>)>
- "invokeAny"<T>(arg0: $Collection$Type<(any)>): T
- "invokeAny"<T>(arg0: $Collection$Type<(any)>, arg1: long, arg2: $TimeUnit$Type): T
- "shutdown"(): void
- "isShutdown"(): boolean
- "execute"(arg0: $Runnable$Type): void
-}
-
-export namespace $ScheduledExecutorService {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $ScheduledExecutorService$Type = ($ScheduledExecutorService);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $ScheduledExecutorService_ = $ScheduledExecutorService$Type;
-}}
-declare module "packages/java/util/function/$DoubleUnaryOperator" {
-export {} // Mark the file as a module, do not remove unless there are other import/exports!
-export interface $DoubleUnaryOperator {
-
- "andThen"(arg0: $DoubleUnaryOperator$Type): $DoubleUnaryOperator
- "applyAsDouble"(arg0: double): double
- "compose"(arg0: $DoubleUnaryOperator$Type): $DoubleUnaryOperator
-
-(arg0: $DoubleUnaryOperator$Type): $DoubleUnaryOperator
-}
-
-export namespace $DoubleUnaryOperator {
-function identity(): $DoubleUnaryOperator
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $DoubleUnaryOperator$Type = ($DoubleUnaryOperator);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $DoubleUnaryOperator_ = $DoubleUnaryOperator$Type;
-}}
-declare module "packages/java/util/concurrent/$Delayed" {
-import {$Comparable, $Comparable$Type} from "packages/java/lang/$Comparable"
-import {$TimeUnit, $TimeUnit$Type} from "packages/java/util/concurrent/$TimeUnit"
-
-export interface $Delayed extends $Comparable<($Delayed)> {
-
- "getDelay"(arg0: $TimeUnit$Type): long
- "compareTo"(arg0: $Delayed$Type): integer
-}
-
-export namespace $Delayed {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $Delayed$Type = ($Delayed);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $Delayed_ = $Delayed$Type;
-}}
-declare module "packages/java/util/$Random" {
-import {$LongStream, $LongStream$Type} from "packages/java/util/stream/$LongStream"
+declare module "packages/java/util/concurrent/$ConcurrentHashMap" {
+import {$ConcurrentMap, $ConcurrentMap$Type} from "packages/java/util/concurrent/$ConcurrentMap"
 import {$Serializable, $Serializable$Type} from "packages/java/io/$Serializable"
-import {$RandomGenerator, $RandomGenerator$Type} from "packages/java/util/random/$RandomGenerator"
-import {$IntStream, $IntStream$Type} from "packages/java/util/stream/$IntStream"
-import {$DoubleStream, $DoubleStream$Type} from "packages/java/util/stream/$DoubleStream"
-
-export class $Random implements $RandomGenerator, $Serializable {
-
-constructor()
-constructor(arg0: long)
-
-public "nextBoolean"(): boolean
-public "nextLong"(): long
-public "nextFloat"(): float
-public "longs"(arg0: long): $LongStream
-public "longs"(arg0: long, arg1: long): $LongStream
-public "longs"(arg0: long, arg1: long, arg2: long): $LongStream
-public "longs"(): $LongStream
-public "doubles"(arg0: double, arg1: double): $DoubleStream
-public "doubles"(arg0: long): $DoubleStream
-public "doubles"(): $DoubleStream
-public "doubles"(arg0: long, arg1: double, arg2: double): $DoubleStream
-public "setSeed"(arg0: long): void
-public "nextGaussian"(): double
-public "nextBytes"(arg0: (byte)[]): void
-public "nextDouble"(): double
-public "nextInt"(): integer
-public "nextInt"(arg0: integer): integer
-public "ints"(arg0: integer, arg1: integer): $IntStream
-public "ints"(arg0: long, arg1: integer, arg2: integer): $IntStream
-public "ints"(arg0: long): $IntStream
-public "ints"(): $IntStream
-public "nextLong"(arg0: long, arg1: long): long
-public "nextLong"(arg0: long): long
-public "nextFloat"(arg0: float): float
-public "nextFloat"(arg0: float, arg1: float): float
-public "nextGaussian"(arg0: double, arg1: double): double
-public "isDeprecated"(): boolean
-public "nextExponential"(): double
-public static "getDefault"(): $RandomGenerator
-public static "of"(arg0: string): $RandomGenerator
-public "nextDouble"(arg0: double, arg1: double): double
-public "nextDouble"(arg0: double): double
-public "nextInt"(arg0: integer, arg1: integer): integer
-set "seed"(value: long)
-get "deprecated"(): boolean
-get "default"(): $RandomGenerator
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $Random$Type = ($Random);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $Random_ = $Random$Type;
-}}
-declare module "packages/java/util/concurrent/$Callable" {
-export {} // Mark the file as a module, do not remove unless there are other import/exports!
-export interface $Callable<V> {
-
- "call"(): V
-
-(): V
-}
-
-export namespace $Callable {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $Callable$Type<V> = ($Callable<(V)>);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $Callable_<V> = $Callable$Type<(V)>;
-}}
-declare module "packages/java/util/$HashMap" {
+import {$ToIntFunction, $ToIntFunction$Type} from "packages/java/util/function/$ToIntFunction"
+import {$Collection, $Collection$Type} from "packages/java/util/$Collection"
+import {$LongBinaryOperator, $LongBinaryOperator$Type} from "packages/java/util/function/$LongBinaryOperator"
+import {$ConcurrentHashMap$KeySetView, $ConcurrentHashMap$KeySetView$Type} from "packages/java/util/concurrent/$ConcurrentHashMap$KeySetView"
+import {$AbstractMap, $AbstractMap$Type} from "packages/java/util/$AbstractMap"
+import {$IntBinaryOperator, $IntBinaryOperator$Type} from "packages/java/util/function/$IntBinaryOperator"
+import {$BiFunction, $BiFunction$Type} from "packages/java/util/function/$BiFunction"
+import {$ToIntBiFunction, $ToIntBiFunction$Type} from "packages/java/util/function/$ToIntBiFunction"
 import {$BiConsumer, $BiConsumer$Type} from "packages/java/util/function/$BiConsumer"
 import {$Function, $Function$Type} from "packages/java/util/function/$Function"
-import {$Serializable, $Serializable$Type} from "packages/java/io/$Serializable"
+import {$Consumer, $Consumer$Type} from "packages/java/util/function/$Consumer"
+import {$Enumeration, $Enumeration$Type} from "packages/java/util/$Enumeration"
 import {$Set, $Set$Type} from "packages/java/util/$Set"
-import {$Collection, $Collection$Type} from "packages/java/util/$Collection"
-import {$Cloneable, $Cloneable$Type} from "packages/java/lang/$Cloneable"
-import {$AbstractMap, $AbstractMap$Type} from "packages/java/util/$AbstractMap"
-import {$BiFunction, $BiFunction$Type} from "packages/java/util/function/$BiFunction"
+import {$DoubleBinaryOperator, $DoubleBinaryOperator$Type} from "packages/java/util/function/$DoubleBinaryOperator"
+import {$ToLongBiFunction, $ToLongBiFunction$Type} from "packages/java/util/function/$ToLongBiFunction"
+import {$ToLongFunction, $ToLongFunction$Type} from "packages/java/util/function/$ToLongFunction"
+import {$ToDoubleFunction, $ToDoubleFunction$Type} from "packages/java/util/function/$ToDoubleFunction"
 import {$Map, $Map$Type} from "packages/java/util/$Map"
 import {$Map$Entry, $Map$Entry$Type} from "packages/java/util/$Map$Entry"
+import {$ToDoubleBiFunction, $ToDoubleBiFunction$Type} from "packages/java/util/function/$ToDoubleBiFunction"
 
-export class $HashMap<K, V> extends $AbstractMap<(K), (V)> implements $Map<(K), (V)>, $Cloneable, $Serializable {
+export class $ConcurrentHashMap<K, V> extends $AbstractMap<(K), (V)> implements $ConcurrentMap<(K), (V)>, $Serializable {
 
 constructor(arg0: integer)
-constructor(arg0: integer, arg1: float)
 constructor(arg0: $Map$Type<(any), (any)>)
+constructor(arg0: integer, arg1: float)
+constructor(arg0: integer, arg1: float, arg2: integer)
 constructor()
 
-public "remove"(arg0: any, arg1: any): boolean
 public "remove"(arg0: any): V
+public "remove"(arg0: any, arg1: any): boolean
 public "get"(arg0: any): V
 public "put"(arg0: K, arg1: V): V
+public "equals"(arg0: any): boolean
+public "toString"(): string
 public "values"(): $Collection<(V)>
-public "clone"(): any
+public "hashCode"(): integer
 public "clear"(): void
 public "isEmpty"(): boolean
 public "replace"(arg0: K, arg1: V): V
 public "replace"(arg0: K, arg1: V, arg2: V): boolean
 public "replaceAll"(arg0: $BiFunction$Type<(any), (any), (any)>): void
 public "size"(): integer
+public "contains"(arg0: any): boolean
+public "elements"(): $Enumeration<(V)>
 public "merge"(arg0: K, arg1: V, arg2: $BiFunction$Type<(any), (any), (any)>): V
 public "entrySet"(): $Set<($Map$Entry<(K), (V)>)>
 public "putAll"(arg0: $Map$Type<(any), (any)>): void
 public "putIfAbsent"(arg0: K, arg1: V): V
 public "compute"(arg0: K, arg1: $BiFunction$Type<(any), (any), (any)>): V
+public "forEach"(arg0: long, arg1: $BiConsumer$Type<(any), (any)>): void
+public "forEach"<U>(arg0: long, arg1: $BiFunction$Type<(any), (any), (any)>, arg2: $Consumer$Type<(any)>): void
 public "forEach"(arg0: $BiConsumer$Type<(any), (any)>): void
 public "containsKey"(arg0: any): boolean
 public "computeIfAbsent"(arg0: K, arg1: $Function$Type<(any), (any)>): V
-public "keySet"(): $Set<(K)>
+public "keys"(): $Enumeration<(K)>
+public "keySet"(arg0: V): $ConcurrentHashMap$KeySetView<(K), (V)>
 public "containsValue"(arg0: any): boolean
 public "getOrDefault"(arg0: any, arg1: V): V
 public "computeIfPresent"(arg0: K, arg1: $BiFunction$Type<(any), (any), (any)>): V
-public "equals"(arg0: any): boolean
-public "hashCode"(): integer
+public "mappingCount"(): long
+public static "newKeySet"<K>(arg0: integer): $ConcurrentHashMap$KeySetView<(K), (boolean)>
+public static "newKeySet"<K>(): $ConcurrentHashMap$KeySetView<(K), (boolean)>
+public "search"<U>(arg0: long, arg1: $BiFunction$Type<(any), (any), (any)>): U
+public "reduce"<U>(arg0: long, arg1: $BiFunction$Type<(any), (any), (any)>, arg2: $BiFunction$Type<(any), (any), (any)>): U
+public "reduceToDouble"(arg0: long, arg1: $ToDoubleBiFunction$Type<(any), (any)>, arg2: double, arg3: $DoubleBinaryOperator$Type): double
+public "reduceToLong"(arg0: long, arg1: $ToLongBiFunction$Type<(any), (any)>, arg2: long, arg3: $LongBinaryOperator$Type): long
+public "reduceToInt"(arg0: long, arg1: $ToIntBiFunction$Type<(any), (any)>, arg2: integer, arg3: $IntBinaryOperator$Type): integer
+public "forEachKey"(arg0: long, arg1: $Consumer$Type<(any)>): void
+public "forEachKey"<U>(arg0: long, arg1: $Function$Type<(any), (any)>, arg2: $Consumer$Type<(any)>): void
+public "searchKeys"<U>(arg0: long, arg1: $Function$Type<(any), (any)>): U
+public "reduceKeys"(arg0: long, arg1: $BiFunction$Type<(any), (any), (any)>): K
+public "reduceKeys"<U>(arg0: long, arg1: $Function$Type<(any), (any)>, arg2: $BiFunction$Type<(any), (any), (any)>): U
+public "reduceKeysToDouble"(arg0: long, arg1: $ToDoubleFunction$Type<(any)>, arg2: double, arg3: $DoubleBinaryOperator$Type): double
+public "reduceKeysToLong"(arg0: long, arg1: $ToLongFunction$Type<(any)>, arg2: long, arg3: $LongBinaryOperator$Type): long
+public "reduceKeysToInt"(arg0: long, arg1: $ToIntFunction$Type<(any)>, arg2: integer, arg3: $IntBinaryOperator$Type): integer
+public "forEachValue"<U>(arg0: long, arg1: $Function$Type<(any), (any)>, arg2: $Consumer$Type<(any)>): void
+public "forEachValue"(arg0: long, arg1: $Consumer$Type<(any)>): void
+public "searchValues"<U>(arg0: long, arg1: $Function$Type<(any), (any)>): U
+public "reduceValues"(arg0: long, arg1: $BiFunction$Type<(any), (any), (any)>): V
+public "reduceValues"<U>(arg0: long, arg1: $Function$Type<(any), (any)>, arg2: $BiFunction$Type<(any), (any), (any)>): U
+public "reduceValuesToDouble"(arg0: long, arg1: $ToDoubleFunction$Type<(any)>, arg2: double, arg3: $DoubleBinaryOperator$Type): double
+public "reduceValuesToLong"(arg0: long, arg1: $ToLongFunction$Type<(any)>, arg2: long, arg3: $LongBinaryOperator$Type): long
+public "reduceValuesToInt"(arg0: long, arg1: $ToIntFunction$Type<(any)>, arg2: integer, arg3: $IntBinaryOperator$Type): integer
+public "forEachEntry"(arg0: long, arg1: $Consumer$Type<(any)>): void
+public "forEachEntry"<U>(arg0: long, arg1: $Function$Type<($Map$Entry$Type<(K), (V)>), (any)>, arg2: $Consumer$Type<(any)>): void
+public "searchEntries"<U>(arg0: long, arg1: $Function$Type<($Map$Entry$Type<(K), (V)>), (any)>): U
+public "reduceEntries"(arg0: long, arg1: $BiFunction$Type<($Map$Entry$Type<(K), (V)>), ($Map$Entry$Type<(K), (V)>), (any)>): $Map$Entry<(K), (V)>
+public "reduceEntries"<U>(arg0: long, arg1: $Function$Type<($Map$Entry$Type<(K), (V)>), (any)>, arg2: $BiFunction$Type<(any), (any), (any)>): U
+public "reduceEntriesToDouble"(arg0: long, arg1: $ToDoubleFunction$Type<($Map$Entry$Type<(K), (V)>)>, arg2: double, arg3: $DoubleBinaryOperator$Type): double
+public "reduceEntriesToLong"(arg0: long, arg1: $ToLongFunction$Type<($Map$Entry$Type<(K), (V)>)>, arg2: long, arg3: $LongBinaryOperator$Type): long
+public "reduceEntriesToInt"(arg0: long, arg1: $ToIntFunction$Type<($Map$Entry$Type<(K), (V)>)>, arg2: integer, arg3: $IntBinaryOperator$Type): integer
 public static "copyOf"<K, V>(arg0: $Map$Type<(any), (any)>): $Map<(K), (V)>
 public static "of"<K, V>(arg0: K, arg1: V, arg2: K, arg3: V, arg4: K, arg5: V, arg6: K, arg7: V, arg8: K, arg9: V): $Map<(K), (V)>
 public static "of"<K, V>(arg0: K, arg1: V, arg2: K, arg3: V, arg4: K, arg5: V, arg6: K, arg7: V): $Map<(K), (V)>
@@ -4063,158 +5303,13 @@ get "empty"(): boolean
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $HashMap$Type<K, V> = ($HashMap<(K), (V)>);
+export type $ConcurrentHashMap$Type<K, V> = ($ConcurrentHashMap<(K), (V)>);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
  */
 declare global {
-export type $HashMap_<K, V> = $HashMap$Type<(K), (V)>;
-}}
-declare module "packages/java/util/function/$BooleanSupplier" {
-export {} // Mark the file as a module, do not remove unless there are other import/exports!
-export interface $BooleanSupplier {
-
- "getAsBoolean"(): boolean
-
-(): boolean
-}
-
-export namespace $BooleanSupplier {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $BooleanSupplier$Type = ($BooleanSupplier);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $BooleanSupplier_ = $BooleanSupplier$Type;
-}}
-declare module "packages/java/util/$BitSet" {
-import {$Serializable, $Serializable$Type} from "packages/java/io/$Serializable"
-import {$IntStream, $IntStream$Type} from "packages/java/util/stream/$IntStream"
-import {$LongBuffer, $LongBuffer$Type} from "packages/java/nio/$LongBuffer"
-import {$Cloneable, $Cloneable$Type} from "packages/java/lang/$Cloneable"
-import {$ByteBuffer, $ByteBuffer$Type} from "packages/java/nio/$ByteBuffer"
-
-export class $BitSet implements $Cloneable, $Serializable {
-
-constructor()
-constructor(arg0: integer)
-
-public "nextSetBit"(arg0: integer): integer
-public "toLongArray"(): (long)[]
-public "previousSetBit"(arg0: integer): integer
-public "previousClearBit"(arg0: integer): integer
-public "intersects"(arg0: $BitSet$Type): boolean
-public "xor"(arg0: $BitSet$Type): void
-public "andNot"(arg0: $BitSet$Type): void
-public "and"(arg0: $BitSet$Type): void
-public "or"(arg0: $BitSet$Type): void
-public "get"(arg0: integer, arg1: integer): $BitSet
-public "get"(arg0: integer): boolean
-public "equals"(arg0: any): boolean
-public "length"(): integer
-public "toString"(): string
-public "hashCode"(): integer
-public "clone"(): any
-public static "valueOf"(arg0: (byte)[]): $BitSet
-public static "valueOf"(arg0: (long)[]): $BitSet
-public static "valueOf"(arg0: $LongBuffer$Type): $BitSet
-public static "valueOf"(arg0: $ByteBuffer$Type): $BitSet
-public "clear"(arg0: integer): void
-public "clear"(arg0: integer, arg1: integer): void
-public "clear"(): void
-public "isEmpty"(): boolean
-public "size"(): integer
-public "stream"(): $IntStream
-public "set"(arg0: integer, arg1: boolean): void
-public "set"(arg0: integer, arg1: integer): void
-public "set"(arg0: integer, arg1: integer, arg2: boolean): void
-public "set"(arg0: integer): void
-public "toByteArray"(): (byte)[]
-public "flip"(arg0: integer): void
-public "flip"(arg0: integer, arg1: integer): void
-public "nextClearBit"(arg0: integer): integer
-public "cardinality"(): integer
-get "empty"(): boolean
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $BitSet$Type = ($BitSet);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $BitSet_ = $BitSet$Type;
-}}
-declare module "packages/java/util/$ListIterator" {
-import {$Consumer, $Consumer$Type} from "packages/java/util/function/$Consumer"
-import {$Iterator, $Iterator$Type} from "packages/java/util/$Iterator"
-
-export interface $ListIterator<E> extends $Iterator<(E)> {
-
- "add"(arg0: E): void
- "remove"(): void
- "hasNext"(): boolean
- "next"(): E
- "set"(arg0: E): void
- "nextIndex"(): integer
- "previousIndex"(): integer
- "hasPrevious"(): boolean
- "previous"(): E
- "forEachRemaining"(arg0: $Consumer$Type<(any)>): void
-}
-
-export namespace $ListIterator {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $ListIterator$Type<E> = ($ListIterator<(E)>);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $ListIterator_<E> = $ListIterator$Type<(E)>;
-}}
-declare module "packages/java/util/stream/$DoubleStream$Builder" {
-import {$DoubleConsumer, $DoubleConsumer$Type} from "packages/java/util/function/$DoubleConsumer"
-import {$DoubleStream, $DoubleStream$Type} from "packages/java/util/stream/$DoubleStream"
-
-export interface $DoubleStream$Builder extends $DoubleConsumer {
-
- "add"(arg0: double): $DoubleStream$Builder
- "accept"(arg0: double): void
- "build"(): $DoubleStream
- "andThen"(arg0: $DoubleConsumer$Type): $DoubleConsumer
-}
-
-export namespace $DoubleStream$Builder {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $DoubleStream$Builder$Type = ($DoubleStream$Builder);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $DoubleStream$Builder_ = $DoubleStream$Builder$Type;
+export type $ConcurrentHashMap_<K, V> = $ConcurrentHashMap$Type<(K), (V)>;
 }}
 declare module "packages/java/util/$EnumSet" {
 import {$Serializable, $Serializable$Type} from "packages/java/io/$Serializable"
@@ -4231,16 +5326,16 @@ export class $EnumSet<E extends $Enum<(E)>> extends $AbstractSet<(E)> implements
 
 public static "allOf"<E extends $Enum<(E)>>(arg0: $Class$Type<(E)>): $EnumSet<(E)>
 public static "complementOf"<E extends $Enum<(E)>>(arg0: $EnumSet$Type<(E)>): $EnumSet<(E)>
-public static "copyOf"<E extends $Enum<(E)>>(arg0: $EnumSet$Type<(E)>): $EnumSet<(E)>
+public static "range"<E extends $Enum<(E)>>(arg0: E, arg1: E): $EnumSet<(E)>
 public static "copyOf"<E extends $Enum<(E)>>(arg0: $Collection$Type<(E)>): $EnumSet<(E)>
+public static "copyOf"<E extends $Enum<(E)>>(arg0: $EnumSet$Type<(E)>): $EnumSet<(E)>
+public static "of"<E extends $Enum<(E)>>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E): $EnumSet<(E)>
+public static "of"<E extends $Enum<(E)>>(arg0: E): $EnumSet<(E)>
+public static "of"<E extends $Enum<(E)>>(arg0: E, arg1: E, arg2: E, arg3: E): $EnumSet<(E)>
+public static "of"<E extends $Enum<(E)>>(arg0: E, arg1: E, arg2: E): $EnumSet<(E)>
 public static "of"<E extends $Enum<(E)>>(arg0: E, ...arg1: (E)[]): $EnumSet<(E)>
 public static "of"<E extends $Enum<(E)>>(arg0: E, arg1: E): $EnumSet<(E)>
-public static "of"<E extends $Enum<(E)>>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E): $EnumSet<(E)>
-public static "of"<E extends $Enum<(E)>>(arg0: E, arg1: E, arg2: E, arg3: E): $EnumSet<(E)>
-public static "of"<E extends $Enum<(E)>>(arg0: E): $EnumSet<(E)>
-public static "of"<E extends $Enum<(E)>>(arg0: E, arg1: E, arg2: E): $EnumSet<(E)>
 public static "noneOf"<E extends $Enum<(E)>>(arg0: $Class$Type<(E)>): $EnumSet<(E)>
-public static "range"<E extends $Enum<(E)>>(arg0: E, arg1: E): $EnumSet<(E)>
 public "add"(arg0: E): boolean
 public "remove"(arg0: any): boolean
 public "clear"(): void
@@ -4279,33 +5374,6 @@ export type $EnumSet$Type<E> = ($EnumSet<(E)>);
 declare global {
 export type $EnumSet_<E> = $EnumSet$Type<(E)>;
 }}
-declare module "packages/java/util/stream/$LongStream$Builder" {
-import {$LongStream, $LongStream$Type} from "packages/java/util/stream/$LongStream"
-import {$LongConsumer, $LongConsumer$Type} from "packages/java/util/function/$LongConsumer"
-
-export interface $LongStream$Builder extends $LongConsumer {
-
- "add"(arg0: long): $LongStream$Builder
- "accept"(arg0: long): void
- "build"(): $LongStream
- "andThen"(arg0: $LongConsumer$Type): $LongConsumer
-}
-
-export namespace $LongStream$Builder {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $LongStream$Builder$Type = ($LongStream$Builder);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $LongStream$Builder_ = $LongStream$Builder$Type;
-}}
 declare module "packages/java/util/concurrent/atomic/$AtomicInteger" {
 import {$Serializable, $Serializable$Type} from "packages/java/io/$Serializable"
 import {$IntBinaryOperator, $IntBinaryOperator$Type} from "packages/java/util/function/$IntBinaryOperator"
@@ -4316,6 +5384,18 @@ export class $AtomicInteger extends number implements $Serializable {
 constructor(arg0: integer)
 constructor()
 
+public "weakCompareAndSetVolatile"(arg0: integer, arg1: integer): boolean
+public "getAndIncrement"(): integer
+public "getAndDecrement"(): integer
+public "incrementAndGet"(): integer
+public "decrementAndGet"(): integer
+public "addAndGet"(arg0: integer): integer
+public "getAndUpdate"(arg0: $IntUnaryOperator$Type): integer
+public "updateAndGet"(arg0: $IntUnaryOperator$Type): integer
+public "getAndAccumulate"(arg0: integer, arg1: $IntBinaryOperator$Type): integer
+public "accumulateAndGet"(arg0: integer, arg1: $IntBinaryOperator$Type): integer
+public "getPlain"(): integer
+public "setPlain"(arg0: integer): void
 public "get"(): integer
 public "toString"(): string
 public "intValue"(): integer
@@ -4342,26 +5422,14 @@ public "weakCompareAndSetRelease"(arg0: integer, arg1: integer): boolean
 public "getAndSet"(arg0: integer): integer
 public "getAndAdd"(arg0: integer): integer
 public "lazySet"(arg0: integer): void
-public "weakCompareAndSetVolatile"(arg0: integer, arg1: integer): boolean
-public "getAndIncrement"(): integer
-public "getAndDecrement"(): integer
-public "incrementAndGet"(): integer
-public "decrementAndGet"(): integer
-public "addAndGet"(arg0: integer): integer
-public "getAndUpdate"(arg0: $IntUnaryOperator$Type): integer
-public "updateAndGet"(arg0: $IntUnaryOperator$Type): integer
-public "getAndAccumulate"(arg0: integer, arg1: $IntBinaryOperator$Type): integer
-public "accumulateAndGet"(arg0: integer, arg1: $IntBinaryOperator$Type): integer
-public "getPlain"(): integer
-public "setPlain"(arg0: integer): void
-get "opaque"(): integer
-set "opaque"(value: integer)
-get "acquire"(): integer
-set "release"(value: integer)
 get "andIncrement"(): integer
 get "andDecrement"(): integer
 get "plain"(): integer
 set "plain"(value: integer)
+get "opaque"(): integer
+set "opaque"(value: integer)
+get "acquire"(): integer
+set "release"(value: integer)
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4374,105 +5442,6 @@ export type $AtomicInteger$Type = ($AtomicInteger);
  */
 declare global {
 export type $AtomicInteger_ = $AtomicInteger$Type;
-}}
-declare module "packages/java/util/$Vector" {
-import {$Comparator, $Comparator$Type} from "packages/java/util/$Comparator"
-import {$Serializable, $Serializable$Type} from "packages/java/io/$Serializable"
-import {$Collection, $Collection$Type} from "packages/java/util/$Collection"
-import {$Predicate, $Predicate$Type} from "packages/java/util/function/$Predicate"
-import {$AbstractList, $AbstractList$Type} from "packages/java/util/$AbstractList"
-import {$ListIterator, $ListIterator$Type} from "packages/java/util/$ListIterator"
-import {$Spliterator, $Spliterator$Type} from "packages/java/util/$Spliterator"
-import {$Consumer, $Consumer$Type} from "packages/java/util/function/$Consumer"
-import {$UnaryOperator, $UnaryOperator$Type} from "packages/java/util/function/$UnaryOperator"
-import {$Enumeration, $Enumeration$Type} from "packages/java/util/$Enumeration"
-import {$List, $List$Type} from "packages/java/util/$List"
-import {$Cloneable, $Cloneable$Type} from "packages/java/lang/$Cloneable"
-import {$RandomAccess, $RandomAccess$Type} from "packages/java/util/$RandomAccess"
-import {$Iterator, $Iterator$Type} from "packages/java/util/$Iterator"
-
-export class $Vector<E> extends $AbstractList<(E)> implements $List<(E)>, $RandomAccess, $Cloneable, $Serializable {
-
-constructor(arg0: integer, arg1: integer)
-constructor(arg0: integer)
-constructor(arg0: $Collection$Type<(any)>)
-constructor()
-
-public "copyInto"(arg0: (any)[]): void
-public "removeElementAt"(arg0: integer): void
-public "removeElement"(arg0: any): boolean
-public "insertElementAt"(arg0: E, arg1: integer): void
-public "removeAllElements"(): void
-public "firstElement"(): E
-public "lastElement"(): E
-public "setElementAt"(arg0: E, arg1: integer): void
-public "addElement"(arg0: E): void
-public "setSize"(arg0: integer): void
-public "add"(arg0: E): boolean
-public "add"(arg0: integer, arg1: E): void
-public "remove"(arg0: integer): E
-public "remove"(arg0: any): boolean
-public "get"(arg0: integer): E
-public "equals"(arg0: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
-public "clone"(): any
-public "indexOf"(arg0: any, arg1: integer): integer
-public "indexOf"(arg0: any): integer
-public "clear"(): void
-public "lastIndexOf"(arg0: any, arg1: integer): integer
-public "lastIndexOf"(arg0: any): integer
-public "isEmpty"(): boolean
-public "replaceAll"(arg0: $UnaryOperator$Type<(E)>): void
-public "size"(): integer
-public "subList"(arg0: integer, arg1: integer): $List<(E)>
-public "toArray"<T>(arg0: (T)[]): (T)[]
-public "toArray"(): (any)[]
-public "iterator"(): $Iterator<(E)>
-public "contains"(arg0: any): boolean
-public "elements"(): $Enumeration<(E)>
-public "spliterator"(): $Spliterator<(E)>
-public "addAll"(arg0: integer, arg1: $Collection$Type<(any)>): boolean
-public "addAll"(arg0: $Collection$Type<(any)>): boolean
-public "set"(arg0: integer, arg1: E): E
-public "forEach"(arg0: $Consumer$Type<(any)>): void
-public "capacity"(): integer
-public "ensureCapacity"(arg0: integer): void
-public "trimToSize"(): void
-public "elementAt"(arg0: integer): E
-public "removeIf"(arg0: $Predicate$Type<(any)>): boolean
-public "sort"(arg0: $Comparator$Type<(any)>): void
-public "removeAll"(arg0: $Collection$Type<(any)>): boolean
-public "retainAll"(arg0: $Collection$Type<(any)>): boolean
-public "listIterator"(arg0: integer): $ListIterator<(E)>
-public "listIterator"(): $ListIterator<(E)>
-public "containsAll"(arg0: $Collection$Type<(any)>): boolean
-public static "copyOf"<E>(arg0: $Collection$Type<(any)>): $List<(E)>
-public static "of"<E>(arg0: E, arg1: E, arg2: E, arg3: E): $List<(E)>
-public static "of"<E>(arg0: E, arg1: E, arg2: E): $List<(E)>
-public static "of"<E>(arg0: E, arg1: E): $List<(E)>
-public static "of"<E>(arg0: E): $List<(E)>
-public static "of"<E>(): $List<(E)>
-public static "of"<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E, arg6: E, arg7: E): $List<(E)>
-public static "of"<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E, arg6: E): $List<(E)>
-public static "of"<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E): $List<(E)>
-public static "of"<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E): $List<(E)>
-public static "of"<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E, arg6: E, arg7: E, arg8: E, arg9: E): $List<(E)>
-public static "of"<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E, arg6: E, arg7: E, arg8: E): $List<(E)>
-public static "of"<E>(...arg0: (E)[]): $List<(E)>
-get "empty"(): boolean
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $Vector$Type<E> = ($Vector<(E)>);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $Vector_<E> = $Vector$Type<(E)>;
 }}
 declare module "packages/java/util/function/$DoubleConsumer" {
 export {} // Mark the file as a module, do not remove unless there are other import/exports!
@@ -4499,30 +5468,6 @@ export type $DoubleConsumer$Type = ($DoubleConsumer);
 declare global {
 export type $DoubleConsumer_ = $DoubleConsumer$Type;
 }}
-declare module "packages/java/util/function/$LongToIntFunction" {
-export {} // Mark the file as a module, do not remove unless there are other import/exports!
-export interface $LongToIntFunction {
-
- "applyAsInt"(arg0: long): integer
-
-(arg0: long): integer
-}
-
-export namespace $LongToIntFunction {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $LongToIntFunction$Type = ($LongToIntFunction);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $LongToIntFunction_ = $LongToIntFunction$Type;
-}}
 declare module "packages/java/util/concurrent/$ExecutorService" {
 import {$Collection, $Collection$Type} from "packages/java/util/$Collection"
 import {$List, $List$Type} from "packages/java/util/$List"
@@ -4534,18 +5479,18 @@ import {$Runnable, $Runnable$Type} from "packages/java/lang/$Runnable"
 
 export interface $ExecutorService extends $Executor {
 
+ "isShutdown"(): boolean
  "shutdownNow"(): $List<($Runnable)>
  "isTerminated"(): boolean
  "awaitTermination"(arg0: long, arg1: $TimeUnit$Type): boolean
  "submit"<T>(arg0: $Callable$Type<(T)>): $Future<(T)>
  "submit"(arg0: $Runnable$Type): $Future<(any)>
  "submit"<T>(arg0: $Runnable$Type, arg1: T): $Future<(T)>
- "invokeAll"<T>(arg0: $Collection$Type<(any)>): $List<($Future<(T)>)>
  "invokeAll"<T>(arg0: $Collection$Type<(any)>, arg1: long, arg2: $TimeUnit$Type): $List<($Future<(T)>)>
+ "invokeAll"<T>(arg0: $Collection$Type<(any)>): $List<($Future<(T)>)>
  "invokeAny"<T>(arg0: $Collection$Type<(any)>): T
  "invokeAny"<T>(arg0: $Collection$Type<(any)>, arg1: long, arg2: $TimeUnit$Type): T
  "shutdown"(): void
- "isShutdown"(): boolean
  "execute"(arg0: $Runnable$Type): void
 }
 
@@ -4632,7 +5577,6 @@ import {$MatchResult, $MatchResult$Type} from "packages/java/util/regex/$MatchRe
 export class $Matcher implements $MatchResult {
 
 
-public "pattern"(): $Pattern
 public "hitEnd"(): boolean
 public "groupCount"(): integer
 public "requireEnd"(): boolean
@@ -4652,25 +5596,26 @@ public "appendReplacement"(arg0: $StringBuilder$Type, arg1: string): $Matcher
 public "appendTail"(arg0: $StringBuilder$Type): $StringBuilder
 public "appendTail"(arg0: $StringBuffer$Type): $StringBuffer
 public "region"(arg0: integer, arg1: integer): $Matcher
+public "pattern"(): $Pattern
+public "group"(): string
 public "group"(arg0: string): string
 public "group"(arg0: integer): string
-public "group"(): string
 public "toString"(): string
 public "matches"(): boolean
 public "replaceFirst"(arg0: $Function$Type<($MatchResult$Type), (string)>): string
 public "replaceFirst"(arg0: string): string
 public "replaceAll"(arg0: string): string
 public "replaceAll"(arg0: $Function$Type<($MatchResult$Type), (string)>): string
-public "start"(arg0: string): integer
 public "start"(arg0: integer): integer
 public "start"(): integer
-public "end"(arg0: string): integer
+public "start"(arg0: string): integer
 public "end"(arg0: integer): integer
+public "end"(arg0: string): integer
 public "end"(): integer
-public "find"(arg0: integer): boolean
 public "find"(): boolean
-public "reset"(): $Matcher
+public "find"(arg0: integer): boolean
 public "reset"(arg0: charseq): $Matcher
+public "reset"(): $Matcher
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4757,8 +5702,8 @@ import {$Instant, $Instant$Type} from "packages/java/time/$Instant"
 import {$Set, $Set$Type} from "packages/java/util/$Set"
 import {$Cloneable, $Cloneable$Type} from "packages/java/lang/$Cloneable"
 import {$TimeZone, $TimeZone$Type} from "packages/java/util/$TimeZone"
-import {$Map, $Map$Type} from "packages/java/util/$Map"
 import {$Locale, $Locale$Type} from "packages/java/util/$Locale"
+import {$Map, $Map$Type} from "packages/java/util/$Map"
 
 export class $Calendar implements $Serializable, $Cloneable, $Comparable<($Calendar)> {
 static readonly "ERA": integer
@@ -4813,22 +5758,8 @@ static readonly "SHORT_STANDALONE": integer
 static readonly "LONG_STANDALONE": integer
 
 
-public "setLenient"(arg0: boolean): void
-public "isLenient"(): boolean
-public "getFirstDayOfWeek"(): integer
-public "getMinimalDaysInFirstWeek"(): integer
-public "setTimeInMillis"(arg0: long): void
-public "isWeekDateSupported"(): boolean
-public "getWeekYear"(): integer
-public "getLeastMaximum"(arg0: integer): integer
-public "getDisplayNames"(arg0: integer, arg1: integer, arg2: $Locale$Type): $Map<(string), (integer)>
-public "getCalendarType"(): string
-public "getTimeZone"(): $TimeZone
-public "setTimeZone"(arg0: $TimeZone$Type): void
-public "getMinimum"(arg0: integer): integer
-public "getMaximum"(arg0: integer): integer
-public "roll"(arg0: integer, arg1: integer): void
 public "roll"(arg0: integer, arg1: boolean): void
+public "roll"(arg0: integer, arg1: integer): void
 public "getGreatestMinimum"(arg0: integer): integer
 public static "getAvailableCalendarTypes"(): $Set<(string)>
 public "setFirstDayOfWeek"(arg0: integer): void
@@ -4837,11 +5768,28 @@ public "setWeekDate"(arg0: integer, arg1: integer, arg2: integer): void
 public "getWeeksInWeekYear"(): integer
 public "getActualMinimum"(arg0: integer): integer
 public "getActualMaximum"(arg0: integer): integer
+public "getTimeInMillis"(): long
+public "getMinimum"(arg0: integer): integer
+public "getMaximum"(arg0: integer): integer
 public "getTime"(): $Date
 public "toInstant"(): $Instant
 public "setTime"(arg0: $Date$Type): void
 public "getDisplayName"(arg0: integer, arg1: integer, arg2: $Locale$Type): string
 public static "getAvailableLocales"(): ($Locale)[]
+public "getDisplayNames"(arg0: integer, arg1: integer, arg2: $Locale$Type): $Map<(string), (integer)>
+public "getCalendarType"(): string
+public "setLenient"(arg0: boolean): void
+public "isLenient"(): boolean
+public "getFirstDayOfWeek"(): integer
+public "getMinimalDaysInFirstWeek"(): integer
+public "setTimeInMillis"(arg0: long): void
+public "isWeekDateSupported"(): boolean
+public "getWeekYear"(): integer
+public "getLeastMaximum"(arg0: integer): integer
+public "before"(arg0: any): boolean
+public "after"(arg0: any): boolean
+public "getTimeZone"(): $TimeZone
+public "setTimeZone"(arg0: $TimeZone$Type): void
 public "add"(arg0: integer, arg1: integer): void
 public "get"(arg0: integer): integer
 public "equals"(arg0: any): boolean
@@ -4849,20 +5797,26 @@ public "toString"(): string
 public "hashCode"(): integer
 public "clone"(): any
 public "compareTo"(arg0: $Calendar$Type): integer
-public "clear"(): void
 public "clear"(arg0: integer): void
-public static "getInstance"(arg0: $TimeZone$Type, arg1: $Locale$Type): $Calendar
+public "clear"(): void
 public static "getInstance"(arg0: $Locale$Type): $Calendar
 public static "getInstance"(arg0: $TimeZone$Type): $Calendar
+public static "getInstance"(arg0: $TimeZone$Type, arg1: $Locale$Type): $Calendar
 public static "getInstance"(): $Calendar
 public "set"(arg0: integer, arg1: integer, arg2: integer, arg3: integer, arg4: integer, arg5: integer): void
-public "set"(arg0: integer, arg1: integer, arg2: integer): void
 public "set"(arg0: integer, arg1: integer): void
+public "set"(arg0: integer, arg1: integer, arg2: integer): void
 public "set"(arg0: integer, arg1: integer, arg2: integer, arg3: integer, arg4: integer): void
 public "isSet"(arg0: integer): boolean
-public "before"(arg0: any): boolean
-public "after"(arg0: any): boolean
-public "getTimeInMillis"(): long
+get "availableCalendarTypes"(): $Set<(string)>
+set "firstDayOfWeek"(value: integer)
+set "minimalDaysInFirstWeek"(value: integer)
+get "weeksInWeekYear"(): integer
+get "timeInMillis"(): long
+get "time"(): $Date
+set "time"(value: $Date$Type)
+get "availableLocales"(): ($Locale)[]
+get "calendarType"(): string
 set "lenient"(value: boolean)
 get "lenient"(): boolean
 get "firstDayOfWeek"(): integer
@@ -4870,18 +5824,9 @@ get "minimalDaysInFirstWeek"(): integer
 set "timeInMillis"(value: long)
 get "weekDateSupported"(): boolean
 get "weekYear"(): integer
-get "calendarType"(): string
 get "timeZone"(): $TimeZone
 set "timeZone"(value: $TimeZone$Type)
-get "availableCalendarTypes"(): $Set<(string)>
-set "firstDayOfWeek"(value: integer)
-set "minimalDaysInFirstWeek"(value: integer)
-get "weeksInWeekYear"(): integer
-get "time"(): $Date
-set "time"(value: $Date$Type)
-get "availableLocales"(): ($Locale)[]
 get "instance"(): $Calendar
-get "timeInMillis"(): long
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4894,77 +5839,6 @@ export type $Calendar$Type = ($Calendar);
  */
 declare global {
 export type $Calendar_ = $Calendar$Type;
-}}
-declare module "packages/java/util/$LinkedHashMap" {
-import {$BiConsumer, $BiConsumer$Type} from "packages/java/util/function/$BiConsumer"
-import {$Function, $Function$Type} from "packages/java/util/function/$Function"
-import {$HashMap, $HashMap$Type} from "packages/java/util/$HashMap"
-import {$Set, $Set$Type} from "packages/java/util/$Set"
-import {$Collection, $Collection$Type} from "packages/java/util/$Collection"
-import {$BiFunction, $BiFunction$Type} from "packages/java/util/function/$BiFunction"
-import {$Map, $Map$Type} from "packages/java/util/$Map"
-import {$Map$Entry, $Map$Entry$Type} from "packages/java/util/$Map$Entry"
-
-export class $LinkedHashMap<K, V> extends $HashMap<(K), (V)> implements $Map<(K), (V)> {
-
-constructor()
-constructor(arg0: integer)
-constructor(arg0: integer, arg1: float)
-constructor(arg0: $Map$Type<(any), (any)>)
-constructor(arg0: integer, arg1: float, arg2: boolean)
-
-public "get"(arg0: any): V
-public "values"(): $Collection<(V)>
-public "clear"(): void
-public "replaceAll"(arg0: $BiFunction$Type<(any), (any), (any)>): void
-public "entrySet"(): $Set<($Map$Entry<(K), (V)>)>
-public "forEach"(arg0: $BiConsumer$Type<(any), (any)>): void
-public "keySet"(): $Set<(K)>
-public "containsValue"(arg0: any): boolean
-public "getOrDefault"(arg0: any, arg1: V): V
-public "remove"(arg0: any): V
-public "remove"(arg0: any, arg1: any): boolean
-public "put"(arg0: K, arg1: V): V
-public "equals"(arg0: any): boolean
-public "hashCode"(): integer
-public static "copyOf"<K, V>(arg0: $Map$Type<(any), (any)>): $Map<(K), (V)>
-public "isEmpty"(): boolean
-public "replace"(arg0: K, arg1: V): V
-public "replace"(arg0: K, arg1: V, arg2: V): boolean
-public "size"(): integer
-public static "of"<K, V>(arg0: K, arg1: V, arg2: K, arg3: V, arg4: K, arg5: V, arg6: K, arg7: V, arg8: K, arg9: V): $Map<(K), (V)>
-public static "of"<K, V>(arg0: K, arg1: V, arg2: K, arg3: V, arg4: K, arg5: V, arg6: K, arg7: V): $Map<(K), (V)>
-public static "of"<K, V>(arg0: K, arg1: V, arg2: K, arg3: V, arg4: K, arg5: V): $Map<(K), (V)>
-public static "of"<K, V>(): $Map<(K), (V)>
-public static "of"<K, V>(arg0: K, arg1: V, arg2: K, arg3: V): $Map<(K), (V)>
-public static "of"<K, V>(arg0: K, arg1: V): $Map<(K), (V)>
-public static "of"<K, V>(arg0: K, arg1: V, arg2: K, arg3: V, arg4: K, arg5: V, arg6: K, arg7: V, arg8: K, arg9: V, arg10: K, arg11: V, arg12: K, arg13: V, arg14: K, arg15: V, arg16: K, arg17: V, arg18: K, arg19: V): $Map<(K), (V)>
-public static "of"<K, V>(arg0: K, arg1: V, arg2: K, arg3: V, arg4: K, arg5: V, arg6: K, arg7: V, arg8: K, arg9: V, arg10: K, arg11: V, arg12: K, arg13: V, arg14: K, arg15: V, arg16: K, arg17: V): $Map<(K), (V)>
-public static "of"<K, V>(arg0: K, arg1: V, arg2: K, arg3: V, arg4: K, arg5: V, arg6: K, arg7: V, arg8: K, arg9: V, arg10: K, arg11: V, arg12: K, arg13: V, arg14: K, arg15: V): $Map<(K), (V)>
-public static "of"<K, V>(arg0: K, arg1: V, arg2: K, arg3: V, arg4: K, arg5: V, arg6: K, arg7: V, arg8: K, arg9: V, arg10: K, arg11: V, arg12: K, arg13: V): $Map<(K), (V)>
-public static "of"<K, V>(arg0: K, arg1: V, arg2: K, arg3: V, arg4: K, arg5: V, arg6: K, arg7: V, arg8: K, arg9: V, arg10: K, arg11: V): $Map<(K), (V)>
-public "merge"(arg0: K, arg1: V, arg2: $BiFunction$Type<(any), (any), (any)>): V
-public "putAll"(arg0: $Map$Type<(any), (any)>): void
-public "putIfAbsent"(arg0: K, arg1: V): V
-public "compute"(arg0: K, arg1: $BiFunction$Type<(any), (any), (any)>): V
-public static "entry"<K, V>(arg0: K, arg1: V): $Map$Entry<(K), (V)>
-public "containsKey"(arg0: any): boolean
-public "computeIfAbsent"(arg0: K, arg1: $Function$Type<(any), (any)>): V
-public "computeIfPresent"(arg0: K, arg1: $BiFunction$Type<(any), (any), (any)>): V
-public static "ofEntries"<K, V>(...arg0: ($Map$Entry$Type<(any), (any)>)[]): $Map<(K), (V)>
-get "empty"(): boolean
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $LinkedHashMap$Type<K, V> = ($LinkedHashMap<(K), (V)>);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $LinkedHashMap_<K, V> = $LinkedHashMap$Type<(K), (V)>;
 }}
 declare module "packages/java/util/function/$IntFunction" {
 export {} // Mark the file as a module, do not remove unless there are other import/exports!
@@ -4989,30 +5863,6 @@ export type $IntFunction$Type<R> = ($IntFunction<(R)>);
  */
 declare global {
 export type $IntFunction_<R> = $IntFunction$Type<(R)>;
-}}
-declare module "packages/java/util/function/$DoubleBinaryOperator" {
-export {} // Mark the file as a module, do not remove unless there are other import/exports!
-export interface $DoubleBinaryOperator {
-
- "applyAsDouble"(arg0: double, arg1: double): double
-
-(arg0: double, arg1: double): double
-}
-
-export namespace $DoubleBinaryOperator {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $DoubleBinaryOperator$Type = ($DoubleBinaryOperator);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $DoubleBinaryOperator_ = $DoubleBinaryOperator$Type;
 }}
 declare module "packages/java/util/$LinkedList" {
 import {$Serializable, $Serializable$Type} from "packages/java/io/$Serializable"
@@ -5108,133 +5958,65 @@ export type $LinkedList$Type<E> = ($LinkedList<(E)>);
 declare global {
 export type $LinkedList_<E> = $LinkedList$Type<(E)>;
 }}
-declare module "packages/java/util/function/$UnaryOperator" {
-import {$Function, $Function$Type} from "packages/java/util/function/$Function"
-
-export interface $UnaryOperator<T> extends $Function<(T), (T)> {
-
- "andThen"<V>(arg0: $Function$Type<(any), (any)>): $Function<(T), (V)>
- "apply"(arg0: T): T
- "compose"<V>(arg0: $Function$Type<(any), (any)>): $Function<(V), (T)>
-
-(): $UnaryOperator<(T)>
-}
-
-export namespace $UnaryOperator {
-function identity<T>(): $UnaryOperator<(T)>
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $UnaryOperator$Type<T> = ($UnaryOperator<(T)>);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $UnaryOperator_<T> = $UnaryOperator$Type<(T)>;
-}}
-declare module "packages/java/util/function/$ObjLongConsumer" {
-export {} // Mark the file as a module, do not remove unless there are other import/exports!
-export interface $ObjLongConsumer<T> {
-
- "accept"(arg0: T, arg1: long): void
-
-(arg0: T, arg1: long): void
-}
-
-export namespace $ObjLongConsumer {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $ObjLongConsumer$Type<T> = ($ObjLongConsumer<(T)>);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $ObjLongConsumer_<T> = $ObjLongConsumer$Type<(T)>;
-}}
-declare module "packages/java/util/$Collection" {
-import {$Consumer, $Consumer$Type} from "packages/java/util/function/$Consumer"
-import {$IntFunction, $IntFunction$Type} from "packages/java/util/function/$IntFunction"
-import {$Predicate, $Predicate$Type} from "packages/java/util/function/$Predicate"
-import {$Stream, $Stream$Type} from "packages/java/util/stream/$Stream"
+declare module "packages/java/util/$HashSet" {
+import {$Serializable, $Serializable$Type} from "packages/java/io/$Serializable"
+import {$Set, $Set$Type} from "packages/java/util/$Set"
+import {$Collection, $Collection$Type} from "packages/java/util/$Collection"
+import {$Cloneable, $Cloneable$Type} from "packages/java/lang/$Cloneable"
+import {$AbstractSet, $AbstractSet$Type} from "packages/java/util/$AbstractSet"
 import {$Iterator, $Iterator$Type} from "packages/java/util/$Iterator"
 import {$Spliterator, $Spliterator$Type} from "packages/java/util/$Spliterator"
-import {$Iterable, $Iterable$Type} from "packages/java/lang/$Iterable"
 
-export interface $Collection<E> extends $Iterable<(E)> {
+export class $HashSet<E> extends $AbstractSet<(E)> implements $Set<(E)>, $Cloneable, $Serializable {
 
- "add"(arg0: E): boolean
- "remove"(arg0: any): boolean
- "equals"(arg0: any): boolean
- "hashCode"(): integer
- "clear"(): void
- "isEmpty"(): boolean
- "size"(): integer
- "toArray"<T>(arg0: (T)[]): (T)[]
- "toArray"<T>(arg0: $IntFunction$Type<((T)[])>): (T)[]
- "toArray"(): (any)[]
- "iterator"(): $Iterator<(E)>
- "stream"(): $Stream<(E)>
- "contains"(arg0: any): boolean
- "spliterator"(): $Spliterator<(E)>
- "addAll"(arg0: $Collection$Type<(any)>): boolean
- "removeIf"(arg0: $Predicate$Type<(any)>): boolean
- "removeAll"(arg0: $Collection$Type<(any)>): boolean
- "retainAll"(arg0: $Collection$Type<(any)>): boolean
- "containsAll"(arg0: $Collection$Type<(any)>): boolean
- "parallelStream"(): $Stream<(E)>
- "forEach"(arg0: $Consumer$Type<(any)>): void
-}
-
-export namespace $Collection {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $Collection$Type<E> = ((E)[]) | ($Collection<(E)>);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $Collection_<E> = $Collection$Type<(E)>;
-}}
-declare module "packages/java/util/$Dictionary" {
-import {$Enumeration, $Enumeration$Type} from "packages/java/util/$Enumeration"
-
-export class $Dictionary<K, V> {
-
+constructor(arg0: integer)
+constructor(arg0: integer, arg1: float)
+constructor(arg0: $Collection$Type<(any)>)
 constructor()
 
-public "remove"(arg0: any): V
-public "get"(arg0: any): V
-public "put"(arg0: K, arg1: V): V
+public "add"(arg0: E): boolean
+public "remove"(arg0: any): boolean
+public "clone"(): any
+public "clear"(): void
 public "isEmpty"(): boolean
 public "size"(): integer
-public "elements"(): $Enumeration<(V)>
-public "keys"(): $Enumeration<(K)>
+public "toArray"<T>(arg0: (T)[]): (T)[]
+public "toArray"(): (any)[]
+public "iterator"(): $Iterator<(E)>
+public "contains"(arg0: any): boolean
+public "spliterator"(): $Spliterator<(E)>
+public "equals"(arg0: any): boolean
+public "hashCode"(): integer
+public static "copyOf"<E>(arg0: $Collection$Type<(any)>): $Set<(E)>
+public static "of"<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E): $Set<(E)>
+public static "of"<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E): $Set<(E)>
+public static "of"<E>(arg0: E): $Set<(E)>
+public static "of"<E>(arg0: E, arg1: E, arg2: E, arg3: E): $Set<(E)>
+public static "of"<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E, arg6: E, arg7: E, arg8: E, arg9: E): $Set<(E)>
+public static "of"<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E, arg6: E, arg7: E, arg8: E): $Set<(E)>
+public static "of"<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E, arg6: E, arg7: E): $Set<(E)>
+public static "of"<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E, arg6: E): $Set<(E)>
+public static "of"<E>(...arg0: (E)[]): $Set<(E)>
+public static "of"<E>(arg0: E, arg1: E, arg2: E): $Set<(E)>
+public static "of"<E>(): $Set<(E)>
+public static "of"<E>(arg0: E, arg1: E): $Set<(E)>
+public "addAll"(arg0: $Collection$Type<(any)>): boolean
+public "removeAll"(arg0: $Collection$Type<(any)>): boolean
+public "retainAll"(arg0: $Collection$Type<(any)>): boolean
+public "containsAll"(arg0: $Collection$Type<(any)>): boolean
 get "empty"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $Dictionary$Type<K, V> = ($Dictionary<(K), (V)>);
+export type $HashSet$Type<E> = ($HashSet<(E)>);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
  */
 declare global {
-export type $Dictionary_<K, V> = $Dictionary$Type<(K), (V)>;
+export type $HashSet_<E> = $HashSet$Type<(E)>;
 }}
 declare module "packages/java/util/regex/$Pattern" {
 import {$Matcher, $Matcher$Type} from "packages/java/util/regex/$Matcher"
@@ -5254,16 +6036,16 @@ static readonly "CANON_EQ": integer
 static readonly "UNICODE_CHARACTER_CLASS": integer
 
 
-public "pattern"(): string
 public "asPredicate"(): $Predicate<(string)>
 public "asMatchPredicate"(): $Predicate<(string)>
 public "splitAsStream"(arg0: charseq): $Stream<(string)>
 public static "quote"(arg0: string): string
+public "pattern"(): string
 public "toString"(): string
 public "flags"(): integer
 public static "matches"(arg0: string, arg1: charseq): boolean
-public static "compile"(arg0: string): $Pattern
 public static "compile"(arg0: string, arg1: integer): $Pattern
+public static "compile"(arg0: string): $Pattern
 public "matcher"(arg0: charseq): $Matcher
 public "split"(arg0: charseq, arg1: integer): (string)[]
 public "split"(arg0: charseq): (string)[]
@@ -5308,8 +6090,8 @@ import {$Iterator, $Iterator$Type} from "packages/java/util/$Iterator"
 
 export interface $Stream<T> extends $BaseStream<(T), ($Stream<(T)>)> {
 
- "sorted"(): $Stream<(T)>
  "sorted"(arg0: $Comparator$Type<(any)>): $Stream<(T)>
+ "sorted"(): $Stream<(T)>
  "forEachOrdered"(arg0: $Consumer$Type<(any)>): void
  "mapToInt"(arg0: $ToIntFunction$Type<(any)>): $IntStream
  "mapToLong"(arg0: $ToLongFunction$Type<(any)>): $LongStream
@@ -5326,8 +6108,8 @@ export interface $Stream<T> extends $BaseStream<(T), ($Stream<(T)>)> {
  "noneMatch"(arg0: $Predicate$Type<(any)>): boolean
  "min"(arg0: $Comparator$Type<(any)>): $Optional<(T)>
  "max"(arg0: $Comparator$Type<(any)>): $Optional<(T)>
- "toArray"<A>(arg0: $IntFunction$Type<((A)[])>): (A)[]
  "toArray"(): (any)[]
+ "toArray"<A>(arg0: $IntFunction$Type<((A)[])>): (A)[]
  "map"<R>(arg0: $Function$Type<(any), (any)>): $Stream<(R)>
  "collect"<R, A>(arg0: $Collector$Type<(any), (A), (R)>): R
  "collect"<R>(arg0: $Supplier$Type<(R)>, arg1: $BiConsumer$Type<(R), (any)>, arg2: $BiConsumer$Type<(R), (R)>): R
@@ -5347,26 +6129,26 @@ export interface $Stream<T> extends $BaseStream<(T), ($Stream<(T)>)> {
  "distinct"(): $Stream<(T)>
  "findFirst"(): $Optional<(T)>
  "allMatch"(arg0: $Predicate$Type<(any)>): boolean
- "sequential"(): $Stream<(T)>
  "isParallel"(): boolean
  "unordered"(): $Stream<(T)>
  "onClose"(arg0: $Runnable$Type): $Stream<(T)>
+ "parallel"(): $Stream<(T)>
+ "sequential"(): $Stream<(T)>
  "iterator"(): $Iterator<(T)>
  "spliterator"(): $Spliterator<(T)>
  "close"(): void
- "parallel"(): $Stream<(T)>
 }
 
 export namespace $Stream {
 function generate<T>(arg0: $Supplier$Type<(any)>): $Stream<(T)>
-function of<T>(...arg0: (T)[]): $Stream<(T)>
+function iterate<T>(arg0: T, arg1: $UnaryOperator$Type<(T)>): $Stream<(T)>
+function iterate<T>(arg0: T, arg1: $Predicate$Type<(any)>, arg2: $UnaryOperator$Type<(T)>): $Stream<(T)>
+function ofNullable<T>(arg0: T): $Stream<(T)>
 function of<T>(arg0: T): $Stream<(T)>
+function of<T>(...arg0: (T)[]): $Stream<(T)>
 function builder<T>(): $Stream$Builder<(T)>
 function concat<T>(arg0: $Stream$Type<(any)>, arg1: $Stream$Type<(any)>): $Stream<(T)>
 function empty<T>(): $Stream<(T)>
-function iterate<T>(arg0: T, arg1: $Predicate$Type<(any)>, arg2: $UnaryOperator$Type<(T)>): $Stream<(T)>
-function iterate<T>(arg0: T, arg1: $UnaryOperator$Type<(T)>): $Stream<(T)>
-function ofNullable<T>(arg0: T): $Stream<(T)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5388,14 +6170,14 @@ import {$Runnable, $Runnable$Type} from "packages/java/lang/$Runnable"
 
 export interface $BaseStream<T, S extends $BaseStream<(T), (S)>> extends $AutoCloseable {
 
- "sequential"(): S
  "isParallel"(): boolean
  "unordered"(): S
  "onClose"(arg0: $Runnable$Type): S
+ "parallel"(): S
+ "sequential"(): S
  "iterator"(): $Iterator<(T)>
  "spliterator"(): $Spliterator<(T)>
  "close"(): void
- "parallel"(): S
 }
 
 export namespace $BaseStream {
@@ -5437,30 +6219,6 @@ export type $LongSupplier$Type = ($LongSupplier);
 declare global {
 export type $LongSupplier_ = $LongSupplier$Type;
 }}
-declare module "packages/java/util/function/$DoubleFunction" {
-export {} // Mark the file as a module, do not remove unless there are other import/exports!
-export interface $DoubleFunction<R> {
-
- "apply"(arg0: double): R
-
-(arg0: double): R
-}
-
-export namespace $DoubleFunction {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $DoubleFunction$Type<R> = ($DoubleFunction<(R)>);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $DoubleFunction_<R> = $DoubleFunction$Type<(R)>;
-}}
 declare module "packages/java/util/stream/$Collector" {
 import {$BiConsumer, $BiConsumer$Type} from "packages/java/util/function/$BiConsumer"
 import {$BinaryOperator, $BinaryOperator$Type} from "packages/java/util/function/$BinaryOperator"
@@ -5494,229 +6252,6 @@ export type $Collector$Type<T, A, R> = ($Collector<(T), (A), (R)>);
 declare global {
 export type $Collector_<T, A, R> = $Collector$Type<(T), (A), (R)>;
 }}
-declare module "packages/java/util/function/$Function" {
-export {} // Mark the file as a module, do not remove unless there are other import/exports!
-export interface $Function<T, R> {
-
- "andThen"<V>(arg0: $Function$Type<(any), (any)>): $Function<(T), (V)>
- "apply"(arg0: T): R
- "compose"<V>(arg0: $Function$Type<(any), (any)>): $Function<(V), (R)>
-
-(arg0: $Function$Type<(any), (any)>): $Function<(T), (V)>
-}
-
-export namespace $Function {
-function identity<T>(): $Function<(T), (T)>
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $Function$Type<T, R> = ($Function<(T), (R)>);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $Function_<T, R> = $Function$Type<(T), (R)>;
-}}
-declare module "packages/java/util/$Currency" {
-import {$Serializable, $Serializable$Type} from "packages/java/io/$Serializable"
-import {$Set, $Set$Type} from "packages/java/util/$Set"
-import {$Locale, $Locale$Type} from "packages/java/util/$Locale"
-
-export class $Currency implements $Serializable {
-
-
-public "getSymbol"(): string
-public "getSymbol"(arg0: $Locale$Type): string
-public static "getAvailableCurrencies"(): $Set<($Currency)>
-public "getDefaultFractionDigits"(): integer
-public "getNumericCode"(): integer
-public "getNumericCodeAsString"(): string
-public "getDisplayName"(arg0: $Locale$Type): string
-public "getDisplayName"(): string
-public "toString"(): string
-public static "getInstance"(arg0: string): $Currency
-public static "getInstance"(arg0: $Locale$Type): $Currency
-public "getCurrencyCode"(): string
-get "symbol"(): string
-get "availableCurrencies"(): $Set<($Currency)>
-get "defaultFractionDigits"(): integer
-get "numericCode"(): integer
-get "numericCodeAsString"(): string
-get "displayName"(): string
-get "currencyCode"(): string
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $Currency$Type = ($Currency);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $Currency_ = $Currency$Type;
-}}
-declare module "packages/java/util/stream/$LongStream" {
-import {$ObjLongConsumer, $ObjLongConsumer$Type} from "packages/java/util/function/$ObjLongConsumer"
-import {$LongFunction, $LongFunction$Type} from "packages/java/util/function/$LongFunction"
-import {$LongConsumer, $LongConsumer$Type} from "packages/java/util/function/$LongConsumer"
-import {$OptionalDouble, $OptionalDouble$Type} from "packages/java/util/$OptionalDouble"
-import {$IntStream, $IntStream$Type} from "packages/java/util/stream/$IntStream"
-import {$LongBinaryOperator, $LongBinaryOperator$Type} from "packages/java/util/function/$LongBinaryOperator"
-import {$PrimitiveIterator$OfLong, $PrimitiveIterator$OfLong$Type} from "packages/java/util/$PrimitiveIterator$OfLong"
-import {$LongStream$Builder, $LongStream$Builder$Type} from "packages/java/util/stream/$LongStream$Builder"
-import {$LongSummaryStatistics, $LongSummaryStatistics$Type} from "packages/java/util/$LongSummaryStatistics"
-import {$DoubleStream, $DoubleStream$Type} from "packages/java/util/stream/$DoubleStream"
-import {$LongToIntFunction, $LongToIntFunction$Type} from "packages/java/util/function/$LongToIntFunction"
-import {$LongUnaryOperator, $LongUnaryOperator$Type} from "packages/java/util/function/$LongUnaryOperator"
-import {$Runnable, $Runnable$Type} from "packages/java/lang/$Runnable"
-import {$BiConsumer, $BiConsumer$Type} from "packages/java/util/function/$BiConsumer"
-import {$LongToDoubleFunction, $LongToDoubleFunction$Type} from "packages/java/util/function/$LongToDoubleFunction"
-import {$LongPredicate, $LongPredicate$Type} from "packages/java/util/function/$LongPredicate"
-import {$OptionalLong, $OptionalLong$Type} from "packages/java/util/$OptionalLong"
-import {$BaseStream, $BaseStream$Type} from "packages/java/util/stream/$BaseStream"
-import {$LongStream$LongMapMultiConsumer, $LongStream$LongMapMultiConsumer$Type} from "packages/java/util/stream/$LongStream$LongMapMultiConsumer"
-import {$Stream, $Stream$Type} from "packages/java/util/stream/$Stream"
-import {$Supplier, $Supplier$Type} from "packages/java/util/function/$Supplier"
-import {$LongSupplier, $LongSupplier$Type} from "packages/java/util/function/$LongSupplier"
-
-export interface $LongStream extends $BaseStream<(long), ($LongStream)> {
-
- "boxed"(): $Stream<(long)>
- "average"(): $OptionalDouble
- "summaryStatistics"(): $LongSummaryStatistics
- "asDoubleStream"(): $DoubleStream
- "sorted"(): $LongStream
- "forEachOrdered"(arg0: $LongConsumer$Type): void
- "mapToInt"(arg0: $LongToIntFunction$Type): $IntStream
- "mapToDouble"(arg0: $LongToDoubleFunction$Type): $DoubleStream
- "mapMulti"(arg0: $LongStream$LongMapMultiConsumer$Type): $LongStream
- "takeWhile"(arg0: $LongPredicate$Type): $LongStream
- "dropWhile"(arg0: $LongPredicate$Type): $LongStream
- "noneMatch"(arg0: $LongPredicate$Type): boolean
- "min"(): $OptionalLong
- "max"(): $OptionalLong
- "toArray"(): (long)[]
- "iterator"(): $PrimitiveIterator$OfLong
- "map"(arg0: $LongUnaryOperator$Type): $LongStream
- "collect"<R>(arg0: $Supplier$Type<(R)>, arg1: $ObjLongConsumer$Type<(R)>, arg2: $BiConsumer$Type<(R), (R)>): R
- "count"(): long
- "limit"(arg0: long): $LongStream
- "filter"(arg0: $LongPredicate$Type): $LongStream
- "anyMatch"(arg0: $LongPredicate$Type): boolean
- "flatMap"(arg0: $LongFunction$Type<(any)>): $LongStream
- "forEach"(arg0: $LongConsumer$Type): void
- "findAny"(): $OptionalLong
- "skip"(arg0: long): $LongStream
- "peek"(arg0: $LongConsumer$Type): $LongStream
- "sum"(): long
- "reduce"(arg0: long, arg1: $LongBinaryOperator$Type): long
- "reduce"(arg0: $LongBinaryOperator$Type): $OptionalLong
- "distinct"(): $LongStream
- "findFirst"(): $OptionalLong
- "allMatch"(arg0: $LongPredicate$Type): boolean
- "parallel"(): $LongStream
- "mapToObj"<U>(arg0: $LongFunction$Type<(any)>): $Stream<(U)>
- "isParallel"(): boolean
- "unordered"(): $LongStream
- "onClose"(arg0: $Runnable$Type): $LongStream
- "close"(): void
-}
-
-export namespace $LongStream {
-function rangeClosed(arg0: long, arg1: long): $LongStream
-function generate(arg0: $LongSupplier$Type): $LongStream
-function of(...arg0: (long)[]): $LongStream
-function of(arg0: long): $LongStream
-function builder(): $LongStream$Builder
-function concat(arg0: $LongStream$Type, arg1: $LongStream$Type): $LongStream
-function empty(): $LongStream
-function range(arg0: long, arg1: long): $LongStream
-function iterate(arg0: long, arg1: $LongPredicate$Type, arg2: $LongUnaryOperator$Type): $LongStream
-function iterate(arg0: long, arg1: $LongUnaryOperator$Type): $LongStream
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $LongStream$Type = ($LongStream);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $LongStream_ = $LongStream$Type;
-}}
-declare module "packages/java/util/concurrent/$AbstractExecutorService" {
-import {$ExecutorService, $ExecutorService$Type} from "packages/java/util/concurrent/$ExecutorService"
-import {$Collection, $Collection$Type} from "packages/java/util/$Collection"
-import {$Future, $Future$Type} from "packages/java/util/concurrent/$Future"
-import {$Callable, $Callable$Type} from "packages/java/util/concurrent/$Callable"
-import {$List, $List$Type} from "packages/java/util/$List"
-import {$TimeUnit, $TimeUnit$Type} from "packages/java/util/concurrent/$TimeUnit"
-import {$Runnable, $Runnable$Type} from "packages/java/lang/$Runnable"
-
-export class $AbstractExecutorService implements $ExecutorService {
-
-constructor()
-
-public "submit"(arg0: $Runnable$Type): $Future<(any)>
-public "submit"<T>(arg0: $Runnable$Type, arg1: T): $Future<(T)>
-public "submit"<T>(arg0: $Callable$Type<(T)>): $Future<(T)>
-public "invokeAll"<T>(arg0: $Collection$Type<(any)>): $List<($Future<(T)>)>
-public "invokeAll"<T>(arg0: $Collection$Type<(any)>, arg1: long, arg2: $TimeUnit$Type): $List<($Future<(T)>)>
-public "invokeAny"<T>(arg0: $Collection$Type<(any)>): T
-public "invokeAny"<T>(arg0: $Collection$Type<(any)>, arg1: long, arg2: $TimeUnit$Type): T
-public "shutdownNow"(): $List<($Runnable)>
-public "isTerminated"(): boolean
-public "awaitTermination"(arg0: long, arg1: $TimeUnit$Type): boolean
-public "shutdown"(): void
-public "isShutdown"(): boolean
-public "execute"(arg0: $Runnable$Type): void
-get "terminated"(): boolean
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $AbstractExecutorService$Type = ($AbstractExecutorService);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $AbstractExecutorService_ = $AbstractExecutorService$Type;
-}}
-declare module "packages/java/util/function/$IntUnaryOperator" {
-export {} // Mark the file as a module, do not remove unless there are other import/exports!
-export interface $IntUnaryOperator {
-
- "andThen"(arg0: $IntUnaryOperator$Type): $IntUnaryOperator
- "applyAsInt"(arg0: integer): integer
- "compose"(arg0: $IntUnaryOperator$Type): $IntUnaryOperator
-
-(arg0: $IntUnaryOperator$Type): $IntUnaryOperator
-}
-
-export namespace $IntUnaryOperator {
-function identity(): $IntUnaryOperator
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $IntUnaryOperator$Type = ($IntUnaryOperator);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $IntUnaryOperator_ = $IntUnaryOperator$Type;
-}}
 declare module "packages/java/util/$Locale$FilteringMode" {
 import {$Enum, $Enum$Type} from "packages/java/lang/$Enum"
 
@@ -5742,71 +6277,6 @@ export type $Locale$FilteringMode$Type = (("extended_filtering") | ("reject_exte
  */
 declare global {
 export type $Locale$FilteringMode_ = $Locale$FilteringMode$Type;
-}}
-declare module "packages/java/util/stream/$Collector$Characteristics" {
-import {$Enum, $Enum$Type} from "packages/java/lang/$Enum"
-
-export class $Collector$Characteristics extends $Enum<($Collector$Characteristics)> {
-static readonly "CONCURRENT": $Collector$Characteristics
-static readonly "UNORDERED": $Collector$Characteristics
-static readonly "IDENTITY_FINISH": $Collector$Characteristics
-
-
-public static "values"(): ($Collector$Characteristics)[]
-public static "valueOf"(arg0: string): $Collector$Characteristics
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $Collector$Characteristics$Type = (("unordered") | ("identity_finish") | ("concurrent")) | ($Collector$Characteristics);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $Collector$Characteristics_ = $Collector$Characteristics$Type;
-}}
-declare module "packages/java/util/$OptionalDouble" {
-import {$Throwable, $Throwable$Type} from "packages/java/lang/$Throwable"
-import {$DoubleConsumer, $DoubleConsumer$Type} from "packages/java/util/function/$DoubleConsumer"
-import {$DoubleSupplier, $DoubleSupplier$Type} from "packages/java/util/function/$DoubleSupplier"
-import {$Supplier, $Supplier$Type} from "packages/java/util/function/$Supplier"
-import {$Runnable, $Runnable$Type} from "packages/java/lang/$Runnable"
-import {$DoubleStream, $DoubleStream$Type} from "packages/java/util/stream/$DoubleStream"
-
-export class $OptionalDouble {
-
-
-public "getAsDouble"(): double
-public "ifPresent"(arg0: $DoubleConsumer$Type): void
-public "ifPresentOrElse"(arg0: $DoubleConsumer$Type, arg1: $Runnable$Type): void
-public "orElseGet"(arg0: $DoubleSupplier$Type): double
-public "equals"(arg0: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
-public "isEmpty"(): boolean
-public "stream"(): $DoubleStream
-public static "of"(arg0: double): $OptionalDouble
-public static "empty"(): $OptionalDouble
-public "isPresent"(): boolean
-public "orElse"(arg0: double): double
-public "orElseThrow"<X extends $Throwable>(arg0: $Supplier$Type<(any)>): double
-public "orElseThrow"(): double
-get "asDouble"(): double
-get "present"(): boolean
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $OptionalDouble$Type = ($OptionalDouble);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $OptionalDouble_ = $OptionalDouble$Type;
 }}
 declare module "packages/java/util/function/$DoublePredicate" {
 export {} // Mark the file as a module, do not remove unless there are other import/exports!
@@ -5844,19 +6314,19 @@ constructor()
 constructor(arg0: long, arg1: double, arg2: double, arg3: double)
 
 public "getSum"(): double
-public "getAverage"(): double
 public "getCount"(): long
+public "getMax"(): double
+public "getMin"(): double
+public "getAverage"(): double
 public "toString"(): string
 public "accept"(arg0: double): void
 public "combine"(arg0: $DoubleSummaryStatistics$Type): void
-public "getMax"(): double
-public "getMin"(): double
 public "andThen"(arg0: $DoubleConsumer$Type): $DoubleConsumer
 get "sum"(): double
-get "average"(): double
 get "count"(): long
 get "max"(): double
 get "min"(): double
+get "average"(): double
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_

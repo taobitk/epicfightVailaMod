@@ -1,0 +1,41 @@
+[
+  {
+    "user": {
+      "type": "player",
+      "name": "taobitk",
+      "uniqueId": "dd687b1f-95f6-451b-b180-08c61c930dbe"
+    },
+    "time": 1783174723905,
+    "type": "Profiler",
+    "data": {
+      "type": "url",
+      "value": "https://spark.lucko.me/RwgZgSskRh"
+    }
+  },
+  {
+    "user": {
+      "type": "player",
+      "name": "taobitk",
+      "uniqueId": "dd687b1f-95f6-451b-b180-08c61c930dbe"
+    },
+    "time": 1783173881740,
+    "type": "Profiler",
+    "data": {
+      "type": "url",
+      "value": "https://spark.lucko.me/hRjk8QBooq"
+    }
+  },
+  {
+    "user": {
+      "type": "player",
+      "name": "taobitk",
+      "uniqueId": "dd687b1f-95f6-451b-b180-08c61c930dbe"
+    },
+    "time": 1783172504419,
+    "type": "Profiler",
+    "data": {
+      "type": "url",
+      "value": "https://spark.lucko.me/IA4fnKt06O"
+    }
+  }
+]

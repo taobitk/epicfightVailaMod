@@ -27,117 +27,6 @@ export type $PBRAtlasHolder$Type = ($PBRAtlasHolder);
 declare global {
 export type $PBRAtlasHolder_ = $PBRAtlasHolder$Type;
 }}
-declare module "packages/net/irisshaders/iris/shadows/$CullingDataCache" {
-export {} // Mark the file as a module, do not remove unless there are other import/exports!
-export interface $CullingDataCache {
-
- "saveState"(): void
- "restoreState"(): void
-}
-
-export namespace $CullingDataCache {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $CullingDataCache$Type = ($CullingDataCache);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $CullingDataCache_ = $CullingDataCache$Type;
-}}
-declare module "packages/net/irisshaders/iris/mixin/rendertype/$RenderStateShardAccessor" {
-export {} // Mark the file as a module, do not remove unless there are other import/exports!
-export interface $RenderStateShardAccessor {
-
- "getName"(): string
-
-(): string
-}
-
-export namespace $RenderStateShardAccessor {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $RenderStateShardAccessor$Type = ($RenderStateShardAccessor);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $RenderStateShardAccessor_ = $RenderStateShardAccessor$Type;
-}}
-declare module "packages/net/irisshaders/iris/mixin/rendertype/$RenderTypeAccessor" {
-export {} // Mark the file as a module, do not remove unless there are other import/exports!
-export interface $RenderTypeAccessor {
-
- "shouldSortOnUpload"(): boolean
-
-(): boolean
-}
-
-export namespace $RenderTypeAccessor {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $RenderTypeAccessor$Type = ($RenderTypeAccessor);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $RenderTypeAccessor_ = $RenderTypeAccessor$Type;
-}}
-declare module "packages/net/irisshaders/iris/mixin/$LevelRendererAccessor" {
-import {$EntityRenderDispatcher, $EntityRenderDispatcher$Type} from "packages/net/minecraft/client/renderer/entity/$EntityRenderDispatcher"
-import {$ClientLevel, $ClientLevel$Type} from "packages/net/minecraft/client/multiplayer/$ClientLevel"
-import {$RenderBuffers, $RenderBuffers$Type} from "packages/net/minecraft/client/renderer/$RenderBuffers"
-import {$PoseStack, $PoseStack$Type} from "packages/com/mojang/blaze3d/vertex/$PoseStack"
-import {$Camera, $Camera$Type} from "packages/net/minecraft/client/$Camera"
-import {$Matrix4f, $Matrix4f$Type} from "packages/org/joml/$Matrix4f"
-import {$Frustum, $Frustum$Type} from "packages/net/minecraft/client/renderer/culling/$Frustum"
-import {$MultiBufferSource, $MultiBufferSource$Type} from "packages/net/minecraft/client/renderer/$MultiBufferSource"
-import {$RenderType, $RenderType$Type} from "packages/net/minecraft/client/renderer/$RenderType"
-import {$Entity, $Entity$Type} from "packages/net/minecraft/world/entity/$Entity"
-
-export interface $LevelRendererAccessor {
-
- "getEntityRenderDispatcher"(): $EntityRenderDispatcher
- "invokeRenderChunkLayer"(arg0: $RenderType$Type, arg1: $PoseStack$Type, arg2: double, arg3: double, arg4: double, arg5: $Matrix4f$Type): void
- "invokeSetupRender"(arg0: $Camera$Type, arg1: $Frustum$Type, arg2: boolean, arg3: boolean): void
- "invokeRenderEntity"(arg0: $Entity$Type, arg1: double, arg2: double, arg3: double, arg4: float, arg5: $PoseStack$Type, arg6: $MultiBufferSource$Type): void
- "getRenderBuffers"(): $RenderBuffers
- "setRenderBuffers"(arg0: $RenderBuffers$Type): void
- "shouldRegenerateClouds"(): boolean
- "setShouldRegenerateClouds"(arg0: boolean): void
- "getLevel"(): $ClientLevel
-}
-
-export namespace $LevelRendererAccessor {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $LevelRendererAccessor$Type = ($LevelRendererAccessor);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $LevelRendererAccessor_ = $LevelRendererAccessor$Type;
-}}
 declare module "packages/net/irisshaders/iris/texture/pbr/$PBRDumpable" {
 import {$Dumpable, $Dumpable$Type} from "packages/net/minecraft/client/renderer/texture/$Dumpable"
 import {$Path, $Path$Type} from "packages/java/nio/file/$Path"
@@ -188,83 +77,6 @@ export type $BufferBuilderExt$Type = ($BufferBuilderExt);
 declare global {
 export type $BufferBuilderExt_ = $BufferBuilderExt$Type;
 }}
-declare module "packages/net/irisshaders/iris/texture/pbr/$TextureAtlasExtension" {
-import {$PBRAtlasHolder, $PBRAtlasHolder$Type} from "packages/net/irisshaders/iris/texture/pbr/$PBRAtlasHolder"
-
-export interface $TextureAtlasExtension {
-
- "getPBRHolder"(): $PBRAtlasHolder
- "getOrCreatePBRHolder"(): $PBRAtlasHolder
-}
-
-export namespace $TextureAtlasExtension {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $TextureAtlasExtension$Type = ($TextureAtlasExtension);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $TextureAtlasExtension_ = $TextureAtlasExtension$Type;
-}}
-declare module "packages/net/irisshaders/iris/api/v0/item/$IrisItemLightProvider" {
-import {$Player, $Player$Type} from "packages/net/minecraft/world/entity/player/$Player"
-import {$Vector3f, $Vector3f$Type} from "packages/org/joml/$Vector3f"
-import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
-
-export interface $IrisItemLightProvider {
-
- "getLightEmission"(player: $Player$Type, stack: $ItemStack$Type): integer
- "getLightColor"(player: $Player$Type, stack: $ItemStack$Type): $Vector3f
-}
-
-export namespace $IrisItemLightProvider {
-const DEFAULT_LIGHT_COLOR: $Vector3f
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $IrisItemLightProvider$Type = ($IrisItemLightProvider);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $IrisItemLightProvider_ = $IrisItemLightProvider$Type;
-}}
-declare module "packages/net/irisshaders/batchedentityrendering/mixin/$BufferSourceAccessor" {
-import {$BufferBuilder, $BufferBuilder$Type} from "packages/com/mojang/blaze3d/vertex/$BufferBuilder"
-import {$Map, $Map$Type} from "packages/java/util/$Map"
-import {$RenderType, $RenderType$Type} from "packages/net/minecraft/client/renderer/$RenderType"
-
-export interface $BufferSourceAccessor {
-
- "getFixedBuffers"(): $Map<($RenderType), ($BufferBuilder)>
-
-(): $Map<($RenderType), ($BufferBuilder)>
-}
-
-export namespace $BufferSourceAccessor {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $BufferSourceAccessor$Type = ($BufferSourceAccessor);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $BufferSourceAccessor_ = $BufferSourceAccessor$Type;
-}}
 declare module "packages/net/irisshaders/iris/vertices/$IrisExtendedBufferBuilder" {
 import {$VertexFormat$Mode, $VertexFormat$Mode$Type} from "packages/com/mojang/blaze3d/vertex/$VertexFormat$Mode"
 import {$VertexFormat, $VertexFormat$Type} from "packages/com/mojang/blaze3d/vertex/$VertexFormat"
@@ -300,29 +112,6 @@ export type $IrisExtendedBufferBuilder$Type = ($IrisExtendedBufferBuilder);
  */
 declare global {
 export type $IrisExtendedBufferBuilder_ = $IrisExtendedBufferBuilder$Type;
-}}
-declare module "packages/net/irisshaders/iris/mixin/texture/$SpriteContentsFrameInfoAccessor" {
-export {} // Mark the file as a module, do not remove unless there are other import/exports!
-export interface $SpriteContentsFrameInfoAccessor {
-
- "getTime"(): integer
- "getIndex"(): integer
-}
-
-export namespace $SpriteContentsFrameInfoAccessor {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $SpriteContentsFrameInfoAccessor$Type = ($SpriteContentsFrameInfoAccessor);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $SpriteContentsFrameInfoAccessor_ = $SpriteContentsFrameInfoAccessor$Type;
 }}
 declare module "packages/net/irisshaders/iris/mixin/$LightTextureAccessor" {
 import {$DynamicTexture, $DynamicTexture$Type} from "packages/net/minecraft/client/renderer/texture/$DynamicTexture"
@@ -472,29 +261,6 @@ export type $TransparencyType$Type = (("water_mask") | ("opaque") | ("opaque_dec
 declare global {
 export type $TransparencyType_ = $TransparencyType$Type;
 }}
-declare module "packages/net/irisshaders/iris/helpers/$VertexBufferHelper" {
-export {} // Mark the file as a module, do not remove unless there are other import/exports!
-export interface $VertexBufferHelper {
-
- "saveBinding"(): void
- "restoreBinding"(): void
-}
-
-export namespace $VertexBufferHelper {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $VertexBufferHelper$Type = ($VertexBufferHelper);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $VertexBufferHelper_ = $VertexBufferHelper$Type;
-}}
 declare module "packages/net/irisshaders/iris/mixin/$DimensionTypeAccessor" {
 import {$OptionalLong, $OptionalLong$Type} from "packages/java/util/$OptionalLong"
 
@@ -518,6 +284,538 @@ export type $DimensionTypeAccessor$Type = ($DimensionTypeAccessor);
  */
 declare global {
 export type $DimensionTypeAccessor_ = $DimensionTypeAccessor$Type;
+}}
+declare module "packages/net/irisshaders/iris/mixin/texture/$AnimationMetadataSectionAccessor" {
+export {} // Mark the file as a module, do not remove unless there are other import/exports!
+export interface $AnimationMetadataSectionAccessor {
+
+ "getFrameWidth"(): integer
+ "setFrameWidth"(arg0: integer): void
+ "getFrameHeight"(): integer
+ "setFrameHeight"(arg0: integer): void
+}
+
+export namespace $AnimationMetadataSectionAccessor {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $AnimationMetadataSectionAccessor$Type = ($AnimationMetadataSectionAccessor);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $AnimationMetadataSectionAccessor_ = $AnimationMetadataSectionAccessor$Type;
+}}
+declare module "packages/net/irisshaders/batchedentityrendering/mixin/$RenderStateShardAccessor" {
+export {} // Mark the file as a module, do not remove unless there are other import/exports!
+export interface $RenderStateShardAccessor {
+
+}
+
+export namespace $RenderStateShardAccessor {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $RenderStateShardAccessor$Type = ($RenderStateShardAccessor);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $RenderStateShardAccessor_ = $RenderStateShardAccessor$Type;
+}}
+declare module "packages/net/irisshaders/iris/targets/$Blaze3dRenderTargetExt" {
+export {} // Mark the file as a module, do not remove unless there are other import/exports!
+export interface $Blaze3dRenderTargetExt {
+
+ "iris$getDepthBufferVersion"(): integer
+ "iris$getColorBufferVersion"(): integer
+}
+
+export namespace $Blaze3dRenderTargetExt {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Blaze3dRenderTargetExt$Type = ($Blaze3dRenderTargetExt);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Blaze3dRenderTargetExt_ = $Blaze3dRenderTargetExt$Type;
+}}
+declare module "packages/net/irisshaders/iris/texture/pbr/$PBRSpriteHolder" {
+import {$TextureAtlasSprite, $TextureAtlasSprite$Type} from "packages/net/minecraft/client/renderer/texture/$TextureAtlasSprite"
+
+export class $PBRSpriteHolder {
+
+constructor()
+
+public "setNormalSprite"(sprite: $TextureAtlasSprite$Type): void
+public "setSpecularSprite"(sprite: $TextureAtlasSprite$Type): void
+public "getNormalSprite"(): $TextureAtlasSprite
+public "getSpecularSprite"(): $TextureAtlasSprite
+public "close"(): void
+set "normalSprite"(value: $TextureAtlasSprite$Type)
+set "specularSprite"(value: $TextureAtlasSprite$Type)
+get "normalSprite"(): $TextureAtlasSprite
+get "specularSprite"(): $TextureAtlasSprite
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $PBRSpriteHolder$Type = ($PBRSpriteHolder);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $PBRSpriteHolder_ = $PBRSpriteHolder$Type;
+}}
+declare module "packages/net/irisshaders/iris/texture/$SpriteContentsExtension" {
+import {$SpriteContents$Ticker, $SpriteContents$Ticker$Type} from "packages/net/minecraft/client/renderer/texture/$SpriteContents$Ticker"
+
+export interface $SpriteContentsExtension {
+
+ "getCreatedTicker"(): $SpriteContents$Ticker
+
+(): $SpriteContents$Ticker
+}
+
+export namespace $SpriteContentsExtension {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $SpriteContentsExtension$Type = ($SpriteContentsExtension);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $SpriteContentsExtension_ = $SpriteContentsExtension$Type;
+}}
+declare module "packages/net/irisshaders/batchedentityrendering/mixin/$CompositeStateAccessor" {
+import {$RenderStateShard$TransparencyStateShard, $RenderStateShard$TransparencyStateShard$Type} from "packages/net/minecraft/client/renderer/$RenderStateShard$TransparencyStateShard"
+
+export interface $CompositeStateAccessor {
+
+ "getTransparency"(): $RenderStateShard$TransparencyStateShard
+
+(): $RenderStateShard$TransparencyStateShard
+}
+
+export namespace $CompositeStateAccessor {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $CompositeStateAccessor$Type = ($CompositeStateAccessor);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $CompositeStateAccessor_ = $CompositeStateAccessor$Type;
+}}
+declare module "packages/net/irisshaders/iris/vertices/$ExtendingBufferBuilder" {
+import {$VertexFormat$Mode, $VertexFormat$Mode$Type} from "packages/com/mojang/blaze3d/vertex/$VertexFormat$Mode"
+import {$VertexFormat, $VertexFormat$Type} from "packages/com/mojang/blaze3d/vertex/$VertexFormat"
+
+export interface $ExtendingBufferBuilder {
+
+ "iris$beginWithoutExtending"(arg0: $VertexFormat$Mode$Type, arg1: $VertexFormat$Type): void
+
+(arg0: $VertexFormat$Mode$Type, arg1: $VertexFormat$Type): void
+}
+
+export namespace $ExtendingBufferBuilder {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $ExtendingBufferBuilder$Type = ($ExtendingBufferBuilder);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $ExtendingBufferBuilder_ = $ExtendingBufferBuilder$Type;
+}}
+declare module "packages/net/irisshaders/iris/texture/pbr/$SpriteContentsExtension" {
+import {$PBRSpriteHolder, $PBRSpriteHolder$Type} from "packages/net/irisshaders/iris/texture/pbr/$PBRSpriteHolder"
+
+export interface $SpriteContentsExtension {
+
+ "getPBRHolder"(): $PBRSpriteHolder
+ "getOrCreatePBRHolder"(): $PBRSpriteHolder
+}
+
+export namespace $SpriteContentsExtension {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $SpriteContentsExtension$Type = ($SpriteContentsExtension);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $SpriteContentsExtension_ = $SpriteContentsExtension$Type;
+}}
+declare module "packages/net/irisshaders/batchedentityrendering/impl/$BlendingStateHolder" {
+import {$TransparencyType, $TransparencyType$Type} from "packages/net/irisshaders/batchedentityrendering/impl/$TransparencyType"
+
+export interface $BlendingStateHolder {
+
+ "getTransparencyType"(): $TransparencyType
+ "setTransparencyType"(arg0: $TransparencyType$Type): void
+}
+
+export namespace $BlendingStateHolder {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $BlendingStateHolder$Type = ($BlendingStateHolder);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $BlendingStateHolder_ = $BlendingStateHolder$Type;
+}}
+declare module "packages/net/irisshaders/iris/mixin/texture/$SpriteContentsTickerAccessor" {
+import {$SpriteContents$AnimatedTexture, $SpriteContents$AnimatedTexture$Type} from "packages/net/minecraft/client/renderer/texture/$SpriteContents$AnimatedTexture"
+
+export interface $SpriteContentsTickerAccessor {
+
+ "getSubFrame"(): integer
+ "setSubFrame"(arg0: integer): void
+ "getAnimationInfo"(): $SpriteContents$AnimatedTexture
+ "setFrame"(arg0: integer): void
+ "getFrame"(): integer
+}
+
+export namespace $SpriteContentsTickerAccessor {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $SpriteContentsTickerAccessor$Type = ($SpriteContentsTickerAccessor);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $SpriteContentsTickerAccessor_ = $SpriteContentsTickerAccessor$Type;
+}}
+declare module "packages/net/irisshaders/iris/mixin/$GameRendererAccessor" {
+import {$PoseStack, $PoseStack$Type} from "packages/com/mojang/blaze3d/vertex/$PoseStack"
+import {$Camera, $Camera$Type} from "packages/net/minecraft/client/$Camera"
+
+export interface $GameRendererAccessor {
+
+ "getRenderHand"(): boolean
+ "getPanoramicMode"(): boolean
+ "invokeBobView"(arg0: $PoseStack$Type, arg1: float): void
+ "invokeBobHurt"(arg0: $PoseStack$Type, arg1: float): void
+ "invokeGetFov"(arg0: $Camera$Type, arg1: float, arg2: boolean): double
+}
+
+export namespace $GameRendererAccessor {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $GameRendererAccessor$Type = ($GameRendererAccessor);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $GameRendererAccessor_ = $GameRendererAccessor$Type;
+}}
+declare module "packages/net/irisshaders/iris/texture/pbr/loader/$AtlasPBRLoader$PBRTextureAtlasSprite" {
+import {$TextureAtlasSprite, $TextureAtlasSprite$Type} from "packages/net/minecraft/client/renderer/texture/$TextureAtlasSprite"
+
+export class $AtlasPBRLoader$PBRTextureAtlasSprite extends $TextureAtlasSprite {
+
+
+public "getBaseSprite"(): $TextureAtlasSprite
+get "baseSprite"(): $TextureAtlasSprite
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $AtlasPBRLoader$PBRTextureAtlasSprite$Type = ($AtlasPBRLoader$PBRTextureAtlasSprite);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $AtlasPBRLoader$PBRTextureAtlasSprite_ = $AtlasPBRLoader$PBRTextureAtlasSprite$Type;
+}}
+declare module "packages/net/irisshaders/iris/shadows/$CullingDataCache" {
+export {} // Mark the file as a module, do not remove unless there are other import/exports!
+export interface $CullingDataCache {
+
+ "saveState"(): void
+ "restoreState"(): void
+}
+
+export namespace $CullingDataCache {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $CullingDataCache$Type = ($CullingDataCache);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $CullingDataCache_ = $CullingDataCache$Type;
+}}
+declare module "packages/net/irisshaders/iris/mixin/rendertype/$RenderStateShardAccessor" {
+export {} // Mark the file as a module, do not remove unless there are other import/exports!
+export interface $RenderStateShardAccessor {
+
+ "getName"(): string
+
+(): string
+}
+
+export namespace $RenderStateShardAccessor {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $RenderStateShardAccessor$Type = ($RenderStateShardAccessor);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $RenderStateShardAccessor_ = $RenderStateShardAccessor$Type;
+}}
+declare module "packages/net/irisshaders/iris/mixin/rendertype/$RenderTypeAccessor" {
+export {} // Mark the file as a module, do not remove unless there are other import/exports!
+export interface $RenderTypeAccessor {
+
+ "shouldSortOnUpload"(): boolean
+
+(): boolean
+}
+
+export namespace $RenderTypeAccessor {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $RenderTypeAccessor$Type = ($RenderTypeAccessor);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $RenderTypeAccessor_ = $RenderTypeAccessor$Type;
+}}
+declare module "packages/net/irisshaders/iris/mixin/$LevelRendererAccessor" {
+import {$EntityRenderDispatcher, $EntityRenderDispatcher$Type} from "packages/net/minecraft/client/renderer/entity/$EntityRenderDispatcher"
+import {$ClientLevel, $ClientLevel$Type} from "packages/net/minecraft/client/multiplayer/$ClientLevel"
+import {$RenderBuffers, $RenderBuffers$Type} from "packages/net/minecraft/client/renderer/$RenderBuffers"
+import {$PoseStack, $PoseStack$Type} from "packages/com/mojang/blaze3d/vertex/$PoseStack"
+import {$Camera, $Camera$Type} from "packages/net/minecraft/client/$Camera"
+import {$Matrix4f, $Matrix4f$Type} from "packages/org/joml/$Matrix4f"
+import {$Frustum, $Frustum$Type} from "packages/net/minecraft/client/renderer/culling/$Frustum"
+import {$MultiBufferSource, $MultiBufferSource$Type} from "packages/net/minecraft/client/renderer/$MultiBufferSource"
+import {$RenderType, $RenderType$Type} from "packages/net/minecraft/client/renderer/$RenderType"
+import {$Entity, $Entity$Type} from "packages/net/minecraft/world/entity/$Entity"
+
+export interface $LevelRendererAccessor {
+
+ "getEntityRenderDispatcher"(): $EntityRenderDispatcher
+ "invokeRenderChunkLayer"(arg0: $RenderType$Type, arg1: $PoseStack$Type, arg2: double, arg3: double, arg4: double, arg5: $Matrix4f$Type): void
+ "invokeSetupRender"(arg0: $Camera$Type, arg1: $Frustum$Type, arg2: boolean, arg3: boolean): void
+ "invokeRenderEntity"(arg0: $Entity$Type, arg1: double, arg2: double, arg3: double, arg4: float, arg5: $PoseStack$Type, arg6: $MultiBufferSource$Type): void
+ "getRenderBuffers"(): $RenderBuffers
+ "setRenderBuffers"(arg0: $RenderBuffers$Type): void
+ "shouldRegenerateClouds"(): boolean
+ "setShouldRegenerateClouds"(arg0: boolean): void
+ "getLevel"(): $ClientLevel
+}
+
+export namespace $LevelRendererAccessor {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $LevelRendererAccessor$Type = ($LevelRendererAccessor);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $LevelRendererAccessor_ = $LevelRendererAccessor$Type;
+}}
+declare module "packages/net/irisshaders/iris/texture/pbr/$TextureAtlasExtension" {
+import {$PBRAtlasHolder, $PBRAtlasHolder$Type} from "packages/net/irisshaders/iris/texture/pbr/$PBRAtlasHolder"
+
+export interface $TextureAtlasExtension {
+
+ "getPBRHolder"(): $PBRAtlasHolder
+ "getOrCreatePBRHolder"(): $PBRAtlasHolder
+}
+
+export namespace $TextureAtlasExtension {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $TextureAtlasExtension$Type = ($TextureAtlasExtension);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $TextureAtlasExtension_ = $TextureAtlasExtension$Type;
+}}
+declare module "packages/net/irisshaders/iris/api/v0/item/$IrisItemLightProvider" {
+import {$Player, $Player$Type} from "packages/net/minecraft/world/entity/player/$Player"
+import {$Vector3f, $Vector3f$Type} from "packages/org/joml/$Vector3f"
+import {$ItemStack, $ItemStack$Type} from "packages/net/minecraft/world/item/$ItemStack"
+
+export interface $IrisItemLightProvider {
+
+ "getLightEmission"(player: $Player$Type, stack: $ItemStack$Type): integer
+ "getLightColor"(player: $Player$Type, stack: $ItemStack$Type): $Vector3f
+}
+
+export namespace $IrisItemLightProvider {
+const DEFAULT_LIGHT_COLOR: $Vector3f
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $IrisItemLightProvider$Type = ($IrisItemLightProvider);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $IrisItemLightProvider_ = $IrisItemLightProvider$Type;
+}}
+declare module "packages/net/irisshaders/batchedentityrendering/mixin/$BufferSourceAccessor" {
+import {$BufferBuilder, $BufferBuilder$Type} from "packages/com/mojang/blaze3d/vertex/$BufferBuilder"
+import {$Map, $Map$Type} from "packages/java/util/$Map"
+import {$RenderType, $RenderType$Type} from "packages/net/minecraft/client/renderer/$RenderType"
+
+export interface $BufferSourceAccessor {
+
+ "getFixedBuffers"(): $Map<($RenderType), ($BufferBuilder)>
+
+(): $Map<($RenderType), ($BufferBuilder)>
+}
+
+export namespace $BufferSourceAccessor {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $BufferSourceAccessor$Type = ($BufferSourceAccessor);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $BufferSourceAccessor_ = $BufferSourceAccessor$Type;
+}}
+declare module "packages/net/irisshaders/iris/mixin/texture/$SpriteContentsFrameInfoAccessor" {
+export {} // Mark the file as a module, do not remove unless there are other import/exports!
+export interface $SpriteContentsFrameInfoAccessor {
+
+ "getTime"(): integer
+ "getIndex"(): integer
+}
+
+export namespace $SpriteContentsFrameInfoAccessor {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $SpriteContentsFrameInfoAccessor$Type = ($SpriteContentsFrameInfoAccessor);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $SpriteContentsFrameInfoAccessor_ = $SpriteContentsFrameInfoAccessor$Type;
+}}
+declare module "packages/net/irisshaders/iris/helpers/$VertexBufferHelper" {
+export {} // Mark the file as a module, do not remove unless there are other import/exports!
+export interface $VertexBufferHelper {
+
+ "saveBinding"(): void
+ "restoreBinding"(): void
+}
+
+export namespace $VertexBufferHelper {
+const probejs$$marker: never
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $VertexBufferHelper$Type = ($VertexBufferHelper);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $VertexBufferHelper_ = $VertexBufferHelper$Type;
 }}
 declare module "packages/net/irisshaders/iris/pipeline/programs/$ShaderInstanceInterface" {
 import {$ResourceProvider, $ResourceProvider$Type} from "packages/net/minecraft/server/packs/resources/$ResourceProvider"
@@ -614,75 +912,6 @@ export type $PhasedParticleEngine$Type = ($PhasedParticleEngine);
 declare global {
 export type $PhasedParticleEngine_ = $PhasedParticleEngine$Type;
 }}
-declare module "packages/net/irisshaders/iris/mixin/texture/$AnimationMetadataSectionAccessor" {
-export {} // Mark the file as a module, do not remove unless there are other import/exports!
-export interface $AnimationMetadataSectionAccessor {
-
- "getFrameWidth"(): integer
- "setFrameWidth"(arg0: integer): void
- "getFrameHeight"(): integer
- "setFrameHeight"(arg0: integer): void
-}
-
-export namespace $AnimationMetadataSectionAccessor {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $AnimationMetadataSectionAccessor$Type = ($AnimationMetadataSectionAccessor);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $AnimationMetadataSectionAccessor_ = $AnimationMetadataSectionAccessor$Type;
-}}
-declare module "packages/net/irisshaders/batchedentityrendering/mixin/$RenderStateShardAccessor" {
-export {} // Mark the file as a module, do not remove unless there are other import/exports!
-export interface $RenderStateShardAccessor {
-
-}
-
-export namespace $RenderStateShardAccessor {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $RenderStateShardAccessor$Type = ($RenderStateShardAccessor);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $RenderStateShardAccessor_ = $RenderStateShardAccessor$Type;
-}}
-declare module "packages/net/irisshaders/iris/targets/$Blaze3dRenderTargetExt" {
-export {} // Mark the file as a module, do not remove unless there are other import/exports!
-export interface $Blaze3dRenderTargetExt {
-
- "iris$getDepthBufferVersion"(): integer
- "iris$getColorBufferVersion"(): integer
-}
-
-export namespace $Blaze3dRenderTargetExt {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $Blaze3dRenderTargetExt$Type = ($Blaze3dRenderTargetExt);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $Blaze3dRenderTargetExt_ = $Blaze3dRenderTargetExt$Type;
-}}
 declare module "packages/net/irisshaders/iris/texture/pbr/$PBRAtlasTexture" {
 import {$Path, $Path$Type} from "packages/java/nio/file/$Path"
 import {$AtlasPBRLoader$PBRTextureAtlasSprite, $AtlasPBRLoader$PBRTextureAtlasSprite$Type} from "packages/net/irisshaders/iris/texture/pbr/loader/$AtlasPBRLoader$PBRTextureAtlasSprite"
@@ -702,19 +931,19 @@ constructor(atlasTexture: $TextureAtlas$Type, type: $PBRType$Type)
 public "tryUpload"(atlasWidth: integer, atlasHeight: integer, mipLevel: integer): boolean
 public "addSprite"(sprite: $AtlasPBRLoader$PBRTextureAtlasSprite$Type): void
 public "cycleAnimationFrames"(): void
+public "getSprite"(id: $ResourceLocation$Type): $AtlasPBRLoader$PBRTextureAtlasSprite
+public "load"(manager: $ResourceManager$Type): void
+public "upload"(atlasWidth: integer, atlasHeight: integer, mipLevel: integer): void
+public "dumpContents"(id: $ResourceLocation$Type, path: $Path$Type): void
+public "getDefaultDumpLocation"(): $ResourceLocation
+public static "syncAnimation"(source: $SpriteContents$Ticker$Type, target: $SpriteContents$Ticker$Type): void
+public "getAtlasId"(): $ResourceLocation
 public "clear"(): void
 public "close"(): void
 public "getType"(): $PBRType
-public "getSprite"(id: $ResourceLocation$Type): $AtlasPBRLoader$PBRTextureAtlasSprite
-public "load"(manager: $ResourceManager$Type): void
-public "dumpContents"(id: $ResourceLocation$Type, path: $Path$Type): void
-public "getDefaultDumpLocation"(): $ResourceLocation
-public "upload"(atlasWidth: integer, atlasHeight: integer, mipLevel: integer): void
-public static "syncAnimation"(source: $SpriteContents$Ticker$Type, target: $SpriteContents$Ticker$Type): void
-public "getAtlasId"(): $ResourceLocation
-get "type"(): $PBRType
 get "defaultDumpLocation"(): $ResourceLocation
 get "atlasId"(): $ResourceLocation
+get "type"(): $PBRType
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -728,35 +957,6 @@ export type $PBRAtlasTexture$Type = ($PBRAtlasTexture);
 declare global {
 export type $PBRAtlasTexture_ = $PBRAtlasTexture$Type;
 }}
-declare module "packages/net/irisshaders/iris/texture/pbr/$PBRSpriteHolder" {
-import {$TextureAtlasSprite, $TextureAtlasSprite$Type} from "packages/net/minecraft/client/renderer/texture/$TextureAtlasSprite"
-
-export class $PBRSpriteHolder {
-
-constructor()
-
-public "setNormalSprite"(sprite: $TextureAtlasSprite$Type): void
-public "setSpecularSprite"(sprite: $TextureAtlasSprite$Type): void
-public "close"(): void
-public "getNormalSprite"(): $TextureAtlasSprite
-public "getSpecularSprite"(): $TextureAtlasSprite
-set "normalSprite"(value: $TextureAtlasSprite$Type)
-set "specularSprite"(value: $TextureAtlasSprite$Type)
-get "normalSprite"(): $TextureAtlasSprite
-get "specularSprite"(): $TextureAtlasSprite
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $PBRSpriteHolder$Type = ($PBRSpriteHolder);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $PBRSpriteHolder_ = $PBRSpriteHolder$Type;
-}}
 declare module "packages/net/irisshaders/iris/texture/pbr/$PBRType" {
 import {$Enum, $Enum$Type} from "packages/java/lang/$Enum"
 
@@ -766,12 +966,12 @@ static readonly "SPECULAR": $PBRType
 
 
 public "appendSuffix"(path: string): string
-public "getSuffix"(): string
 public static "removeSuffix"(path: string): string
+public "getSuffix"(): string
+public static "fromFileLocation"(location: string): $PBRType
 public static "values"(): ($PBRType)[]
 public static "valueOf"(name: string): $PBRType
 public "getDefaultValue"(): integer
-public static "fromFileLocation"(location: string): $PBRType
 get "suffix"(): string
 get "defaultValue"(): integer
 }
@@ -815,31 +1015,6 @@ export type $TextureAtlasAccessor$Type = ($TextureAtlasAccessor);
 declare global {
 export type $TextureAtlasAccessor_ = $TextureAtlasAccessor$Type;
 }}
-declare module "packages/net/irisshaders/iris/texture/$SpriteContentsExtension" {
-import {$SpriteContents$Ticker, $SpriteContents$Ticker$Type} from "packages/net/minecraft/client/renderer/texture/$SpriteContents$Ticker"
-
-export interface $SpriteContentsExtension {
-
- "getCreatedTicker"(): $SpriteContents$Ticker
-
-(): $SpriteContents$Ticker
-}
-
-export namespace $SpriteContentsExtension {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $SpriteContentsExtension$Type = ($SpriteContentsExtension);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $SpriteContentsExtension_ = $SpriteContentsExtension$Type;
-}}
 declare module "packages/net/irisshaders/batchedentityrendering/mixin/$ChunkBufferBuilderPackAccessor" {
 import {$BufferBuilder, $BufferBuilder$Type} from "packages/com/mojang/blaze3d/vertex/$BufferBuilder"
 import {$Map, $Map$Type} from "packages/java/util/$Map"
@@ -867,64 +1042,13 @@ export type $ChunkBufferBuilderPackAccessor$Type = ($ChunkBufferBuilderPackAcces
 declare global {
 export type $ChunkBufferBuilderPackAccessor_ = $ChunkBufferBuilderPackAccessor$Type;
 }}
-declare module "packages/net/irisshaders/batchedentityrendering/mixin/$CompositeStateAccessor" {
-import {$RenderStateShard$TransparencyStateShard, $RenderStateShard$TransparencyStateShard$Type} from "packages/net/minecraft/client/renderer/$RenderStateShard$TransparencyStateShard"
-
-export interface $CompositeStateAccessor {
-
- "getTransparency"(): $RenderStateShard$TransparencyStateShard
-
-(): $RenderStateShard$TransparencyStateShard
-}
-
-export namespace $CompositeStateAccessor {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $CompositeStateAccessor$Type = ($CompositeStateAccessor);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $CompositeStateAccessor_ = $CompositeStateAccessor$Type;
-}}
-declare module "packages/net/irisshaders/iris/vertices/$ExtendingBufferBuilder" {
-import {$VertexFormat$Mode, $VertexFormat$Mode$Type} from "packages/com/mojang/blaze3d/vertex/$VertexFormat$Mode"
-import {$VertexFormat, $VertexFormat$Type} from "packages/com/mojang/blaze3d/vertex/$VertexFormat"
-
-export interface $ExtendingBufferBuilder {
-
- "iris$beginWithoutExtending"(arg0: $VertexFormat$Mode$Type, arg1: $VertexFormat$Type): void
-
-(arg0: $VertexFormat$Mode$Type, arg1: $VertexFormat$Type): void
-}
-
-export namespace $ExtendingBufferBuilder {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $ExtendingBufferBuilder$Type = ($ExtendingBufferBuilder);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $ExtendingBufferBuilder_ = $ExtendingBufferBuilder$Type;
-}}
 declare module "packages/net/irisshaders/batchedentityrendering/impl/$DrawCallTrackingRenderBuffers" {
 export {} // Mark the file as a module, do not remove unless there are other import/exports!
 export interface $DrawCallTrackingRenderBuffers {
 
+ "getRenderTypes"(): integer
  "getDrawCalls"(): integer
  "resetDrawCounts"(): void
- "getRenderTypes"(): integer
 }
 
 export namespace $DrawCallTrackingRenderBuffers {
@@ -941,30 +1065,6 @@ export type $DrawCallTrackingRenderBuffers$Type = ($DrawCallTrackingRenderBuffer
  */
 declare global {
 export type $DrawCallTrackingRenderBuffers_ = $DrawCallTrackingRenderBuffers$Type;
-}}
-declare module "packages/net/irisshaders/iris/texture/pbr/$SpriteContentsExtension" {
-import {$PBRSpriteHolder, $PBRSpriteHolder$Type} from "packages/net/irisshaders/iris/texture/pbr/$PBRSpriteHolder"
-
-export interface $SpriteContentsExtension {
-
- "getPBRHolder"(): $PBRSpriteHolder
- "getOrCreatePBRHolder"(): $PBRSpriteHolder
-}
-
-export namespace $SpriteContentsExtension {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $SpriteContentsExtension$Type = ($SpriteContentsExtension);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $SpriteContentsExtension_ = $SpriteContentsExtension$Type;
 }}
 declare module "packages/net/irisshaders/iris/mixin/$ProgramTypeAccessor" {
 export {} // Mark the file as a module, do not remove unless there are other import/exports!
@@ -986,30 +1086,6 @@ export type $ProgramTypeAccessor$Type = ($ProgramTypeAccessor);
  */
 declare global {
 export type $ProgramTypeAccessor_ = $ProgramTypeAccessor$Type;
-}}
-declare module "packages/net/irisshaders/batchedentityrendering/impl/$BlendingStateHolder" {
-import {$TransparencyType, $TransparencyType$Type} from "packages/net/irisshaders/batchedentityrendering/impl/$TransparencyType"
-
-export interface $BlendingStateHolder {
-
- "getTransparencyType"(): $TransparencyType
- "setTransparencyType"(arg0: $TransparencyType$Type): void
-}
-
-export namespace $BlendingStateHolder {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $BlendingStateHolder$Type = ($BlendingStateHolder);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $BlendingStateHolder_ = $BlendingStateHolder$Type;
 }}
 declare module "packages/net/irisshaders/iris/mixin/texture/$SpriteContentsAccessor" {
 import {$SpriteContents$AnimatedTexture, $SpriteContents$AnimatedTexture$Type} from "packages/net/minecraft/client/renderer/texture/$SpriteContents$AnimatedTexture"
@@ -1061,33 +1137,6 @@ export type $OutlineBufferSourceAccessor$Type = ($OutlineBufferSourceAccessor);
 declare global {
 export type $OutlineBufferSourceAccessor_ = $OutlineBufferSourceAccessor$Type;
 }}
-declare module "packages/net/irisshaders/iris/mixin/texture/$SpriteContentsTickerAccessor" {
-import {$SpriteContents$AnimatedTexture, $SpriteContents$AnimatedTexture$Type} from "packages/net/minecraft/client/renderer/texture/$SpriteContents$AnimatedTexture"
-
-export interface $SpriteContentsTickerAccessor {
-
- "getSubFrame"(): integer
- "setSubFrame"(arg0: integer): void
- "getAnimationInfo"(): $SpriteContents$AnimatedTexture
- "setFrame"(arg0: integer): void
- "getFrame"(): integer
-}
-
-export namespace $SpriteContentsTickerAccessor {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $SpriteContentsTickerAccessor$Type = ($SpriteContentsTickerAccessor);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $SpriteContentsTickerAccessor_ = $SpriteContentsTickerAccessor$Type;
-}}
 declare module "packages/net/irisshaders/batchedentityrendering/impl/$MemoryTrackingBuffer" {
 export {} // Mark the file as a module, do not remove unless there are other import/exports!
 export interface $MemoryTrackingBuffer {
@@ -1111,55 +1160,6 @@ export type $MemoryTrackingBuffer$Type = ($MemoryTrackingBuffer);
  */
 declare global {
 export type $MemoryTrackingBuffer_ = $MemoryTrackingBuffer$Type;
-}}
-declare module "packages/net/irisshaders/iris/mixin/$GameRendererAccessor" {
-import {$PoseStack, $PoseStack$Type} from "packages/com/mojang/blaze3d/vertex/$PoseStack"
-import {$Camera, $Camera$Type} from "packages/net/minecraft/client/$Camera"
-
-export interface $GameRendererAccessor {
-
- "getRenderHand"(): boolean
- "getPanoramicMode"(): boolean
- "invokeBobView"(arg0: $PoseStack$Type, arg1: float): void
- "invokeBobHurt"(arg0: $PoseStack$Type, arg1: float): void
- "invokeGetFov"(arg0: $Camera$Type, arg1: float, arg2: boolean): double
-}
-
-export namespace $GameRendererAccessor {
-const probejs$$marker: never
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $GameRendererAccessor$Type = ($GameRendererAccessor);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $GameRendererAccessor_ = $GameRendererAccessor$Type;
-}}
-declare module "packages/net/irisshaders/iris/texture/pbr/loader/$AtlasPBRLoader$PBRTextureAtlasSprite" {
-import {$TextureAtlasSprite, $TextureAtlasSprite$Type} from "packages/net/minecraft/client/renderer/texture/$TextureAtlasSprite"
-
-export class $AtlasPBRLoader$PBRTextureAtlasSprite extends $TextureAtlasSprite {
-
-
-public "getBaseSprite"(): $TextureAtlasSprite
-get "baseSprite"(): $TextureAtlasSprite
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $AtlasPBRLoader$PBRTextureAtlasSprite$Type = ($AtlasPBRLoader$PBRTextureAtlasSprite);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $AtlasPBRLoader$PBRTextureAtlasSprite_ = $AtlasPBRLoader$PBRTextureAtlasSprite$Type;
 }}
 declare module "packages/net/irisshaders/iris/compat/sodium/mixin/shadow_map/$SodiumWorldRendererAccessor" {
 import {$Long2ObjectMap, $Long2ObjectMap$Type} from "packages/it/unimi/dsi/fastutil/longs/$Long2ObjectMap"
