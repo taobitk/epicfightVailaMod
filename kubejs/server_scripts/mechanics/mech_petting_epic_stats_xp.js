@@ -1,5 +1,5 @@
 // Tên file: kubejs/server_scripts/mechanics/mech_petting_epic_stats_xp.js
-// Mục đích: Cho phép người chơi nhận được 3/4 EXP của Epic Stats tương ứng với 3/4 lượng máu tối đa của quái vật 
+// Mục đích: Cho phép người chơi nhận được 1/3 EXP của Epic Stats tương ứng với 1/3 lượng máu tối đa của quái vật 
 //            khi thú cưng (Petting mod) của họ tiêu diệt mục tiêu.
 
 (function() {
@@ -27,9 +27,9 @@
                             // Tìm người chơi trực tuyến sở hữu pet
                             let player = server.playerList.getPlayer(ownerUuid);
                             if (player) {
-                                // Tính toán lượng EXP: 3/4 lượng máu tối đa (Max HP) của nạn nhân
+                                // Tính toán lượng EXP: 1/2 lượng máu tối đa (Max HP) của nạn nhân
                                 let maxHp = victim.maxHealth;
-                                let expAmount = Math.floor((maxHp * 3) / 4);
+                                let expAmount = Math.floor(maxHp / 2);
                                 
                                 if (expAmount > 0) {
                                     server.runCommandSilent(`esr_addexp ${player.username} ${expAmount}`);
