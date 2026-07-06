@@ -33,7 +33,24 @@
                                 
                                 if (expAmount > 0) {
                                     server.runCommandSilent(`esr_addexp ${player.username} ${expAmount}`);
-                                    console.info(`[PetXP] Pet của ${player.username} đã tiêu diệt ${victim.type}. Cộng ${expAmount} EXP cho chủ nhân.`);
+                                    console.info(`[PetXP] Pet của ${player.username} đã tiêu diệt ${victim.type}. Cộng ${expAmount} Epic Stats EXP cho chủ nhân.`);
+                                }
+
+                                // 2. Vanilla EXP: Cộng trực tiếp 1/2 lượng EXP vanilla của quái cho người chơi
+                                try {
+                                    let vanillaXp = 5;
+                                    if (typeof victim.getExperienceReward === 'function') {
+                                        vanillaXp = victim.getExperienceReward();
+                                    } else if (victim.xpReward !== undefined) {
+                                        vanillaXp = victim.xpReward;
+                                    }
+                                    let playerXpAmount = Math.floor(vanillaXp / 2);
+                                    if (playerXpAmount > 0) {
+                                        player.giveExperiencePoints(playerXpAmount);
+                                        console.info(`[PetXP] Cộng trực tiếp ${playerXpAmount} EXP vanilla cho ${player.username} (EXP gốc của mob: ${vanillaXp}).`);
+                                    }
+                                } catch (xpError) {
+                                    console.error(`[PetXP] Lỗi khi tính/cộng EXP vanilla: ${xpError}`);
                                 }
                             }
                         } catch (e) {
