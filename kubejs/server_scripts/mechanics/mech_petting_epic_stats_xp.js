@@ -4,7 +4,6 @@
 
 (function() {
     const UUID = Java.loadClass('java.util.UUID');
-    const AddexpforProcedure = Java.loadClass('net.felinamods.epicstatsmodremastered.procedures.AddexpforProcedure');
 
     EntityEvents.death(event => {
         let victim = event.entity;
@@ -33,16 +32,8 @@
                                 let expAmount = Math.floor(maxHp / 3);
                                 
                                 if (expAmount > 0) {
-                                    // Gọi procedure của Epic Stats để cộng EXP (tự động xử lý lên cấp, cộng SP và sync client)
-                                    AddexpforProcedure.execute(
-                                        victim.level,
-                                        victim.x,
-                                        victim.y,
-                                        victim.z,
-                                        player,
-                                        expAmount
-                                    );
-                                    console.info(`[PetXP] Pet của ${player.name.string} đã tiêu diệt ${victim.type}. Cộng ${expAmount} EXP cho chủ nhân.`);
+                                    server.runCommandSilent(`esr_addexp ${player.username} ${expAmount}`);
+                                    console.info(`[PetXP] Pet của ${player.username} đã tiêu diệt ${victim.type}. Cộng ${expAmount} EXP cho chủ nhân.`);
                                 }
                             }
                         } catch (e) {
