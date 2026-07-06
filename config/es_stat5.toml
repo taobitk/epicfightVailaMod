@@ -1,11 +1,11 @@
 
 ["Stat 5"]
 	#Defines if the stat is on or off
-	"Stat 5" = false
+	"Stat 5" = true
 	#Defines which name do you want to use for this stat in the menu
-	"Stat 5 Name " = "Magic"
+	"Stat 5 Name " = "Pet ATK"
 	#Defines the ID of the attribute, example: minecraft:generic.attack_speed
-	"Stat 5 ID" = "modid:attribute"
+	"Stat 5 ID" = "modid:pet-atk"
 	#The value added to the attribute per level
 	"Stat 5 Value" = 0.1
 	"Stat 5 Max" = 100.0

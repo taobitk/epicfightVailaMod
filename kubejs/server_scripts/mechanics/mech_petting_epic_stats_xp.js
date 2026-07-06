@@ -2,7 +2,7 @@
 // Mục đích: Cho phép người chơi nhận được 1/3 EXP của Epic Stats tương ứng với 1/3 lượng máu tối đa của quái vật 
 //            khi thú cưng (Petting mod) của họ tiêu diệt mục tiêu.
 
-(function() {
+(function () {
     const UUID = Java.loadClass('java.util.UUID');
 
     EntityEvents.death(event => {
@@ -30,7 +30,7 @@
                                 // Tính toán lượng EXP: 1/2 lượng máu tối đa (Max HP) của nạn nhân
                                 let maxHp = victim.maxHealth;
                                 let expAmount = Math.floor(maxHp / 2);
-                                
+
                                 if (expAmount > 0) {
                                     server.runCommandSilent(`esr_addexp ${player.username} ${expAmount}`);
                                     console.info(`[PetXP] Pet của ${player.username} đã tiêu diệt ${victim.type}. Cộng ${expAmount} Epic Stats EXP cho chủ nhân.`);
