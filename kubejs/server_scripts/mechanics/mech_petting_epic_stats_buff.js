@@ -1,5 +1,6 @@
 // Tên file: kubejs/server_scripts/mechanics/mech_petting_epic_stats_buff.js
-// Mục đích: Tự động cộng thêm Máu tối đa và Sát thương cho Pet dựa vào chỉ số Pet ATK (Stat 5) và Pet HP (Stat 6) của chủ nhân.
+// Mục đích: Tự động cập nhật chỉ số Pet theo thời gian thực dựa vào điểm chỉ số Pet ATK (Stat 5) và Pet HP (Stat 6) của chủ nhân.
+// Tối ưu hóa: Chỉ thực hiện quét tìm Pet khi người chơi vừa đăng nhập hoặc khi phát hiện điểm số chỉ số vừa thay đổi để bảo vệ hiệu năng server tuyệt đối.
 
 (function() {
     const UUID = Java.loadClass('java.util.UUID');
@@ -8,7 +9,6 @@
     const updatePetStats = (entity) => {
         if (!entity || !entity.nbt) return;
 
-        // Chỉ xử lý các thực thể có ownerUUID (đã được thuần hóa bởi mod Petting)
         let forgeData = entity.nbt.getCompound('ForgeData');
         if (!forgeData || !forgeData.contains('ownerUUID')) return;
 
@@ -21,14 +21,13 @@
         try {
             let ownerUuid = UUID.fromString(ownerUuidStr);
             let player = server.playerList.getPlayer(ownerUuid);
-            if (!player) return; // Chủ nhân không online thì không cập nhật
+            if (!player) return;
 
-            // Lấy dữ liệu chỉ số của người chơi
             let cap = player.getCapability(EpicStatsModRemasteredModVariables.PLAYER_VARIABLES_CAPABILITY).orElse(null);
             if (!cap) return;
 
-            let petAtkLvl = cap.stat_5_level || 0; // Chỉ số Pet ATK (Stat 5)
-            let petHpLvl = cap.stat_6_level || 0;  // Chỉ số Pet HP (Stat 6)
+            let petAtkLvl = cap.stat_5_level || 0; // Pet ATK (Stat 5)
+            let petHpLvl = cap.stat_6_level || 0;  // Pet HP (Stat 6)
 
             let pData = entity.persistentData;
 
@@ -41,7 +40,6 @@
                     pData.putDouble('original_max_hp', originalMaxHp);
                 }
 
-                // Công thức: Mỗi cấp chỉ số Pet HP cộng thêm 2 Máu tối đa
                 let bonusHp = petHpLvl * 2;
                 let newMaxHp = originalMaxHp + bonusHp;
                 let oldMaxHp = hpAttr.getBaseValue();
@@ -49,8 +47,6 @@
                 if (oldMaxHp !== newMaxHp) {
                     let currentHealth = entity.health;
                     hpAttr.setBaseValue(newMaxHp);
-                    
-                    // Nếu máu tối đa tăng lên, bù lại lượng máu tương ứng để không bị mất máu hiện tại
                     if (newMaxHp > oldMaxHp) {
                         entity.health = currentHealth + (newMaxHp - oldMaxHp);
                     }
@@ -67,7 +63,6 @@
                     pData.putDouble('original_atk', originalAtk);
                 }
 
-                // Công thức: Mỗi cấp chỉ số Pet ATK cộng thêm 0.5 Sát thương
                 let bonusAtk = petAtkLvl * 0.5;
                 let newAtk = originalAtk + bonusAtk;
                 let oldAtk = atkAttr.getBaseValue();
@@ -83,7 +78,31 @@
         }
     };
 
-    // Đăng ký sự kiện cập nhật
+    // Hàm tiện ích để quét và cập nhật toàn bộ Pet xung quanh người chơi
+    const updateAllNearbyPets = (player) => {
+        try {
+            let boundingBox = player.boundingBox || player.getBoundingBox();
+            if (boundingBox) {
+                let aabb = boundingBox.inflate(32);
+                let entities = player.level.getEntitiesWithin(aabb);
+                entities.forEach(entity => {
+                    if (entity && entity.nbt) {
+                        let forgeData = entity.nbt.getCompound('ForgeData');
+                        if (forgeData && forgeData.contains('ownerUUID')) {
+                            let ownerUuidStr = forgeData.getString('ownerUUID');
+                            if (ownerUuidStr && ownerUuidStr === player.uuid.toString()) {
+                                updatePetStats(entity);
+                            }
+                        }
+                    }
+                });
+            }
+        } catch (err) {
+            // Tránh spam log
+        }
+    };
+
+    // Đăng ký các sự kiện cơ bản
     EntityEvents.spawned(event => {
         updatePetStats(event.entity);
     });
@@ -94,5 +113,39 @@
 
     EntityEvents.hurt(event => {
         updatePetStats(event.entity);
+    });
+
+    // 1. Đồng bộ khi người chơi đăng nhập game
+    PlayerEvents.loggedIn(event => {
+        updateAllNearbyPets(event.player);
+    });
+
+    // 2. Kiểm tra siêu nhẹ định kỳ mỗi 2 giây (40 ticks)
+    // Chỉ kích hoạt quét tìm Pet khi phát hiện điểm số thực sự thay đổi
+    PlayerEvents.tick(event => {
+        let player = event.player;
+        if (player.age % 40 === 0) {
+            try {
+                let cap = player.getCapability(EpicStatsModRemasteredModVariables.PLAYER_VARIABLES_CAPABILITY).orElse(null);
+                if (cap) {
+                    let currentAtkLvl = cap.stat_5_level || 0;
+                    let currentHpLvl = cap.stat_6_level || 0;
+
+                    let pData = player.persistentData;
+                    let lastAtkLvl = pData.getDouble('last_pet_atk_lvl');
+                    let lastHpLvl = pData.getDouble('last_pet_hp_lvl');
+
+                    // Nếu phát hiện sự thay đổi chỉ số
+                    if (currentAtkLvl !== lastAtkLvl || currentHpLvl !== lastHpLvl) {
+                        updateAllNearbyPets(player);
+                        
+                        pData.putDouble('last_pet_atk_lvl', currentAtkLvl);
+                        pData.putDouble('last_pet_hp_lvl', currentHpLvl);
+                    }
+                }
+            } catch (err) {
+                // Tránh spam log
+            }
+        }
     });
 })();
