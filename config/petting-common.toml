@@ -74,11 +74,11 @@
 	ridingWhitelistOnly = false
 	ridingWhitelist = []
 	#If true, mobs listed in 'ridingBlacklist' cannot be ridden.
-	ridingBlacklistEnabled = false
+	ridingBlacklistEnabled = true
 	#Mobs that cannot be ridden. Supports exact IDs, whole mod namespaces, and wildcards.
 	#Examples: "create", "minecraft:ravager", "create:mechanical*"
 	#Syntax: ridingBlacklist = ["entry1", "entry2", ...]
-	ridingBlacklist = []
+	ridingBlacklist = ["humancompanions"]
 	#If true, pets can perform attacks (like fireballs) while being ridden via left-click.
 	allowPetAttackWhileRiding = true
 
@@ -97,11 +97,11 @@
 	inventoryWhitelistOnly = false
 	inventoryWhitelist = []
 	#If true, mobs listed in 'inventoryBlacklist' will not have the pet inventory UI.
-	inventoryBlacklistEnabled = false
+	inventoryBlacklistEnabled = true
 	#Mobs that cannot have a pet inventory. Supports exact IDs, whole mod namespaces, and wildcards.
 	#Examples: "create", "minecraft:blaze", "alexsmobs:*"
 	#Syntax: inventoryBlacklist = ["entry1", "entry2", ...]
-	inventoryBlacklist = []
+	inventoryBlacklist = ["humancompanions"]
 
 ["Controls Settings"]
 	#Scheme for commanding pets.
@@ -178,7 +178,7 @@
 	#  Prefix:         "create:mechanical*"  (blocks any entity whose ID starts with 'create:mechanical')
 	#Syntax: tamingBlacklist = ["entry1", "entry2", ...]
 	#Example: tamingBlacklist = ["create", "minecraft:wither", "alexsmobs:void_worm"]
-	tamingBlacklist = ["minecraft:wither", "minecraft:ender_dragon", "minecraft:warden"]
+	tamingBlacklist = ["minecraft:wither", "minecraft:ender_dragon", "minecraft:warden", "humancompanions"]
 
 ["Custom Taming Settings"]
 	#Map custom taming items to specific mobs. Format: entity_registry|item_registry. Example: ["minecraft:zombie|minecraft:bone"]
