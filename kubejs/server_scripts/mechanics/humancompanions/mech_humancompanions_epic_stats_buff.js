@@ -1,25 +1,23 @@
-// Tên file: kubejs/server_scripts/mechanics/mech_petting_epic_stats_buff.js
-// Mục đích: Tự động cập nhật chỉ số Pet theo thời gian thực dựa vào điểm chỉ số Pet ATK (Stat 5), Pet HP (Stat 6) và Pet DEF (Stat 7) của chủ nhân.
-// Tối ưu hóa: Chỉ thực hiện quét tìm Pet khi người chơi vừa đăng nhập hoặc khi phát hiện điểm số chỉ số vừa thay đổi để bảo vệ hiệu năng server tuyệt đối.
+// Tên file: kubejs/server_scripts/mechanics/humancompanions/mech_humancompanions_epic_stats_buff.js
+// Mục đích: Tự động cập nhật chỉ số Companion theo thời gian thực dựa vào điểm chỉ số Pet ATK (Stat 5), Pet HP (Stat 6) và Pet DEF (Stat 7) của chủ nhân.
+// Cấu hình: +1 HP mỗi cấp HP, +1 ATK mỗi cấp ATK, +1 DEF (Armor) mỗi cấp DEF.
 
 (function() {
-    const UUID = Java.loadClass('java.util.UUID');
     const EpicStatsModRemasteredModVariables = Java.loadClass('net.felinamods.epicstatsmodremastered.network.EpicStatsModRemasteredModVariables');
 
-    const updatePetStats = (entity) => {
+    const updateCompanionStats = (entity) => {
         if (!entity || !entity.nbt) return;
+        if (!entity.type.startsWith('humancompanions:')) return;
 
-        let forgeData = entity.nbt.getCompound('ForgeData');
-        if (!forgeData || !forgeData.contains('ownerUUID')) return;
-
-        let ownerUuidStr = forgeData.getString('ownerUUID');
-        if (!ownerUuidStr) return;
+        // Kiểm tra xem Companion đã được thuê (có chủ) chưa
+        if (!entity.nbt.contains('Owner')) return;
+        let ownerUuid = entity.nbt.getUUID('Owner');
+        if (!ownerUuid) return;
 
         let server = entity.server;
         if (!server) return;
 
         try {
-            let ownerUuid = UUID.fromString(ownerUuidStr);
             let player = server.playerList.getPlayer(ownerUuid);
             if (!player) return;
 
@@ -32,7 +30,7 @@
 
             let pData = entity.persistentData;
 
-            // 1. Cập nhật Máu tối đa (Max Health) -> +2 HP mỗi cấp
+            // 1. Cập nhật Máu tối đa (Max HP) -> +1 HP mỗi cấp
             let hpAttr = entity.getAttribute('minecraft:generic.max_health');
             if (hpAttr) {
                 let originalMaxHp = pData.getDouble('original_max_hp');
@@ -41,7 +39,7 @@
                     pData.putDouble('original_max_hp', originalMaxHp);
                 }
 
-                let bonusHp = petHpLvl * 2;
+                let bonusHp = petHpLvl * 1.0;
                 let newMaxHp = originalMaxHp + bonusHp;
                 let oldMaxHp = hpAttr.getBaseValue();
 
@@ -51,7 +49,7 @@
                     if (newMaxHp > oldMaxHp) {
                         entity.health = currentHealth + (newMaxHp - oldMaxHp);
                     }
-                    console.info(`[PetStatsBuff] Đã cập nhật HP cho Pet ${entity.type} (chủ: ${player.username}): Level ${petHpLvl} -> Max HP: ${originalMaxHp} -> ${newMaxHp}`);
+                    console.info(`[CompanionStats] Đã cập nhật HP cho ${entity.type} (chủ: ${player.username}): Level ${petHpLvl} -> Max HP: ${originalMaxHp} -> ${newMaxHp}`);
                 }
             }
 
@@ -70,7 +68,7 @@
 
                 if (oldAtk !== newAtk) {
                     atkAttr.setBaseValue(newAtk);
-                    console.info(`[PetStatsBuff] Đã cập nhật ATK cho Pet ${entity.type} (chủ: ${player.username}): Level ${petAtkLvl} -> ATK: ${originalAtk} -> ${newAtk}`);
+                    console.info(`[CompanionStats] Đã cập nhật ATK cho ${entity.type} (chủ: ${player.username}): Level ${petAtkLvl} -> ATK: ${originalAtk} -> ${newAtk}`);
                 }
             }
 
@@ -91,29 +89,28 @@
 
                 if (oldArmor !== newArmor) {
                     armorAttr.setBaseValue(newArmor);
-                    console.info(`[PetStatsBuff] Đã cập nhật DEF cho Pet ${entity.type} (chủ: ${player.username}): Level ${petDefLvl} -> Armor: ${originalArmor} -> ${newArmor}`);
+                    console.info(`[CompanionStats] Đã cập nhật DEF cho ${entity.type} (chủ: ${player.username}): Level ${petDefLvl} -> Armor: ${originalArmor} -> ${newArmor}`);
                 }
             }
 
         } catch (e) {
-            console.error(`[PetStatsBuff] Lỗi khi cập nhật chỉ số cho Pet: ${e}`);
+            console.error(`[CompanionStats] Lỗi khi cập nhật chỉ số cho Companion: ${e}`);
         }
     };
 
-    // Hàm tiện ích để quét và cập nhật toàn bộ Pet xung quanh người chơi
-    const updateAllNearbyPets = (player) => {
+    // Hàm tiện ích để quét và cập nhật toàn bộ Companion xung quanh người chơi
+    const updateAllNearbyCompanions = (player) => {
         try {
             let boundingBox = player.boundingBox || player.getBoundingBox();
             if (boundingBox) {
                 let aabb = boundingBox.inflate(32);
                 let entities = player.level.getEntitiesWithin(aabb);
                 entities.forEach(entity => {
-                    if (entity && entity.nbt) {
-                        let forgeData = entity.nbt.getCompound('ForgeData');
-                        if (forgeData && forgeData.contains('ownerUUID')) {
-                            let ownerUuidStr = forgeData.getString('ownerUUID');
-                            if (ownerUuidStr && ownerUuidStr === player.uuid.toString()) {
-                                updatePetStats(entity);
+                    if (entity && entity.type.startsWith('humancompanions:') && entity.nbt) {
+                        if (entity.nbt.contains('Owner')) {
+                            let ownerUuid = entity.nbt.getUUID('Owner');
+                            if (ownerUuid && ownerUuid.toString() === player.uuid.toString()) {
+                                updateCompanionStats(entity);
                             }
                         }
                     }
@@ -126,24 +123,24 @@
 
     // Đăng ký các sự kiện cơ bản
     EntityEvents.spawned(event => {
-        updatePetStats(event.entity);
+        updateCompanionStats(event.entity);
     });
 
     ItemEvents.entityInteracted(event => {
-        updatePetStats(event.target);
+        updateCompanionStats(event.target);
     });
 
     EntityEvents.hurt(event => {
-        updatePetStats(event.entity);
+        updateCompanionStats(event.entity);
     });
 
     // 1. Đồng bộ khi người chơi đăng nhập game
     PlayerEvents.loggedIn(event => {
-        updateAllNearbyPets(event.player);
+        updateAllNearbyCompanions(event.player);
     });
 
     // 2. Kiểm tra siêu nhẹ định kỳ mỗi 2 giây (40 ticks)
-    // Chỉ kích hoạt quét tìm Pet khi phát hiện điểm số thực sự thay đổi
+    // Chỉ kích hoạt quét tìm Companion khi phát hiện điểm số thực sự thay đổi
     PlayerEvents.tick(event => {
         let player = event.player;
         if (player.age % 40 === 0) {
@@ -155,17 +152,17 @@
                     let currentDefLvl = cap.stat_7_level || 0;
 
                     let pData = player.persistentData;
-                    let lastAtkLvl = pData.getDouble('last_pet_atk_lvl');
-                    let lastHpLvl = pData.getDouble('last_pet_hp_lvl');
-                    let lastDefLvl = pData.getDouble('last_pet_def_lvl');
+                    let lastAtkLvl = pData.getDouble('last_companion_atk_lvl');
+                    let lastHpLvl = pData.getDouble('last_companion_hp_lvl');
+                    let lastDefLvl = pData.getDouble('last_companion_def_lvl');
 
                     // Nếu phát hiện sự thay đổi chỉ số
                     if (currentAtkLvl !== lastAtkLvl || currentHpLvl !== lastHpLvl || currentDefLvl !== lastDefLvl) {
-                        updateAllNearbyPets(player);
+                        updateAllNearbyCompanions(player);
                         
-                        pData.putDouble('last_pet_atk_lvl', currentAtkLvl);
-                        pData.putDouble('last_pet_hp_lvl', currentHpLvl);
-                        pData.putDouble('last_pet_def_lvl', currentDefLvl);
+                        pData.putDouble('last_companion_atk_lvl', currentAtkLvl);
+                        pData.putDouble('last_companion_hp_lvl', currentHpLvl);
+                        pData.putDouble('last_companion_def_lvl', currentDefLvl);
                     }
                 }
             } catch (err) {

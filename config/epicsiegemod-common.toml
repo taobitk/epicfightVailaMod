@@ -2,7 +2,7 @@
 #General settings
 [General]
 	#Mobs that are exempt from AI modifications [default: [minecraft:iron_golem]
-	AI_Blacklist = ["minecraft:iron_golem"]
+	AI_Blacklist = ["minecraft:iron_golem", "humancompanions:knight", "humancompanions:archer", "humancompanions:axeguard", "humancompanions:arbalist"]
 	#Prevents players skipping the night through sleep [default: false]
 	allowSleep = false
 	#Awareness Radius [default: 64]
