@@ -1,12 +1,12 @@
 ServerEvents.recipes(event => {
-    // === Cấu hình nâng cấp Giáp WOM từ Đồ Kim Cương WOM (Yêu cầu Khối Netherite) ===
+    // === Cấu hình nâng cấp Giáp WOM từ Đồ Kim Cương WOM (Yêu cầu NIDG Ingot) ===
 
     // Mũ (Mask) từ Vương miện (Crown)
     event.smithing(
         'wom:netherite_mask',
         'minecraft:netherite_upgrade_smithing_template',
         'wom:diamond_crown',
-        'minecraft:netherite_block'
+        'kubejs:nidg_ingot'
     )
 
     // Thân (Manicle) từ Vòng tay (Armbracelet)
@@ -14,7 +14,7 @@ ServerEvents.recipes(event => {
         'wom:netherite_manicle',
         'minecraft:netherite_upgrade_smithing_template',
         'wom:diamond_armbracelet',
-        'minecraft:netherite_block'
+        'kubejs:nidg_ingot'
     )
 
     // Quần (Chains) từ Leg Bottom Seal
@@ -22,7 +22,7 @@ ServerEvents.recipes(event => {
         'wom:netherite_chains',
         'minecraft:netherite_upgrade_smithing_template',
         'wom:diamond_legbottomseal',
-        'minecraft:netherite_block'
+        'kubejs:nidg_ingot'
     )
 
     // Giày (Belt) từ Leg Top Seal
@@ -30,7 +30,7 @@ ServerEvents.recipes(event => {
         'wom:netherite_belt',
         'minecraft:netherite_upgrade_smithing_template',
         'wom:diamond_legtopseal',
-        'minecraft:netherite_block'
+        'kubejs:nidg_ingot'
     )
 
     // Mũ Netherite -> Mặt nạ WOM
