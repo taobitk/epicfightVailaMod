@@ -1,0 +1,39 @@
+{
+  "stat1.info": "Tăng sát thương cận chiến của người chơi",
+  "stat2.info": "Tăng lượng máu của người chơi",
+  "stat3.info": "Tăng điểm giáp bảo vệ của người chơi",
+  "stat4.info": "Tăng điểm thể lực (Stamina) của người chơi",
+  "stat5.info": "Tăng sát thương tầm xa (Cung/Nỏ/Đạn bắn)",
+  "stat6.info": "Tăng lực tấn công của đệ (Pet ATK)",
+  "stat7.info": "Tăng lượng máu tối đa của đệ (Pet HP)",
+  "stat8.info": "Tăng giáp bảo vệ của đệ (Pet DEF)",
+
+  "gui.epic_stats_mod_remastered.stats_menu_info.label_increases_player_attack_damage": "Tăng sát thương cận chiến của người chơi",
+  "gui.epic_stats_mod_remastered.stats_menu_info.label_increases_player_health": "Tăng lượng máu của người chơi",
+  "gui.epic_stats_mod_remastered.stats_menu_info.label_increases_player_armor": "Tăng điểm giáp bảo vệ của người chơi",
+  "gui.epic_stats_mod_remastered.stats_menu_info.label_increases_player_spell_damage_an": "Tăng điểm thể lực (Stamina) của người chơi",
+  "gui.epic_stats_mod_remastered.stats_menu_info.label_increases_player_mana_and_spell": "Tăng sát thương tầm xa (Cung/Nỏ/Đạn bắn)",
+  "gui.epic_stats_mod_remastered.stats_menu_info.label_increases_player_attack_speed": "Tăng lực tấn công của đệ (Pet ATK)",
+  "gui.epic_stats_mod_remastered.stats_menu_info_r.label_increases_player_stamina": "Tăng lượng máu tối đa của đệ (Pet HP)",
+  "gui.epic_stats_mod_remastered.stats_menu_info_r.label_increases_player_luck": "Tăng giáp bảo vệ của đệ (Pet DEF)",
+
+  "gui.epic_stats_mod_remastered.stats_menu_info_r.label_increases_player_spell_damage_an": "Tăng điểm thể lực (Stamina) của người chơi",
+  "gui.epic_stats_mod_remastered.stats_menu_info_r.label_increases_player_attack_damage": "Tăng sát thương cận chiến của người chơi",
+  "gui.epic_stats_mod_remastered.stats_menu_info_r.label_increases_player_armor": "Tăng điểm giáp bảo vệ của người chơi",
+  "gui.epic_stats_mod_remastered.stats_menu_info_r.label_increases_player_health": "Tăng lượng máu của người chơi",
+  "gui.epic_stats_mod_remastered.stats_menu_info_r.label_increases_player_mana_and_spell": "Tăng sát thương tầm xa (Cung/Nỏ/Đạn bắn)",
+  "gui.epic_stats_mod_remastered.stats_menu_info_r.label_increases_player_attack_speed": "Tăng lực tấn công của đệ (Pet ATK)",
+
+  "gui.epic_stats_mod_remastered.stats_menu.tooltip_increases_player_stamina": "Tăng điểm thể lực (Stamina) của người chơi",
+  "gui.epic_stats_mod_remastered.stats_menu.tooltip_increases_mana_and_spell_resist": "Tăng sát thương tầm xa (Cung/Nỏ/Đạn bắn)",
+  "gui.epic_stats_mod_remastered.stats_menu.tooltip_increases_player_attack_speed": "Tăng lực tấn công của đệ (Pet ATK)",
+  "gui.epic_stats_mod_remastered.stats_menu.tooltip_increases_player_luck": "Tăng giáp bảo vệ của đệ (Pet DEF)",
+  "gui.epic_stats_mod_remastered.stats_menu.tooltip_increases_player_health": "Tăng lượng máu của người chơi",
+  "gui.epic_stats_mod_remastered.stats_menu.tooltip_increases_player_defense": "Tăng điểm giáp bảo vệ của người chơi",
+
+  "gui.epic_stats_mod_remastered.stats_menu_remastered.tooltip_increases_player_stamina": "Tăng lượng máu tối đa của đệ (Pet HP)",
+  "gui.epic_stats_mod_remastered.stats_menu_remastered.tooltip_increases_player_luck": "Tăng giáp bảo vệ của đệ (Pet DEF)",
+  "gui.epic_stats_mod_remastered.stats_menu_remastered.tooltip_increases_player_attack_speed": "Tăng lực tấn công của đệ (Pet ATK)",
+  "gui.epic_stats_mod_remastered.stats_menu_remastered.tooltip_increases_mana_and_spell_resist": "Tăng sát thương tầm xa (Cung/Nỏ/Đạn bắn)",
+  "gui.epic_stats_mod_remastered.stats_menu_remastered.tooltip_increases_player_health": "Tăng lượng máu của người chơi"
+}

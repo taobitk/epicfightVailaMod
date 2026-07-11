@@ -1,0 +1,39 @@
+{
+  "stat1.info": "Increases player attack damage",
+  "stat2.info": "Increases player health",
+  "stat3.info": "Increases player armor",
+  "stat4.info": "Increases player stamina",
+  "stat5.info": "Increases player ranged damage",
+  "stat6.info": "Increases pet attack damage",
+  "stat7.info": "Increases pet health",
+  "stat8.info": "Increases pet defense",
+
+  "gui.epic_stats_mod_remastered.stats_menu_info.label_increases_player_attack_damage": "Increases player attack damage",
+  "gui.epic_stats_mod_remastered.stats_menu_info.label_increases_player_health": "Increases player health",
+  "gui.epic_stats_mod_remastered.stats_menu_info.label_increases_player_armor": "Increases player armor",
+  "gui.epic_stats_mod_remastered.stats_menu_info.label_increases_player_spell_damage_an": "Increases player stamina",
+  "gui.epic_stats_mod_remastered.stats_menu_info.label_increases_player_mana_and_spell": "Increases player ranged damage",
+  "gui.epic_stats_mod_remastered.stats_menu_info.label_increases_player_attack_speed": "Increases pet attack damage",
+  "gui.epic_stats_mod_remastered.stats_menu_info_r.label_increases_player_stamina": "Increases pet health",
+  "gui.epic_stats_mod_remastered.stats_menu_info_r.label_increases_player_luck": "Increases pet defense",
+
+  "gui.epic_stats_mod_remastered.stats_menu_info_r.label_increases_player_spell_damage_an": "Increases player stamina",
+  "gui.epic_stats_mod_remastered.stats_menu_info_r.label_increases_player_attack_damage": "Increases player attack damage",
+  "gui.epic_stats_mod_remastered.stats_menu_info_r.label_increases_player_armor": "Increases player armor",
+  "gui.epic_stats_mod_remastered.stats_menu_info_r.label_increases_player_health": "Increases player health",
+  "gui.epic_stats_mod_remastered.stats_menu_info_r.label_increases_player_mana_and_spell": "Increases player ranged damage",
+  "gui.epic_stats_mod_remastered.stats_menu_info_r.label_increases_player_attack_speed": "Increases pet attack damage",
+
+  "gui.epic_stats_mod_remastered.stats_menu.tooltip_increases_player_stamina": "Increases player stamina",
+  "gui.epic_stats_mod_remastered.stats_menu.tooltip_increases_mana_and_spell_resist": "Increases player ranged damage",
+  "gui.epic_stats_mod_remastered.stats_menu.tooltip_increases_player_attack_speed": "Increases pet attack damage",
+  "gui.epic_stats_mod_remastered.stats_menu.tooltip_increases_player_luck": "Increases pet defense",
+  "gui.epic_stats_mod_remastered.stats_menu.tooltip_increases_player_health": "Increases player health",
+  "gui.epic_stats_mod_remastered.stats_menu.tooltip_increases_player_defense": "Increases player armor",
+
+  "gui.epic_stats_mod_remastered.stats_menu_remastered.tooltip_increases_player_stamina": "Increases pet health",
+  "gui.epic_stats_mod_remastered.stats_menu_remastered.tooltip_increases_player_luck": "Increases pet defense",
+  "gui.epic_stats_mod_remastered.stats_menu_remastered.tooltip_increases_player_attack_speed": "Increases pet attack damage",
+  "gui.epic_stats_mod_remastered.stats_menu_remastered.tooltip_increases_mana_and_spell_resist": "Increases player ranged damage",
+  "gui.epic_stats_mod_remastered.stats_menu_remastered.tooltip_increases_player_health": "Increases player health"
+}

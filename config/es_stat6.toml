@@ -3,32 +3,32 @@
 	#Defines if the stat is on or off
 	"Stat 6" = true
 	#Defines which name do you want to use for this stat in the menu
-	"Stat 6 Name " = "Pet HP"
+	"Stat 6 Name " = "Pet ATK"
 	#Defines the ID of the attribute, example: minecraft:generic.attack_speed
-	"Stat 6 ID" = "modid:pet-heal"
+	"Stat 6 ID" = "modid:pet-atk"
 	#The value added to the attribute per level
 	"Stat 6 Value" = 0.1
-	"Stat 6 Max" = 5.0
+	"Stat 6 Max" = 100.0
 	"Max Stat 6" = 0.0
+
+["Extra 1"]
+	"Stat 6 Extra 1 Value" = 1.0
+	"Stat 6 Extra 1 LVL Req" = 1.0
+	"Stat 6 Extra 1 Max" = 500.0
+	"Stat 6 Extra 1 ID" = "projectile_damage:impact"
+
+["Extra 2"]
+	"Stat 6 Extra 2 ID" = "irons_spellbooks:spell_resist"
+	"Stat 6 Extra 2 Value" = 0.1
+	"Stat 6 Extra 2 LVL Req" = 40.0
+	"Stat 6 Extra 2 Max" = 3.0
+
+["Extra 3"]
+	"Stat 6 Extra 3 ID" = "modid:attribute"
+	"Stat 6 Extra 3 Value" = 0.1
+	"Stat 6 Extra 3 LVL Req" = 1.0
+	"Stat 6 Extra 3 Max" = 3.0
 
 [Misc]
 	"Stat 6 Default" = 4.0
-
-["Extra 1"]
-	"Stat 6 Extra 1 ID" = "projectile_damage:impact"
-	"Stat 6 Extra 1 Value" = 4.0
-	"Stat 6 Extra 1 LVL Req" = 1.0
-	"Stat 6 Extra 1 Max" = 10.0
-
-["Extra 2"]
-	"Stat 6 Extra 2 ID" = "aaa:ddd"
-	"Stat 6 Extra 2 Value" = 3.0
-	"Stat 6 Extra 2 LVL Req" = 4.0
-	"Stat 6 Extra 2 Max" = 33.0
-
-["Extra 3"]
-	"Stat 6 Extra 3 ID" = "aaaa:dd"
-	"Stat 6 Extra 3 Value" = 33.0
-	"Stat 6 Extra 3 LVL Req" = 4.0
-	"Stat 6 Extra 3 Max" = 4.0
 

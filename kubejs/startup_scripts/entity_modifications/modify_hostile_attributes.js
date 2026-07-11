@@ -5,26 +5,26 @@
 // Armor Buff: +3 to +15
 
 // Nhóm Zombie
-const ZOMBIE_STATS = { health: 60.0, attack: 5.0, armor: 10.0 };
-const ZOMBIE_VILLAGER_STATS = { health: 60.0, attack: 5.0, armor: 10.0 };
-const HUSK_STATS = { health: 60.0, attack: 5.0, armor: 10.0 };
-const DROWNED_STATS = { health: 60.0, attack: 5.0, armor: 10.0 };
+const ZOMBIE_STATS = { health: 30.0, attack: 5.0, armor: 10.0 };
+const ZOMBIE_VILLAGER_STATS = { health: 30.0, attack: 5.0, armor: 10.0 };
+const HUSK_STATS = { health: 30.0, attack: 5.0, armor: 10.0 };
+const DROWNED_STATS = { health: 30.0, attack: 5.0, armor: 10.0 };
 
 // Nhóm Skeleton
-const SKELETON_STATS = { health: 60.0, attack: 4.0, armor: 8.0 };
-const STRAY_STATS = { health: 60.0, attack: 4.0, armor: 8.0 };
+const SKELETON_STATS = { health: 30.0, attack: 4.0, armor: 8.0 };
+const STRAY_STATS = { health: 30.0, attack: 4.0, armor: 8.0 };
 const WITHER_SKELETON_STATS = { health: 60.0, attack: 7.0, armor: 10.0 };
 
 // Côn trùng / Thú nhỏ
-const SPIDER_STATS = { health: 48.0, attack: 4.0, armor: 6.0 };
-const CAVE_SPIDER_STATS = { health: 36.0, attack: 4.0, armor: 5.0 };
-const SILVERFISH_STATS = { health: 10.0, attack: 2.0, armor: 3.0 };
-const ENDERMITE_STATS = { health: 10.0, attack: 3.0, armor: 3.0 };
+const SPIDER_STATS = { health: 24.0, attack: 4.0, armor: 6.0 };
+const CAVE_SPIDER_STATS = { health: 18.0, attack: 4.0, armor: 5.0 };
+const SILVERFISH_STATS = { health: 5.0, attack: 1.0, armor: 3.0 };
+const ENDERMITE_STATS = { health: 5.0, attack: 1.0, armor: 3.0 };
 
 // Illager (Cướp)
-const PILLAGER_STATS = { health: 72.0, attack: 8.0, armor: 10.0 };
-const VINDICATOR_STATS = { health: 72.0, attack: 10.0, armor: 12.0 };
-const EVOKER_STATS = { health: 72.0, attack: 0.0, armor: 5.0 };
+const PILLAGER_STATS = { health: 40.0, attack: 8.0, armor: 10.0 };
+const VINDICATOR_STATS = { health: 60.0, attack: 10.0, armor: 12.0 };
+const EVOKER_STATS = { health: 20.0, attack: 0.0, armor: 5.0 };
 const VEX_STATS = { health: 10.0, attack: 8.0, armor: 3.0 };
 const RAVAGER_STATS = { health: 300.0, attack: 25.0, armor: 18.0 };
 
@@ -36,15 +36,15 @@ const HOGLIN_STATS = { health: 120.0, attack: 12.0, armor: 12.0 };
 const PIGLIN_BRUTE_STATS = { health: 150.0, attack: 15.0, armor: 15.0 };
 
 // Dưới nước
-const GUARDIAN_STATS = { health: 90.0, attack: 10.0, armor: 12.0 };
+const GUARDIAN_STATS = { health: 60.0, attack: 10.0, armor: 12.0 };
 const ELDER_GUARDIAN_STATS = { health: 240.0, attack: 15.0, armor: 18.0 };
 
 // Khác
-const CREEPER_STATS = { health: 60.0, attack: 0.0, armor: 5.0 };
+const CREEPER_STATS = { health: 15.0, attack: 0.0, armor: 5.0 };
 const WITCH_STATS = { health: 25.0, attack: 0.0, armor: 5.0 };
-const PHANTOM_STATS = { health: 60.0, attack: 5.0, armor: 5.0 };
+const PHANTOM_STATS = { health: 30.0, attack: 5.0, armor: 5.0 };
 const SHULKER_STATS = { health: 90.0, attack: 0.0, armor: 20.0 };
-const SLIME_STATS = { health: 48.0, attack: 4.0, armor: 5.0 };
+const SLIME_STATS = { health: 30.0, attack: 2.0, armor: 5.0 };
 const ZOGLIN_STATS = { health: 120.0, attack: 12.0, armor: 12.0 };
 
 EntityJSEvents.attributes(event => {
