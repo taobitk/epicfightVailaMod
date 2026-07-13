@@ -8,7 +8,7 @@
 	"Exp Exchange" = false
 	#The value of the exchange
 	"EXP Exchange Value" = 20.0
-	"EXP Start" = 50.0
+	"EXP Start" = 500.0
 	#1 = only entities with enemy type, 2 = enemy and mob, 3 = enemy, mob and passive, 4 = ememy, mob, passive and player. Formatting is 1.0, 2.0 and etc
 	"Allowed types" = 1.0
 	"All EXP is divided at half" = false
@@ -17,7 +17,7 @@
 	#Enables a random value added to the Exp requirement to level up, can be changed setting min and max Exp values
 	"Exp Randomizer" = false
 	#The Default amount of EXP will require to lvl up
-	"Default EXP level Up Value" = 80.0
+	"Default EXP level Up Value" = 50.0
 	#multiplies EXP taken, values accepted (any > 0.0 and it will be readed as %)
 	"Exp Multiplier" = 100.0
 	"Boss Bonus" = 100.0

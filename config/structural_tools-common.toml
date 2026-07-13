@@ -1,0 +1,8 @@
+
+[export]
+	#Hard limit to prevent exporting extremely large selections.
+	#Range: 1 ~ 5000000
+	maxExportBlocks = 200000
+	#Whether to include air blocks in exported JSON.
+	includeAir = false
+

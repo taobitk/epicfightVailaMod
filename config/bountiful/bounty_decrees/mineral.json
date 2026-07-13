@@ -1,0 +1,8 @@
+{
+    "objectives": [
+        "mineral_objs"
+    ],
+    "rewards": [
+        "mineral_rews"
+    ]
+}

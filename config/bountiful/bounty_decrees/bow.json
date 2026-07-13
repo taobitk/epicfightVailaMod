@@ -1,0 +1,8 @@
+{
+    "objectives": [
+        "bow_objs"
+    ],
+    "rewards": [
+        "bow_rews"
+    ]
+}

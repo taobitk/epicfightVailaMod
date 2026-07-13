@@ -1,0 +1,8 @@
+{
+    "objectives": [
+        "crop_objs"
+    ],
+    "rewards": [
+        "crop_rews"
+    ]
+}
