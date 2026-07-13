@@ -4,7 +4,7 @@
             "type": "item",
             "rarity": "COMMON",
             "content": "minecraft:leather_helmet",
-            "amount": { "min": 1, "max": 1 },
+            "amount": { "min": 1, "max": 4 },
             "unitWorth": 300,
             "nbt": "{Damage:0}"
         },
@@ -12,7 +12,7 @@
             "type": "item",
             "rarity": "COMMON",
             "content": "minecraft:leather_chestplate",
-            "amount": { "min": 1, "max": 1 },
+            "amount": { "min": 1, "max": 4 },
             "unitWorth": 600,
             "nbt": "{Damage:0}"
         },
@@ -20,7 +20,7 @@
             "type": "item",
             "rarity": "COMMON",
             "content": "minecraft:leather_leggings",
-            "amount": { "min": 1, "max": 1 },
+            "amount": { "min": 1, "max": 4 },
             "unitWorth": 500,
             "nbt": "{Damage:0}"
         },
@@ -28,7 +28,7 @@
             "type": "item",
             "rarity": "COMMON",
             "content": "minecraft:leather_boots",
-            "amount": { "min": 1, "max": 1 },
+            "amount": { "min": 1, "max": 4 },
             "unitWorth": 300,
             "nbt": "{Damage:0}"
         },
@@ -37,7 +37,7 @@
             "type": "item",
             "rarity": "UNCOMMON",
             "content": "minecraft:chainmail_helmet",
-            "amount": { "min": 1, "max": 1 },
+            "amount": { "min": 1, "max": 3 },
             "unitWorth": 800,
             "nbt": "{Damage:0}"
         },
@@ -45,7 +45,7 @@
             "type": "item",
             "rarity": "UNCOMMON",
             "content": "minecraft:chainmail_chestplate",
-            "amount": { "min": 1, "max": 1 },
+            "amount": { "min": 1, "max": 3 },
             "unitWorth": 1100,
             "nbt": "{Damage:0}"
         },
@@ -53,7 +53,7 @@
             "type": "item",
             "rarity": "UNCOMMON",
             "content": "minecraft:chainmail_leggings",
-            "amount": { "min": 1, "max": 1 },
+            "amount": { "min": 1, "max": 3 },
             "unitWorth": 900,
             "nbt": "{Damage:0}"
         },
@@ -61,7 +61,7 @@
             "type": "item",
             "rarity": "UNCOMMON",
             "content": "minecraft:chainmail_boots",
-            "amount": { "min": 1, "max": 1 },
+            "amount": { "min": 1, "max": 3 },
             "unitWorth": 600,
             "nbt": "{Damage:0}"
         },
@@ -70,7 +70,7 @@
             "type": "item",
             "rarity": "UNCOMMON",
             "content": "minecraft:iron_helmet",
-            "amount": { "min": 1, "max": 1 },
+            "amount": { "min": 1, "max": 3 },
             "unitWorth": 1200,
             "nbt": "{Damage:0}"
         },
@@ -78,7 +78,7 @@
             "type": "item",
             "rarity": "UNCOMMON",
             "content": "minecraft:iron_chestplate",
-            "amount": { "min": 1, "max": 1 },
+            "amount": { "min": 1, "max": 3 },
             "unitWorth": 2000,
             "nbt": "{Damage:0}"
         },
@@ -86,7 +86,7 @@
             "type": "item",
             "rarity": "UNCOMMON",
             "content": "minecraft:iron_leggings",
-            "amount": { "min": 1, "max": 1 },
+            "amount": { "min": 1, "max": 3 },
             "unitWorth": 1600,
             "nbt": "{Damage:0}"
         },
@@ -94,7 +94,7 @@
             "type": "item",
             "rarity": "UNCOMMON",
             "content": "minecraft:iron_boots",
-            "amount": { "min": 1, "max": 1 },
+            "amount": { "min": 1, "max": 3 },
             "unitWorth": 1000,
             "nbt": "{Damage:0}"
         },
@@ -103,7 +103,7 @@
             "type": "item",
             "rarity": "RARE",
             "content": "minecraft:golden_helmet",
-            "amount": { "min": 1, "max": 1 },
+            "amount": { "min": 1, "max": 2 },
             "unitWorth": 1800,
             "nbt": "{Damage:0}"
         },
@@ -111,7 +111,7 @@
             "type": "item",
             "rarity": "RARE",
             "content": "minecraft:golden_chestplate",
-            "amount": { "min": 1, "max": 1 },
+            "amount": { "min": 1, "max": 2 },
             "unitWorth": 3500,
             "nbt": "{Damage:0}"
         },
@@ -119,7 +119,7 @@
             "type": "item",
             "rarity": "RARE",
             "content": "minecraft:golden_leggings",
-            "amount": { "min": 1, "max": 1 },
+            "amount": { "min": 1, "max": 2 },
             "unitWorth": 2800,
             "nbt": "{Damage:0}"
         },
@@ -127,7 +127,7 @@
             "type": "item",
             "rarity": "RARE",
             "content": "minecraft:golden_boots",
-            "amount": { "min": 1, "max": 1 },
+            "amount": { "min": 1, "max": 2 },
             "unitWorth": 1500,
             "nbt": "{Damage:0}"
         },
@@ -136,7 +136,7 @@
             "type": "item",
             "rarity": "EPIC",
             "content": "minecraft:diamond_helmet",
-            "amount": { "min": 1, "max": 1 },
+            "amount": { "min": 1, "max": 2 },
             "unitWorth": 6000,
             "nbt": "{Damage:0}"
         },
@@ -144,7 +144,7 @@
             "type": "item",
             "rarity": "EPIC",
             "content": "minecraft:diamond_chestplate",
-            "amount": { "min": 1, "max": 1 },
+            "amount": { "min": 1, "max": 2 },
             "unitWorth": 8000,
             "nbt": "{Damage:0}"
         },
@@ -152,7 +152,7 @@
             "type": "item",
             "rarity": "EPIC",
             "content": "minecraft:diamond_leggings",
-            "amount": { "min": 1, "max": 1 },
+            "amount": { "min": 1, "max": 2 },
             "unitWorth": 7000,
             "nbt": "{Damage:0}"
         },
@@ -160,7 +160,7 @@
             "type": "item",
             "rarity": "EPIC",
             "content": "minecraft:diamond_boots",
-            "amount": { "min": 1, "max": 1 },
+            "amount": { "min": 1, "max": 2 },
             "unitWorth": 5000,
             "nbt": "{Damage:0}"
         },
