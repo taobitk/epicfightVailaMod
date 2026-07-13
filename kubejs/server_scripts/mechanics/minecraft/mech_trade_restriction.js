@@ -7,7 +7,28 @@ ItemEvents.entityInteracted(event => {
     // Kiểm tra nếu thực thể bị click là Dân làng (Villager)
     if (event.target.type === 'minecraft:villager') {
 
-        // Kiểm tra Giấy Thông Hành (kubejs:travel_permit)
+        // 1. Kiểm tra danh sách đen các nghề nghiệp cấm giao dịch hoàn toàn
+        let blacklistedProfessions = [
+            'bountiful_npc:receptionist'
+        ];
+
+        let profession = "";
+        try {
+            let targetNbt = event.target.getNbt();
+            if (targetNbt && targetNbt.get("VillagerData")) {
+                profession = targetNbt.get("VillagerData").get("profession").getAsString();
+            }
+        } catch (err) { }
+
+        if (blacklistedProfessions.includes(profession)) {
+            if (event.hand === 'MAIN_HAND') {
+                event.player.tell(Text.of("Người này không muốn giao dịch với bạn...").red());
+            }
+            event.cancel();
+            return;
+        }
+
+        // 2. Kiểm tra Giấy Thông Hành (kubejs:travel_permit) cho các dân làng khác
         let permitId = 'kubejs:travel_permit';
         let hasPermit = (event.player.mainHandItem.id === permitId || event.player.offHandItem.id === permitId);
 
