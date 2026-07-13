@@ -3,7 +3,7 @@ ServerEvents.recipes(event => {
     // Đá lửa (Flint) ở trên
     // Gậy (Stick) ở dưới
     // -> 4 Mũi tên (Arrow)
-    event.shaped('4x minecraft:arrow', [
+    event.shaped('1x minecraft:arrow', [
         ' F ',
         ' S ',
         '   '

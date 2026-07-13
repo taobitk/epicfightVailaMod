@@ -41,6 +41,8 @@ EntityEvents.death(event => {
     }
 });
 
+const ClientboundSetExperiencePacket = Java.loadClass('net.minecraft.network.protocol.game.ClientboundSetExperiencePacket');
+
 // 2. Hàm đồng bộ hiển thị cấp độ thực tế (50 XP/cấp) cho người chơi
 function syncCustomXp(player) {
     let pData = player.getPersistentData();
@@ -51,6 +53,10 @@ function syncCustomXp(player) {
     
     player.experienceLevel = newLevel;
     player.experienceProgress = newProgress;
+    
+    if (player.connection) {
+        player.connection.send(new ClientboundSetExperiencePacket(newProgress, player.totalExperience, newLevel));
+    }
 }
 
 // 3. Theo dõi việc tiêu hao Level (Enchant, ép đồ) để cập nhật lại custom_xp
@@ -67,4 +73,9 @@ PlayerEvents.tick(event => {
             pData.putDouble('custom_xp', newXp);
         }
     }
+});
+
+// 4. Đồng bộ ngay lập tức khi người chơi đăng nhập (Join World)
+PlayerEvents.loggedIn(event => {
+    syncCustomXp(event.player);
 });

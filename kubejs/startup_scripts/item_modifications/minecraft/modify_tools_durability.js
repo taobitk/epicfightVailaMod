@@ -67,4 +67,9 @@ ItemEvents.modification(event => {
             item.setMaxDamage(9999);
         });
     });
+
+    // 7. Cung (Bow) - Độ bền: 2000
+    event.modify('minecraft:bow', item => {
+        item.setMaxDamage(2000);
+    });
 });

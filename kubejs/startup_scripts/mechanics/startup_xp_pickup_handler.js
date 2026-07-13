@@ -1,6 +1,8 @@
 // Tên file: KubeJS/startup_scripts/mechanics/startup_xp_pickup_handler.js
 // Mục đích: Lắng nghe sự kiện nhặt hạt EXP của Forge (chỉ chạy ở startup_scripts vì ForgeEvents thuộc về startup context)
 
+const ClientboundSetExperiencePacket = Java.loadClass('net.minecraft.network.protocol.game.ClientboundSetExperiencePacket');
+
 ForgeEvents.onEvent('net.minecraftforge.event.entity.player.PlayerXpEvent$PickupXp', event => {
     let player = event.getEntity();
     let orb = event.getOrb();
@@ -22,5 +24,10 @@ ForgeEvents.onEvent('net.minecraftforge.event.entity.player.PlayerXpEvent$Pickup
     
     player.experienceLevel = newLevel;
     player.experienceProgress = newProgress;
+    
+    // Ép gửi gói tin đồng bộ cấp độ xuống Client ngay lập tức
+    if (player.connection) {
+        player.connection.send(new ClientboundSetExperiencePacket(newProgress, player.totalExperience, newLevel));
+    }
 });
 
