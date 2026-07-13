@@ -7,8 +7,8 @@ ItemEvents.entityInteracted(event => {
     // Kiểm tra nếu thực thể bị click là Dân làng (Villager)
     if (event.target.type === 'minecraft:villager') {
 
-        // 1. Kiểm tra danh sách đen các nghề nghiệp cấm giao dịch hoàn toàn
-        let blacklistedProfessions = [
+        // 1. Kiểm tra danh sách trắng các nghề nghiệp ĐƯỢC PHÉP giao dịch tự do (không cần Giấy Thông Hành)
+        let whitelistedProfessions = [
             'bountiful_npc:receptionist'
         ];
 
@@ -20,11 +20,8 @@ ItemEvents.entityInteracted(event => {
             }
         } catch (err) { }
 
-        if (blacklistedProfessions.includes(profession)) {
-            if (event.hand === 'MAIN_HAND') {
-                event.player.tell(Text.of("Người này không muốn giao dịch với bạn...").red());
-            }
-            event.cancel();
+        if (whitelistedProfessions.includes(profession)) {
+            // Cho phép giao dịch tự do -> không làm gì cả (cho phép event chạy tiếp)
             return;
         }
 
