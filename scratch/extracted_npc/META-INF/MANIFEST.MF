@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Specification-Title: bountiful_npc
+Specification-Vendor: P1nero, Ao22333, YU_Salt
+Specification-Version: 1
+Implementation-Title: bountiful-npc
+Implementation-Version: 1.0.5
+Implementation-Vendor: P1nero, Ao22333, YU_Salt
+Implementation-Timestamp: 2026-05-09T11:40:56+0800
+MixinConfigs: bountiful_npc.mixins.json
+

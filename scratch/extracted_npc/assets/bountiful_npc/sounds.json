@@ -1,0 +1,8 @@
+{
+  "receptionist.bountiful_npc.on_interact": {
+    "sounds": [
+      "bountiful_npc:receptionist/on_interact"
+    ],
+    "subtitle": "subtitles.bountiful_npc.receptionist.on_interact"
+  }
+}

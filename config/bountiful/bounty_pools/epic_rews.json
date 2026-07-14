@@ -1,0 +1,94 @@
+{
+    "content": {
+        "netherite_greatsword": {
+            "type": "item",
+            "rarity": "EPIC",
+            "content": "epicfight:netherite_greatsword",
+            "amount": {
+                "min": 1,
+                "max": 1
+            },
+            "unitWorth": 6000
+        },
+        "netherite_greataxe": {
+            "type": "item",
+            "rarity": "LEGENDARY",
+            "content": "wom:netherite_greataxe",
+            "amount": {
+                "min": 1,
+                "max": 1
+            },
+            "unitWorth": 5500
+        },
+        "netherite_staff": {
+            "type": "item",
+            "rarity": "LEGENDARY",
+            "content": "wom:netherite_staff",
+            "amount": {
+                "min": 1,
+                "max": 1
+            },
+            "unitWorth": 5000
+        },
+        "overly_large_cylinder": {
+            "type": "item",
+            "rarity": "LEGENDARY",
+            "content": "wom:overly_large_cylinder",
+            "amount": {
+                "min": 1,
+                "max": 1
+            },
+            "unitWorth": 5000
+        },
+        "eternal_fire_arcane": {
+            "type": "item",
+            "rarity": "LEGENDARY",
+            "content": "wom:eternal_fire_arcane",
+            "amount": {
+                "min": 1,
+                "max": 1
+            },
+            "unitWorth": 5000
+        },
+        "netherite_tachi": {
+            "type": "item",
+            "rarity": "EPIC",
+            "content": "epicfight:netherite_tachi",
+            "amount": {
+                "min": 1,
+                "max": 1
+            },
+            "unitWorth": 5000
+        },
+        "netherite_longsword": {
+            "type": "item",
+            "rarity": "EPIC",
+            "content": "epicfight:netherite_longsword",
+            "amount": {
+                "min": 1,
+                "max": 1
+            },
+            "unitWorth": 5000
+        },
+        "netherite_spear": {
+            "type": "item",
+            "rarity": "EPIC",
+            "content": "epicfight:netherite_spear",
+            "amount": {
+                "min": 1,
+                "max": 1
+            },
+            "unitWorth": 5000
+        },
+        "netherite_dagger": {
+            "type": "item",
+            "rarity": "EPIC",
+            "content": "epicfight:netherite_dagger",
+            "amount": {
+                "min": 1,
+                "max": 1
+            },
+            "unitWorth": 4000
+        }
+    }
+}

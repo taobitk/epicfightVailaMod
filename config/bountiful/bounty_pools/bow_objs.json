@@ -1,98 +1,54 @@
 {
     "content": {
-        "fletcher_obj_stick": {
+        "flint": {
             "type": "item",
-            "content": "minecraft:stick",
-            "amount": {
-                "min": 8,
-                "max": 64
-            },
-            "unitWorth": 30
-        },
-        "fletcher_obj_planks": {
-            "type": "item_tag",
-            "content": "minecraft:planks",
-            "amount": {
-                "min": 6,
-                "max": 64
-            },
-            "unitWorth": 60
-        },
-        "fletcher_obj_logs": {
-            "type": "item_tag",
-            "content": "minecraft:logs",
-            "amount": {
-                "min": 2,
-                "max": 10
-            },
-            "unitWorth": 240
-        },
-        "fletcher_obj_gravel": {
-            "type": "item",
-            "content": "minecraft:gravel",
-            "amount": {
-                "min": 16,
-                "max": 32
-            },
-            "unitWorth": 30
-        },
-        "fletcher_obj_flint": {
-            "type": "item",
+            "rarity": "COMMON",
             "content": "minecraft:flint",
             "amount": {
-                "min": 16,
-                "max": 32
+                "min": 20,
+                "max": 200
             },
             "unitWorth": 35
         },
-        "fletcher_obj_target": {
+        "iron_ingot": {
             "type": "item",
             "rarity": "UNCOMMON",
-            "content": "minecraft:target",
+            "content": "minecraft:iron_ingot",
             "amount": {
-                "min": 1,
-                "max": 2
+                "min": 5,
+                "max": 30
             },
-            "unitWorth": 750
+            "unitWorth": 1000
         },
-        "fletcher_obj_fletching_table": {
+        "gold_ingot": {
             "type": "item",
-            "content": "minecraft:fletching_table",
+            "rarity": "RARE",
+            "content": "minecraft:gold_ingot",
+            "amount": {
+                "min": 5,
+                "max": 15
+            },
+            "unitWorth": 3500
+        },
+        "diamond": {
+            "type": "item",
+            "rarity": "EPIC",
+            "content": "minecraft:diamond",
             "amount": {
                 "min": 1,
                 "max": 4
             },
-            "unitWorth": 400
+            "unitWorth": 6000
         },
-        "fletcher_obj_string": {
+        "netherite_ingot": {
             "type": "item",
-            "rarity": "UNCOMMON",
-            "content": "minecraft:string",
+            "rarity": "LEGENDARY",
+            "content": "minecraft:netherite_ingot",
             "amount": {
-                "min": 4,
-                "max": 28
+                "min": 1,
+                "max": 1
             },
-            "unitWorth": 70
-        },
-        "fletcher_obj_feather": {
-            "type": "item",
-            "rarity": "RARE",
-            "content": "minecraft:feather",
-            "amount": {
-                "min": 6,
-                "max": 36
-            },
-            "unitWorth": 40
-        },
-        "fletcher_obj_tripwire_hook": {
-            "type": "item",
-            "rarity": "EPIC",
-            "content": "minecraft:tripwire_hook",
-            "amount": {
-                "min": 4,
-                "max": 12
-            },
-            "unitWorth": 550
+            "unitWorth": 15000
         }
     }
 }

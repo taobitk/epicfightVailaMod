@@ -1,0 +1,74 @@
+{
+    "content": {
+        "crimson_moon": {
+            "type": "item",
+            "rarity": "LEGENDARY",
+            "content": "efn:crimson_moon",
+            "amount": {
+                "min": 1,
+                "max": 1
+            },
+            "unitWorth": 60000
+        },
+        "darknight_pursuiters": {
+            "type": "item",
+            "rarity": "LEGENDARY",
+            "content": "epicfight_awaken:darknight_pursuiters",
+            "amount": {
+                "min": 1,
+                "max": 1
+            },
+            "unitWorth": 50000
+        },
+        "eternal_night_scythe": {
+            "type": "item",
+            "rarity": "LEGENDARY",
+            "content": "epicfightx:eternal_night_scythe",
+            "amount": {
+                "min": 1,
+                "max": 1
+            },
+            "unitWorth": 20000
+        },
+        "mortis": {
+            "type": "item",
+            "rarity": "LEGENDARY",
+            "content": "p1nero_bow:mortis",
+            "amount": {
+                "min": 1,
+                "max": 1
+            },
+            "unitWorth": 20000
+        },
+        "katana": {
+            "type": "item",
+            "rarity": "LEGENDARY",
+            "content": "cdmoveset:katana",
+            "amount": {
+                "min": 1,
+                "max": 1
+            },
+            "unitWorth": 15000
+        },
+        "ender_blaster": {
+            "type": "item",
+            "rarity": "LEGENDARY",
+            "content": "wom:ender_blaster",
+            "amount": {
+                "min": 1,
+                "max": 1
+            },
+            "unitWorth": 15000
+        },
+        "ability_stone": {
+            "type": "item",
+            "rarity": "LEGENDARY",
+            "content": "epicskills:ability_stone",
+            "amount": {
+                "min": 1,
+                "max": 1
+            },
+            "unitWorth": 15000
+        }
+    }
+}

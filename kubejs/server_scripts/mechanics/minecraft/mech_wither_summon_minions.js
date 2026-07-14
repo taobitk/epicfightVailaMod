@@ -1,9 +1,12 @@
 // Tên file: kubejs/server_scripts/mechanics/mech_wither_summon_minions.js
 // Mục đích: Wither mất mỗi 80 HP sẽ triệu hồi 5 Wither Skeleton 200 HP, trang bị hỗn hợp giáp/kiếm Diamond/Netherite, ko rơi đồ. Tối đa 10 đợt.
 
+console.info('[WitherBoss] Script loaded OK.');
+
 EntityEvents.hurt(event => {
     let entity = event.entity;
     if (entity && entity.type === 'minecraft:wither') {
+        console.info(`[WitherBoss] >>> Wither was HIT! HP=${entity.health.toFixed(1)} | Damage=${event.damage.toFixed(2)}`);
         let pData = entity.persistentData;
         
         // Khởi tạo mốc HP kích hoạt tiếp theo nếu chưa có (Wither Max HP là 900)

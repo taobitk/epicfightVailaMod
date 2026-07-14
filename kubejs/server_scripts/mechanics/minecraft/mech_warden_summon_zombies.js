@@ -1,9 +1,12 @@
 // Tên file: kubejs/server_scripts/mechanics/mech_warden_summon_zombies.js
 // Mục đích: Warden mất mỗi 100 HP sẽ triệu hồi 1-3 Zombie full giáp và kiếm Kim Cương, ko rơi đồ.
 
+console.info('[WardenBoss] Script loaded OK.');
+
 EntityEvents.hurt(event => {
     let entity = event.entity;
     if (entity && entity.type === 'minecraft:warden') {
+        console.info(`[WardenBoss] >>> Warden was HIT! HP=${entity.health.toFixed(1)} | Damage=${event.damage.toFixed(2)}`);
         let pData = entity.persistentData;
         
         // Khởi tạo mốc kích hoạt đầu tiên nếu chưa có (Warden Max HP là 800)

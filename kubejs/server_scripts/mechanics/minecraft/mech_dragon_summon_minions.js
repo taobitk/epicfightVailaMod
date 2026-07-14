@@ -1,9 +1,12 @@
 // Tên file: kubejs/server_scripts/mechanics/mech_dragon_summon_minions.js
 // Mục đích: Ender Dragon mất mỗi 80 HP sẽ triệu hồi 10 đệ (zombie, wither_skeleton, piglin_brute) full giáp netherite prot 2, kiếm netherite sharp 10, ko rơi đồ. Giới hạn tối đa 15 đợt.
 
+console.info('[DragonBoss] Script loaded OK.');
+
 EntityEvents.hurt(event => {
     let entity = event.entity;
     if (entity && entity.type === 'minecraft:ender_dragon') {
+        console.info(`[DragonBoss] >>> Dragon was HIT! HP=${entity.health.toFixed(1)} | Damage=${event.damage.toFixed(2)}`);
         let pData = entity.persistentData;
 
         // Khởi tạo mốc HP kích hoạt tiếp theo nếu chưa có (Rồng Ender Max HP là 1500)

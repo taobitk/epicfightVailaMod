@@ -1,0 +1,9 @@
+{
+  "id" : "1c7d978447ea4bf3bc23acf260b436e6",
+  "name" : "MHF_Melon",
+  "properties" : [ {
+    "name" : "textures",
+    "value" : "ewogICJ0aW1lc3RhbXAiIDogMTc4MzkzMjY1ODk2NCwKICAicHJvZmlsZUlkIiA6ICIxYzdkOTc4NDQ3ZWE0YmYzYmMyM2FjZjI2MGI0MzZlNiIsCiAgInByb2ZpbGVOYW1lIiA6ICJNSEZfTWVsb24iLAogICJ0ZXh0dXJlcyIgOiB7CiAgICAiU0tJTiIgOiB7CiAgICAgICJ1cmwiIDogImh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvODA5MmQ3NjBjNDUzNjI1NTk0NjYyYzlmYzg2ODE1MmEwMWExZjZmOGQ2MTM3ZmI4NjhkYTVhOTViYmQxZjU4IgogICAgfQogIH0KfQ=="
+  } ],
+  "profileActions" : [ ]
+}

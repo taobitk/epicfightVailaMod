@@ -1,173 +1,94 @@
 {
     "content": {
-        "farmer_obj_bone_meal": {
+        "wheat": {
             "type": "item",
-            "content": "minecraft:bone_meal",
-            "amount": {
-                "min": 4,
-                "max": 48
-            },
-            "unitWorth": 50
-        },
-        "farmer_obj_bone_meal_2": {
-            "type": "item",
-            "content": "minecraft:bone_meal",
-            "amount": {
-                "min": 4,
-                "max": 36
-            },
-            "unitWorth": 150
-        },
-        "farmer_obj_oak_sapling": {
-            "type": "item",
-            "content": "minecraft:oak_sapling",
-            "amount": {
-                "min": 3,
-                "max": 36
-            },
-            "unitWorth": 50
-        },
-        "farmer_obj_sugar": {
-            "type": "item",
-            "content": "minecraft:sugar",
-            "amount": {
-                "min": 3,
-                "max": 36
-            },
-            "unitWorth": 40
-        },
-        "farmer_obj_melon_seeds": {
-            "type": "item",
-            "content": "minecraft:melon_seeds",
-            "amount": {
-                "min": 1,
-                "max": 8
-            },
-            "unitWorth": 75
-        },
-        "farmer_obj_wheat": {
-            "type": "item",
+            "rarity": "COMMON",
             "content": "minecraft:wheat",
             "amount": {
-                "min": 4,
-                "max": 24
+                "min": 32,
+                "max": 128
             },
-            "unitWorth": 50
+            "unitWorth": 30
         },
-        "farmer_obj_beetroot": {
+        "potato": {
             "type": "item",
-            "content": "minecraft:beetroot",
+            "rarity": "COMMON",
+            "content": "minecraft:potato",
             "amount": {
-                "min": 4,
-                "max": 24
+                "min": 32,
+                "max": 128
             },
-            "unitWorth": 65
+            "unitWorth": 30
         },
-        "farmer_obj_carrot": {
+        "carrot": {
             "type": "item",
+            "rarity": "COMMON",
             "content": "minecraft:carrot",
             "amount": {
-                "min": 4,
-                "max": 24
+                "min": 32,
+                "max": 128
+            },
+            "unitWorth": 30
+        },
+        "beetroot": {
+            "type": "item",
+            "rarity": "COMMON",
+            "content": "minecraft:beetroot",
+            "amount": {
+                "min": 32,
+                "max": 128
             },
             "unitWorth": 35
         },
-        "farmer_obj_potato": {
+        "melon_slice": {
             "type": "item",
-            "content": "minecraft:potato",
+            "rarity": "COMMON",
+            "content": "minecraft:melon_slice",
+            "amount": {
+                "min": 32,
+                "max": 128
+            },
+            "unitWorth": 15
+        },
+        "pumpkin": {
+            "type": "item",
+            "rarity": "UNCOMMON",
+            "content": "minecraft:pumpkin",
+            "amount": {
+                "min": 8,
+                "max": 32
+            },
+            "unitWorth": 120
+        },
+        "sweet_berries": {
+            "type": "item",
+            "rarity": "UNCOMMON",
+            "content": "minecraft:sweet_berries",
+            "amount": {
+                "min": 24,
+                "max": 96
+            },
+            "unitWorth": 40
+        },
+        "apple": {
+            "type": "item",
+            "rarity": "RARE",
+            "content": "minecraft:apple",
             "amount": {
                 "min": 16,
                 "max": 48
             },
-            "unitWorth": 40
+            "unitWorth": 80
         },
-        "farmer_obj_poisonous_potato": {
+        "cocoa_beans": {
             "type": "item",
-            "content": "minecraft:poisonous_potato",
-            "amount": {
-                "min": 2,
-                "max": 6
-            },
-            "unitWorth": 350
-        },
-        "farmer_obj_nether_wart": {
-            "type": "item",
-            "content": "minecraft:nether_wart",
             "rarity": "RARE",
+            "content": "minecraft:cocoa_beans",
             "amount": {
-                "min": 4,
-                "max": 36
-            },
-            "unitWorth": 65
-        },
-        "farmer_obj_pumpkin": {
-            "type": "item",
-            "content": "minecraft:pumpkin",
-            "amount": {
-                "min": 2,
-                "max": 8
-            },
-            "unitWorth": 165
-        },
-        "farmer_obj_composter": {
-            "type": "item",
-            "rarity": "UNCOMMON",
-            "content": "minecraft:composter",
-            "amount": {
-                "min": 1,
-                "max": 6
-            },
-            "unitWorth": 200
-        },
-        "farmer_obj_melon": {
-            "type": "item",
-            "rarity": "UNCOMMON",
-            "content": "minecraft:melon",
-            "amount": {
-                "min": 2,
-                "max": 8
-            },
-            "unitWorth": 250
-        },
-        "farmer_obj_melon_slice": {
-            "type": "item",
-            "rarity": "UNCOMMON",
-            "content": "minecraft:melon_slice",
-            "amount": {
-                "min": 2,
-                "max": 32
+                "min": 16,
+                "max": 64
             },
             "unitWorth": 50
-        },
-        "farmer_obj_baked_potato": {
-            "type": "item",
-            "rarity": "UNCOMMON",
-            "content": "minecraft:baked_potato",
-            "amount": {
-                "min": 4,
-                "max": 16
-            },
-            "unitWorth": 75
-        },
-        "farmer_obj_beetroot_soup": {
-            "type": "item",
-            "rarity": "UNCOMMON",
-            "content": "minecraft:beetroot_soup",
-            "amount": {
-                "min": 1,
-                "max": 6
-            },
-            "unitWorth": 375
-        },
-        "farmer_obj_mushroom_stew": {
-            "type": "item",
-            "rarity": "RARE",
-            "content": "minecraft:mushroom_stew",
-            "amount": {
-                "min": 1,
-                "max": 6
-            },
-            "unitWorth": 300
         }
     }
 }

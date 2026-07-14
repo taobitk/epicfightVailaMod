@@ -1,99 +1,94 @@
 {
     "content": {
-        "butcher_obj_chicken": {
+        "cooked_beef": {
             "type": "item",
-            "content": "minecraft:chicken",
+            "rarity": "RARE",
+            "content": "minecraft:cooked_beef",
+            "amount": {
+                "min": 16,
+                "max": 64
+            },
+            "unitWorth": 350
+        },
+        "cooked_porkchop": {
+            "type": "item",
+            "rarity": "RARE",
+            "content": "minecraft:cooked_porkchop",
+            "amount": {
+                "min": 16,
+                "max": 64
+            },
+            "unitWorth": 350
+        },
+        "cooked_chicken": {
+            "type": "item",
+            "rarity": "RARE",
+            "content": "minecraft:cooked_chicken",
+            "amount": {
+                "min": 16,
+                "max": 64
+            },
+            "unitWorth": 300
+        },
+        "cooked_mutton": {
+            "type": "item",
+            "rarity": "RARE",
+            "content": "minecraft:cooked_mutton",
+            "amount": {
+                "min": 16,
+                "max": 64
+            },
+            "unitWorth": 300
+        },
+        "cooked_rabbit": {
+            "type": "item",
+            "rarity": "EPIC",
+            "content": "minecraft:cooked_rabbit",
             "amount": {
                 "min": 2,
-                "max": 16
-            },
-            "unitWorth": 70
-        },
-        "butcher_obj_egg": {
-            "type": "item",
-            "content": "minecraft:egg",
-            "amount": {
-                "min": 4,
                 "max": 32
             },
             "unitWorth": 50
         },
-        "butcher_obj_porkchop": {
-            "type": "item",
-            "content": "minecraft:porkchop",
-            "amount": {
-                "min": 2,
-                "max": 16
-            },
-            "unitWorth": 145
-        },
-        "butcher_obj_rabbit": {
-            "type": "item",
-            "content": "minecraft:rabbit",
-            "amount": {
-                "min": 1,
-                "max": 4
-            },
-            "unitWorth": 250
-        },
-        "butcher_obj_coal": {
-            "type": "item",
-            "content": "minecraft:coal",
-            "amount": {
-                "min": 6,
-                "max": 48
-            },
-            "unitWorth": 65
-        },
-        "butcher_obj_smoker": {
+        "cooked_cod": {
             "type": "item",
             "rarity": "UNCOMMON",
-            "content": "minecraft:smoker",
+            "content": "minecraft:cooked_cod",
             "amount": {
-                "min": 1,
-                "max": 4
+                "min": 32,
+                "max": 128
             },
-            "unitWorth": 650
+            "unitWorth": 40
         },
-        "butcher_obj_mutton": {
+        "cooked_salmon": {
             "type": "item",
             "rarity": "UNCOMMON",
-            "content": "minecraft:mutton",
+            "content": "minecraft:cooked_salmon",
             "amount": {
-                "min": 3,
-                "max": 16
+                "min": 32,
+                "max": 128
             },
-            "unitWorth": 145
+            "unitWorth": 50
         },
-        "butcher_obj_beef": {
-            "type": "item",
-            "rarity": "UNCOMMON",
-            "content": "minecraft:beef",
-            "amount": {
-                "min": 2,
-                "max": 24
-            },
-            "unitWorth": 100
-        },
-        "butcher_obj_dried_kelp_block": {
+        "tropical_fish": {
             "type": "item",
             "rarity": "RARE",
-            "content": "minecraft:dried_kelp_block",
+            "content": "minecraft:tropical_fish",
             "amount": {
-                "min": 2,
-                "max": 24
+                "min": 24,
+                "max": 96
             },
-            "unitWorth": 100
+            "unitWorth": 80
         },
-        "butcher_obj_sweet_berries": {
+        "pufferfish": {
             "type": "item",
-            "rarity": "EPIC",
-            "content": "minecraft:sweet_berries",
+            "rarity": "RARE",
+            "content": "minecraft:pufferfish",
             "amount": {
                 "min": 2,
-                "max": 24
+                "max": 8
             },
-            "unitWorth": 100
+            "unitWorth": 150
         }
     }
 }

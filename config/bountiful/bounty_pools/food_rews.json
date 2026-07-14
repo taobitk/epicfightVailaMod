@@ -1,79 +1,96 @@
 {
     "content": {
-        "butcher_rew_rabbit_stew": {
+        "golden_apple": {
             "type": "item",
-            "content": "minecraft:rabbit_stew",
+            "rarity": "RARE",
+            "content": "minecraft:golden_apple",
+            "amount": {
+                "min": 1,
+                "max": 2
+            },
+            "unitWorth": 3000
+        },
+        "enchanted_golden_apple": {
+            "type": "item",
+            "rarity": "LEGENDARY",
+            "content": "minecraft:enchanted_golden_apple",
             "amount": {
                 "min": 1,
                 "max": 1
             },
-            "unitWorth": 1000
+            "unitWorth": 15000
         },
-        "butcher_rew_cooked_porkchop": {
-            "type": "item",
-            "content": "minecraft:cooked_porkchop",
-            "amount": {
-                "min": 2,
-                "max": 12
-            },
-            "unitWorth": 200
-        },
-        "butcher_rew_cooked_chicken": {
-            "type": "item",
-            "content": "minecraft:cooked_chicken",
-            "amount": {
-                "min": 2,
-                "max": 12
-            },
-            "unitWorth": 125
-        },
-        "butcher_rew_leather": {
-            "type": "item",
-            "content": "minecraft:leather",
-            "amount": {
-                "min": 2,
-                "max": 8
-            },
-            "unitWorth": 150
-        },
-        "butcher_rew_cooked_beef": {
-            "type": "item",
-            "rarity": "UNCOMMON",
-            "content": "minecraft:cooked_beef",
-            "amount": {
-                "min": 2,
-                "max": 12
-            },
-            "unitWorth": 125
-        },
-        "butcher_rew_cooked_mutton": {
-            "type": "item",
-            "rarity": "UNCOMMON",
-            "content": "minecraft:cooked_mutton",
-            "amount": {
-                "min": 2,
-                "max": 12
-            },
-            "unitWorth": 125
-        },
-        "butcher_rew_phantom_membrane": {
+        "golden_carrot": {
             "type": "item",
             "rarity": "RARE",
-            "content": "minecraft:phantom_membrane",
+            "content": "minecraft:golden_carrot",
             "amount": {
                 "min": 1,
-                "max": 6
+                "max": 4
             },
-            "unitWorth": 500
+            "unitWorth": 2500
         },
-        "butcher_rew_feather": {
+        "potion_healing": {
             "type": "item",
-            "content": "minecraft:feather",
+            "rarity": "UNCOMMON",
+            "content": "minecraft:potion",
             "amount": {
-                "min": 4,
-                "max": 32
+                "min": 1,
+                "max": 2
             },
-            "unitWorth": 75
+            "unitWorth": 1500,
+            "nbt": "{Potion:\"minecraft:healing\"}"
+        },
+        "potion_fire_resistance": {
+            "type": "item",
+            "rarity": "UNCOMMON",
+            "content": "minecraft:potion",
+            "amount": {
+                "min": 1,
+                "max": 2
+            },
+            "unitWorth": 2000,
+            "nbt": "{Potion:\"minecraft:fire_resistance\"}"
+        },
+        "redstone": {
+            "type": "item",
+            "rarity": "COMMON",
+            "content": "minecraft:redstone",
+            "amount": {
+                "min": 8,
+                "max": 24
+            },
+            "unitWorth": 100
+        },
+        "lapis_lazuli": {
+            "type": "item",
+            "rarity": "COMMON",
+            "content": "minecraft:lapis_lazuli",
+            "amount": {
+                "min": 8,
+                "max": 24
+            },
+            "unitWorth": 120
+        },
+        "waystone": {
+            "type": "item",
+            "rarity": "EPIC",
+            "content": "waystones:waystone",
+            "amount": {
+                "min": 1,
+                "max": 1
+            },
+            "unitWorth": 5000
+        },
+        "infinity_wand": {
+            "type": "item",
+            "rarity": "EPIC",
+            "content": "constructionwand:infinity_wand",
+            "amount": {
+                "min": 1,
+                "max": 1
+            },
+            "unitWorth": 5000
         }
     }
 }

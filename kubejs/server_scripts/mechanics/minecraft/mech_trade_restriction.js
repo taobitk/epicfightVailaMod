@@ -4,8 +4,9 @@
 console.info('[MechTrade] Script loaded.');
 
 ItemEvents.entityInteracted(event => {
+    console.info(`[MechTrade] Interacted event fired. Target type: '${event.target.type}', Item in hand: '${event.item.id}'`);
     // Kiểm tra nếu thực thể bị click là Dân làng (Villager)
-    if (event.target.type === 'minecraft:villager') {
+    if (String(event.target.type) === 'minecraft:villager') {
 
         // 1. Kiểm tra danh sách trắng các nghề nghiệp ĐƯỢC PHÉP giao dịch tự do (không cần Giấy Thông Hành)
         let whitelistedProfessions = [
@@ -15,10 +16,14 @@ ItemEvents.entityInteracted(event => {
         let profession = "";
         try {
             let targetNbt = event.target.getNbt();
-            if (targetNbt && targetNbt.get("VillagerData")) {
-                profession = targetNbt.get("VillagerData").get("profession").getAsString();
+            if (targetNbt && targetNbt.getCompound("VillagerData")) {
+                profession = targetNbt.getCompound("VillagerData").getString("profession");
             }
-        } catch (err) { }
+        } catch (err) {
+            console.error("[MechTrade] Error parsing VillagerData: " + err);
+        }
+
+        console.info(`[MechTrade] Player ${event.player.name.string} right-clicked villager. Current profession in NBT: '${profession}'`);
 
         if (whitelistedProfessions.includes(profession)) {
             // Cho phép giao dịch tự do -> không làm gì cả (cho phép event chạy tiếp)

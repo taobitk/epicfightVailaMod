@@ -1,0 +1,74 @@
+{
+    "content": {
+        "rotten_flesh": {
+            "type": "item",
+            "rarity": "COMMON",
+            "content": "minecraft:rotten_flesh",
+            "amount": {
+                "min": 32,
+                "max": 200
+            },
+            "unitWorth": 15
+        },
+        "bone": {
+            "type": "item",
+            "rarity": "COMMON",
+            "content": "minecraft:bone",
+            "amount": {
+                "min": 32,
+                "max": 200
+            },
+            "unitWorth": 20
+        },
+        "gunpowder": {
+            "type": "item",
+            "rarity": "UNCOMMON",
+            "content": "minecraft:gunpowder",
+            "amount": {
+                "min": 16,
+                "max": 200
+            },
+            "unitWorth": 60
+        },
+        "spider_eye": {
+            "type": "item",
+            "rarity": "UNCOMMON",
+            "content": "minecraft:spider_eye",
+            "amount": {
+                "min": 16,
+                "max": 200
+            },
+            "unitWorth": 50
+        },
+        "string": {
+            "type": "item",
+            "rarity": "UNCOMMON",
+            "content": "minecraft:string",
+            "amount": {
+                "min": 16,
+                "max": 60
+            },
+            "unitWorth": 10
+        },
+        "ender_pearl": {
+            "type": "item",
+            "rarity": "RARE",
+            "content": "minecraft:ender_pearl",
+            "amount": {
+                "min": 4,
+                "max": 200
+            },
+            "unitWorth": 250
+        },
+        "blaze_rod": {
+            "type": "item",
+            "rarity": "RARE",
+            "content": "minecraft:blaze_rod",
+            "amount": {
+                "min": 4,
+                "max": 200
+            },
+            "unitWorth": 300
+        }
+    }
+}
