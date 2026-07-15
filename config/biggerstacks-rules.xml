@@ -15,6 +15,9 @@
 		</or>
 	</rule>
 	<rule stacksize="1000000000">
+		<condition>id = minecraft:milk_bucket</condition>
+	</rule>
+	<rule stacksize="1000000000">
 		<condition>stacksize gt 1</condition>
 	</rule>
 </ruleset>
