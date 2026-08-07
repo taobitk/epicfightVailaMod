@@ -8,7 +8,7 @@
                 "min": 1,
                 "max": 1
             },
-            "unitWorth": 8000,
+            "unitWorth": 1800,
             "nbt": "{StoredEnchantments:[{lvl:1s,id:\"minecraft:looting\"}]}"
         },
         "sharpness_1": {
@@ -19,7 +19,7 @@
                 "min": 1,
                 "max": 1
             },
-            "unitWorth": 4500,
+            "unitWorth": 800,
             "nbt": "{StoredEnchantments:[{lvl:1s,id:\"minecraft:sharpness\"}]}"
         },
         "fire_aspect_1": {
@@ -30,29 +30,29 @@
                 "min": 1,
                 "max": 1
             },
-            "unitWorth": 4500,
+            "unitWorth": 800,
             "nbt": "{StoredEnchantments:[{lvl:1s,id:\"minecraft:fire_aspect\"}]}"
         },
         "smite_1": {
             "type": "item",
-            "rarity": "UNCOMMON",
+            "rarity": "COMMON",
             "content": "minecraft:enchanted_book",
             "amount": {
                 "min": 1,
-                "max": 1
+                "max": 3
             },
-            "unitWorth": 2500,
+            "unitWorth": 150,
             "nbt": "{StoredEnchantments:[{lvl:1s,id:\"minecraft:smite\"}]}"
         },
         "knockback_1": {
             "type": "item",
-            "rarity": "UNCOMMON",
+            "rarity": "COMMON",
             "content": "minecraft:enchanted_book",
             "amount": {
                 "min": 1,
-                "max": 1
+                "max": 3
             },
-            "unitWorth": 2000,
+            "unitWorth": 150,
             "nbt": "{StoredEnchantments:[{lvl:1s,id:\"minecraft:knockback\"}]}"
         },
         "bane_of_arthropods_1": {
@@ -61,9 +61,9 @@
             "content": "minecraft:enchanted_book",
             "amount": {
                 "min": 1,
-                "max": 1
+                "max": 3
             },
-            "unitWorth": 800,
+            "unitWorth": 150,
             "nbt": "{StoredEnchantments:[{lvl:1s,id:\"minecraft:bane_of_arthropods\"}]}"
         },
         "unbreaking_1": {
@@ -74,7 +74,7 @@
                 "min": 1,
                 "max": 1
             },
-            "unitWorth": 4000,
+            "unitWorth": 800,
             "nbt": "{StoredEnchantments:[{lvl:1s,id:\"minecraft:unbreaking\"}]}"
         },
         "mending_1": {
@@ -85,7 +85,7 @@
                 "min": 1,
                 "max": 1
             },
-            "unitWorth": 10000,
+            "unitWorth": 800,
             "nbt": "{StoredEnchantments:[{lvl:1s,id:\"minecraft:mending\"}]}"
         }
     }

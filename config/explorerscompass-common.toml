@@ -9,7 +9,7 @@
 	displayCoordinates = true
 	#The maximum radius that will be searched for a structure. Raising this value will increase search accuracy but will potentially make the process more resource intensive.
 	#Range: 0 ~ 1000000
-	maxRadius = 10000
+	maxRadius = 50000
 	#A list of structures that the compass will not display in the GUI and will not be able to search for. Wildcard character * can be used to match any number of characters, and ? can be used to match one character. Ex: ["minecraft:stronghold", "minecraft:endcity", "minecraft:*village*"]
 	structureBlacklist = []
 	#The default number of XP levels consumed when searching for a structure. Individual structures can be configured via perStructureXpLevels.

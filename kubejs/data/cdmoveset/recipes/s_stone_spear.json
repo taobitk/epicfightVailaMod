@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    " DS",
+    " BD",
+    "B  "
+  ],
+
+  "key":
+  {
+    "B": { "item" : "minecraft:stick" },
+    "D": { "item" : "minecraft:cobblestone" },
+    "S": { "item" : "epicfight:stone_spear" }
+  },
+
+  "result":
+  {
+    "item" : "cdmoveset:s_stone_spear",
+    "count" : 1
+  }
+}

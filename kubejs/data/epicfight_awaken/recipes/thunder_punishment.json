@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "DBD",
+    "BAB",
+    "CDC"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:trident",
+      "nbt": {
+        "skill": "Enchantments:[{lvl:1s, id:\"minecraft:channeling\"}]"
+      }
+    },
+    "B": {
+      "item": "minecraft:gold_ingot"
+    },
+    "C": {
+      "item": "minecraft:crying_obsidian"
+    },
+    "D": {
+      "item": "minecraft:diamond"
+    }
+  },
+  "result": {
+    "item": "epicfight:skillbook",
+    "count": 1,
+    "nbt": {
+      "skill": "epicfight_awaken:thunder_punishment"
+    }
+  }
+}

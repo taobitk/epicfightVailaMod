@@ -7,7 +7,7 @@
 	#Defines the ID of the attribute, example: minecraft:generic.attack_speed
 	"Stat 2 ID" = "minecraft:generic.max_health"
 	#The value added to the attribute per level
-	"Stat 2 Value" = 1.0
+	"Stat 2 Value" = 2.0
 	"Stat 2 Max" = 9999.0
 	"Max Stat2" = 0.0
 

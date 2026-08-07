@@ -4,15 +4,15 @@
 // Zombie Standard: 60 HP, 5 Atk
 // Armor Buff: +3 to +15
 
-// Nhóm Zombie
-const ZOMBIE_STATS = { health: 30.0, attack: 5.0, armor: 10.0 };
-const ZOMBIE_VILLAGER_STATS = { health: 30.0, attack: 5.0, armor: 10.0 };
-const HUSK_STATS = { health: 30.0, attack: 5.0, armor: 10.0 };
-const DROWNED_STATS = { health: 30.0, attack: 5.0, armor: 10.0 };
+// Nhóm Zombie: Máu 40 HP (+10), Sát thương 8 Atk (+3)
+const ZOMBIE_STATS = { health: 40.0, attack: 8.0, armor: 10.0 };
+const ZOMBIE_VILLAGER_STATS = { health: 40.0, attack: 8.0, armor: 10.0 };
+const HUSK_STATS = { health: 40.0, attack: 8.0, armor: 10.0 };
+const DROWNED_STATS = { health: 40.0, attack: 8.0, armor: 10.0 };
 
-// Nhóm Skeleton
-const SKELETON_STATS = { health: 30.0, attack: 4.0, armor: 8.0 };
-const STRAY_STATS = { health: 30.0, attack: 4.0, armor: 8.0 };
+// Nhóm Skeleton: Máu 40 HP (+10), Sát thương 7 Atk (+3)
+const SKELETON_STATS = { health: 40.0, attack: 7.0, armor: 8.0 };
+const STRAY_STATS = { health: 40.0, attack: 7.0, armor: 8.0 };
 const WITHER_SKELETON_STATS = { health: 60.0, attack: 7.0, armor: 10.0 };
 
 // Côn trùng / Thú nhỏ

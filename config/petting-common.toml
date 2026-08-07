@@ -19,7 +19,7 @@
 	healthScalesTamingChance = true
 	#The BASE number of custom pets a player can tame. This is now a Player Attribute (petting:max_pets), so it can be modified per-player by other mods or commands. (-1 for infinite).
 	#Range: -1 ~ 10000
-	maxPetsPerPlayer = 9999
+	maxPetsPerPlayer = 3
 	#If true, Golden Wheat can be used to tame mobs. If false, ONLY items defined in Custom Item Settings can be used.
 	allowGoldenWheat = true
 	#If true, crouching and using a Goat Horn will teleport all of your tamed pets directly to your location.

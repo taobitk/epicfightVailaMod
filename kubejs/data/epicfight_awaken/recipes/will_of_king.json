@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " CC",
+    "BBC",
+    "AB "
+  ],
+  "key": {
+    "A": {
+      "item": "epicfight:netherite_longsword"
+    },
+    "B": {
+      "item": "minecraft:gold_ingot"
+    },
+    "C": {
+      "item": "minecraft:diamond"
+    }
+  },
+  "result": {
+    "item": "epicfight_awaken:will_of_king"
+  }
+}

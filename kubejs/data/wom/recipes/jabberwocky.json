@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern":
+    [
+        "C C",
+        "FFF",
+        "FIF"
+    ],
+    
+    "key":
+    {
+        "F": { "item" : "wom:fur" },
+        "I": { "item" : "minecraft:iron_ingot" },
+        "C": { "item" : "wom:claw" }
+    },
+    
+    "result":
+    {
+        "item" : "wom:jabberwocky",
+        "count" : 1
+    }
+}

@@ -5,7 +5,8 @@ ServerEvents.recipes(event => {
         'tacz',
         'efn',
         'potionring',
-        'cropsore'
+        'cropsore',
+        'moblassos'
     ];
 
     modsToRemove.forEach(modId => {

@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern":
+    [
+        " EN",
+        "CNN",
+        "NN "
+    ],
+    
+    "key":
+    {
+        "N": { "item" : "minecraft:netherite_ingot" },
+        "E": { "item" : "wom:eternal_fire_arcane" },
+        "C": { "item" : "wom:overly_large_cylinder" }
+    },
+    
+    "result":
+    {
+        "item" : "wom:napoleon",
+        "count" : 1
+    }
+}

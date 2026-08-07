@@ -1,0 +1,32 @@
+{
+  "ignored_mobs": [
+    "minecraft:cow",
+    "minecraft:pig",
+    "minecraft:sheep",
+    "minecraft:chicken",
+    "minecraft:horse",
+    "minecraft:donkey",
+    "minecraft:mule",
+    "minecraft:llama",
+    "minecraft:rabbit",
+    "minecraft:turtle",
+    "minecraft:villager",
+    "minecraft:wandering_trader",
+    "minecraft:bat",
+    "minecraft:squid",
+    "minecraft:glow_squid",
+    "minecraft:cat",
+    "minecraft:wolf",
+    "minecraft:fox",
+    "minecraft:axolotl",
+    "minecraft:frog",
+    "minecraft:bee",
+    "minecraft:camel",
+    "minecraft:sniffer",
+    "minecraft:tadpole",
+    "minecraft:strider",
+    "minecraft:allay",
+    "minecraft:iron_golem",
+    "minecraft:snow_golem"
+  ]
+}

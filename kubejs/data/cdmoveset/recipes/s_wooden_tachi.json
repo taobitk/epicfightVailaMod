@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    " BB",
+    "BB ",
+    "S  "
+  ],
+  "key":
+  {
+    "B": { "item" : "minecraft:oak_planks" },
+    "S": { "item" : "epicfight:wooden_tachi" }
+  },
+  "result":
+  {
+    "item" : "cdmoveset:s_wooden_tachi",
+    "count" : 1
+  }
+}

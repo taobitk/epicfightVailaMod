@@ -1,15 +1,43 @@
 // Tên file: kubejs/server_scripts/mechanics/humancompanions/mech_humancompanions_epic_stats_buff.js
-// Mục đích: Tự động cập nhật chỉ số Companion theo thời gian thực dựa vào điểm chỉ số Pet ATK (Stat 5), Pet HP (Stat 6) và Pet DEF (Stat 7) của chủ nhân.
-// Cấu hình: +1 HP mỗi cấp HP, +1 ATK mỗi cấp ATK, +1 DEF (Armor) mỗi cấp DEF.
+// LƯU Ý: Toàn bộ logic cập nhật chỉ số Companion đã được chuyển giao hoàn toàn sang Mod Java (OriginStatsMod - CompanionStatHandler.java)
+// để tối ưu hóa hiệu năng Event-Driven 100% không tốn CPU vòng lặp Tick.
+// File này được comment out toàn bộ để tránh xung đột chỉ số.
 
-(function() {
+/*
+(function () {
+    const UUID = Java.loadClass('java.util.UUID');
+    const AttributeModifier = Java.loadClass('net.minecraft.world.entity.ai.attributes.AttributeModifier');
+    const Operation = Java.loadClass('net.minecraft.world.entity.ai.attributes.AttributeModifier$Operation');
     const EpicStatsModRemasteredModVariables = Java.loadClass('net.felinamods.epicstatsmodremastered.network.EpicStatsModRemasteredModVariables');
 
+    const COMP_HP_UUID = UUID.fromString('c3d4e5f6-3333-3333-3333-000000000001');
+    const COMP_ATK_UUID = UUID.fromString('c3d4e5f6-3333-3333-3333-000000000002');
+    const COMP_ARMOR_UUID = UUID.fromString('c3d4e5f6-3333-3333-3333-000000000003');
+
+    const calculateTieredBonus = (level) => {
+        if (level <= 0) return 0;
+        let bonus = 0;
+        let lvl1_5 = Math.min(level, 5);
+        bonus += lvl1_5 * 0.5;
+        if (level > 5) {
+            let lvl6_10 = Math.min(level - 5, 5);
+            bonus += lvl6_10 * 1.0;
+        }
+        if (level > 10) {
+            let lvl11_25 = Math.min(level - 10, 15);
+            bonus += lvl11_25 * 1.5;
+        }
+        if (level > 25) {
+            let lvl26_plus = level - 25;
+            bonus += lvl26_plus * 2.0;
+        }
+        return bonus;
+    };
+
     const updateCompanionStats = (entity) => {
-        if (!entity || !entity.nbt) return;
+        if (!entity || !entity.alive || !entity.nbt) return;
         if (!entity.type.startsWith('humancompanions:')) return;
 
-        // Kiểm tra xem Companion đã được thuê (có chủ) chưa
         if (!entity.nbt.contains('Owner')) return;
         let ownerUuid = entity.nbt.getUUID('Owner');
         if (!ownerUuid) return;
@@ -24,72 +52,57 @@
             let cap = player.getCapability(EpicStatsModRemasteredModVariables.PLAYER_VARIABLES_CAPABILITY).orElse(null);
             if (!cap) return;
 
-            let petAtkLvl = cap.stat_5_level || 0; // Pet ATK (Stat 5)
-            let petHpLvl = cap.stat_6_level || 0;  // Pet HP (Stat 6)
-            let petDefLvl = cap.stat_7_level || 0; // Pet DEF (Stat 7)
+            let petAtkLvl = cap.stat_6_level || 0;
+            let petHpLvl = cap.stat_7_level || 0; 
+            let petDefLvl = cap.stat_8_level || 0;
 
-            let pData = entity.persistentData;
+            let bonusHp = 0;
+            let bonusAtk = 0;
+            let bonusArmor = 0;
 
-            // 1. Cập nhật Máu tối đa (Max HP) -> +1 HP mỗi cấp
+            if (entity.type === 'humancompanions:axeguard') {
+                bonusHp = petHpLvl * 3.0;
+                bonusAtk = petAtkLvl * 0.5;
+                bonusArmor = petDefLvl * 1.0;
+            } else {
+                bonusHp = petHpLvl * 2.0;
+                bonusAtk = calculateTieredBonus(petAtkLvl);
+                bonusArmor = calculateTieredBonus(petDefLvl);
+            }
+
             let hpAttr = entity.getAttribute('minecraft:generic.max_health');
             if (hpAttr) {
-                let originalMaxHp = pData.getDouble('original_max_hp');
-                if (originalMaxHp === 0) {
-                    originalMaxHp = hpAttr.getBaseValue();
-                    pData.putDouble('original_max_hp', originalMaxHp);
-                }
-
-                let bonusHp = petHpLvl * 1.0;
-                let newMaxHp = originalMaxHp + bonusHp;
-                let oldMaxHp = hpAttr.getBaseValue();
-
-                if (oldMaxHp !== newMaxHp) {
-                    let currentHealth = entity.health;
-                    hpAttr.setBaseValue(newMaxHp);
-                    if (newMaxHp > oldMaxHp) {
-                        entity.health = currentHealth + (newMaxHp - oldMaxHp);
+                let existingMod = hpAttr.getModifier(COMP_HP_UUID);
+                if (!existingMod || existingMod.amount !== bonusHp) {
+                    hpAttr.removeModifier(COMP_HP_UUID);
+                    if (bonusHp > 0) {
+                        hpAttr.addTransientModifier(new AttributeModifier(COMP_HP_UUID, 'Companion ES HP Bonus', bonusHp, Operation.ADDITION));
+                        if (!existingMod) {
+                            entity.health = hpAttr.getValue();
+                        }
                     }
-                    console.info(`[CompanionStats] Đã cập nhật HP cho ${entity.type} (chủ: ${player.username}): Level ${petHpLvl} -> Max HP: ${originalMaxHp} -> ${newMaxHp}`);
                 }
             }
 
-            // 2. Cập nhật Sát thương (Attack Damage) -> +1 ATK mỗi cấp
             let atkAttr = entity.getAttribute('minecraft:generic.attack_damage');
             if (atkAttr) {
-                let originalAtk = pData.getDouble('original_atk');
-                if (originalAtk === 0) {
-                    originalAtk = atkAttr.getBaseValue();
-                    pData.putDouble('original_atk', originalAtk);
-                }
-
-                let bonusAtk = petAtkLvl * 1.0;
-                let newAtk = originalAtk + bonusAtk;
-                let oldAtk = atkAttr.getBaseValue();
-
-                if (oldAtk !== newAtk) {
-                    atkAttr.setBaseValue(newAtk);
-                    console.info(`[CompanionStats] Đã cập nhật ATK cho ${entity.type} (chủ: ${player.username}): Level ${petAtkLvl} -> ATK: ${originalAtk} -> ${newAtk}`);
+                let existingMod = atkAttr.getModifier(COMP_ATK_UUID);
+                if (!existingMod || existingMod.amount !== bonusAtk) {
+                    atkAttr.removeModifier(COMP_ATK_UUID);
+                    if (bonusAtk > 0) {
+                        atkAttr.addTransientModifier(new AttributeModifier(COMP_ATK_UUID, 'Companion ES ATK Bonus', bonusAtk, Operation.ADDITION));
+                    }
                 }
             }
 
-            // 3. Cập nhật Giáp (Armor - DEF) -> +1 DEF mỗi cấp
             let armorAttr = entity.getAttribute('minecraft:generic.armor');
             if (armorAttr) {
-                let originalArmor = 0;
-                if (!pData.contains('original_armor')) {
-                    originalArmor = armorAttr.getBaseValue();
-                    pData.putDouble('original_armor', originalArmor);
-                } else {
-                    originalArmor = pData.getDouble('original_armor');
-                }
-
-                let bonusArmor = petDefLvl * 1.0;
-                let newArmor = originalArmor + bonusArmor;
-                let oldArmor = armorAttr.getBaseValue();
-
-                if (oldArmor !== newArmor) {
-                    armorAttr.setBaseValue(newArmor);
-                    console.info(`[CompanionStats] Đã cập nhật DEF cho ${entity.type} (chủ: ${player.username}): Level ${petDefLvl} -> Armor: ${originalArmor} -> ${newArmor}`);
+                let existingMod = armorAttr.getModifier(COMP_ARMOR_UUID);
+                if (!existingMod || existingMod.amount !== bonusArmor) {
+                    armorAttr.removeModifier(COMP_ARMOR_UUID);
+                    if (bonusArmor > 0) {
+                        armorAttr.addTransientModifier(new AttributeModifier(COMP_ARMOR_UUID, 'Companion ES Armor Bonus', bonusArmor, Operation.ADDITION));
+                    }
                 }
             }
 
@@ -98,7 +111,6 @@
         }
     };
 
-    // Hàm tiện ích để quét và cập nhật toàn bộ Companion xung quanh người chơi
     const updateAllNearbyCompanions = (player) => {
         try {
             let boundingBox = player.boundingBox || player.getBoundingBox();
@@ -116,12 +128,9 @@
                     }
                 });
             }
-        } catch (err) {
-            // Tránh spam log
-        }
+        } catch (err) { }
     };
 
-    // Đăng ký các sự kiện cơ bản
     EntityEvents.spawned(event => {
         updateCompanionStats(event.entity);
     });
@@ -130,44 +139,15 @@
         updateCompanionStats(event.target);
     });
 
-    EntityEvents.hurt(event => {
-        updateCompanionStats(event.entity);
-    });
-
-    // 1. Đồng bộ khi người chơi đăng nhập game
     PlayerEvents.loggedIn(event => {
         updateAllNearbyCompanions(event.player);
     });
 
-    // 2. Kiểm tra siêu nhẹ định kỳ mỗi 2 giây (40 ticks)
-    // Chỉ kích hoạt quét tìm Companion khi phát hiện điểm số thực sự thay đổi
     PlayerEvents.tick(event => {
         let player = event.player;
-        if (player.age % 40 === 0) {
-            try {
-                let cap = player.getCapability(EpicStatsModRemasteredModVariables.PLAYER_VARIABLES_CAPABILITY).orElse(null);
-                if (cap) {
-                    let currentAtkLvl = cap.stat_5_level || 0;
-                    let currentHpLvl = cap.stat_6_level || 0;
-                    let currentDefLvl = cap.stat_7_level || 0;
-
-                    let pData = player.persistentData;
-                    let lastAtkLvl = pData.getDouble('last_companion_atk_lvl');
-                    let lastHpLvl = pData.getDouble('last_companion_hp_lvl');
-                    let lastDefLvl = pData.getDouble('last_companion_def_lvl');
-
-                    // Nếu phát hiện sự thay đổi chỉ số
-                    if (currentAtkLvl !== lastAtkLvl || currentHpLvl !== lastHpLvl || currentDefLvl !== lastDefLvl) {
-                        updateAllNearbyCompanions(player);
-                        
-                        pData.putDouble('last_companion_atk_lvl', currentAtkLvl);
-                        pData.putDouble('last_companion_hp_lvl', currentHpLvl);
-                        pData.putDouble('last_companion_def_lvl', currentDefLvl);
-                    }
-                }
-            } catch (err) {
-                // Tránh spam log
-            }
+        if (player.age % 20 === 0) {
+            updateAllNearbyCompanions(player);
         }
     });
 })();
+*/

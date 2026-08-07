@@ -24,14 +24,14 @@ ItemEvents.modification(event => {
         });
     });
 
-    // 3. Bộ công cụ SẮT (Độ bền: 800)
+    // 3. Bộ công cụ SẮT (Độ bền: 5000)
     const ironTools = [
         'minecraft:iron_sword', 'minecraft:iron_shovel', 'minecraft:iron_pickaxe',
         'minecraft:iron_axe', 'minecraft:iron_hoe'
     ];
     ironTools.forEach(tool => {
         event.modify(tool, item => {
-            item.setMaxDamage(800);
+            item.setMaxDamage(5000);
         });
     });
 

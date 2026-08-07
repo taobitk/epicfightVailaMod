@@ -1,0 +1,8 @@
+{
+  "type": "epicfight:dagger",
+  "attributes": {
+    "common": {
+      "damage_bonus": 0.0
+    }
+  }
+}

@@ -8,7 +8,7 @@
                 "min": 1,
                 "max": 1
             },
-            "unitWorth": 6000
+            "unitWorth": 1800
         },
         "netherite_greataxe": {
             "type": "item",
@@ -18,7 +18,7 @@
                 "min": 1,
                 "max": 1
             },
-            "unitWorth": 5500
+            "unitWorth": 3500
         },
         "netherite_staff": {
             "type": "item",
@@ -28,7 +28,7 @@
                 "min": 1,
                 "max": 1
             },
-            "unitWorth": 5000
+            "unitWorth": 3500
         },
         "overly_large_cylinder": {
             "type": "item",
@@ -38,7 +38,7 @@
                 "min": 1,
                 "max": 1
             },
-            "unitWorth": 5000
+            "unitWorth": 3500
         },
         "eternal_fire_arcane": {
             "type": "item",
@@ -48,7 +48,7 @@
                 "min": 1,
                 "max": 1
             },
-            "unitWorth": 5000
+            "unitWorth": 3500
         },
         "netherite_tachi": {
             "type": "item",
@@ -58,7 +58,7 @@
                 "min": 1,
                 "max": 1
             },
-            "unitWorth": 5000
+            "unitWorth": 1800
         },
         "netherite_longsword": {
             "type": "item",
@@ -68,7 +68,7 @@
                 "min": 1,
                 "max": 1
             },
-            "unitWorth": 5000
+            "unitWorth": 1800
         },
         "netherite_spear": {
             "type": "item",
@@ -78,7 +78,7 @@
                 "min": 1,
                 "max": 1
             },
-            "unitWorth": 5000
+            "unitWorth": 1800
         },
         "netherite_dagger": {
             "type": "item",
@@ -88,7 +88,7 @@
                 "min": 1,
                 "max": 1
             },
-            "unitWorth": 4000
+            "unitWorth": 1800
         }
     }
 }

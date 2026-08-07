@@ -1,0 +1,12 @@
+{
+  "name": "Cung Thủ",
+  "description": "Chuyên gia bắn xa, gia tăng sát thương cho toàn bộ tên và vũ khí tầm xa.",
+  "icon": {
+    "item": "minecraft:bow"
+  },
+  "impact": 1,
+  "order": 3,
+  "powers": [
+    "originstats:archer_bonus"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+	"type":"epicfight_awaken:will_of_king",
+	"attributes":
+	{
+		"common":
+		{
+			"impact":2.0,
+			"max_strikes":10,
+            "armor_negation":20.0
+        }
+	}
+}

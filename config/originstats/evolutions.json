@@ -1,0 +1,194 @@
+[
+  {
+    "baseClass": "warrior",
+    "targetClass": "tier2_vanguard",
+    "name": "Chiến Binh Tiên Phong",
+    "description": "Warrior linh hoạt: Nhận Kỹ Năng Damage Boost III khi Né/Parry, mở khóa Máu +15 (15 Lvl), ATK +8 (10 Lvl), Giáp +5 (5 Lvl). Tổng 30 Lvl.",
+    "icon": "minecraft:iron_sword",
+    "comingSoon": false,
+    "requiredStatsMaxed": ["max_health", "armor"],
+    "requiredItems": [
+      {
+        "item": "minecraft:iron_sword",
+        "count": 10
+      }
+    ],
+    "rewardSkills": ["dodge_parry_reward:passive|dodge_parry_reward:damage_boost3"],
+    "unlockedStats": ["vanguard_hp", "vanguard_atk", "vanguard_armor", "vanguard_heal3"]
+  },
+  {
+    "baseClass": "warrior",
+    "targetClass": "tier2_indestructible",
+    "name": "Vệ Binh Bất Hoại",
+    "description": "Full Tank Bất Tử: Nhận vĩnh viễn Regeneration I (nâng Regen II), Máu +40 (20 Lvl), Giáp +15 & Toughness +10 (10 Lvl), Kháng Choáng/Exec/Knockback (10 Lvl). Tổng 50 Lvl.",
+    "icon": "minecraft:netherite_chestplate",
+    "comingSoon": false,
+    "requiredStatsMaxed": ["max_health", "armor"],
+    "requiredItems": [
+      {
+        "item": "minecraft:emerald",
+        "count": 10
+      }
+    ],
+    "unlockedStats": ["indestructible_hp", "indestructible_armor", "indestructible_posture", "indestructible_regen", "indestructible_heal4"],
+    "passiveEffects": [
+      {
+        "effect": "minecraft:regeneration",
+        "amplifier": 0,
+        "ambient": false,
+        "visible": false,
+        "showIcon": true
+      }
+    ]
+  },
+  {
+    "baseClass": "assassin",
+    "targetClass": "tier2_wind_assassin",
+    "name": "Sát Thủ Cuồng Phong",
+    "description": "Tốc độ di chuyển +10%, Tốc độ đánh cực nhanh & Thể lực dồi dào.",
+    "icon": "minecraft:golden_sword",
+    "comingSoon": false,
+    "requiredStatsMaxed": ["attack_damage"],
+    "requiredItems": [
+      {
+        "item": "minecraft:iron_ingot",
+        "count": 10
+      }
+    ],
+    "extraAttributes": [
+      {
+        "attribute": "minecraft:generic.movement_speed",
+        "amount": 0.1,
+        "operation": "MULTIPLY_BASE"
+      }
+    ],
+    "unlockedStats": ["wind_atk", "wind_speed", "wind_attack_speed", "wind_stamina"]
+  },
+  {
+    "baseClass": "assassin",
+    "targetClass": "tier2_phantom_striker",
+    "name": "Sát Thủ Bóng Ma",
+    "description": "Máu thể lực +15, di chuyển ảo ảnh chớp nhoáng & mở khóa Skill Ender Step + Ender Oculus.",
+    "icon": "minecraft:feather",
+    "comingSoon": false,
+    "requiredStatsMaxed": ["attack_damage"],
+    "requiredItems": [
+      {
+        "item": "minecraft:ender_pearl",
+        "count": 2
+      }
+    ],
+    "extraAttributes": [
+      {
+        "attribute": "epicfight:staminar",
+        "amount": 15.0,
+        "operation": "ADDITION"
+      }
+    ],
+    "rewardSkills": ["wom:ender_step", "wom:ender_obscuris"],
+    "unlockedStats": ["phantom_atk", "phantom_speed"]
+  },
+  {
+    "baseClass": "assassin",
+    "targetClass": "tier2_destruction",
+    "name": "Sát Thủ Hủy Diệt",
+    "description": "Bộc phá sát thương cực hạn, chí mạng gốc +10% & 150% Dame.",
+    "icon": "minecraft:netherite_sword",
+    "comingSoon": false,
+    "requiredStatsMaxed": ["attack_damage"],
+    "requiredItems": [
+      {
+        "item": "minecraft:wither_skeleton_skull",
+        "count": 5
+      }
+    ],
+    "unlockedStats": ["destruction_atk", "destruction_crit_rate", "destruction_crit_dmg"]
+  },
+  {
+    "baseClass": "assassin",
+    "targetClass": "tier2_magic_assassin",
+    "name": "Sát Thủ Ma Thuật",
+    "description": "Bậc thầy 4 Hệ Ma Thuật: Lửa, Băng, True Damage & Tước Đoạt Máu/Stamina.",
+    "icon": "minecraft:ender_eye",
+    "comingSoon": false,
+    "requiredStatsMaxed": ["attack_damage"],
+    "requiredItems": [
+      {
+        "item": "minecraft:diamond",
+        "count": 3
+      }
+    ],
+    "unlockedStats": ["magic_fire", "magic_frost", "magic_truedmg", "magic_steal"]
+  },
+  {
+    "baseClass": "archer",
+    "targetClass": "tier2_marksman",
+    "name": "Xạ Thủ Bão Tiễn",
+    "description": "Cung vật lý thần tốc: Bắn tên liên hoàn & Tốc độ di chuyển cao.",
+    "icon": "minecraft:bow",
+    "comingSoon": false,
+    "requiredStatsMaxed": ["projectile_damage"],
+    "requiredItems": [
+      {
+        "item": "minecraft:arrow",
+        "count": 64
+      }
+    ],
+    "unlockedStats": ["marksman_proj_dmg", "marksman_speed", "marksman_attack_speed"]
+  },
+  {
+    "baseClass": "archer",
+    "targetClass": "tier2_elemental_archer",
+    "name": "Xạ Thủ Nguyên Tố",
+    "description": "Cung Nguyên Tố Tiêu Hao Mana: Bắn Tên Lửa, Khô Héo & Làm Chậm tùy chỉnh tỷ lệ.",
+    "icon": "minecraft:blaze_powder",
+    "comingSoon": false,
+    "requiredStatsMaxed": ["projectile_damage"],
+    "requiredItems": [
+      {
+        "item": "minecraft:blaze_powder",
+        "count": 16
+      },
+      {
+        "item": "minecraft:snowball",
+        "count": 16
+      }
+    ],
+    "unlockedStats": ["elemental_archer_proj_dmg", "elemental_archer_attack_speed", "elemental_archer_speed"]
+  },
+  {
+    "baseClass": "lord",
+    "targetClass": "tier2_high_lord",
+    "name": "Thánh Hộ Vương",
+    "description": "Lord thống lĩnh: Tăng tối đa chỉ số Máu, ATK & Giáp của Đệ lính.",
+    "icon": "minecraft:golden_crown",
+    "comingSoon": false,
+    "requiredStatsMaxed": ["pet_hp", "pet_atk", "pet_def"],
+    "requiredItems": [
+      {
+        "item": "minecraft:oak_log",
+        "count": 32
+      }
+    ],
+    "unlockedStats": ["highlord_pet_hp", "highlord_pet_atk", "highlord_pet_def"]
+  },
+  {
+    "baseClass": "lord",
+    "targetClass": "tier2_summoner_lord",
+    "name": "Triệu Hồi Ma Vương",
+    "description": "Chúa tể Hắc Ám: Nhận Quyền Trượng Ma Vương triệu hồi Quân Đoàn Quỷ Wither bảo vệ.",
+    "icon": "kubejs:summoner_staff",
+    "comingSoon": false,
+    "requiredStatsMaxed": ["pet_hp", "pet_atk", "pet_def"],
+    "requiredItems": [
+      {
+        "item": "minecraft:wither_skeleton_skull",
+        "count": 3
+      }
+    ],
+    "rewardCommands": [
+      "give {player} kubejs:summoner_staff 1"
+    ],
+    "unlockedStats": ["summoner_pet_hp", "summoner_pet_atk", "summoner_pet_def"]
+  }
+]

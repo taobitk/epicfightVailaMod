@@ -1,0 +1,8 @@
+{
+  "type": "epicfight:spear",
+  "attributes": {
+    "common": {
+      "damage_bonus": 2.0
+    }
+  }
+}

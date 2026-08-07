@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern":
+    [
+        " DB",
+        " SD",
+        "S  "
+    ],
+    
+    "key":
+    {
+        "B": { "item" : "epicfight:iron_spear" },
+        "D": { "item" : "minecraft:iron_ingot" },
+        "S": { "item" : "minecraft:stick" }
+    },
+    
+    "result":
+    {
+        "item" : "cdmoveset:s_iron_spear",
+        "count" : 1
+    }
+}

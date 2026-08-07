@@ -1,0 +1,12 @@
+{
+  "name": "Sát Thủ",
+  "description": "Thần phong di chuyển nhanh nhẹn, kết liễu kẻ địch bằng lượng sát thương chớp nhoáng.",
+  "icon": {
+    "item": "minecraft:iron_sword"
+  },
+  "impact": 1,
+  "order": 2,
+  "powers": [
+    "originstats:assassin_bonus"
+  ]
+}

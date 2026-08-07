@@ -76,7 +76,7 @@ ForgeEvents.onEvent('net.minecraftforge.event.AnvilUpdateEvent', event => {
                 }
 
                 event.setOutput(output);
-                event.setCost(1);
+                event.setCost(0);
                 event.setMaterialCost(1);
             }
         }
@@ -137,7 +137,7 @@ ForgeEvents.onEvent('net.minecraftforge.event.AnvilUpdateEvent', event => {
                 }
 
                 event.setOutput(output);
-                event.setCost(1);
+                event.setCost(0);
                 event.setMaterialCost(1);
             }
         }
@@ -198,7 +198,7 @@ ForgeEvents.onEvent('net.minecraftforge.event.AnvilUpdateEvent', event => {
                 }
 
                 event.setOutput(output);
-                event.setCost(1);
+                event.setCost(0);
                 event.setMaterialCost(1);
             }
         }
@@ -280,7 +280,7 @@ ForgeEvents.onEvent('net.minecraftforge.event.AnvilUpdateEvent', event => {
                 }
 
                 event.setOutput(output);
-                event.setCost(1);
+                event.setCost(0);
                 event.setMaterialCost(1);
             }
         }
@@ -356,7 +356,7 @@ ForgeEvents.onEvent('net.minecraftforge.event.AnvilUpdateEvent', event => {
                 }
 
                 event.setOutput(output);
-                event.setCost(1);
+                event.setCost(0);
                 event.setMaterialCost(1);
             }
         }
@@ -408,7 +408,7 @@ ForgeEvents.onEvent('net.minecraftforge.event.AnvilUpdateEvent', event => {
                     healthUuid[3] = 4004;
                     slot = 'feet';
                     name = 'Giày Sắt Lv3';
-                    armorLore = '+3.0 Giáp';
+                    armorLore = '+4.0 Giáp';
                     healthAmount = 4.0; // +4 HP
                     healthLore = '+4 HP (2 Tim)';
                 }
@@ -427,7 +427,7 @@ ForgeEvents.onEvent('net.minecraftforge.event.AnvilUpdateEvent', event => {
                 }
 
                 event.setOutput(output);
-                event.setCost(1);
+                event.setCost(0);
                 event.setMaterialCost(1);
             }
         }

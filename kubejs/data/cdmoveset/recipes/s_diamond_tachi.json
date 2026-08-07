@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern":
+    [
+        " BB",
+        "BB ",
+        "S  "
+    ],
+    "key":
+    {
+        "B": { "item" : "minecraft:diamond" },
+        "S": { "item" : "epicfight:diamond_tachi" }
+    },
+    "result":
+    {
+        "item" : "cdmoveset:s_diamond_tachi",
+        "count" : 1
+    }
+}

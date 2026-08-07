@@ -1,0 +1,29 @@
+filename = 'SDMEconomy-1.20.1-forge-2.2.0.jar'
+name = 'SDM  Economy [Forge/Fabric]'
+side = 'server'
+x-prismlauncher-loaders = [ 'forge' ]
+x-prismlauncher-mc-versions = [ '1.20.1' ]
+x-prismlauncher-release-type = 'beta'
+x-prismlauncher-version-number = 'SDMEconomy-1.20.1-forge-2.2.0.jar'
+
+[download]
+hash = '74e1ea7d603944c2d7613174d6fe72fe2e08629d'
+hash-format = 'sha1'
+mode = 'metadata:curseforge'
+url = ''
+
+[update.curseforge]
+file-id = 6689080
+project-id = 1102542
+
+[[x-prismlauncher-dependencies]]
+addonId = '404465'
+type = 'REQUIRED'
+
+[[x-prismlauncher-dependencies]]
+addonId = '419699'
+type = 'REQUIRED'
+
+[[x-prismlauncher-dependencies]]
+addonId = '438495'
+type = 'REQUIRED'

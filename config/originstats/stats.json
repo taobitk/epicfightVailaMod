@@ -1,0 +1,563 @@
+[
+  {
+    "id": "max_health",
+    "name": "Máu (HP)",
+    "attribute": "minecraft:generic.max_health",
+    "amountPerLevel": 1.0,
+    "operation": "ADDITION",
+    "costPerLevel": 1,
+    "maxLevel": 5,
+    "icon": "minecraft:red_dye",
+    "allowedClasses": ["warrior"]
+  },
+  {
+    "id": "armor",
+    "name": "Giáp (Armor)",
+    "attribute": "minecraft:generic.armor",
+    "amountPerLevel": 1.0,
+    "operation": "ADDITION",
+    "costPerLevel": 1,
+    "maxLevel": 5,
+    "icon": "minecraft:iron_chestplate",
+    "allowedClasses": ["warrior"]
+  },
+  {
+    "id": "attack_damage",
+    "name": "Sát Thương Cận Chiến",
+    "attribute": "minecraft:generic.attack_damage",
+    "amountPerLevel": 1.0,
+    "operation": "ADDITION",
+    "costPerLevel": 1,
+    "maxLevel": 10,
+    "icon": "minecraft:iron_sword",
+    "allowedClasses": ["assassin"]
+  },
+  {
+    "id": "projectile_damage",
+    "name": "Sát Thương Cung",
+    "attribute": "projectile_damage:generic",
+    "amountPerLevel": 1.0,
+    "operation": "ADDITION",
+    "costPerLevel": 1,
+    "maxLevel": 10,
+    "icon": "minecraft:bow",
+    "allowedClasses": ["archer"]
+  },
+  {
+    "id": "pet_hp",
+    "name": "Máu Đệ (Pet HP)",
+    "attribute": "minecraft:generic.max_health",
+    "amountPerLevel": 1.0,
+    "operation": "ADDITION",
+    "costPerLevel": 1,
+    "maxLevel": 5,
+    "icon": "minecraft:bone",
+    "allowedClasses": ["lord"]
+  },
+  {
+    "id": "pet_atk",
+    "name": "Sát Thương Đệ (Pet ATK)",
+    "attribute": "minecraft:generic.attack_damage",
+    "amountPerLevel": 1.0,
+    "operation": "ADDITION",
+    "costPerLevel": 1,
+    "maxLevel": 5,
+    "icon": "minecraft:golden_sword",
+    "allowedClasses": ["lord"]
+  },
+  {
+    "id": "pet_def",
+    "name": "Giáp Đệ (Pet DEF)",
+    "attribute": "minecraft:generic.armor",
+    "amountPerLevel": 1.0,
+    "operation": "ADDITION",
+    "costPerLevel": 1,
+    "maxLevel": 5,
+    "icon": "minecraft:golden_chestplate",
+    "allowedClasses": ["lord"]
+  },
+  {
+    "id": "vanguard_hp",
+    "name": "Máu Tiên Phong (+15 HP)",
+    "attribute": "minecraft:generic.max_health",
+    "amountPerLevel": 1.0,
+    "operation": "ADDITION",
+    "costPerLevel": 1,
+    "maxLevel": 15,
+    "icon": "minecraft:golden_apple",
+    "allowedClasses": ["tier2_vanguard"]
+  },
+  {
+    "id": "vanguard_atk",
+    "name": "Sát Thương Tiên Phong (+8 ATK)",
+    "attribute": "minecraft:generic.attack_damage",
+    "amountPerLevel": 0.8,
+    "operation": "ADDITION",
+    "costPerLevel": 1,
+    "maxLevel": 10,
+    "icon": "minecraft:diamond_sword",
+    "allowedClasses": ["tier2_vanguard"]
+  },
+  {
+    "id": "vanguard_armor",
+    "name": "Giáp Tiên Phong (+5 Giáp)",
+    "attribute": "minecraft:generic.armor",
+    "amountPerLevel": 1.0,
+    "operation": "ADDITION",
+    "costPerLevel": 1,
+    "maxLevel": 5,
+    "icon": "minecraft:iron_chestplate",
+    "allowedClasses": ["tier2_vanguard"]
+  },
+  {
+    "id": "vanguard_heal3",
+    "name": "Hồi Máu Né/Parry (Heal III)",
+    "attribute": "none",
+    "amountPerLevel": 0.0,
+    "operation": "ADDITION",
+    "costPerLevel": 10,
+    "maxLevel": 1,
+    "icon": "minecraft:glistering_melon_slice",
+    "allowedClasses": ["tier2_vanguard"],
+    "rewardSkills": ["dodge_parry_reward:passive|dodge_parry_reward:heal3"]
+  },
+  {
+    "id": "indestructible_hp",
+    "name": "Máu Bất Hoại (+40 HP)",
+    "attribute": "minecraft:generic.max_health",
+    "amountPerLevel": 2.0,
+    "operation": "ADDITION",
+    "costPerLevel": 1,
+    "maxLevel": 20,
+    "icon": "minecraft:enchanted_golden_apple",
+    "allowedClasses": ["tier2_indestructible"]
+  },
+  {
+    "id": "indestructible_armor",
+    "name": "Giáp & Độ Cứng Giáp (+15/+10)",
+    "attribute": "minecraft:generic.armor",
+    "amountPerLevel": 1.5,
+    "operation": "ADDITION",
+    "costPerLevel": 1,
+    "maxLevel": 10,
+    "icon": "minecraft:netherite_chestplate",
+    "allowedClasses": ["tier2_indestructible"],
+    "extraAttributes": [
+      {
+        "attribute": "minecraft:generic.armor_toughness",
+        "amountPerLevel": 1.0,
+        "operation": "ADDITION"
+      }
+    ]
+  },
+  {
+    "id": "indestructible_posture",
+    "name": "Kháng Choáng & Bật Lùi",
+    "attribute": "epicfight:stun_armor",
+    "amountPerLevel": 1.0,
+    "operation": "ADDITION",
+    "costPerLevel": 1,
+    "maxLevel": 10,
+    "icon": "minecraft:shield",
+    "allowedClasses": ["tier2_indestructible"],
+    "extraAttributes": [
+      {
+        "attribute": "epicfight:execution_resistance",
+        "amountPerLevel": 2.0,
+        "operation": "ADDITION"
+      },
+      {
+        "attribute": "minecraft:generic.knockback_resistance",
+        "amountPerLevel": 0.05,
+        "operation": "ADDITION"
+      }
+    ]
+  },
+  {
+    "id": "indestructible_regen",
+    "name": "Nâng Cấp Regeneration II",
+    "attribute": "none",
+    "amountPerLevel": 0.0,
+    "operation": "ADDITION",
+    "costPerLevel": 10,
+    "maxLevel": 1,
+    "icon": "minecraft:ghast_tear",
+    "allowedClasses": ["tier2_indestructible"],
+    "passiveEffects": [
+      {
+        "effect": "minecraft:regeneration",
+        "amplifier": 1,
+        "ambient": false,
+        "visible": false,
+        "showIcon": true
+      }
+    ]
+  },
+  {
+    "id": "indestructible_heal4",
+    "name": "Hồi Máu Né/Parry (Heal IV)",
+    "attribute": "none",
+    "amountPerLevel": 0.0,
+    "operation": "ADDITION",
+    "costPerLevel": 15,
+    "maxLevel": 1,
+    "icon": "minecraft:glistering_melon_slice",
+    "allowedClasses": ["tier2_indestructible"],
+    "rewardSkills": ["dodge_parry_reward:passive|dodge_parry_reward:heal4"]
+  },
+  {
+    "id": "wind_atk",
+    "name": "Sát Thương (+15 Max)",
+    "attribute": "minecraft:generic.attack_damage",
+    "amountPerLevel": 1.0,
+    "operation": "ADDITION",
+    "costPerLevel": 1,
+    "maxLevel": 15,
+    "icon": "minecraft:iron_sword",
+    "allowedClasses": ["tier2_wind_assassin"]
+  },
+  {
+    "id": "wind_attack_speed",
+    "name": "Tốc Độ Đánh (+0.5 Max)",
+    "attribute": "minecraft:generic.attack_speed",
+    "amountPerLevel": 0.1,
+    "operation": "ADDITION",
+    "costPerLevel": 3,
+    "maxLevel": 5,
+    "icon": "minecraft:golden_sword",
+    "allowedClasses": ["tier2_wind_assassin"]
+  },
+  {
+    "id": "wind_stamina",
+    "name": "Thể Lực & Hồi Thể Lực (+30/+3.0 Max)",
+    "attribute": "epicfight:staminar",
+    "amountPerLevel": 3.0,
+    "operation": "ADDITION",
+    "costPerLevel": 3,
+    "maxLevel": 10,
+    "icon": "minecraft:sugar",
+    "allowedClasses": ["tier2_wind_assassin"],
+    "extraAttributes": [
+      {
+        "attribute": "epicfight:stamina_regen",
+        "amountPerLevel": 0.3,
+        "operation": "ADDITION"
+      }
+    ]
+  },
+  {
+    "id": "phantom_atk",
+    "name": "Sát Thương (+15 Max)",
+    "attribute": "minecraft:generic.attack_damage",
+    "amountPerLevel": 1.5,
+    "operation": "ADDITION",
+    "costPerLevel": 2,
+    "maxLevel": 10,
+    "icon": "minecraft:golden_sword",
+    "allowedClasses": ["tier2_phantom_striker"]
+  },
+  {
+    "id": "phantom_speed",
+    "name": "Tốc Độ Di Chuyển (+30% Max)",
+    "attribute": "minecraft:generic.movement_speed",
+    "amountPerLevel": 0.1,
+    "operation": "MULTIPLY_BASE",
+    "costPerLevel": 3,
+    "maxLevel": 3,
+    "icon": "minecraft:feather",
+    "allowedClasses": ["tier2_phantom_striker"]
+  },
+  {
+    "id": "destruction_atk",
+    "name": "Sát Thương (+30 Max)",
+    "attribute": "minecraft:generic.attack_damage",
+    "amountPerLevel": 1.0,
+    "operation": "ADDITION",
+    "costPerLevel": 1,
+    "maxLevel": 30,
+    "icon": "minecraft:netherite_sword",
+    "allowedClasses": ["tier2_destruction"]
+  },
+  {
+    "id": "destruction_crit_rate",
+    "name": "Tỷ Lệ Chí Mạng (+90% Max)",
+    "attribute": "none",
+    "amountPerLevel": 0.05,
+    "operation": "ADDITION",
+    "costPerLevel": 1,
+    "maxLevel": 18,
+    "icon": "minecraft:redstone",
+    "allowedClasses": ["tier2_destruction"]
+  },
+  {
+    "id": "destruction_crit_dmg",
+    "name": "Sát Thương Chí Mạng (+150% Max)",
+    "attribute": "none",
+    "amountPerLevel": 0.10,
+    "operation": "ADDITION",
+    "costPerLevel": 1,
+    "maxLevel": 15,
+    "icon": "minecraft:blaze_powder",
+    "allowedClasses": ["tier2_destruction"]
+  },
+  {
+    "id": "magic_fire",
+    "name": "Hỏa Tiễn (Đốt 1-5 Dame/s trong 5s)",
+    "attribute": "none",
+    "amountPerLevel": 1.0,
+    "operation": "ADDITION",
+    "costPerLevel": 1,
+    "maxLevel": 10,
+    "icon": "minecraft:fire_charge",
+    "allowedClasses": ["tier2_magic_assassin", "tier2_elemental_archer"]
+  },
+  {
+    "id": "magic_frost",
+    "name": "Băng Tiễn (Làm Chậm & Hồi Phục 5s-30s)",
+    "attribute": "none",
+    "amountPerLevel": 1.0,
+    "operation": "ADDITION",
+    "costPerLevel": 1,
+    "maxLevel": 10,
+    "icon": "minecraft:ice",
+    "allowedClasses": ["tier2_magic_assassin", "tier2_elemental_archer"]
+  },
+  {
+    "id": "magic_truedmg",
+    "name": "Nâng Cấp Sát Thương Chuẩn",
+    "attribute": "none",
+    "amountPerLevel": 1.0,
+    "operation": "ADDITION",
+    "costPerLevel": 5,
+    "maxLevel": 10,
+    "icon": "minecraft:amethyst_shard",
+    "allowedClasses": ["tier2_magic_assassin"]
+  },
+  {
+    "id": "magic_steal",
+    "name": "Nâng Cấp Tước Đoạt (Máu & Stamina)",
+    "attribute": "none",
+    "amountPerLevel": 1.0,
+    "operation": "ADDITION",
+    "costPerLevel": 5,
+    "maxLevel": 10,
+    "icon": "minecraft:ghast_tear",
+    "allowedClasses": ["tier2_magic_assassin"]
+  },
+  {
+    "id": "magic_max_mana",
+    "name": "Tăng Mana Tối Đa (+20/Cấp)",
+    "attribute": "none",
+    "amountPerLevel": 20.0,
+    "operation": "ADDITION",
+    "costPerLevel": 3,
+    "maxLevel": 20,
+    "icon": "minecraft:lapis_lazuli",
+    "allowedClasses": ["tier2_magic_assassin", "tier2_elemental_archer"]
+  },
+  {
+    "id": "magic_mana_regen",
+    "name": "Tốc Độ Hồi Mana (+0.8/s)",
+    "attribute": "none",
+    "amountPerLevel": 0.8,
+    "operation": "ADDITION",
+    "costPerLevel": 5,
+    "maxLevel": 10,
+    "icon": "minecraft:blaze_powder",
+    "allowedClasses": ["tier2_magic_assassin", "tier2_elemental_archer"]
+  },
+  {
+    "id": "marksman_proj_dmg",
+    "name": "Sát Thương Cung Cao Cấp",
+    "attribute": "projectile_damage:generic",
+    "amountPerLevel": 1.0,
+    "operation": "ADDITION",
+    "costPerLevel": 1,
+    "maxLevel": 25,
+    "icon": "minecraft:bow",
+    "allowedClasses": ["tier2_marksman"]
+  },
+  {
+    "id": "marksman_speed",
+    "name": "Tốc Độ Di Chuyển (+0.05 Max)",
+    "attribute": "minecraft:generic.movement_speed",
+    "amountPerLevel": 0.01,
+    "operation": "ADDITION",
+    "costPerLevel": 1,
+    "maxLevel": 5,
+    "icon": "minecraft:feather",
+    "allowedClasses": ["tier2_marksman"]
+  },
+  {
+    "id": "marksman_attack_speed",
+    "name": "Tốc Độ Bắn Cung (+0.3 Max)",
+    "attribute": "minecraft:generic.attack_speed",
+    "amountPerLevel": 0.03,
+    "operation": "ADDITION",
+    "costPerLevel": 1,
+    "maxLevel": 10,
+    "icon": "minecraft:arrow",
+    "allowedClasses": ["tier2_marksman"]
+  },
+  {
+    "id": "marksman_stamina",
+    "name": "Thể Lực & Hồi Thể Lực (+20 Stamina / +2.0 Regen)",
+    "attribute": "epicfight:staminar",
+    "amountPerLevel": 2.0,
+    "operation": "ADDITION",
+    "costPerLevel": 1,
+    "maxLevel": 10,
+    "icon": "minecraft:sugar",
+    "allowedClasses": ["tier2_marksman"],
+    "extraAttributes": [
+      {
+        "attribute": "epicfight:stamina_regen",
+        "amountPerLevel": 0.2,
+        "operation": "ADDITION"
+      }
+    ]
+  },
+  {
+    "id": "magic_lightning",
+    "name": "Lôi Tiễn (Sát Thương Sét 5-25 Dame)",
+    "attribute": "none",
+    "amountPerLevel": 1.0,
+    "operation": "ADDITION",
+    "costPerLevel": 1,
+    "maxLevel": 10,
+    "icon": "minecraft:lightning_rod",
+    "allowedClasses": ["tier2_elemental_archer"]
+  },
+  {
+    "id": "highlord_pet_hp",
+    "name": "Máu Đệ Cao Cấp (+60 HP Max)",
+    "attribute": "minecraft:generic.max_health",
+    "amountPerLevel": 2.0,
+    "operation": "ADDITION",
+    "costPerLevel": 1,
+    "maxLevel": 30,
+    "icon": "minecraft:bone",
+    "allowedClasses": ["tier2_high_lord"]
+  },
+  {
+    "id": "highlord_pet_atk",
+    "name": "Sát Thương Đệ Cao Cấp (+15 ATK Max)",
+    "attribute": "minecraft:generic.attack_damage",
+    "amountPerLevel": 1.0,
+    "operation": "ADDITION",
+    "costPerLevel": 1,
+    "maxLevel": 15,
+    "icon": "minecraft:golden_sword",
+    "allowedClasses": ["tier2_high_lord"]
+  },
+  {
+    "id": "highlord_pet_def",
+    "name": "Giáp Đệ Cao Cấp (+30 Giáp Max)",
+    "attribute": "minecraft:generic.armor",
+    "amountPerLevel": 1.0,
+    "operation": "ADDITION",
+    "costPerLevel": 1,
+    "maxLevel": 30,
+    "icon": "minecraft:golden_chestplate",
+    "allowedClasses": ["tier2_high_lord"]
+  },
+  {
+    "id": "highlord_max_mana",
+    "name": "Mana Tối Đa (+100 Max)",
+    "attribute": "none",
+    "amountPerLevel": 10.0,
+    "operation": "ADDITION",
+    "costPerLevel": 3,
+    "maxLevel": 10,
+    "icon": "minecraft:lapis_lazuli",
+    "allowedClasses": ["tier2_high_lord"]
+  },
+  {
+    "id": "highlord_mana_regen",
+    "name": "Tốc Độ Hồi Mana (+5.0/s Max)",
+    "attribute": "none",
+    "amountPerLevel": 0.5,
+    "operation": "ADDITION",
+    "costPerLevel": 10,
+    "maxLevel": 10,
+    "icon": "minecraft:blaze_powder",
+    "allowedClasses": ["tier2_high_lord"]
+  },
+  {
+    "id": "highlord_pet_heal",
+    "name": "Trị Thương Đệ (3-30 HP / Phím Z)",
+    "attribute": "none",
+    "amountPerLevel": 3.0,
+    "operation": "ADDITION",
+    "costPerLevel": 1,
+    "maxLevel": 10,
+    "icon": "minecraft:glistering_melon_slice",
+    "allowedClasses": ["tier2_high_lord"]
+  },
+  {
+    "id": "highlord_pet_buff_atk",
+    "name": "Buff Sát Thương Đệ (+10 ATK / Phím X)",
+    "attribute": "none",
+    "amountPerLevel": 1.0,
+    "operation": "ADDITION",
+    "costPerLevel": 1,
+    "maxLevel": 10,
+    "icon": "minecraft:blaze_rod",
+    "allowedClasses": ["tier2_high_lord"]
+  },
+  {
+    "id": "summoner_pet_unlock",
+    "name": "Mở Khóa Đệ & Trang Bị",
+    "attribute": "none",
+    "amountPerLevel": 1.0,
+    "operation": "ADDITION",
+    "costPerLevel": 10,
+    "maxLevel": 10,
+    "icon": "minecraft:netherite_upgrade_smithing_template",
+    "allowedClasses": ["tier2_summoner_lord"]
+  },
+  {
+    "id": "summoner_pet_count",
+    "name": "Số Lượng Đệ Triệu Hồi (Max 3 Con)",
+    "attribute": "none",
+    "amountPerLevel": 1.0,
+    "operation": "ADDITION",
+    "costPerLevel": 10,
+    "maxLevel": 2,
+    "icon": "minecraft:skeleton_skull",
+    "allowedClasses": ["tier2_summoner_lord"]
+  },
+  {
+    "id": "summoner_mana_regen",
+    "name": "Tốc Độ Hồi Mana (+5.0/s Max)",
+    "attribute": "none",
+    "amountPerLevel": 0.5,
+    "operation": "ADDITION",
+    "costPerLevel": 10,
+    "maxLevel": 10,
+    "icon": "minecraft:blaze_powder",
+    "allowedClasses": ["tier2_summoner_lord"]
+  },
+  {
+    "id": "summoner_max_mana",
+    "name": "Mana Tối Đa (+50 Max)",
+    "attribute": "none",
+    "amountPerLevel": 5.0,
+    "operation": "ADDITION",
+    "costPerLevel": 3,
+    "maxLevel": 10,
+    "icon": "minecraft:lapis_lazuli",
+    "allowedClasses": ["tier2_summoner_lord"]
+  },
+  {
+    "id": "summoner_pet_duration",
+    "name": "Thời Gian Tồn Tại (30s-60s)",
+    "attribute": "none",
+    "amountPerLevel": 3.0,
+    "operation": "ADDITION",
+    "costPerLevel": 3,
+    "maxLevel": 10,
+    "icon": "minecraft:clock",
+    "allowedClasses": ["tier2_summoner_lord"]
+  }
+]

@@ -1,0 +1,37 @@
+filename = 'nightfall_invade-1.3.2.jar'
+name = 'NightFall : Invade'
+side = ''
+x-prismlauncher-loaders = [ 'forge' ]
+x-prismlauncher-mc-versions = [ '1.20.1' ]
+x-prismlauncher-release-type = 'release'
+x-prismlauncher-version-number = 'nightfall_invade-1.3.2.jar'
+
+[download]
+hash = '4b0b2a854210cc14caeaefa5f10b2da915c31eca'
+hash-format = 'sha1'
+mode = 'metadata:curseforge'
+url = ''
+
+[update.curseforge]
+file-id = 8209945
+project-id = 1362602
+
+[[x-prismlauncher-dependencies]]
+addonId = '1307848'
+type = 'REQUIRED'
+
+[[x-prismlauncher-dependencies]]
+addonId = '1377795'
+type = 'REQUIRED'
+
+[[x-prismlauncher-dependencies]]
+addonId = '405076'
+type = 'REQUIRED'
+
+[[x-prismlauncher-dependencies]]
+addonId = '551586'
+type = 'REQUIRED'
+
+[[x-prismlauncher-dependencies]]
+addonId = '1434276'
+type = 'REQUIRED'

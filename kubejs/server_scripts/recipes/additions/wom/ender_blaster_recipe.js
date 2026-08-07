@@ -1,15 +1,15 @@
 ServerEvents.recipes(event => {
-    // Công thức chế tạo Ender Blaster (Súng Ender)
-    // Nguyên liệu: 6 Táo Vàng, 1 Khối Sắt, 1 Khối Kim Cương, 1 NIDG Ingot
+    // 1. Xóa công thức cũ của Ender Blaster
+    event.remove({ output: 'wom:ender_blaster' })
 
+    // 2. Công thức Bàn Chế Tạo cho Ender Blaster
+    // 8 Táo Vàng thường bao quanh 1 Cung
     event.shaped('wom:ender_blaster', [
-        'GGG',
-        'IND',
-        'GGG'
+        'AAA',
+        'ABA',
+        'AAA'
     ], {
-        G: 'minecraft:golden_apple',  // Táo Vàng thường
-        I: 'minecraft:iron_block',    // Khối Sắt
-        N: 'kubejs:nidg_ingot',       // NIDG Ingot
-        D: 'minecraft:diamond_block'  // Khối Kim Cương
-    })
+        A: 'minecraft:golden_apple', // Táo Vàng thường
+        B: 'minecraft:bow'           // Cung
+    }).stage('stage_tier2_magic_assassin')
 })

@@ -1,0 +1,20 @@
+{
+    "model": "epicfight:entity/biped",
+    "armature": "epicfight:entity/biped",
+    "renderer": "player",
+    "isHumanoid": true,
+    "faction": "neutral",
+    "attributes": {
+        "impact": 1.8,
+        "armor_negation": 5.0,
+        "max_strikes": 1,
+        "chasing_speed": 1.5,
+        "max_stamina": 15
+    },
+    "default_livingmotions": {
+        "idle": "epicfight:biped/living/idle",
+        "walk": "epicfight:biped/living/walk",
+        "chase": "epicfight:biped/living/walk",
+        "death": "epicfight:biped/living/death"
+    }
+}

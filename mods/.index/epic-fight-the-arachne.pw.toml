@@ -1,0 +1,18 @@
+filename = 'epicfight_arachne-1.0.0.jar'
+name = 'Epic Fight - The Arachne'
+side = 'server'
+x-prismlauncher-dependencies = []
+x-prismlauncher-loaders = [ 'forge' ]
+x-prismlauncher-mc-versions = [ '1.20.1' ]
+x-prismlauncher-release-type = 'release'
+x-prismlauncher-version-number = 'epicfight_arachne-1.0.0.jar'
+
+[download]
+hash = 'd394e6c4ea4ea96f40c5ef0c00bcbec67cc78d8f'
+hash-format = 'sha1'
+mode = 'metadata:curseforge'
+url = ''
+
+[update.curseforge]
+file-id = 7529944
+project-id = 1445154

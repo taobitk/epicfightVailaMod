@@ -1,18 +1,40 @@
 // Tên file: kubejs/server_scripts/mechanics/mech_petting_epic_stats_buff.js
-// Mục đích: Tự động cập nhật chỉ số Pet theo thời gian thực dựa vào điểm chỉ số Pet ATK (Stat 5), Pet HP (Stat 6) và Pet DEF (Stat 7) của chủ nhân.
-// Tối ưu hóa: Chỉ thực hiện quét tìm Pet khi người chơi vừa đăng nhập hoặc khi phát hiện điểm số chỉ số vừa thay đổi để bảo vệ hiệu năng server tuyệt đối.
+// LƯU Ý: Toàn bộ logic cập nhật chỉ số Petting đã được chuyển giao hoàn toàn sang Mod Java mới (OriginStatsMod - PetStatHandler.java)
+// File này được comment out toàn bộ để tránh xung đột chỉ số.
 
+/*
 (function() {
     const UUID = Java.loadClass('java.util.UUID');
+    const AttributeModifier = Java.loadClass('net.minecraft.world.entity.ai.attributes.AttributeModifier');
+    const Operation = Java.loadClass('net.minecraft.world.entity.ai.attributes.AttributeModifier$Operation');
     const EpicStatsModRemasteredModVariables = Java.loadClass('net.felinamods.epicstatsmodremastered.network.EpicStatsModRemasteredModVariables');
 
+    const MobEffectInstance = Java.loadClass('net.minecraft.world.effect.MobEffectInstance');
+    const MobEffects = Java.loadClass('net.minecraft.world.effect.MobEffects');
+
+    // UUID cố định dành riêng cho Buff Petting ES Stats
+    const PET_HP_UUID = UUID.fromString('b2c3d4e5-2222-2222-2222-000000000001');
+    const PET_ATK_UUID = UUID.fromString('b2c3d4e5-2222-2222-2222-000000000002');
+    const PET_ARMOR_UUID = UUID.fromString('b2c3d4e5-2222-2222-2222-000000000003');
+
     const updatePetStats = (entity) => {
-        if (!entity || !entity.nbt) return;
+        if (!entity || !entity.alive || !entity.nbt) return;
+        
+        let ownerUuidStr = null;
 
         let forgeData = entity.nbt.getCompound('ForgeData');
-        if (!forgeData || !forgeData.contains('ownerUUID')) return;
+        if (forgeData && forgeData.contains('ownerUUID')) {
+            ownerUuidStr = forgeData.getString('ownerUUID');
+        }
 
-        let ownerUuidStr = forgeData.getString('ownerUUID');
+        if (!ownerUuidStr && entity.nbt.contains('Owner')) {
+            try {
+                ownerUuidStr = entity.nbt.getUUID('Owner').toString();
+            } catch (e) {
+                ownerUuidStr = entity.nbt.getString('Owner');
+            }
+        }
+
         if (!ownerUuidStr) return;
 
         let server = entity.server;
@@ -23,84 +45,64 @@
             let player = server.playerList.getPlayer(ownerUuid);
             if (!player) return;
 
+            if (entity.health < entity.maxHealth) {
+                let healAmount = entity.maxHealth * 0.05;
+                let newHp = Math.min(entity.maxHealth, entity.health + healAmount);
+                entity.setHealth(newHp);
+            }
+
             let cap = player.getCapability(EpicStatsModRemasteredModVariables.PLAYER_VARIABLES_CAPABILITY).orElse(null);
             if (!cap) return;
 
-            let petAtkLvl = cap.stat_5_level || 0; // Pet ATK (Stat 5)
-            let petHpLvl = cap.stat_6_level || 0;  // Pet HP (Stat 6)
-            let petDefLvl = cap.stat_7_level || 0; // Pet DEF (Stat 7)
+            let petAtkLvl = cap.stat_6_level || 0;
+            let petHpLvl = cap.stat_7_level || 0; 
+            let petDefLvl = cap.stat_8_level || 0;
 
-            let pData = entity.persistentData;
+            let bonusHp = petHpLvl * 2.5;
+            let bonusAtk = petAtkLvl * 1.5;
+            let bonusArmor = petDefLvl * 1.0;
 
-            // 1. Cập nhật Máu tối đa (Max Health) -> +2 HP mỗi cấp
             let hpAttr = entity.getAttribute('minecraft:generic.max_health');
             if (hpAttr) {
-                let originalMaxHp = pData.getDouble('original_max_hp');
-                if (originalMaxHp === 0) {
-                    originalMaxHp = hpAttr.getBaseValue();
-                    pData.putDouble('original_max_hp', originalMaxHp);
-                }
-
-                let bonusHp = petHpLvl * 2;
-                let newMaxHp = originalMaxHp + bonusHp;
-                let oldMaxHp = hpAttr.getBaseValue();
-
-                if (oldMaxHp !== newMaxHp) {
-                    let currentHealth = entity.health;
-                    hpAttr.setBaseValue(newMaxHp);
-                    if (newMaxHp > oldMaxHp) {
-                        entity.health = currentHealth + (newMaxHp - oldMaxHp);
+                let existingMod = hpAttr.getModifier(PET_HP_UUID);
+                if (!existingMod || existingMod.amount !== bonusHp) {
+                    hpAttr.removeModifier(PET_HP_UUID);
+                    if (bonusHp > 0) {
+                        hpAttr.addTransientModifier(new AttributeModifier(PET_HP_UUID, 'Petting ES HP Bonus', bonusHp, Operation.ADDITION));
+                        if (!existingMod) {
+                            entity.health = hpAttr.getValue();
+                        }
                     }
-                    console.info(`[PetStatsBuff] Đã cập nhật HP cho Pet ${entity.type} (chủ: ${player.username}): Level ${petHpLvl} -> Max HP: ${originalMaxHp} -> ${newMaxHp}`);
                 }
             }
 
-            // 2. Cập nhật Sát thương (Attack Damage) -> +1 ATK mỗi cấp
             let atkAttr = entity.getAttribute('minecraft:generic.attack_damage');
             if (atkAttr) {
-                let originalAtk = pData.getDouble('original_atk');
-                if (originalAtk === 0) {
-                    originalAtk = atkAttr.getBaseValue();
-                    pData.putDouble('original_atk', originalAtk);
-                }
-
-                let bonusAtk = petAtkLvl * 1.0;
-                let newAtk = originalAtk + bonusAtk;
-                let oldAtk = atkAttr.getBaseValue();
-
-                if (oldAtk !== newAtk) {
-                    atkAttr.setBaseValue(newAtk);
-                    console.info(`[PetStatsBuff] Đã cập nhật ATK cho Pet ${entity.type} (chủ: ${player.username}): Level ${petAtkLvl} -> ATK: ${originalAtk} -> ${newAtk}`);
+                let existingMod = atkAttr.getModifier(PET_ATK_UUID);
+                if (!existingMod || existingMod.amount !== bonusAtk) {
+                    atkAttr.removeModifier(PET_ATK_UUID);
+                    if (bonusAtk > 0) {
+                        atkAttr.addTransientModifier(new AttributeModifier(PET_ATK_UUID, 'Petting ES ATK Bonus', bonusAtk, Operation.ADDITION));
+                    }
                 }
             }
 
-            // 3. Cập nhật Giáp (Armor - DEF) -> +1 DEF mỗi cấp
             let armorAttr = entity.getAttribute('minecraft:generic.armor');
             if (armorAttr) {
-                let originalArmor = 0;
-                if (!pData.contains('original_armor')) {
-                    originalArmor = armorAttr.getBaseValue();
-                    pData.putDouble('original_armor', originalArmor);
-                } else {
-                    originalArmor = pData.getDouble('original_armor');
-                }
-
-                let bonusArmor = petDefLvl * 1.0;
-                let newArmor = originalArmor + bonusArmor;
-                let oldArmor = armorAttr.getBaseValue();
-
-                if (oldArmor !== newArmor) {
-                    armorAttr.setBaseValue(newArmor);
-                    console.info(`[PetStatsBuff] Đã cập nhật DEF cho Pet ${entity.type} (chủ: ${player.username}): Level ${petDefLvl} -> Armor: ${originalArmor} -> ${newArmor}`);
+                let existingMod = armorAttr.getModifier(PET_ARMOR_UUID);
+                if (!existingMod || existingMod.amount !== bonusArmor) {
+                    armorAttr.removeModifier(PET_ARMOR_UUID);
+                    if (bonusArmor > 0) {
+                        armorAttr.addTransientModifier(new AttributeModifier(PET_ARMOR_UUID, 'Petting ES Armor Bonus', bonusArmor, Operation.ADDITION));
+                    }
                 }
             }
 
         } catch (e) {
-            console.error(`[PetStatsBuff] Lỗi khi cập nhật chỉ số cho Pet: ${e}`);
+            console.error(`[PetStats] Lỗi khi cập nhật chỉ số cho Pet: ${e}`);
         }
     };
 
-    // Hàm tiện ích để quét và cập nhật toàn bộ Pet xung quanh người chơi
     const updateAllNearbyPets = (player) => {
         try {
             let boundingBox = player.boundingBox || player.getBoundingBox();
@@ -108,23 +110,14 @@
                 let aabb = boundingBox.inflate(32);
                 let entities = player.level.getEntitiesWithin(aabb);
                 entities.forEach(entity => {
-                    if (entity && entity.nbt) {
-                        let forgeData = entity.nbt.getCompound('ForgeData');
-                        if (forgeData && forgeData.contains('ownerUUID')) {
-                            let ownerUuidStr = forgeData.getString('ownerUUID');
-                            if (ownerUuidStr && ownerUuidStr === player.uuid.toString()) {
-                                updatePetStats(entity);
-                            }
-                        }
+                    if (entity && entity.alive && entity.nbt) {
+                        updatePetStats(entity);
                     }
                 });
             }
-        } catch (err) {
-            // Tránh spam log
-        }
+        } catch (err) {}
     };
 
-    // Đăng ký các sự kiện cơ bản
     EntityEvents.spawned(event => {
         updatePetStats(event.entity);
     });
@@ -133,44 +126,15 @@
         updatePetStats(event.target);
     });
 
-    EntityEvents.hurt(event => {
-        updatePetStats(event.entity);
-    });
-
-    // 1. Đồng bộ khi người chơi đăng nhập game
     PlayerEvents.loggedIn(event => {
         updateAllNearbyPets(event.player);
     });
 
-    // 2. Kiểm tra siêu nhẹ định kỳ mỗi 2 giây (40 ticks)
-    // Chỉ kích hoạt quét tìm Pet khi phát hiện điểm số thực sự thay đổi
     PlayerEvents.tick(event => {
         let player = event.player;
-        if (player.age % 40 === 0) {
-            try {
-                let cap = player.getCapability(EpicStatsModRemasteredModVariables.PLAYER_VARIABLES_CAPABILITY).orElse(null);
-                if (cap) {
-                    let currentAtkLvl = cap.stat_5_level || 0;
-                    let currentHpLvl = cap.stat_6_level || 0;
-                    let currentDefLvl = cap.stat_7_level || 0;
-
-                    let pData = player.persistentData;
-                    let lastAtkLvl = pData.getDouble('last_pet_atk_lvl');
-                    let lastHpLvl = pData.getDouble('last_pet_hp_lvl');
-                    let lastDefLvl = pData.getDouble('last_pet_def_lvl');
-
-                    // Nếu phát hiện sự thay đổi chỉ số
-                    if (currentAtkLvl !== lastAtkLvl || currentHpLvl !== lastHpLvl || currentDefLvl !== lastDefLvl) {
-                        updateAllNearbyPets(player);
-                        
-                        pData.putDouble('last_pet_atk_lvl', currentAtkLvl);
-                        pData.putDouble('last_pet_hp_lvl', currentHpLvl);
-                        pData.putDouble('last_pet_def_lvl', currentDefLvl);
-                    }
-                }
-            } catch (err) {
-                // Tránh spam log
-            }
+        if (player.age % 20 === 0) {
+            updateAllNearbyPets(player);
         }
     });
 })();
+*/

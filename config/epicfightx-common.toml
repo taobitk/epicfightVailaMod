@@ -1,0 +1,5 @@
+[animation_speed]
+	enable_animation_playspeed_lock = false
+
+[stun_animation]
+	replace_player_stunanimation = false

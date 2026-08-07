@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern":
+    [
+        " DB",
+        " SD",
+        "S  "
+    ],
+    
+    "key":
+    {
+        "B": { "item" : "epicfight:golden_spear" },
+        "D": { "item" : "minecraft:gold_ingot" },
+        "S": { "item" : "minecraft:stick" }
+    },
+    
+    "result":
+    {
+        "item" : "cdmoveset:s_golden_spear",
+        "count" : 1
+    }
+}

@@ -1,0 +1,12 @@
+{
+  "name": "Lãnh Chúa",
+  "description": "Nhà chỉ huy tối cao. Mở khóa công thức chế tạo đặc biệt để xây dựng quân đội và chỉ huy đệ.",
+  "icon": {
+    "item": "minecraft:golden_helmet"
+  },
+  "impact": 1,
+  "order": 4,
+  "powers": [
+    "originstats:lord_perk"
+  ]
+}

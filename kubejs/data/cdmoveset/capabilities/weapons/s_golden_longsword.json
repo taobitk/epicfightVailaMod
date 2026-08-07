@@ -1,0 +1,10 @@
+{
+  "attributes": {
+    "common": {
+      "impact": 1.6,
+      "max_strikes": 2,
+      "damage_bonus": 0.0
+    }
+  },
+  "type": "cdmoveset:s_longsword"
+}

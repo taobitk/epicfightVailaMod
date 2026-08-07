@@ -22,6 +22,17 @@
         "value": 2048
       }
     },
+    "block_factorys_bosses:roll_count": {
+      "enabled": false,
+      "min": {
+        "default": 0,
+        "value": 0
+      },
+      "max": {
+        "default": 9,
+        "value": 9
+      }
+    },
     "epicfight:weight": {
       "enabled": false,
       "min": {
@@ -154,6 +165,28 @@
         "value": 2147483647
       }
     },
+    "additionalentityattributes:magic_protection": {
+      "enabled": false,
+      "min": {
+        "default": 0,
+        "value": 0
+      },
+      "max": {
+        "default": 1024,
+        "value": 1024
+      }
+    },
+    "additionalentityattributes:lava_visibility": {
+      "enabled": false,
+      "min": {
+        "default": 0,
+        "value": 0
+      },
+      "max": {
+        "default": 1024,
+        "value": 1024
+      }
+    },
     "touhou_little_maid:maid_gun_attack_speed": {
       "enabled": false,
       "min": {
@@ -176,6 +209,17 @@
         "value": 1024
       }
     },
+    "additionalentityattributes:bonus_loot_count_rolls": {
+      "enabled": false,
+      "min": {
+        "default": 0,
+        "value": 0
+      },
+      "max": {
+        "default": 128,
+        "value": 128
+      }
+    },
     "petting:max_pets_category_13": {
       "enabled": false,
       "min": {
@@ -185,6 +229,17 @@
       "max": {
         "default": 1024,
         "value": 1024
+      }
+    },
+    "additionalentityattributes:lung_capacity": {
+      "enabled": false,
+      "min": {
+        "default": -40000,
+        "value": -40000
+      },
+      "max": {
+        "default": 40000,
+        "value": 40000
       }
     },
     "petting:max_pets_category_16": {
@@ -330,6 +385,17 @@
         "value": 179769313486231570000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
       }
     },
+    "additionalentityattributes:dig_speed": {
+      "enabled": false,
+      "min": {
+        "default": 0,
+        "value": 0
+      },
+      "max": {
+        "default": 2048,
+        "value": 2048
+      }
+    },
     "petting:max_pets": {
       "enabled": false,
       "min": {
@@ -350,6 +416,28 @@
       "max": {
         "default": 2147483647,
         "value": 2147483647
+      }
+    },
+    "reach-entity-attributes:attack_range": {
+      "enabled": false,
+      "min": {
+        "default": -1024,
+        "value": -1024
+      },
+      "max": {
+        "default": 1024,
+        "value": 1024
+      }
+    },
+    "additionalentityattributes:water_visibility": {
+      "enabled": false,
+      "min": {
+        "default": 0,
+        "value": 0
+      },
+      "max": {
+        "default": 1024,
+        "value": 1024
       }
     },
     "epicfight:impact": {
@@ -374,6 +462,17 @@
         "value": 64
       }
     },
+    "reach-entity-attributes:reach": {
+      "enabled": false,
+      "min": {
+        "default": -1024,
+        "value": -1024
+      },
+      "max": {
+        "default": 1024,
+        "value": 1024
+      }
+    },
     "forge:block_reach": {
       "enabled": false,
       "min": {
@@ -383,6 +482,28 @@
       "max": {
         "default": 1024,
         "value": 1024
+      }
+    },
+    "additionalentityattributes:water_speed": {
+      "enabled": false,
+      "min": {
+        "default": 0,
+        "value": 0
+      },
+      "max": {
+        "default": 1,
+        "value": 1
+      }
+    },
+    "cataclysm:additional_critical_damage": {
+      "enabled": false,
+      "min": {
+        "default": -512,
+        "value": -512
+      },
+      "max": {
+        "default": 512,
+        "value": 512
       }
     },
     "projectile_damage:generic": {
@@ -471,6 +592,28 @@
       "max": {
         "default": 30,
         "value": 1000000
+      }
+    },
+    "cataclysm:eat_speed": {
+      "enabled": false,
+      "min": {
+        "default": -100,
+        "value": -100
+      },
+      "max": {
+        "default": 100,
+        "value": 100
+      }
+    },
+    "additionalentityattributes:critical_bonus_damage": {
+      "enabled": false,
+      "min": {
+        "default": -1,
+        "value": -1
+      },
+      "max": {
+        "default": 1024,
+        "value": 1024
       }
     },
     "petting:max_pets_category_2": {
@@ -583,6 +726,28 @@
         "value": 1024
       }
     },
+    "caelus:fall_flying": {
+      "enabled": false,
+      "min": {
+        "default": 0,
+        "value": 0
+      },
+      "max": {
+        "default": 1,
+        "value": 1
+      }
+    },
+    "cataclysm:charge_time": {
+      "enabled": false,
+      "min": {
+        "default": -100,
+        "value": -100
+      },
+      "max": {
+        "default": 512,
+        "value": 512
+      }
+    },
     "petting:max_pets_category_6": {
       "enabled": false,
       "min": {
@@ -649,6 +814,17 @@
         "value": 1024
       }
     },
+    "additionalentityattributes:lava_speed": {
+      "enabled": false,
+      "min": {
+        "default": 0,
+        "value": 0
+      },
+      "max": {
+        "default": 1,
+        "value": 1
+      }
+    },
     "touhou_little_maid:maid_pickup_range": {
       "enabled": false,
       "min": {
@@ -658,6 +834,17 @@
       "max": {
         "default": 179769313486231570000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000,
         "value": 179769313486231570000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+      }
+    },
+    "additionalentityattributes:bonus_rare_loot_rolls": {
+      "enabled": false,
+      "min": {
+        "default": 0,
+        "value": 0
+      },
+      "max": {
+        "default": 128,
+        "value": 128
       }
     },
     "epicfight:max_strikes": {
@@ -702,6 +889,28 @@
       "max": {
         "default": 1,
         "value": 1
+      }
+    },
+    "cataclysm:nature_heal": {
+      "enabled": false,
+      "min": {
+        "default": -256,
+        "value": -256
+      },
+      "max": {
+        "default": 1024,
+        "value": 1024
+      }
+    },
+    "additionalentityattributes:dropped_experience": {
+      "enabled": false,
+      "min": {
+        "default": 0,
+        "value": 0
+      },
+      "max": {
+        "default": 1024,
+        "value": 1024
       }
     }
   }

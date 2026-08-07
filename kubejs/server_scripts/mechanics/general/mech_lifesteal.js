@@ -7,25 +7,27 @@ const WOM_WEAPONS = {
     'wom:antitheus': 0.50, // 50% (OP)
     'wom:satsujin': 0.25,
     'wom:moonless': 0.35, // Đã nâng lên 35%
-    'wom:solar': 0.25,
-    'wom:herrscher': 0.15,
-    'wom:ruine': 0.15,
-    'wom:tormented_mind': 0.15,
-    'wom:agony': 0.20,
-    'wom:jabberwocky': 0.20,
-    'wom:evil_tachi': 0.20,
-    'wom:napoleon': 0.20,
+    // 'wom:solar': 0.25,
+    // 'wom:herrscher': 0.15,
+    // 'wom:ruine': 0.15,
+    // 'wom:tormented_mind': 0.15,
+    // 'wom:agony': 0.20,
+    // 'wom:jabberwocky': 0.20,
+    // 'wom:evil_tachi': 0.20,
+    // 'wom:napoleon': 0.20,
     'wom:ender_blaster': 0.20
 };
 
-// 2. EFN (Epic Fight Nightfall / Custom)
+// 2. EFN & CDMoveset (Epic Fight Nightfall / Custom)
 const EFN_WEAPONS = {
     'efn:nf_dual_sword': 0.25, // Ancient Sculk Twinblades
     'efn:sword_of_pioneer': 0.20, // Vanguard Sword
     'efn:nf_claw': 0.20, // Feral Claw
     'efn:air_tachi': 0.15, // Bloodlust
     'efn:co_tachi': 0.15,  // Carnivorous Osteofrenzy
-    'efn:crimson_moon': 0.20 // Crimson Moon lifesteal 20%
+    'efn:crimson_moon': 0.20, // Crimson Moon lifesteal 20%
+    'cdmoveset:great_tachi': 0.20,   // Crimson Fang - Hút máu 20%
+    'cdmoveset:phantom_katana': 0.20 // Phantom Katana - Hút máu 20%
 };
 
 // 3. EpicFight Daggers (Dao găm thường) - 10%

@@ -7,14 +7,16 @@
             "ES2015"
         ],
         "rootDir": "./",
+        "baseUrl": "../.probe/client/probe-types",
         "typeRoots": [
-            "../../.probe/client/probe-types"
+            "../.probe/client/probe-types"
         ],
-        "baseUrl": "../../.probe/client/probe-types",
         "skipLibCheck": true
     },
     "include": [
-        "**/*",
-        "../../.probe/client/probe-types"
+        "**/*"
+    ],
+    "exclude": [
+        "node_modules"
     ]
 }

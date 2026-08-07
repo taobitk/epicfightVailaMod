@@ -1,13 +1,13 @@
 ServerEvents.recipes(event => {
-    // Công thức chế tạo Tormented Mind (wom:tormented_mind)
-    // Nguyên liệu: 8 Khối Kim Cương bao quanh 1 WOM Netherite Greataxe
+    // 1. Xóa công thức cũ của Tormented Mind
+    event.remove({ output: 'wom:tormented_mind' })
 
-    event.shaped('wom:tormented_mind', [
-        'DDD',
-        'DAD',
-        'DDD'
-    ], {
-        D: 'minecraft:diamond_block',   // Khối Kim Cương
-        A: 'wom:netherite_greataxe'     // WOM Netherite Greataxe (Theo ảnh)
-    })
+    // 2. Công thức Bàn Rèn (Smithing) cho Tormented Mind
+    // Template: Táo Vàng Enchant, Base: WOM Netherite Greataxe, Addition: NIDG Ingot
+    event.smithing(
+        'wom:tormented_mind',                // Output
+        'minecraft:enchanted_golden_apple',  // Template
+        'wom:netherite_greataxe',            // Base
+        'kubejs:nidg_ingot'                  // Addition
+    ).stage('stage_tier2_indestructible')
 })

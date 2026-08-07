@@ -1,0 +1,32 @@
+[
+  {
+    "id": "fire",
+    "name": "🔥 Hỏa Tiễn (Ma Hỏa)",
+    "colorHex": "0xFF5555",
+    "type": "FIRE",
+    "potionId": "",
+    "durationSec": 10,
+    "amplifier": 0,
+    "particle": "flame"
+  },
+  {
+    "id": "frost",
+    "name": "❄ Băng Tiễn (Làm Chậm & Hồi Phục)",
+    "colorHex": "0x55FFFF",
+    "type": "FROST",
+    "potionId": "minecraft:slowness",
+    "durationSec": 5,
+    "amplifier": 1,
+    "particle": "snowflake"
+  },
+  {
+    "id": "lightning",
+    "name": "⚡ Lôi Tiễn (Sát Thương Sét)",
+    "colorHex": "0xFFFF55",
+    "type": "LIGHTNING",
+    "potionId": "",
+    "durationSec": 0,
+    "amplifier": 0,
+    "particle": "electric_spark"
+  }
+]

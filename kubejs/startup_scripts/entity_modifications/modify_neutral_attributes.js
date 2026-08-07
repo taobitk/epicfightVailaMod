@@ -3,7 +3,7 @@
 // --- CẤU HÌNH CHỈ SỐ (CONSTANTS) ---
 // Armor Buff: +3 to +12
 
-const ENDERMAN_STATS = { health: 120.0, attack: 14.0, armor: 8.0 };
+const ENDERMAN_STATS = { health: 35.0, attack: 4.0, armor: 4.0 };
 const ZOMBIFIED_PIGLIN_STATS = { health: 60.0, attack: 10.0, armor: 12.0 };
 const PIGLIN_STATS = { health: 48.0, attack: 8.0, armor: 8.0 };
 const BEE_STATS = { health: 10.0, attack: 4.0, armor: 3.0 };

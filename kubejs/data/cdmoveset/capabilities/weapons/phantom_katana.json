@@ -1,0 +1,10 @@
+{
+  "attributes": {
+    "common": {
+      "impact": 3.0,
+      "max_strikes": 5,
+      "damage_bonus": 9.0
+    }
+  },
+  "type": "cdmoveset:phantom_katana"
+}

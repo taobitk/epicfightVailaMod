@@ -1,41 +1,16 @@
-# Ignore world saves
-saves/
+# Ignore everything by default
+/*
 
-# Ignore logs and crash reports
-logs/
-crash-reports/
+# Allow .gitignore file
+!.gitignore
+
+# Only track mods, config, and kubejs directories
+!/mods/
+!/config/
+!/kubejs/
+
+# Ignore temporary/cache files inside tracked folders if any
+/mods/temp_extract/
+/scratch/
+*.tmp
 *.log
-
-# Ignore IDE and tool caches
-.vscode/
-local/
-rhino.local.properties
-.antigravityignore
-
-# Ignore user and launcher cache files
-usercache.json
-usernamecache.json
-TLauncherAdditional.json
-
-# Ignore large executable jar files
-/*.jar
-taobitk.jar
-
-# Ignore screenshots and media
-screenshots/
-
-# Ignore Journeymap caches and data
-journeymap/
-
-# Ignore large asset packs and resources
-resourcepacks/
-shaderpacks/
-natives/
-
-# Ignore drafts/temporary files
-nhap/
-nhaps/
-Pasted Text.txt
-*.bak
-modernfix/
-

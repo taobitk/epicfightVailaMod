@@ -1,0 +1,10 @@
+{
+  "type": "origins:attribute",
+  "modifier": {
+    "attribute": "projectile_damage:generic",
+    "value": 2.0,
+    "operation": "addition"
+  },
+  "name": "Nội Tại Cung Thủ",
+  "description": "+2.0 Sát thương bắn xa (Projectile Damage)"
+}

@@ -2,24 +2,24 @@
     "content": {
         "potion_water_breathing": {
             "type": "item",
-            "rarity": "UNCOMMON",
+            "rarity": "COMMON",
             "content": "minecraft:potion",
             "amount": {
                 "min": 1,
-                "max": 2
+                "max": 3
             },
-            "unitWorth": 800,
+            "unitWorth": 150,
             "nbt": "{Potion:\"minecraft:water_breathing\"}"
         },
         "potion_strength": {
             "type": "item",
-            "rarity": "UNCOMMON",
+            "rarity": "COMMON",
             "content": "minecraft:potion",
             "amount": {
                 "min": 1,
-                "max": 2
+                "max": 3
             },
-            "unitWorth": 1000,
+            "unitWorth": 150,
             "nbt": "{Potion:\"minecraft:strength\"}"
         },
         "potion_regeneration": {
@@ -30,7 +30,7 @@
                 "min": 1,
                 "max": 2
             },
-            "unitWorth": 1200,
+            "unitWorth": 400,
             "nbt": "{Potion:\"minecraft:regeneration\"}"
         },
         "golden_apple": {
@@ -39,39 +39,39 @@
             "content": "minecraft:golden_apple",
             "amount": {
                 "min": 1,
-                "max": 2
+                "max": 1
             },
-            "unitWorth": 3000
+            "unitWorth": 800
         },
         "cooked_beef": {
             "type": "item",
-            "rarity": "RARE",
+            "rarity": "COMMON",
             "content": "minecraft:cooked_beef",
             "amount": {
-                "min": 4,
-                "max": 16
+                "min": 1,
+                "max": 3
             },
-            "unitWorth": 350
+            "unitWorth": 150
         },
         "cooked_mutton": {
             "type": "item",
-            "rarity": "RARE",
+            "rarity": "COMMON",
             "content": "minecraft:cooked_mutton",
             "amount": {
-                "min": 4,
-                "max": 16
+                "min": 1,
+                "max": 3
             },
-            "unitWorth": 300
+            "unitWorth": 150
         },
         "cooked_porkchop": {
             "type": "item",
-            "rarity": "RARE",
+            "rarity": "COMMON",
             "content": "minecraft:cooked_porkchop",
             "amount": {
-                "min": 4,
-                "max": 16
+                "min": 1,
+                "max": 3
             },
-            "unitWorth": 350
+            "unitWorth": 150
         },
         "efficiency_1": {
             "type": "item",
@@ -79,9 +79,9 @@
             "content": "minecraft:enchanted_book",
             "amount": {
                 "min": 1,
-                "max": 1
+                "max": 2
             },
-            "unitWorth": 1200,
+            "unitWorth": 400,
             "nbt": "{StoredEnchantments:[{lvl:1s,id:\"minecraft:efficiency\"}]}"
         },
         "netherite_hoe": {
@@ -92,17 +92,7 @@
                 "min": 1,
                 "max": 1
             },
-            "unitWorth": 2500
-        },
-        "diamond": {
-            "type": "item",
-            "rarity": "EPIC",
-            "content": "minecraft:diamond",
-            "amount": {
-                "min": 1,
-                "max": 3
-            },
-            "unitWorth": 6000
+            "unitWorth": 1800
         },
         "prefab_house": {
             "type": "item",
@@ -110,9 +100,9 @@
             "content": "prefab:item_house",
             "amount": {
                 "min": 1,
-                "max": 1
+                "max": 2
             },
-            "unitWorth": 2500
+            "unitWorth": 400
         },
         "prefab_house_improved": {
             "type": "item",
@@ -122,7 +112,7 @@
                 "min": 1,
                 "max": 1
             },
-            "unitWorth": 5000
+            "unitWorth": 800
         },
         "prefab_house_advanced": {
             "type": "item",
@@ -132,7 +122,7 @@
                 "min": 1,
                 "max": 1
             },
-            "unitWorth": 5000
+            "unitWorth": 1800
         },
         "prefab_farm_improved": {
             "type": "item",
@@ -142,7 +132,7 @@
                 "min": 1,
                 "max": 1
             },
-            "unitWorth": 4500
+            "unitWorth": 800
         },
         "prefab_farm_advanced": {
             "type": "item",
@@ -152,7 +142,7 @@
                 "min": 1,
                 "max": 1
             },
-            "unitWorth": 5000
+            "unitWorth": 1800
         }
     }
 }

@@ -7,14 +7,16 @@
             "ES2015"
         ],
         "rootDir": "./",
+        "baseUrl": "../.probe/startup/probe-types",
         "typeRoots": [
-            "../../.probe/startup/probe-types"
+            "../.probe/startup/probe-types"
         ],
-        "baseUrl": "../../.probe/startup/probe-types",
         "skipLibCheck": true
     },
     "include": [
-        "**/*",
-        "../../.probe/startup/probe-types"
+        "**/*"
+    ],
+    "exclude": [
+        "node_modules"
     ]
 }

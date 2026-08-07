@@ -1,0 +1,18 @@
+filename = 'sdmcore-forge-2001.4.0.jar'
+name = 'SDM Engine Core'
+side = 'server'
+x-prismlauncher-dependencies = []
+x-prismlauncher-loaders = [ 'forge' ]
+x-prismlauncher-mc-versions = [ '1.20.1' ]
+x-prismlauncher-release-type = 'release'
+x-prismlauncher-version-number = 'sdmcore-forge-2001.4.0.jar'
+
+[download]
+hash = '0ce8a9ea1fff19d4f13e578ff3948df170d526d5'
+hash-format = 'sha1'
+mode = 'metadata:curseforge'
+url = ''
+
+[update.curseforge]
+file-id = 7090174
+project-id = 964997

@@ -7,7 +7,7 @@
 	#Defines the ID of the attribute, example: minecraft:generic.attack_speed
 	"Stat 5 ID" = "projectile_damage:generic"
 	#The value added to the attribute per level
-	"Stat 5 Value" = 0.33
+	"Stat 5 Value" = 1.0
 	"Stat 5 Max" = 100.0
 	"Max Stat 5" = 0.0
 

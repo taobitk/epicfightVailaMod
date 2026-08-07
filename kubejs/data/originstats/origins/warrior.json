@@ -1,0 +1,12 @@
+{
+  "name": "Chiến Binh",
+  "description": "Bậc thầy cận chiến lì đợm, sở hữu lượng thể lực dồi dào và lượng HP vượt trội.",
+  "icon": {
+    "item": "minecraft:iron_chestplate"
+  },
+  "impact": 1,
+  "order": 1,
+  "powers": [
+    "originstats:warrior_bonus"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    " BB",
+    "BB ",
+    "S  "
+  ],
+  "key":
+  {
+    "B": { "item" : "minecraft:cobblestone" },
+    "S": { "item" : "epicfight:stone_tachi" }
+  },
+  "result":
+  {
+    "item" : "cdmoveset:s_stone_tachi",
+    "count" : 1
+  }
+}

@@ -1,0 +1,54 @@
+{
+	"trail_effects": [
+		{
+			"start_time": 0.725,
+			"end_time": 0.725,
+			"joint": "Tool_R",
+			"color": [16, 16, 16],
+			"begin_pos": [0.0, 0.0, -1.5],
+			"end_pos": [0.0, -0.25, -3.5],
+			"item_skin_hand": "main_hand",
+			"lifetime": 5,
+			"interpolations": 4
+		},
+		{
+			"start_time": 0.725,
+			"end_time": 0.725,
+			"joint": "Tool_R",
+			"color": [255, 255, 255],
+    	    "begin_pos": [0.1, 0.0, -1.5],
+    	    "end_pos": [0.1, -0.5, -3.75],
+			"item_skin_hand": "main_hand",
+			"lifetime": 15,
+		    "interpolations": 7,
+	    	"texture_path": "epicfight:textures/particle/power_trail4.png",
+	    	"particle_type": "epicfight:swing_trail"
+		},
+		{
+			"start_time": 0.725,
+			"end_time": 0.725,
+			"joint": "Tool_R",
+			"item_skin_hand": "main_hand",
+			"color": [255, 255, 255],
+    	    "begin_pos": [0.4, 0.0, -0.5],
+    	    "end_pos": [-0.4, 0.2, -3.25],
+    	    "lifetime": 6,
+		    "interpolations": 4,
+	    	"texture_path": "epicfight:textures/particle/power_trail3.png",
+	    	"particle_type": "epicfight:swing_trail"
+		},
+		{
+			"start_time": 0.725,
+			"end_time": 0.725,
+			"joint": "Tool_R",
+			"item_skin_hand": "main_hand",
+			"color": [255, 255, 255],
+    	    "begin_pos": [-0.4, 0.0, -1.75],
+    	    "end_pos": [0.4, -0.2, -4.5],
+    	    "lifetime": 9,
+		    "interpolations": 4,
+	    	"texture_path": "epicfight:textures/particle/power_trail3.png",
+	    	"particle_type": "epicfight:swing_trail"
+		}
+	]
+}

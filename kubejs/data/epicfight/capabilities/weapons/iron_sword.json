@@ -1,0 +1,8 @@
+{
+  "type": "epicfight:sword",
+  "attributes": {
+    "common": {
+      "damage_bonus": 3.0
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    "  B",
+    "BB ",
+    "SB "
+  ],
+  "key":
+  {
+    "B": { "item" : "minecraft:cobblestone" },
+    "S": { "item" : "epicfight:stone_longsword" }
+  },
+  "result":
+  {
+    "item" : "cdmoveset:s_stone_longsword",
+    "count" : 1
+  }
+}

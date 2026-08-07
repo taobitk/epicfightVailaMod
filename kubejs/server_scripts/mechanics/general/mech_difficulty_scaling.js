@@ -1,83 +1,123 @@
-// Tên file: kubejs/server_scripts/mechanics/minecraft/mech_difficulty_scaling.js
-// Mục đích: Tự động tăng HP và Sát thương của quái vật theo số ngày trong game:
-//   - HP tăng: số ngày * 2.5
-//   - Sát thương tăng: số ngày * 0.5 (tối đa tăng thêm 5)
-//   - Giáp không tăng
+// Tên file: kubejs/server_scripts/mechanics/general/mech_difficulty_scaling.js
+// Mục đích: Tự động tăng HP, Sát thương và Giáp cho Quái vật Hostile theo số ngày sử dụng AttributeModifier UUID riêng biệt (Lớp 2).
+// Loại trừ hoàn toàn Lính (HumanCompanions) và Thú cưng (Petting).
+// Sửa lỗi tự động hồi đầy máu mỗi 5 giây bằng cách chỉ cập nhật Modifier khi chỉ số thay đổi.
 
-const targetMobs = [
-    'minecraft:zombie', 'minecraft:zombie_villager', 'minecraft:husk', 'minecraft:drowned',
-    'minecraft:skeleton', 'minecraft:stray', 'minecraft:wither_skeleton',
-    'minecraft:spider', 'minecraft:cave_spider', 'minecraft:silverfish', 'minecraft:endermite',
-    'minecraft:pillager', 'minecraft:vindicator', 'minecraft:evoker', 'minecraft:vex', 'minecraft:ravager',
-    'minecraft:blaze', 'minecraft:ghast', 'minecraft:magma_cube', 'minecraft:hoglin', 'minecraft:piglin_brute', 'minecraft:zoglin',
-    'minecraft:guardian', 'minecraft:elder_guardian',
-    'minecraft:witch', 'minecraft:phantom', 'minecraft:shulker', 'minecraft:slime'
-];
+(function () {
+    const UUID = Java.loadClass('java.util.UUID');
+    const AttributeModifier = Java.loadClass('net.minecraft.world.entity.ai.attributes.AttributeModifier');
+    const Operation = Java.loadClass('net.minecraft.world.entity.ai.attributes.AttributeModifier$Operation');
 
-EntityEvents.spawned(event => {
-    let entity = event.entity;
-    if (!entity) return;
+    // UUID cố định dành riêng cho Buff Theo Ngày của Quái
+    const DAY_HP_UUID = UUID.fromString('a1b2c3d4-1111-1111-1111-000000000001');
+    const DAY_ATK_UUID = UUID.fromString('a1b2c3d4-1111-1111-1111-000000000002');
+    const DAY_ARMOR_UUID = UUID.fromString('a1b2c3d4-1111-1111-1111-000000000003');
 
-    if (targetMobs.includes(entity.type)) {
-        let pData = entity.persistentData;
+    const targetMobs = [
+        'minecraft:zombie', 'minecraft:zombie_villager', 'minecraft:husk', 'minecraft:drowned',
+        'minecraft:skeleton', 'minecraft:stray', 'minecraft:wither_skeleton',
+        'minecraft:spider', 'minecraft:cave_spider', 'minecraft:silverfish', 'minecraft:endermite',
+        'minecraft:pillager', 'minecraft:vindicator', 'minecraft:evoker', 'minecraft:vex', 'minecraft:ravager',
+        'minecraft:blaze', 'minecraft:ghast', 'minecraft:magma_cube', 'minecraft:hoglin', 'minecraft:piglin_brute', 'minecraft:zoglin',
+        'minecraft:guardian', 'minecraft:elder_guardian',
+        'minecraft:witch', 'minecraft:phantom', 'minecraft:shulker', 'minecraft:slime'
+    ];
 
-        // Tránh cộng dồn chỉ số khi load lại chunk/world
-        if (!pData.getBoolean('scaled_stats')) {
+    function calculateDayBonuses(day) {
+        if (day <= 0) return { hp: 0, atk: 0, armor: 0 };
 
-            // Bỏ qua nếu thực thể đang thuộc sở hữu của người chơi
-            // TH1: Mod Petting lưu ownerUUID trong entity.nbt → ForgeData (cùng cách với mech_petting_owner_sync.js)
-            let nbtForgeData = entity.nbt ? entity.nbt.getCompound('ForgeData') : null;
-            let isOwnedByPetting = nbtForgeData && nbtForgeData.contains('ownerUUID') && nbtForgeData.getString('ownerUUID');
-            // TH2: Vanilla/HumanCompanions lưu Owner trong root NBT
-            let isOwnedByVanilla = entity.nbt && entity.nbt.contains('Owner');
-            if (isOwnedByPetting || isOwnedByVanilla) return;
-            let level = event.level;
-            // event.level là ServerLevel trực tiếp, gọi dayTime() để lấy tổng số tick
-            let day = Math.floor(level.dayTime() / 24000);
+        let hpBonus = 0;
+        if (day <= 5) {
+            hpBonus = day * 5.0; // Ngày 1-5: +5.0 HP/ngày
+        } else if (day <= 10) {
+            hpBonus = 25.0 + (day - 5) * 3.0; // Ngày 6-10: +3.0 HP/ngày
+        } else if (day <= 15) {
+            hpBonus = 40.0 + (day - 10) * 4.0; // Ngày 11-15: +4.0 HP/ngày
+        } else {
+            hpBonus = 60.0 + (day - 15) * 7.0; // Ngày 16 trở đi: +7.0 HP/ngày
+        }
 
-            if (day > 0) {
-                // Tính toán HP Bonus theo độ dốc lũy tiến mới:
-                // - Ngày 1-5: +3.5 HP/ngày
-                // - Ngày 6-10: +2.0 HP/ngày
-                // - Ngày 11-15: +4.0 HP/ngày
-                // - Ngày 16 trở đi: +5.0 HP/ngày
-                let hpBonus = 0;
-                if (day <= 5) {
-                    hpBonus = day * 3.5;
-                } else if (day <= 10) {
-                    hpBonus = 17.5 + (day - 5) * 2.0;
-                } else if (day <= 15) {
-                    hpBonus = 27.5 + (day - 10) * 4.0;
-                } else {
-                    hpBonus = 47.5 + (day - 15) * 5.0;
-                }
+        let attackBonus = Math.min(day * 0.5, 5.0);
+        let armorBonus = Math.min(Math.floor(day / 5) * 2.0, 10.0);
 
-                let attackBonus = Math.min(day * 0.5, 5.0);
-                let armorBonus = Math.min(Math.floor(day / 5) * 2.0, 10.0);
+        return { hp: hpBonus, atk: attackBonus, armor: armorBonus };
+    }
 
-                // 1. Tăng HP tối đa và hồi đầy máu cho thực thể
-                let maxHealthAttr = entity.getAttribute('minecraft:generic.max_health');
-                if (maxHealthAttr) {
-                    let newMax = maxHealthAttr.getBaseValue() + hpBonus;
-                    maxHealthAttr.setBaseValue(newMax);
-                    entity.health = newMax; // Hồi máu đầy theo HP tối đa mới
-                }
+    function applyDayScalingModifier(entity, day) {
+        if (!entity || !entity.alive) return;
 
-                // 2. Tăng Sát thương tấn công
-                let attackAttr = entity.getAttribute('minecraft:generic.attack_damage');
-                if (attackAttr) {
-                    let newAttack = attackAttr.getBaseValue() + attackBonus;
-                    attackAttr.setBaseValue(newAttack);
-                }
+        let eType = entity.type;
 
-                // 3. Tăng Giáp (mỗi 5 ngày +2 giáp, tối đa +10 giáp)
-                let armorAttr = entity.getAttribute('minecraft:generic.armor');
-                if (armorAttr) {
-                    let newArmor = armorAttr.getBaseValue() + armorBonus;
-                    armorAttr.setBaseValue(newArmor);
+        // LOẠI TRỪ HOÀN TOÀN: Chỉ áp dụng cho quái Vanilla Hostile, tuyệt đối KHÔNG tăng máu theo ngày cho HumanCompanions hay Petting!
+        if (!targetMobs.includes(eType)) return;
+
+        let bonuses = calculateDayBonuses(day);
+
+        // 1. Cập nhật Máu tối đa (Max HP) bằng AttributeModifier (Chỉ cập nhật khi giá trị thay đổi)
+        let hpAttr = entity.getAttribute('minecraft:generic.max_health');
+        if (hpAttr) {
+            let existingMod = hpAttr.getModifier(DAY_HP_UUID);
+            if (!existingMod || existingMod.amount !== bonuses.hp) {
+                hpAttr.removeModifier(DAY_HP_UUID);
+                if (bonuses.hp > 0) {
+                    hpAttr.addTransientModifier(new AttributeModifier(DAY_HP_UUID, 'Day Scaling HP Bonus', bonuses.hp, Operation.ADDITION));
+                    // Chỉ hồi đầy máu lần đầu tiên khi quái mới sinh ra
+                    if (!existingMod) {
+                        entity.health = hpAttr.getValue();
+                    }
                 }
             }
-            pData.putBoolean('scaled_stats', true);
+        }
+
+        // 2. Cập nhật Sát thương (Attack Damage)
+        let atkAttr = entity.getAttribute('minecraft:generic.attack_damage');
+        if (atkAttr) {
+            let existingMod = atkAttr.getModifier(DAY_ATK_UUID);
+            if (!existingMod || existingMod.amount !== bonuses.atk) {
+                atkAttr.removeModifier(DAY_ATK_UUID);
+                if (bonuses.atk > 0) {
+                    atkAttr.addTransientModifier(new AttributeModifier(DAY_ATK_UUID, 'Day Scaling ATK Bonus', bonuses.atk, Operation.ADDITION));
+                }
+            }
+        }
+
+        // 3. Cập nhật Giáp (Armor)
+        let armorAttr = entity.getAttribute('minecraft:generic.armor');
+        if (armorAttr) {
+            let existingMod = armorAttr.getModifier(DAY_ARMOR_UUID);
+            if (!existingMod || existingMod.amount !== bonuses.armor) {
+                armorAttr.removeModifier(DAY_ARMOR_UUID);
+                if (bonuses.armor > 0) {
+                    armorAttr.addTransientModifier(new AttributeModifier(DAY_ARMOR_UUID, 'Day Scaling Armor Bonus', bonuses.armor, Operation.ADDITION));
+                }
+            }
         }
     }
-});
+
+    // 1. Áp dụng ngay khi thực thể mới được spawn ra
+    EntityEvents.spawned(event => {
+        let level = event.level;
+        if (level) {
+            let day = Math.floor(level.dayTime() / 24000);
+            applyDayScalingModifier(event.entity, day);
+        }
+    });
+
+    // 2. Định kỳ quét cập nhật chỉ số mỗi 10 giây cho thực thể xung quanh người chơi
+    PlayerEvents.tick(event => {
+        let player = event.player;
+        if (player.age % 200 === 0) {
+            let level = player.level;
+            if (level) {
+                let day = Math.floor(level.dayTime() / 24000);
+                try {
+                    let aabb = player.boundingBox.inflate(32);
+                    let entities = level.getEntitiesWithin(aabb);
+                    entities.forEach(entity => {
+                        applyDayScalingModifier(entity, day);
+                    });
+                } catch (err) { }
+            }
+        }
+    });
+})();

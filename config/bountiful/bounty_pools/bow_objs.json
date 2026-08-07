@@ -5,30 +5,30 @@
             "rarity": "COMMON",
             "content": "minecraft:flint",
             "amount": {
-                "min": 20,
-                "max": 200
+                "min": 5,
+                "max": 15
             },
-            "unitWorth": 35
+            "unitWorth": 20
         },
         "iron_ingot": {
             "type": "item",
             "rarity": "UNCOMMON",
             "content": "minecraft:iron_ingot",
             "amount": {
-                "min": 5,
-                "max": 30
+                "min": 3,
+                "max": 8
             },
-            "unitWorth": 1000
+            "unitWorth": 50
         },
         "gold_ingot": {
             "type": "item",
             "rarity": "RARE",
             "content": "minecraft:gold_ingot",
             "amount": {
-                "min": 5,
-                "max": 15
+                "min": 2,
+                "max": 5
             },
-            "unitWorth": 3500
+            "unitWorth": 150
         },
         "diamond": {
             "type": "item",
@@ -36,9 +36,9 @@
             "content": "minecraft:diamond",
             "amount": {
                 "min": 1,
-                "max": 4
+                "max": 2
             },
-            "unitWorth": 6000
+            "unitWorth": 500
         },
         "netherite_ingot": {
             "type": "item",
@@ -48,7 +48,7 @@
                 "min": 1,
                 "max": 1
             },
-            "unitWorth": 15000
+            "unitWorth": 1500
         }
     }
 }

@@ -45,21 +45,17 @@ EntityEvents.spawned(event => {
                 // 1. Luôn luôn dùng Kiếm (100% Sword, trừ skeleton 10% cung)
                 let toolType = 'sword';
 
-                // 2. Chọn cấp bậc (Tier) kiếm ngẫu nhiên: gỗ (30%), đá (25%), sắt (20%), vàng (15%), kim cương (7%), netherite (3%)
+                // 2. Chọn cấp bậc (Tier) kiếm ngẫu nhiên: gỗ (35%), đá (30%), sắt (20%), vàng (15%) - Loại bỏ Kim Cương & Netherite
                 let randTier = Math.random();
                 let tier = 'wooden';
-                if (randTier < 0.30) {
+                if (randTier < 0.35) {
                     tier = 'wooden';
-                } else if (randTier < 0.55) {
+                } else if (randTier < 0.65) {
                     tier = 'stone';
-                } else if (randTier < 0.75) {
+                } else if (randTier < 0.85) {
                     tier = 'iron';
-                } else if (randTier < 0.90) {
-                    tier = 'golden';
-                } else if (randTier < 0.97) {
-                    tier = 'diamond';
                 } else {
-                    tier = 'netherite';
+                    tier = 'golden';
                 }
 
                 // Tạo item ID kiếm và trang bị vào tay chính
@@ -74,21 +70,17 @@ EntityEvents.spawned(event => {
                 }
             }
 
-            // 4. Chọn cấp bậc mũ ngẫu nhiên: da (30%), xích (25%), sắt (20%), vàng (15%), kim cương (7%), netherite (3%)
+            // 4. Chọn cấp bậc mũ ngẫu nhiên: da (35%), xích (30%), sắt (20%), vàng (15%) - Loại bỏ Kim Cương & Netherite
             let randHelmet = Math.random();
             let helmetTier = 'leather';
-            if (randHelmet < 0.30) {
+            if (randHelmet < 0.35) {
                 helmetTier = 'leather';
-            } else if (randHelmet < 0.55) {
+            } else if (randHelmet < 0.65) {
                 helmetTier = 'chainmail';
-            } else if (randHelmet < 0.75) {
+            } else if (randHelmet < 0.85) {
                 helmetTier = 'iron';
-            } else if (randHelmet < 0.90) {
-                helmetTier = 'golden';
-            } else if (randHelmet < 0.97) {
-                helmetTier = 'diamond';
             } else {
-                helmetTier = 'netherite';
+                helmetTier = 'golden';
             }
 
             // Tạo item ID mũ và trang bị vào ô đầu (Head slot)

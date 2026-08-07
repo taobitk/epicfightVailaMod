@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern":
+    [
+        " DS",
+        " BD",
+        "B  "
+    ],
+    
+    "key":
+    {
+        "B": { "item" : "minecraft:stick" },
+        "D": { "item" : "minecraft:diamond" },
+        "S": { "item" : "epicfight:diamond_spear" }
+    },
+    
+    "result":
+    {
+        "item" : "cdmoveset:s_diamond_spear",
+        "count" : 1
+    }
+}

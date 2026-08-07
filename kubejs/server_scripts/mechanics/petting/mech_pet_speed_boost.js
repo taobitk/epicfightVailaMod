@@ -1,6 +1,7 @@
 // Tên file: kubejs/server_scripts/mechanics/mech_pet_speed_boost.js
-// Mục đích: Tự động buff tốc độ di chuyển gấp 1.5 lần cho các thực thể đã được thuần hóa (có ownerUUID) từ mod Petting.
+// Mục đích: Tự động buff tốc độ di chuyển gấp 1.5 lần cho các thực thể đã được thuần hóa (có ownerUUID) từ mod Petting. (ĐÃ COMMENT THEO YÊU CẦU)
 
+/*
 const applyPetSpeedBoost = (entity) => {
     if (!entity || !entity.nbt) return;
     
@@ -35,3 +36,4 @@ EntityEvents.spawned(event => {
 ItemEvents.entityInteracted(event => {
     applyPetSpeedBoost(event.target);
 });
+*/

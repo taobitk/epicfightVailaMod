@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    " WW",
+    "SWW",
+    "SS "
+  ],
+  "key":
+  {
+    "W": { "item" : "minecraft:cobblestone" },
+    "S": { "item" : "minecraft:oak_planks" }
+  },
+  "result":
+  {
+    "item" : "cdmoveset:s_stone_greatsword",
+    "count" : 1
+  }
+}

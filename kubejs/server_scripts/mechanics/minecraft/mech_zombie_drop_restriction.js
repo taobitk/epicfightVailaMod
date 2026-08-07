@@ -1,23 +1,30 @@
-// Tên file: kubejs/server_scripts/mechanics/mech_zombie_drop_restriction.js
-// Mục đích: Ép các loại zombie và biến thể của chúng chỉ được phép rơi ra Thịt thối và Phôi đồng, loại bỏ toàn bộ các trang bị và vật phẩm khác khi chết.
+// Tên file: kubejs/server_scripts/mechanics/minecraft/mech_zombie_drop_restriction.js
+// Mục đích: Ép các loại zombie và xương chỉ được phép rơi ra đồ cơ bản (Thịt thối, Xương, Mũi tên) và Phôi đồng, loại bỏ toàn bộ trang bị rác khi chết.
 
 EntityEvents.drops(event => {
     let entity = event.entity;
     if (!entity) return;
 
-    // Danh sách các loại zombie áp dụng
-    const zombieTypes = [
+    // Danh sách các loại xác sống & xương áp dụng
+    const undeadTypes = [
         'minecraft:zombie',
         'minecraft:husk',
         'minecraft:drowned',
-        'minecraft:zombie_villager'
+        'minecraft:zombie_villager',
+        'minecraft:zombified_piglin',
+        'minecraft:skeleton',
+        'minecraft:wither_skeleton',
+        'minecraft:stray'
     ];
 
-    if (zombieTypes.includes(entity.type)) {
-        // Chỉ cho phép 2 vật phẩm này được rơi ra đất
+    if (undeadTypes.includes(entity.type)) {
+        // Cho phép các vật phẩm nguyên liệu cơ bản + Phôi Đồng được rơi ra đất
         const allowedItems = [
-            'minecraft:rotten_flesh', // Thịt thối
-            'minecraft:copper_ingot'   // Phôi đồng
+            'minecraft:rotten_flesh',    // Thịt thối
+            'minecraft:bone',            // Xương
+            'minecraft:arrow',           // Mũi tên
+            'minecraft:wither_skeleton_skull', // Đầu lâu Skeleton Wither
+            'minecraft:copper_ingot'      // Phôi đồng
         ];
 
         let drops = event.drops;

@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern":
+    [
+        " B ",
+        " B ",
+        " S "
+    ],
+    "key":
+    {
+        "B": { "item" : "minecraft:cobblestone" },
+        "S": { "item" : "minecraft:stone_sword" }
+    },
+    "result":
+    {
+        "item" : "cdmoveset:s_stone_sword",
+        "count" : 1
+    }
+}

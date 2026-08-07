@@ -7,7 +7,7 @@
 	full_absorption_bar = false
 	full_armor_bar = false
 	full_toughness_bar = false
-	display_low_armor_warning = true
+	display_low_armor_warning = false
 	show_saturation_bar = true
 	show_hydration_bar = true
 	show_held_food_overlay = true

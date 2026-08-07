@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    " DS",
+    " BD",
+    "B  "
+  ],
+
+  "key":
+  {
+    "B": { "item" : "minecraft:stick" },
+    "D": { "item" : "minecraft:oak_planks" },
+    "S": { "item" : "epicfight:wooden_spear" }
+  },
+
+  "result":
+  {
+    "item" : "cdmoveset:s_wooden_spear",
+    "count" : 1
+  }
+}

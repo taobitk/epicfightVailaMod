@@ -1,0 +1,25 @@
+filename = 'originjs-1.20.1-2.2.jar'
+name = 'OriginJs'
+side = ''
+x-prismlauncher-loaders = [ 'forge' ]
+x-prismlauncher-mc-versions = [ '1.20.1' ]
+x-prismlauncher-release-type = 'release'
+x-prismlauncher-version-number = 'originjs-1.20.1-2.2.jar'
+
+[download]
+hash = 'd5cd80528c7aeb56e95d114d8ab7ca977e12fc69'
+hash-format = 'sha1'
+mode = 'metadata:curseforge'
+url = ''
+
+[update.curseforge]
+file-id = 8031556
+project-id = 1376382
+
+[[x-prismlauncher-dependencies]]
+addonId = '238086'
+type = 'REQUIRED'
+
+[[x-prismlauncher-dependencies]]
+addonId = '474438'
+type = 'REQUIRED'

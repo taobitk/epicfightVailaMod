@@ -8,7 +8,7 @@
                 "min": 1,
                 "max": 1
             },
-            "unitWorth": 8000,
+            "unitWorth": 1800,
             "nbt": "{StoredEnchantments:[{lvl:1s,id:\"minecraft:protection\"}]}"
         },
         "mending_1": {
@@ -19,7 +19,7 @@
                 "min": 1,
                 "max": 1
             },
-            "unitWorth": 25000,
+            "unitWorth": 3500,
             "nbt": "{StoredEnchantments:[{lvl:1s,id:\"minecraft:mending\"}]}"
         },
         "thorns_1": {
@@ -30,7 +30,7 @@
                 "min": 1,
                 "max": 1
             },
-            "unitWorth": 4500,
+            "unitWorth": 800,
             "nbt": "{StoredEnchantments:[{lvl:1s,id:\"minecraft:thorns\"}]}"
         },
         "unbreaking_1": {
@@ -41,7 +41,7 @@
                 "min": 1,
                 "max": 1
             },
-            "unitWorth": 4000,
+            "unitWorth": 800,
             "nbt": "{StoredEnchantments:[{lvl:1s,id:\"minecraft:unbreaking\"}]}"
         },
         "feather_falling_1": {
@@ -52,29 +52,29 @@
                 "min": 1,
                 "max": 1
             },
-            "unitWorth": 3500,
+            "unitWorth": 800,
             "nbt": "{StoredEnchantments:[{lvl:1s,id:\"minecraft:feather_falling\"}]}"
         },
         "swift_sneak_1": {
             "type": "item",
-            "rarity": "UNCOMMON",
+            "rarity": "COMMON",
             "content": "minecraft:enchanted_book",
             "amount": {
                 "min": 1,
-                "max": 1
+                "max": 3
             },
-            "unitWorth": 1000,
+            "unitWorth": 150,
             "nbt": "{StoredEnchantments:[{lvl:1s,id:\"minecraft:swift_sneak\"}]}"
         },
         "soul_speed_1": {
             "type": "item",
-            "rarity": "UNCOMMON",
+            "rarity": "COMMON",
             "content": "minecraft:enchanted_book",
             "amount": {
                 "min": 1,
-                "max": 1
+                "max": 3
             },
-            "unitWorth": 1000,
+            "unitWorth": 150,
             "nbt": "{StoredEnchantments:[{lvl:1s,id:\"minecraft:soul_speed\"}]}"
         },
         "depth_strider_1": {
@@ -83,9 +83,9 @@
             "content": "minecraft:enchanted_book",
             "amount": {
                 "min": 1,
-                "max": 1
+                "max": 2
             },
-            "unitWorth": 2500,
+            "unitWorth": 400,
             "nbt": "{StoredEnchantments:[{lvl:1s,id:\"minecraft:depth_strider\"}]}"
         },
         "frost_walker_1": {
@@ -94,31 +94,31 @@
             "content": "minecraft:enchanted_book",
             "amount": {
                 "min": 1,
-                "max": 1
+                "max": 2
             },
-            "unitWorth": 2500,
+            "unitWorth": 400,
             "nbt": "{StoredEnchantments:[{lvl:1s,id:\"minecraft:frost_walker\"}]}"
         },
         "respiration_1": {
             "type": "item",
-            "rarity": "UNCOMMON",
+            "rarity": "COMMON",
             "content": "minecraft:enchanted_book",
             "amount": {
                 "min": 1,
-                "max": 1
+                "max": 3
             },
-            "unitWorth": 2000,
+            "unitWorth": 150,
             "nbt": "{StoredEnchantments:[{lvl:1s,id:\"minecraft:respiration\"}]}"
         },
         "aqua_affinity_1": {
             "type": "item",
-            "rarity": "UNCOMMON",
+            "rarity": "COMMON",
             "content": "minecraft:enchanted_book",
             "amount": {
                 "min": 1,
-                "max": 1
+                "max": 3
             },
-            "unitWorth": 1500,
+            "unitWorth": 150,
             "nbt": "{StoredEnchantments:[{lvl:1s,id:\"minecraft:aqua_affinity\"}]}"
         },
         "fire_protection_1": {
@@ -127,9 +127,9 @@
             "content": "minecraft:enchanted_book",
             "amount": {
                 "min": 1,
-                "max": 1
+                "max": 2
             },
-            "unitWorth": 3500,
+            "unitWorth": 400,
             "nbt": "{StoredEnchantments:[{lvl:1s,id:\"minecraft:fire_protection\"}]}"
         },
         "blast_protection_1": {
@@ -138,20 +138,20 @@
             "content": "minecraft:enchanted_book",
             "amount": {
                 "min": 1,
-                "max": 1
+                "max": 2
             },
-            "unitWorth": 3500,
+            "unitWorth": 400,
             "nbt": "{StoredEnchantments:[{lvl:1s,id:\"minecraft:blast_protection\"}]}"
         },
         "projectile_protection_1": {
             "type": "item",
-            "rarity": "UNCOMMON",
+            "rarity": "COMMON",
             "content": "minecraft:enchanted_book",
             "amount": {
                 "min": 1,
-                "max": 1
+                "max": 3
             },
-            "unitWorth": 3500,
+            "unitWorth": 150,
             "nbt": "{StoredEnchantments:[{lvl:1s,id:\"minecraft:projectile_protection\"}]}"
         }
     }

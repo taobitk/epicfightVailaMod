@@ -1,6 +1,8 @@
 // Tên file: KubeJS/server_scripts/mechanics/epic stats/mech_epic_stats_exp_fix.js
-// Mục đích: Tự động điều chỉnh giới hạn EXP thăng cấp theo từng mốc Level (10 cấp đầu mặc định 100 EXP)
+// LƯU Ý: Toàn bộ logic Epic Stats cũ đã được chuyển giao hoàn toàn sang Mod Java mới (OriginStatsMod)
+// File này được comment out toàn bộ để tránh xung đột.
 
+/*
 const EpicStatsModVariables = Java.loadClass('net.felinamods.epicstatsmodremastered.network.EpicStatsModRemasteredModVariables');
 const PlayerVariables = Java.loadClass('net.felinamods.epicstatsmodremastered.network.EpicStatsModRemasteredModVariables$PlayerVariables');
 const PLAYER_VARIABLES_CAPABILITY = EpicStatsModVariables.PLAYER_VARIABLES_CAPABILITY;
@@ -29,7 +31,6 @@ PlayerEvents.tick(event => {
                 targetExp = 1500.0;
             }
             
-            console.log("[EpicStats-Debug] Player: " + player.username + " | Lvl: " + currentLvl + " | CurrentMaxXP: " + currentMaxXp + " | TargetXP: " + targetExp);
             
             // Nếu giới hạn EXP hiện tại khác với mốc yêu cầu, tiến hành đồng bộ lại
             if (currentMaxXp != targetExp) {
@@ -41,8 +42,7 @@ PlayerEvents.tick(event => {
                 player.tell("§a[Hệ Thống] Giới hạn EXP thăng cấp ở Cấp " + Math.round(currentLvl) + " là " + Math.round(targetExp) + "!");
                 console.log("[EpicStats-Fix] Cap nhat Max EXP cap " + Math.round(currentLvl) + " thanh " + targetExp + " cho " + player.username);
             }
-        } else {
-            console.log("[EpicStats-Debug] Cap is null for player " + player.username);
         }
     }
 });
+*/

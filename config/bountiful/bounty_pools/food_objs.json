@@ -5,68 +5,68 @@
             "rarity": "RARE",
             "content": "minecraft:cooked_beef",
             "amount": {
-                "min": 16,
-                "max": 64
+                "min": 2,
+                "max": 5
             },
-            "unitWorth": 350
+            "unitWorth": 150
         },
         "cooked_porkchop": {
             "type": "item",
             "rarity": "RARE",
             "content": "minecraft:cooked_porkchop",
             "amount": {
-                "min": 16,
-                "max": 64
+                "min": 2,
+                "max": 5
             },
-            "unitWorth": 350
+            "unitWorth": 150
         },
         "cooked_chicken": {
             "type": "item",
             "rarity": "RARE",
             "content": "minecraft:cooked_chicken",
             "amount": {
-                "min": 16,
-                "max": 64
+                "min": 2,
+                "max": 5
             },
-            "unitWorth": 300
+            "unitWorth": 150
         },
         "cooked_mutton": {
             "type": "item",
             "rarity": "RARE",
             "content": "minecraft:cooked_mutton",
             "amount": {
-                "min": 16,
-                "max": 64
+                "min": 2,
+                "max": 5
             },
-            "unitWorth": 300
+            "unitWorth": 150
         },
         "cooked_rabbit": {
             "type": "item",
             "rarity": "EPIC",
             "content": "minecraft:cooked_rabbit",
             "amount": {
-                "min": 2,
-                "max": 32
+                "min": 1,
+                "max": 2
             },
-            "unitWorth": 50
+            "unitWorth": 500
         },
         "cooked_cod": {
             "type": "item",
             "rarity": "UNCOMMON",
             "content": "minecraft:cooked_cod",
             "amount": {
-                "min": 32,
-                "max": 128
+                "min": 3,
+                "max": 8
             },
-            "unitWorth": 40
+            "unitWorth": 50
         },
         "cooked_salmon": {
             "type": "item",
             "rarity": "UNCOMMON",
             "content": "minecraft:cooked_salmon",
             "amount": {
-                "min": 32,
-                "max": 128
+                "min": 3,
+                "max": 8
             },
             "unitWorth": 50
         },
@@ -75,10 +75,10 @@
             "rarity": "RARE",
             "content": "minecraft:tropical_fish",
             "amount": {
-                "min": 24,
-                "max": 96
+                "min": 2,
+                "max": 5
             },
-            "unitWorth": 80
+            "unitWorth": 150
         },
         "pufferfish": {
             "type": "item",
@@ -86,7 +86,7 @@
             "content": "minecraft:pufferfish",
             "amount": {
                 "min": 2,
-                "max": 8
+                "max": 5
             },
             "unitWorth": 150
         }

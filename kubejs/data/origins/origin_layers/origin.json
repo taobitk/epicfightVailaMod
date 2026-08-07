@@ -1,0 +1,10 @@
+{
+  "replace": true,
+  "order": 0,
+  "origins": [
+    "originstats:warrior",
+    "originstats:assassin",
+    "originstats:archer",
+    "originstats:lord"
+  ]
+}

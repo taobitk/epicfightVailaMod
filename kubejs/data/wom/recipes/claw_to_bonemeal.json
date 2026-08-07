@@ -1,0 +1,14 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "id": "wom:bonemeal_with_claw",
+    "ingredients": [
+        {
+            "item": "wom:claw"
+        }
+    ],
+    "result":
+    {
+        "item" : "minecraft:bone_meal",
+        "count" : 2
+    }
+}

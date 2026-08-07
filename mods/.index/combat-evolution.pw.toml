@@ -1,0 +1,21 @@
+filename = 'CombatEvolution-2.2.2.jar'
+name = 'Combat Evolution'
+side = 'server'
+x-prismlauncher-loaders = [ 'forge' ]
+x-prismlauncher-mc-versions = [ '1.20.1' ]
+x-prismlauncher-release-type = 'release'
+x-prismlauncher-version-number = 'CombatEvolution-2.2.2.jar'
+
+[download]
+hash = '12f157f94b9dd095f0c91a6ff7c57a190fc5d53d'
+hash-format = 'sha1'
+mode = 'metadata:curseforge'
+url = ''
+
+[update.curseforge]
+file-id = 8510731
+project-id = 1377795
+
+[[x-prismlauncher-dependencies]]
+addonId = '405076'
+type = 'REQUIRED'

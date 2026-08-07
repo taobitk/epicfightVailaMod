@@ -1,14 +1,13 @@
 ServerEvents.recipes(event => {
-    // Công thức chế tạo Ruine (wom:ruine)
-    // Nguyên liệu: 8 Táo Vàng Enchant bao quanh 1 Netherite Longsword
-    // Loại: Bàn chế tạo (Crafting Table)
+    // 1. Xóa công thức cũ của Ruine
+    event.remove({ output: 'wom:ruine' })
 
-    event.shaped('wom:ruine', [
-        'AAA',
-        'ASA',
-        'AAA'
-    ], {
-        A: 'minecraft:enchanted_golden_apple', // Táo Vàng Enchant (Đắt lòi kèn)
-        S: 'epicfight:netherite_longsword'     // Netherite Longsword
-    })
+    // 2. Công thức Bàn Rèn (Smithing) cho Ruine
+    // Template: Táo Vàng Enchant, Base: Netherite Longsword, Addition: NIDG Ingot
+    event.smithing(
+        'wom:ruine',                         // Output
+        'minecraft:enchanted_golden_apple',  // Template
+        'epicfight:netherite_longsword',     // Base
+        'kubejs:nidg_ingot'                  // Addition
+    )
 })

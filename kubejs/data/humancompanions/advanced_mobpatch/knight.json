@@ -1,0 +1,184 @@
+{
+    "model": "epicfight:entity/biped",
+    "armature": "epicfight:entity/biped",
+    "renderer": "player",
+    "isHumanoid": true,
+    "faction": "neutral",
+    "attributes": {
+        "impact": 2.0,
+        "armor_negation": 5.0,
+        "max_strikes": 3,
+        "chasing_speed": 1.8,
+        "max_stamina": 9999
+    },
+    "default_livingmotions": {
+        "idle": "epicfight:biped/living/idle",
+        "walk": "epicfight:biped/living/walk",
+        "chase": "epicfight:biped/living/walk",
+        "death": "epicfight:biped/living/death"
+    },
+    "humanoid_weapon_motions": [
+        {
+            "weapon_categories": [
+                "sword"
+            ],
+            "style": "common",
+            "livingmotions": {
+                "chase": "epicfight:biped/living/hold_sword",
+                "walk": "epicfight:biped/living/hold_sword"
+            }
+        }
+    ],
+    "combat_behavior": [
+        {
+            "weapon_categories": [
+                "sword"
+            ],
+            "style": "common",
+            "behavior_series": [
+                {
+                    "weight": 30.0,
+                    "cooldown": 0,
+                    "canBeInterrupted": true,
+                    "looping": false,
+                    "behaviors": [
+                        {
+                            "conditions": [
+                                {
+                                    "predicate": "within_distance",
+                                    "min": 0.0,
+                                    "max": 2.5
+                                },
+                                {
+                                    "predicate": "health",
+                                    "comparator": "less_ratio",
+                                    "health": 0.35
+                                }
+                            ],
+                            "animation": "epicfight:biped/skill/roll_backward",
+                            "play_speed": 1.2,
+                            "convert_time": 0.0
+                        },
+                        {
+                            "conditions": [],
+                            "animation": "epicfight:biped/living/eat",
+                            "play_speed": 0.85,
+                            "convert_time": 0.0
+                        }
+                    ]
+                },
+                {
+                    "weight": 20.0,
+                    "cooldown": 30,
+                    "canBeInterrupted": true,
+                    "looping": false,
+                    "behaviors": [
+                        {
+                            "conditions": [
+                                {
+                                    "predicate": "within_distance",
+                                    "min": 4.0,
+                                    "max": 16.0
+                                },
+                                {
+                                    "predicate": "health",
+                                    "comparator": "less_ratio",
+                                    "health": 0.45
+                                }
+                            ],
+                            "animation": "epicfight:biped/living/eat",
+                            "play_speed": 0.85,
+                            "convert_time": 0.1
+                        }
+                    ]
+                },
+                {
+                    "weight": 80.0,
+                    "cooldown": 0,
+                    "canBeInterrupted": true,
+                    "looping": false,
+                    "behaviors": [
+                        {
+                            "conditions": [
+                                {
+                                    "predicate": "within_distance",
+                                    "min": 0.0,
+                                    "max": 2.0
+                                }
+                            ],
+                            "animation": "epicfight:biped/combat/mob_onehand1",
+                            "play_speed": 1.0,
+                            "convert_time": 0.2,
+                            "set_phase": 1,
+                            "stamina": 0,
+                            "damage_modifier": {
+                                "damage": 1.0,
+                                "impact": 1.0,
+                                "armor_negation": 1.0
+                            }
+                        },
+                        {
+                            "conditions": [],
+                            "animation": "epicfight:biped/combat/mob_onehand2",
+                            "play_speed": 1.0,
+                            "convert_time": 0.15,
+                            "set_phase": 1,
+                            "stamina": 0,
+                            "damage_modifier": {
+                                "damage": 1.3,
+                                "impact": 1.3,
+                                "armor_negation": 1.0
+                            }
+                        }
+                    ]
+                },
+                {
+                    "weight": 20.0,
+                    "cooldown": 0,
+                    "canBeInterrupted": true,
+                    "looping": false,
+                    "behaviors": [
+                        {
+                            "conditions": [
+                                {
+                                    "predicate": "within_distance",
+                                    "min": 0.0,
+                                    "max": 2.0
+                                }
+                            ],
+                            "animation": "epicfight:biped/skill/roll_backward",
+                            "play_speed": 1.2,
+                            "convert_time": 0.1
+                        },
+                        {
+                            "conditions": [],
+                            "animation": "epicfight:biped/combat/mob_onehand1",
+                            "play_speed": 1.0,
+                            "convert_time": 0.2,
+                            "set_phase": 1,
+                            "stamina": 0,
+                            "damage_modifier": {
+                                "damage": 1.0,
+                                "impact": 1.0,
+                                "armor_negation": 1.0
+                            }
+                        },
+                        {
+                            "conditions": [],
+                            "animation": "epicfight:biped/combat/mob_onehand2",
+                            "play_speed": 1.0,
+                            "convert_time": 0.15,
+                            "set_phase": 1,
+                            "stamina": 0,
+                            "damage_modifier": {
+                                "damage": 1.3,
+                                "impact": 1.3,
+                                "armor_negation": 1.0
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,37 @@
+{
+    "entity.hit.clash":
+    {
+        "category":"master",
+        "subtitle":"entity.hit.clash",
+        "sounds":[{"name":"epicfight:entity/hit/clash", "stream":true},{"name":"epicfight:entity/hit/clash1", "stream":true},{"name":"epicfight:entity/hit/clash2", "stream":true},{"name":"epicfight:entity/hit/clash3", "stream":true},{"name":"epicfight:entity/hit/clash4", "stream":true},{"name":"epicfight:entity/hit/clash5", "stream":true},{"name":"epicfight:entity/hit/clash6", "stream":true},{"name":"epicfight:entity/hit/clash7", "stream":true}]
+    },
+    
+    "entity.hit.eviscerate":
+    {
+        "category":"master",
+        "subtitle":"entity.hit.eviscerate",
+        "sounds":[{"name":"epicfight:entity/hit/eviscerate", "stream":true},{"name":"epicfight:entity/hit/eviscerate2", "stream":true}]
+    },
+
+
+    
+    "entity.weapon.whoosh_small":
+    {
+        "category":"master",
+        "subtitle":"entity.weapon.whoosh_small",
+        "sounds":[{"name":"epicfight:entity/weapon/whoosh_small", "stream":true},{"name":"epicfight:entity/weapon/whoosh_small1", "stream":true},{"name":"epicfight:entity/weapon/whoosh_small2", "stream":true},{"name":"epicfight:entity/weapon/whoosh_small3", "stream":true}]
+    },
+    
+    "entity.weapon.whoosh_sharp":
+    {
+        "category":"master",
+        "subtitle":"entity.weapon.whoosh_sharp",
+        "sounds":[{"name":"epicfight:entity/weapon/whoosh_sharp", "stream":true},{"name":"epicfight:entity/weapon/whoosh_sharp_1", "stream":true}]
+    },
+   "skill.roll":
+    {
+        "category":"master",
+        "subtitle":"skill.roll",
+        "sounds":[{"name":"epicfight:entity/skill/roll", "stream":true},{"name":"epicfight:entity/skill/roll1", "stream":true},{"name":"epicfight:entity/skill/roll2", "stream":true}]
+    }
+}

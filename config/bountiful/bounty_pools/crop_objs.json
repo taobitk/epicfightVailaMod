@@ -5,90 +5,90 @@
             "rarity": "COMMON",
             "content": "minecraft:wheat",
             "amount": {
-                "min": 32,
-                "max": 128
+                "min": 5,
+                "max": 15
             },
-            "unitWorth": 30
+            "unitWorth": 20
         },
         "potato": {
             "type": "item",
             "rarity": "COMMON",
             "content": "minecraft:potato",
             "amount": {
-                "min": 32,
-                "max": 128
+                "min": 5,
+                "max": 15
             },
-            "unitWorth": 30
+            "unitWorth": 20
         },
         "carrot": {
             "type": "item",
             "rarity": "COMMON",
             "content": "minecraft:carrot",
             "amount": {
-                "min": 32,
-                "max": 128
+                "min": 5,
+                "max": 15
             },
-            "unitWorth": 30
+            "unitWorth": 20
         },
         "beetroot": {
             "type": "item",
             "rarity": "COMMON",
             "content": "minecraft:beetroot",
             "amount": {
-                "min": 32,
-                "max": 128
+                "min": 5,
+                "max": 15
             },
-            "unitWorth": 35
+            "unitWorth": 20
         },
         "melon_slice": {
             "type": "item",
             "rarity": "COMMON",
             "content": "minecraft:melon_slice",
             "amount": {
-                "min": 32,
-                "max": 128
+                "min": 5,
+                "max": 15
             },
-            "unitWorth": 15
+            "unitWorth": 20
         },
         "pumpkin": {
             "type": "item",
             "rarity": "UNCOMMON",
             "content": "minecraft:pumpkin",
             "amount": {
-                "min": 8,
-                "max": 32
+                "min": 3,
+                "max": 8
             },
-            "unitWorth": 120
+            "unitWorth": 50
         },
         "sweet_berries": {
             "type": "item",
             "rarity": "UNCOMMON",
             "content": "minecraft:sweet_berries",
             "amount": {
-                "min": 24,
-                "max": 96
+                "min": 3,
+                "max": 8
             },
-            "unitWorth": 40
+            "unitWorth": 50
         },
         "apple": {
             "type": "item",
             "rarity": "RARE",
             "content": "minecraft:apple",
             "amount": {
-                "min": 16,
-                "max": 48
+                "min": 2,
+                "max": 5
             },
-            "unitWorth": 80
+            "unitWorth": 150
         },
         "cocoa_beans": {
             "type": "item",
             "rarity": "RARE",
             "content": "minecraft:cocoa_beans",
             "amount": {
-                "min": 16,
-                "max": 64
+                "min": 2,
+                "max": 5
             },
-            "unitWorth": 50
+            "unitWorth": 150
         }
     }
 }

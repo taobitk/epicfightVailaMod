@@ -1,0 +1,10 @@
+{
+	"type": "epicfight_awaken:darknight_pursuiters",
+	"attributes": {
+		"common": {
+			"impact": 2.0,
+			"max_strikes": 10,
+			"armor_negation": 20.0
+		}
+	}
+}
