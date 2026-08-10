@@ -6,15 +6,25 @@
     "description": "Warrior linh hoạt: Nhận Kỹ Năng Damage Boost III khi Né/Parry, mở khóa Máu +15 (15 Lvl), ATK +8 (10 Lvl), Giáp +5 (5 Lvl). Tổng 30 Lvl.",
     "icon": "minecraft:iron_sword",
     "comingSoon": false,
-    "requiredStatsMaxed": ["max_health", "armor"],
+    "requiredStatsMaxed": [
+      "max_health",
+      "armor"
+    ],
     "requiredItems": [
       {
         "item": "minecraft:iron_sword",
         "count": 10
       }
     ],
-    "rewardSkills": ["dodge_parry_reward:passive|dodge_parry_reward:damage_boost3"],
-    "unlockedStats": ["vanguard_hp", "vanguard_atk", "vanguard_armor", "vanguard_heal3"]
+    "rewardSkills": [
+      "dodge_parry_reward:passive|dodge_parry_reward:damage_boost3"
+    ],
+    "unlockedStats": [
+      "vanguard_hp",
+      "vanguard_atk",
+      "vanguard_armor",
+      "vanguard_heal3"
+    ]
   },
   {
     "baseClass": "warrior",
@@ -23,14 +33,23 @@
     "description": "Full Tank Bất Tử: Nhận vĩnh viễn Regeneration I (nâng Regen II), Máu +40 (20 Lvl), Giáp +15 & Toughness +10 (10 Lvl), Kháng Choáng/Exec/Knockback (10 Lvl). Tổng 50 Lvl.",
     "icon": "minecraft:netherite_chestplate",
     "comingSoon": false,
-    "requiredStatsMaxed": ["max_health", "armor"],
+    "requiredStatsMaxed": [
+      "max_health",
+      "armor"
+    ],
     "requiredItems": [
       {
         "item": "minecraft:emerald",
         "count": 10
       }
     ],
-    "unlockedStats": ["indestructible_hp", "indestructible_armor", "indestructible_posture", "indestructible_regen", "indestructible_heal4"],
+    "unlockedStats": [
+      "indestructible_hp",
+      "indestructible_armor",
+      "indestructible_posture",
+      "indestructible_regen",
+      "indestructible_heal4"
+    ],
     "passiveEffects": [
       {
         "effect": "minecraft:regeneration",
@@ -48,7 +67,9 @@
     "description": "Tốc độ di chuyển +10%, Tốc độ đánh cực nhanh & Thể lực dồi dào.",
     "icon": "minecraft:golden_sword",
     "comingSoon": false,
-    "requiredStatsMaxed": ["attack_damage"],
+    "requiredStatsMaxed": [
+      "attack_damage"
+    ],
     "requiredItems": [
       {
         "item": "minecraft:iron_ingot",
@@ -62,7 +83,12 @@
         "operation": "MULTIPLY_BASE"
       }
     ],
-    "unlockedStats": ["wind_atk", "wind_speed", "wind_attack_speed", "wind_stamina"]
+    "unlockedStats": [
+      "wind_atk",
+      "wind_speed",
+      "wind_attack_speed",
+      "wind_stamina"
+    ]
   },
   {
     "baseClass": "assassin",
@@ -71,7 +97,9 @@
     "description": "Máu thể lực +15, di chuyển ảo ảnh chớp nhoáng & mở khóa Skill Ender Step + Ender Oculus.",
     "icon": "minecraft:feather",
     "comingSoon": false,
-    "requiredStatsMaxed": ["attack_damage"],
+    "requiredStatsMaxed": [
+      "attack_damage"
+    ],
     "requiredItems": [
       {
         "item": "minecraft:ender_pearl",
@@ -85,8 +113,14 @@
         "operation": "ADDITION"
       }
     ],
-    "rewardSkills": ["wom:ender_step", "wom:ender_obscuris"],
-    "unlockedStats": ["phantom_atk", "phantom_speed"]
+    "rewardSkills": [
+      "wom:ender_step",
+      "wom:ender_obscuris"
+    ],
+    "unlockedStats": [
+      "phantom_atk",
+      "phantom_speed"
+    ]
   },
   {
     "baseClass": "assassin",
@@ -95,14 +129,20 @@
     "description": "Bộc phá sát thương cực hạn, chí mạng gốc +10% & 150% Dame.",
     "icon": "minecraft:netherite_sword",
     "comingSoon": false,
-    "requiredStatsMaxed": ["attack_damage"],
+    "requiredStatsMaxed": [
+      "attack_damage"
+    ],
     "requiredItems": [
       {
-        "item": "minecraft:wither_skeleton_skull",
-        "count": 5
+        "item": "minecraft:skeleton_skull",
+        "count": 25
       }
     ],
-    "unlockedStats": ["destruction_atk", "destruction_crit_rate", "destruction_crit_dmg"]
+    "unlockedStats": [
+      "destruction_atk",
+      "destruction_crit_rate",
+      "destruction_crit_dmg"
+    ]
   },
   {
     "baseClass": "assassin",
@@ -111,14 +151,21 @@
     "description": "Bậc thầy 4 Hệ Ma Thuật: Lửa, Băng, True Damage & Tước Đoạt Máu/Stamina.",
     "icon": "minecraft:ender_eye",
     "comingSoon": false,
-    "requiredStatsMaxed": ["attack_damage"],
+    "requiredStatsMaxed": [
+      "attack_damage"
+    ],
     "requiredItems": [
       {
         "item": "minecraft:diamond",
-        "count": 3
+        "count": 10
       }
     ],
-    "unlockedStats": ["magic_fire", "magic_frost", "magic_truedmg", "magic_steal"]
+    "unlockedStats": [
+      "magic_fire",
+      "magic_frost",
+      "magic_truedmg",
+      "magic_steal"
+    ]
   },
   {
     "baseClass": "archer",
@@ -127,14 +174,20 @@
     "description": "Cung vật lý thần tốc: Bắn tên liên hoàn & Tốc độ di chuyển cao.",
     "icon": "minecraft:bow",
     "comingSoon": false,
-    "requiredStatsMaxed": ["projectile_damage"],
+    "requiredStatsMaxed": [
+      "projectile_damage"
+    ],
     "requiredItems": [
       {
         "item": "minecraft:arrow",
         "count": 64
       }
     ],
-    "unlockedStats": ["marksman_proj_dmg", "marksman_speed", "marksman_attack_speed"]
+    "unlockedStats": [
+      "marksman_proj_dmg",
+      "marksman_speed",
+      "marksman_attack_speed"
+    ]
   },
   {
     "baseClass": "archer",
@@ -143,18 +196,24 @@
     "description": "Cung Nguyên Tố Tiêu Hao Mana: Bắn Tên Lửa, Khô Héo & Làm Chậm tùy chỉnh tỷ lệ.",
     "icon": "minecraft:blaze_powder",
     "comingSoon": false,
-    "requiredStatsMaxed": ["projectile_damage"],
+    "requiredStatsMaxed": [
+      "projectile_damage"
+    ],
     "requiredItems": [
       {
-        "item": "minecraft:blaze_powder",
+        "item": "minecraft:gold_ingot",
         "count": 16
       },
       {
-        "item": "minecraft:snowball",
-        "count": 16
+        "item": "minecraft:diamond",
+        "count": 4
       }
     ],
-    "unlockedStats": ["elemental_archer_proj_dmg", "elemental_archer_attack_speed", "elemental_archer_speed"]
+    "unlockedStats": [
+      "elemental_archer_proj_dmg",
+      "elemental_archer_attack_speed",
+      "elemental_archer_speed"
+    ]
   },
   {
     "baseClass": "lord",
@@ -163,14 +222,22 @@
     "description": "Lord thống lĩnh: Tăng tối đa chỉ số Máu, ATK & Giáp của Đệ lính.",
     "icon": "minecraft:golden_crown",
     "comingSoon": false,
-    "requiredStatsMaxed": ["pet_hp", "pet_atk", "pet_def"],
+    "requiredStatsMaxed": [
+      "pet_hp",
+      "pet_atk",
+      "pet_def"
+    ],
     "requiredItems": [
       {
         "item": "minecraft:oak_log",
         "count": 32
       }
     ],
-    "unlockedStats": ["highlord_pet_hp", "highlord_pet_atk", "highlord_pet_def"]
+    "unlockedStats": [
+      "highlord_pet_hp",
+      "highlord_pet_atk",
+      "highlord_pet_def"
+    ]
   },
   {
     "baseClass": "lord",
@@ -179,16 +246,24 @@
     "description": "Chúa tể Hắc Ám: Nhận Quyền Trượng Ma Vương triệu hồi Quân Đoàn Quỷ Wither bảo vệ.",
     "icon": "kubejs:summoner_staff",
     "comingSoon": false,
-    "requiredStatsMaxed": ["pet_hp", "pet_atk", "pet_def"],
+    "requiredStatsMaxed": [
+      "pet_hp",
+      "pet_atk",
+      "pet_def"
+    ],
     "requiredItems": [
       {
-        "item": "minecraft:wither_skeleton_skull",
-        "count": 3
+        "item": "minecraft:skeleton_skull",
+        "count": 15
       }
     ],
     "rewardCommands": [
       "give {player} kubejs:summoner_staff 1"
     ],
-    "unlockedStats": ["summoner_pet_hp", "summoner_pet_atk", "summoner_pet_def"]
+    "unlockedStats": [
+      "summoner_pet_hp",
+      "summoner_pet_atk",
+      "summoner_pet_def"
+    ]
   }
 ]

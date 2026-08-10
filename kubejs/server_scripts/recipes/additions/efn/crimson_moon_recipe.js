@@ -8,5 +8,5 @@ ServerEvents.recipes(event => {
         'minecraft:enchanted_golden_apple', // Template: Táo Vàng Phù Phép
         'minecraft:netherite_hoe',          // Base: Cuốc Netherite
         'kubejs:nidg_ingot'                 // Addition: Thỏi NIDG
-    ).id('kubejs:smithing/crimson_moon').stage('stage_tier2_destruction');
+    ).stage('stage_tier2_destruction');
 });

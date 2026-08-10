@@ -1,19 +1,21 @@
 {
     "type": "minecraft:crafting_shaped",
-    "pattern":
-    [
+    "pattern": [
         " B ",
         " B ",
         " S "
     ],
-    "key":
-    {
-        "B": { "item" : "minecraft:gold_ingot" },
-        "S": { "item" : "minecraft:golden_sword" }
+    "key": {
+        "B": {
+            "item": "minecraft:gold_ingot"
+        },
+        "S": {
+            "item": "minecraft:golden_sword"
+        }
     },
-    "result":
-    {
-        "item" : "cdmoveset:s_golden_sword",
-        "count" : 1
-    }
+    "result": {
+        "item": "cdmoveset:s_golden_sword",
+        "count": 1
+    },
+    "stage": "stage_assassin"
 }

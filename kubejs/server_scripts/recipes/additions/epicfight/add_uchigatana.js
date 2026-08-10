@@ -1,20 +1,20 @@
-// FileName: kubejs/server_scripts/craft/uchigatana.js
-// Mục đích: Thêm công thức chế tạo cho Uchigatana của mod Epic Fight.
+// FileName: kubejs/server_scripts/recipes/additions/epicfight/add_uchigatana.js
+// Mục đích: Thêm công thức chế tạo cho Uchigatana của mod Epic Fight gắn Stage Sát Thủ (stage_assassin)
 
 ServerEvents.recipes(event => {
   if (!Platform.isLoaded('epicfight')) return;
-  // Công thức có hình dạng (shaped)
+  
   event.shaped(
-    Item.of('epicfight:uchigatana'), // Kết quả
+    Item.of('epicfight:uchigatana'),
     [
-      'GDG', // Hàng 1
-      'GDG', // Hàng 2
-      'GLG'  // Hàng 3
+      'GDG',
+      'GDG',
+      'GLG'
     ],
     {
       G: 'minecraft:gold_ingot',
       D: 'minecraft:diamond',
       L: 'minecraft:lava_bucket'
     }
-  ).id('kubejs:craft/uchigatana');
+  ).stage('stage_assassin');
 });

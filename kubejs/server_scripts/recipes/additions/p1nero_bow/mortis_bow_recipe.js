@@ -1,15 +1,14 @@
-// ServerEvents.recipes(event => {
-//     // 1. Xóa công thức cũ của Mortis Bow
-//     event.remove({ id: 'p1nero_bow:mortis_bow' })
+ServerEvents.recipes(event => {
+    // 1. Xóa công thức cũ của Mortis Bow
+    event.remove({ output: 'p1nero_bow:mortis' })
 
-//     // 2. Thêm công thức mới
-//     // Nguyên liệu: 8 NIDG Ingot bao quanh 1 Cung
-//     event.shaped('p1nero_bow:mortis', [
-//         'NNN',
-//         'NBN',
-//         'NNN'
-//     ], {
-//         B: 'minecraft:bow',    // Cung thường
-//         N: 'kubejs:nidg_ingot' // NIDG Ingot
-//     })
-// })
+    // 2. Công thức Bàn Chế Tạo cho Mortis Bow gắn Stage Xạ Thủ (stage_archer)
+    event.shaped('p1nero_bow:mortis', [
+        ' N ',
+        'NBN',
+        ' N '
+    ], {
+        N: 'minecraft:netherite_ingot',
+        B: 'minecraft:bow'
+    }).stage('stage_archer')
+})

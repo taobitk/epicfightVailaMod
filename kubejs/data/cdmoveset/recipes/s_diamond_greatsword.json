@@ -1,19 +1,21 @@
 {
     "type": "minecraft:crafting_shaped",
-    "pattern":
-    [
+    "pattern": [
         " BB",
         "BBB",
         "SB "
     ],
-    "key":
-    {
-        "B": { "item" : "minecraft:diamond" },
-        "S": { "item" : "minecraft:iron_block" }
+    "key": {
+        "B": {
+            "item": "minecraft:diamond"
+        },
+        "S": {
+            "item": "minecraft:iron_block"
+        }
     },
-    "result":
-    {
-        "item" : "cdmoveset:s_diamond_greatsword",
-        "count" : 1
-    }
+    "result": {
+        "item": "cdmoveset:s_diamond_greatsword",
+        "count": 1
+    },
+    "stage": "stage_warrior"
 }

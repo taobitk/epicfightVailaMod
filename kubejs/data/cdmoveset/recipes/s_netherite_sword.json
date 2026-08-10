@@ -4,12 +4,13 @@
         "item": "cdmoveset:s_diamond_sword"
     },
     "addition": {
-        "item" : "minecraft:netherite_ingot"
+        "item": "minecraft:netherite_ingot"
     },
     "result": {
         "item": "cdmoveset:s_netherite_sword"
     },
     "template": {
         "item": "minecraft:netherite_upgrade_smithing_template"
-    }
+    },
+    "stage": "stage_assassin"
 }

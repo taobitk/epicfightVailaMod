@@ -1,20 +1,24 @@
 {
     "type": "minecraft:crafting_shaped",
-    "pattern":
-    [
+    "pattern": [
         " GI",
         "GK ",
         "I  "
     ],
-    "key":
-    {
-        "K": { "item" : "cdmoveset:katana" },
-        "I": { "item" : "minecraft:iron_ingot" },
-        "G": { "item" : "minecraft:gold_ingot" }
+    "key": {
+        "K": {
+            "item": "cdmoveset:katana"
+        },
+        "I": {
+            "item": "minecraft:iron_ingot"
+        },
+        "G": {
+            "item": "minecraft:gold_ingot"
+        }
     },
-    "result":
-    {
-        "item" : "cdmoveset:phantom_katana",
-        "count" : 1
-    }
+    "result": {
+        "item": "cdmoveset:phantom_katana",
+        "count": 1
+    },
+    "stage": "stage_assassin"
 }

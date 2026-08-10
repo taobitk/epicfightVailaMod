@@ -372,18 +372,6 @@
     ]
   },
   {
-    "id": "vanguard_kwarden_1",
-    "name": "Trảm Tướng Warden Tiên Phong",
-    "description": "Tiêu diệt 1 Warden",
-    "type": "KILL_MOB",
-    "targetMob": "minecraft:warden",
-    "requiredAmount": 1,
-    "rewardPoints": 10,
-    "allowedClasses": [
-      "tier2_vanguard"
-    ]
-  },
-  {
     "id": "indestructible_iron_10",
     "name": "Thu Gom Sắt Vệ Binh I",
     "description": "Nộp 10x Thỏi Sắt",
@@ -571,30 +559,6 @@
     "item": "minecraft:bone",
     "requiredAmount": 35,
     "rewardPoints": 2,
-    "allowedClasses": [
-      "tier2_indestructible"
-    ]
-  },
-  {
-    "id": "indestructible_kwarden_1",
-    "name": "Thử Thách Vệ Binh Warden",
-    "description": "Tiêu diệt 1 Warden",
-    "type": "KILL_MOB",
-    "targetMob": "minecraft:warden",
-    "requiredAmount": 1,
-    "rewardPoints": 10,
-    "allowedClasses": [
-      "tier2_indestructible"
-    ]
-  },
-  {
-    "id": "indestructible_kwither_1",
-    "name": "Thử Thách Vệ Binh Wither",
-    "description": "Tiêu diệt 1 Wither",
-    "type": "KILL_MOB",
-    "targetMob": "minecraft:wither",
-    "requiredAmount": 1,
-    "rewardPoints": 10,
     "allowedClasses": [
       "tier2_indestructible"
     ]
@@ -900,24 +864,12 @@
     ]
   },
   {
-    "id": "wind_kwarden_1",
-    "name": "Trảm Warden Cuồng Phong",
-    "description": "Tiêu diệt 1 Warden",
-    "type": "KILL_MOB",
-    "targetMob": "minecraft:warden",
-    "requiredAmount": 1,
-    "rewardPoints": 10,
-    "allowedClasses": [
-      "tier2_wind_assassin"
-    ]
-  },
-  {
     "id": "phantom_submit_wskel_skull_3",
-    "name": "Thu Gom Đầu Xương Đen I",
-    "description": "Nộp 3x Đầu Xương Đen",
+    "name": "Thu Gom Đầu Xương Trắng I",
+    "description": "Nộp 15x Đầu Xương Trắng",
     "type": "SUBMIT_ITEM",
-    "item": "minecraft:wither_skeleton_skull",
-    "requiredAmount": 3,
+    "item": "minecraft:skeleton_skull",
+    "requiredAmount": 15,
     "rewardPoints": 1,
     "allowedClasses": [
       "tier2_phantom_striker"
@@ -1027,18 +979,6 @@
     "targetMob": "minecraft:creeper",
     "requiredAmount": 8,
     "rewardPoints": 2,
-    "allowedClasses": [
-      "tier2_phantom_striker"
-    ]
-  },
-  {
-    "id": "phantom_kwarden_1",
-    "name": "Ám Sát Warden Bóng Ma",
-    "description": "Tiêu diệt 1 Warden",
-    "type": "KILL_MOB",
-    "targetMob": "minecraft:warden",
-    "requiredAmount": 1,
-    "rewardPoints": 10,
     "allowedClasses": [
       "tier2_phantom_striker"
     ]
@@ -1176,36 +1116,12 @@
   },
   {
     "id": "destruction_submit_wskel_skull_5",
-    "name": "Tế Phẩm Đầu Xương Đen Cực Hạn",
-    "description": "Nộp 5x Đầu Xương Đen",
+    "name": "Tế Phẩm Đầu Xương Trắng Cực Hạn",
+    "description": "Nộp 25x Đầu Xương Trắng",
     "type": "SUBMIT_ITEM",
-    "item": "minecraft:wither_skeleton_skull",
-    "requiredAmount": 5,
+    "item": "minecraft:skeleton_skull",
+    "requiredAmount": 25,
     "rewardPoints": 5,
-    "allowedClasses": [
-      "tier2_destruction"
-    ]
-  },
-  {
-    "id": "destruction_kwarden_1",
-    "name": "Bộc Phá Warden Hủy Diệt",
-    "description": "Tiêu diệt 1 Warden",
-    "type": "KILL_MOB",
-    "targetMob": "minecraft:warden",
-    "requiredAmount": 1,
-    "rewardPoints": 10,
-    "allowedClasses": [
-      "tier2_destruction"
-    ]
-  },
-  {
-    "id": "destruction_kwither_1",
-    "name": "Bộc Phá Wither Hủy Diệt",
-    "description": "Tiêu diệt 1 Wither",
-    "type": "KILL_MOB",
-    "targetMob": "minecraft:wither",
-    "requiredAmount": 1,
-    "rewardPoints": 10,
     "allowedClasses": [
       "tier2_destruction"
     ]
@@ -1523,18 +1439,6 @@
     ]
   },
   {
-    "id": "magic_kwarden_1",
-    "name": "Thử Thách Warden Ma Thuật",
-    "description": "Tiêu diệt 1 Warden",
-    "type": "KILL_MOB",
-    "targetMob": "minecraft:warden",
-    "requiredAmount": 1,
-    "rewardPoints": 10,
-    "allowedClasses": [
-      "tier2_magic_assassin"
-    ]
-  },
-  {
     "id": "marksman_submit_xp_100",
     "name": "Tế Phẩm Linh Hồn Xạ Thủ",
     "description": "Nộp 100 Điểm Kinh Nghiệm Vanilla XP",
@@ -1769,18 +1673,6 @@
     "item": "minecraft:gold_ingot",
     "requiredAmount": 18,
     "rewardPoints": 2,
-    "allowedClasses": [
-      "tier2_marksman"
-    ]
-  },
-  {
-    "id": "marksman_kwarden_1",
-    "name": "Bắn Hạ Tướng Warden",
-    "description": "Tiêu diệt 1 Warden",
-    "type": "KILL_MOB",
-    "targetMob": "minecraft:warden",
-    "requiredAmount": 1,
-    "rewardPoints": 10,
     "allowedClasses": [
       "tier2_marksman"
     ]
@@ -2109,18 +2001,6 @@
     ]
   },
   {
-    "id": "elemental_kwarden_1",
-    "name": "Trảm Tướng Warden Nguyên Tố",
-    "description": "Tiêu diệt 1 Warden",
-    "type": "KILL_MOB",
-    "targetMob": "minecraft:warden",
-    "requiredAmount": 1,
-    "rewardPoints": 10,
-    "allowedClasses": [
-      "tier2_elemental_archer"
-    ]
-  },
-  {
     "id": "highlord_submit_xp_100",
     "name": "Lễ Nguyện Linh Hồn Vương Quốc",
     "description": "Nộp 100 Điểm Kinh Nghiệm Vanilla XP",
@@ -2384,18 +2264,6 @@
     ]
   },
   {
-    "id": "highlord_kwarden_1",
-    "name": "Thách Thức Lãnh Chúa Warden",
-    "description": "Tiêu diệt 1 Warden",
-    "type": "KILL_MOB",
-    "targetMob": "minecraft:warden",
-    "requiredAmount": 1,
-    "rewardPoints": 10,
-    "allowedClasses": [
-      "tier2_high_lord"
-    ]
-  },
-  {
     "id": "summoner_submit_xp_100",
     "name": "Lễ Tế Linh Hồn Ma Vương",
     "description": "Nộp 100 Điểm Kinh Nghiệm Vanilla XP",
@@ -2516,11 +2384,11 @@
   },
   {
     "id": "summoner_wskel_skull_2",
-    "name": "Tế Phẩm Đầu Xương Đen Ma Vương I",
-    "description": "Nộp 2x Đầu Xương Đen",
+    "name": "Tế Phẩm Đầu Xương Trắng Ma Vương I",
+    "description": "Nộp 10x Đầu Xương Trắng",
     "type": "SUBMIT_ITEM",
-    "item": "minecraft:wither_skeleton_skull",
-    "requiredAmount": 2,
+    "item": "minecraft:skeleton_skull",
+    "requiredAmount": 10,
     "rewardPoints": 1,
     "allowedClasses": [
       "tier2_summoner_lord"
@@ -2528,36 +2396,12 @@
   },
   {
     "id": "summoner_wskel_skull_3",
-    "name": "Tế Phẩm Đầu Xương Đen Ma Vương II",
-    "description": "Nộp 3x Đầu Xương Đen",
+    "name": "Tế Phẩm Đầu Xương Trắng Ma Vương II",
+    "description": "Nộp 15x Đầu Xương Trắng",
     "type": "SUBMIT_ITEM",
-    "item": "minecraft:wither_skeleton_skull",
-    "requiredAmount": 3,
+    "item": "minecraft:skeleton_skull",
+    "requiredAmount": 15,
     "rewardPoints": 2,
-    "allowedClasses": [
-      "tier2_summoner_lord"
-    ]
-  },
-  {
-    "id": "summoner_kwarden_1",
-    "name": "Triệu Hồi Ma Vương Diệt Warden",
-    "description": "Tiêu diệt 1 Warden",
-    "type": "KILL_MOB",
-    "targetMob": "minecraft:warden",
-    "requiredAmount": 1,
-    "rewardPoints": 10,
-    "allowedClasses": [
-      "tier2_summoner_lord"
-    ]
-  },
-  {
-    "id": "summoner_kwither_1",
-    "name": "Triệu Hồi Ma Vương Diệt Wither",
-    "description": "Tiêu diệt 1 Wither",
-    "type": "KILL_MOB",
-    "targetMob": "minecraft:wither",
-    "requiredAmount": 1,
-    "rewardPoints": 10,
     "allowedClasses": [
       "tier2_summoner_lord"
     ]

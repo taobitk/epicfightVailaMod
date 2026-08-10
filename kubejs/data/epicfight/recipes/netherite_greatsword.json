@@ -4,12 +4,13 @@
         "item": "epicfight:diamond_greatsword"
     },
     "addition": {
-        "item" : "minecraft:netherite_ingot"
+        "item": "minecraft:netherite_ingot"
     },
     "result": {
         "item": "epicfight:netherite_greatsword"
     },
     "template": {
-      "item": "minecraft:netherite_upgrade_smithing_template"
-    }
+        "item": "minecraft:netherite_upgrade_smithing_template"
+    },
+    "stage": "stage_warrior"
 }

@@ -8,7 +8,9 @@
     "costPerLevel": 1,
     "maxLevel": 5,
     "icon": "minecraft:red_dye",
-    "allowedClasses": ["warrior"]
+    "allowedClasses": [
+      "warrior"
+    ]
   },
   {
     "id": "armor",
@@ -19,7 +21,9 @@
     "costPerLevel": 1,
     "maxLevel": 5,
     "icon": "minecraft:iron_chestplate",
-    "allowedClasses": ["warrior"]
+    "allowedClasses": [
+      "warrior"
+    ]
   },
   {
     "id": "attack_damage",
@@ -30,7 +34,9 @@
     "costPerLevel": 1,
     "maxLevel": 10,
     "icon": "minecraft:iron_sword",
-    "allowedClasses": ["assassin"]
+    "allowedClasses": [
+      "assassin"
+    ]
   },
   {
     "id": "projectile_damage",
@@ -41,7 +47,9 @@
     "costPerLevel": 1,
     "maxLevel": 10,
     "icon": "minecraft:bow",
-    "allowedClasses": ["archer"]
+    "allowedClasses": [
+      "archer"
+    ]
   },
   {
     "id": "pet_hp",
@@ -52,7 +60,9 @@
     "costPerLevel": 1,
     "maxLevel": 5,
     "icon": "minecraft:bone",
-    "allowedClasses": ["lord"]
+    "allowedClasses": [
+      "lord"
+    ]
   },
   {
     "id": "pet_atk",
@@ -63,7 +73,9 @@
     "costPerLevel": 1,
     "maxLevel": 5,
     "icon": "minecraft:golden_sword",
-    "allowedClasses": ["lord"]
+    "allowedClasses": [
+      "lord"
+    ]
   },
   {
     "id": "pet_def",
@@ -74,7 +86,9 @@
     "costPerLevel": 1,
     "maxLevel": 5,
     "icon": "minecraft:golden_chestplate",
-    "allowedClasses": ["lord"]
+    "allowedClasses": [
+      "lord"
+    ]
   },
   {
     "id": "vanguard_hp",
@@ -85,7 +99,9 @@
     "costPerLevel": 1,
     "maxLevel": 15,
     "icon": "minecraft:golden_apple",
-    "allowedClasses": ["tier2_vanguard"]
+    "allowedClasses": [
+      "tier2_vanguard"
+    ]
   },
   {
     "id": "vanguard_atk",
@@ -96,7 +112,9 @@
     "costPerLevel": 1,
     "maxLevel": 10,
     "icon": "minecraft:diamond_sword",
-    "allowedClasses": ["tier2_vanguard"]
+    "allowedClasses": [
+      "tier2_vanguard"
+    ]
   },
   {
     "id": "vanguard_armor",
@@ -107,7 +125,9 @@
     "costPerLevel": 1,
     "maxLevel": 5,
     "icon": "minecraft:iron_chestplate",
-    "allowedClasses": ["tier2_vanguard"]
+    "allowedClasses": [
+      "tier2_vanguard"
+    ]
   },
   {
     "id": "vanguard_heal3",
@@ -118,8 +138,12 @@
     "costPerLevel": 10,
     "maxLevel": 1,
     "icon": "minecraft:glistering_melon_slice",
-    "allowedClasses": ["tier2_vanguard"],
-    "rewardSkills": ["dodge_parry_reward:passive|dodge_parry_reward:heal3"]
+    "allowedClasses": [
+      "tier2_vanguard"
+    ],
+    "rewardSkills": [
+      "dodge_parry_reward:passive|dodge_parry_reward:heal3"
+    ]
   },
   {
     "id": "indestructible_hp",
@@ -130,7 +154,9 @@
     "costPerLevel": 1,
     "maxLevel": 20,
     "icon": "minecraft:enchanted_golden_apple",
-    "allowedClasses": ["tier2_indestructible"]
+    "allowedClasses": [
+      "tier2_indestructible"
+    ]
   },
   {
     "id": "indestructible_armor",
@@ -141,7 +167,9 @@
     "costPerLevel": 1,
     "maxLevel": 10,
     "icon": "minecraft:netherite_chestplate",
-    "allowedClasses": ["tier2_indestructible"],
+    "allowedClasses": [
+      "tier2_indestructible"
+    ],
     "extraAttributes": [
       {
         "attribute": "minecraft:generic.armor_toughness",
@@ -159,7 +187,9 @@
     "costPerLevel": 1,
     "maxLevel": 10,
     "icon": "minecraft:shield",
-    "allowedClasses": ["tier2_indestructible"],
+    "allowedClasses": [
+      "tier2_indestructible"
+    ],
     "extraAttributes": [
       {
         "attribute": "epicfight:execution_resistance",
@@ -182,7 +212,9 @@
     "costPerLevel": 10,
     "maxLevel": 1,
     "icon": "minecraft:ghast_tear",
-    "allowedClasses": ["tier2_indestructible"],
+    "allowedClasses": [
+      "tier2_indestructible"
+    ],
     "passiveEffects": [
       {
         "effect": "minecraft:regeneration",
@@ -202,8 +234,12 @@
     "costPerLevel": 15,
     "maxLevel": 1,
     "icon": "minecraft:glistering_melon_slice",
-    "allowedClasses": ["tier2_indestructible"],
-    "rewardSkills": ["dodge_parry_reward:passive|dodge_parry_reward:heal4"]
+    "allowedClasses": [
+      "tier2_indestructible"
+    ],
+    "rewardSkills": [
+      "dodge_parry_reward:passive|dodge_parry_reward:heal4"
+    ]
   },
   {
     "id": "wind_atk",
@@ -214,7 +250,9 @@
     "costPerLevel": 1,
     "maxLevel": 15,
     "icon": "minecraft:iron_sword",
-    "allowedClasses": ["tier2_wind_assassin"]
+    "allowedClasses": [
+      "tier2_wind_assassin"
+    ]
   },
   {
     "id": "wind_attack_speed",
@@ -225,7 +263,9 @@
     "costPerLevel": 3,
     "maxLevel": 5,
     "icon": "minecraft:golden_sword",
-    "allowedClasses": ["tier2_wind_assassin"]
+    "allowedClasses": [
+      "tier2_wind_assassin"
+    ]
   },
   {
     "id": "wind_stamina",
@@ -236,7 +276,9 @@
     "costPerLevel": 3,
     "maxLevel": 10,
     "icon": "minecraft:sugar",
-    "allowedClasses": ["tier2_wind_assassin"],
+    "allowedClasses": [
+      "tier2_wind_assassin"
+    ],
     "extraAttributes": [
       {
         "attribute": "epicfight:stamina_regen",
@@ -254,7 +296,9 @@
     "costPerLevel": 2,
     "maxLevel": 10,
     "icon": "minecraft:golden_sword",
-    "allowedClasses": ["tier2_phantom_striker"]
+    "allowedClasses": [
+      "tier2_phantom_striker"
+    ]
   },
   {
     "id": "phantom_speed",
@@ -265,7 +309,9 @@
     "costPerLevel": 3,
     "maxLevel": 3,
     "icon": "minecraft:feather",
-    "allowedClasses": ["tier2_phantom_striker"]
+    "allowedClasses": [
+      "tier2_phantom_striker"
+    ]
   },
   {
     "id": "destruction_atk",
@@ -276,7 +322,9 @@
     "costPerLevel": 1,
     "maxLevel": 30,
     "icon": "minecraft:netherite_sword",
-    "allowedClasses": ["tier2_destruction"]
+    "allowedClasses": [
+      "tier2_destruction"
+    ]
   },
   {
     "id": "destruction_crit_rate",
@@ -287,7 +335,9 @@
     "costPerLevel": 1,
     "maxLevel": 18,
     "icon": "minecraft:redstone",
-    "allowedClasses": ["tier2_destruction"]
+    "allowedClasses": [
+      "tier2_destruction"
+    ]
   },
   {
     "id": "destruction_crit_dmg",
@@ -298,7 +348,9 @@
     "costPerLevel": 1,
     "maxLevel": 15,
     "icon": "minecraft:blaze_powder",
-    "allowedClasses": ["tier2_destruction"]
+    "allowedClasses": [
+      "tier2_destruction"
+    ]
   },
   {
     "id": "magic_fire",
@@ -309,7 +361,10 @@
     "costPerLevel": 1,
     "maxLevel": 10,
     "icon": "minecraft:fire_charge",
-    "allowedClasses": ["tier2_magic_assassin", "tier2_elemental_archer"]
+    "allowedClasses": [
+      "tier2_magic_assassin",
+      "tier2_elemental_archer"
+    ]
   },
   {
     "id": "magic_frost",
@@ -320,7 +375,10 @@
     "costPerLevel": 1,
     "maxLevel": 10,
     "icon": "minecraft:ice",
-    "allowedClasses": ["tier2_magic_assassin", "tier2_elemental_archer"]
+    "allowedClasses": [
+      "tier2_magic_assassin",
+      "tier2_elemental_archer"
+    ]
   },
   {
     "id": "magic_truedmg",
@@ -331,7 +389,9 @@
     "costPerLevel": 5,
     "maxLevel": 10,
     "icon": "minecraft:amethyst_shard",
-    "allowedClasses": ["tier2_magic_assassin"]
+    "allowedClasses": [
+      "tier2_magic_assassin"
+    ]
   },
   {
     "id": "magic_steal",
@@ -342,7 +402,9 @@
     "costPerLevel": 5,
     "maxLevel": 10,
     "icon": "minecraft:ghast_tear",
-    "allowedClasses": ["tier2_magic_assassin"]
+    "allowedClasses": [
+      "tier2_magic_assassin"
+    ]
   },
   {
     "id": "magic_max_mana",
@@ -353,7 +415,10 @@
     "costPerLevel": 3,
     "maxLevel": 20,
     "icon": "minecraft:lapis_lazuli",
-    "allowedClasses": ["tier2_magic_assassin", "tier2_elemental_archer"]
+    "allowedClasses": [
+      "tier2_magic_assassin",
+      "tier2_elemental_archer"
+    ]
   },
   {
     "id": "magic_mana_regen",
@@ -364,7 +429,10 @@
     "costPerLevel": 5,
     "maxLevel": 10,
     "icon": "minecraft:blaze_powder",
-    "allowedClasses": ["tier2_magic_assassin", "tier2_elemental_archer"]
+    "allowedClasses": [
+      "tier2_magic_assassin",
+      "tier2_elemental_archer"
+    ]
   },
   {
     "id": "marksman_proj_dmg",
@@ -375,7 +443,9 @@
     "costPerLevel": 1,
     "maxLevel": 25,
     "icon": "minecraft:bow",
-    "allowedClasses": ["tier2_marksman"]
+    "allowedClasses": [
+      "tier2_marksman"
+    ]
   },
   {
     "id": "marksman_speed",
@@ -386,7 +456,9 @@
     "costPerLevel": 1,
     "maxLevel": 5,
     "icon": "minecraft:feather",
-    "allowedClasses": ["tier2_marksman"]
+    "allowedClasses": [
+      "tier2_marksman"
+    ]
   },
   {
     "id": "marksman_attack_speed",
@@ -397,7 +469,9 @@
     "costPerLevel": 1,
     "maxLevel": 10,
     "icon": "minecraft:arrow",
-    "allowedClasses": ["tier2_marksman"]
+    "allowedClasses": [
+      "tier2_marksman"
+    ]
   },
   {
     "id": "marksman_stamina",
@@ -408,7 +482,9 @@
     "costPerLevel": 1,
     "maxLevel": 10,
     "icon": "minecraft:sugar",
-    "allowedClasses": ["tier2_marksman"],
+    "allowedClasses": [
+      "tier2_marksman"
+    ],
     "extraAttributes": [
       {
         "attribute": "epicfight:stamina_regen",
@@ -426,7 +502,9 @@
     "costPerLevel": 1,
     "maxLevel": 10,
     "icon": "minecraft:lightning_rod",
-    "allowedClasses": ["tier2_elemental_archer"]
+    "allowedClasses": [
+      "tier2_elemental_archer"
+    ]
   },
   {
     "id": "highlord_pet_hp",
@@ -437,7 +515,9 @@
     "costPerLevel": 1,
     "maxLevel": 30,
     "icon": "minecraft:bone",
-    "allowedClasses": ["tier2_high_lord"]
+    "allowedClasses": [
+      "tier2_high_lord"
+    ]
   },
   {
     "id": "highlord_pet_atk",
@@ -448,7 +528,9 @@
     "costPerLevel": 1,
     "maxLevel": 15,
     "icon": "minecraft:golden_sword",
-    "allowedClasses": ["tier2_high_lord"]
+    "allowedClasses": [
+      "tier2_high_lord"
+    ]
   },
   {
     "id": "highlord_pet_def",
@@ -459,7 +541,9 @@
     "costPerLevel": 1,
     "maxLevel": 30,
     "icon": "minecraft:golden_chestplate",
-    "allowedClasses": ["tier2_high_lord"]
+    "allowedClasses": [
+      "tier2_high_lord"
+    ]
   },
   {
     "id": "highlord_max_mana",
@@ -470,7 +554,9 @@
     "costPerLevel": 3,
     "maxLevel": 10,
     "icon": "minecraft:lapis_lazuli",
-    "allowedClasses": ["tier2_high_lord"]
+    "allowedClasses": [
+      "tier2_high_lord"
+    ]
   },
   {
     "id": "highlord_mana_regen",
@@ -481,7 +567,9 @@
     "costPerLevel": 10,
     "maxLevel": 10,
     "icon": "minecraft:blaze_powder",
-    "allowedClasses": ["tier2_high_lord"]
+    "allowedClasses": [
+      "tier2_high_lord"
+    ]
   },
   {
     "id": "highlord_pet_heal",
@@ -492,7 +580,9 @@
     "costPerLevel": 1,
     "maxLevel": 10,
     "icon": "minecraft:glistering_melon_slice",
-    "allowedClasses": ["tier2_high_lord"]
+    "allowedClasses": [
+      "tier2_high_lord"
+    ]
   },
   {
     "id": "highlord_pet_buff_atk",
@@ -503,7 +593,9 @@
     "costPerLevel": 1,
     "maxLevel": 10,
     "icon": "minecraft:blaze_rod",
-    "allowedClasses": ["tier2_high_lord"]
+    "allowedClasses": [
+      "tier2_high_lord"
+    ]
   },
   {
     "id": "summoner_pet_unlock",
@@ -514,7 +606,9 @@
     "costPerLevel": 10,
     "maxLevel": 10,
     "icon": "minecraft:netherite_upgrade_smithing_template",
-    "allowedClasses": ["tier2_summoner_lord"]
+    "allowedClasses": [
+      "tier2_summoner_lord"
+    ]
   },
   {
     "id": "summoner_pet_count",
@@ -525,7 +619,9 @@
     "costPerLevel": 10,
     "maxLevel": 2,
     "icon": "minecraft:skeleton_skull",
-    "allowedClasses": ["tier2_summoner_lord"]
+    "allowedClasses": [
+      "tier2_summoner_lord"
+    ]
   },
   {
     "id": "summoner_mana_regen",
@@ -536,7 +632,9 @@
     "costPerLevel": 10,
     "maxLevel": 10,
     "icon": "minecraft:blaze_powder",
-    "allowedClasses": ["tier2_summoner_lord"]
+    "allowedClasses": [
+      "tier2_summoner_lord"
+    ]
   },
   {
     "id": "summoner_max_mana",
@@ -547,7 +645,9 @@
     "costPerLevel": 3,
     "maxLevel": 10,
     "icon": "minecraft:lapis_lazuli",
-    "allowedClasses": ["tier2_summoner_lord"]
+    "allowedClasses": [
+      "tier2_summoner_lord"
+    ]
   },
   {
     "id": "summoner_pet_duration",
@@ -558,6 +658,8 @@
     "costPerLevel": 3,
     "maxLevel": 10,
     "icon": "minecraft:clock",
-    "allowedClasses": ["tier2_summoner_lord"]
+    "allowedClasses": [
+      "tier2_summoner_lord"
+    ]
   }
 ]

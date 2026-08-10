@@ -4,12 +4,13 @@
         "item": "epicfight:uchigatana"
     },
     "addition": {
-        "item" : "wom:demon_seal"
+        "item": "wom:demon_seal"
     },
     "result": {
         "item": "wom:satsujin"
     },
-	"template": {
-		"item": "minecraft:netherite_upgrade_smithing_template"
-	}
+    "template": {
+        "item": "minecraft:netherite_upgrade_smithing_template"
+    },
+    "stage": "stage_tier2_phantom_striker"
 }

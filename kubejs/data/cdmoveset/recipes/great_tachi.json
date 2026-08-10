@@ -1,21 +1,27 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "pattern":
-  [
-    " RI",
-    "RGI",
-    "SI "
-  ],
-  "key":
-  {
-    "R": { "item" : "minecraft:redstone" },
-    "S": { "item" : "minecraft:stick" },
-    "I": { "item" : "minecraft:iron_ingot" },
-    "G": { "item" : "minecraft:gold_ingot" }
-  },
-  "result":
-  {
-    "item" : "cdmoveset:great_tachi",
-    "count" : 1
-  }
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " RI",
+        "RGI",
+        "SI "
+    ],
+    "key": {
+        "R": {
+            "item": "minecraft:redstone"
+        },
+        "S": {
+            "item": "minecraft:stick"
+        },
+        "I": {
+            "item": "minecraft:iron_ingot"
+        },
+        "G": {
+            "item": "minecraft:gold_ingot"
+        }
+    },
+    "result": {
+        "item": "cdmoveset:great_tachi",
+        "count": 1
+    },
+    "stage": "stage_assassin"
 }

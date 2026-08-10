@@ -23,6 +23,7 @@ EntityEvents.drops(event => {
             'minecraft:rotten_flesh',    // Thịt thối
             'minecraft:bone',            // Xương
             'minecraft:arrow',           // Mũi tên
+            'minecraft:skeleton_skull',  // Đầu lâu Skeleton thường
             'minecraft:wither_skeleton_skull', // Đầu lâu Skeleton Wither
             'minecraft:copper_ingot'      // Phôi đồng
         ];

@@ -1,5 +1,5 @@
 // Tên file: kubejs/server_scripts/class_weapon_restrictions.js
-// Giới hạn cấm/cho phép cầm vũ khí độc quyền theo GameStage của Class
+// Giới hạn cấm/cho phép cầm và sử dụng vũ khí độc quyền theo GameStage của Class
 
 const CLASS_WEAPON_MAP = {
     // 🛡️ WARRIOR WEAPONS
@@ -47,21 +47,6 @@ const CLASS_WEAPON_MAP = {
     'p1nero_bow:mortis': 'stage_archer',
 };
 
-// Gắn Stage cho tất cả công thức chế tạo vũ khí độc quyền (kể cả công thức gốc của Mod/Vanilla)
-ServerEvents.recipes(event => {
-    Object.keys(CLASS_WEAPON_MAP).forEach(itemId => {
-        let reqStage = CLASS_WEAPON_MAP[itemId];
-        event.forEachRecipe({ output: itemId }, recipe => {
-            recipe.stage(reqStage);
-            if (event.recipes && event.recipes.recipestages) {
-                try {
-                    event.recipes.recipestages.setRecipeStage(reqStage, recipe.id.toString());
-                } catch (e) {}
-            }
-        });
-    });
-});
-
 // Kiểm tra cấm dùng khi nhấp chuột phải
 ItemEvents.rightClicked(event => {
     let player = event.player;
@@ -101,7 +86,6 @@ PlayerEvents.tick(event => {
         let reqStage = CLASS_WEAPON_MAP[mainHand.id];
         if (reqStage && !player.stages.has(reqStage)) {
             player.tell(`§c[OriginStats] Bạn không thuộc Class tương ứng để cầm vũ khí: ${mainHand.name.string}!`);
-            // Thả item xuống đất hoặc chuyển vào túi
             player.drop(mainHand.copy(), false);
             mainHand.count = 0;
         }

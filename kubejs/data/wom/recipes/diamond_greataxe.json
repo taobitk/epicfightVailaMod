@@ -1,20 +1,24 @@
 {
     "type": "minecraft:crafting_shaped",
-    "pattern":
-    [
+    "pattern": [
         " BB",
         "SAB",
         "S  "
     ],
-    "key":
-    {
-        "B": { "item" : "minecraft:diamond" },
-        "S": { "item" : "minecraft:stick" },
-		"A": { "item" : "minecraft:diamond_axe" }
+    "key": {
+        "B": {
+            "item": "minecraft:diamond"
+        },
+        "S": {
+            "item": "minecraft:stick"
+        },
+        "A": {
+            "item": "minecraft:diamond_axe"
+        }
     },
-    "result":
-    {
-        "item" : "wom:diamond_greataxe",
-        "count" : 1
-    }
+    "result": {
+        "item": "wom:diamond_greataxe",
+        "count": 1
+    },
+    "stage": "stage_warrior"
 }

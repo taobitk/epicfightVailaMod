@@ -4,12 +4,13 @@
         "item": "cdmoveset:katana"
     },
     "addition": {
-        "item" : "minecraft:nether_star"
+        "item": "minecraft:nether_star"
     },
     "result": {
         "item": "cdmoveset:yamato"
     },
     "template": {
-      "item": "minecraft:netherite_upgrade_smithing_template"
-    }
+        "item": "minecraft:netherite_upgrade_smithing_template"
+    },
+    "stage": "stage_assassin"
 }

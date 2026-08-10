@@ -1,6 +1,6 @@
 // Tên file: kubejs/server_scripts/loot_tables/loot_modify_mobs.js
-// Mục đích: Tùy chỉnh rơi Phôi Đồng, tăng tỉ lệ rơi Đầu Wither (30%), 
-//            và đặt tỉ lệ rơi 100% (1-3 cái) cho Xương (Skeleton), Thịt Zombie (Zombie) và Thuốc Súng (Creeper).
+// Mục đích: Tùy chỉnh rơi Phôi Đồng, giữ 30% tỉ lệ rơi Đầu Xương Đen và thêm 30% tỉ lệ rơi Đầu Xương Trắng,
+//            đồng thời đặt tỉ lệ rơi 100% (1-3 cái) cho Xương (Skeleton), Thịt Zombie (Zombie) và Thuốc Súng (Creeper).
 
 LootJS.modifiers(event => {
     // 1. ZOMBIE PIGLIN: Xóa hạt vàng, phôi vàng và kiếm vàng
@@ -21,11 +21,24 @@ LootJS.modifiers(event => {
             LootEntry.of('minecraft:iron_ingot').limitCount(1, 2)
         );
 
-    // 3. WITHER SKELETON (Xương đen): Tăng tỉ lệ rơi Đầu lâu Wither Skeleton lên 30%
+    // 3a. WITHER SKELETON: Giữ 30% tỉ lệ rơi Đầu Lâu Xương Đen (Wither Skeleton Skull)
     event.addEntityLootModifier('minecraft:wither_skeleton')
         .removeLoot(['minecraft:wither_skeleton_skull'])
         .randomChance(0.30)
         .addLoot('minecraft:wither_skeleton_skull');
+
+    // 3b. SKELETONS (Xương trắng & biến thể): Thêm 30% tỉ lệ rơi Đầu Lâu Xương Trắng (Skeleton Skull)
+    const skeletonHeadTypes = [
+        'minecraft:skeleton',
+        'minecraft:stray',
+        'minecraft:wither_skeleton'
+    ];
+    skeletonHeadTypes.forEach(mob => {
+        event.addEntityLootModifier(mob)
+            .removeLoot(['minecraft:skeleton_skull'])
+            .randomChance(0.55)
+            .addLoot('minecraft:skeleton_skull');
+    });
 
     // 4. ZOMBIES (Zombie, Husk, Drowned, Zombie Villager) -> 100% rơi 1-3 Thịt Zombie (Rotten Flesh)
     const zombieTypes = [

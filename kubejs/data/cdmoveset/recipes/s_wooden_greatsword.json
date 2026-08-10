@@ -1,19 +1,21 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "pattern":
-  [
-    " WW",
-    "WWW",
-    "SW "
-  ],
-  "key":
-  {
-    "W": { "item" : "minecraft:oak_planks" },
-    "S": { "item" : "minecraft:cobblestone" }
-  },
-  "result":
-  {
-    "item" : "cdmoveset:s_wooden_greatsword",
-    "count" : 1
-  }
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " WW",
+        "WWW",
+        "SW "
+    ],
+    "key": {
+        "W": {
+            "item": "minecraft:oak_planks"
+        },
+        "S": {
+            "item": "minecraft:cobblestone"
+        }
+    },
+    "result": {
+        "item": "cdmoveset:s_wooden_greatsword",
+        "count": 1
+    },
+    "stage": "stage_warrior"
 }

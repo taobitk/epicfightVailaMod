@@ -133,7 +133,7 @@
 	fireDistance = 64
 	#How far away can Skeletons shoot from [default: 64]
 	#Range: 0.0 ~ 1.0
-	witherSkeletonChance = 0.3
+	witherSkeletonChance = 0.0
 	#Effects that Skeleton arrows can have (id:duration:lvl) [default: [minecraft:slowness:60:0]
 	arrowTips = []
 
