@@ -60,33 +60,11 @@
         },
         {
             "ability_points": 10,
-            "unlock_tip": "unlock_tip.epicskills.prodigy.ender_step",
-            "custom_condition": false,
-            "hidden": false,
-            "position_in_screen": [
-                410,
-                50
-            ],
-            "skill": "wom:ender_step"
-        },
-        {
-            "ability_points": 10,
-            "unlock_tip": "unlock_tip.epicskills.prodigy.ender_obscuris",
-            "custom_condition": false,
-            "hidden": false,
-            "position_in_screen": [
-                470,
-                50
-            ],
-            "skill": "wom:ender_obscuris"
-        },
-        {
-            "ability_points": 10,
             "unlock_tip": "unlock_tip.epicskills.prodigy.shadow_step",
             "custom_condition": false,
             "hidden": false,
             "position_in_screen": [
-                530,
+                410,
                 50
             ],
             "skill": "wom:shadow_step"
@@ -97,7 +75,7 @@
             "custom_condition": false,
             "hidden": false,
             "position_in_screen": [
-                590,
+                470,
                 50
             ],
             "skill": "wom:time_travel"
@@ -108,7 +86,7 @@
             "custom_condition": false,
             "hidden": false,
             "position_in_screen": [
-                650,
+                530,
                 50
             ],
             "skill": "wom:bull_charge"
@@ -119,7 +97,7 @@
             "custom_condition": false,
             "hidden": false,
             "position_in_screen": [
-                710,
+                590,
                 50
             ],
             "skill": "wom:punishment_kick"
@@ -728,6 +706,28 @@
                 650
             ],
             "skill": "efn:indestructible"
+        },
+        {
+            "ability_points": 9999,
+            "unlock_tip": "unlock_tip.epicskills.prodigy.ender_step",
+            "custom_condition": false,
+            "hidden": false,
+            "position_in_screen": [
+                290,
+                650
+            ],
+            "skill": "wom:ender_step"
+        },
+        {
+            "ability_points": 9999,
+            "unlock_tip": "unlock_tip.epicskills.prodigy.ender_obscuris",
+            "custom_condition": false,
+            "hidden": false,
+            "position_in_screen": [
+                350,
+                650
+            ],
+            "skill": "wom:ender_obscuris"
         }
     ]
 }
