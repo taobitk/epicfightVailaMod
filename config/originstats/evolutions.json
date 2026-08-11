@@ -135,7 +135,7 @@
     "requiredItems": [
       {
         "item": "minecraft:skeleton_skull",
-        "count": 25
+        "count": 15
       }
     ],
     "unlockedStats": [
@@ -254,7 +254,7 @@
     "requiredItems": [
       {
         "item": "minecraft:skeleton_skull",
-        "count": 15
+        "count": 10
       }
     ],
     "rewardCommands": [

@@ -866,10 +866,10 @@
   {
     "id": "phantom_submit_wskel_skull_3",
     "name": "Thu Gom Đầu Xương Trắng I",
-    "description": "Nộp 15x Đầu Xương Trắng",
+    "description": "Nộp 10x Đầu Xương Trắng",
     "type": "SUBMIT_ITEM",
     "item": "minecraft:skeleton_skull",
-    "requiredAmount": 15,
+    "requiredAmount": 10,
     "rewardPoints": 1,
     "allowedClasses": [
       "tier2_phantom_striker"
@@ -1117,10 +1117,10 @@
   {
     "id": "destruction_submit_wskel_skull_5",
     "name": "Tế Phẩm Đầu Xương Trắng Cực Hạn",
-    "description": "Nộp 25x Đầu Xương Trắng",
+    "description": "Nộp 15x Đầu Xương Trắng",
     "type": "SUBMIT_ITEM",
     "item": "minecraft:skeleton_skull",
-    "requiredAmount": 25,
+    "requiredAmount": 15,
     "rewardPoints": 5,
     "allowedClasses": [
       "tier2_destruction"
@@ -2385,10 +2385,10 @@
   {
     "id": "summoner_wskel_skull_2",
     "name": "Tế Phẩm Đầu Xương Trắng Ma Vương I",
-    "description": "Nộp 10x Đầu Xương Trắng",
+    "description": "Nộp 5x Đầu Xương Trắng",
     "type": "SUBMIT_ITEM",
     "item": "minecraft:skeleton_skull",
-    "requiredAmount": 10,
+    "requiredAmount": 5,
     "rewardPoints": 1,
     "allowedClasses": [
       "tier2_summoner_lord"
@@ -2397,10 +2397,10 @@
   {
     "id": "summoner_wskel_skull_3",
     "name": "Tế Phẩm Đầu Xương Trắng Ma Vương II",
-    "description": "Nộp 15x Đầu Xương Trắng",
+    "description": "Nộp 10x Đầu Xương Trắng",
     "type": "SUBMIT_ITEM",
     "item": "minecraft:skeleton_skull",
-    "requiredAmount": 15,
+    "requiredAmount": 10,
     "rewardPoints": 2,
     "allowedClasses": [
       "tier2_summoner_lord"
