@@ -7,11 +7,11 @@ ServerEvents.recipes(event => {
     // --- Tier 1: Lord (Chế được CẢ Coin lẫn Magic Orb) ---
     event.shaped('kubejs:ring_coin', [
         ' I ',
-        'IDI',
+        'IGI',
         ' I '
     ], {
         I: 'minecraft:iron_ingot',
-        D: 'minecraft:diamond'
+        G: 'minecraft:gold_ingot'
     }).id('kubejs:craft_ring_coin_lord').stage('stage_lord')
 
     event.shaped('kubejs:magic_orb', [
@@ -26,11 +26,11 @@ ServerEvents.recipes(event => {
     // --- Tier 2: High Lord (Chế được CẢ Coin lẫn Magic Orb) ---
     event.shaped('kubejs:ring_coin', [
         ' I ',
-        'IDI',
+        'IGI',
         ' I '
     ], {
         I: 'minecraft:iron_ingot',
-        D: 'minecraft:diamond'
+        G: 'minecraft:gold_ingot'
     }).id('kubejs:craft_ring_coin_high_lord').stage('stage_tier2_high_lord')
 
     event.shaped('kubejs:magic_orb', [

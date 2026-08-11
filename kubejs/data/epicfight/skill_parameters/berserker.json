@@ -7,7 +7,7 @@
 			"name": "berserker_skill_stat",
 			"uuid": "fdc09ee8-fcfc-11eb-9a03-0242ac130003",
 			"operation": "addition",
-			"amount": 6.0
+			"amount": 10.0
 		}
 	]
 }
