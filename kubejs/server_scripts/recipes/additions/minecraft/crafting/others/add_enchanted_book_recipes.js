@@ -166,7 +166,7 @@ ServerEvents.recipes(event => {
             ' W '
         ], {
         N: 'kubejs:nidg_ingot',
-        W: 'minecraft:wither_skeleton_skull'
+        W: 'minecraft:skeleton_skull'
     }
     ).id('kubejs:craft_book_smite')
 
@@ -313,15 +313,15 @@ ServerEvents.recipes(event => {
     }
     ).id('kubejs:craft_book_soulbound')
 
-    // 25. Absolutely Unbreakable
+    // 25. Absolutely Unbreakable = 1 Kim Cương (giữa) + 4 Hắc Diệu Thạch (dấu cộng +)
     event.shaped(
         Item.of('minecraft:enchanted_book').enchant('g_abun:absolutelyunbreakable', 1),
         [
             ' O ',
-            'ONO',
+            'ODO',
             ' O '
         ], {
-        N: 'kubejs:nidg_ingot',
+        D: 'minecraft:diamond',
         O: 'minecraft:obsidian'
     }
     ).id('kubejs:craft_book_absolutely_unbreakable')
@@ -331,29 +331,29 @@ ServerEvents.recipes(event => {
     // ==========================================
 
     // --- 🗡️ SÁT THỦ (ASSASSIN SHORTCUTS) ---
-    // Sharpness Sát Thủ = 4 Kim Cương + 1 Kiếm Sắt
+    // Sharpness Sát Thủ = 8 Vàng + 1 Kiếm Sắt ở giữa
     event.shaped(
         Item.of('minecraft:enchanted_book').enchant('minecraft:sharpness', 1),
         [
-            ' D ',
-            'DSD',
-            ' D '
+            'GGG',
+            'GSG',
+            'GGG'
         ], {
-        D: 'minecraft:diamond',
+        G: 'minecraft:gold_ingot',
         S: 'minecraft:iron_sword'
     }
     ).id('kubejs:craft_book_assassin_sharpness').stage('stage_assassin')
 
-    // Smite Sát Thủ = 8 Kim Cương + 1 Đầu Wither ở giữa
+    // Smite Sát Thủ = 8 Vàng + 1 Đầu Xương Trắng ở giữa
     event.shaped(
         Item.of('minecraft:enchanted_book').enchant('minecraft:smite', 1),
         [
-            'DDD',
-            'DWD',
-            'DDD'
+            'GGG',
+            'GWG',
+            'GGG'
         ], {
-        D: 'minecraft:diamond',
-        W: 'minecraft:wither_skeleton_skull'
+        G: 'minecraft:gold_ingot',
+        W: 'minecraft:skeleton_skull'
     }
     ).id('kubejs:craft_book_assassin_smite').stage('stage_assassin')
 
@@ -371,15 +371,15 @@ ServerEvents.recipes(event => {
     ).id('kubejs:craft_book_assassin_bane').stage('stage_assassin')
 
     // --- 🏹 XẠ THỦ (ARCHER SHORTCUTS) ---
-    // Power Xạ Thủ = 4 Kim Cương + 1 Cung ở giữa
+    // Power Xạ Thủ = 8 Vàng + 1 Cung ở giữa
     event.shaped(
         Item.of('minecraft:enchanted_book').enchant('minecraft:power', 1),
         [
-            ' D ',
-            'DBD',
-            ' D '
+            'GGG',
+            'GBG',
+            'GGG'
         ], {
-        D: 'minecraft:diamond',
+        G: 'minecraft:gold_ingot',
         B: 'minecraft:bow'
     }
     ).id('kubejs:craft_book_archer_power').stage('stage_archer')
