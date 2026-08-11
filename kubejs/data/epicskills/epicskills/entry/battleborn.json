@@ -663,7 +663,7 @@
             "skill": "wom:aqua_maneuvre"
         },
         {
-            "ability_points": 15,
+            "ability_points": 5,
             "hidden": false,
             "position_in_screen": [
                 230,
