@@ -43,8 +43,9 @@ function logAndReportPlayerStats(player, source) {
         let username = player.username;
         let nbt = player.nbt;
         
-        // 1. Đọc Origin Class & Class Tiến Hóa (Kết hợp GameStages + Capability NBT)
-        let evolvedClass = "Chưa tiến hóa (Tier 1)";
+        // 1. Đọc Origin Class & Class Tiến Hóa (Ưu tiên Tier 2 cao nhất)
+        let baseClass = "Chưa chọn";
+        let tier2Class = "";
 
         // A. Kiểm tra GameStages
         try {
@@ -52,14 +53,16 @@ function logAndReportPlayerStats(player, source) {
                 let allStages = player.stages.all;
                 allStages.forEach(st => {
                     let stStr = String(st);
-                    if (stStr.startsWith('stage_tier2_') || stStr.startsWith('stage_lord') || stStr.startsWith('stage_warrior') || stStr.startsWith('stage_assassin') || stStr.startsWith('stage_archer')) {
-                        evolvedClass = stStr.replace('stage_', '');
+                    if (stStr.startsWith('stage_tier2_')) {
+                        tier2Class = stStr.replace('stage_', '');
+                    } else if (stStr.startsWith('stage_warrior') || stStr.startsWith('stage_assassin') || stStr.startsWith('stage_archer') || stStr.startsWith('stage_lord')) {
+                        baseClass = stStr.replace('stage_', '');
                     }
                 });
             }
-        } catch (eStage) {}
+        } catch (eStage) { }
 
-        // B. Đọc NBT Capability (Override nếu tìm thấy)
+        // B. Đọc trực tiếp Capability OriginStats từ Java/NBT
         try {
             let forgeCaps = nbt.getCompound('ForgeCaps');
             if (forgeCaps) {
@@ -69,12 +72,14 @@ function logAndReportPlayerStats(player, source) {
                         let osCap = forgeCaps.getCompound(k);
                         if (osCap && osCap.contains('EvolvedClass')) {
                             let ev = osCap.getString('EvolvedClass');
-                            if (ev && ev.length > 0) evolvedClass = ev;
+                            if (ev && ev.length > 0) tier2Class = ev;
                         }
                     }
                 });
             }
-        } catch (eNbt) {}
+        } catch (eNbt) { }
+
+        let displayClass = tier2Class ? `Tier 2 (${tier2Class})` : `Tier 1 (${baseClass})`;
 
         // 2. Lấy thuộc tính thực tế trong RAM (Attributes)
         let getAttrVal = (attrId) => {
@@ -86,7 +91,7 @@ function logAndReportPlayerStats(player, source) {
                     let inst = player.getAttribute(attr);
                     if (inst) return Math.round(inst.getValue() * 100) / 100;
                 }
-            } catch (err) {}
+            } catch (err) { }
             return "N/A";
         };
 
@@ -118,11 +123,11 @@ function logAndReportPlayerStats(player, source) {
                     }
                 });
             }
-        } catch (eLevels) {}
+        } catch (eLevels) { }
 
         // 4. In thông tin ra Console log
         console.log(`================ [ORIGINSTATS TRACKER: ${username}] ================`);
-        console.log(`- Class Tiến Hóa (EvolvedClass/Stage): ${evolvedClass}`);
+        console.log(`- Class Tiến Hóa (EvolvedClass/Stage): ${displayClass}`);
         console.log(`- Stats NBT đã nâng: ${statLevelsStr}`);
         console.log(`- RAM Attributes Thực Tế:`);
         console.log(`  + Máu Tối Đa (Max HP): ${maxHp}`);
@@ -136,7 +141,7 @@ function logAndReportPlayerStats(player, source) {
         // 5. Gửi thông báo trực tiếp trên Chat cho Người Chơi (nếu gọi bằng Lệnh)
         if (source) {
             source.sendSuccess(Text.of(`§e=== 📊 THÔNG SỐ NHÂN VẬT (${username}) ===`).bold(), false);
-            source.sendSuccess(Text.of(`§bClass Tiến Hóa / Stage: §f${evolvedClass}`), false);
+            source.sendSuccess(Text.of(`§bClass Hiện Tại: §f${displayClass}`), false);
             source.sendSuccess(Text.of(`§aMáu Tối Đa (RAM): §f${maxHp} HP`), false);
             source.sendSuccess(Text.of(`§aGiáp (RAM): §f${armor}`), false);
             source.sendSuccess(Text.of(`§aSát Thương (RAM): §f${atkDmg}`), false);
