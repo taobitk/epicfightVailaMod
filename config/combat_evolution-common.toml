@@ -1,4 +1,3 @@
-
 [common]
 	#Enable execution
 	enabledExecution = true
@@ -10,8 +9,16 @@
 	#Execution item blacklist - items in this list will be disabled
 	#Format: modid:itemname
 	#Example: 'minecraft:netherite_sword', 'minecraft:diamond_axe'
-	executionItemBlacklist = []
+	executionItemBlacklist = [
+		"wom:wooden_staff",
+		"wom:stone_staff",
+		"wom:golden_staff",
+		"wom:iron_staff",
+		"wom:diamond_staff",
+		"wom:netherite_staff",
+		"wom:ruine",
+		"wom:ender_blaster"
+	]
 	#The damage multiplier increased by each enchantment level
 	#Range: 0.0 ~ 1.7976931348623157E308
 	massacreEnchantment = 0.16
-
