@@ -8,5 +8,5 @@ ServerEvents.recipes(event => {
         'minecraft:enchanted_golden_apple', // Template: Táo Vàng Phù Phép
         'minecraft:netherite_hoe',          // Base: Cuốc Netherite
         'kubejs:nidg_ingot'                 // Addition: Thỏi NIDG
-    ).stage('stage_tier2_destruction');
+    );
 });

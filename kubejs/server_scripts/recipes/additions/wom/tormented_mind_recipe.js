@@ -9,5 +9,5 @@ ServerEvents.recipes(event => {
         'minecraft:enchanted_golden_apple',  // Template
         'wom:netherite_greataxe',            // Base
         'kubejs:nidg_ingot'                  // Addition
-    ).stage('stage_tier2_indestructible')
+    )
 })

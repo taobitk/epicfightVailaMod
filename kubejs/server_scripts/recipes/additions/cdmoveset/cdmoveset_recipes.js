@@ -17,7 +17,7 @@ ServerEvents.recipes(event => {
     event.shaped('cdmoveset:s_golden_sword', [' B ', ' B ', ' S '], { B: 'minecraft:gold_ingot', S: 'minecraft:golden_sword' }).stage('stage_assassin');
     event.shaped('cdmoveset:s_iron_sword', [' B ', ' B ', ' S '], { B: 'minecraft:iron_ingot', S: 'minecraft:iron_sword' }).stage('stage_assassin');
     event.shaped('cdmoveset:s_diamond_sword', [' B ', ' B ', ' S '], { B: 'minecraft:diamond', S: 'minecraft:diamond_sword' }).stage('stage_assassin');
-    event.smithing('cdmoveset:s_netherite_sword', 'minecraft:netherite_upgrade_smithing_template', 'cdmoveset:s_diamond_sword', 'minecraft:netherite_ingot').stage('stage_assassin');
+    event.smithing('cdmoveset:s_netherite_sword', 'minecraft:netherite_upgrade_smithing_template', 'cdmoveset:s_diamond_sword', 'minecraft:netherite_ingot');
 
     // Vũ khí độc quyền Sát Thủ
     event.shaped('cdmoveset:great_tachi', [' W ', 'NSI', ' A '], { S: 'epicfight:diamond_tachi', W: 'minecraft:wither_skeleton_skull', N: 'kubejs:nidg_ingot', I: 'minecraft:netherite_ingot', A: 'minecraft:golden_apple' }).stage('stage_assassin');
@@ -31,5 +31,5 @@ ServerEvents.recipes(event => {
     event.shaped('cdmoveset:s_golden_greatsword', [' BB', 'BBB', 'SB '], { B: 'minecraft:gold_ingot', S: 'minecraft:iron_block' }).stage('stage_warrior');
     event.shaped('cdmoveset:s_iron_greatsword', [' BB', 'BBB', 'SB '], { B: 'minecraft:iron_ingot', S: 'minecraft:iron_block' }).stage('stage_warrior');
     event.shaped('cdmoveset:s_diamond_greatsword', [' BB', 'BBB', 'SB '], { B: 'minecraft:diamond', S: 'minecraft:iron_block' }).stage('stage_warrior');
-    event.smithing('cdmoveset:s_netherite_greatsword', 'minecraft:netherite_upgrade_smithing_template', 'cdmoveset:s_diamond_greatsword', 'minecraft:netherite_ingot').stage('stage_warrior');
+    event.smithing('cdmoveset:s_netherite_greatsword', 'minecraft:netherite_upgrade_smithing_template', 'cdmoveset:s_diamond_greatsword', 'minecraft:netherite_ingot');
 });

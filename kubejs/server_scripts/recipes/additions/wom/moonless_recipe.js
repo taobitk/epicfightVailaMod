@@ -8,5 +8,5 @@ ServerEvents.recipes(event => {
         'minecraft:enchanted_golden_apple', // Template: Táo Vàng Enchant
         'epicfight:diamond_dagger',         // Base: Dao găm Kim Cương
         'kubejs:nidg_ingot'                 // Addition: NIDG Ingot
-    ).stage('stage_tier2_wind_assassin')
+    )
 })

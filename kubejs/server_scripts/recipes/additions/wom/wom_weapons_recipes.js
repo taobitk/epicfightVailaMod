@@ -52,7 +52,7 @@ ServerEvents.recipes(event => {
         'minecraft:netherite_upgrade_smithing_template',
         'wom:diamond_greataxe',
         'minecraft:netherite_ingot'
-    ).stage('stage_warrior')
+    )
 
 
     // ----------------------------------------------------
@@ -65,5 +65,5 @@ ServerEvents.recipes(event => {
         'minecraft:netherite_upgrade_smithing_template',
         'epicfight:uchigatana',
         'wom:demon_seal'
-    ).stage('stage_tier2_phantom_striker')
+    )
 })

@@ -7,5 +7,5 @@ ServerEvents.recipes(event => {
         'minecraft:enchanted_golden_apple', // Template: Táo Vàng Enchant
         'minecraft:diamond_sword',          // Base: Kiếm Kim Cương
         'kubejs:nidg_ingot'                 // Addition: NIDG Ingot
-    ).stage('stage_tier2_vanguard')
+    )
 })

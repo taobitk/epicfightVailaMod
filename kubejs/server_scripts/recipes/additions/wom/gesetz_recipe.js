@@ -7,5 +7,5 @@ ServerEvents.recipes(event => {
         'minecraft:golden_apple',   // Template: Táo Vàng thường
         'minecraft:shield',         // Base: Khiên gỗ
         'minecraft:diamond'         // Addition: Kim Cương
-    ).stage('stage_tier2_vanguard')
+    )
 })

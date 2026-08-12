@@ -48,5 +48,5 @@ ServerEvents.recipes(event => {
         'minecraft:netherite_upgrade_smithing_template',
         'epicfight:diamond_greatsword',
         'minecraft:netherite_ingot'
-    ).stage('stage_warrior')
+    )
 })
