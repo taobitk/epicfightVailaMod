@@ -1,69 +1,38 @@
 // Tên file: kubejs/server_scripts/recipes/additions/wom/wom_weapons_recipes.js
-// Tái tạo chính xác 100% công thức gốc của WoM bằng KubeJS để hiển thị nhãn "Stage: ..." mượt mà trên JEI
 
 ServerEvents.recipes(event => {
-    // ----------------------------------------------------
-    // 🛡️ 1. HỆ CHIẾN BINH: ĐẠI RÌU WOM (stage_warrior)
-    // ----------------------------------------------------
     const greataxeOutputs = [
         'wom:iron_greataxe',
         'wom:golden_greataxe',
         'wom:diamond_greataxe',
-        'wom:netherite_greataxe'
+        'wom:netherite_greataxe',
+        'wom:satsujin'
     ];
     greataxeOutputs.forEach(out => event.remove({ output: out }));
 
-    // iron_greataxe (Chính xác theo công thức gốc WoM JAR)
-    event.shaped('wom:iron_greataxe', [
-        ' BB',
-        'SAB',
-        'S  '
+    event.shaped('wom:iron_greataxe', [' BB', 'SAB', 'S  '], { B: 'minecraft:iron_ingot', S: 'minecraft:stick', A: 'minecraft:iron_axe' }).stage('stage_warrior');
+    event.shaped('wom:golden_greataxe', [' BB', 'SAB', 'S  '], { B: 'minecraft:gold_ingot', S: 'minecraft:stick', A: 'minecraft:golden_axe' }).stage('stage_warrior');
+    event.shaped('wom:diamond_greataxe', [' BB', 'SAB', 'S  '], { B: 'minecraft:diamond', S: 'minecraft:stick', A: 'minecraft:diamond_axe' }).stage('stage_warrior');
+    
+    // netherite_greataxe (Chế tạo Bàn Chế Tạo 3x3)
+    event.shaped('wom:netherite_greataxe', [
+        ' T ',
+        ' N ',
+        ' S '
     ], {
-        B: 'minecraft:iron_ingot',
-        S: 'minecraft:stick',
-        A: 'minecraft:iron_axe'
-    }).stage('stage_warrior')
+        T: 'minecraft:netherite_upgrade_smithing_template',
+        N: 'minecraft:netherite_ingot',
+        S: 'wom:diamond_greataxe'
+    }).stage('stage_warrior');
 
-    // golden_greataxe (Chính xác theo công thức gốc WoM JAR)
-    event.shaped('wom:golden_greataxe', [
-        ' BB',
-        'SAB',
-        'S  '
+    // 👻 SÁT THỦ BÓNG MA: MA KIẾM SATSUJIN (stage_tier2_phantom_striker)
+    event.shaped('wom:satsujin', [
+        ' T ',
+        ' D ',
+        ' U '
     ], {
-        B: 'minecraft:gold_ingot',
-        S: 'minecraft:stick',
-        A: 'minecraft:golden_axe'
-    }).stage('stage_warrior')
-
-    // diamond_greataxe (Chính xác theo công thức gốc WoM JAR)
-    event.shaped('wom:diamond_greataxe', [
-        ' BB',
-        'SAB',
-        'S  '
-    ], {
-        B: 'minecraft:diamond',
-        S: 'minecraft:stick',
-        A: 'minecraft:diamond_axe'
-    }).stage('stage_warrior')
-
-    // netherite_greataxe (Chính xác theo công thức gốc WoM JAR)
-    event.smithing(
-        'wom:netherite_greataxe',
-        'minecraft:netherite_upgrade_smithing_template',
-        'wom:diamond_greataxe',
-        'minecraft:netherite_ingot'
-    )
-
-
-    // ----------------------------------------------------
-    // 👻 2. SÁT THỦ BÓNG MA: MA KIẾM SATSUJIN (stage_tier2_phantom_striker)
-    // ----------------------------------------------------
-    event.remove({ output: 'wom:satsujin' })
-
-    event.smithing(
-        'wom:satsujin',
-        'minecraft:netherite_upgrade_smithing_template',
-        'epicfight:uchigatana',
-        'wom:demon_seal'
-    )
-})
+        T: 'minecraft:netherite_upgrade_smithing_template',
+        D: 'wom:demon_seal',
+        U: 'epicfight:uchigatana'
+    }).stage('stage_tier2_phantom_striker');
+});

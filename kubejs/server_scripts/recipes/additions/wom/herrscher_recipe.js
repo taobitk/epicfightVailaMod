@@ -1,11 +1,13 @@
 ServerEvents.recipes(event => {
-    // Nâng cấp Diamond Sword thành Herrscher
-    // Nguyên liệu MỚI: Enchanted Golden Apple + NIDG Ingot
+    event.remove({ output: 'wom:herrscher' });
 
-    event.smithing(
-        'wom:herrscher',                    // Output: Herrscher
-        'minecraft:enchanted_golden_apple', // Template: Táo Vàng Enchant
-        'minecraft:diamond_sword',          // Base: Kiếm Kim Cương
-        'kubejs:nidg_ingot'                 // Addition: NIDG Ingot
-    )
-})
+    event.shaped('wom:herrscher', [
+        ' A ',
+        ' N ',
+        ' S '
+    ], {
+        A: 'minecraft:enchanted_golden_apple',
+        N: 'kubejs:nidg_ingot',
+        S: 'minecraft:diamond_sword'
+    }).stage('stage_tier2_vanguard');
+});

@@ -1,5 +1,4 @@
 // Tên file: kubejs/server_scripts/recipes/additions/epicfight/epicfight_weapons_recipes.js
-// Tái tạo chính xác 100% công thức gốc của EpicFight bằng KubeJS để hiển thị nhãn "Stage: ..." mượt mà trên JEI
 
 ServerEvents.recipes(event => {
     if (!Platform.isLoaded('epicfight')) return;
@@ -12,41 +11,18 @@ ServerEvents.recipes(event => {
     ];
     efGreatswords.forEach(out => event.remove({ output: out }));
 
-    // iron_greatsword
-    event.shaped('epicfight:iron_greatsword', [
-        ' I ',
-        ' I ',
+    event.shaped('epicfight:iron_greatsword', [' I ', ' I ', ' S '], { I: 'minecraft:iron_block', S: 'minecraft:stick' }).stage('stage_warrior');
+    event.shaped('epicfight:golden_greatsword', [' G ', ' G ', ' S '], { G: 'minecraft:gold_block', S: 'minecraft:stick' }).stage('stage_warrior');
+    event.shaped('epicfight:diamond_greatsword', [' D ', ' D ', ' S '], { D: 'minecraft:diamond_block', S: 'minecraft:stick' }).stage('stage_warrior');
+    
+    // netherite_greatsword (Chế tạo Bàn Chế Tạo 3x3)
+    event.shaped('epicfight:netherite_greatsword', [
+        ' T ',
+        ' N ',
         ' S '
     ], {
-        I: 'minecraft:iron_block',
-        S: 'minecraft:stick'
-    }).stage('stage_warrior')
-
-    // golden_greatsword
-    event.shaped('epicfight:golden_greatsword', [
-        ' G ',
-        ' G ',
-        ' S '
-    ], {
-        G: 'minecraft:gold_block',
-        S: 'minecraft:stick'
-    }).stage('stage_warrior')
-
-    // diamond_greatsword
-    event.shaped('epicfight:diamond_greatsword', [
-        ' D ',
-        ' D ',
-        ' S '
-    ], {
-        D: 'minecraft:diamond_block',
-        S: 'minecraft:stick'
-    }).stage('stage_warrior')
-
-    // netherite_greatsword (Smithing)
-    event.smithing(
-        'epicfight:netherite_greatsword',
-        'minecraft:netherite_upgrade_smithing_template',
-        'epicfight:diamond_greatsword',
-        'minecraft:netherite_ingot'
-    )
-})
+        T: 'minecraft:netherite_upgrade_smithing_template',
+        N: 'minecraft:netherite_ingot',
+        S: 'epicfight:diamond_greatsword'
+    }).stage('stage_warrior');
+});
