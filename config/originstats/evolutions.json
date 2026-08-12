@@ -30,7 +30,7 @@
     "baseClass": "warrior",
     "targetClass": "tier2_indestructible",
     "name": "Vệ Binh Bất Hoại",
-    "description": "Full Tank Bất Tử: Nhận vĩnh viễn Regeneration I (nâng Regen II), Mở khóa Nội tại Heal III, Máu +40 (20 Lvl), Giáp +15 & Toughness +10 (10 Lvl), Kháng Choáng/Exec/Knockback (10 Lvl).",
+    "description": "Full Tank Bất Tử: Nhận vĩnh viễn Regeneration I (nâng Regen II), Mở khóa Nội tại Heal III, Tri Thức Chí Mạng & Tập Trung Sát Thương, Máu +40, Giáp +15 & Toughness +10.",
     "icon": "minecraft:netherite_chestplate",
     "comingSoon": false,
     "requiredStatsMaxed": [
@@ -60,7 +60,9 @@
       }
     ],
     "rewardSkills": [
-      "dodge_parry_reward:passive|dodge_parry_reward:heal3"
+      "dodge_parry_reward:passive|dodge_parry_reward:heal3",
+      "wom:critical_knowledge",
+      "wom:lethal_focus"
     ]
   },
   {
