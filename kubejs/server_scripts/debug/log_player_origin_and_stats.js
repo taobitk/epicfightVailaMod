@@ -42,7 +42,7 @@ function logAndReportPlayerStats(player, source) {
     try {
         let username = player.username;
         let nbt = player.nbt;
-        
+
         // 1. Đọc Origin Class & Class Tiến Hóa (Ưu tiên Tier 2 cao nhất)
         let baseClass = "Chưa chọn";
         let tier2Class = "";
