@@ -47,3 +47,7 @@ Tổng số skill tìm thấy: 43
 | `epicfight:tsunami` | **Tsunami** | Draw forth the power of the tides and surge forward! Dash distance increased when raining or underwater. |
 | `epicfight:vengeance` | **Vengeance** | Gain a damage bonus against an enemy that recently hurt you by %s%%. You can switch the target after 4 seconds since you don't hit or get hurt by the current target. Killing the target will grant you a %s%% damage increase that gradually decreases for %d seconds. |
 | `epicfight:wrathful_lighting` | **Wrathful Lightning** | Invoke lightning to smite nearby enemies! Has a chance to change the weather. |
+
+
+
+
