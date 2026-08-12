@@ -1,4 +1,4 @@
-// Server script - Theo dỗi Class Origin & Chỉ số Thuộc tính (Attributes) nhân vật trong RAM & NBT
+// Server script - Theo dõi Class Origin & Chỉ số Thuộc tính (Attributes) nhân vật trong RAM & NBT
 // Lệnh trong game: /mystats hoặc /checkstats
 
 ServerEvents.commandRegistry(event => {
@@ -43,16 +43,36 @@ function logAndReportPlayerStats(player, source) {
         let username = player.username;
         let nbt = player.nbt;
         
-        // 1. Đọc Origin Class & Class Tiến Hóa
+        // 1. Đọc Origin Class & Class Tiến Hóa (Kết hợp GameStages + Capability NBT)
         let evolvedClass = "Chưa tiến hóa (Tier 1)";
+
+        // A. Kiểm tra GameStages
+        try {
+            if (player.stages) {
+                let allStages = player.stages.all;
+                allStages.forEach(st => {
+                    let stStr = String(st);
+                    if (stStr.startsWith('stage_tier2_') || stStr.startsWith('stage_lord') || stStr.startsWith('stage_warrior') || stStr.startsWith('stage_assassin') || stStr.startsWith('stage_archer')) {
+                        evolvedClass = stStr.replace('stage_', '');
+                    }
+                });
+            }
+        } catch (eStage) {}
+
+        // B. Đọc NBT Capability (Override nếu tìm thấy)
         try {
             let forgeCaps = nbt.getCompound('ForgeCaps');
-            if (forgeCaps && forgeCaps.contains('originstats:player_stats')) {
-                let osCap = forgeCaps.getCompound('originstats:player_stats');
-                if (osCap && osCap.contains('EvolvedClass')) {
-                    let ev = osCap.getString('EvolvedClass');
-                    if (ev && ev.length > 0) evolvedClass = ev;
-                }
+            if (forgeCaps) {
+                let keys = forgeCaps.getAllKeys();
+                keys.forEach(k => {
+                    if (String(k).includes('player_stats') || String(k).includes('originstats')) {
+                        let osCap = forgeCaps.getCompound(k);
+                        if (osCap && osCap.contains('EvolvedClass')) {
+                            let ev = osCap.getString('EvolvedClass');
+                            if (ev && ev.length > 0) evolvedClass = ev;
+                        }
+                    }
+                });
             }
         } catch (eNbt) {}
 
@@ -81,23 +101,28 @@ function logAndReportPlayerStats(player, source) {
         let statLevelsStr = "None";
         try {
             let forgeCaps = nbt.getCompound('ForgeCaps');
-            if (forgeCaps && forgeCaps.contains('originstats:player_stats')) {
-                let osCap = forgeCaps.getCompound('originstats:player_stats');
-                if (osCap && osCap.contains('StatLevels')) {
-                    let levelsTag = osCap.getCompound('StatLevels');
-                    let keys = levelsTag.getAllKeys();
-                    let pairs = [];
-                    keys.forEach(k => {
-                        pairs.push(`${k}: Lv.${levelsTag.getInt(k)}`);
-                    });
-                    if (pairs.length > 0) statLevelsStr = pairs.join(', ');
-                }
+            if (forgeCaps) {
+                let keys = forgeCaps.getAllKeys();
+                keys.forEach(k => {
+                    if (String(k).includes('player_stats') || String(k).includes('originstats')) {
+                        let osCap = forgeCaps.getCompound(k);
+                        if (osCap && osCap.contains('StatLevels')) {
+                            let levelsTag = osCap.getCompound('StatLevels');
+                            let lKeys = levelsTag.getAllKeys();
+                            let pairs = [];
+                            lKeys.forEach(lk => {
+                                pairs.push(`${lk}: Lv.${levelsTag.getInt(lk)}`);
+                            });
+                            if (pairs.length > 0) statLevelsStr = pairs.join(', ');
+                        }
+                    }
+                });
             }
         } catch (eLevels) {}
 
         // 4. In thông tin ra Console log
         console.log(`================ [ORIGINSTATS TRACKER: ${username}] ================`);
-        console.log(`- Class Tiến Hóa (EvolvedClass): ${evolvedClass}`);
+        console.log(`- Class Tiến Hóa (EvolvedClass/Stage): ${evolvedClass}`);
         console.log(`- Stats NBT đã nâng: ${statLevelsStr}`);
         console.log(`- RAM Attributes Thực Tế:`);
         console.log(`  + Máu Tối Đa (Max HP): ${maxHp}`);
@@ -111,7 +136,7 @@ function logAndReportPlayerStats(player, source) {
         // 5. Gửi thông báo trực tiếp trên Chat cho Người Chơi (nếu gọi bằng Lệnh)
         if (source) {
             source.sendSuccess(Text.of(`§e=== 📊 THÔNG SỐ NHÂN VẬT (${username}) ===`).bold(), false);
-            source.sendSuccess(Text.of(`§bClass Tiến Hóa: §f${evolvedClass}`), false);
+            source.sendSuccess(Text.of(`§bClass Tiến Hóa / Stage: §f${evolvedClass}`), false);
             source.sendSuccess(Text.of(`§aMáu Tối Đa (RAM): §f${maxHp} HP`), false);
             source.sendSuccess(Text.of(`§aGiáp (RAM): §f${armor}`), false);
             source.sendSuccess(Text.of(`§aSát Thương (RAM): §f${atkDmg}`), false);
