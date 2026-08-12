@@ -3,18 +3,16 @@
 
 ServerEvents.recipes(event => {
   if (!Platform.isLoaded('epicfight')) return;
-  
-  event.shaped(
-    Item.of('epicfight:uchigatana'),
-    [
-      'GDG',
-      'GDG',
-      'GLG'
-    ],
-    {
-      G: 'minecraft:gold_ingot',
-      D: 'minecraft:diamond',
-      L: 'minecraft:lava_bucket'
-    }
-  ).stage('stage_assassin');
+
+  event.remove({ output: 'epicfight:uchigatana' });
+
+  event.shaped('epicfight:uchigatana', [
+    'GDG',
+    'GDG',
+    'GLG'
+  ], {
+    G: 'minecraft:gold_ingot',
+    D: 'minecraft:diamond',
+    L: 'minecraft:lava_bucket'
+  }).id('kubejs:craft_uchigatana').stage('stage_assassin');
 });
