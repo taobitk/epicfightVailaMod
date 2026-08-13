@@ -132,6 +132,114 @@
     ]
   },
   {
+    "id": "vanguard_kzombie_20",
+    "name": "Diệt Thây Ma Tiên Phong",
+    "description": "Tiêu diệt 20 con Zombie",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:zombie",
+    "requiredAmount": 20,
+    "rewardPoints": 1,
+    "allowedClasses": [
+      "tier2_vanguard"
+    ]
+  },
+  {
+    "id": "vanguard_kpiglin_20",
+    "name": "Diệt Lợn Thây Ma Tiên Phong",
+    "description": "Tiêu diệt 20 con Zombified Piglin",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:zombified_piglin",
+    "requiredAmount": 20,
+    "rewardPoints": 1,
+    "allowedClasses": [
+      "tier2_vanguard"
+    ]
+  },
+  {
+    "id": "vanguard_kskeleton_20",
+    "name": "Diệt Binh Xương Tiên Phong",
+    "description": "Tiêu diệt 20 con Skeleton",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:skeleton",
+    "requiredAmount": 20,
+    "rewardPoints": 1,
+    "allowedClasses": [
+      "tier2_vanguard"
+    ]
+  },
+  {
+    "id": "vanguard_kwither_skel_20",
+    "name": "Diệt Xương Đen Tiên Phong",
+    "description": "Tiêu diệt 20 con Wither Skeleton",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:wither_skeleton",
+    "requiredAmount": 20,
+    "rewardPoints": 1,
+    "allowedClasses": [
+      "tier2_vanguard"
+    ]
+  },
+  {
+    "id": "vanguard_kblaze_5",
+    "name": "Diệt Quỷ Lửa Tiên Phong",
+    "description": "Tiêu diệt 5 con Blaze",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:blaze",
+    "requiredAmount": 5,
+    "rewardPoints": 1,
+    "allowedClasses": [
+      "tier2_vanguard"
+    ]
+  },
+  {
+    "id": "vanguard_khusk_20",
+    "name": "Diệt Zombie Sa Mạc Tiên Phong",
+    "description": "Tiêu diệt 20 con Husk",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:husk",
+    "requiredAmount": 20,
+    "rewardPoints": 1,
+    "allowedClasses": [
+      "tier2_vanguard"
+    ]
+  },
+  {
+    "id": "vanguard_kstray_20",
+    "name": "Diệt Xương Tuyết Tiên Phong",
+    "description": "Tiêu diệt 20 con Stray",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:stray",
+    "requiredAmount": 20,
+    "rewardPoints": 1,
+    "allowedClasses": [
+      "tier2_vanguard"
+    ]
+  },
+  {
+    "id": "vanguard_kspider_10",
+    "name": "Diệt Nhện Tiên Phong",
+    "description": "Tiêu diệt 10 con Spider",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:spider",
+    "requiredAmount": 10,
+    "rewardPoints": 1,
+    "allowedClasses": [
+      "tier2_vanguard"
+    ]
+  },
+  {
+    "id": "vanguard_kcavespider_10",
+    "name": "Diệt Nhện Hang Tiên Phong",
+    "description": "Tiêu diệt 10 con Cave Spider",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:cave_spider",
+    "requiredAmount": 10,
+    "rewardPoints": 1,
+    "allowedClasses": [
+      "tier2_vanguard"
+    ]
+  },
+  {
     "id": "vanguard_submit_swords_5",
     "name": "Nộp Kiếm Tiên Phong",
     "description": "Nộp 5x Kiếm Sắt",
@@ -163,6 +271,66 @@
     "item": "minecraft:bone",
     "requiredAmount": 30,
     "rewardPoints": 1,
+    "allowedClasses": [
+      "tier2_vanguard"
+    ]
+  },
+  {
+    "id": "vanguard_kblaze_15",
+    "name": "Truy Quét Quỷ Lửa Tiên Phong",
+    "description": "Tiêu diệt 15 con Blaze",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:blaze",
+    "requiredAmount": 15,
+    "rewardPoints": 2,
+    "allowedClasses": [
+      "tier2_vanguard"
+    ]
+  },
+  {
+    "id": "vanguard_khusk_50",
+    "name": "Truy Quét Zombie Sa Mạc",
+    "description": "Tiêu diệt 50 con Husk",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:husk",
+    "requiredAmount": 50,
+    "rewardPoints": 2,
+    "allowedClasses": [
+      "tier2_vanguard"
+    ]
+  },
+  {
+    "id": "vanguard_kstray_50",
+    "name": "Truy Quét Xương Tuyết",
+    "description": "Tiêu diệt 50 con Stray",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:stray",
+    "requiredAmount": 50,
+    "rewardPoints": 2,
+    "allowedClasses": [
+      "tier2_vanguard"
+    ]
+  },
+  {
+    "id": "vanguard_kspider_15",
+    "name": "Truy Quét Nhện Tiên Phong",
+    "description": "Tiêu diệt 15 con Spider",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:spider",
+    "requiredAmount": 15,
+    "rewardPoints": 2,
+    "allowedClasses": [
+      "tier2_vanguard"
+    ]
+  },
+  {
+    "id": "vanguard_kcavespider_15",
+    "name": "Truy Quét Nhện Hang",
+    "description": "Tiêu diệt 15 con Cave Spider",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:cave_spider",
+    "requiredAmount": 15,
+    "rewardPoints": 2,
     "allowedClasses": [
       "tier2_vanguard"
     ]
@@ -396,6 +564,306 @@
     ]
   },
   {
+    "id": "wind_kzombie_15",
+    "name": "Sát Nhân Cuồng Phong I",
+    "description": "Tiêu diệt 15 con Zombie",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:zombie",
+    "requiredAmount": 15,
+    "rewardPoints": 1,
+    "allowedClasses": [
+      "tier2_wind_assassin"
+    ]
+  },
+  {
+    "id": "wind_kpiglin_15",
+    "name": "Diệt Lợn Thây Ma Cuồng Phong",
+    "description": "Tiêu diệt 15 con Zombified Piglin",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:zombified_piglin",
+    "requiredAmount": 15,
+    "rewardPoints": 1,
+    "allowedClasses": [
+      "tier2_wind_assassin"
+    ]
+  },
+  {
+    "id": "wind_kskeleton_15",
+    "name": "Diệt Binh Xương Cuồng Phong",
+    "description": "Tiêu diệt 15 con Skeleton",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:skeleton",
+    "requiredAmount": 15,
+    "rewardPoints": 1,
+    "allowedClasses": [
+      "tier2_wind_assassin"
+    ]
+  },
+  {
+    "id": "wind_kwither_skel_15",
+    "name": "Trảm Xương Đen Cuồng Phong",
+    "description": "Tiêu diệt 15 con Wither Skeleton",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:wither_skeleton",
+    "requiredAmount": 15,
+    "rewardPoints": 1,
+    "allowedClasses": [
+      "tier2_wind_assassin"
+    ]
+  },
+  {
+    "id": "wind_kblaze_5",
+    "name": "Diệt Quỷ Lửa Cuồng Phong",
+    "description": "Tiêu diệt 5 con Blaze",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:blaze",
+    "requiredAmount": 5,
+    "rewardPoints": 1,
+    "allowedClasses": [
+      "tier2_wind_assassin"
+    ]
+  },
+  {
+    "id": "wind_khusk_15",
+    "name": "Diệt Zombie Sa Mạc Cuồng Phong",
+    "description": "Tiêu diệt 15 con Husk",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:husk",
+    "requiredAmount": 15,
+    "rewardPoints": 1,
+    "allowedClasses": [
+      "tier2_wind_assassin"
+    ]
+  },
+  {
+    "id": "wind_kstray_15",
+    "name": "Diệt Xương Tuyết Cuồng Phong",
+    "description": "Tiêu diệt 15 con Stray",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:stray",
+    "requiredAmount": 15,
+    "rewardPoints": 1,
+    "allowedClasses": [
+      "tier2_wind_assassin"
+    ]
+  },
+  {
+    "id": "wind_kspider_15",
+    "name": "Diệt Nhện Cuồng Phong",
+    "description": "Tiêu diệt 15 con Spider",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:spider",
+    "requiredAmount": 15,
+    "rewardPoints": 1,
+    "allowedClasses": [
+      "tier2_wind_assassin"
+    ]
+  },
+  {
+    "id": "wind_kcavespider_15",
+    "name": "Diệt Nhện Hang Cuồng Phong",
+    "description": "Tiêu diệt 15 con Cave Spider",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:cave_spider",
+    "requiredAmount": 15,
+    "rewardPoints": 1,
+    "allowedClasses": [
+      "tier2_wind_assassin"
+    ]
+  },
+  {
+    "id": "wind_kpiglin_brute_5",
+    "name": "Diệt Piglin Brute Cuồng Phong I",
+    "description": "Tiêu diệt 5 con Piglin Brute",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:piglin_brute",
+    "requiredAmount": 5,
+    "rewardPoints": 1,
+    "allowedClasses": [
+      "tier2_wind_assassin"
+    ]
+  },
+  {
+    "id": "wind_khoglin_1",
+    "name": "Săn Hoglin Cuồng Phong I",
+    "description": "Tiêu diệt 1 con Hoglin",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:hoglin",
+    "requiredAmount": 1,
+    "rewardPoints": 1,
+    "allowedClasses": [
+      "tier2_wind_assassin"
+    ]
+  },
+  {
+    "id": "wind_kwitch_3",
+    "name": "Diệt Phù Thủy Cuồng Phong",
+    "description": "Tiêu diệt 3 con Witch",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:witch",
+    "requiredAmount": 3,
+    "rewardPoints": 1,
+    "allowedClasses": [
+      "tier2_wind_assassin"
+    ]
+  },
+  {
+    "id": "wind_kenderman_2",
+    "name": "Trảm Enderman Cuồng Phong I",
+    "description": "Tiêu diệt 2 con Enderman",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:enderman",
+    "requiredAmount": 2,
+    "rewardPoints": 1,
+    "allowedClasses": [
+      "tier2_wind_assassin"
+    ]
+  },
+  {
+    "id": "wind_kzombie_25",
+    "name": "Cuồng Phong Cuồng Bạo Zombie",
+    "description": "Tiêu diệt 25 con Zombie",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:zombie",
+    "requiredAmount": 25,
+    "rewardPoints": 2,
+    "allowedClasses": [
+      "tier2_wind_assassin"
+    ]
+  },
+  {
+    "id": "wind_kpiglin_25",
+    "name": "Cuồng Phong Lợn Thây Ma",
+    "description": "Tiêu diệt 25 con Zombified Piglin",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:zombified_piglin",
+    "requiredAmount": 25,
+    "rewardPoints": 2,
+    "allowedClasses": [
+      "tier2_wind_assassin"
+    ]
+  },
+  {
+    "id": "wind_kskeleton_25",
+    "name": "Cuồng Phong Binh Xương",
+    "description": "Tiêu diệt 25 con Skeleton",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:skeleton",
+    "requiredAmount": 25,
+    "rewardPoints": 2,
+    "allowedClasses": [
+      "tier2_wind_assassin"
+    ]
+  },
+  {
+    "id": "wind_kwither_skel_25",
+    "name": "Cuồng Phong Xương Đen",
+    "description": "Tiêu diệt 25 con Wither Skeleton",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:wither_skeleton",
+    "requiredAmount": 25,
+    "rewardPoints": 2,
+    "allowedClasses": [
+      "tier2_wind_assassin"
+    ]
+  },
+  {
+    "id": "wind_kblaze_8",
+    "name": "Cuồng Phong Quỷ Lửa",
+    "description": "Tiêu diệt 8 con Blaze",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:blaze",
+    "requiredAmount": 8,
+    "rewardPoints": 2,
+    "allowedClasses": [
+      "tier2_wind_assassin"
+    ]
+  },
+  {
+    "id": "wind_khusk_25",
+    "name": "Cuồng Phong Sa Mạc",
+    "description": "Tiêu diệt 25 con Husk",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:husk",
+    "requiredAmount": 25,
+    "rewardPoints": 2,
+    "allowedClasses": [
+      "tier2_wind_assassin"
+    ]
+  },
+  {
+    "id": "wind_kstray_25",
+    "name": "Cuồng Phong Tuyết Lạnh",
+    "description": "Tiêu diệt 25 con Stray",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:stray",
+    "requiredAmount": 25,
+    "rewardPoints": 2,
+    "allowedClasses": [
+      "tier2_wind_assassin"
+    ]
+  },
+  {
+    "id": "wind_kspider_25",
+    "name": "Cuồng Phong Nhện Bão",
+    "description": "Tiêu diệt 25 con Spider",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:spider",
+    "requiredAmount": 25,
+    "rewardPoints": 2,
+    "allowedClasses": [
+      "tier2_wind_assassin"
+    ]
+  },
+  {
+    "id": "wind_kcavespider_25",
+    "name": "Cuồng Phong Nhện Hang",
+    "description": "Tiêu diệt 25 con Cave Spider",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:cave_spider",
+    "requiredAmount": 25,
+    "rewardPoints": 2,
+    "allowedClasses": [
+      "tier2_wind_assassin"
+    ]
+  },
+  {
+    "id": "wind_kpiglin_brute_12",
+    "name": "Diệt Piglin Brute Cuồng Phong II",
+    "description": "Tiêu diệt 12 con Piglin Brute",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:piglin_brute",
+    "requiredAmount": 12,
+    "rewardPoints": 2,
+    "allowedClasses": [
+      "tier2_wind_assassin"
+    ]
+  },
+  {
+    "id": "wind_khoglin_3",
+    "name": "Săn Hoglin Cuồng Phong II",
+    "description": "Tiêu diệt 3 con Hoglin",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:hoglin",
+    "requiredAmount": 3,
+    "rewardPoints": 2,
+    "allowedClasses": [
+      "tier2_wind_assassin"
+    ]
+  },
+  {
+    "id": "wind_kenderman_5",
+    "name": "Trảm Enderman Cuồng Phong II",
+    "description": "Tiêu diệt 5 con Enderman",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:enderman",
+    "requiredAmount": 5,
+    "rewardPoints": 2,
+    "allowedClasses": [
+      "tier2_wind_assassin"
+    ]
+  },
+  {
     "id": "phantom_submit_wskel_skull_3",
     "name": "Thu Gom Đầu Xương Trắng I",
     "description": "Nộp 10x Đầu Xương Trắng",
@@ -456,6 +924,18 @@
     ]
   },
   {
+    "id": "phantom_kcreeper_3",
+    "name": "Bóng Ma Diệt Creeper I",
+    "description": "Tiêu diệt 3 con Creeper",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:creeper",
+    "requiredAmount": 3,
+    "rewardPoints": 1,
+    "allowedClasses": [
+      "tier2_phantom_striker"
+    ]
+  },
+  {
     "id": "phantom_submit_flesh_65",
     "name": "Tế Phẩm Thịt Thối II",
     "description": "Nộp 65x Thịt Thối Zombie",
@@ -489,6 +969,54 @@
     "rewardPoints": 2,
     "allowedClasses": [
       "tier2_phantom_striker"
+    ]
+  },
+  {
+    "id": "phantom_kcreeper_8",
+    "name": "Bóng Ma Diệt Creeper II",
+    "description": "Tiêu diệt 8 con Creeper",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:creeper",
+    "requiredAmount": 8,
+    "rewardPoints": 2,
+    "allowedClasses": [
+      "tier2_phantom_striker"
+    ]
+  },
+  {
+    "id": "destruction_kzombie_10",
+    "name": "Hủy Diệt Thây Ma I",
+    "description": "Tiêu diệt 10 con Zombie",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:zombie",
+    "requiredAmount": 10,
+    "rewardPoints": 1,
+    "allowedClasses": [
+      "tier2_destruction"
+    ]
+  },
+  {
+    "id": "destruction_kwither_skel_15",
+    "name": "Hủy Diệt Xương Đen I",
+    "description": "Tiêu diệt 15 con Wither Skeleton",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:wither_skeleton",
+    "requiredAmount": 15,
+    "rewardPoints": 1,
+    "allowedClasses": [
+      "tier2_destruction"
+    ]
+  },
+  {
+    "id": "destruction_kwitch_3",
+    "name": "Hủy Diệt Phù Thủy I",
+    "description": "Tiêu diệt 3 con Witch",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:witch",
+    "requiredAmount": 3,
+    "rewardPoints": 1,
+    "allowedClasses": [
+      "tier2_destruction"
     ]
   },
   {
@@ -527,6 +1055,42 @@
     ]
   },
   {
+    "id": "destruction_kzombie_15",
+    "name": "Hủy Diệt Thây Ma II",
+    "description": "Tiêu diệt 15 con Zombie",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:zombie",
+    "requiredAmount": 15,
+    "rewardPoints": 2,
+    "allowedClasses": [
+      "tier2_destruction"
+    ]
+  },
+  {
+    "id": "destruction_kwither_skel_25",
+    "name": "Hủy Diệt Xương Đen II",
+    "description": "Tiêu diệt 25 con Wither Skeleton",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:wither_skeleton",
+    "requiredAmount": 25,
+    "rewardPoints": 2,
+    "allowedClasses": [
+      "tier2_destruction"
+    ]
+  },
+  {
+    "id": "destruction_kwitch_5",
+    "name": "Hủy Diệt Phù Thủy II",
+    "description": "Tiêu diệt 5 con Witch",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:witch",
+    "requiredAmount": 5,
+    "rewardPoints": 2,
+    "allowedClasses": [
+      "tier2_destruction"
+    ]
+  },
+  {
     "id": "destruction_submit_flesh_25",
     "name": "Kho Thịt Thối Hủy Diệt",
     "description": "Nộp 25x Thịt Thối Zombie",
@@ -560,6 +1124,90 @@
     "rewardPoints": 5,
     "allowedClasses": [
       "tier2_destruction"
+    ]
+  },
+  {
+    "id": "magic_kzombie_20",
+    "name": "Săn Quái Undead Ma Thuật",
+    "description": "Tiêu diệt 20 con Zombie",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:zombie",
+    "requiredAmount": 20,
+    "rewardPoints": 1,
+    "allowedClasses": [
+      "tier2_magic_assassin"
+    ]
+  },
+  {
+    "id": "magic_kskeleton_20",
+    "name": "Ma Thuật Diệt Binh Xương",
+    "description": "Tiêu diệt 20 con Skeleton",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:skeleton",
+    "requiredAmount": 20,
+    "rewardPoints": 1,
+    "allowedClasses": [
+      "tier2_magic_assassin"
+    ]
+  },
+  {
+    "id": "magic_kwither_skel_15",
+    "name": "Ma Thuật Trảm Xương Đen",
+    "description": "Tiêu diệt 15 con Wither Skeleton",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:wither_skeleton",
+    "requiredAmount": 15,
+    "rewardPoints": 1,
+    "allowedClasses": [
+      "tier2_magic_assassin"
+    ]
+  },
+  {
+    "id": "magic_khusk_20",
+    "name": "Ma Thuật Diệt Zombie Sa Mạc",
+    "description": "Tiêu diệt 20 con Husk",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:husk",
+    "requiredAmount": 20,
+    "rewardPoints": 1,
+    "allowedClasses": [
+      "tier2_magic_assassin"
+    ]
+  },
+  {
+    "id": "magic_kstray_20",
+    "name": "Ma Thuật Diệt Xương Tuyết",
+    "description": "Tiêu diệt 20 con Stray",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:stray",
+    "requiredAmount": 20,
+    "rewardPoints": 1,
+    "allowedClasses": [
+      "tier2_magic_assassin"
+    ]
+  },
+  {
+    "id": "magic_kpiglin_20",
+    "name": "Ma Thuật Diệt Lợn Thây Ma",
+    "description": "Tiêu diệt 20 con Zombified Piglin",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:zombified_piglin",
+    "requiredAmount": 20,
+    "rewardPoints": 1,
+    "allowedClasses": [
+      "tier2_magic_assassin"
+    ]
+  },
+  {
+    "id": "magic_kenderman_5",
+    "name": "Săn Enderman Ma Thuật I",
+    "description": "Tiêu diệt 5 con Enderman",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:enderman",
+    "requiredAmount": 5,
+    "rewardPoints": 1,
+    "allowedClasses": [
+      "tier2_magic_assassin"
     ]
   },
   {
@@ -630,6 +1278,90 @@
     "item": "minecraft:ender_pearl",
     "requiredAmount": 6,
     "rewardPoints": 1,
+    "allowedClasses": [
+      "tier2_magic_assassin"
+    ]
+  },
+  {
+    "id": "magic_kzombie_45",
+    "name": "Ma Thuật Diệt Cửu Zombie",
+    "description": "Tiêu diệt 45 con Zombie",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:zombie",
+    "requiredAmount": 45,
+    "rewardPoints": 2,
+    "allowedClasses": [
+      "tier2_magic_assassin"
+    ]
+  },
+  {
+    "id": "magic_kskeleton_45",
+    "name": "Ma Thuật Diệt Binh Xương Thể",
+    "description": "Tiêu diệt 45 con Skeleton",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:skeleton",
+    "requiredAmount": 45,
+    "rewardPoints": 2,
+    "allowedClasses": [
+      "tier2_magic_assassin"
+    ]
+  },
+  {
+    "id": "magic_kwither_skel_30",
+    "name": "Ma Thuật Bão Xương Đen",
+    "description": "Tiêu diệt 30 con Wither Skeleton",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:wither_skeleton",
+    "requiredAmount": 30,
+    "rewardPoints": 2,
+    "allowedClasses": [
+      "tier2_magic_assassin"
+    ]
+  },
+  {
+    "id": "magic_khusk_45",
+    "name": "Ma Thuật Cuồng Nhiệt Sa Mạc",
+    "description": "Tiêu diệt 45 con Husk",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:husk",
+    "requiredAmount": 45,
+    "rewardPoints": 2,
+    "allowedClasses": [
+      "tier2_magic_assassin"
+    ]
+  },
+  {
+    "id": "magic_kstray_45",
+    "name": "Ma Thuật Bão Tuyết Stray",
+    "description": "Tiêu diệt 45 con Stray",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:stray",
+    "requiredAmount": 45,
+    "rewardPoints": 2,
+    "allowedClasses": [
+      "tier2_magic_assassin"
+    ]
+  },
+  {
+    "id": "magic_kpiglin_45",
+    "name": "Ma Thuật Quần Thể Lợn Thây Ma",
+    "description": "Tiêu diệt 45 con Zombified Piglin",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:zombified_piglin",
+    "requiredAmount": 45,
+    "rewardPoints": 2,
+    "allowedClasses": [
+      "tier2_magic_assassin"
+    ]
+  },
+  {
+    "id": "magic_kenderman_12",
+    "name": "Săn Enderman Ma Thuật II",
+    "description": "Tiêu diệt 12 con Enderman",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:enderman",
+    "requiredAmount": 12,
+    "rewardPoints": 2,
     "allowedClasses": [
       "tier2_magic_assassin"
     ]
@@ -718,6 +1450,78 @@
     ]
   },
   {
+    "id": "marksman_kzombie_25",
+    "name": "Thợ Săn Zombie Bão Tiễn",
+    "description": "Tiêu diệt 25 con Zombie",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:zombie",
+    "requiredAmount": 25,
+    "rewardPoints": 1,
+    "allowedClasses": [
+      "tier2_marksman"
+    ]
+  },
+  {
+    "id": "marksman_kskeleton_25",
+    "name": "Thợ Săn Binh Xương Bão Tiễn",
+    "description": "Tiêu diệt 25 con Skeleton",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:skeleton",
+    "requiredAmount": 25,
+    "rewardPoints": 1,
+    "allowedClasses": [
+      "tier2_marksman"
+    ]
+  },
+  {
+    "id": "marksman_kwither_skel_15",
+    "name": "Xạ Thủ Diệt Xương Đen",
+    "description": "Tiêu diệt 15 con Wither Skeleton",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:wither_skeleton",
+    "requiredAmount": 15,
+    "rewardPoints": 1,
+    "allowedClasses": [
+      "tier2_marksman"
+    ]
+  },
+  {
+    "id": "marksman_khusk_25",
+    "name": "Thợ Săn Zombie Sa Mạc",
+    "description": "Tiêu diệt 25 con Husk",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:husk",
+    "requiredAmount": 25,
+    "rewardPoints": 1,
+    "allowedClasses": [
+      "tier2_marksman"
+    ]
+  },
+  {
+    "id": "marksman_kstray_25",
+    "name": "Thợ Săn Xương Tuyết",
+    "description": "Tiêu diệt 25 con Stray",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:stray",
+    "requiredAmount": 25,
+    "rewardPoints": 1,
+    "allowedClasses": [
+      "tier2_marksman"
+    ]
+  },
+  {
+    "id": "marksman_kpiglin_25",
+    "name": "Xạ Thủ Bắn Lợn Thây Ma",
+    "description": "Tiêu diệt 25 con Zombified Piglin",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:zombified_piglin",
+    "requiredAmount": 25,
+    "rewardPoints": 1,
+    "allowedClasses": [
+      "tier2_marksman"
+    ]
+  },
+  {
     "id": "marksman_flint_100",
     "name": "Thu Gom Đá Lửa Xạ Thủ I",
     "description": "Nộp 100x Đá Lửa",
@@ -749,6 +1553,78 @@
     "item": "minecraft:gold_ingot",
     "requiredAmount": 8,
     "rewardPoints": 1,
+    "allowedClasses": [
+      "tier2_marksman"
+    ]
+  },
+  {
+    "id": "marksman_kzombie_50",
+    "name": "Bão Tiễn Diệt Zombie",
+    "description": "Tiêu diệt 50 con Zombie",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:zombie",
+    "requiredAmount": 50,
+    "rewardPoints": 2,
+    "allowedClasses": [
+      "tier2_marksman"
+    ]
+  },
+  {
+    "id": "marksman_kskeleton_50",
+    "name": "Bão Tiễn Diệt Binh Xương",
+    "description": "Tiêu diệt 50 con Skeleton",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:skeleton",
+    "requiredAmount": 50,
+    "rewardPoints": 2,
+    "allowedClasses": [
+      "tier2_marksman"
+    ]
+  },
+  {
+    "id": "marksman_kwither_skel_30",
+    "name": "Bão Tiễn Diệt Xương Đen",
+    "description": "Tiêu diệt 30 con Wither Skeleton",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:wither_skeleton",
+    "requiredAmount": 30,
+    "rewardPoints": 2,
+    "allowedClasses": [
+      "tier2_marksman"
+    ]
+  },
+  {
+    "id": "marksman_khusk_50",
+    "name": "Bão Tiễn Quét Sa Mạc",
+    "description": "Tiêu diệt 50 con Husk",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:husk",
+    "requiredAmount": 50,
+    "rewardPoints": 2,
+    "allowedClasses": [
+      "tier2_marksman"
+    ]
+  },
+  {
+    "id": "marksman_kstray_50",
+    "name": "Bão Tiễn Quét Xương Tuyết",
+    "description": "Tiêu diệt 50 con Stray",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:stray",
+    "requiredAmount": 50,
+    "rewardPoints": 2,
+    "allowedClasses": [
+      "tier2_marksman"
+    ]
+  },
+  {
+    "id": "marksman_kpiglin_50",
+    "name": "Bão Tiễn Diệt Lợn Thây Ma",
+    "description": "Tiêu diệt 50 con Zombified Piglin",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:zombified_piglin",
+    "requiredAmount": 50,
+    "rewardPoints": 2,
     "allowedClasses": [
       "tier2_marksman"
     ]
@@ -807,6 +1683,90 @@
     "description": "Nộp 100 Điểm Kinh Nghiệm Vanilla XP",
     "type": "SUBMIT_XP",
     "requiredAmount": 100,
+    "rewardPoints": 1,
+    "allowedClasses": [
+      "tier2_elemental_archer"
+    ]
+  },
+  {
+    "id": "elemental_kzombie_20",
+    "name": "Tên Nguyên Tố Diệt Zombie",
+    "description": "Tiêu diệt 20 con Zombie",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:zombie",
+    "requiredAmount": 20,
+    "rewardPoints": 1,
+    "allowedClasses": [
+      "tier2_elemental_archer"
+    ]
+  },
+  {
+    "id": "elemental_kskeleton_20",
+    "name": "Tên Nguyên Tố Diệt Binh Xương",
+    "description": "Tiêu diệt 20 con Skeleton",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:skeleton",
+    "requiredAmount": 20,
+    "rewardPoints": 1,
+    "allowedClasses": [
+      "tier2_elemental_archer"
+    ]
+  },
+  {
+    "id": "elemental_kwither_skel_15",
+    "name": "Tên Nguyên Tố Diệt Xương Đen",
+    "description": "Tiêu diệt 15 con Wither Skeleton",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:wither_skeleton",
+    "requiredAmount": 15,
+    "rewardPoints": 1,
+    "allowedClasses": [
+      "tier2_elemental_archer"
+    ]
+  },
+  {
+    "id": "elemental_khusk_20",
+    "name": "Tên Nguyên Tố Diệt Sa Mạc",
+    "description": "Tiêu diệt 20 con Husk",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:husk",
+    "requiredAmount": 20,
+    "rewardPoints": 1,
+    "allowedClasses": [
+      "tier2_elemental_archer"
+    ]
+  },
+  {
+    "id": "elemental_kstray_20",
+    "name": "Tên Nguyên Tố Diệt Xương Tuyết",
+    "description": "Tiêu diệt 20 con Stray",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:stray",
+    "requiredAmount": 20,
+    "rewardPoints": 1,
+    "allowedClasses": [
+      "tier2_elemental_archer"
+    ]
+  },
+  {
+    "id": "elemental_kpiglin_20",
+    "name": "Tên Nguyên Tố Diệt Lợn Thây Ma",
+    "description": "Tiêu diệt 20 con Zombified Piglin",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:zombified_piglin",
+    "requiredAmount": 20,
+    "rewardPoints": 1,
+    "allowedClasses": [
+      "tier2_elemental_archer"
+    ]
+  },
+  {
+    "id": "elemental_kenderman_5",
+    "name": "Săn Enderman Nguyên Tố I",
+    "description": "Tiêu diệt 5 con Enderman",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:enderman",
+    "requiredAmount": 5,
     "rewardPoints": 1,
     "allowedClasses": [
       "tier2_elemental_archer"
@@ -880,6 +1840,90 @@
     "item": "minecraft:ender_pearl",
     "requiredAmount": 6,
     "rewardPoints": 1,
+    "allowedClasses": [
+      "tier2_elemental_archer"
+    ]
+  },
+  {
+    "id": "elemental_kzombie_45",
+    "name": "Bão Tên Nguyên Tố Zombie",
+    "description": "Tiêu diệt 45 con Zombie",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:zombie",
+    "requiredAmount": 45,
+    "rewardPoints": 2,
+    "allowedClasses": [
+      "tier2_elemental_archer"
+    ]
+  },
+  {
+    "id": "elemental_kskeleton_45",
+    "name": "Bão Tên Nguyên Tố Binh Xương",
+    "description": "Tiêu diệt 45 con Skeleton",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:skeleton",
+    "requiredAmount": 45,
+    "rewardPoints": 2,
+    "allowedClasses": [
+      "tier2_elemental_archer"
+    ]
+  },
+  {
+    "id": "elemental_kwither_skel_30",
+    "name": "Bão Tên Nguyên Tố Xương Đen",
+    "description": "Tiêu diệt 30 con Wither Skeleton",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:wither_skeleton",
+    "requiredAmount": 30,
+    "rewardPoints": 2,
+    "allowedClasses": [
+      "tier2_elemental_archer"
+    ]
+  },
+  {
+    "id": "elemental_khusk_45",
+    "name": "Bão Tên Nguyên Tố Sa Mạc",
+    "description": "Tiêu diệt 45 con Husk",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:husk",
+    "requiredAmount": 45,
+    "rewardPoints": 2,
+    "allowedClasses": [
+      "tier2_elemental_archer"
+    ]
+  },
+  {
+    "id": "elemental_kstray_45",
+    "name": "Bão Tên Nguyên Tố Tuyết Lạnh",
+    "description": "Tiêu diệt 45 con Stray",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:stray",
+    "requiredAmount": 45,
+    "rewardPoints": 2,
+    "allowedClasses": [
+      "tier2_elemental_archer"
+    ]
+  },
+  {
+    "id": "elemental_kpiglin_45",
+    "name": "Bão Tên Nguyên Tố Lợn Thây Ma",
+    "description": "Tiêu diệt 45 con Zombified Piglin",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:zombified_piglin",
+    "requiredAmount": 45,
+    "rewardPoints": 2,
+    "allowedClasses": [
+      "tier2_elemental_archer"
+    ]
+  },
+  {
+    "id": "elemental_kenderman_12",
+    "name": "Săn Enderman Nguyên Tố II",
+    "description": "Tiêu diệt 12 con Enderman",
+    "type": "KILL_MOB",
+    "targetMob": "minecraft:enderman",
+    "requiredAmount": 12,
+    "rewardPoints": 2,
     "allowedClasses": [
       "tier2_elemental_archer"
     ]
