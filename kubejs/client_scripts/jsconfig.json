@@ -6,15 +6,18 @@
             "ES5",
             "ES2015"
         ],
-        "rootDir": "./",
-        "baseUrl": "../.probe/client/probe-types",
+        "rootDir": "./src",
+        "baseUrl": "../../.probe/client/probe-types",
         "typeRoots": [
-            "../.probe/client/probe-types"
+            "../.probe/client/probe-types",
+            "../../.probe/client/probe-types"
         ],
         "skipLibCheck": true
     },
     "include": [
-        "**/*"
+        "**/*",
+        "./src/**/*",
+        null
     ],
     "exclude": [
         "node_modules"
