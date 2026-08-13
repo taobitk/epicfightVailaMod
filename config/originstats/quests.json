@@ -1120,7 +1120,7 @@
     "description": "Nộp 15x Đầu Xương Trắng",
     "type": "SUBMIT_ITEM",
     "item": "minecraft:skeleton_skull",
-    "requiredAmount": 15,
+    "requiredAmount": 50,
     "rewardPoints": 5,
     "allowedClasses": [
       "tier2_destruction"
