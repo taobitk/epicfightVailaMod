@@ -20,6 +20,6 @@
 	weightPenalty = 100
 	epicDrop = false
 	#Range: > 0
-	skillReplaceCooldown = 6000
+	skillReplaceCooldown = 0
 	allow_vanilla_melee = true
 
