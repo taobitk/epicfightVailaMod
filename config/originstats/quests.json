@@ -390,7 +390,7 @@
     "type": "SUBMIT_ITEM",
     "item": "minecraft:gold_ingot",
     "requiredAmount": 3,
-    "rewardPoints": 1,
+    "rewardPoints": 2,
     "allowedClasses": [
       "tier2_indestructible"
     ]
@@ -498,7 +498,7 @@
     "type": "SUBMIT_ITEM",
     "item": "minecraft:gold_ingot",
     "requiredAmount": 7,
-    "rewardPoints": 2,
+    "rewardPoints": 3,
     "allowedClasses": [
       "tier2_indestructible"
     ]
@@ -917,7 +917,7 @@
     "description": "Nộp 10x Thỏi Sắt",
     "type": "SUBMIT_ITEM",
     "item": "minecraft:iron_ingot",
-    "requiredAmount": 10,
+    "requiredAmount": 5,
     "rewardPoints": 1,
     "allowedClasses": [
       "tier2_phantom_striker"
@@ -965,7 +965,7 @@
     "description": "Nộp 25x Thỏi Sắt",
     "type": "SUBMIT_ITEM",
     "item": "minecraft:iron_ingot",
-    "requiredAmount": 25,
+    "requiredAmount": 12,
     "rewardPoints": 2,
     "allowedClasses": [
       "tier2_phantom_striker"
@@ -1216,7 +1216,7 @@
     "description": "Nộp 15x Thỏi Sắt",
     "type": "SUBMIT_ITEM",
     "item": "minecraft:iron_ingot",
-    "requiredAmount": 15,
+    "requiredAmount": 5,
     "rewardPoints": 1,
     "allowedClasses": [
       "tier2_magic_assassin"
@@ -1229,7 +1229,7 @@
     "type": "SUBMIT_ITEM",
     "item": "minecraft:gold_ingot",
     "requiredAmount": 8,
-    "rewardPoints": 1,
+    "rewardPoints": 2,
     "allowedClasses": [
       "tier2_magic_assassin"
     ]
@@ -1241,7 +1241,7 @@
     "type": "SUBMIT_ITEM",
     "item": "minecraft:diamond",
     "requiredAmount": 2,
-    "rewardPoints": 1,
+    "rewardPoints": 2,
     "allowedClasses": [
       "tier2_magic_assassin"
     ]
@@ -1372,7 +1372,7 @@
     "description": "Nộp 35x Thỏi Sắt",
     "type": "SUBMIT_ITEM",
     "item": "minecraft:iron_ingot",
-    "requiredAmount": 35,
+    "requiredAmount": 12,
     "rewardPoints": 2,
     "allowedClasses": [
       "tier2_magic_assassin"
@@ -1385,7 +1385,7 @@
     "type": "SUBMIT_ITEM",
     "item": "minecraft:gold_ingot",
     "requiredAmount": 18,
-    "rewardPoints": 2,
+    "rewardPoints": 3,
     "allowedClasses": [
       "tier2_magic_assassin"
     ]
@@ -1397,7 +1397,7 @@
     "type": "SUBMIT_ITEM",
     "item": "minecraft:diamond",
     "requiredAmount": 5,
-    "rewardPoints": 2,
+    "rewardPoints": 5,
     "allowedClasses": [
       "tier2_magic_assassin"
     ]
@@ -1539,19 +1539,7 @@
     "description": "Nộp 15x Thỏi Sắt",
     "type": "SUBMIT_ITEM",
     "item": "minecraft:iron_ingot",
-    "requiredAmount": 15,
-    "rewardPoints": 1,
-    "allowedClasses": [
-      "tier2_marksman"
-    ]
-  },
-  {
-    "id": "marksman_gold_8",
-    "name": "Thu Gom Vàng Xạ Thủ I",
-    "description": "Nộp 8x Thỏi Vàng",
-    "type": "SUBMIT_ITEM",
-    "item": "minecraft:gold_ingot",
-    "requiredAmount": 8,
+    "requiredAmount": 3,
     "rewardPoints": 1,
     "allowedClasses": [
       "tier2_marksman"
@@ -1659,19 +1647,7 @@
     "description": "Nộp 35x Thỏi Sắt",
     "type": "SUBMIT_ITEM",
     "item": "minecraft:iron_ingot",
-    "requiredAmount": 35,
-    "rewardPoints": 2,
-    "allowedClasses": [
-      "tier2_marksman"
-    ]
-  },
-  {
-    "id": "marksman_gold_18",
-    "name": "Thu Gom Vàng Xạ Thủ II",
-    "description": "Nộp 18x Thỏi Vàng",
-    "type": "SUBMIT_ITEM",
-    "item": "minecraft:gold_ingot",
-    "requiredAmount": 18,
+    "requiredAmount": 10,
     "rewardPoints": 2,
     "allowedClasses": [
       "tier2_marksman"
@@ -1778,7 +1754,7 @@
     "description": "Nộp 15x Thỏi Sắt",
     "type": "SUBMIT_ITEM",
     "item": "minecraft:iron_ingot",
-    "requiredAmount": 15,
+    "requiredAmount": 5,
     "rewardPoints": 1,
     "allowedClasses": [
       "tier2_elemental_archer"
@@ -1790,8 +1766,8 @@
     "description": "Nộp 8x Thỏi Vàng",
     "type": "SUBMIT_ITEM",
     "item": "minecraft:gold_ingot",
-    "requiredAmount": 8,
-    "rewardPoints": 1,
+    "requiredAmount": 3,
+    "rewardPoints": 2,
     "allowedClasses": [
       "tier2_elemental_archer"
     ]
@@ -1803,7 +1779,7 @@
     "type": "SUBMIT_ITEM",
     "item": "minecraft:diamond",
     "requiredAmount": 2,
-    "rewardPoints": 1,
+    "rewardPoints": 2,
     "allowedClasses": [
       "tier2_elemental_archer"
     ]
@@ -1934,7 +1910,7 @@
     "description": "Nộp 35x Thỏi Sắt",
     "type": "SUBMIT_ITEM",
     "item": "minecraft:iron_ingot",
-    "requiredAmount": 35,
+    "requiredAmount": 10,
     "rewardPoints": 2,
     "allowedClasses": [
       "tier2_elemental_archer"
@@ -1946,8 +1922,8 @@
     "description": "Nộp 18x Thỏi Vàng",
     "type": "SUBMIT_ITEM",
     "item": "minecraft:gold_ingot",
-    "requiredAmount": 18,
-    "rewardPoints": 2,
+    "requiredAmount": 5,
+    "rewardPoints": 3,
     "allowedClasses": [
       "tier2_elemental_archer"
     ]
@@ -1959,7 +1935,7 @@
     "type": "SUBMIT_ITEM",
     "item": "minecraft:diamond",
     "requiredAmount": 5,
-    "rewardPoints": 2,
+    "rewardPoints": 5,
     "allowedClasses": [
       "tier2_elemental_archer"
     ]
@@ -2173,7 +2149,7 @@
     "description": "Nộp 5x Thỏi Sắt",
     "type": "SUBMIT_ITEM",
     "item": "minecraft:iron_ingot",
-    "requiredAmount": 5,
+    "requiredAmount": 10,
     "rewardPoints": 2,
     "allowedClasses": [
       "tier2_high_lord"
@@ -2185,7 +2161,7 @@
     "description": "Nộp 10x Thỏi Sắt",
     "type": "SUBMIT_ITEM",
     "item": "minecraft:iron_ingot",
-    "requiredAmount": 10,
+    "requiredAmount": 20,
     "rewardPoints": 3,
     "allowedClasses": [
       "tier2_high_lord"
@@ -2197,7 +2173,7 @@
     "description": "Nộp 5x Thỏi Vàng",
     "type": "SUBMIT_ITEM",
     "item": "minecraft:gold_ingot",
-    "requiredAmount": 5,
+    "requiredAmount": 10,
     "rewardPoints": 3,
     "allowedClasses": [
       "tier2_high_lord"
@@ -2209,7 +2185,7 @@
     "description": "Nộp 10x Thỏi Vàng",
     "type": "SUBMIT_ITEM",
     "item": "minecraft:gold_ingot",
-    "requiredAmount": 10,
+    "requiredAmount": 15,
     "rewardPoints": 4,
     "allowedClasses": [
       "tier2_high_lord"
@@ -2222,7 +2198,7 @@
     "type": "SUBMIT_ITEM",
     "item": "minecraft:diamond",
     "requiredAmount": 1,
-    "rewardPoints": 2,
+    "rewardPoints": 1,
     "allowedClasses": [
       "tier2_high_lord"
     ]
@@ -2234,7 +2210,7 @@
     "type": "SUBMIT_ITEM",
     "item": "minecraft:diamond",
     "requiredAmount": 2,
-    "rewardPoints": 3,
+    "rewardPoints": 2,
     "allowedClasses": [
       "tier2_high_lord"
     ]
@@ -2280,7 +2256,7 @@
     "description": "Nộp 3x Thỏi Sắt",
     "type": "SUBMIT_ITEM",
     "item": "minecraft:iron_ingot",
-    "requiredAmount": 3,
+    "requiredAmount": 10,
     "rewardPoints": 1,
     "allowedClasses": [
       "tier2_summoner_lord"
@@ -2292,7 +2268,7 @@
     "description": "Nộp 5x Thỏi Sắt",
     "type": "SUBMIT_ITEM",
     "item": "minecraft:iron_ingot",
-    "requiredAmount": 5,
+    "requiredAmount": 20,
     "rewardPoints": 2,
     "allowedClasses": [
       "tier2_summoner_lord"
@@ -2304,7 +2280,7 @@
     "description": "Nộp 3x Thỏi Vàng",
     "type": "SUBMIT_ITEM",
     "item": "minecraft:gold_ingot",
-    "requiredAmount": 3,
+    "requiredAmount": 10,
     "rewardPoints": 2,
     "allowedClasses": [
       "tier2_summoner_lord"
@@ -2316,7 +2292,7 @@
     "description": "Nộp 5x Thỏi Vàng",
     "type": "SUBMIT_ITEM",
     "item": "minecraft:gold_ingot",
-    "requiredAmount": 5,
+    "requiredAmount": 15,
     "rewardPoints": 3,
     "allowedClasses": [
       "tier2_summoner_lord"
@@ -2365,7 +2341,7 @@
     "type": "SUBMIT_ITEM",
     "item": "minecraft:diamond",
     "requiredAmount": 3,
-    "rewardPoints": 4,
+    "rewardPoints": 3,
     "allowedClasses": [
       "tier2_summoner_lord"
     ]
