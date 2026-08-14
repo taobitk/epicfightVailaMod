@@ -1,5 +1,5 @@
 // Startup script - Đăng ký 12 Món Giáp Binh Lính Độc Lập hoàn toàn cho KubeJS
-// Giúp JEI nhận diện 100% là item thực thể độc lập, hiển thị tìm kiếm Tiếng Anh "Soldier" & công thức rèn đầy đủ!
+// Sử dụng đúng kiểu builder: 'helmet', 'chestplate', 'leggings', 'boots'
 
 StartupEvents.registry('item', event => {
     const armorTiers = [
@@ -9,10 +9,10 @@ StartupEvents.registry('item', event => {
     ];
 
     const pieces = [
-        { id: 'helmet', name: 'Helmet', slot: 'head' },
-        { id: 'chestplate', name: 'Chestplate', slot: 'chest' },
-        { id: 'leggings', name: 'Leggings', slot: 'legs' },
-        { id: 'boots', name: 'Boots', slot: 'feet' }
+        { id: 'helmet', name: 'Helmet' },
+        { id: 'chestplate', name: 'Chestplate' },
+        { id: 'leggings', name: 'Leggings' },
+        { id: 'boots', name: 'Boots' }
     ];
 
     armorTiers.forEach(tier => {
@@ -21,11 +21,11 @@ StartupEvents.registry('item', event => {
             let displayName = `Soldier ${tier.namePrefix} ${piece.name}`;
             let texturePath = `minecraft:item/${tier.type}_${piece.id}`;
 
-            event.create(itemId, 'armor')
+            // piece.id chính là kiểu armor builder chuẩn KubeJS ('helmet', 'chestplate', 'leggings', 'boots')
+            event.create(itemId, piece.id)
                 .displayName(displayName)
                 .texture(texturePath)
                 .tier(tier.tierName)
-                .armorSlot(piece.slot)
                 .unstackable()
                 .tooltip('§7Trang bị chuyên dụng dành cho Binh Lính')
                 .tooltip('§cNgười chơi không thể mặc');
