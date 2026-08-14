@@ -1,5 +1,5 @@
 {
-  "stamina_recover": 3,
-  "duration": 200,
-  "amplifier": 1
+  "stamina_recover": 5,
+  "duration": 500,
+  "amplifier": 2
 }

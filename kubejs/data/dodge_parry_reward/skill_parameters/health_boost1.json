@@ -1,6 +1,6 @@
 {
-  "duration": 200,
-  "amplifier": 0,
+  "duration": 600,
+  "amplifier": 2,
   "ambient": false,
   "visible": false,
   "showIcon": true
