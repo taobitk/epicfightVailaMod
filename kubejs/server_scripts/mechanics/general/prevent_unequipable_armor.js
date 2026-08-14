@@ -8,7 +8,19 @@ const forbiddenItems = [
     'kubejs:scarlxrds_sword',
     'kubejs:cheeseburger',
     'kubejs:orange',
-    'kubejs:cinnamon_roll'
+    'kubejs:cinnamon_roll',
+    'kubejs:soldier_iron_helmet',
+    'kubejs:soldier_iron_chestplate',
+    'kubejs:soldier_iron_leggings',
+    'kubejs:soldier_iron_boots',
+    'kubejs:soldier_golden_helmet',
+    'kubejs:soldier_golden_chestplate',
+    'kubejs:soldier_golden_leggings',
+    'kubejs:soldier_golden_boots',
+    'kubejs:soldier_diamond_helmet',
+    'kubejs:soldier_diamond_chestplate',
+    'kubejs:soldier_diamond_leggings',
+    'kubejs:soldier_diamond_boots'
 ]
 
 function isForbiddenItem(item) {
