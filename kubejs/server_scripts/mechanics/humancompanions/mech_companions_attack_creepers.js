@@ -6,14 +6,16 @@ const CreeperClass = Java.loadClass('net.minecraft.world.entity.monster.Creeper'
 function fixCompanionAI(entity) {
     if (!entity || !entity.isAlive()) return;
     try {
-        // 1. Xóa AvoidCreeperGoal khỏi goalSelector (Chặn không cho lính chạy trốn khỏi Creeper)
         let availableGoals = entity.goalSelector.availableGoals;
         let goalsToRemove = [];
 
         availableGoals.forEach(wrappedGoal => {
-            let goalName = String(wrappedGoal.goal.class.name);
-            if (goalName.contains('AvoidCreeperGoal') || goalName.contains('AvoidEntityGoal')) {
-                goalsToRemove.push(wrappedGoal.goal);
+            if (wrappedGoal && wrappedGoal.goal) {
+                let goalClassName = String(wrappedGoal.goal.getClass().getName());
+                if (goalClassName.includes('AvoidCreeperGoal') || goalClassName.includes('AvoidEntityGoal')) {
+                    goalsToRemove.push(wrappedGoal.goal);
+                    console.log('[HumanCompanions AI] Successfully removed AvoidCreeperGoal from: ' + entity.displayName.string);
+                }
             }
         });
 
@@ -25,8 +27,11 @@ function fixCompanionAI(entity) {
         if (!entity.tags.contains('creeper_ai_fixed')) {
             entity.tags.add('creeper_ai_fixed');
             entity.targetSelector.addGoal(1, new NearestAttackableTargetGoal(entity, CreeperClass, true));
+            console.log('[HumanCompanions AI] Successfully added Creeper Attack Goal to: ' + entity.displayName.string);
         }
-    } catch (e) {}
+    } catch (e) {
+        console.log('[HumanCompanions AI] Error fixing AI: ' + e);
+    }
 }
 
 // 1. Khi Lính MỚI Spawn
@@ -37,10 +42,10 @@ EntityEvents.spawned(event => {
     }
 });
 
-// 2. Định kỳ quét xung quanh người chơi (mỗi 2 giây) để sửa AI cho TẤT CẢ LÍNH ĐÃ CÓ SẴN TRONG THẾ GIỚI
+// 2. Tự động quét & tháo gỡ AI bỏ chạy + ép tấn công Creeper mỗi 1 giây
 PlayerEvents.tick(event => {
     let player = event.player;
-    if (!player || player.age % 40 !== 0) return;
+    if (!player || player.age % 20 !== 0) return;
 
     let level = player.level;
     if (level) {
@@ -49,15 +54,13 @@ PlayerEvents.tick(event => {
             if (entity && entity.type && entity.type.namespace === 'humancompanions') {
                 fixCompanionAI(entity);
                 
-                // Nếu có Creeper ở gần mà Lính chưa có Mục Tiêu -> Ép nhắm trực tiếp vào Creeper!
-                if (!entity.target || !entity.target.isAlive()) {
-                    let nearbyCreepers = level.getEntitiesWithin(entity.boundingBox.inflate(16, 8, 16));
-                    for (let i = 0; i < nearbyCreepers.length; i++) {
-                        let c = nearbyCreepers[i];
-                        if (c && c.type && String(c.type.id) === 'minecraft:creeper' && c.isAlive()) {
-                            entity.setTarget(c);
-                            break;
-                        }
+                // Nếu có Creeper ở gần -> Ép khóa thẳng mục tiêu vào Creeper!
+                let nearbyCreepers = level.getEntitiesWithin(entity.boundingBox.inflate(16, 8, 16));
+                for (let i = 0; i < nearbyCreepers.length; i++) {
+                    let c = nearbyCreepers[i];
+                    if (c && c.type && String(c.type.id) === 'minecraft:creeper' && c.isAlive()) {
+                        entity.setTarget(c);
+                        break;
                     }
                 }
             }
