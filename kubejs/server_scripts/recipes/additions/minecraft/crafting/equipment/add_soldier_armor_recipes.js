@@ -1,18 +1,16 @@
-// Server script - Công thức rèn Giáp Binh Lính (Sắt, Vàng, Kim Cương) độc quyền cho Thánh Hộ Vương (stage_tier2_high_lord)
-// Mỗi lượt chế tạo trả ra 3 món giáp lính (NBT cannot_equip:true, Unbreakable:1b)
-// Công thức xếp hình theo dáng gốc nhưng thay 1 nửa nguyên liệu bằng Hắc Diệu Thạch (Obsidian). Ô lẻ thì Obsidian nhiều hơn 1.
+// Server script - Công thức rèn 12 Món Giáp Binh Lính Độc Lập (Sắt, Vàng, Kim Cương) độc quyền cho Thánh Hộ Vương (stage_tier2_high_lord)
+// Output: Item độc lập 100% (kubejs:soldier_<tier>_<piece>) giúp bấm R trực tiếp trong JEI hiện thẳng bảng Crafting mượt mà!
 
 ServerEvents.recipes(event => {
     const armorTiers = [
-        { type: 'iron', namePrefix: 'Iron', mat: 'minecraft:iron_ingot' },
-        { type: 'golden', namePrefix: 'Golden', mat: 'minecraft:gold_ingot' },
-        { type: 'diamond', namePrefix: 'Diamond', mat: 'minecraft:diamond' }
+        { type: 'iron', mat: 'minecraft:iron_ingot' },
+        { type: 'golden', mat: 'minecraft:gold_ingot' },
+        { type: 'diamond', mat: 'minecraft:diamond' }
     ];
 
     armorTiers.forEach(tier => {
         // 1. Mũ Binh Lính (5 ô: 3 Hắc Diệu Thạch + 2 Nguyên liệu -> Trả ra 3 Mũ)
-        let helmetOutput = Item.of(`minecraft:${tier.type}_helmet`, 3, `{cannot_equip:true,CustomSoldierArmor:1b,Unbreakable:1b,display:{Name:'{"text":"Soldier ${tier.namePrefix} Helmet","color":"gold","italic":false}',Lore:['"\\\\u00a77Trang bị chuyên dụng dành cho Binh Lính"','"\\\\u00a7cNgười chơi không thể mặc"']}}`);
-        event.shaped(helmetOutput, [
+        event.shaped(Item.of(`kubejs:soldier_${tier.type}_helmet`, 3), [
             'OIO',
             'I O'
         ], {
@@ -21,8 +19,7 @@ ServerEvents.recipes(event => {
         }).id(`kubejs:craft_soldier_${tier.type}_helmet`).stage('stage_tier2_high_lord');
 
         // 2. Áo Binh Lính (8 ô: 4 Hắc Diệu Thạch + 4 Nguyên liệu -> Trả ra 3 Áo)
-        let chestOutput = Item.of(`minecraft:${tier.type}_chestplate`, 3, `{cannot_equip:true,CustomSoldierArmor:1b,Unbreakable:1b,display:{Name:'{"text":"Soldier ${tier.namePrefix} Chestplate","color":"gold","italic":false}',Lore:['"\\\\u00a77Trang bị chuyên dụng dành cho Binh Lính"','"\\\\u00a7cNgười chơi không thể mặc"']}}`);
-        event.shaped(chestOutput, [
+        event.shaped(Item.of(`kubejs:soldier_${tier.type}_chestplate`, 3), [
             'I I',
             'OIO',
             'OIO'
@@ -32,8 +29,7 @@ ServerEvents.recipes(event => {
         }).id(`kubejs:craft_soldier_${tier.type}_chestplate`).stage('stage_tier2_high_lord');
 
         // 3. Quần Binh Lính (7 ô: 4 Hắc Diệu Thạch + 3 Nguyên liệu -> Trả ra 3 Quần)
-        let legsOutput = Item.of(`minecraft:${tier.type}_leggings`, 3, `{cannot_equip:true,CustomSoldierArmor:1b,Unbreakable:1b,display:{Name:'{"text":"Soldier ${tier.namePrefix} Leggings","color":"gold","italic":false}',Lore:['"\\\\u00a77Trang bị chuyên dụng dành cho Binh Lính"','"\\\\u00a7cNgười chơi không thể mặc"']}}`);
-        event.shaped(legsOutput, [
+        event.shaped(Item.of(`kubejs:soldier_${tier.type}_leggings`, 3), [
             'OIO',
             'I O',
             'O I'
@@ -43,8 +39,7 @@ ServerEvents.recipes(event => {
         }).id(`kubejs:craft_soldier_${tier.type}_leggings`).stage('stage_tier2_high_lord');
 
         // 4. Giày Binh Lính (4 ô: 2 Hắc Diệu Thạch + 2 Nguyên liệu -> Trả ra 3 Giày)
-        let bootsOutput = Item.of(`minecraft:${tier.type}_boots`, 3, `{cannot_equip:true,CustomSoldierArmor:1b,Unbreakable:1b,display:{Name:'{"text":"Soldier ${tier.namePrefix} Boots","color":"gold","italic":false}',Lore:['"\\\\u00a77Trang bị chuyên dụng dành cho Binh Lính"','"\\\\u00a7cNgười chơi không thể mặc"']}}`);
-        event.shaped(bootsOutput, [
+        event.shaped(Item.of(`kubejs:soldier_${tier.type}_boots`, 3), [
             'I O',
             'O I'
         ], {
