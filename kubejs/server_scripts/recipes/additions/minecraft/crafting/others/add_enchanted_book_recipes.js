@@ -398,7 +398,7 @@ ServerEvents.recipes(event => {
     }
     ).id('kubejs:craft_book_warrior_protection').stage('stage_warrior')
 
-    // --- 🛡️ VỆ BINH BẤT HOẠI (INDESTRUCTIBLE SHORTCUTS) ---
+    // --- 🏰 VỆ BINH BẤT HOẠI (INDESTRUCTIBLE SHORTCUTS - ĐỘC QUYỀN HEALBOOST & MAX ARMOR) ---
     // Fire Protection = 4 Vàng + 1 Khiên ở giữa
     event.shaped(
         Item.of('minecraft:enchanted_book').enchant('minecraft:fire_protection', 1),
@@ -439,7 +439,7 @@ ServerEvents.recipes(event => {
     }
     ).id('kubejs:craft_book_indestructible_blast_protection').stage('stage_tier2_indestructible')
 
-    // Healboost Vệ Binh = 4 Khiên + 1 Táo Vàng ở giữa
+    // Healboost Vệ Binh (Độc Quyền) = 4 Khiên + 1 Táo Vàng ở giữa
     event.shaped(
         Item.of('minecraft:enchanted_book').enchant('originstats:healboost', 1),
         [
@@ -452,35 +452,20 @@ ServerEvents.recipes(event => {
     }
     ).id('kubejs:craft_book_indestructible_healboost').stage('stage_tier2_indestructible')
 
-    // --- 👑 LÃNH CHÚA (HIGH LORD SHORTCUTS) ---
-    // Healboost Lãnh Chúa = 4 Vàng + 4 Sắt + 1 Táo Thường ở giữa
-    event.shaped(
-        Item.of('minecraft:enchanted_book').enchant('originstats:healboost', 1),
-        [
-            'GIG',
-            'IAI',
-            'GIG'
-        ], {
-        G: 'minecraft:gold_ingot',
-        I: 'minecraft:iron_ingot',
-        A: 'minecraft:apple'
-    }
-    ).id('kubejs:craft_book_high_lord_healboost').stage('stage_tier2_high_lord')
-
-    // Max Armor Lãnh Chúa = 2 Sắt + 2 Kim Cương + 1 Táo Thường ở giữa
+    // Max Armor Vệ Binh (Độc Quyền) = 4 Khiên + 1 Khối Sắt ở giữa
     event.shaped(
         Item.of('minecraft:enchanted_book').enchant('originstats:max_armor', 1),
         [
-            ' D ',
-            'IAI',
-            ' D '
+            ' S ',
+            'SBS',
+            ' S '
         ], {
-        D: 'minecraft:diamond',
-        I: 'minecraft:iron_ingot',
-        A: 'minecraft:apple'
+        S: 'minecraft:shield',
+        B: 'minecraft:iron_block'
     }
-    ).id('kubejs:craft_book_high_lord_max_armor').stage('stage_tier2_high_lord')
+    ).id('kubejs:craft_book_indestructible_max_armor').stage('stage_tier2_indestructible')
 
+    // --- 👑 LÃNH CHÚA (HIGH LORD SHORTCUTS) ---
     // Sharpness Lãnh Chúa = 8 Sắt + 1 Táo Thường ở giữa
     event.shaped(
         Item.of('minecraft:enchanted_book').enchant('minecraft:sharpness', 1),
@@ -509,20 +494,16 @@ ServerEvents.recipes(event => {
 
             // Chiến Binh (Warrior)
             event.recipes.recipestages.setRecipeStage('stage_warrior', 'kubejs:craft_book_warrior_protection')
-            event.recipes.recipestages.setRecipeStage('stage_warrior', 'kubejs:craft_book_indestructible_healboost')
 
-            // Vệ Binh Bất Hoại (tier2_indestructible)
+            // Vệ Binh Bất Hoại (tier2_indestructible - ĐỘC QUYỀN HEALBOOST VÀ MAX ARMOR)
             event.recipes.recipestages.setRecipeStage('stage_tier2_indestructible', 'kubejs:craft_book_indestructible_fire_protection')
             event.recipes.recipestages.setRecipeStage('stage_tier2_indestructible', 'kubejs:craft_book_indestructible_projectile_protection')
             event.recipes.recipestages.setRecipeStage('stage_tier2_indestructible', 'kubejs:craft_book_indestructible_blast_protection')
             event.recipes.recipestages.setRecipeStage('stage_tier2_indestructible', 'kubejs:craft_book_indestructible_healboost')
+            event.recipes.recipestages.setRecipeStage('stage_tier2_indestructible', 'kubejs:craft_book_indestructible_max_armor')
 
             // Lãnh Chúa (tier2_high_lord / lord)
-            event.recipes.recipestages.setRecipeStage('stage_tier2_high_lord', 'kubejs:craft_book_high_lord_healboost')
-            event.recipes.recipestages.setRecipeStage('stage_tier2_high_lord', 'kubejs:craft_book_high_lord_max_armor')
             event.recipes.recipestages.setRecipeStage('stage_tier2_high_lord', 'kubejs:craft_book_high_lord_sharpness')
-            event.recipes.recipestages.setRecipeStage('stage_lord', 'kubejs:craft_book_high_lord_healboost')
-            event.recipes.recipestages.setRecipeStage('stage_lord', 'kubejs:craft_book_high_lord_max_armor')
             event.recipes.recipestages.setRecipeStage('stage_lord', 'kubejs:craft_book_high_lord_sharpness')
         }
     } catch (e) {
