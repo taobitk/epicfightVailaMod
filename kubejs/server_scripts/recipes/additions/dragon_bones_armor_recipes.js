@@ -1,7 +1,6 @@
 ServerEvents.recipes(event => {
-    // 1. Xóa các công thức rèn cũ của Bộ Giáp Dragon Bones
+    // 1. Xóa các công thức rèn cũ của Bộ Giáp Dragon Bones (Gồm 3 món: Áo, Quần, Giày)
     const dragonArmorOutputs = [
-        'block_factorys_bosses:dragon_bones_helmet',
         'block_factorys_bosses:dragon_bones_chestplate',
         'block_factorys_bosses:dragon_bones_leggings',
         'block_factorys_bosses:dragon_bones_boots'
@@ -15,15 +14,7 @@ ServerEvents.recipes(event => {
         'kubejs:nidg_ingot'
     ]);
 
-    // 3. Tạo lại công thức rèn Bộ Giáp Dragon Bones bằng Thỏi Xương Rồng Gia Cường
-    // Mũ Xương Rồng
-    event.shaped('block_factorys_bosses:dragon_bones_helmet', [
-        'AAA',
-        'A A'
-    ], {
-        A: 'kubejs:dragon_bone_ingot'
-    });
-
+    // 3. Tạo lại công thức rèn 3 Món Giáp Dragon Bones bằng Thỏi Xương Rồng Gia Cường
     // Áo Xương Rồng
     event.shaped('block_factorys_bosses:dragon_bones_chestplate', [
         'A A',
