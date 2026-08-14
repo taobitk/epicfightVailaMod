@@ -47,7 +47,7 @@
             "skill": "dodge_parry_reward:health_boost3"
         },
         {
-            "ability_points": 20,
+            "ability_points": 999,
             "hidden": false,
             "parents": [
                 {
@@ -98,7 +98,7 @@
             "skill": "dodge_parry_reward:absorb3"
         },
         {
-            "ability_points": 20,
+            "ability_points": 999,
             "hidden": false,
             "parents": [
                 {
@@ -149,7 +149,7 @@
             "skill": "dodge_parry_reward:heal3"
         },
         {
-            "ability_points": 20,
+            "ability_points": 999,
             "hidden": false,
             "parents": [
                 {
@@ -200,7 +200,7 @@
             "skill": "dodge_parry_reward:resist3"
         },
         {
-            "ability_points": 20,
+            "ability_points": 999,
             "hidden": false,
             "parents": [
                 {
@@ -251,7 +251,7 @@
             "skill": "dodge_parry_reward:stun_imm3"
         },
         {
-            "ability_points": 20,
+            "ability_points": 999,
             "hidden": false,
             "parents": [
                 {
@@ -302,7 +302,7 @@
             "skill": "dodge_parry_reward:damage_boost3"
         },
         {
-            "ability_points": 20,
+            "ability_points": 999,
             "hidden": false,
             "parents": [
                 {
@@ -353,7 +353,7 @@
             "skill": "dodge_parry_reward:speed3"
         },
         {
-            "ability_points": 20,
+            "ability_points": 999,
             "hidden": false,
             "parents": [
                 {
@@ -404,7 +404,7 @@
             "skill": "dodge_parry_reward:stamina3"
         },
         {
-            "ability_points": 20,
+            "ability_points": 999,
             "hidden": false,
             "parents": [
                 {
