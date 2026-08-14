@@ -6,7 +6,7 @@
             "ES5",
             "ES2015"
         ],
-        "rootDir": "./",
+        "rootDir": ".",
         "baseUrl": "../../.probe/server/probe-types",
         "typeRoots": [
             "../../.probe/server/probe-types"
