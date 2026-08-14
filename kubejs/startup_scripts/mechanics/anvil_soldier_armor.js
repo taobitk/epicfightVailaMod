@@ -1,3 +1,4 @@
+/*
 // Startup script - Event Anvil: Đổi 1 Giáp gốc + 1 Thỏi Sắt thành 3 Giáp Binh Lính (không thể mặc + Unbreakable)
 
 ForgeEvents.onEvent('net.minecraftforge.event.AnvilUpdateEvent', event => {
@@ -46,3 +47,4 @@ ForgeEvents.onEvent('net.minecraftforge.event.AnvilUpdateEvent', event => {
         });
     });
 });
+*/
