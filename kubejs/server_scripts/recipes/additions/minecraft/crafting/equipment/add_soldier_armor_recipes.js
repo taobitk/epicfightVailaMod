@@ -1,38 +1,69 @@
-/*
-// Tên file: kubejs/server_scripts/recipes/additions/minecraft/crafting/equipment/add_soldier_armor_recipes.js
-// Mục đích: Cho phép chuyển đổi Giáp thường (Sắt, Vàng, Kim Cương, Netherite) thành Giáp Cho Lính (mang NBT cannot_equip:1b) ngay trong bàn chế tạo.
+// Server script - Công thức rèn Giáp Binh Lính (Sắt, Vàng, Kim Cương) độc quyền cho Thánh Hộ Vương (stage_tier2_high_lord)
+// Mỗi lượt chế tạo trả ra 3 món giáp lính (NBT cannot_equip:true, Unbreakable:1b)
+// Công thức xếp hình theo dáng gốc nhưng thay 1 nửa nguyên liệu bằng Hắc Diệu Thạch (Obsidian). Ô lẻ thì Obsidian nhiều hơn 1.
 
 ServerEvents.recipes(event => {
     const armorTiers = [
-        { type: 'iron', namePrefix: 'Sắt' },
-        { type: 'golden', namePrefix: 'Vàng' },
-        { type: 'diamond', namePrefix: 'Kim Cương' },
-        { type: 'netherite', namePrefix: 'Netherite' }
-    ];
-
-    const pieces = [
-        { id: 'helmet', name: 'Mũ' },
-        { id: 'chestplate', name: 'Áo' },
-        { id: 'leggings', name: 'Quần' },
-        { id: 'boots', name: 'Giày' }
+        { type: 'iron', namePrefix: 'Sắt', mat: 'minecraft:iron_ingot' },
+        { type: 'golden', namePrefix: 'Vàng', mat: 'minecraft:gold_ingot' },
+        { type: 'diamond', namePrefix: 'Kim Cương', mat: 'minecraft:diamond' }
     ];
 
     armorTiers.forEach(tier => {
-        pieces.forEach(piece => {
-            let itemId = `minecraft:${tier.type}_${piece.id}`;
-            let displayName = `${piece.name} ${tier.namePrefix} Cho Lính`;
+        // 1. Mũ Binh Lính (5 ô: 3 Hắc Diệu Thạch + 2 Nguyên liệu -> Trả ra 3 Mũ)
+        let helmetOutput = Item.of(`minecraft:${tier.type}_helmet`, 3, `{cannot_equip:true,CustomSoldierArmor:1b,Unbreakable:1b,display:{Name:'{"text":"Mũ ${tier.namePrefix} Cho Lính","color":"gold","italic":false}'}}`);
+        event.shaped(helmetOutput, [
+            'OIO',
+            'I O'
+        ], {
+            O: 'minecraft:obsidian',
+            I: tier.mat
+        }).id(`kubejs:craft_soldier_${tier.type}_helmet`).stage('stage_tier2_high_lord');
 
-            let outputItem = Item.of(itemId, '{cannot_equip:1b,CustomSoldierArmor:1b}')
-                .withName(Text.of(displayName).gold().italic(false))
-                .withLore([
-                    Text.of('Trang bị chuyên dụng dành cho Lính').gray(),
-                    Text.of('Người chơi không thể mặc').red()
-                ]);
+        // 2. Áo Binh Lính (8 ô: 4 Hắc Diệu Thạch + 4 Nguyên liệu -> Trả ra 3 Áo)
+        let chestOutput = Item.of(`minecraft:${tier.type}_chestplate`, 3, `{cannot_equip:true,CustomSoldierArmor:1b,Unbreakable:1b,display:{Name:'{"text":"Áo ${tier.namePrefix} Cho Lính","color":"gold","italic":false}'}}`);
+        event.shaped(chestOutput, [
+            'I I',
+            'OIO',
+            'OIO'
+        ], {
+            O: 'minecraft:obsidian',
+            I: tier.mat
+        }).id(`kubejs:craft_soldier_${tier.type}_chestplate`).stage('stage_tier2_high_lord');
 
-            // Đặt 1 món giáp bất kỳ vào ô chế tạo không theo hình dạng (Shapeless) -> Trả ra Giáp Cho Lính
-            event.shapeless(outputItem, itemId).id(`kubejs:convert_soldier_armor_${tier.type}_${piece.id}`);
-        });
+        // 3. Quần Binh Lính (7 ô: 4 Hắc Diệu Thạch + 3 Nguyên liệu -> Trả ra 3 Quần)
+        let legsOutput = Item.of(`minecraft:${tier.type}_leggings`, 3, `{cannot_equip:true,CustomSoldierArmor:1b,Unbreakable:1b,display:{Name:'{"text":"Quần ${tier.namePrefix} Cho Lính","color":"gold","italic":false}'}}`);
+        event.shaped(legsOutput, [
+            'OIO',
+            'I O',
+            'O I'
+        ], {
+            O: 'minecraft:obsidian',
+            I: tier.mat
+        }).id(`kubejs:craft_soldier_${tier.type}_leggings`).stage('stage_tier2_high_lord');
+
+        // 4. Giày Binh Lính (4 ô: 2 Hắc Diệu Thạch + 2 Nguyên liệu -> Trả ra 3 Giày)
+        let bootsOutput = Item.of(`minecraft:${tier.type}_boots`, 3, `{cannot_equip:true,CustomSoldierArmor:1b,Unbreakable:1b,display:{Name:'{"text":"Giày ${tier.namePrefix} Cho Lính","color":"gold","italic":false}'}}`);
+        event.shaped(bootsOutput, [
+            'I O',
+            'O I'
+        ], {
+            O: 'minecraft:obsidian',
+            I: tier.mat
+        }).id(`kubejs:craft_soldier_${tier.type}_boots`).stage('stage_tier2_high_lord');
     });
-});
 
-*/
+    // Đăng ký RecipeStages khóa công thức cho stage_tier2_high_lord
+    try {
+        if (event.recipes && event.recipes.recipestages) {
+            armorTiers.forEach(tier => {
+                event.recipes.recipestages.setRecipeStage('stage_tier2_high_lord', `kubejs:craft_soldier_${tier.type}_helmet`);
+                event.recipes.recipestages.setRecipeStage('stage_tier2_high_lord', `kubejs:craft_soldier_${tier.type}_chestplate`);
+                event.recipes.recipestages.setRecipeStage('stage_tier2_high_lord', `kubejs:craft_soldier_${tier.type}_leggings`);
+                event.recipes.recipestages.setRecipeStage('stage_tier2_high_lord', `kubejs:craft_soldier_${tier.type}_boots`);
+            });
+        }
+    } catch (e) {
+        console.log('[KubeJS] RecipeStages soldier armor locking handled smoothly: ' + e);
+    }
+});
