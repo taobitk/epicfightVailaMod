@@ -1,17 +1,18 @@
 // Server script - Công thức rèn Giáp Binh Lính (Sắt, Vàng, Kim Cương) độc quyền cho Thánh Hộ Vương (stage_tier2_high_lord)
 // Mỗi lượt chế tạo trả ra 3 món giáp lính (NBT cannot_equip:true, Unbreakable:1b)
-// Công thức xếp hình theo dáng gốc nhưng thay 1 nửa nguyên liệu bằng Hắc Diệu Thạch (Obsidian). Ô lẻ thì Obsidian nhiều hơn 1.
+// Tên hiển thị Tiếng Anh: Soldier <Tier> <Piece> (để dễ tìm kiếm trong JEI)
+// Mô tả tiếng Việt: Trang bị chuyên dụng dành cho Binh Lính / Người chơi không thể mặc
 
 ServerEvents.recipes(event => {
     const armorTiers = [
-        { type: 'iron', namePrefix: 'Sắt', mat: 'minecraft:iron_ingot' },
-        { type: 'golden', namePrefix: 'Vàng', mat: 'minecraft:gold_ingot' },
-        { type: 'diamond', namePrefix: 'Kim Cương', mat: 'minecraft:diamond' }
+        { type: 'iron', namePrefix: 'Iron', mat: 'minecraft:iron_ingot' },
+        { type: 'golden', namePrefix: 'Golden', mat: 'minecraft:gold_ingot' },
+        { type: 'diamond', namePrefix: 'Diamond', mat: 'minecraft:diamond' }
     ];
 
     armorTiers.forEach(tier => {
         // 1. Mũ Binh Lính (5 ô: 3 Hắc Diệu Thạch + 2 Nguyên liệu -> Trả ra 3 Mũ)
-        let helmetOutput = Item.of(`minecraft:${tier.type}_helmet`, 3, `{cannot_equip:true,CustomSoldierArmor:1b,Unbreakable:1b,display:{Name:'{"text":"Mũ ${tier.namePrefix} Binh Lính","color":"gold","italic":false}',Lore:['"\\\\u00a77Trang bị chuyên dụng dành cho Binh Lính"','"\\\\u00a7cNgười chơi không thể mặc"']}}`);
+        let helmetOutput = Item.of(`minecraft:${tier.type}_helmet`, 3, `{cannot_equip:true,CustomSoldierArmor:1b,Unbreakable:1b,display:{Name:'{"text":"Soldier ${tier.namePrefix} Helmet","color":"gold","italic":false}',Lore:['"\\\\u00a77Trang bị chuyên dụng dành cho Binh Lính"','"\\\\u00a7cNgười chơi không thể mặc"']}}`);
         event.shaped(helmetOutput, [
             'OIO',
             'I O'
@@ -21,7 +22,7 @@ ServerEvents.recipes(event => {
         }).id(`kubejs:craft_soldier_${tier.type}_helmet`).stage('stage_tier2_high_lord');
 
         // 2. Áo Binh Lính (8 ô: 4 Hắc Diệu Thạch + 4 Nguyên liệu -> Trả ra 3 Áo)
-        let chestOutput = Item.of(`minecraft:${tier.type}_chestplate`, 3, `{cannot_equip:true,CustomSoldierArmor:1b,Unbreakable:1b,display:{Name:'{"text":"Áo ${tier.namePrefix} Binh Lính","color":"gold","italic":false}',Lore:['"\\\\u00a77Trang bị chuyên dụng dành cho Binh Lính"','"\\\\u00a7cNgười chơi không thể mặc"']}}`);
+        let chestOutput = Item.of(`minecraft:${tier.type}_chestplate`, 3, `{cannot_equip:true,CustomSoldierArmor:1b,Unbreakable:1b,display:{Name:'{"text":"Soldier ${tier.namePrefix} Chestplate","color":"gold","italic":false}',Lore:['"\\\\u00a77Trang bị chuyên dụng dành cho Binh Lính"','"\\\\u00a7cNgười chơi không thể mặc"']}}`);
         event.shaped(chestOutput, [
             'I I',
             'OIO',
@@ -32,7 +33,7 @@ ServerEvents.recipes(event => {
         }).id(`kubejs:craft_soldier_${tier.type}_chestplate`).stage('stage_tier2_high_lord');
 
         // 3. Quần Binh Lính (7 ô: 4 Hắc Diệu Thạch + 3 Nguyên liệu -> Trả ra 3 Quần)
-        let legsOutput = Item.of(`minecraft:${tier.type}_leggings`, 3, `{cannot_equip:true,CustomSoldierArmor:1b,Unbreakable:1b,display:{Name:'{"text":"Quần ${tier.namePrefix} Binh Lính","color":"gold","italic":false}',Lore:['"\\\\u00a77Trang bị chuyên dụng dành cho Binh Lính"','"\\\\u00a7cNgười chơi không thể mặc"']}}`);
+        let legsOutput = Item.of(`minecraft:${tier.type}_leggings`, 3, `{cannot_equip:true,CustomSoldierArmor:1b,Unbreakable:1b,display:{Name:'{"text":"Soldier ${tier.namePrefix} Leggings","color":"gold","italic":false}',Lore:['"\\\\u00a77Trang bị chuyên dụng dành cho Binh Lính"','"\\\\u00a7cNgười chơi không thể mặc"']}}`);
         event.shaped(legsOutput, [
             'OIO',
             'I O',
@@ -43,7 +44,7 @@ ServerEvents.recipes(event => {
         }).id(`kubejs:craft_soldier_${tier.type}_leggings`).stage('stage_tier2_high_lord');
 
         // 4. Giày Binh Lính (4 ô: 2 Hắc Diệu Thạch + 2 Nguyên liệu -> Trả ra 3 Giày)
-        let bootsOutput = Item.of(`minecraft:${tier.type}_boots`, 3, `{cannot_equip:true,CustomSoldierArmor:1b,Unbreakable:1b,display:{Name:'{"text":"Giày ${tier.namePrefix} Binh Lính","color":"gold","italic":false}',Lore:['"\\\\u00a77Trang bị chuyên dụng dành cho Binh Lính"','"\\\\u00a7cNgười chơi không thể mặc"']}}`);
+        let bootsOutput = Item.of(`minecraft:${tier.type}_boots`, 3, `{cannot_equip:true,CustomSoldierArmor:1b,Unbreakable:1b,display:{Name:'{"text":"Soldier ${tier.namePrefix} Boots","color":"gold","italic":false}',Lore:['"\\\\u00a77Trang bị chuyên dụng dành cho Binh Lính"','"\\\\u00a7cNgười chơi không thể mặc"']}}`);
         event.shaped(bootsOutput, [
             'I O',
             'O I'
