@@ -57,6 +57,22 @@ PlayerEvents.tick(event => {
             player.setStatusMessage('§cVật phẩm Binh Lính không thể rã trong Máy Cắt Đá!')
         }
     }
+
+    // Kiểm tra Bàn Nâng Cấp Tool Leveling
+    if (player.containerMenu && (player.containerMenu.class.name.contains('ToolLevelingTable') || player.containerMenu.class.name.contains('ToolLeveling'))) {
+        for (let i = 0; i < player.containerMenu.slots.length; i++) {
+            let slot = player.containerMenu.getSlot(i)
+            if (slot && slot.hasItem() && isForbiddenItem(slot.item)) {
+                // Slot < 10 là các ô chứa đồ nằm trong giao diện Bàn Nâng Cấp Tool Leveling (ngoài túi đồ player)
+                if (i < 10) {
+                    player.give(slot.item.copy())
+                    slot.set('minecraft:air')
+                    player.containerMenu.broadcastChanges()
+                    player.setStatusMessage('§cVật phẩm Binh Lính không thể đưa vào Bàn Nâng Cấp Tool Leveling!')
+                }
+            }
+        }
+    }
 })
 
 // 2. Chặn Chuột Phải (Right Click Item)
