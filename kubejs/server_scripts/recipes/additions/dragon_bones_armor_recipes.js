@@ -1,5 +1,5 @@
 ServerEvents.recipes(event => {
-    // 1. Xóa các công thức rèn cũ của Bộ Giáp Dragon Bones (Gồm 3 món: Áo, Quần, Giày)
+    // 1. Xóa các công thức rèn cũ của 3 Món Giáp Dragon Bones
     const dragonArmorOutputs = [
         'block_factorys_bosses:dragon_bones_chestplate',
         'block_factorys_bosses:dragon_bones_leggings',
@@ -14,30 +14,34 @@ ServerEvents.recipes(event => {
         'kubejs:nidg_ingot'
     ]);
 
-    // 3. Tạo lại công thức rèn 3 Món Giáp Dragon Bones bằng Thỏi Xương Rồng Gia Cường
-    // Áo Xương Rồng
+    // 3. Công thức rèn 3 Món Giáp Dragon Bones: Mỗi món chỉ dùng đúng 2x Thỏi Xương Rồng Gia Cường (A), còn lại dùng Kim Cương (D)
+
+    // Áo Xương Rồng (2x Thỏi Xương Rồng Gia Cường + 6x Kim Cương)
     event.shaped('block_factorys_bosses:dragon_bones_chestplate', [
         'A A',
-        'AAA',
-        'AAA'
+        'DDD',
+        'DDD'
     ], {
-        A: 'kubejs:dragon_bone_ingot'
+        A: 'kubejs:dragon_bone_ingot',
+        D: 'minecraft:diamond'
     });
 
-    // Quần Xương Rồng
+    // Quần Xương Rồng (2x Thỏi Xương Rồng Gia Cường + 5x Kim Cương)
     event.shaped('block_factorys_bosses:dragon_bones_leggings', [
-        'AAA',
+        'DDD',
         'A A',
-        'A A'
+        'D D'
     ], {
-        A: 'kubejs:dragon_bone_ingot'
+        A: 'kubejs:dragon_bone_ingot',
+        D: 'minecraft:diamond'
     });
 
-    // Giày Xương Rồng
+    // Giày Xương Rồng (2x Thỏi Xương Rồng Gia Cường + 2x Kim Cương)
     event.shaped('block_factorys_bosses:dragon_bones_boots', [
         'A A',
-        'A A'
+        'D D'
     ], {
-        A: 'kubejs:dragon_bone_ingot'
+        A: 'kubejs:dragon_bone_ingot',
+        D: 'minecraft:diamond'
     });
 });
