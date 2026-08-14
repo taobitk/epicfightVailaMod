@@ -134,7 +134,7 @@
   {
     "id": "vanguard_kzombie_20",
     "name": "Diệt Thây Ma Tiên Phong",
-    "description": "Tiêu diệt 20 con Zombie",
+    "description": "Tiêu diệt 10 con Zombie",
     "type": "KILL_MOB",
     "targetMob": "minecraft:zombie",
     "requiredAmount": 10,
@@ -146,7 +146,7 @@
   {
     "id": "vanguard_kpiglin_20",
     "name": "Diệt Lợn Thây Ma Tiên Phong",
-    "description": "Tiêu diệt 20 con Zombified Piglin",
+    "description": "Tiêu diệt 10 con Zombified Piglin",
     "type": "KILL_MOB",
     "targetMob": "minecraft:zombified_piglin",
     "requiredAmount": 10,
@@ -158,7 +158,7 @@
   {
     "id": "vanguard_kskeleton_20",
     "name": "Diệt Binh Xương Tiên Phong",
-    "description": "Tiêu diệt 20 con Skeleton",
+    "description": "Tiêu diệt 10 con Skeleton",
     "type": "KILL_MOB",
     "targetMob": "minecraft:skeleton",
     "requiredAmount": 10,
@@ -170,7 +170,7 @@
   {
     "id": "vanguard_kwither_skel_20",
     "name": "Diệt Xương Đen Tiên Phong",
-    "description": "Tiêu diệt 20 con Wither Skeleton",
+    "description": "Tiêu diệt 10 con Wither Skeleton",
     "type": "KILL_MOB",
     "targetMob": "minecraft:wither_skeleton",
     "requiredAmount": 10,
@@ -194,7 +194,7 @@
   {
     "id": "vanguard_khusk_20",
     "name": "Diệt Zombie Sa Mạc Tiên Phong",
-    "description": "Tiêu diệt 20 con Husk",
+    "description": "Tiêu diệt 10 con Husk",
     "type": "KILL_MOB",
     "targetMob": "minecraft:husk",
     "requiredAmount": 10,
@@ -206,7 +206,7 @@
   {
     "id": "vanguard_kstray_20",
     "name": "Diệt Xương Tuyết Tiên Phong",
-    "description": "Tiêu diệt 20 con Stray",
+    "description": "Tiêu diệt 10 con Stray",
     "type": "KILL_MOB",
     "targetMob": "minecraft:stray",
     "requiredAmount": 10,
@@ -278,7 +278,7 @@
   {
     "id": "vanguard_kblaze_15",
     "name": "Truy Quét Quỷ Lửa Tiên Phong",
-    "description": "Tiêu diệt 15 con Blaze",
+    "description": "Tiêu diệt 12 con Blaze",
     "type": "KILL_MOB",
     "targetMob": "minecraft:blaze",
     "requiredAmount": 12,
@@ -290,7 +290,7 @@
   {
     "id": "vanguard_khusk_50",
     "name": "Truy Quét Zombie Sa Mạc",
-    "description": "Tiêu diệt 50 con Husk",
+    "description": "Tiêu diệt 20 con Husk",
     "type": "KILL_MOB",
     "targetMob": "minecraft:husk",
     "requiredAmount": 20,
@@ -302,7 +302,7 @@
   {
     "id": "vanguard_kstray_50",
     "name": "Truy Quét Xương Tuyết",
-    "description": "Tiêu diệt 50 con Stray",
+    "description": "Tiêu diệt 20 con Stray",
     "type": "KILL_MOB",
     "targetMob": "minecraft:stray",
     "requiredAmount": 20,
@@ -314,7 +314,7 @@
   {
     "id": "vanguard_kspider_15",
     "name": "Truy Quét Nhện Tiên Phong",
-    "description": "Tiêu diệt 15 con Spider",
+    "description": "Tiêu diệt 7 con Spider",
     "type": "KILL_MOB",
     "targetMob": "minecraft:spider",
     "requiredAmount": 7,
@@ -326,7 +326,7 @@
   {
     "id": "vanguard_kcavespider_15",
     "name": "Truy Quét Nhện Hang",
-    "description": "Tiêu diệt 15 con Cave Spider",
+    "description": "Tiêu diệt 7 con Cave Spider",
     "type": "KILL_MOB",
     "targetMob": "minecraft:cave_spider",
     "requiredAmount": 7,
@@ -566,7 +566,7 @@
   {
     "id": "wind_kzombie_15",
     "name": "Sát Nhân Cuồng Phong I",
-    "description": "Tiêu diệt 15 con Zombie",
+    "description": "Tiêu diệt 7 con Zombie",
     "type": "KILL_MOB",
     "targetMob": "minecraft:zombie",
     "requiredAmount": 7,
@@ -578,7 +578,7 @@
   {
     "id": "wind_kpiglin_15",
     "name": "Diệt Lợn Thây Ma Cuồng Phong",
-    "description": "Tiêu diệt 15 con Zombified Piglin",
+    "description": "Tiêu diệt 7 con Zombified Piglin",
     "type": "KILL_MOB",
     "targetMob": "minecraft:zombified_piglin",
     "requiredAmount": 7,
@@ -590,7 +590,7 @@
   {
     "id": "wind_kskeleton_15",
     "name": "Diệt Binh Xương Cuồng Phong",
-    "description": "Tiêu diệt 15 con Skeleton",
+    "description": "Tiêu diệt 7 con Skeleton",
     "type": "KILL_MOB",
     "targetMob": "minecraft:skeleton",
     "requiredAmount": 7,
@@ -602,7 +602,7 @@
   {
     "id": "wind_kwither_skel_15",
     "name": "Trảm Xương Đen Cuồng Phong",
-    "description": "Tiêu diệt 15 con Wither Skeleton",
+    "description": "Tiêu diệt 10 con Wither Skeleton",
     "type": "KILL_MOB",
     "targetMob": "minecraft:wither_skeleton",
     "requiredAmount": 10,
@@ -626,7 +626,7 @@
   {
     "id": "wind_khusk_15",
     "name": "Diệt Zombie Sa Mạc Cuồng Phong",
-    "description": "Tiêu diệt 15 con Husk",
+    "description": "Tiêu diệt 7 con Husk",
     "type": "KILL_MOB",
     "targetMob": "minecraft:husk",
     "requiredAmount": 7,
@@ -638,7 +638,7 @@
   {
     "id": "wind_kstray_15",
     "name": "Diệt Xương Tuyết Cuồng Phong",
-    "description": "Tiêu diệt 15 con Stray",
+    "description": "Tiêu diệt 7 con Stray",
     "type": "KILL_MOB",
     "targetMob": "minecraft:stray",
     "requiredAmount": 7,
@@ -650,7 +650,7 @@
   {
     "id": "wind_kspider_15",
     "name": "Diệt Nhện Cuồng Phong",
-    "description": "Tiêu diệt 15 con Spider",
+    "description": "Tiêu diệt 7 con Spider",
     "type": "KILL_MOB",
     "targetMob": "minecraft:spider",
     "requiredAmount": 7,
@@ -662,7 +662,7 @@
   {
     "id": "wind_kcavespider_15",
     "name": "Diệt Nhện Hang Cuồng Phong",
-    "description": "Tiêu diệt 15 con Cave Spider",
+    "description": "Tiêu diệt 7 con Cave Spider",
     "type": "KILL_MOB",
     "targetMob": "minecraft:cave_spider",
     "requiredAmount": 7,
@@ -722,7 +722,7 @@
   {
     "id": "wind_kzombie_25",
     "name": "Cuồng Phong Cuồng Bạo Zombie",
-    "description": "Tiêu diệt 25 con Zombie",
+    "description": "Tiêu diệt 10 con Zombie",
     "type": "KILL_MOB",
     "targetMob": "minecraft:zombie",
     "requiredAmount": 10,
@@ -734,7 +734,7 @@
   {
     "id": "wind_kpiglin_25",
     "name": "Cuồng Phong Lợn Thây Ma",
-    "description": "Tiêu diệt 25 con Zombified Piglin",
+    "description": "Tiêu diệt 10 con Zombified Piglin",
     "type": "KILL_MOB",
     "targetMob": "minecraft:zombified_piglin",
     "requiredAmount": 10,
@@ -746,7 +746,7 @@
   {
     "id": "wind_kskeleton_25",
     "name": "Cuồng Phong Binh Xương",
-    "description": "Tiêu diệt 25 con Skeleton",
+    "description": "Tiêu diệt 10 con Skeleton",
     "type": "KILL_MOB",
     "targetMob": "minecraft:skeleton",
     "requiredAmount": 10,
@@ -770,7 +770,7 @@
   {
     "id": "wind_kblaze_8",
     "name": "Cuồng Phong Quỷ Lửa",
-    "description": "Tiêu diệt 8 con Blaze",
+    "description": "Tiêu diệt 12 con Blaze",
     "type": "KILL_MOB",
     "targetMob": "minecraft:blaze",
     "requiredAmount": 12,
@@ -782,7 +782,7 @@
   {
     "id": "wind_khusk_25",
     "name": "Cuồng Phong Sa Mạc",
-    "description": "Tiêu diệt 25 con Husk",
+    "description": "Tiêu diệt 10 con Husk",
     "type": "KILL_MOB",
     "targetMob": "minecraft:husk",
     "requiredAmount": 10,
@@ -794,7 +794,7 @@
   {
     "id": "wind_kstray_25",
     "name": "Cuồng Phong Tuyết Lạnh",
-    "description": "Tiêu diệt 25 con Stray",
+    "description": "Tiêu diệt 10 con Stray",
     "type": "KILL_MOB",
     "targetMob": "minecraft:stray",
     "requiredAmount": 10,
@@ -806,7 +806,7 @@
   {
     "id": "wind_kspider_25",
     "name": "Cuồng Phong Nhện Bão",
-    "description": "Tiêu diệt 25 con Spider",
+    "description": "Tiêu diệt 10 con Spider",
     "type": "KILL_MOB",
     "targetMob": "minecraft:spider",
     "requiredAmount": 10,
@@ -818,7 +818,7 @@
   {
     "id": "wind_kcavespider_25",
     "name": "Cuồng Phong Nhện Hang",
-    "description": "Tiêu diệt 25 con Cave Spider",
+    "description": "Tiêu diệt 10 con Cave Spider",
     "type": "KILL_MOB",
     "targetMob": "minecraft:cave_spider",
     "requiredAmount": 10,
@@ -998,7 +998,7 @@
   {
     "id": "destruction_kwither_skel_15",
     "name": "Hủy Diệt Xương Đen I",
-    "description": "Tiêu diệt 15 con Wither Skeleton",
+    "description": "Tiêu diệt 10 con Wither Skeleton",
     "type": "KILL_MOB",
     "targetMob": "minecraft:wither_skeleton",
     "requiredAmount": 10,
@@ -1057,7 +1057,7 @@
   {
     "id": "destruction_kzombie_15",
     "name": "Hủy Diệt Thây Ma II",
-    "description": "Tiêu diệt 15 con Zombie",
+    "description": "Tiêu diệt 7 con Zombie",
     "type": "KILL_MOB",
     "targetMob": "minecraft:zombie",
     "requiredAmount": 7,
@@ -1129,7 +1129,7 @@
   {
     "id": "magic_kzombie_20",
     "name": "Săn Quái Undead Ma Thuật",
-    "description": "Tiêu diệt 20 con Zombie",
+    "description": "Tiêu diệt 10 con Zombie",
     "type": "KILL_MOB",
     "targetMob": "minecraft:zombie",
     "requiredAmount": 10,
@@ -1141,7 +1141,7 @@
   {
     "id": "magic_kskeleton_20",
     "name": "Ma Thuật Diệt Binh Xương",
-    "description": "Tiêu diệt 20 con Skeleton",
+    "description": "Tiêu diệt 10 con Skeleton",
     "type": "KILL_MOB",
     "targetMob": "minecraft:skeleton",
     "requiredAmount": 10,
@@ -1153,7 +1153,7 @@
   {
     "id": "magic_kwither_skel_15",
     "name": "Ma Thuật Trảm Xương Đen",
-    "description": "Tiêu diệt 15 con Wither Skeleton",
+    "description": "Tiêu diệt 10 con Wither Skeleton",
     "type": "KILL_MOB",
     "targetMob": "minecraft:wither_skeleton",
     "requiredAmount": 10,
@@ -1165,7 +1165,7 @@
   {
     "id": "magic_khusk_20",
     "name": "Ma Thuật Diệt Zombie Sa Mạc",
-    "description": "Tiêu diệt 20 con Husk",
+    "description": "Tiêu diệt 10 con Husk",
     "type": "KILL_MOB",
     "targetMob": "minecraft:husk",
     "requiredAmount": 10,
@@ -1177,7 +1177,7 @@
   {
     "id": "magic_kstray_20",
     "name": "Ma Thuật Diệt Xương Tuyết",
-    "description": "Tiêu diệt 20 con Stray",
+    "description": "Tiêu diệt 10 con Stray",
     "type": "KILL_MOB",
     "targetMob": "minecraft:stray",
     "requiredAmount": 10,
@@ -1189,7 +1189,7 @@
   {
     "id": "magic_kpiglin_20",
     "name": "Ma Thuật Diệt Lợn Thây Ma",
-    "description": "Tiêu diệt 20 con Zombified Piglin",
+    "description": "Tiêu diệt 10 con Zombified Piglin",
     "type": "KILL_MOB",
     "targetMob": "minecraft:zombified_piglin",
     "requiredAmount": 10,
@@ -1285,7 +1285,7 @@
   {
     "id": "magic_kzombie_45",
     "name": "Ma Thuật Diệt Cửu Zombie",
-    "description": "Tiêu diệt 45 con Zombie",
+    "description": "Tiêu diệt 20 con Zombie",
     "type": "KILL_MOB",
     "targetMob": "minecraft:zombie",
     "requiredAmount": 20,
@@ -1297,7 +1297,7 @@
   {
     "id": "magic_kskeleton_45",
     "name": "Ma Thuật Diệt Binh Xương Thể",
-    "description": "Tiêu diệt 45 con Skeleton",
+    "description": "Tiêu diệt 20 con Skeleton",
     "type": "KILL_MOB",
     "targetMob": "minecraft:skeleton",
     "requiredAmount": 20,
@@ -1309,7 +1309,7 @@
   {
     "id": "magic_kwither_skel_30",
     "name": "Ma Thuật Bão Xương Đen",
-    "description": "Tiêu diệt 30 con Wither Skeleton",
+    "description": "Tiêu diệt 25 con Wither Skeleton",
     "type": "KILL_MOB",
     "targetMob": "minecraft:wither_skeleton",
     "requiredAmount": 25,
@@ -1321,7 +1321,7 @@
   {
     "id": "magic_khusk_45",
     "name": "Ma Thuật Cuồng Nhiệt Sa Mạc",
-    "description": "Tiêu diệt 45 con Husk",
+    "description": "Tiêu diệt 20 con Husk",
     "type": "KILL_MOB",
     "targetMob": "minecraft:husk",
     "requiredAmount": 20,
@@ -1333,7 +1333,7 @@
   {
     "id": "magic_kstray_45",
     "name": "Ma Thuật Bão Tuyết Stray",
-    "description": "Tiêu diệt 45 con Stray",
+    "description": "Tiêu diệt 20 con Stray",
     "type": "KILL_MOB",
     "targetMob": "minecraft:stray",
     "requiredAmount": 20,
@@ -1345,7 +1345,7 @@
   {
     "id": "magic_kpiglin_45",
     "name": "Ma Thuật Quần Thể Lợn Thây Ma",
-    "description": "Tiêu diệt 45 con Zombified Piglin",
+    "description": "Tiêu diệt 20 con Zombified Piglin",
     "type": "KILL_MOB",
     "targetMob": "minecraft:zombified_piglin",
     "requiredAmount": 20,
@@ -1452,7 +1452,7 @@
   {
     "id": "marksman_kzombie_25",
     "name": "Thợ Săn Zombie Bão Tiễn",
-    "description": "Tiêu diệt 25 con Zombie",
+    "description": "Tiêu diệt 10 con Zombie",
     "type": "KILL_MOB",
     "targetMob": "minecraft:zombie",
     "requiredAmount": 10,
@@ -1464,7 +1464,7 @@
   {
     "id": "marksman_kskeleton_25",
     "name": "Thợ Săn Binh Xương Bão Tiễn",
-    "description": "Tiêu diệt 25 con Skeleton",
+    "description": "Tiêu diệt 10 con Skeleton",
     "type": "KILL_MOB",
     "targetMob": "minecraft:skeleton",
     "requiredAmount": 10,
@@ -1476,7 +1476,7 @@
   {
     "id": "marksman_kwither_skel_15",
     "name": "Xạ Thủ Diệt Xương Đen",
-    "description": "Tiêu diệt 15 con Wither Skeleton",
+    "description": "Tiêu diệt 10 con Wither Skeleton",
     "type": "KILL_MOB",
     "targetMob": "minecraft:wither_skeleton",
     "requiredAmount": 10,
@@ -1488,7 +1488,7 @@
   {
     "id": "marksman_khusk_25",
     "name": "Thợ Săn Zombie Sa Mạc",
-    "description": "Tiêu diệt 25 con Husk",
+    "description": "Tiêu diệt 10 con Husk",
     "type": "KILL_MOB",
     "targetMob": "minecraft:husk",
     "requiredAmount": 10,
@@ -1500,7 +1500,7 @@
   {
     "id": "marksman_kstray_25",
     "name": "Thợ Săn Xương Tuyết",
-    "description": "Tiêu diệt 25 con Stray",
+    "description": "Tiêu diệt 10 con Stray",
     "type": "KILL_MOB",
     "targetMob": "minecraft:stray",
     "requiredAmount": 10,
@@ -1512,7 +1512,7 @@
   {
     "id": "marksman_kpiglin_25",
     "name": "Xạ Thủ Bắn Lợn Thây Ma",
-    "description": "Tiêu diệt 25 con Zombified Piglin",
+    "description": "Tiêu diệt 10 con Zombified Piglin",
     "type": "KILL_MOB",
     "targetMob": "minecraft:zombified_piglin",
     "requiredAmount": 10,
@@ -1548,7 +1548,7 @@
   {
     "id": "marksman_kzombie_50",
     "name": "Bão Tiễn Diệt Zombie",
-    "description": "Tiêu diệt 50 con Zombie",
+    "description": "Tiêu diệt 20 con Zombie",
     "type": "KILL_MOB",
     "targetMob": "minecraft:zombie",
     "requiredAmount": 20,
@@ -1560,7 +1560,7 @@
   {
     "id": "marksman_kskeleton_50",
     "name": "Bão Tiễn Diệt Binh Xương",
-    "description": "Tiêu diệt 50 con Skeleton",
+    "description": "Tiêu diệt 20 con Skeleton",
     "type": "KILL_MOB",
     "targetMob": "minecraft:skeleton",
     "requiredAmount": 20,
@@ -1572,7 +1572,7 @@
   {
     "id": "marksman_kwither_skel_30",
     "name": "Bão Tiễn Diệt Xương Đen",
-    "description": "Tiêu diệt 30 con Wither Skeleton",
+    "description": "Tiêu diệt 25 con Wither Skeleton",
     "type": "KILL_MOB",
     "targetMob": "minecraft:wither_skeleton",
     "requiredAmount": 25,
@@ -1584,7 +1584,7 @@
   {
     "id": "marksman_khusk_50",
     "name": "Bão Tiễn Quét Sa Mạc",
-    "description": "Tiêu diệt 50 con Husk",
+    "description": "Tiêu diệt 20 con Husk",
     "type": "KILL_MOB",
     "targetMob": "minecraft:husk",
     "requiredAmount": 20,
@@ -1596,7 +1596,7 @@
   {
     "id": "marksman_kstray_50",
     "name": "Bão Tiễn Quét Xương Tuyết",
-    "description": "Tiêu diệt 50 con Stray",
+    "description": "Tiêu diệt 20 con Stray",
     "type": "KILL_MOB",
     "targetMob": "minecraft:stray",
     "requiredAmount": 20,
@@ -1608,7 +1608,7 @@
   {
     "id": "marksman_kpiglin_50",
     "name": "Bão Tiễn Diệt Lợn Thây Ma",
-    "description": "Tiêu diệt 50 con Zombified Piglin",
+    "description": "Tiêu diệt 20 con Zombified Piglin",
     "type": "KILL_MOB",
     "targetMob": "minecraft:zombified_piglin",
     "requiredAmount": 20,
@@ -1667,7 +1667,7 @@
   {
     "id": "elemental_kzombie_20",
     "name": "Tên Nguyên Tố Diệt Zombie",
-    "description": "Tiêu diệt 20 con Zombie",
+    "description": "Tiêu diệt 10 con Zombie",
     "type": "KILL_MOB",
     "targetMob": "minecraft:zombie",
     "requiredAmount": 10,
@@ -1679,7 +1679,7 @@
   {
     "id": "elemental_kskeleton_20",
     "name": "Tên Nguyên Tố Diệt Binh Xương",
-    "description": "Tiêu diệt 20 con Skeleton",
+    "description": "Tiêu diệt 10 con Skeleton",
     "type": "KILL_MOB",
     "targetMob": "minecraft:skeleton",
     "requiredAmount": 10,
@@ -1691,7 +1691,7 @@
   {
     "id": "elemental_kwither_skel_15",
     "name": "Tên Nguyên Tố Diệt Xương Đen",
-    "description": "Tiêu diệt 15 con Wither Skeleton",
+    "description": "Tiêu diệt 10 con Wither Skeleton",
     "type": "KILL_MOB",
     "targetMob": "minecraft:wither_skeleton",
     "requiredAmount": 10,
@@ -1703,7 +1703,7 @@
   {
     "id": "elemental_khusk_20",
     "name": "Tên Nguyên Tố Diệt Sa Mạc",
-    "description": "Tiêu diệt 20 con Husk",
+    "description": "Tiêu diệt 10 con Husk",
     "type": "KILL_MOB",
     "targetMob": "minecraft:husk",
     "requiredAmount": 10,
@@ -1715,7 +1715,7 @@
   {
     "id": "elemental_kstray_20",
     "name": "Tên Nguyên Tố Diệt Xương Tuyết",
-    "description": "Tiêu diệt 20 con Stray",
+    "description": "Tiêu diệt 10 con Stray",
     "type": "KILL_MOB",
     "targetMob": "minecraft:stray",
     "requiredAmount": 10,
@@ -1727,7 +1727,7 @@
   {
     "id": "elemental_kpiglin_20",
     "name": "Tên Nguyên Tố Diệt Lợn Thây Ma",
-    "description": "Tiêu diệt 20 con Zombified Piglin",
+    "description": "Tiêu diệt 10 con Zombified Piglin",
     "type": "KILL_MOB",
     "targetMob": "minecraft:zombified_piglin",
     "requiredAmount": 10,
@@ -1823,7 +1823,7 @@
   {
     "id": "elemental_kzombie_45",
     "name": "Bão Tên Nguyên Tố Zombie",
-    "description": "Tiêu diệt 45 con Zombie",
+    "description": "Tiêu diệt 20 con Zombie",
     "type": "KILL_MOB",
     "targetMob": "minecraft:zombie",
     "requiredAmount": 20,
@@ -1835,7 +1835,7 @@
   {
     "id": "elemental_kskeleton_45",
     "name": "Bão Tên Nguyên Tố Binh Xương",
-    "description": "Tiêu diệt 45 con Skeleton",
+    "description": "Tiêu diệt 20 con Skeleton",
     "type": "KILL_MOB",
     "targetMob": "minecraft:skeleton",
     "requiredAmount": 20,
@@ -1847,7 +1847,7 @@
   {
     "id": "elemental_kwither_skel_30",
     "name": "Bão Tên Nguyên Tố Xương Đen",
-    "description": "Tiêu diệt 30 con Wither Skeleton",
+    "description": "Tiêu diệt 25 con Wither Skeleton",
     "type": "KILL_MOB",
     "targetMob": "minecraft:wither_skeleton",
     "requiredAmount": 25,
@@ -1859,7 +1859,7 @@
   {
     "id": "elemental_khusk_45",
     "name": "Bão Tên Nguyên Tố Sa Mạc",
-    "description": "Tiêu diệt 45 con Husk",
+    "description": "Tiêu diệt 20 con Husk",
     "type": "KILL_MOB",
     "targetMob": "minecraft:husk",
     "requiredAmount": 20,
@@ -1871,7 +1871,7 @@
   {
     "id": "elemental_kstray_45",
     "name": "Bão Tên Nguyên Tố Tuyết Lạnh",
-    "description": "Tiêu diệt 45 con Stray",
+    "description": "Tiêu diệt 20 con Stray",
     "type": "KILL_MOB",
     "targetMob": "minecraft:stray",
     "requiredAmount": 20,
@@ -1883,7 +1883,7 @@
   {
     "id": "elemental_kpiglin_45",
     "name": "Bão Tên Nguyên Tố Lợn Thây Ma",
-    "description": "Tiêu diệt 45 con Zombified Piglin",
+    "description": "Tiêu diệt 20 con Zombified Piglin",
     "type": "KILL_MOB",
     "targetMob": "minecraft:zombified_piglin",
     "requiredAmount": 20,
